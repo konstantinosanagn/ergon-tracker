@@ -21,6 +21,9 @@ coverage.xml
 *.sqlite
 *.sqlite3
 
+# Large/intermediate extraction artifacts (gold lives in tests/data/, kept)
+/data/
+
 # Env
 .env
 .env.*

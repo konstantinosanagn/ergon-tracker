@@ -58,14 +58,16 @@ async def main() -> None:
     query = SearchQuery()
     results: dict[int, tuple[dict, int, str, str | None]] = {}
 
-    async with AsyncFetcher(concurrency=12, per_host_rate=8, timeout=30.0) as fetcher:
-        async with anyio.create_task_group() as tg:
-            for i, entry in enumerate(candidates):
+    async with (
+        AsyncFetcher(concurrency=12, per_host_rate=8, timeout=30.0) as fetcher,
+        anyio.create_task_group() as tg,
+    ):
+        for i, entry in enumerate(candidates):
 
-                async def run(i: int = i, entry: dict = entry) -> None:
-                    results[i] = await verify_one(entry, fetcher, query)
+            async def run(i: int = i, entry: dict = entry) -> None:
+                results[i] = await verify_one(entry, fetcher, query)
 
-                tg.start_soon(run)
+            tg.start_soon(run)
 
     verified: list[tuple[dict, int, str]] = []
     dead: list[tuple[dict, str | None]] = []
