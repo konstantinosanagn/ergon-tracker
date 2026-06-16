@@ -1,8 +1,8 @@
 {
   "_meta": {
     "description": "Curated company -> ATS -> token seed registry for offline auto-discovery.",
-    "version": 1,
-    "updated": "2026-06-15",
+    "version": 2,
+    "updated": "2026-06-16",
     "schema": {
       "company_key": {
         "ats": "greenhouse|lever|ashby|workday",
@@ -76,6 +76,1186 @@
       "ats": "workday",
       "token": "salesforce|wd12|External_Career_Site",
       "domain": "salesforce.com"
+    },
+    "10xgenomics": {
+      "ats": "greenhouse",
+      "token": "10xgenomics",
+      "domain": "10xgenomics.com"
+    },
+    "1password": {
+      "ats": "ashby",
+      "token": "1password",
+      "domain": "1password.com"
+    },
+    "3m": {
+      "ats": "workday",
+      "token": "3m|wd1|search",
+      "domain": "3m.com"
+    },
+    "abbott": {
+      "ats": "workday",
+      "token": "abbott|wd5|abbottcareers",
+      "domain": "abbott.com"
+    },
+    "abnormalsecurity": {
+      "ats": "greenhouse",
+      "token": "abnormalsecurity",
+      "domain": "abnormalsecurity.com"
+    },
+    "abridge": {
+      "ats": "ashby",
+      "token": "abridge",
+      "domain": "abridge.com"
+    },
+    "accenture": {
+      "ats": "workday",
+      "token": "accenture|wd103|accenturecareers",
+      "domain": "accenture.com"
+    },
+    "accuweather": {
+      "ats": "greenhouse",
+      "token": "accuweather",
+      "domain": "accuweather.com"
+    },
+    "adobe": {
+      "ats": "workday",
+      "token": "adobe|wd5|external_experienced",
+      "domain": "adobe.com"
+    },
+    "affirm": {
+      "ats": "greenhouse",
+      "token": "affirm",
+      "domain": "affirm.com"
+    },
+    "aig": {
+      "ats": "workday",
+      "token": "aig|wd1|aig",
+      "domain": "aig.com"
+    },
+    "airtable": {
+      "ats": "greenhouse",
+      "token": "airtable",
+      "domain": "airtable.com"
+    },
+    "alan": {
+      "ats": "ashby",
+      "token": "alan",
+      "domain": "alan.com"
+    },
+    "algolia": {
+      "ats": "greenhouse",
+      "token": "algolia",
+      "domain": "algolia.com"
+    },
+    "allstate": {
+      "ats": "workday",
+      "token": "allstate|wd5|allstate_careers",
+      "domain": "allstate.com"
+    },
+    "ameriprise": {
+      "ats": "workday",
+      "token": "ameriprise|wd5|ameriprise",
+      "domain": "ameriprise.com"
+    },
+    "amgen": {
+      "ats": "workday",
+      "token": "amgen|wd1|careers",
+      "domain": "amgen.com"
+    },
+    "amplitude": {
+      "ats": "greenhouse",
+      "token": "amplitude",
+      "domain": "amplitude.com"
+    },
+    "andela": {
+      "ats": "ashby",
+      "token": "andela",
+      "domain": "andela.com"
+    },
+    "anduril": {
+      "ats": "greenhouse",
+      "token": "andurilindustries",
+      "domain": "anduril.com"
+    },
+    "anthropic": {
+      "ats": "greenhouse",
+      "token": "anthropic",
+      "domain": "anthropic.com"
+    },
+    "applovin": {
+      "ats": "greenhouse",
+      "token": "applovin",
+      "domain": "applovin.com"
+    },
+    "asana": {
+      "ats": "greenhouse",
+      "token": "asana",
+      "domain": "asana.com"
+    },
+    "astrazeneca": {
+      "ats": "workday",
+      "token": "astrazeneca|wd3|careers",
+      "domain": "astrazeneca.com"
+    },
+    "astronomer": {
+      "ats": "ashby",
+      "token": "astronomer",
+      "domain": "astronomer.io"
+    },
+    "att": {
+      "ats": "workday",
+      "token": "att|wd1|attgeneral",
+      "domain": "att.com"
+    },
+    "attentive": {
+      "ats": "greenhouse",
+      "token": "attentive",
+      "domain": "attentive.com"
+    },
+    "autodesk": {
+      "ats": "workday",
+      "token": "autodesk|wd1|ext",
+      "domain": "autodesk.com"
+    },
+    "bandwidth": {
+      "ats": "greenhouse",
+      "token": "bandwidth",
+      "domain": "bandwidth.com"
+    },
+    "baseten": {
+      "ats": "ashby",
+      "token": "baseten",
+      "domain": "baseten.co"
+    },
+    "benchling": {
+      "ats": "ashby",
+      "token": "benchling",
+      "domain": "benchling.com"
+    },
+    "betterment": {
+      "ats": "greenhouse",
+      "token": "betterment",
+      "domain": "betterment.com"
+    },
+    "bitwarden": {
+      "ats": "greenhouse",
+      "token": "bitwarden",
+      "domain": "bitwarden.com"
+    },
+    "blackrock": {
+      "ats": "workday",
+      "token": "blackrock|wd1|blackrock_professional",
+      "domain": "blackrock.com"
+    },
+    "boeing": {
+      "ats": "workday",
+      "token": "boeing|wd1|external_careers",
+      "domain": "boeing.com"
+    },
+    "brave": {
+      "ats": "greenhouse",
+      "token": "brave",
+      "domain": "brave.com"
+    },
+    "braze": {
+      "ats": "greenhouse",
+      "token": "braze",
+      "domain": "braze.com"
+    },
+    "brightmachines": {
+      "ats": "lever",
+      "token": "brightmachines",
+      "domain": "brightmachines.com"
+    },
+    "broadcom": {
+      "ats": "workday",
+      "token": "broadcom|wd1|external_career",
+      "domain": "broadcom.com"
+    },
+    "businesswire": {
+      "ats": "lever",
+      "token": "businesswire",
+      "domain": "businesswire.com"
+    },
+    "calendly": {
+      "ats": "greenhouse",
+      "token": "calendly",
+      "domain": "calendly.com"
+    },
+    "calm": {
+      "ats": "greenhouse",
+      "token": "calm",
+      "domain": "calm.com"
+    },
+    "canarytechnologies": {
+      "ats": "lever",
+      "token": "canarytechnologies",
+      "domain": "canarytechnologies.com"
+    },
+    "capitalone": {
+      "ats": "workday",
+      "token": "capitalone|wd12|capital_one",
+      "domain": "capitalone.com"
+    },
+    "carta": {
+      "ats": "greenhouse",
+      "token": "carta",
+      "domain": "carta.com"
+    },
+    "cartesia": {
+      "ats": "ashby",
+      "token": "cartesia",
+      "domain": "cartesia.ai"
+    },
+    "chime": {
+      "ats": "greenhouse",
+      "token": "chime",
+      "domain": "chime.com"
+    },
+    "cigna": {
+      "ats": "workday",
+      "token": "cigna|wd5|cignacareers",
+      "domain": "cigna.com"
+    },
+    "circleci": {
+      "ats": "greenhouse",
+      "token": "circleci",
+      "domain": "circleci.com"
+    },
+    "cisco": {
+      "ats": "workday",
+      "token": "cisco|wd5|cisco_careers",
+      "domain": "cisco.com"
+    },
+    "citi": {
+      "ats": "workday",
+      "token": "citi|wd5|2",
+      "domain": "citi.com"
+    },
+    "clay": {
+      "ats": "ashby",
+      "token": "claylabs",
+      "domain": "clay.com"
+    },
+    "clickhouse": {
+      "ats": "greenhouse",
+      "token": "clickhouse",
+      "domain": "clickhouse.com"
+    },
+    "close": {
+      "ats": "ashby",
+      "token": "close",
+      "domain": "close.com"
+    },
+    "cloudflare": {
+      "ats": "greenhouse",
+      "token": "cloudflare",
+      "domain": "cloudflare.com"
+    },
+    "cluely": {
+      "ats": "ashby",
+      "token": "cluely",
+      "domain": "cluely.com"
+    },
+    "cockroachlabs": {
+      "ats": "greenhouse",
+      "token": "cockroachlabs",
+      "domain": "cockroachlabs.com"
+    },
+    "cohere": {
+      "ats": "ashby",
+      "token": "cohere",
+      "domain": "cohere.com"
+    },
+    "cohesity": {
+      "ats": "workday",
+      "token": "cohesity|wd5|cohesity_careers",
+      "domain": "cohesity.com"
+    },
+    "coinmarketcap": {
+      "ats": "lever",
+      "token": "coinmarketcap",
+      "domain": "coinmarketcap.com"
+    },
+    "comcast": {
+      "ats": "workday",
+      "token": "comcast|wd5|comcast_careers",
+      "domain": "comcast.com"
+    },
+    "confluent": {
+      "ats": "ashby",
+      "token": "confluent",
+      "domain": "confluent.io"
+    },
+    "contentful": {
+      "ats": "greenhouse",
+      "token": "contentful",
+      "domain": "contentful.com"
+    },
+    "continue": {
+      "ats": "ashby",
+      "token": "continue",
+      "domain": "continue.dev"
+    },
+    "coursera": {
+      "ats": "greenhouse",
+      "token": "coursera",
+      "domain": "coursera.org"
+    },
+    "cribl": {
+      "ats": "greenhouse",
+      "token": "cribl",
+      "domain": "cribl.io"
+    },
+    "crowdstrike": {
+      "ats": "workday",
+      "token": "crowdstrike|wd5|crowdstrikecareers",
+      "domain": "crowdstrike.com"
+    },
+    "crunchyroll": {
+      "ats": "greenhouse",
+      "token": "crunchyroll",
+      "domain": "crunchyroll.com"
+    },
+    "crusoe": {
+      "ats": "ashby",
+      "token": "Crusoe",
+      "domain": "crusoe.ai"
+    },
+    "crypto": {
+      "ats": "lever",
+      "token": "crypto",
+      "domain": "crypto.com"
+    },
+    "cursor": {
+      "ats": "ashby",
+      "token": "cursor",
+      "domain": "cursor.com"
+    },
+    "customerio": {
+      "ats": "greenhouse",
+      "token": "customerio",
+      "domain": "customer.io"
+    },
+    "danaher": {
+      "ats": "workday",
+      "token": "danaher|wd1|danaherjobs",
+      "domain": "danaher.com"
+    },
+    "dashlane": {
+      "ats": "greenhouse",
+      "token": "dashlane",
+      "domain": "dashlane.com"
+    },
+    "datadog": {
+      "ats": "greenhouse",
+      "token": "datadog",
+      "domain": "datadoghq.com"
+    },
+    "deliveroo": {
+      "ats": "ashby",
+      "token": "deliveroo",
+      "domain": "deliveroo.co.uk"
+    },
+    "disney": {
+      "ats": "workday",
+      "token": "disney|wd5|disneycareer",
+      "domain": "disney.com"
+    },
+    "dropbox": {
+      "ats": "greenhouse",
+      "token": "dropbox",
+      "domain": "dropbox.com"
+    },
+    "duolingo": {
+      "ats": "greenhouse",
+      "token": "duolingo",
+      "domain": "duolingo.com"
+    },
+    "dust": {
+      "ats": "ashby",
+      "token": "dust",
+      "domain": "dust.tt"
+    },
+    "educative": {
+      "ats": "lever",
+      "token": "educative",
+      "domain": "educative.io"
+    },
+    "eightsleep": {
+      "ats": "ashby",
+      "token": "eightsleep",
+      "domain": "eightsleep.com"
+    },
+    "elastic": {
+      "ats": "greenhouse",
+      "token": "elastic",
+      "domain": "elastic.co"
+    },
+    "elevenlabs": {
+      "ats": "ashby",
+      "token": "elevenlabs",
+      "domain": "elevenlabs.io"
+    },
+    "elicit": {
+      "ats": "ashby",
+      "token": "elicit",
+      "domain": "elicit.com"
+    },
+    "ema": {
+      "ats": "ashby",
+      "token": "ema",
+      "domain": "ema.co"
+    },
+    "encord": {
+      "ats": "ashby",
+      "token": "encord",
+      "domain": "encord.com"
+    },
+    "epicgames": {
+      "ats": "greenhouse",
+      "token": "epicgames",
+      "domain": "epicgames.com"
+    },
+    "epifi": {
+      "ats": "lever",
+      "token": "epifi",
+      "domain": "fi.money"
+    },
+    "etched": {
+      "ats": "ashby",
+      "token": "etched",
+      "domain": "etched.com"
+    },
+    "exa": {
+      "ats": "ashby",
+      "token": "exa",
+      "domain": "exa.ai"
+    },
+    "extremenetworks": {
+      "ats": "lever",
+      "token": "extremenetworks",
+      "domain": "extremenetworks.com"
+    },
+    "faculty": {
+      "ats": "ashby",
+      "token": "faculty",
+      "domain": "faculty.ai"
+    },
+    "faire": {
+      "ats": "greenhouse",
+      "token": "faire",
+      "domain": "faire.com"
+    },
+    "fastly": {
+      "ats": "greenhouse",
+      "token": "fastly",
+      "domain": "fastly.com"
+    },
+    "fedex": {
+      "ats": "workday",
+      "token": "fedex|wd1|fxe-lac_external_career_site",
+      "domain": "fedex.com"
+    },
+    "figma": {
+      "ats": "greenhouse",
+      "token": "figma",
+      "domain": "figma.com"
+    },
+    "fivetran": {
+      "ats": "greenhouse",
+      "token": "fivetran",
+      "domain": "fivetran.com"
+    },
+    "flexport": {
+      "ats": "greenhouse",
+      "token": "flexport",
+      "domain": "flexport.com"
+    },
+    "fullstory": {
+      "ats": "ashby",
+      "token": "fullstory",
+      "domain": "fullstory.com"
+    },
+    "garnerhealth": {
+      "ats": "greenhouse",
+      "token": "garnerhealth",
+      "domain": "garnerhealth.com"
+    },
+    "gilead": {
+      "ats": "workday",
+      "token": "gilead|wd1|gileadcareers",
+      "domain": "gilead.com"
+    },
+    "ginkgobioworks": {
+      "ats": "greenhouse",
+      "token": "ginkgobioworks",
+      "domain": "ginkgobioworks.com"
+    },
+    "gitlab": {
+      "ats": "greenhouse",
+      "token": "gitlab",
+      "domain": "gitlab.com"
+    },
+    "glide": {
+      "ats": "ashby",
+      "token": "glide",
+      "domain": "glideapps.com"
+    },
+    "glossier": {
+      "ats": "greenhouse",
+      "token": "glossier",
+      "domain": "glossier.com"
+    },
+    "gorgias": {
+      "ats": "ashby",
+      "token": "gorgias",
+      "domain": "gorgias.com"
+    },
+    "grafanalabs": {
+      "ats": "greenhouse",
+      "token": "grafanalabs",
+      "domain": "grafana.com"
+    },
+    "gsk": {
+      "ats": "workday",
+      "token": "gsk|wd5|gskcareers",
+      "domain": "gsk.com"
+    },
+    "guidepoint": {
+      "ats": "greenhouse",
+      "token": "guidepoint",
+      "domain": "guidepoint.com"
+    },
+    "gumloop": {
+      "ats": "ashby",
+      "token": "gumloop",
+      "domain": "gumloop.com"
+    },
+    "gusto": {
+      "ats": "greenhouse",
+      "token": "gusto",
+      "domain": "gusto.com"
+    },
+    "hackerone": {
+      "ats": "ashby",
+      "token": "hackerone",
+      "domain": "hackerone.com"
+    },
+    "handshake": {
+      "ats": "ashby",
+      "token": "handshake",
+      "domain": "joinhandshake.com"
+    },
+    "harvey": {
+      "ats": "ashby",
+      "token": "harvey",
+      "domain": "harvey.ai"
+    },
+    "helpscout": {
+      "ats": "ashby",
+      "token": "helpscout",
+      "domain": "helpscout.com"
+    },
+    "hp": {
+      "ats": "workday",
+      "token": "hp|wd5|externalcareersite",
+      "domain": "hp.com"
+    },
+    "humana": {
+      "ats": "workday",
+      "token": "humana|wd5|humana_external_career_site",
+      "domain": "humana.com"
+    },
+    "huntress": {
+      "ats": "greenhouse",
+      "token": "huntress",
+      "domain": "huntress.com"
+    },
+    "ideogram": {
+      "ats": "ashby",
+      "token": "ideogram",
+      "domain": "ideogram.ai"
+    },
+    "illumina": {
+      "ats": "workday",
+      "token": "illumina|wd1|illumina-careers",
+      "domain": "illumina.com"
+    },
+    "illumio": {
+      "ats": "ashby",
+      "token": "illumio",
+      "domain": "illumio.com"
+    },
+    "imprint": {
+      "ats": "ashby",
+      "token": "imprint",
+      "domain": "imprint.co"
+    },
+    "incident": {
+      "ats": "ashby",
+      "token": "incident",
+      "domain": "incident.io"
+    },
+    "insitro": {
+      "ats": "ashby",
+      "token": "insitro",
+      "domain": "insitro.com"
+    },
+    "instacart": {
+      "ats": "greenhouse",
+      "token": "instacart",
+      "domain": "instacart.com"
+    },
+    "intel": {
+      "ats": "workday",
+      "token": "intel|wd1|external",
+      "domain": "intel.com"
+    },
+    "intercom": {
+      "ats": "greenhouse",
+      "token": "intercom",
+      "domain": "intercom.com"
+    },
+    "ironclad": {
+      "ats": "ashby",
+      "token": "ironcladhq",
+      "domain": "ironcladapp.com"
+    },
+    "iterable": {
+      "ats": "greenhouse",
+      "token": "iterable",
+      "domain": "iterable.com"
+    },
+    "justworks": {
+      "ats": "greenhouse",
+      "token": "justworks",
+      "domain": "justworks.com"
+    },
+    "kayak": {
+      "ats": "ashby",
+      "token": "kayak",
+      "domain": "kayak.com"
+    },
+    "kla": {
+      "ats": "workday",
+      "token": "kla|wd1|search",
+      "domain": "kla.com"
+    },
+    "klaviyo": {
+      "ats": "greenhouse",
+      "token": "klaviyo",
+      "domain": "klaviyo.com"
+    },
+    "kong": {
+      "ats": "ashby",
+      "token": "kong",
+      "domain": "konghq.com"
+    },
+    "labelbox": {
+      "ats": "greenhouse",
+      "token": "labelbox",
+      "domain": "labelbox.com"
+    },
+    "lambda": {
+      "ats": "ashby",
+      "token": "lambda",
+      "domain": "lambdalabs.com"
+    },
+    "launchdarkly": {
+      "ats": "greenhouse",
+      "token": "launchdarkly",
+      "domain": "launchdarkly.com"
+    },
+    "lemonade": {
+      "ats": "ashby",
+      "token": "lemonade",
+      "domain": "lemonade.com"
+    },
+    "lightspark": {
+      "ats": "ashby",
+      "token": "lightspark",
+      "domain": "lightspark.com"
+    },
+    "lyft": {
+      "ats": "greenhouse",
+      "token": "lyft",
+      "domain": "lyft.com"
+    },
+    "marqeta": {
+      "ats": "greenhouse",
+      "token": "marqeta",
+      "domain": "marqeta.com"
+    },
+    "marvell": {
+      "ats": "workday",
+      "token": "marvell|wd1|marvellcareers",
+      "domain": "marvell.com"
+    },
+    "mastercard": {
+      "ats": "workday",
+      "token": "mastercard|wd1|corporatecareers",
+      "domain": "mastercard.com"
+    },
+    "masterclass": {
+      "ats": "greenhouse",
+      "token": "masterclass",
+      "domain": "masterclass.com"
+    },
+    "medtronic": {
+      "ats": "workday",
+      "token": "medtronic|wd1|medtroniccareers",
+      "domain": "medtronic.com"
+    },
+    "mercor": {
+      "ats": "ashby",
+      "token": "mercor",
+      "domain": "mercor.com"
+    },
+    "mercury": {
+      "ats": "greenhouse",
+      "token": "mercury",
+      "domain": "mercury.com"
+    },
+    "micron": {
+      "ats": "workday",
+      "token": "micron|wd1|external",
+      "domain": "micron.com"
+    },
+    "mixpanel": {
+      "ats": "greenhouse",
+      "token": "mixpanel",
+      "domain": "mixpanel.com"
+    },
+    "modernhealth": {
+      "ats": "greenhouse",
+      "token": "modernhealth",
+      "domain": "modernhealth.com"
+    },
+    "mongodb": {
+      "ats": "greenhouse",
+      "token": "mongodb",
+      "domain": "mongodb.com"
+    },
+    "mozilla": {
+      "ats": "greenhouse",
+      "token": "mozilla",
+      "domain": "mozilla.org"
+    },
+    "nasdaq": {
+      "ats": "workday",
+      "token": "nasdaq|wd1|global_external_site",
+      "domain": "nasdaq.com"
+    },
+    "netlify": {
+      "ats": "greenhouse",
+      "token": "netlify",
+      "domain": "netlify.com"
+    },
+    "notion": {
+      "ats": "ashby",
+      "token": "notion",
+      "domain": "notion.so"
+    },
+    "novartis": {
+      "ats": "workday",
+      "token": "novartis|wd3|novartis_careers",
+      "domain": "novartis.com"
+    },
+    "nubank": {
+      "ats": "greenhouse",
+      "token": "nubank",
+      "domain": "nubank.com.br"
+    },
+    "nuro": {
+      "ats": "greenhouse",
+      "token": "nuro",
+      "domain": "nuro.ai"
+    },
+    "nxp": {
+      "ats": "workday",
+      "token": "nxp|wd3|careers",
+      "domain": "nxp.com"
+    },
+    "okta": {
+      "ats": "greenhouse",
+      "token": "okta",
+      "domain": "okta.com"
+    },
+    "onemedical": {
+      "ats": "greenhouse",
+      "token": "onemedical",
+      "domain": "onemedical.com"
+    },
+    "oscar": {
+      "ats": "greenhouse",
+      "token": "oscar",
+      "domain": "hioscar.com"
+    },
+    "oura": {
+      "ats": "greenhouse",
+      "token": "oura",
+      "domain": "ouraring.com"
+    },
+    "patreon": {
+      "ats": "ashby",
+      "token": "patreon",
+      "domain": "patreon.com"
+    },
+    "paypal": {
+      "ats": "workday",
+      "token": "paypal|wd1|jobs",
+      "domain": "paypal.com"
+    },
+    "peloton": {
+      "ats": "greenhouse",
+      "token": "peloton",
+      "domain": "onepeloton.com"
+    },
+    "perplexity": {
+      "ats": "ashby",
+      "token": "Perplexity",
+      "domain": "perplexity.ai"
+    },
+    "persona": {
+      "ats": "ashby",
+      "token": "persona",
+      "domain": "withpersona.com"
+    },
+    "pfizer": {
+      "ats": "workday",
+      "token": "pfizer|wd1|pfizercareers",
+      "domain": "pfizer.com"
+    },
+    "philips": {
+      "ats": "workday",
+      "token": "philips|wd3|jobs-and-careers",
+      "domain": "philips.com"
+    },
+    "pinterest": {
+      "ats": "greenhouse",
+      "token": "pinterest",
+      "domain": "pinterest.com"
+    },
+    "plaid": {
+      "ats": "ashby",
+      "token": "plaid",
+      "domain": "plaid.com"
+    },
+    "planetscale": {
+      "ats": "greenhouse",
+      "token": "planetscale",
+      "domain": "planetscale.com"
+    },
+    "polymarket": {
+      "ats": "ashby",
+      "token": "polymarket",
+      "domain": "polymarket.com"
+    },
+    "posthog": {
+      "ats": "ashby",
+      "token": "posthog",
+      "domain": "posthog.com"
+    },
+    "postman": {
+      "ats": "greenhouse",
+      "token": "postman",
+      "domain": "postman.com"
+    },
+    "proofpoint": {
+      "ats": "workday",
+      "token": "proofpoint|wd5|proofpointcareers",
+      "domain": "proofpoint.com"
+    },
+    "proton": {
+      "ats": "greenhouse",
+      "token": "proton",
+      "domain": "proton.me"
+    },
+    "prudential": {
+      "ats": "workday",
+      "token": "prudential|wd3|prudential",
+      "domain": "prudential.com"
+    },
+    "pwc": {
+      "ats": "workday",
+      "token": "pwc|wd3|global_campus_careers",
+      "domain": "pwc.com"
+    },
+    "qualys": {
+      "ats": "workday",
+      "token": "qualys|wd5|careers",
+      "domain": "qualys.com"
+    },
+    "quora": {
+      "ats": "ashby",
+      "token": "quora",
+      "domain": "quora.com"
+    },
+    "reddit": {
+      "ats": "greenhouse",
+      "token": "reddit",
+      "domain": "reddit.com"
+    },
+    "regeneron": {
+      "ats": "workday",
+      "token": "regeneron|wd1|careers",
+      "domain": "regeneron.com"
+    },
+    "remote": {
+      "ats": "greenhouse",
+      "token": "remote",
+      "domain": "remote.com"
+    },
+    "replit": {
+      "ats": "ashby",
+      "token": "replit",
+      "domain": "replit.com"
+    },
+    "revenuecat": {
+      "ats": "ashby",
+      "token": "revenuecat",
+      "domain": "revenuecat.com"
+    },
+    "riotgames": {
+      "ats": "greenhouse",
+      "token": "riotgames",
+      "domain": "riotgames.com"
+    },
+    "robinhood": {
+      "ats": "greenhouse",
+      "token": "robinhood",
+      "domain": "robinhood.com"
+    },
+    "roblox": {
+      "ats": "greenhouse",
+      "token": "roblox",
+      "domain": "roblox.com"
+    },
+    "roche": {
+      "ats": "workday",
+      "token": "roche|wd3|roche-ext",
+      "domain": "roche.com"
+    },
+    "rula": {
+      "ats": "ashby",
+      "token": "rula",
+      "domain": "rula.com"
+    },
+    "samsara": {
+      "ats": "greenhouse",
+      "token": "samsara",
+      "domain": "samsara.com"
+    },
+    "sanity": {
+      "ats": "ashby",
+      "token": "sanity",
+      "domain": "sanity.io"
+    },
+    "sanofi": {
+      "ats": "workday",
+      "token": "sanofi|wd3|sanoficareers",
+      "domain": "sanofi.com"
+    },
+    "scopely": {
+      "ats": "greenhouse",
+      "token": "scopely",
+      "domain": "scopely.com"
+    },
+    "scribe": {
+      "ats": "ashby",
+      "token": "scribe",
+      "domain": "scribehow.com"
+    },
+    "sendbird": {
+      "ats": "greenhouse",
+      "token": "sendbird",
+      "domain": "sendbird.com"
+    },
+    "sentry": {
+      "ats": "ashby",
+      "token": "sentry",
+      "domain": "sentry.io"
+    },
+    "sierra": {
+      "ats": "ashby",
+      "token": "Sierra",
+      "domain": "sierra.ai"
+    },
+    "sigmacomputing": {
+      "ats": "greenhouse",
+      "token": "sigmacomputing",
+      "domain": "sigmacomputing.com"
+    },
+    "similarweb": {
+      "ats": "greenhouse",
+      "token": "similarweb",
+      "domain": "similarweb.com"
+    },
+    "skydio": {
+      "ats": "ashby",
+      "token": "skydio",
+      "domain": "skydio.com"
+    },
+    "snowflake": {
+      "ats": "ashby",
+      "token": "snowflake",
+      "domain": "snowflake.com"
+    },
+    "socket": {
+      "ats": "ashby",
+      "token": "socket",
+      "domain": "socket.dev"
+    },
+    "sofi": {
+      "ats": "greenhouse",
+      "token": "sofi",
+      "domain": "sofi.com"
+    },
+    "span": {
+      "ats": "ashby",
+      "token": "span",
+      "domain": "span.io"
+    },
+    "squarespace": {
+      "ats": "greenhouse",
+      "token": "squarespace",
+      "domain": "squarespace.com"
+    },
+    "stryker": {
+      "ats": "workday",
+      "token": "stryker|wd1|strykercareers",
+      "domain": "stryker.com"
+    },
+    "stytch": {
+      "ats": "ashby",
+      "token": "stytch",
+      "domain": "stytch.com"
+    },
+    "sumologic": {
+      "ats": "greenhouse",
+      "token": "sumologic",
+      "domain": "sumologic.com"
+    },
+    "supabase": {
+      "ats": "ashby",
+      "token": "supabase",
+      "domain": "supabase.com"
+    },
+    "tailscale": {
+      "ats": "greenhouse",
+      "token": "tailscale",
+      "domain": "tailscale.com"
+    },
+    "target": {
+      "ats": "workday",
+      "token": "target|wd5|targetcareers",
+      "domain": "target.com"
+    },
+    "tavily": {
+      "ats": "ashby",
+      "token": "tavily",
+      "domain": "tavily.com"
+    },
+    "tldraw": {
+      "ats": "ashby",
+      "token": "tldraw",
+      "domain": "tldraw.com"
+    },
+    "toast": {
+      "ats": "greenhouse",
+      "token": "toast",
+      "domain": "toasttab.com"
+    },
+    "twilio": {
+      "ats": "greenhouse",
+      "token": "twilio",
+      "domain": "twilio.com"
+    },
+    "twitch": {
+      "ats": "greenhouse",
+      "token": "twitch",
+      "domain": "twitch.tv"
+    },
+    "udemy": {
+      "ats": "greenhouse",
+      "token": "udemy",
+      "domain": "udemy.com"
+    },
+    "uipath": {
+      "ats": "ashby",
+      "token": "uipath",
+      "domain": "uipath.com"
+    },
+    "unilever": {
+      "ats": "workday",
+      "token": "unilever|wd3|unilever_experienced_professionals",
+      "domain": "unilever.com"
+    },
+    "upstart": {
+      "ats": "greenhouse",
+      "token": "upstart",
+      "domain": "upstart.com"
+    },
+    "vanguard": {
+      "ats": "workday",
+      "token": "vanguard|wd5|vanguard_external",
+      "domain": "vanguard.com"
+    },
+    "vanta": {
+      "ats": "ashby",
+      "token": "vanta",
+      "domain": "vanta.com"
+    },
+    "vercel": {
+      "ats": "greenhouse",
+      "token": "vercel",
+      "domain": "vercel.com"
+    },
+    "virtu": {
+      "ats": "greenhouse",
+      "token": "virtu",
+      "domain": "virtu.com"
+    },
+    "visa": {
+      "ats": "workday",
+      "token": "visa|wd5|visa",
+      "domain": "visa.com"
+    },
+    "vonage": {
+      "ats": "greenhouse",
+      "token": "vonage",
+      "domain": "vonage.com"
+    },
+    "wealthsimple": {
+      "ats": "ashby",
+      "token": "wealthsimple",
+      "domain": "wealthsimple.com"
+    },
+    "webflow": {
+      "ats": "greenhouse",
+      "token": "webflow",
+      "domain": "webflow.com"
+    },
+    "workday": {
+      "ats": "workday",
+      "token": "workday|wd5|workday",
+      "domain": "workday.com"
+    },
+    "zapier": {
+      "ats": "ashby",
+      "token": "zapier",
+      "domain": "zapier.com"
+    },
+    "zendesk": {
+      "ats": "workday",
+      "token": "zendesk|wd1|zendesk",
+      "domain": "zendesk.com"
+    },
+    "zip": {
+      "ats": "ashby",
+      "token": "zip",
+      "domain": "ziphq.com"
     }
   }
 }
