@@ -52,6 +52,9 @@ _EXECUTIVE = re.compile(
 )
 
 _PRINCIPAL = re.compile(r"\b(?:principal|distinguished|fellow)\b", re.I)
+# "Member of Technical Staff" / MTS is an IC ladder, NOT staff-level. Handle before _STAFF so
+# "Technical Staff" doesn't trip the plain staff rule.
+_MTS = re.compile(r"\bmember of technical staff\b|\bmts\b", re.I)
 _STAFF = re.compile(r"\bstaff\b", re.I)
 _LEAD = re.compile(r"\b(?:lead|tech lead|team lead)\b", re.I)
 # "Mid / Senior" combos resolve to mid (lower bound), handled before SENIOR.
@@ -139,6 +142,9 @@ def infer_level(title: str) -> JobLevel:
         return JobLevel.MANAGER
     if _PRINCIPAL.search(t):
         return JobLevel.PRINCIPAL
+    if _MTS.search(t):
+        # IC level: default mid, but honor an explicit senior qualifier.
+        return JobLevel.SENIOR if _SENIOR.search(t) else JobLevel.MID
     if _STAFF.search(t):
         return JobLevel.STAFF
     if _LEAD.search(t):
