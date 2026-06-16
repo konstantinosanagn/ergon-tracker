@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from functools import lru_cache
 from importlib.resources import files
 
@@ -200,6 +201,28 @@ _NOISE_RE = re.compile(
 )
 _LEADING_COUNT_RE = re.compile(r"^\d+\s+")
 
+# Generic sub-location / facility words. A segment built around one of these (e.g.
+# "Depot 2", "LA Depot") is not a city and must never be emitted as one.
+_SUBLOCATION_WORDS = {
+    "depot",
+    "drydock",
+    "warehouse",
+    "plant",
+    "campus",
+    "gate",
+    "terminal",
+    "dock",
+    "hub",
+    "yard",
+    "facility",
+    "site",
+    "office",
+    "building",
+    "floor",
+    "annex",
+    "wing",
+}
+
 
 @lru_cache(maxsize=1)
 def _cities() -> dict[str, str]:
@@ -212,6 +235,44 @@ def _cities() -> dict[str, str]:
     return {k.lower(): v for k, v in data.get("cities", {}).items()}
 
 
+@lru_cache(maxsize=1)
+def _folded_cities() -> dict[str, str]:
+    """Accent-folded lowercased city -> canonical country (for accent-insensitive lookup)."""
+    return {_fold(k): v for k, v in _cities().items()}
+
+
+def _fold(s: str) -> str:
+    """Accent-fold to ASCII-ish and lowercase (e.g. "İstanbul" -> "istanbul")."""
+    decomposed = unicodedata.normalize("NFKD", s)
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch)).lower()
+
+
+def _fold_ascii(s: str) -> str:
+    """Accent-fold to a clean ASCII form while preserving the original casing."""
+    decomposed = unicodedata.normalize("NFKD", s)
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch))
+
+
+def _gaz_match(segment: str, *, prefix: bool) -> tuple[str, str] | None:
+    """Resolve a segment against the accent-folded gazetteer.
+
+    With ``prefix=False`` only a full-segment match is accepted. With ``prefix=True`` the
+    longest *leading* word-prefix that is a gazetteer city is accepted (e.g.
+    "Boston Drydock" -> "Boston"). Returns ``(clean_city, country)`` or ``None``.
+    """
+    folded = _folded_cities()
+    words = segment.split()
+    if not words:
+        return None
+    lengths = range(len(words), 0, -1) if prefix else (len(words),)
+    for n in lengths:
+        candidate = " ".join(words[:n])
+        country = folded.get(_fold(candidate))
+        if country is not None:
+            return _fold_ascii(candidate).strip(), country
+    return None
+
+
 def _clean(segment: str) -> str:
     s = _LEADING_COUNT_RE.sub("", segment)
     s = _NOISE_RE.sub("", s)
@@ -221,6 +282,13 @@ def _clean(segment: str) -> str:
 
 def _has_alpha(s: str) -> bool:
     return any(ch.isalpha() for ch in s)
+
+
+def _is_sublocation(segment: str) -> bool:
+    """A segment that looks like a facility/sub-location fragment (not a city name)."""
+    if any(ch.isdigit() for ch in segment):
+        return True
+    return any(w.lower() in _SUBLOCATION_WORDS for w in segment.split())
 
 
 def normalize_geo(loc: Location) -> Location:
@@ -239,8 +307,7 @@ def normalize_geo(loc: Location) -> Location:
     if not segments:
         return loc
 
-    cities = _cities()
-
+    # (1) Country from explicit country tokens / US state names/abbreviations.
     if loc.country is None:
         for seg in reversed(segments):
             low = seg.lower()
@@ -262,22 +329,52 @@ def normalize_geo(loc: Location) -> Location:
             if loc.country is not None:
                 break
 
+    # (2) City from the gazetteer. Prefer a full-segment match (works even when the
+    # segment is also a state/country name, e.g. "New York", "Singapore"), then fall
+    # back to a leading word-prefix match for sub-locations ("Boston Drydock" -> Boston),
+    # then to the generic "first place-like segment" heuristic. Resolving a gazetteer
+    # city also fills the country when it is still unknown.
+    if loc.city is None:
+        resolved = _resolve_city(segments, known_country=loc.country)
+        if resolved is not None:
+            loc.city, gaz_country = resolved
+            if loc.country is None and gaz_country:
+                loc.country = gaz_country
+
+    # (3) Country from the gazetteer when still unknown (e.g. a pre-set city).
     if loc.country is None:
         for seg in segments:
-            country = cities.get(seg.lower())
-            if country:
-                loc.country = country
-                if loc.city is None:
-                    loc.city = seg
+            match = _gaz_match(seg, prefix=True)
+            if match is not None:
+                loc.country = match[1]
                 break
-
-    if loc.city is None:
-        for seg in segments:
-            low = seg.lower()
-            if low in _COUNTRY_ALIASES or low in _US_STATES or low in _US_STATE_NAMES:
-                continue
-            if not _has_alpha(seg) or "remote" in low:
-                continue
-            loc.city = seg
-            break
     return loc
+
+
+def _resolve_city(segments: list[str], *, known_country: str | None) -> tuple[str, str] | None:
+    """Pick the best city for ``segments``; returns ``(city, gazetteer_country|"")``."""
+    # (a) Full-segment gazetteer match, in order.
+    for seg in segments:
+        match = _gaz_match(seg, prefix=False)
+        if match is not None:
+            return match[0], match[1]
+
+    # (b) Leading word-prefix gazetteer match (sub-locations). Guard against false
+    # friends: when the country is already known, only trust a prefix-city whose
+    # gazetteer country agrees with it.
+    for seg in segments:
+        match = _gaz_match(seg, prefix=True)
+        if match is not None and (known_country is None or match[1] == known_country):
+            return match[0], match[1]
+
+    # (c) First place-like segment that is not a country/state name or a sub-location.
+    for seg in segments:
+        low = seg.lower()
+        if low in _COUNTRY_ALIASES or low in _US_STATES or low in _US_STATE_NAMES:
+            continue
+        if not _has_alpha(seg) or "remote" in low:
+            continue
+        if _is_sublocation(seg):
+            continue
+        return seg, ""
+    return None

@@ -74,6 +74,26 @@ _SEP = re.compile(r"^\s*(?:-|–|—|to|and|through)\s*$", re.IGNORECASE)
 # Retirement plans — never salary. Skip "401k"/"401(k)" unless money-prefixed.
 _RETIREMENT = re.compile(r"(?<![\$£€])\b401\s*\(?\s*k\s*\)?", re.IGNORECASE)
 
+# Magnitude suffix/word right after an amount marks a company-scale figure
+# ("$5M", "$2B", "$500 million", "$8 trillion") — personal pay is never millions.
+_MAGNITUDE = re.compile(r"\s*(?:millions?|billions?|trillions?|mn|bn|tn|[mb])\b", re.IGNORECASE)
+
+# A salary almost never exceeds this per period; bigger ⇒ financial/scale figure.
+_MAX_COMP = 1_000_000.0
+
+# Financial / corporate-scale context. A money mention sitting next to one of
+# these is funding, revenue, valuation, AUM, or a head/user count — not pay.
+_FINANCIAL = re.compile(
+    r"\b(?:funding|funded|fund(?:s|\s+size)?|raised|raise|raising|"
+    r"valuation|valued|revenue|arr|mrr|series\s+[a-e]\b|market\s+cap|aum|"
+    r"assets\s+under\s+management|investments?|invest(?:ed|ors?|ing)?|"
+    r"backed\s+by|portfolio|in\s+sales|in\s+revenue|grants?|budget|to\s+spend|"
+    r"customers?|users?|employees?|people|members?|downloads?|installs?|"
+    r"companies|countries|clients?|subscribers?|nationalities|businesses|"
+    r"creators?|startups?|enterprises?)\b",
+    re.IGNORECASE,
+)
+
 # Salary cue words used to give nearby numbers the benefit of the doubt.
 _CUE = re.compile(
     r"\b(?:salary|salaries|compensation|comp(?:ensation)?|pay|payscale|"
@@ -201,6 +221,9 @@ def _scan_amounts(text: str) -> list[_Amt]:
         tail = text[m.end() : m.end() + 1]
         if tail == "%":
             continue
+        # skip magnitude figures: "$5M", "$2B", "$500 million", "$8 trillion".
+        if _MAGNITUDE.match(text[m.end() : m.end() + 12]):
+            continue
         out.append(
             _Amt(
                 start=span[0],
@@ -214,18 +237,30 @@ def _scan_amounts(text: str) -> list[_Amt]:
     return out
 
 
-def _near_cue(cues: list[tuple[int, int]], start: int, end: int) -> bool:
-    for cs, ce in cues:
-        if ce <= start and start - ce <= 60:
+def _near(spans: list[tuple[int, int]], start: int, end: int, before: int, after: int) -> bool:
+    for cs, ce in spans:
+        if ce <= start and start - ce <= before:
             return True
-        if cs >= end and cs - end <= 30:
+        if cs >= end and cs - end <= after:
             return True
     return False
+
+
+def _near_cue(cues: list[tuple[int, int]], start: int, end: int) -> bool:
+    return _near(cues, start, end, 60, 30)
 
 
 def _build_candidates(text: str) -> list[_Cand]:
     amts = _scan_amounts(text)
     cues = [m.span() for m in _CUE.finditer(text)]
+    fins = [m.span() for m in _FINANCIAL.finditer(text)]
+    # Drop amounts embedded in a financial/scale context unless a comp cue is
+    # at least as close (a real salary cue wins over a stray distractor word).
+    amts = [
+        a
+        for a in amts
+        if not (_near(fins, a.start, a.end, 28, 22) and not _near_cue(cues, a.start, a.end))
+    ]
     cands: list[_Cand] = []
     i = 0
     while i < len(amts):
@@ -286,9 +321,15 @@ def _build_candidates(text: str) -> list[_Cand]:
 
 
 def _accept(c: _Cand) -> bool:
-    if c.is_range:
-        return bool(c.currency or c.has_k or c.near_cue)
     ref = c.max_amount if c.max_amount is not None else c.min_amount
+    # Personal pay is never seven figures per period — reject scale figures.
+    if ref is not None and ref > _MAX_COMP:
+        return False
+    if c.is_range:
+        # A range needs a positive comp signal: currency, a "k", or an interval.
+        # Bare numeric ranges that only sit near a cue are too often stray
+        # numbers (e.g. accounting codes), so require a stronger signal.
+        return bool(c.currency or c.has_k or c.interval is not None)
     if c.currency:
         return True
     if c.has_k and (c.near_cue or c.interval is not None):

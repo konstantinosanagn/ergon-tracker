@@ -9,12 +9,12 @@ Reproduce: `.venv/bin/python scripts/eval_extraction.py`
 
 | Field | Metric | Baseline |
 |---|---|---|
-| level | accuracy | 0.815 |
-| level | macro-F1 | 0.771 |
+| level | accuracy | 0.815 → **0.944** |
+| level | macro-F1 | 0.771 → **0.943** |
 | sector | accuracy | 0.851 |
-| city | accuracy | 0.772 → **0.798** |
+| city | accuracy | 0.772 → **0.956** |
 | **country** | accuracy | 0.336 → **0.877** (Phase 2: city→country gazetteer) |
-| comp | precision / recall / F1 | 0.74 / 0.98 / 0.844 |
+| comp | precision / recall / F1 | 0.755 → **0.947** / 0.982 / **0.964** |
 | comp | value within 5% | 0.926 |
 | **yoe** | F1 | 0.000 → **0.932** (exact 0.98, MAE 0.0) |
 

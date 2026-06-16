@@ -230,3 +230,36 @@ def test_currency_inherited_across_range() -> None:
     assert out is not None
     assert out.currency == "USD"
     assert out.min_amount == 120_000 and out.max_amount == 160_000
+
+
+# --- financial / scale distractors are not compensation -----------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "We raised $50M in Series B funding last year.",
+        "The company hit a $2B valuation in 2025.",
+        "Now serving 10,000 customers across the globe.",
+        "We crossed $5M ARR this quarter.",
+        "We've raised $781M in funding from top investors.",
+        "Backed by €280M in total funding from leading VCs.",
+        "Solva is transforming an $8 trillion industry.",
+        "Accelerating growth within the $10K-$100K ARR merchant segment.",
+        "Over $200B in annualized spend flows through our platform.",
+        "Join our community of 50,000 users and 2,000 companies.",
+    ],
+)
+def test_financial_and_scale_numbers_not_salary(text: str) -> None:
+    assert _run(text) is None
+
+
+def test_salary_survives_financial_distractor() -> None:
+    out = _run("We raised $50M. Salary range $120,000-$160,000/year.")
+    assert out is not None
+    assert out.min_amount == 120_000 and out.max_amount == 160_000
+
+
+def test_million_salary_rejected_as_scale() -> None:
+    # Seven-figure "salary" is implausible per period — treat as a scale figure.
+    assert _run("Salary budget of $5,000,000 per year for the whole team.") is None

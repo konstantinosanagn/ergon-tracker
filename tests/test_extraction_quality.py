@@ -32,8 +32,9 @@ def test_gold_set_is_present_and_sized(report: dict) -> None:
 
 
 def test_level_quality(report: dict) -> None:
-    assert report["level_accuracy"] >= 0.78
-    assert report["level_macro_f1"] >= 0.74
+    # Title-ladder rules (II/III, L/E/P/IC codes, IC-manager exclusion, head-of->director).
+    assert report["level_accuracy"] >= 0.90
+    assert report["level_macro_f1"] >= 0.88
 
 
 def test_sector_quality(report: dict) -> None:
@@ -41,16 +42,18 @@ def test_sector_quality(report: dict) -> None:
 
 
 def test_city_quality(report: dict) -> None:
-    assert report["city_accuracy"] >= 0.73
+    # Gazetteer-first city resolution (handles city==state/country, sub-locations, accents).
+    assert report["city_accuracy"] >= 0.90
 
 
 def test_country_quality(report: dict) -> None:
-    # Deterministic city->country gazetteer lifted this from 0.34 -> 0.88.
-    assert report["country_accuracy"] >= 0.82
+    # Deterministic city->country gazetteer lifted this from 0.34 -> 0.92.
+    assert report["country_accuracy"] >= 0.88
 
 
 def test_comp_quality(report: dict) -> None:
-    assert report["comp_f1"] >= 0.82
+    # Financial/scale-number rejection raised precision 0.74 -> 0.95.
+    assert report["comp_f1"] >= 0.92
     assert (report["comp_value_within_5pct"] or 0) >= 0.90
 
 
