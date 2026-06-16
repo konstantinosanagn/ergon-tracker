@@ -59,4 +59,6 @@ def test_all_entries_have_required_fields() -> None:
     for key, entry in reg.all().items():
         assert entry.get("ats"), key
         assert entry.get("token"), key
-        assert entry.get("domain"), key
+        # domain is optional/best-effort (we never fabricate it); when present it's a str.
+        domain = entry.get("domain")
+        assert domain is None or (isinstance(domain, str) and domain), key

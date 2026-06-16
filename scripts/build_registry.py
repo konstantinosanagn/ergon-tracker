@@ -51,8 +51,10 @@ async def verify_one(
 
 async def main() -> None:
     dry_run = "--dry-run" in sys.argv
+    paths = [a for a in sys.argv[1:] if not a.startswith("--")]
+    cand_path = Path(paths[0]) if paths else CANDIDATES
     load_builtins()
-    candidates: list[dict] = json.loads(CANDIDATES.read_text())
+    candidates: list[dict] = json.loads(cand_path.read_text())
     query = SearchQuery()
     results: dict[int, tuple[dict, int, str, str | None]] = {}
 

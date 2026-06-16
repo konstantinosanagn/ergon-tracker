@@ -24,9 +24,11 @@ with JSON body ``{"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": "
 ``{"total": <int>, "jobPostings": [{"title", "externalPath", "locationsText",
 "postedOn", "bulletFields"}, ...]}``.
 
-* ``limit`` maxes out at 20 per page; paginate by ``offset`` (0, 20, 40, ...) up to ``total``,
-  hard-capped at 10000 results.
-* ``query.keywords`` is passed straight into ``searchText`` for server-side search.
+* ``limit`` maxes out at 20 per page; paginate by ``offset`` (0, 20, 40, ...).
+* Pagination is bounded by ``MAX_PAGES`` (per-board ceiling) and by ``query.limit`` when set,
+  so we never pull thousands of postings to satisfy a small search.
+* ``query.keywords`` is passed straight into ``searchText`` for server-side search, which
+  shrinks ``total`` at the source before we paginate.
 
 Concurrency
 -----------
@@ -68,7 +70,8 @@ class WorkdayProvider(BaseProvider):
     name = "workday"
 
     PAGE_SIZE = 20  # Workday rejects limit > 20
-    MAX_RESULTS = 10000  # hard pagination cap
+    MAX_RESULTS = 10000  # absolute hard pagination cap
+    MAX_PAGES = 25  # per-board page cap (=500 jobs) to bound pagination cost
 
     # --- token <-> composite ------------------------------------------------
 
@@ -147,8 +150,16 @@ class WorkdayProvider(BaseProvider):
         first = await fetcher.post_json(url, json=self._body(0, search_text))
         total = min(int(first.get("total") or 0), self.MAX_RESULTS)
 
+        # Bound how much we actually pull. Workday tenants can have thousands of postings;
+        # fetching every page (even concurrently) is wasteful. We cap by:
+        #   - MAX_PAGES (a hard per-board ceiling), and
+        #   - query.limit when set (no point pulling 5000 to satisfy a limit of 20).
+        want = min(total, self.MAX_PAGES * self.PAGE_SIZE)
+        if query.limit is not None:
+            want = min(want, max(query.limit, self.PAGE_SIZE))
+
         pages: dict[int, list[dict[str, Any]]] = {0: list(first.get("jobPostings") or [])}
-        remaining = range(self.PAGE_SIZE, total, self.PAGE_SIZE)
+        remaining = range(self.PAGE_SIZE, want, self.PAGE_SIZE)
 
         # All remaining pages CONCURRENTLY — one task per offset, collected by offset key.
         if remaining:

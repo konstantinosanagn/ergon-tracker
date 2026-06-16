@@ -108,6 +108,34 @@ async def test_fetch_paginates_concurrently_over_total() -> None:
     assert raw[-1].payload["title"] == "Engineer 44"
 
 
+async def test_fetch_respects_query_limit_to_cap_pagination() -> None:
+    """With a small query.limit we must not pull every page of a huge tenant."""
+    offsets_seen, handler = _paged_handler(total=1000)
+    with respx.mock:
+        route = respx.post(JOBS_URL)
+        route.side_effect = handler
+        async with AsyncFetcher(per_host_rate=100) as f:
+            raw = await WorkdayProvider().fetch(TOKEN, SearchQuery(limit=10), f)
+
+    # limit=10 -> want = max(10, PAGE_SIZE=20) = 20 -> only page 0 fetched.
+    assert route.call_count == 1
+    assert offsets_seen == [0]
+    assert len(raw) == 20
+
+
+async def test_fetch_caps_pages_at_max_pages() -> None:
+    """Without a limit, a huge tenant is bounded by MAX_PAGES instead of MAX_RESULTS."""
+    _, handler = _paged_handler(total=100_000)
+    with respx.mock:
+        route = respx.post(JOBS_URL)
+        route.side_effect = handler
+        async with AsyncFetcher(per_host_rate=200) as f:
+            raw = await WorkdayProvider().fetch(TOKEN, SearchQuery(), f)
+
+    assert route.call_count == WorkdayProvider.MAX_PAGES
+    assert len(raw) == WorkdayProvider.MAX_PAGES * WorkdayProvider.PAGE_SIZE
+
+
 async def test_fetch_builds_urls_and_ids() -> None:
     _, handler = _paged_handler(total=2)
     with respx.mock:
