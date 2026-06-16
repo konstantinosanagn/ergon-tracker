@@ -56,6 +56,39 @@ def test_normalize_geo_city_country_and_remote() -> None:
     assert rem.country == "United States"
 
 
+def test_normalize_geo_deterministic_country_cases() -> None:
+    # country from city gazetteer (no explicit country in the string)
+    sf = Location(raw="San Francisco")
+    normalize_geo(sf)
+    assert sf.country == "United States"
+    assert sf.city == "San Francisco"
+
+    lon = Location(raw="London")
+    normalize_geo(lon)
+    assert lon.country == "United Kingdom"
+
+    # ATS "Locations" suffix is stripped before matching the country
+    de = Location(raw="Germany Locations")
+    normalize_geo(de)
+    assert de.country == "Germany"
+
+    # "US-Remote" hyphen token resolves to the US and flags remote
+    usr = Location(raw="US-Remote")
+    normalize_geo(usr)
+    assert usr.country == "United States"
+    assert usr.is_remote is True
+
+    # metro/bay-area noise -> city, then gazetteer -> country
+    bay = Location(raw="San Francisco Bay Area")
+    normalize_geo(bay)
+    assert bay.country == "United States"
+
+    # "3 Locations" has no place -> no bogus city
+    nl = Location(raw="3 Locations")
+    normalize_geo(nl)
+    assert nl.city is None
+
+
 def test_sector_index_loads_and_resolves() -> None:
     idx = load_sector_index()
     assert len(idx) >= 200

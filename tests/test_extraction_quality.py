@@ -44,9 +44,9 @@ def test_city_quality(report: dict) -> None:
     assert report["city_accuracy"] >= 0.73
 
 
-def test_country_quality_known_weak(report: dict) -> None:
-    # Known-weak baseline (0.34) — locked low; Phase 2 must raise this.
-    assert report["country_accuracy"] >= 0.30
+def test_country_quality(report: dict) -> None:
+    # Deterministic city->country gazetteer lifted this from 0.34 -> 0.88.
+    assert report["country_accuracy"] >= 0.82
 
 
 def test_comp_quality(report: dict) -> None:

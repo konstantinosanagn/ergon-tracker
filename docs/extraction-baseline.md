@@ -12,17 +12,20 @@ Reproduce: `.venv/bin/python scripts/eval_extraction.py`
 | level | accuracy | 0.815 |
 | level | macro-F1 | 0.771 |
 | sector | accuracy | 0.851 |
-| city | accuracy | 0.772 |
-| **country** | accuracy | **0.336** |
+| city | accuracy | 0.772 → **0.798** |
+| **country** | accuracy | 0.336 → **0.877** (Phase 2: city→country gazetteer) |
 | comp | precision / recall / F1 | 0.755 / 1.000 / 0.860 |
 | comp | value within 5% | 1.000 |
 | **yoe** | F1 | **0.000** |
 
+## Principle: deterministic-first
+Exhaust deterministic methods — gazetteers, dictionaries, rules — before reaching for ML/NLP.
+The country fix below is the model: a city→country lookup beat the problem outright, no NLP.
+
 ## Where to invest (Phase 2)
-1. **country (0.34) — top priority.** Failure modes: gold labelers infer country from a known
-   city ("San Francisco" → United States) but the extractor has no city→country gazetteer;
-   ATS suffix formats ("Germany Locations", "3 Locations", "US-Remote") aren't parsed. Fix:
-   city→country gazetteer + strip "Locations"/segment noise + handle "US"/"Remote" patterns.
+1. **country (0.34) — DONE → 0.877.** Added a deterministic 2,925-city `cities.json`
+   gazetteer (GeoNames-sourced) + noise stripping ("Germany Locations"→Germany, "US-Remote",
+   "3 Locations", metro/bay-area) + full US state names. Pure lookup, zero NLP.
 2. **yoe (0.00) — under-measured + weak.** Only 2 gold positives, and descriptions were
    truncated to 1000 chars (often cutting the requirement). Fix: re-snapshot with full
    descriptions, enlarge the yoe-positive gold slice, then tune/expand the extractor.
