@@ -22,6 +22,7 @@ import anyio
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from jobspine.extract.windows import cue_windows  # noqa: E402
 from jobspine.http import AsyncFetcher  # noqa: E402
 from jobspine.models import SearchQuery  # noqa: E402
 from jobspine.providers.base import get_provider, load_builtins  # noqa: E402
@@ -84,7 +85,9 @@ async def main() -> None:
                     "source": ats,
                     "company_key": key,
                     "title": job.title,
-                    "description_text": job.description_text,
+                    # store cue-anchored windows, not the full description: compact + keeps the
+                    # comp/yoe signal that head-truncation would drop (it lives deep in the JD).
+                    "description_text": cue_windows(job.description_text),
                     "location_raw": (job.locations[0].raw if job.locations else None),
                     "structured_salary": sal,
                 }

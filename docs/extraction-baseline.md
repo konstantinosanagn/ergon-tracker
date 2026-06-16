@@ -14,9 +14,9 @@ Reproduce: `.venv/bin/python scripts/eval_extraction.py`
 | sector | accuracy | 0.851 |
 | city | accuracy | 0.772 → **0.798** |
 | **country** | accuracy | 0.336 → **0.877** (Phase 2: city→country gazetteer) |
-| comp | precision / recall / F1 | 0.755 / 1.000 / 0.860 |
-| comp | value within 5% | 1.000 |
-| **yoe** | F1 | **0.000** |
+| comp | precision / recall / F1 | 0.74 / 0.98 / 0.844 |
+| comp | value within 5% | 0.926 |
+| **yoe** | F1 | 0.000 → **0.932** (exact 0.98, MAE 0.0) |
 
 ## Principle: deterministic-first
 Exhaust deterministic methods — gazetteers, dictionaries, rules — before reaching for ML/NLP.
@@ -26,9 +26,10 @@ The country fix below is the model: a city→country lookup beat the problem out
 1. **country (0.34) — DONE → 0.877.** Added a deterministic 2,925-city `cities.json`
    gazetteer (GeoNames-sourced) + noise stripping ("Germany Locations"→Germany, "US-Remote",
    "3 Locations", metro/bay-area) + full US state names. Pure lookup, zero NLP.
-2. **yoe (0.00) — under-measured + weak.** Only 2 gold positives, and descriptions were
-   truncated to 1000 chars (often cutting the requirement). Fix: re-snapshot with full
-   descriptions, enlarge the yoe-positive gold slice, then tune/expand the extractor.
+2. **yoe (0.00) — DONE → 0.932.** Not an extractor bug: head-truncation to 1000 chars hid
+   ~97% of YoE statements (median JD ~4.7k chars; 794/820 cues lay beyond char 1000). Fix was
+   a measurement fix — `cue_windows()` keeps ±250 chars around each year/experience/salary cue
+   (compact + signal-preserving), gold re-labeled on the windows. 55 yoe positives now.
 3. **comp precision (0.755).** Recall and value accuracy are excellent; trim false positives
    (numbers misread as salary).
 4. **level macro-F1 (0.771).** Add the company-ladder variants the gold exposed
