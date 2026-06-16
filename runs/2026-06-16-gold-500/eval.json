@@ -1,0 +1,17 @@
+{
+  "n": 500,
+  "level_accuracy": 0.872,
+  "level_macro_f1": 0.8592166846480417,
+  "sector_accuracy": 0.802,
+  "country_accuracy": 0.925601750547046,
+  "city_accuracy": 0.9395770392749244,
+  "comp_precision": 0.9230769230769231,
+  "comp_recall": 0.9936305732484076,
+  "comp_f1": 0.9570552147239264,
+  "comp_value_within_5pct": 0.9615384615384616,
+  "yoe_precision": 0.9603960396039604,
+  "yoe_recall": 0.9897959183673469,
+  "yoe_f1": 0.9748743718592964,
+  "yoe_exact": 0.9484536082474226,
+  "yoe_mae_min": 0.08247422680412371
+}

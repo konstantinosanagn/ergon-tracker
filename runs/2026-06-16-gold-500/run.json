@@ -1,0 +1,10 @@
+{
+  "run_id": "wf_9fbe86f0-ce9",
+  "label": "gold-500",
+  "finished_at": "2026-06-16T07:36:59.795857+00:00",
+  "git_sha": "7688ebb",
+  "labeler_model": "sonnet",
+  "votes_per_posting": 3,
+  "vote1_source": "reused from stopped run wf_d2892da5-5bb",
+  "postings_labeled": 500
+}

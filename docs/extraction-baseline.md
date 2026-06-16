@@ -1,5 +1,19 @@
 # Extraction Baseline — 2026-06-16
 
+## Authoritative baseline: 500-row run (2026-06-16)
+The 162-row numbers below were optimistic on level/sector. The **500-posting 3-vote** run (`runs/2026-06-16-gold-500/`) is now authoritative:
+
+| field | F1/acc (500) | positives |
+|---|---|---|
+| level | 0.872 acc / 0.859 F1 | 500 |
+| sector | 0.802 | 500 |
+| country | 0.926 | 457 |
+| city | 0.940 | 331 |
+| comp | 0.957 F1 (val 0.962) | 157 |
+| yoe | 0.975 F1 (exact 0.948) | 196 |
+
+Agreement: >=2 of 3 judges agreed on 99.2-100% of fields (9 no-majority cells / 3500). Next deterministic wins: sector-table coverage, level edge cases.
+
 First measured accuracy of the rules-based extractors, on a **162-posting consensus gold set**
 (stratified across all 4 ATS providers; each row independently labeled by **3 blind agents**,
 majority vote). Inter-annotator agreement was high (level 88% unanimous / 100% majority; all

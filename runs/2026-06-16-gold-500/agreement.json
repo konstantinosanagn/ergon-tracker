@@ -1,0 +1,40 @@
+{
+  "postings_labeled": 500,
+  "vote_coverage": {
+    "3": 500
+  },
+  "agreement_unanimous": {
+    "level": 0.874,
+    "sector": 0.878,
+    "country": 0.956,
+    "city": 0.942,
+    "remote": 0.958,
+    "salary": 0.922,
+    "yoe": 0.976
+  },
+  "agreement_majority": {
+    "level": 0.998,
+    "sector": 0.996,
+    "country": 0.998,
+    "city": 0.998,
+    "remote": 1.0,
+    "salary": 0.992,
+    "yoe": 1.0
+  },
+  "no_majority": {
+    "level": 1,
+    "sector": 2,
+    "country": 1,
+    "city": 1,
+    "remote": 0,
+    "salary": 4,
+    "yoe": 0
+  },
+  "positives": {
+    "sector": 500,
+    "country": 457,
+    "city": 331,
+    "salary": 157,
+    "yoe": 196
+  }
+}
