@@ -36,6 +36,9 @@ _ATS_PROVIDERS = frozenset(
         "workable",
         "recruitee",
         "personio",
+        "bamboohr",
+        "breezy",
+        "teamtailor",
     }
 )
 _AGGREGATORS = frozenset({"remoteok"})

@@ -1,0 +1,99 @@
+[
+  {
+    "id": "e63605aeb81c",
+    "friendly_id": "e63605aeb81c-cdl-a-home-daily-truck-driving-position",
+    "name": "CDL A Home Daily Truck Driving Position",
+    "url": "https://10-4-truck-recruiting.breezy.hr/p/e63605aeb81c-cdl-a-home-daily-truck-driving-position",
+    "published_date": "2026-06-04T23:24:11.988Z",
+    "type": {
+      "id": "fullTime",
+      "name": "Full-Time"
+    },
+    "location": {
+      "country": {
+        "name": "United States",
+        "id": "US"
+      },
+      "state": {
+        "id": "WA",
+        "name": "Washington"
+      },
+      "city": "Tacoma",
+      "primary": true,
+      "is_remote": false,
+      "name": "Tacoma, WA",
+      "id": "d84265764006"
+    },
+    "department": "Local - Home Daily",
+    "salary": "$1.40k - $1.80k",
+    "description": "<p>Drive <strong>home daily</strong> routes out of Tacoma.</p>",
+    "company": {
+      "name": "10-4 Truck Recruiting",
+      "logo_url": null,
+      "friendly_id": "10-4-truck-recruiting",
+      "isMultipleLocationsEnabled": false
+    }
+  },
+  {
+    "id": "a1b2c3d4e5f6",
+    "friendly_id": "a1b2c3d4e5f6-senior-backend-engineer",
+    "name": "Senior Backend Engineer",
+    "url": "https://10-4-truck-recruiting.breezy.hr/p/a1b2c3d4e5f6-senior-backend-engineer",
+    "published_date": "2026-05-20T09:10:00.000Z",
+    "type": {
+      "id": "contractor",
+      "name": "Contractor"
+    },
+    "location": {
+      "country": null,
+      "state": null,
+      "city": null,
+      "primary": true,
+      "is_remote": true,
+      "name": "Remote",
+      "id": "ffeeddccbbaa"
+    },
+    "department": "Engineering",
+    "salary": null,
+    "company": {
+      "name": "10-4 Truck Recruiting",
+      "logo_url": null,
+      "friendly_id": "10-4-truck-recruiting",
+      "isMultipleLocationsEnabled": false
+    }
+  },
+  {
+    "id": "0f0f0f0f0f0f",
+    "friendly_id": "0f0f0f0f0f0f-dispatch-intern",
+    "name": "Dispatch Intern",
+    "url": "https://10-4-truck-recruiting.breezy.hr/p/0f0f0f0f0f0f-dispatch-intern",
+    "published_date": "2026-06-01T12:00:00.000Z",
+    "type": {
+      "id": "intern",
+      "name": "Intern"
+    },
+    "location": {
+      "country": {
+        "name": "United States",
+        "id": "US"
+      },
+      "state": {
+        "id": "TX",
+        "name": "Texas"
+      },
+      "city": "Dallas",
+      "primary": true,
+      "is_remote": false,
+      "name": "Dallas, TX",
+      "id": "112233445566"
+    },
+    "department": "Operations",
+    "salary": null,
+    "company": {
+      "name": "10-4 Truck Recruiting",
+      "logo_url": null,
+      "friendly_id": "10-4-truck-recruiting",
+      "isMultipleLocationsEnabled": false
+    }
+  }
+]

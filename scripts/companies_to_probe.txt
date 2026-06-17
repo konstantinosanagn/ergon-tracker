@@ -1,0 +1,568 @@
+# Company list for brute-force ATS token discovery (scripts/harvest_tokens.py).
+# One company per line; optional ",domain" after the name. Blank lines and # comments ignored.
+# Companies already present in seed.json are skipped automatically (no probe cost).
+# Aggressive sweep list — broad coverage of VC-backed scaleups (skew toward GH/Lever/Ashby).
+
+# --- AI / ML ---
+Anthropic
+OpenAI
+Perplexity
+Mistral AI
+Cohere
+Hugging Face
+Scale AI
+Runway
+ElevenLabs
+Together AI
+Replicate
+Adept
+Character AI
+Glean
+Sierra
+Cresta
+Writer
+Jasper
+Synthesia
+Pinecone
+Weaviate
+LangChain
+LlamaIndex
+Contextual AI
+Fixie
+Imbue
+Magic
+Poolside
+Cognition
+Codeium
+Tabnine
+Augment
+Harvey
+Hebbia
+Abridge
+Ambience Healthcare
+Suki
+Cartesia
+Decagon
+Lindy
+Tavus
+Hume AI
+Pika
+Luma AI
+Captions
+Descript
+Krea
+Ideogram
+Photoroom
+Speak
+Sana
+Mem
+Rewind
+Granola
+Read AI
+Dust
+Baseten
+Modal
+Anyscale
+OctoML
+Fireworks AI
+Lightning AI
+Weights & Biases
+Comet
+Label Studio
+Humanloop
+LangSmith
+Braintrust
+Galileo
+Arize
+Fiddler
+Robust Intelligence
+
+# --- Fintech ---
+Ramp
+Brex
+Mercury
+Plaid
+Modern Treasury
+Lithic
+Marqeta
+Checkout.com
+GoCardless
+Wise
+Revolut
+Monzo
+Chime
+Affirm
+Klarna
+Carta
+Pulley
+Deel
+Rippling
+Gusto
+Justworks
+Remote
+Oyster
+Pilot
+Bench
+Puzzle
+Mercury
+Column
+Unit
+Synctera
+Highnote
+Bond
+Treasury Prime
+Stripe
+Adyen
+Rapyd
+Airwallex
+Nium
+Brex
+Pry
+Causal
+Runway Financial
+Mosaic
+Settle
+Tropic
+Vendr
+Ramp
+Navan
+Brex
+Tipalti
+Bill.com
+Melio
+Routable
+Rutter
+Finch
+Pinwheel
+Argyle
+Method
+Sardine
+Alloy
+Persona
+Socure
+Middesk
+Parafin
+Pipe
+Capchase
+Wayflyer
+Clearco
+Mercury
+
+# --- Crypto / Web3 ---
+Coinbase
+Kraken
+Circle
+Chainalysis
+Fireblocks
+Alchemy
+Phantom
+Uniswap Labs
+OpenSea
+Polygon
+Aptos
+Sui
+Anchorage Digital
+Ledger
+Magic Eden
+Dune
+Gauntlet
+
+# --- Dev tools / infra / data ---
+Vercel
+Netlify
+Render
+Railway
+Fly.io
+Supabase
+Neon
+PlanetScale
+CockroachDB
+HashiCorp
+Confluent
+Temporal
+Pulumi
+Sourcegraph
+Replit
+Gitpod
+CircleCI
+LaunchDarkly
+Sentry
+Honeycomb
+Chronosphere
+Grafana Labs
+Cribl
+Retool
+Airbyte
+Hightouch
+Census
+Hex
+dbt Labs
+Fivetran
+Monte Carlo
+Tailscale
+1Password
+Postman
+Tyk
+Kong
+Ngrok
+WorkOS
+Clerk
+Stytch
+Svix
+Knock
+Courier
+Resend
+Loops
+Customer.io
+Inngest
+Trigger.dev
+Mergify
+Aiven
+Materialize
+Tinybird
+ClickHouse
+StarTree
+Imply
+Rockset
+SingleStore
+Yugabyte
+EdgeDB
+Turso
+Xata
+Convex
+Nile
+Estuary
+Prefect
+Dagster
+Astronomer
+Mage
+Windmill
+Hasura
+Stainless
+Speakeasy
+Liblab
+Buildkite
+Earthly
+Depot
+Namespace
+Coder
+Daytona
+Warp
+Fig
+Zed
+Cursor
+Sourcery
+Codacy
+Snyk
+Socket
+Chainguard
+Sysdig
+Aqua Security
+
+# --- Security ---
+Vanta
+Drata
+Secureframe
+Wiz
+Abnormal Security
+Material Security
+Snyk
+Orca Security
+Lacework
+SentinelOne
+Cybereason
+Tanium
+Arctic Wolf
+Huntress
+Cyera
+Nightfall
+BigID
+Transcend
+DataGrail
+Oso
+Teleport
+StrongDM
+Tailscale
+Twingate
+Cloudflare
+Island
+Talon
+Push Security
+
+# --- SaaS / sales / marketing / HR ---
+Notion
+Linear
+Airtable
+Webflow
+Miro
+Loom
+Calendly
+Zapier
+Amplitude
+Mixpanel
+Productboard
+Pendo
+Gong
+Outreach
+Salesloft
+Apollo
+Lattice
+Culture Amp
+15Five
+Figma
+Canva
+Clari
+People.ai
+Dooly
+Scratchpad
+Default
+Common Room
+Pocus
+Clay
+Apollo.io
+Instantly
+Smartlead
+Attio
+Folk
+Copper
+Close
+HubSpot
+Ironclad
+LinkSquares
+Spellbook
+Juro
+Notion
+Coda
+Slab
+Guru
+Tettra
+Stonly
+Document360
+Maze
+Dovetail
+Sprig
+FullStory
+LogRocket
+Heap
+PostHog
+June
+Vitally
+Catalyst
+Gainsight
+Totango
+ChurnZero
+Pylon
+Plain
+Front
+Intercom
+Crisp
+Chatwoot
+Help Scout
+
+# --- Healthcare / biotech ---
+Spring Health
+Lyra Health
+Maven Clinic
+Cityblock Health
+Devoted Health
+Oscar Health
+Komodo Health
+Cohere Health
+Cedar
+Olive
+Notable Health
+Memora Health
+Commure
+Innovaccer
+Tempus
+Flatiron Health
+Benchling
+Recursion
+Insitro
+Genesis Therapeutics
+Cradle
+EvolutionaryScale
+Function Health
+Superpower
+Hims
+Ro
+Noom
+Calm
+Headspace
+Cerebral
+Brightline
+Bicycle Health
+Eleanor Health
+Equip
+Hinge Health
+Sword Health
+Carbon Health
+Forward
+Tia
+Maven
+Kindbody
+Carrot Fertility
+Progyny
+
+# --- Climate / energy ---
+Watershed
+Patch
+Pachama
+Sylvera
+Persefoni
+Crux
+Arcadia
+Aurora Solar
+Palmetto
+Span
+Base Power
+Sealed
+BlocPower
+Charm Industrial
+Twelve
+LanzaTech
+Boston Metal
+Form Energy
+ESS
+Antora Energy
+Electric Hydrogen
+Koloma
+Crusoe
+Verdagy
+
+# --- Logistics / supply chain / commerce ---
+Flexport
+Project44
+FourKites
+Stord
+Flowspace
+Deliverr
+ShipBob
+Veho
+Shippo
+EasyPost
+Loop
+Returnly
+Order
+Settle
+Faire
+Whatnot
+StockX
+GOAT
+Mercari
+Depop
+Vinted
+Glossier
+Warby Parker
+Allbirds
+Ramp
+Cart.com
+Bolt
+Fast
+Checkout.com
+Recharge
+Yotpo
+Gorgias
+Octane AI
+Postscript
+Attentive
+Klaviyo
+Sendlane
+
+# --- Robotics / hardware / space / defense ---
+Anduril
+Verkada
+Samsara
+Skydio
+Zipline
+Shield AI
+Saronic
+Hadrian
+Hermeus
+Stoke Space
+K2 Space
+Apex
+Astranis
+Varda
+Pickle Robot
+Covariant
+Physical Intelligence
+Figure
+Bear Robotics
+Path Robotics
+Machina Labs
+Divergent
+Hadrian
+
+# --- Consumer / marketplace / gaming / media ---
+Faire
+Whatnot
+Deel
+Cmeta
+Discord
+Patreon
+Substack
+Ghost
+Beehiiv
+Webflow
+Framer
+Spline
+Cesium
+Rive
+Lottiefiles
+Polywork
+Read CV
+Posh
+Pika
+Captions
+Splice
+Output
+Roblox
+Epic Games
+Discord
+Rec Room
+Singularity 6
+Theorycraft
+Mythical Games
+Sky Mavis
+
+# --- Enterprise / ops / misc scaleups ---
+Scale AI
+Verkada
+Gusto
+Found
+Color
+Ironclad
+Benchling
+Airtable
+Notion
+Vanta
+Deel
+Rippling
+Brex
+Ramp
+Mercury
+Sourcegraph
+Replit
+Linear
+Webflow
+Retool
+Census
+Hex
+Modern Health
+Multiverse
+Guild
+Handshake
+Muse
+Pave
+Carta
+Assemble
+Compa
+Ravio
+Figures
+Deel
+Remote
+Oyster
+Velocity Global
+Multiplier
+Papaya Global

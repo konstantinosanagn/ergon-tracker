@@ -15,6 +15,9 @@ SUPPORTED_ATS = {
     "workable",
     "recruitee",
     "personio",
+    "bamboohr",
+    "breezy",
+    "teamtailor",
 }
 
 

@@ -10,8 +10,10 @@ Usage:
 
 from __future__ import annotations
 
+import fcntl
 import json
 import sys
+from contextlib import contextmanager
 from pathlib import Path
 
 import anyio
@@ -25,6 +27,24 @@ from jobspine.providers.base import get_provider, load_builtins  # noqa: E402
 
 SEED = ROOT / "src" / "jobspine" / "registry" / "data" / "seed.json"
 CANDIDATES = ROOT / "scripts" / "candidates.json"
+_SEED_LOCK = SEED.with_name(SEED.name + ".lock")
+
+
+@contextmanager
+def seed_lock():
+    """Serialize the seed read-modify-write across concurrent build_registry runs.
+
+    Verification (the network-heavy part) runs *before* this and stays fully concurrent; only
+    the short read-merge-write critical section is mutually exclusive, via an advisory flock on
+    a sidecar lockfile. A second run blocks here, then reads the seed *after* the first run's
+    write, so additions compose instead of clobbering.
+    """
+    with open(_SEED_LOCK, "w") as lf:
+        fcntl.flock(lf, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(lf, fcntl.LOCK_UN)
 
 # Lower = preferred when the same company verifies on multiple ATSes. Unknown ATSes sort last
 # (via .get(..., 99)) so a new provider/candidate type can never KeyError this sweep.
@@ -37,6 +57,9 @@ ATS_PRIORITY = {
     "workable": 5,
     "recruitee": 6,
     "personio": 7,
+    "bamboohr": 8,
+    "breezy": 9,
+    "teamtailor": 10,
 }
 
 
@@ -100,38 +123,43 @@ async def main() -> None:
         ):
             best[key] = (entry, count, token)
 
-    seed = json.loads(SEED.read_text())
-    companies: dict[str, dict] = seed["companies"]
-    added = 0
-    for key, (entry, _count, token) in sorted(best.items()):
-        if key in companies:
-            continue
-        companies[key] = {
-            "ats": entry["ats"],
-            "token": token,
-            "domain": entry.get("domain"),
-        }
-        added += 1
+    # Read-merge-write under the lock so concurrent runs compose instead of clobbering.
+    with seed_lock():
+        seed = json.loads(SEED.read_text())
+        companies: dict[str, dict] = seed["companies"]
+        added = 0
+        for key, (entry, _count, token) in sorted(best.items()):
+            # Registry keys are always lowercase; the token keeps its case (some ATSes, e.g.
+            # SmartRecruiters, are case-sensitive on the token but not the company key).
+            lk = key.lower()
+            if lk in companies:
+                continue
+            companies[lk] = {
+                "ats": entry["ats"],
+                "token": token,
+                "domain": entry.get("domain"),
+            }
+            added += 1
 
-    seed["_meta"]["version"] = 2
-    seed["_meta"]["updated"] = "2026-06-16"
+        seed["_meta"]["version"] = 2
+        seed["_meta"]["updated"] = "2026-06-16"
 
-    print(f"candidates={len(candidates)}  verified={len(verified)}  dead={len(dead)}")
-    by_ats: dict[str, int] = {}
-    for entry, _c, _t in best.values():
-        by_ats[entry["ats"]] = by_ats.get(entry["ats"], 0) + 1
-    print(f"unique verified by ats: {by_ats}")
-    print(f"added={added}  registry_total={len(companies)}")
-    if dead:
-        print("\nDEAD (first 20):")
-        for entry, err in dead[:20]:
-            print(f"  {entry['ats']:10s} {entry['company']:25s} {err}")
+        print(f"candidates={len(candidates)}  verified={len(verified)}  dead={len(dead)}")
+        by_ats: dict[str, int] = {}
+        for entry, _c, _t in best.values():
+            by_ats[entry["ats"]] = by_ats.get(entry["ats"], 0) + 1
+        print(f"unique verified by ats: {by_ats}")
+        print(f"added={added}  registry_total={len(companies)}")
+        if dead:
+            print("\nDEAD (first 20):")
+            for entry, err in dead[:20]:
+                print(f"  {entry['ats']:10s} {entry['company']:25s} {err}")
 
-    if dry_run:
-        print("\n--dry-run: seed.json NOT written")
-        return
-    SEED.write_text(json.dumps(seed, indent=2, ensure_ascii=False) + "\n")
-    print(f"\nwrote {SEED.relative_to(ROOT)}")
+        if dry_run:
+            print("\n--dry-run: seed.json NOT written")
+            return
+        SEED.write_text(json.dumps(seed, indent=2, ensure_ascii=False) + "\n")
+        print(f"\nwrote {SEED.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

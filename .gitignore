@@ -35,3 +35,6 @@ coverage.xml
 .DS_Store
 .idea/
 .vscode/
+
+# Advisory lockfiles (e.g. seed.json.lock from build_registry concurrency lock)
+*.lock

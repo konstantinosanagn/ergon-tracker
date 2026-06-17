@@ -1,0 +1,64 @@
+{
+    "meta": {
+        "totalCount": 3
+    },
+    "result": [
+        {
+            "id": "39",
+            "jobOpeningName": "Aircraft Maintenance Engineer",
+            "departmentId": "18652",
+            "departmentLabel": "Maintenance",
+            "employmentStatusLabel": "Full-Time",
+            "location": {
+                "city": "Edmonton International Airport",
+                "state": "Alberta"
+            },
+            "atsLocation": {
+                "country": null,
+                "state": null,
+                "province": null,
+                "city": null
+            },
+            "isRemote": null,
+            "locationType": "0"
+        },
+        {
+            "id": "41",
+            "jobOpeningName": "Advanced Care Paramedic - Flights",
+            "departmentId": "18649",
+            "departmentLabel": "Flight Operations",
+            "employmentStatusLabel": "Part-Time",
+            "location": {
+                "city": null,
+                "state": null
+            },
+            "atsLocation": {
+                "country": "Canada",
+                "state": "Alberta",
+                "province": null,
+                "city": "Edmonton"
+            },
+            "isRemote": null,
+            "locationType": "1"
+        },
+        {
+            "id": "44",
+            "jobOpeningName": "Remote Dispatch Coordinator",
+            "departmentId": "18649",
+            "departmentLabel": "Flight Operations",
+            "employmentStatusLabel": "Internship",
+            "location": {
+                "city": null,
+                "state": null
+            },
+            "atsLocation": {
+                "country": null,
+                "state": null,
+                "province": null,
+                "city": null
+            },
+            "isRemote": true,
+            "locationType": "2"
+        }
+    ]
+}

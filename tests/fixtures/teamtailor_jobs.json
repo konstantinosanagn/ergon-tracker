@@ -1,0 +1,82 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "1KOMMA5° Sverige",
+  "home_page_url": "https://1komma5.teamtailor.com/jobs",
+  "feed_url": "https://1komma5.teamtailor.com/jobs.json",
+  "items": [
+    {
+      "id": "942c032b-91ee-4fc4-a044-c5e7971f3a1e",
+      "title": "Utesäljare energilösningar till 1KOMMA5° i Stockholm",
+      "url": "https://1komma5.teamtailor.com/jobs/7793185-utesaljare-energilosningar-till-1komma5-i-stockholm",
+      "date_published": "2026-05-26T08:33:05+02:00",
+      "content_html": "<p>Vi driver visionen om en klimatneutral villamarknad och erbjuder solceller, laddboxar, energilagring och vårt AI-styrsystem Heartbeat. Sedan starten 2021 har vi vuxit till 3000 medarbetare på 80 pl",
+      "_jobposting": {
+        "@context": "http://schema.org/",
+        "@type": "JobPosting",
+        "title": "Utesäljare energilösningar till 1KOMMA5° i Stockholm",
+        "description": "<p>Vi driver visionen om en klimatneutral villamarknad och erbjuder solceller, laddboxar, energilagring och vårt AI-styrsystem Heartbeat. Sedan starten 2021 har vi vuxit till 3000 medarbetare på 80 pl",
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "1KOMMA5° Sverige",
+          "value": 7793185
+        },
+        "datePosted": "2026-05-26T08:33:05+02:00",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "1KOMMA5° Sverige",
+          "sameAs": "https://jobb.1komma5.com"
+        },
+        "jobLocation": [
+          {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Medborgarplatsen 25",
+              "addressLocality": "Stockholm",
+              "postalCode": "118 26",
+              "addressCountry": "SE",
+              "addressRegion": "Mälardalen"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d0d2aa8e-30a2-4eb7-834c-8ccac233c240",
+      "title": "Innesäljare till marknadsledande 1KOMMA5° - Mållön 80–100k 🚀",
+      "url": "https://1komma5.teamtailor.com/jobs/7675543-innesaljare-till-marknadsledande-1komma5-mallon-80-100k",
+      "date_published": "2026-05-04T14:38:52+02:00",
+      "content_html": "<p>Vi driver visionen om en klimatneutral villamarknad och erbjuder solceller, laddboxar, energilagring och vårt AI-styrsystem Heartbeat. Sedan starten 2021 har vi vuxit till 3000 medarbetare på 80 pl",
+      "_jobposting": {
+        "@context": "http://schema.org/",
+        "@type": "JobPosting",
+        "title": "Innesäljare till marknadsledande 1KOMMA5° - Mållön 80–100k 🚀",
+        "description": "<p>Vi driver visionen om en klimatneutral villamarknad och erbjuder solceller, laddboxar, energilagring och vårt AI-styrsystem Heartbeat. Sedan starten 2021 har vi vuxit till 3000 medarbetare på 80 pl",
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "1KOMMA5° Sverige",
+          "value": 7675543
+        },
+        "datePosted": "2026-05-04T14:38:52+02:00",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "1KOMMA5° Sverige",
+          "sameAs": "https://jobb.1komma5.com"
+        },
+        "jobLocation": [
+          {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Medborgarplatsen 25",
+              "addressLocality": "Stockholm",
+              "postalCode": "118 26",
+              "addressCountry": "SE",
+              "addressRegion": "Mälardalen"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+"""Tests for the Common Crawl harvester's pure token extractors (no network)."""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from harvest_commoncrawl import (  # noqa: E402
+    CONFIGS,
+    extract_tokens,
+    latest_crawl_api,
+    parse_cc_urls,
+)
+
+
+def _extract(ats: str, url: str) -> str | None:
+    return CONFIGS[ats].extract(url)  # type: ignore[operator]
+
+
+def test_greenhouse_path_and_embed_for_param() -> None:
+    assert _extract("greenhouse", "https://boards.greenhouse.io/stripe") == "stripe"
+    assert _extract("greenhouse", "https://boards.greenhouse.io/stripe/jobs/123") == "stripe"
+    # embed form carries the token in the ?for= query param
+    assert _extract(
+        "greenhouse", "https://boards.greenhouse.io/embed/job_board?for=airbnb"
+    ) == "airbnb"
+    # junk path segments are rejected
+    assert _extract("greenhouse", "https://boards.greenhouse.io/embed/job_app") is None
+
+
+def test_path_based_extractors() -> None:
+    assert _extract("lever", "https://jobs.lever.co/netflix/abc-123") == "netflix"
+    assert _extract("ashby", "https://jobs.ashbyhq.com/openai") == "openai"
+    assert _extract("workable", "https://apply.workable.com/acme/j/ABC123/") == "acme"
+
+
+def test_smartrecruiters_preserves_case() -> None:
+    # SmartRecruiters slugs are case-sensitive — must NOT be lowercased.
+    assert _extract(
+        "smartrecruiters", "https://careers.smartrecruiters.com/Visa1/abc"
+    ) == "Visa1"
+
+
+def test_subdomain_extractors() -> None:
+    assert _extract("bamboohr", "https://acme.bamboohr.com/careers") == "acme"
+    assert _extract("breezy", "https://globex.breezy.hr/p/123") == "globex"
+    assert _extract("teamtailor", "https://initech.teamtailor.com/jobs") == "initech"
+    # apex / infra subdomains rejected
+    assert _extract("bamboohr", "https://www.bamboohr.com/pricing") is None
+
+
+def test_extract_tokens_dedupes_in_order() -> None:
+    urls = [
+        "https://jobs.lever.co/alpha",
+        "https://jobs.lever.co/alpha/x",  # dup token
+        "https://jobs.lever.co/beta",
+        "https://jobs.lever.co/embed",  # junk
+    ]
+    assert extract_tokens(CONFIGS["lever"], urls) == ["alpha", "beta"]
+
+
+def test_parse_cc_urls_skips_bad_lines() -> None:
+    nd = (
+        json.dumps({"url": "https://jobs.lever.co/a", "status": "200"}) + "\n"
+        + "not json\n"
+        + json.dumps({"status": "404"}) + "\n"  # no url
+        + json.dumps({"url": "https://jobs.lever.co/b"}) + "\n"
+    )
+    assert parse_cc_urls(nd) == ["https://jobs.lever.co/a", "https://jobs.lever.co/b"]
+
+
+def test_latest_crawl_api_picks_cdx() -> None:
+    info = json.dumps([
+        {"id": "CC-MAIN-2025-21", "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-21-index"},
+        {"id": "CC-MAIN-2025-08", "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-08-index"},
+    ])
+    assert latest_crawl_api(info) == "https://index.commoncrawl.org/CC-MAIN-2025-21-index"
+    assert latest_crawl_api("garbage") is None
