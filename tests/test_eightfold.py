@@ -119,13 +119,94 @@ async def test_fetch_respects_query_limit() -> None:
     assert len(raws) == 2
 
 
-async def test_locked_tenant_returns_empty() -> None:
-    """A locked tenant returns {"message": ...} for both discovery and pages -> []."""
+_PCSX_POSITIONS = [
+    {
+        "id": 481077513632,
+        "displayJobId": "260026021",
+        "name": "barista - Store# 06447",
+        "locations": ["890 E Alosta Ave, Azusa, California, United States"],
+        "standardizedLocations": ["Azusa, CA, US"],
+        "postedTs": 1774929600,
+        "creationTs": 1775051037,
+        "department": "Barista",
+        "workLocationOption": "onsite",
+        "atsJobId": "260026021",
+        "positionUrl": "/careers/job/481077513632",
+    },
+    {
+        "id": 481077513999,
+        "displayJobId": "260026099",
+        "name": "shift supervisor",
+        "locations": ["Remote - United States"],
+        "postedTs": 1774930000,
+        "department": "Retail",
+        "workLocationOption": "remote",
+        "positionUrl": "/careers/job/481077513999",
+    },
+]
+
+
+def _mock_pcsx(respx_mock: respx.MockRouter, tenant: str) -> None:
+    """apply/v2 is locked (200 {"message": ...}); PCSX search returns 2 positions."""
     locked = {"message": "Not authorized for PCSX"}
+    respx_mock.get(url__startswith=f"https://{tenant}.eightfold.ai/api/apply/v2/jobs").mock(
+        return_value=httpx.Response(200, json=locked)
+    )
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        start = request.url.params.get("start")
+        positions = _PCSX_POSITIONS if start == "0" else []
+        return httpx.Response(
+            200, json={"status": 200, "data": {"positions": positions, "count": 2}}
+        )
+
+    respx_mock.get(url__startswith=f"https://{tenant}.eightfold.ai/api/pcsx/search").mock(
+        side_effect=handler
+    )
+
+
+async def test_pcsx_fallback_unlocks_locked_tenant() -> None:
+    """apply/v2-locked tenant falls back to PCSX and parses its camelCase records."""
     with respx.mock as respx_mock:
-        respx_mock.get(url__startswith="https://whirlpool.eightfold.ai/api/apply/v2/jobs").mock(
-            return_value=httpx.Response(200, json=locked)
+        _mock_pcsx(respx_mock, "starbucks")
+        async with AsyncFetcher(per_host_rate=100) as f:
+            raws = await EightfoldProvider().fetch("starbucks", SearchQuery(), f)
+
+    assert len(raws) == 2
+    r0 = raws[0]
+    assert r0.source_job_id == "481077513632"
+    assert r0.company == "starbucks"
+    # relative positionUrl -> absolute on the tenant host
+    assert r0.url == "https://starbucks.eightfold.ai/careers/job/481077513632"
+
+    job0 = EightfoldProvider().normalize(r0)
+    assert job0.title == "barista - Store# 06447"
+    assert job0.department == "Barista"
+    assert job0.remote is RemoteType.ONSITE
+    # postedTs -> posted_at (epoch seconds)
+    assert int(job0.posted_at.astimezone(timezone.utc).timestamp()) == 1774929600
+
+    job1 = EightfoldProvider().normalize(raws[1])
+    assert job1.remote is RemoteType.REMOTE
+
+
+async def test_pcsx_fallback_respects_limit() -> None:
+    with respx.mock as respx_mock:
+        _mock_pcsx(respx_mock, "starbucks")
+        async with AsyncFetcher(per_host_rate=100) as f:
+            raws = await EightfoldProvider().fetch("starbucks", SearchQuery(limit=1), f)
+    assert len(raws) == 1
+
+
+async def test_fully_closed_tenant_returns_empty() -> None:
+    """Tenant where BOTH apply/v2 and PCSX are disabled (e.g. EY) -> []."""
+    with respx.mock as respx_mock:
+        respx_mock.get(url__startswith="https://ey.eightfold.ai/api/apply/v2/jobs").mock(
+            return_value=httpx.Response(403, json={"message": "Not authorized for PCSX"})
+        )
+        respx_mock.get(url__startswith="https://ey.eightfold.ai/api/pcsx/search").mock(
+            return_value=httpx.Response(403, json={"message": "PCSX is not enabled for this user."})
         )
         async with AsyncFetcher(per_host_rate=100) as f:
-            raws = await EightfoldProvider().fetch("whirlpool", SearchQuery(), f)
+            raws = await EightfoldProvider().fetch("ey", SearchQuery(), f)
     assert raws == []

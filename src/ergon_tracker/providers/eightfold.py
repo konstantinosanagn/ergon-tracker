@@ -25,18 +25,33 @@ The ``domain`` wrinkle (important)
 ----------------------------------
 The ``domain`` query param is REQUIRED and tenant-specific. Sending the wrong
 domain (or none on a locked tenant) yields ``{"message": "Not authorized for
-PCSX"}`` with HTTP 200. We discover the domain robustly:
+PCSX"}`` (HTTP 200 or 403). We discover the domain robustly:
 
-1. ``GET .../api/apply/v2/jobs`` with NO params. OPEN tenants (e.g. ``fcx``)
-   return a config dict that includes a ``"domain"`` field -> use it.
-2. If step 1 is a locked-tenant error (a ``{"message": ...}`` dict with no
-   ``"domain"``), fall back to ``domain={tenant}.com``.
-3. If pagination then still returns a ``{"message": ...}`` error / no positions,
-   we stop and return ``[]`` — some tenants are genuinely locked. We never raise;
-   locked/empty tenants degrade gracefully to an empty list.
+1. ``GET .../api/apply/v2/jobs`` with NO params. OPEN tenants (e.g. ``fcx``,
+   ``netflix``) return a config dict that includes a ``"domain"`` field -> use it
+   and page the ``apply/v2`` API.
+2. If step 1 fails (locked-tenant error / 403 / no ``"domain"``), the tenant is
+   on Eightfold's newer **PCSX** Career Hub, whose ``apply/v2`` API is disabled.
+   Fall back to the PCSX search API (below) with ``domain={tenant}.com``.
+
+The PCSX fallback (unlocks the "locked" tenants)
+------------------------------------------------
+Newer Eightfold deployments (e.g. ``starbucks`` = 21k jobs, ``ericsson``,
+``lamresearch``) serve jobs from a different namespace::
+
+    GET https://{tenant}.eightfold.ai/api/pcsx/search
+        ?domain={domain}&query=&location=&start={offset}&num={N}&sort_by=relevance
+    -> {"status": 200, "data": {"positions": [...], "count": <int>, ...}}
+
+Each PCSX ``positions`` entry is camelCase (``displayJobId``, ``postedTs``,
+``workLocationOption``, ``positionUrl`` [relative], ``locations`` [list]). We map
+those onto the same snake_case keys the apply/v2 path uses, so a single
+``normalize`` handles both. Tenants where PCSX is *also* disabled (e.g. ``ey`` ->
+``"PCSX is not enabled for this user."``) are genuinely closed and yield ``[]``.
 
 The summary record has no salary and (in the list view) an empty description, so
-``salary``/``description`` are ``None`` here — never invented.
+``salary``/``description`` are ``None`` here — never invented. We never raise;
+locked/empty tenants degrade gracefully to an empty list.
 """
 
 from __future__ import annotations
@@ -61,7 +76,9 @@ if TYPE_CHECKING:
 __all__ = ["EightfoldProvider"]
 
 _API = "https://{tenant}.eightfold.ai/api/apply/v2/jobs"
+_PCSX_API = "https://{tenant}.eightfold.ai/api/pcsx/search"
 _JOB_URL = "https://{tenant}.eightfold.ai/careers/job/{id}"
+_HOST = "https://{tenant}.eightfold.ai"
 
 # Capture the tenant slug from ``{tenant}.eightfold.ai`` (exclude www/app fronts).
 _HOST_RE = re.compile(r"(?:https?://)?([a-z0-9][a-z0-9-]*)\.eightfold\.ai", re.IGNORECASE)
@@ -124,8 +141,38 @@ class EightfoldProvider(BaseProvider):
 
     async def fetch(self, token: str, query: SearchQuery, fetcher: AsyncFetcher) -> list[RawJob]:
         base = _API.format(tenant=token)
-        domain = await self._discover_domain(base, token, fetcher)
+        domain, apply_open = await self._discover_domain(base, token, fetcher)
 
+        if apply_open:
+            positions = await self._fetch_apply_v2(base, domain, query, fetcher)
+        else:
+            # apply/v2 is disabled for this tenant -> it's on the PCSX Career Hub.
+            positions = await self._fetch_pcsx(token, domain, query, fetcher)
+        return [self._to_raw(p, token) for p in positions]
+
+    async def _discover_domain(
+        self, base: str, token: str, fetcher: AsyncFetcher
+    ) -> tuple[str, bool]:
+        """Return ``(domain, apply_v2_open)`` (see module docstring).
+
+        ``apply_v2_open`` is True only when the no-param config probe returns a
+        ``"domain"`` — i.e. the legacy apply/v2 API is live. Otherwise the tenant
+        is PCSX-only (or locked) and we fall back to ``{tenant}.com``.
+        """
+        try:
+            data = await fetcher.get_json(base)
+        except Exception:
+            data = None
+        if isinstance(data, dict):
+            dom = data.get("domain")
+            if isinstance(dom, str) and dom:
+                return dom, True
+        return f"{token}.com", False
+
+    async def _fetch_apply_v2(
+        self, base: str, domain: str, query: SearchQuery, fetcher: AsyncFetcher
+    ) -> list[dict[str, Any]]:
+        """Page the legacy ``/api/apply/v2/jobs`` API (open tenants)."""
         limit = query.limit
         positions: list[dict[str, Any]] = []
         for page in range(self.MAX_PAGES):
@@ -151,27 +198,69 @@ class EightfoldProvider(BaseProvider):
             positions.extend(p for p in batch if isinstance(p, dict))
 
             if limit is not None and len(positions) >= limit:
-                positions = positions[:limit]
-                break
+                return positions[:limit]
 
             count = data.get("count")
             if isinstance(count, int) and start + len(batch) >= count:
                 break
+        return positions
 
-        return [self._to_raw(p, token) for p in positions]
+    async def _fetch_pcsx(
+        self, token: str, domain: str, query: SearchQuery, fetcher: AsyncFetcher
+    ) -> list[dict[str, Any]]:
+        """Page the newer ``/api/pcsx/search`` API and canonicalise each record."""
+        url = _PCSX_API.format(tenant=token)
+        limit = query.limit
+        positions: list[dict[str, Any]] = []
+        for page in range(self.MAX_PAGES):
+            start = page * self.PER_PAGE
+            params = {
+                "domain": domain,
+                "query": "",
+                "location": "",
+                "start": start,
+                "num": self.PER_PAGE,
+                "sort_by": "relevance",
+            }
+            try:
+                data = await fetcher.get_json(url, params=params)
+            except Exception:
+                break  # 403 / network failure (PCSX also disabled) -> degrade to []
 
-    async def _discover_domain(self, base: str, token: str, fetcher: AsyncFetcher) -> str:
-        """Discover the tenant-specific ``domain`` param (see module docstring)."""
-        try:
-            data = await fetcher.get_json(base)
-        except Exception:
-            data = None
-        if isinstance(data, dict):
-            dom = data.get("domain")
-            if isinstance(dom, str) and dom:
-                return dom
-        # Locked tenant (or odd response): best-effort fallback.
-        return f"{token}.com"
+            if not isinstance(data, dict) or data.get("status") != 200:
+                break
+            block = data.get("data")
+            if not isinstance(block, dict):
+                break
+            batch = block.get("positions") or []
+            if not batch:
+                break
+            positions.extend(self._pcsx_canonical(p, token) for p in batch if isinstance(p, dict))
+
+            if limit is not None and len(positions) >= limit:
+                return positions[:limit]
+
+            count = block.get("count")
+            if isinstance(count, int) and start + len(batch) >= count:
+                break
+        return positions
+
+    @staticmethod
+    def _pcsx_canonical(p: dict[str, Any], token: str) -> dict[str, Any]:
+        """Alias PCSX camelCase fields onto the snake_case keys ``normalize`` reads.
+
+        Mutates and returns ``p`` (the original camelCase fields are kept for the
+        raw payload). ``positionUrl`` is relative, so it's made absolute.
+        """
+        rel = p.get("positionUrl") or ""
+        if isinstance(rel, str) and rel.startswith("/"):
+            p["canonicalPositionUrl"] = _HOST.format(tenant=token) + rel
+        elif rel:
+            p["canonicalPositionUrl"] = rel
+        p.setdefault("display_job_id", p.get("displayJobId"))
+        p.setdefault("t_create", p.get("postedTs"))
+        p.setdefault("work_location_option", p.get("workLocationOption"))
+        return p
 
     def _to_raw(self, position: dict[str, Any], token: str) -> RawJob:
         sid = str(position.get("id") or position.get("display_job_id") or "")
