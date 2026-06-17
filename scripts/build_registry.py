@@ -67,6 +67,7 @@ ATS_PRIORITY = {
     "successfactors": 15,
     "oracle": 16,
     "taleo": 17,
+    "icims": 18,
 }
 
 

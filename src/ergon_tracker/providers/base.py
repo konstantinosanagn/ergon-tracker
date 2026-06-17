@@ -53,6 +53,7 @@ _BUILTIN_MODULES = (
     "successfactors",
     "oracle",
     "taleo",
+    "icims",
     "remotive",
     "arbeitnow",
     "jobicy",

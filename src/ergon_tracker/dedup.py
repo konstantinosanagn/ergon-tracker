@@ -46,6 +46,7 @@ _ATS_PROVIDERS = frozenset(
         "successfactors",
         "oracle",
         "taleo",
+        "icims",
     }
 )
 _AGGREGATORS = frozenset(

@@ -25,6 +25,7 @@ SUPPORTED_ATS = {
     "successfactors",
     "oracle",
     "taleo",
+    "icims",
 }
 
 
