@@ -28,11 +28,9 @@ from __future__ import annotations
 import json
 import re
 import sys
-import time
 from pathlib import Path
 
 import anyio
-import httpx
 from rapidfuzz import fuzz
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,8 +52,9 @@ _API = "https://api.tavily.com/search"
 # Supported ATS hosts to restrict Tavily results to (incl. Workday's tenant host).
 HOSTS = [
     "boards.greenhouse.io", "jobs.lever.co", "jobs.ashbyhq.com", "apply.workable.com",
-    "careers.smartrecruiters.com", "ats.rippling.com", "myworkdayjobs.com",
+    "careers.smartrecruiters.com", "ats.rippling.com", "myworkdayjobs.com", "eightfold.ai",
 ]
+_EIGHTFOLD_RE = re.compile(r"([a-z0-9][a-z0-9-]*)\.eightfold\.ai", re.IGNORECASE)
 # Extractors for the path/subdomain ATSes (reused from the CC harvester).
 _EXTRACT_ATSES = ("greenhouse", "lever", "ashby", "workable", "smartrecruiters", "rippling",
                   "pinpoint")
@@ -79,6 +78,9 @@ def board_of(url: str) -> tuple[str, str] | None:
     wt = WorkdayProvider.matches(url)
     if wt:
         return "workday", wt
+    m = _EIGHTFOLD_RE.search(url)
+    if m and m.group(1).lower() not in ("www", "app"):
+        return "eightfold", m.group(1).lower()
     return None
 
 
@@ -138,26 +140,34 @@ def to_candidate(ats: str, token: str) -> dict[str, object]:
 # --- network: search (sync, paced) then fetch+judge (async) -----------------------------------
 
 
-def search_candidates(sponsors: list[dict], key: str) -> list[tuple[dict, str, str]]:
-    """For each sponsor, Tavily-search supported hosts; return (sponsor, ats, token) candidates."""
+async def search_candidates(sponsors: list[dict], key: str) -> list[tuple[dict, str, str]]:
+    """Tavily-search supported hosts for each sponsor CONCURRENTLY; return (sponsor, ats, token).
+
+    Concurrent (bounded by AsyncFetcher's per-host rate + retries) so a few-thousand-sponsor
+    sweep finishes in minutes instead of the old sequential ~20.
+    """
     out: list[tuple[dict, str, str]] = []
     headers = {"Authorization": f"Bearer {key}"}
-    with httpx.Client(timeout=60.0) as c:
+
+    async def one(s: dict, fetcher: AsyncFetcher) -> None:
+        body = {"query": f"{s['name']} careers jobs", "include_domains": HOSTS, "max_results": 5}
+        try:
+            data = await fetcher.post_json(_API, json=body, headers=headers)
+        except Exception:  # noqa: BLE001
+            return
+        seen: set[tuple[str, str]] = set()
+        for r in (data.get("results", []) if isinstance(data, dict) else []):
+            b = board_of(r.get("url", ""))
+            if b and b not in seen:
+                seen.add(b)
+                out.append((s, b[0], b[1]))
+
+    async with (
+        AsyncFetcher(concurrency=12, per_host_rate=6, timeout=30.0) as fetcher,
+        anyio.create_task_group() as tg,
+    ):
         for s in sponsors:
-            body = {"query": f"{s['name']} careers jobs", "include_domains": HOSTS,
-                    "max_results": 5}
-            try:
-                results = c.post(_API, headers=headers, json=body).json().get("results", [])
-            except Exception as exc:  # noqa: BLE001
-                print(f"  search failed for {s['name']!r}: {type(exc).__name__}")
-                results = []
-            seen: set[tuple[str, str]] = set()
-            for r in results:
-                b = board_of(r.get("url", ""))
-                if b and b not in seen:
-                    seen.add(b)
-                    out.append((s, b[0], b[1]))
-            time.sleep(0.2)  # pace under Tavily's secondary rate limit
+            tg.start_soon(one, s, fetcher)
     return out
 
 
@@ -230,7 +240,7 @@ async def main() -> None:
     sponsors = json.loads(GAP.read_text())["uncovered_top"][:top]
     print(f"recovering boards for top {len(sponsors)} gap sponsors ...")
 
-    triples = search_candidates(sponsors, key)
+    triples = await search_candidates(sponsors, key)
     print(f"  {len(triples)} candidate boards found across supported ATSes; adjudicating ...")
     accepted, log = await fetch_and_judge(triples, load_seed_keys())
 

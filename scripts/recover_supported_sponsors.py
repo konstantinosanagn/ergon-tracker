@@ -32,23 +32,35 @@ CENSUS = ROOT / "runs" / "gap_ats_census.json"
 DEFAULT_OUT = ROOT / "scripts" / "candidates_sponsors.json"
 SUPPORTED = {"greenhouse", "lever", "ashby", "workday", "smartrecruiters", "workable",
              "recruitee", "personio", "bamboohr", "breezy", "teamtailor", "join", "rippling",
-             "pinpoint"}
+             "pinpoint", "eightfold"}
 
 
 async def main() -> None:
     out_path = DEFAULT_OUT
+    gap_file: Path | None = None
     args = sys.argv[1:]
-    if args[:1] == ["--out"]:
-        out_path = Path(args[1])
+    i = 0
+    while i < len(args):
+        if args[i] == "--out":
+            out_path = Path(args[i + 1]); i += 2
+        elif args[i] == "--gap-file":
+            gap_file = Path(args[i + 1]); i += 2
+        else:
+            print(f"unknown flag: {args[i]}"); return
 
     key = load_key()
     if not key:
         print("TAVILY_API_KEY not set."); return
-    census = json.loads(CENSUS.read_text())
-    sponsors = [s for s in census["per_sponsor"] if s.get("ats") in SUPPORTED]
-    print(f"{len(sponsors)} census sponsors on supported ATSes; recovering (strict) ...")
+    if gap_file:
+        # mid-tier mode: all sponsors in the gap list (search+adjudicate filters by ATS).
+        sponsors = json.loads(gap_file.read_text())["uncovered_top"]
+        print(f"{len(sponsors)} gap sponsors from {gap_file.name}; recovering (strict) ...")
+    else:
+        census = json.loads(CENSUS.read_text())
+        sponsors = [s for s in census["per_sponsor"] if s.get("ats") in SUPPORTED]
+        print(f"{len(sponsors)} census sponsors on supported ATSes; recovering (strict) ...")
 
-    triples = search_candidates(sponsors, key)  # sync, host-restricted Tavily search
+    triples = await search_candidates(sponsors, key)
     print(f"{len(triples)} candidate boards found; adjudicating + would-verify ...")
     accepted, log = await fetch_and_judge(triples, load_seed_keys())
 
