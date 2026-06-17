@@ -124,6 +124,17 @@ def test_exact_still_wins_over_leading_token() -> None:
     assert idx.last_filed("Stripe") == "2026-06-01"  # exact record, not the leading-token one
 
 
+def test_space_collapsed_matches_concatenated_slug() -> None:
+    # Registry stores concatenated slugs; they must still match the spaced LCA legal name.
+    idx = _idx(**{"bright machines": {"n": 2, "last": "2026-02-02"}})
+    assert idx.is_sponsor("brightmachines") is True  # registry slug form
+    assert idx.is_sponsor("Bright Machines") is True  # spaced posting form
+    assert idx.last_filed("brightmachines") == "2026-02-02"
+
+    idx2 = _idx(**{"10x genomics": {"n": 1, "last": "2025-12-12"}})
+    assert idx2.is_sponsor("10xgenomics") is True
+
+
 # --- on-disk format tolerance ----------------------------------------------
 def test_coerce_legacy_formats() -> None:
     from ergon_tracker.extract.visa import _coerce_records

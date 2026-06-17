@@ -58,21 +58,29 @@ class SponsorIndex:
         self._records = records
         # First-token buckets make the leading-token scan cheap (no full-set scan per lookup).
         self._by_first: dict[str, list[str]] = defaultdict(list)
+        # Space-collapsed index: maps "brightmachines" -> "bright machines". Our registry stores
+        # many companies as concatenated slugs ("brightmachines", "10xgenomics") with no spaces;
+        # collapsing both sides lets those still match the spaced LCA legal names.
+        self._collapsed: dict[str, str] = {}
         for name in records:
             head = name.split(" ", 1)[0]
             if head:
                 self._by_first[head].append(name)
+            self._collapsed.setdefault(name.replace(" ", ""), name)
 
     def _match_key(self, company: str | None) -> str | None:
-        """Return the matched sponsor key (exact or gated leading-token), or None."""
+        """Return the matched sponsor key (exact, space-collapsed, or gated leading-token)."""
         if not company:
             return None
         r = normalize_company(company)
         if not r:
             return None
-        if r in self._records:
+        if r in self._records:  # 1) exact normalized name
             return r
-        prefix = r + " "
+        collapsed = r.replace(" ", "")
+        if collapsed in self._collapsed:  # 2) slug <-> spaced (e.g. "brightmachines")
+            return self._collapsed[collapsed]
+        prefix = r + " "  # 3) gated leading-token ("spotify" -> "spotify usa")
         for name in self._by_first.get(r.split(" ", 1)[0], ()):
             if name.startswith(prefix) and name[len(prefix) :].split(" ", 1)[0] in _DESCRIPTORS:
                 return name
