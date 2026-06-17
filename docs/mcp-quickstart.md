@@ -160,6 +160,15 @@ APIs — so you can't accidentally trigger the slow ~42k-company ATS crawl.
   `visa_sponsor=true`), then ranks the results against your résumé. (The MCP doesn't read files —
   paste the text into the chat; the agent does the matching.)
 
+**🎛️ Power filters (combine anything)**
+- "Senior fintech backend roles over $160k — keep ones that don't list a level or sector too."
+  *(`sector`, `level`, `salary_min`, `include_unknown_level`, `include_unknown_sector`)*
+- "Find senior developer jobs, and infer seniority from required years when the title omits it."
+  *(`infer_level_from_experience=true`)*
+- "Search only Greenhouse, Lever and Ashby for Rust roles." *(explicit `sources=[…]`)*
+- "Remote ML jobs at H-1B sponsors that recently filed, over $150k, ranked by meaning."
+  *(`visa_sponsor` + `semantic` + `salary_min` + read `visa_last_filed`)*
+
 ### Tips so the agent stays fast and answers cleanly
 
 1. **Imply a count** ("top 10/20") — keeps the tool response small and the answer quick.

@@ -111,10 +111,29 @@ async def search_jobs(
             (the majority) are kept by default. Each job reports `sponsorship_offered`
             (true/false/null). Tip for international applicants: pass false-exclusion by using
             true here to hide "no sponsorship" roles while keeping unstated ones.
+        infer_level_from_experience: when a title has no seniority word, derive level from the
+            required years of experience (boosts level coverage; combine with a `level` filter).
+        semantic: rank by meaning via embeddings instead of exact-token matching (handles
+            synonyms / natural-language intent). Needs the server's `semantic` extra.
         limit: max postings to return after dedup + ranking (default 20).
 
     Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
     and per-source `health`.
+
+    Examples (combine filters freely):
+        # roles at specific companies
+        search_jobs(keywords="engineer", companies=["stripe.com", "ramp.com"], level="senior")
+        # broad, fast (auto aggregator APIs), well-paid + remote
+        search_jobs(keywords="data scientist", remote=True, country="United States", salary_min=150000)
+        # industry + level, keeping roles whose level/sector couldn't be inferred
+        search_jobs(keywords="backend", sector="Fintech", level="senior",
+                    include_unknown_level=True, include_unknown_sector=True)
+        # international applicant: known H-1B sponsors AND posting doesn't refuse sponsorship
+        search_jobs(keywords="ml engineer", visa_sponsor=True, sponsorship_offered=True, semantic=True)
+        # derive level from required experience when titles omit it
+        search_jobs(keywords="developer", level="senior", infer_level_from_experience=True)
+        # restrict to specific sources (incl. ATS names = deliberate, slower crawl)
+        search_jobs(keywords="rust", sources=["greenhouse", "lever", "ashby"])
     """
     # Agent-safety: an unscoped search (no companies, no sources) would otherwise fan out to the
     # entire ~42k-company ATS registry — slow and rate-limit-prone for an interactive agent. Default
