@@ -67,10 +67,12 @@ def main() -> None:
 
     uncovered.sort(key=lambda t: -t[1])
     print(f"sponsors (unique employers): {total_emp:,}")
-    print(f"  tracked in registry:       {cov_emp:,} ({100*cov_emp/total_emp:.1f}%)")
+    print(f"  tracked in registry:       {cov_emp:,} ({100 * cov_emp / total_emp:.1f}%)")
     print(f"certified filings (volume):  {total_fil:,}")
-    print(f"  from tracked sponsors:     {cov_fil:,} ({100*cov_fil/total_fil:.1f}%)  <- the number that matters")
-    print(f"\nTop 40 UNCOVERED sponsors by filing volume (registry gaps):")
+    print(
+        f"  from tracked sponsors:     {cov_fil:,} ({100 * cov_fil / total_fil:.1f}%)  <- the number that matters"
+    )
+    print("\nTop 40 UNCOVERED sponsors by filing volume (registry gaps):")
     for name, n, last in uncovered[:40]:
         print(f"  {n:>6}  {name[:48]:48}  last {last}")
 
@@ -82,7 +84,9 @@ def main() -> None:
                 "covered_sponsors": cov_emp,
                 "total_filings": total_fil,
                 "covered_filings": cov_fil,
-                "uncovered_top": [{"name": n, "filings": c, "last": d} for n, c, d in uncovered[:1000]],
+                "uncovered_top": [
+                    {"name": n, "filings": c, "last": d} for n, c, d in uncovered[:1000]
+                ],
             },
             indent=2,
         )
