@@ -71,6 +71,11 @@ src = ["src", "tests"]
 select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
 ignore = ["E501"]
 
+[tool.ruff.lint.flake8-bugbear]
+# typer.Option/Argument return sentinel objects (not mutable defaults); they are the
+# idiomatic way to declare CLI params, so don't flag them under B008.
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
 [tool.mypy]
 python_version = "3.10"
 strict = true

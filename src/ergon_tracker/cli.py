@@ -22,7 +22,7 @@ err_console = Console(stderr=True)
 
 @app.command()
 def version() -> None:
-    """Print the ergon_tracker version."""
+    """Print the ergon-tracker version."""
     console.print(f"ergon-tracker {__version__}")
 
 
@@ -34,7 +34,7 @@ def sources() -> None:
     load_builtins()
     load_plugins()
     providers = iter_providers()
-    table = Table(title="ergon_tracker providers")
+    table = Table(title="ergon-tracker providers")
     table.add_column("name", style="cyan")
     table.add_column("type")
     for p in providers:
@@ -61,6 +61,13 @@ def resolve(target: str) -> None:
 @app.command()
 def search(
     keywords: str = typer.Argument(..., help="search keywords"),
+    company: list[str] | None = typer.Option(
+        None,
+        "--company",
+        "-c",
+        help="target a company by domain/careers URL (repeatable, e.g. -c stripe.com). "
+        "Omit to search the whole bundled registry (much slower).",
+    ),
     location: str | None = typer.Option(None, "--location", "-l"),
     remote: bool = typer.Option(False, "--remote"),
     level: str | None = typer.Option(None, "--level", help="intern/senior/staff/manager/..."),
@@ -88,6 +95,7 @@ def search(
     try:
         result = run_search(
             keywords,
+            companies=company or None,
             location=location,
             remote=remote or None,
             level=JobLevel(level) if level else None,
@@ -110,6 +118,7 @@ def search(
         console.print_json(json.dumps(result.to_dicts()))
     else:
         table = Table(title=f"{len(result)} jobs")
+        table.add_column("score", style="yellow", justify="right")
         table.add_column("company", style="cyan")
         table.add_column("title")
         table.add_column("location")
@@ -118,8 +127,9 @@ def search(
         table.add_column("source", style="dim")
         for job in result.jobs:
             loc = job.locations[0].as_text() if job.locations else ""
+            score = f"{job.score:.1f}" if job.score is not None else "—"
             table.add_row(
-                job.company, job.title, loc, job.level.value, job.sector or "", job.source
+                score, job.company, job.title, loc, job.level.value, job.sector or "", job.source
             )
         console.print(table)
         for h in result.failed_sources:
