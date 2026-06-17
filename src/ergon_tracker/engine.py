@@ -18,6 +18,7 @@ import anyio
 
 from .dedup import deduplicate
 from .enrich import enrich_in_place
+from .ranking import rank
 from .http import AsyncFetcher
 from .models import JobPosting, SearchQuery, SearchResult, SourceHealth
 from .observability import build_health
@@ -151,6 +152,9 @@ async def run_search(query: SearchQuery, fetcher: AsyncFetcher) -> SearchResult:
     # Reassemble in target order for deterministic output, then dedup across all sources.
     combined: list[JobPosting] = [job for i in sorted(results) for job in results[i]]
     deduped = deduplicate(combined)
+    # Rank by relevance to the keyword query BEFORE applying the limit, so we keep the best
+    # matches rather than whichever sources happened to return first.
+    deduped = rank(deduped, query.keywords)
     if query.limit is not None:
         deduped = deduped[: query.limit]
 

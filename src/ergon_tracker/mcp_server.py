@@ -50,6 +50,7 @@ def _job_to_dict(job: JobPosting) -> dict[str, Any]:
         "source": job.source,
         "posted_at": job.posted_at.isoformat() if job.posted_at else None,
         "found_on": [p.source for p in job.provenance],
+        "score": round(job.score, 4) if job.score is not None else None,
     }
 
 
@@ -72,7 +73,9 @@ async def search_jobs(
     """Search jobs across company ATS feeds and aggregators, returning canonical postings.
 
     Args:
-        keywords: free-text match on title/department/company/description.
+        keywords: free-text query. Matches on title/department/company/description, then
+            results are ranked by relevance (field-weighted BM25; title matches rank highest)
+            so the most relevant postings come first. Each job carries a `score`.
         location: substring match on posting location.
         remote: if true, keep only remote/hybrid roles.
         companies: company domains or careers URLs to target (e.g. ["stripe.com"]). Omit to
@@ -83,9 +86,10 @@ async def search_jobs(
         sector: industry filter, e.g. "Fintech", "AI/ML", "Healthcare" (NAICS-informed).
         country / city: structured location filter.
         salary_min / salary_max: compensation range (jobs without salary data are kept).
-        limit: max postings to return after dedup (default 20).
+        limit: max postings to return after dedup + ranking (default 20).
 
-    Returns a dict with `count`, `jobs` (compact), and per-source `health`.
+    Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
+    and per-source `health`.
     """
     query = SearchQuery(
         keywords=keywords,

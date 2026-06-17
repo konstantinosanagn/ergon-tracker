@@ -8,11 +8,12 @@ the filter is kept, but they are ordered by how well they actually match.
 
 Design (deterministic-first, no ML, runs anywhere):
 
-* **Field-weighted BM25.** Standard Okapi BM25 (the workhorse lexical ranker) over each job's
-  searchable text, with the title weighted far above department/company, and description
-  lowest. Field weighting is achieved by repeating field tokens ``w`` times before scoring, so
-  a title hit dominates a description-only hit naturally. BM25 brings term-frequency saturation
-  (k1) and length normalization (b), so keyword-stuffed descriptions don't win.
+* **Field-weighted BM25 (BM25F-style).** Each field (title, department, company, description)
+  is scored with its own Okapi BM25 — its own length normalization and IDF — and the per-field
+  scores are combined as a weighted sum, with the title weighted far above the rest. Because a
+  short title saturates fast and a long description normalizes against long descriptions, a
+  title match dominates a description-only match, and keyword-stuffing the description can't
+  masquerade as a title hit. BM25's k1/b give term-frequency saturation and length norm.
 * **Stable.** Ties keep their prior order (authority/recency from dedup), so ranking only ever
   *improves* ordering, never scrambles equally-relevant results.
 
@@ -37,11 +38,13 @@ __all__ = ["rank", "score_text", "Reranker", "register_reranker"]
 _K1 = 1.5
 _B = 0.75
 
-# Field weights: how many times each field's tokens are counted. Title dominates.
-_W_TITLE = 5
-_W_DEPARTMENT = 2
-_W_COMPANY = 2
-_W_DESCRIPTION = 1
+# Per-field weights applied to each field's own BM25 score. Title dominates.
+_FIELD_WEIGHTS: tuple[tuple[str, float], ...] = (
+    ("title", 5.0),
+    ("department", 2.0),
+    ("company", 2.0),
+    ("description_text", 1.0),
+)
 
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 
@@ -50,17 +53,33 @@ def _tokenize(text: str) -> list[str]:
     return _TOKEN_RE.findall(text.lower())
 
 
-def _doc_tokens(job: JobPosting) -> list[str]:
-    """Weighted bag of tokens for a posting: title tokens count most, description least."""
-    out: list[str] = []
-    out += _tokenize(job.title) * _W_TITLE
-    if job.department:
-        out += _tokenize(job.department) * _W_DEPARTMENT
-    if job.company:
-        out += _tokenize(job.company) * _W_COMPANY
-    if job.description_text:
-        out += _tokenize(job.description_text) * _W_DESCRIPTION
-    return out
+def _field_tokens(job: JobPosting, field: str) -> list[str]:
+    return _tokenize(getattr(job, field) or "")
+
+
+def _bm25_field(q_terms: set[str], field_docs: list[list[str]]) -> list[float]:
+    """Okapi BM25 score per doc for one field, computed over that field's own corpus stats."""
+    n = len(field_docs)
+    tfs = [Counter(d) for d in field_docs]
+    doc_len = [len(d) for d in field_docs]
+    nonempty = [dl for dl in doc_len if dl] or [1]
+    avgdl = sum(nonempty) / len(nonempty)
+    df = {t: sum(1 for tf in tfs if t in tf) for t in q_terms}
+    idf = {t: math.log(1.0 + (n - df[t] + 0.5) / (df[t] + 0.5)) for t in q_terms}
+
+    scores: list[float] = []
+    for i in range(n):
+        tf = tfs[i]
+        dl = doc_len[i] or 1
+        s = 0.0
+        for t in q_terms:
+            f = tf.get(t, 0)
+            if not f:
+                continue
+            denom = f + _K1 * (1.0 - _B + _B * dl / avgdl)
+            s += idf[t] * (f * (_K1 + 1.0)) / denom
+        scores.append(s)
+    return scores
 
 
 # --------------------------------------------------------------------------------------------
@@ -90,39 +109,23 @@ def register_reranker(reranker: Reranker | None) -> None:
 def score_text(query: str, jobs: list[JobPosting]) -> list[float]:
     """Compute field-weighted BM25 scores for ``jobs`` against ``query`` (one score per job).
 
-    Pure function over the candidate set; no network, no model. Empty query -> all zeros.
+    Each field is scored with its own BM25 over the candidate set, then combined as a weighted
+    sum (title weighted highest). Pure function; no network, no model. Empty query -> all zeros.
     """
-    q_terms = _tokenize(query)
+    q_terms = set(_tokenize(query))
     n = len(jobs)
     if not q_terms or n == 0:
         return [0.0] * n
 
-    docs = [_doc_tokens(j) for j in jobs]
-    doc_len = [len(d) for d in docs]
-    avgdl = (sum(doc_len) / n) or 1.0
-    tfs = [Counter(d) for d in docs]
-
-    # IDF per query term (BM25 form), over this candidate set.
-    q_unique = set(q_terms)
-    df = {t: sum(1 for tf in tfs if t in tf) for t in q_unique}
-    idf = {
-        t: math.log(1.0 + (n - df_t + 0.5) / (df_t + 0.5))
-        for t, df_t in df.items()
-    }
-
-    scores: list[float] = []
-    for i in range(n):
-        tf = tfs[i]
-        dl = doc_len[i] or 1
-        s = 0.0
-        for t in q_unique:
-            f = tf.get(t, 0)
-            if not f:
-                continue
-            denom = f + _K1 * (1.0 - _B + _B * dl / avgdl)
-            s += idf[t] * (f * (_K1 + 1.0)) / denom
-        scores.append(s)
-    return scores
+    totals = [0.0] * n
+    for field, weight in _FIELD_WEIGHTS:
+        field_docs = [_field_tokens(j, field) for j in jobs]
+        if not any(field_docs):
+            continue
+        field_scores = _bm25_field(q_terms, field_docs)
+        for i, s in enumerate(field_scores):
+            totals[i] += weight * s
+    return totals
 
 
 def rank(jobs: list[JobPosting], query: str | None) -> list[JobPosting]:
@@ -136,7 +139,7 @@ def rank(jobs: list[JobPosting], query: str | None) -> list[JobPosting]:
         return jobs
 
     scores = score_text(query, jobs)
-    for job, sc in zip(jobs, scores):
+    for job, sc in zip(jobs, scores, strict=True):
         job.score = sc
 
     # Optional stronger reranker over the lexical top-K (kept small for cost).
@@ -147,10 +150,10 @@ def rank(jobs: list[JobPosting], query: str | None) -> list[JobPosting]:
         head_jobs = [jobs[i] for i in head_idx]
         try:
             re_scores = _RERANKER.rerank(query, head_jobs)
-            for job, sc in zip(head_jobs, re_scores):
+            for job, sc in zip(head_jobs, re_scores, strict=True):
                 job.score = sc
         except Exception:  # noqa: BLE001 - a reranker failure must not break search
             pass
 
     # Stable sort by score desc (Python sort is stable, so ties keep prior order).
-    return sorted(jobs, key=lambda j: (j.score if j.score is not None else 0.0), reverse=True)
+    return sorted(jobs, key=lambda j: j.score if j.score is not None else 0.0, reverse=True)
