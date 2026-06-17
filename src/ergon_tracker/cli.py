@@ -71,7 +71,13 @@ def search(
     location: str | None = typer.Option(None, "--location", "-l"),
     remote: bool = typer.Option(False, "--remote"),
     level: str | None = typer.Option(None, "--level", help="intern/senior/staff/manager/..."),
+    include_unknown_level: bool = typer.Option(
+        False, "--include-unknown-level", help="keep roles with no inferable level when filtering"
+    ),
     sector: str | None = typer.Option(None, "--sector", help='e.g. "Fintech", "AI/ML"'),
+    include_unknown_sector: bool = typer.Option(
+        False, "--include-unknown-sector", help="keep roles with no detected sector when filtering"
+    ),
     country: str | None = typer.Option(None, "--country"),
     salary_min: float | None = typer.Option(None, "--salary-min"),
     salary_max: float | None = typer.Option(None, "--salary-max"),
@@ -99,7 +105,9 @@ def search(
             location=location,
             remote=remote or None,
             level=JobLevel(level) if level else None,
+            include_unknown_level=include_unknown_level,
             sector=sector,
+            include_unknown_sector=include_unknown_sector,
             country=country,
             salary_min=salary_min,
             salary_max=salary_max,

@@ -20,6 +20,7 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 
 from .client import AsyncErgonTracker
+from .engine import AGGREGATOR_PROVIDERS
 from .models import JobLevel, JobPosting, SearchQuery
 from .providers.base import iter_providers, load_builtins, load_plugins
 from .registry.resolver import resolve
@@ -62,7 +63,9 @@ async def search_jobs(
     companies: list[str] | None = None,
     sources: list[str] | None = None,
     level: str | None = None,
+    include_unknown_level: bool = False,
     sector: str | None = None,
+    include_unknown_sector: bool = False,
     country: str | None = None,
     city: str | None = None,
     salary_min: float | None = None,
@@ -81,12 +84,19 @@ async def search_jobs(
             (handles synonyms / natural-language intent). Needs the server's `semantic` extra.
         location: substring match on posting location.
         remote: if true, keep only remote/hybrid roles.
-        companies: company domains or careers URLs to target (e.g. ["stripe.com"]). Omit to
-            search the entire bundled registry (broader but slower).
-        sources: restrict to provider names: greenhouse, lever, ashby, workday, remoteok.
+        companies: company domains or careers URLs to target (e.g. ["stripe.com", "ramp.com"]).
+            Best for "roles at <company>" questions — fast and precise.
+        sources: restrict to provider names (e.g. greenhouse, lever, remoteok, adzuna). For a
+            BROAD keyword search, leave both `companies` and `sources` empty: this tool then
+            queries only the fast single-call aggregator/keyed APIs (RemoteOK, Remotive, Adzuna,
+            USAJOBS, …) — quick and rate-limit-friendly. (A full 42k-company ATS crawl only
+            happens if you explicitly pass ATS provider names in `sources`.)
         level: seniority filter — intern/entry/junior/mid/senior/staff/principal/lead/manager/
-            director/executive (inferred from title).
+            director/executive (inferred from title; many titles have none -> "unknown").
+        include_unknown_level: keep postings whose level couldn't be inferred (narrow without
+            dropping unlabeled roles). Recommended when filtering by level on real data.
         sector: industry filter, e.g. "Fintech", "AI/ML", "Healthcare" (NAICS-informed).
+        include_unknown_sector: keep postings with no detected sector.
         country / city: structured location filter.
         salary_min / salary_max: compensation range (jobs without salary data are kept).
         limit: max postings to return after dedup + ranking (default 20).
@@ -94,6 +104,13 @@ async def search_jobs(
     Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
     and per-source `health`.
     """
+    # Agent-safety: an unscoped search (no companies, no sources) would otherwise fan out to the
+    # entire ~42k-company ATS registry — slow and rate-limit-prone for an interactive agent. Default
+    # such searches to the fast, single-call aggregator/keyed APIs instead. Targeting companies, or
+    # naming sources explicitly (incl. ATS names for a deliberate crawl), overrides this.
+    if not companies and not sources:
+        sources = list(AGGREGATOR_PROVIDERS)
+
     query = SearchQuery(
         keywords=keywords,
         location=location,
@@ -101,7 +118,9 @@ async def search_jobs(
         companies=companies,
         sources=sources,
         level=JobLevel(level) if level else None,
+        include_unknown_level=include_unknown_level,
         sector=sector,
+        include_unknown_sector=include_unknown_sector,
         country=country,
         city=city,
         salary_min=salary_min,

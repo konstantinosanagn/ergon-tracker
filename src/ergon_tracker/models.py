@@ -201,9 +201,14 @@ class SearchQuery(BaseModel):
     sources: list[str] | None = None
     # advanced filters (applied after enrichment)
     level: JobLevel | None = None
+    # When filtering by level, also keep postings with no inferable level (default: drop them,
+    # i.e. a strict filter). Mirrors include_unknown_salary/years for the inferred level field.
+    include_unknown_level: bool = False
     country: str | None = None
     city: str | None = None
     sector: str | None = None
+    # When filtering by sector, also keep postings with no sector (default: drop them).
+    include_unknown_sector: bool = False
     salary_min: float | None = None
     salary_max: float | None = None
     salary_currency: str | None = None
@@ -299,10 +304,21 @@ class SearchQuery(BaseModel):
         ):
             return False
 
-        if self.level is not None and job.level != self.level:
+        # Level filter. include_unknown_level keeps postings whose level couldn't be inferred
+        # (UNKNOWN), so the filter narrows without dropping the many real titles with no marker.
+        if (
+            self.level is not None
+            and job.level != self.level
+            and not (self.include_unknown_level and job.level is JobLevel.UNKNOWN)
+        ):
             return False
 
-        if self.sector and self.sector.lower() not in (job.sector or "").lower():
+        # Sector filter. include_unknown_sector keeps postings with no detected sector.
+        if (
+            self.sector
+            and self.sector.lower() not in (job.sector or "").lower()
+            and not (self.include_unknown_sector and not job.sector)
+        ):
             return False
 
         if not self._geo_ok(job):
