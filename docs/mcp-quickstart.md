@@ -121,3 +121,36 @@ Returns:
   "health": [ { "source": "greenhouse", "ok": true, "count": 41 } ]
 }
 ```
+
+## Example prompts (what to ask your agent)
+
+These phrasings lead the agent to efficient, rate-limit-safe `search_jobs` calls. An *unscoped*
+search (no company, no source) automatically uses only the fast single-call aggregator/keyed
+APIs — so you can't accidentally trigger the slow ~42k-company ATS crawl.
+
+**🎯 Company-specific (fastest, most precise)**
+- "Show me open engineering roles at Stripe and Ramp."
+- "What ATS does notion.so use, then list their product roles." *(resolve_company → search_jobs)*
+- "Find data roles at datadog.com and mongodb.com, senior and up."
+
+**🔍 Broad keyword search (auto-routes to the fast APIs)**
+- "Find remote senior backend engineer jobs, top 15."
+- "Show me 20 remote data-science jobs in the US paying over $150k."
+- "Entry-level software jobs in Berlin — and keep ones that don't state a level too."
+  *(sets `include_unknown_level`)*
+
+**🧠 Natural-language / semantic** *(needs the `[semantic]` extra)*
+- "Find roles about LLMs and applied AI, even if they don't use those exact words." *(`semantic=true`)*
+- "Jobs that sound like 'building developer tools at an early-stage startup'."
+
+**🏛️ Federal (USAJOBS)**
+- "Find senior data scientist federal jobs in Washington DC."
+
+### Tips so the agent stays fast and answers cleanly
+
+1. **Imply a count** ("top 10/20") — keeps the tool response small and the answer quick.
+2. **Name companies** when you care about specific employers — the precise, fastest route.
+3. **Don't ask to "search every company / the whole registry."** That's the one slow path; the
+   server guards against it by default, but explicitly demanding it is still a long crawl.
+4. **Widen strict filters when needed** — add "include roles that don't list a level/salary" so
+   level/sector filters narrow instead of hard-dropping unlabeled postings.
