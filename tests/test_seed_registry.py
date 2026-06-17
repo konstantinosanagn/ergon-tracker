@@ -18,6 +18,7 @@ SUPPORTED_ATS = {
     "bamboohr",
     "breezy",
     "teamtailor",
+    "join",
 }
 
 

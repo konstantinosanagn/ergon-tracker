@@ -1,0 +1,3432 @@
+{
+  "10xgenomics": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "abbvie": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "acadiapharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "accelentertainment": {
+    "sector": "Media/Entertainment",
+    "sic": "7900",
+    "source": "edgar"
+  },
+  "accenture": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "accuray": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "adient": {
+    "sector": "Automotive/Mobility",
+    "sic": "3714",
+    "source": "edgar"
+  },
+  "adobe": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "aecom": {
+    "sector": "Consulting/Services",
+    "sic": "8711",
+    "source": "edgar"
+  },
+  "aes": {
+    "sector": "Energy/Climate",
+    "sic": "4991",
+    "source": "edgar"
+  },
+  "aevex": {
+    "sector": "Aerospace/Defense",
+    "sic": "3721",
+    "source": "edgar"
+  },
+  "affirm": {
+    "sector": "Fintech",
+    "sic": "6141",
+    "source": "edgar"
+  },
+  "agi": {
+    "sector": "Banking/Finance",
+    "sic": "6029",
+    "source": "edgar"
+  },
+  "agilent": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "agilon-health": {
+    "sector": "Healthcare",
+    "sic": "8090",
+    "source": "edgar"
+  },
+  "agilysys": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "air": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2100",
+    "source": "edgar"
+  },
+  "airbnb": {
+    "sector": "Consulting/Services",
+    "sic": "7340",
+    "source": "edgar"
+  },
+  "airsculpt": {
+    "sector": "Healthcare",
+    "sic": "8011",
+    "source": "edgar"
+  },
+  "akabrands": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "alamarbiosciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "alarmcom": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "albemarle": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2821",
+    "source": "edgar"
+  },
+  "alcoa": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3334",
+    "source": "edgar"
+  },
+  "alcon": {
+    "sector": "Healthcare",
+    "sic": "3851",
+    "source": "edgar"
+  },
+  "alector": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "alexanders": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "align": {
+    "sector": "Healthcare",
+    "sic": "3842",
+    "source": "edgar"
+  },
+  "allegion": {
+    "sector": "Consulting/Services",
+    "sic": "7381",
+    "source": "edgar"
+  },
+  "alliantenergy": {
+    "sector": "Energy/Climate",
+    "sic": "4931",
+    "source": "edgar"
+  },
+  "allstate": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "amber": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "amcor": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3990",
+    "source": "edgar"
+  },
+  "amer-sports": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2300",
+    "source": "edgar"
+  },
+  "ameren": {
+    "sector": "Energy/Climate",
+    "sic": "4931",
+    "source": "edgar"
+  },
+  "amgen": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "amplitude": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "amprius": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "amylyx-pharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "analogdevices": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "angi": {
+    "sector": "Media/Entertainment",
+    "sic": "7310",
+    "source": "edgar"
+  },
+  "apex": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3470",
+    "source": "edgar"
+  },
+  "apogeetherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "appian": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "applied": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5080",
+    "source": "edgar"
+  },
+  "applovin": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "aptiv": {
+    "sector": "Automotive/Mobility",
+    "sic": "3714",
+    "source": "edgar"
+  },
+  "arena": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "argenx": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "aristanetworks": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3576",
+    "source": "edgar"
+  },
+  "arlo": {
+    "sector": "Consulting/Services",
+    "sic": "7381",
+    "source": "edgar"
+  },
+  "arq": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2890",
+    "source": "edgar"
+  },
+  "array": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "arvana": {
+    "sector": "Banking/Finance",
+    "sic": "6770",
+    "source": "edgar"
+  },
+  "arvinas": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "asana": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "assurant": {
+    "sector": "Insurance",
+    "sic": "6399",
+    "source": "edgar"
+  },
+  "assuredguaranty": {
+    "sector": "Insurance",
+    "sic": "6351",
+    "source": "edgar"
+  },
+  "asteralabs": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "astrazeneca": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "astspacemobile": {
+    "sector": "Telecom",
+    "sic": "4899",
+    "source": "edgar"
+  },
+  "asuresoftware": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "athene": {
+    "sector": "Insurance",
+    "sic": "6311",
+    "source": "edgar"
+  },
+  "ati": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3317",
+    "source": "edgar"
+  },
+  "atlanta-braves": {
+    "sector": "Media/Entertainment",
+    "sic": "7900",
+    "source": "edgar"
+  },
+  "atlassian": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "aura": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "aurabiosciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "aurorainnovation": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "authentic": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5130",
+    "source": "edgar"
+  },
+  "autodesk": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "autonation": {
+    "sector": "Automotive/Mobility",
+    "sic": "5500",
+    "source": "edgar"
+  },
+  "avantor": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "avepoint": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "averydennison": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2670",
+    "source": "edgar"
+  },
+  "avisbudget": {
+    "sector": "Travel/Hospitality",
+    "sic": "7510",
+    "source": "edgar"
+  },
+  "avnet": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5065",
+    "source": "edgar"
+  },
+  "axis": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "axogen": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "axsometherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "azenta": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3559",
+    "source": "edgar"
+  },
+  "azul": {
+    "sector": "Travel/Hospitality",
+    "sic": "4512",
+    "source": "edgar"
+  },
+  "backblaze": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "badger-meter": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3824",
+    "source": "edgar"
+  },
+  "baidu": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "balchem": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2800",
+    "source": "edgar"
+  },
+  "bandwidth": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "barclays": {
+    "sector": "Banking/Finance",
+    "sic": "6029",
+    "source": "edgar"
+  },
+  "bark": {
+    "sector": "E-commerce/Retail",
+    "sic": "5990",
+    "source": "edgar"
+  },
+  "beam": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "bentley": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "best-buy": {
+    "sector": "E-commerce/Retail",
+    "sic": "5731",
+    "source": "edgar"
+  },
+  "bill": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "billiontoone": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "bitgo": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "bj-s-wholesale-club": {
+    "sector": "E-commerce/Retail",
+    "sic": "5331",
+    "source": "edgar"
+  },
+  "blackbaud": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "blackberry": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "blackrock": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "blacksky": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "blackstone": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "block": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "bloom-energy": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3620",
+    "source": "edgar"
+  },
+  "bluemoonmetals": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1000",
+    "source": "edgar"
+  },
+  "bob-s-discount-furniture": {
+    "sector": "E-commerce/Retail",
+    "sic": "5712",
+    "source": "edgar"
+  },
+  "boeing": {
+    "sector": "Aerospace/Defense",
+    "sic": "3721",
+    "source": "edgar"
+  },
+  "borgwarner": {
+    "sector": "Automotive/Mobility",
+    "sic": "3714",
+    "source": "edgar"
+  },
+  "boundless": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3827",
+    "source": "edgar"
+  },
+  "box": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "boydgaming": {
+    "sector": "Travel/Hospitality",
+    "sic": "7011",
+    "source": "edgar"
+  },
+  "brady": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3990",
+    "source": "edgar"
+  },
+  "braskem": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2860",
+    "source": "edgar"
+  },
+  "braze": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "bridgebio-pharma": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "brilliantearth": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3910",
+    "source": "edgar"
+  },
+  "brinks": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4731",
+    "source": "edgar"
+  },
+  "bristolmyerssquibb": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "bristow": {
+    "sector": "Travel/Hospitality",
+    "sic": "4522",
+    "source": "edgar"
+  },
+  "broadcom": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "brunswick": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3510",
+    "source": "edgar"
+  },
+  "btcs": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "btech": {
+    "sector": "Banking/Finance",
+    "sic": "6770",
+    "source": "edgar"
+  },
+  "butterflynetwork": {
+    "sector": "Healthcare",
+    "sic": "3844",
+    "source": "edgar"
+  },
+  "buzzfeed": {
+    "sector": "Telecom",
+    "sic": "4899",
+    "source": "edgar"
+  },
+  "c3-ai": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "cable-one": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "cactus": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3533",
+    "source": "edgar"
+  },
+  "cae": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "calix": {
+    "sector": "Telecom",
+    "sic": "4899",
+    "source": "edgar"
+  },
+  "cambiumnetworks": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "canada-goose": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2300",
+    "source": "edgar"
+  },
+  "capricor-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "capstone": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3640",
+    "source": "edgar"
+  },
+  "cardinalhealth": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5122",
+    "source": "edgar"
+  },
+  "cargurus": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "carlsmed": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "carmax": {
+    "sector": "Automotive/Mobility",
+    "sic": "5500",
+    "source": "edgar"
+  },
+  "carter-s": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2300",
+    "source": "edgar"
+  },
+  "carvana": {
+    "sector": "Automotive/Mobility",
+    "sic": "5500",
+    "source": "edgar"
+  },
+  "cdw": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "celsius": {
+    "sector": "Food/Beverage",
+    "sic": "2086",
+    "source": "edgar"
+  },
+  "centene": {
+    "sector": "Healthcare",
+    "sic": "6324",
+    "source": "edgar"
+  },
+  "cerebras": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "chargepoint": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "chord-energy": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "ciandt": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "ciena": {
+    "sector": "Telecom",
+    "sic": "3661",
+    "source": "edgar"
+  },
+  "cigna": {
+    "sector": "Healthcare",
+    "sic": "6324",
+    "source": "edgar"
+  },
+  "cisco": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3576",
+    "source": "edgar"
+  },
+  "clarivate": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "cleanspark": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "clear-channel-outdoor": {
+    "sector": "Media/Entertainment",
+    "sic": "7310",
+    "source": "edgar"
+  },
+  "clearfield": {
+    "sector": "Telecom",
+    "sic": "3661",
+    "source": "edgar"
+  },
+  "clearwateranalytics": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "clearway-energy": {
+    "sector": "Energy/Climate",
+    "sic": "4911",
+    "source": "edgar"
+  },
+  "cloudflare": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "cogentbiosciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "cognex": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3823",
+    "source": "edgar"
+  },
+  "coherent": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3827",
+    "source": "edgar"
+  },
+  "coherus-oncology": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "coinbase": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "collegium-pharmaceutical": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "colliers": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6500",
+    "source": "edgar"
+  },
+  "comcast": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "comfortsystemsusa": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1731",
+    "source": "edgar"
+  },
+  "commvault": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "compasspathways": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "comscore": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "comstock": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2860",
+    "source": "edgar"
+  },
+  "conagra-brands": {
+    "sector": "Food/Beverage",
+    "sic": "2000",
+    "source": "edgar"
+  },
+  "corcepttherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "coreweave": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "corpay": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "cosmos": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "costar": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "coupang": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "coursera": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "cra": {
+    "sector": "Other",
+    "sic": "8111",
+    "source": "edgar"
+  },
+  "crane": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3490",
+    "source": "edgar"
+  },
+  "credit-acceptance": {
+    "sector": "Fintech",
+    "sic": "6141",
+    "source": "edgar"
+  },
+  "credo": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "crescent-biopharma": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "crescolabs": {
+    "sector": "Biotech/Pharma",
+    "sic": "2833",
+    "source": "edgar"
+  },
+  "cricut": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3559",
+    "source": "edgar"
+  },
+  "crowdstrike": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "crypto": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "curaleaf": {
+    "sector": "Biotech/Pharma",
+    "sic": "2833",
+    "source": "edgar"
+  },
+  "curtisswright": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3590",
+    "source": "edgar"
+  },
+  "cvshealth": {
+    "sector": "E-commerce/Retail",
+    "sic": "5912",
+    "source": "edgar"
+  },
+  "cyngn": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "cytokinetics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "datadog": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "davita": {
+    "sector": "Healthcare",
+    "sic": "8090",
+    "source": "edgar"
+  },
+  "deluxe": {
+    "sector": "Media/Entertainment",
+    "sic": "2780",
+    "source": "edgar"
+  },
+  "diageo": {
+    "sector": "Food/Beverage",
+    "sic": "2080",
+    "source": "edgar"
+  },
+  "diamondback-energy": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "dick-s-sporting-goods": {
+    "sector": "E-commerce/Retail",
+    "sic": "5940",
+    "source": "edgar"
+  },
+  "digimarc": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "digital-turbine": {
+    "sector": "Banking/Finance",
+    "sic": "6794",
+    "source": "edgar"
+  },
+  "digitalbridge": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "dinebrands": {
+    "sector": "Food/Beverage",
+    "sic": "5812",
+    "source": "edgar"
+  },
+  "dlh": {
+    "sector": "Consulting/Services",
+    "sic": "7363",
+    "source": "edgar"
+  },
+  "dlocal": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "dnow": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3533",
+    "source": "edgar"
+  },
+  "docebo": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "dollartree": {
+    "sector": "E-commerce/Retail",
+    "sic": "5331",
+    "source": "edgar"
+  },
+  "doubleverify": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "dow": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2821",
+    "source": "edgar"
+  },
+  "doximity": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "dpc": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3360",
+    "source": "edgar"
+  },
+  "dropbox": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "dukeenergy": {
+    "sector": "Energy/Climate",
+    "sic": "4931",
+    "source": "edgar"
+  },
+  "duolingo": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "dutch-bros": {
+    "sector": "E-commerce/Retail",
+    "sic": "5810",
+    "source": "edgar"
+  },
+  "dynamix": {
+    "sector": "Banking/Finance",
+    "sic": "6770",
+    "source": "edgar"
+  },
+  "dynetherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "ecolab": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2840",
+    "source": "edgar"
+  },
+  "edwards-lifesciences": {
+    "sector": "Healthcare",
+    "sic": "3842",
+    "source": "edgar"
+  },
+  "eikontherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "element": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2890",
+    "source": "edgar"
+  },
+  "elevance-health": {
+    "sector": "Healthcare",
+    "sic": "6324",
+    "source": "edgar"
+  },
+  "elfbeauty": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2844",
+    "source": "edgar"
+  },
+  "embecta": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "enbridge": {
+    "sector": "Other",
+    "sic": "4610",
+    "source": "edgar"
+  },
+  "encore": {
+    "sector": "Banking/Finance",
+    "sic": "6153",
+    "source": "edgar"
+  },
+  "endava": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "energyrecovery": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3559",
+    "source": "edgar"
+  },
+  "enhanced": {
+    "sector": "Media/Entertainment",
+    "sic": "7990",
+    "source": "edgar"
+  },
+  "entegris": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3089",
+    "source": "edgar"
+  },
+  "entrata": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "eon": {
+    "sector": "Energy/Climate",
+    "sic": "4900",
+    "source": "edgar"
+  },
+  "equinix": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "equinor": {
+    "sector": "Energy/Climate",
+    "sic": "2911",
+    "source": "edgar"
+  },
+  "equipmentsharecom": {
+    "sector": "Consulting/Services",
+    "sic": "7359",
+    "source": "edgar"
+  },
+  "erasca": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "esab": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3569",
+    "source": "edgar"
+  },
+  "ethos": {
+    "sector": "Insurance",
+    "sic": "6411",
+    "source": "edgar"
+  },
+  "etsy": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "eve": {
+    "sector": "Aerospace/Defense",
+    "sic": "3721",
+    "source": "edgar"
+  },
+  "evercommerce": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "everpure": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3572",
+    "source": "edgar"
+  },
+  "evotec": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "expedia": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4700",
+    "source": "edgar"
+  },
+  "expensify": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "extra-space-storage": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "extremenetworks": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3576",
+    "source": "edgar"
+  },
+  "factorial-energy": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "fastly": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "fathom": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6531",
+    "source": "edgar"
+  },
+  "fbc": {
+    "sector": "E-commerce/Retail",
+    "sic": "5600",
+    "source": "edgar"
+  },
+  "fedex": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4513",
+    "source": "edgar"
+  },
+  "figma": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "figure": {
+    "sector": "Banking/Finance",
+    "sic": "6163",
+    "source": "edgar"
+  },
+  "first": {
+    "sector": "Banking/Finance",
+    "sic": "6035",
+    "source": "edgar"
+  },
+  "fiscalnote": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "five9": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "fivebelow": {
+    "sector": "E-commerce/Retail",
+    "sic": "5331",
+    "source": "edgar"
+  },
+  "flex": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3672",
+    "source": "edgar"
+  },
+  "fluence-energy": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "flywire": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "forge": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "formfactor": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "forward": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "fox": {
+    "sector": "Media/Entertainment",
+    "sic": "4833",
+    "source": "edgar"
+  },
+  "franklintempleton": {
+    "sector": "Banking/Finance",
+    "sic": "6221",
+    "source": "edgar"
+  },
+  "frequency": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "freseniusmedicalcare": {
+    "sector": "Healthcare",
+    "sic": "8090",
+    "source": "edgar"
+  },
+  "freshworks": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "frp": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6500",
+    "source": "edgar"
+  },
+  "fubotv": {
+    "sector": "Media/Entertainment",
+    "sic": "7812",
+    "source": "edgar"
+  },
+  "fuse": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1000",
+    "source": "edgar"
+  },
+  "gamestop": {
+    "sector": "E-commerce/Retail",
+    "sic": "5734",
+    "source": "edgar"
+  },
+  "gap": {
+    "sector": "E-commerce/Retail",
+    "sic": "5651",
+    "source": "edgar"
+  },
+  "gartner": {
+    "sector": "Consulting/Services",
+    "sic": "8741",
+    "source": "edgar"
+  },
+  "gbt": {
+    "sector": "Consulting/Services",
+    "sic": "8742",
+    "source": "edgar"
+  },
+  "gen-digital": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "genedx": {
+    "sector": "Healthcare",
+    "sic": "8000",
+    "source": "edgar"
+  },
+  "generalmotors": {
+    "sector": "Automotive/Mobility",
+    "sic": "3711",
+    "source": "edgar"
+  },
+  "genius": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "genius-sports": {
+    "sector": "Media/Entertainment",
+    "sic": "7990",
+    "source": "edgar"
+  },
+  "gettyimages": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "gevernova": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3600",
+    "source": "edgar"
+  },
+  "gibraltar": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3310",
+    "source": "edgar"
+  },
+  "giftify": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "ginkgobioworks": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "gitlab": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "glimpse": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "globalfoundries": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "globe-life": {
+    "sector": "Insurance",
+    "sic": "6311",
+    "source": "edgar"
+  },
+  "globus-medical": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "godaddy": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "gogo": {
+    "sector": "Telecom",
+    "sic": "4899",
+    "source": "edgar"
+  },
+  "goodrx": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "gorilla": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "grab": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "grail": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "gravity": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "green-thumb": {
+    "sector": "Food/Beverage",
+    "sic": "0100",
+    "source": "edgar"
+  },
+  "greenlite": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1000",
+    "source": "edgar"
+  },
+  "groupon": {
+    "sector": "Media/Entertainment",
+    "sic": "7311",
+    "source": "edgar"
+  },
+  "grove-collaborative": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "gsi": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "gsk": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "haemonetics": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "hamiltonlane": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "hancockwhitney": {
+    "sector": "Banking/Finance",
+    "sic": "6022",
+    "source": "edgar"
+  },
+  "harmonic": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "hasbro": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "3944",
+    "source": "edgar"
+  },
+  "hci": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "healthcarerealty": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "heartflow": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "helenoftroy": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3634",
+    "source": "edgar"
+  },
+  "helios": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3490",
+    "source": "edgar"
+  },
+  "henryschein": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5047",
+    "source": "edgar"
+  },
+  "here": {
+    "sector": "E-commerce/Retail",
+    "sic": "5945",
+    "source": "edgar"
+  },
+  "hinge-health": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "hmh": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3533",
+    "source": "edgar"
+  },
+  "hubspot": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "humana": {
+    "sector": "Healthcare",
+    "sic": "6324",
+    "source": "edgar"
+  },
+  "hut-8": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "hyperfine": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "ibex": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "ibotta": {
+    "sector": "Media/Entertainment",
+    "sic": "7310",
+    "source": "edgar"
+  },
+  "icf": {
+    "sector": "Consulting/Services",
+    "sic": "8742",
+    "source": "edgar"
+  },
+  "icon": {
+    "sector": "Biotech/Pharma",
+    "sic": "8731",
+    "source": "edgar"
+  },
+  "idt": {
+    "sector": "Telecom",
+    "sic": "4813",
+    "source": "edgar"
+  },
+  "iheartmedia": {
+    "sector": "Media/Entertainment",
+    "sic": "4832",
+    "source": "edgar"
+  },
+  "illumina": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "immunitybio": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "impinj": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3679",
+    "source": "edgar"
+  },
+  "infleqtion": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "ingredion": {
+    "sector": "Food/Beverage",
+    "sic": "2040",
+    "source": "edgar"
+  },
+  "innodata": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "inotiv": {
+    "sector": "Biotech/Pharma",
+    "sic": "8731",
+    "source": "edgar"
+  },
+  "insperity": {
+    "sector": "Consulting/Services",
+    "sic": "7363",
+    "source": "edgar"
+  },
+  "integer": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "integra-lifesciences": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "intel": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "interactive-brokers": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "interdigital": {
+    "sector": "Banking/Finance",
+    "sic": "6794",
+    "source": "edgar"
+  },
+  "interface": {
+    "sector": "Consumer/Lifestyle",
+    "sic": "2273",
+    "source": "edgar"
+  },
+  "intuit": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "invesco": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "invivyd": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "ionq": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "iovance-biotherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "iron-mountain": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "jabil": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3672",
+    "source": "edgar"
+  },
+  "jade-biosciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "janux-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "jfrog": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "jumia": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "jushi": {
+    "sector": "Biotech/Pharma",
+    "sic": "2833",
+    "source": "edgar"
+  },
+  "karbon": {
+    "sector": "Banking/Finance",
+    "sic": "6770",
+    "source": "edgar"
+  },
+  "kardigan": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "katapult": {
+    "sector": "Consulting/Services",
+    "sic": "7359",
+    "source": "edgar"
+  },
+  "kbr": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1600",
+    "source": "edgar"
+  },
+  "kepler": {
+    "sector": "Insurance",
+    "sic": "6411",
+    "source": "edgar"
+  },
+  "kimball-electronics": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3672",
+    "source": "edgar"
+  },
+  "kimberlyclark": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2670",
+    "source": "edgar"
+  },
+  "kinetik": {
+    "sector": "Energy/Climate",
+    "sic": "4922",
+    "source": "edgar"
+  },
+  "kiniksapharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "kla": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3827",
+    "source": "edgar"
+  },
+  "klaviyo": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "knightscope": {
+    "sector": "Telecom",
+    "sic": "3669",
+    "source": "edgar"
+  },
+  "knorex": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "korrobio": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "kuraoncology": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "kyivstar": {
+    "sector": "Telecom",
+    "sic": "4812",
+    "source": "edgar"
+  },
+  "kyndryl": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "kyverna-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "labcorp": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "ladder": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "lakeland": {
+    "sector": "Healthcare",
+    "sic": "3842",
+    "source": "edgar"
+  },
+  "lambweston": {
+    "sector": "Food/Beverage",
+    "sic": "2030",
+    "source": "edgar"
+  },
+  "latch": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5072",
+    "source": "edgar"
+  },
+  "leidos": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "lemonade": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "lendingtree": {
+    "sector": "Banking/Finance",
+    "sic": "6163",
+    "source": "edgar"
+  },
+  "lgl": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3679",
+    "source": "edgar"
+  },
+  "liberty": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "life360": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "lifestance-health": {
+    "sector": "Healthcare",
+    "sic": "8000",
+    "source": "edgar"
+  },
+  "lindblad-expeditions": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4700",
+    "source": "edgar"
+  },
+  "livanova": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "liveperson": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "liveramp": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "livewire": {
+    "sector": "Automotive/Mobility",
+    "sic": "3751",
+    "source": "edgar"
+  },
+  "loop": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2800",
+    "source": "edgar"
+  },
+  "lpl-financial": {
+    "sector": "Banking/Finance",
+    "sic": "6200",
+    "source": "edgar"
+  },
+  "lsb": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2810",
+    "source": "edgar"
+  },
+  "lsi": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3640",
+    "source": "edgar"
+  },
+  "lumentum": {
+    "sector": "Telecom",
+    "sic": "3669",
+    "source": "edgar"
+  },
+  "lyft": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "manhattan-associates": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "maplight-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "maravailifesciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "marex": {
+    "sector": "Banking/Finance",
+    "sic": "6200",
+    "source": "edgar"
+  },
+  "marketaxess": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "marqeta": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "marvell": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "masimo": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "mastercard": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "mckesson": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5122",
+    "source": "edgar"
+  },
+  "mclaren": {
+    "sector": "Consulting/Services",
+    "sic": "8742",
+    "source": "edgar"
+  },
+  "mdb": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "medtronic": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "mercury": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3670",
+    "source": "edgar"
+  },
+  "metlife": {
+    "sector": "Insurance",
+    "sic": "6311",
+    "source": "edgar"
+  },
+  "microchip": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "micron": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "microvision": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3679",
+    "source": "edgar"
+  },
+  "mineralys-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "mirumpharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "mks": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3823",
+    "source": "edgar"
+  },
+  "mntn": {
+    "sector": "Media/Entertainment",
+    "sic": "7310",
+    "source": "edgar"
+  },
+  "mongodb": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "montage": {
+    "sector": "Other",
+    "sic": "8880",
+    "source": "edgar"
+  },
+  "moog": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3590",
+    "source": "edgar"
+  },
+  "morningstar": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "mosaic": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2870",
+    "source": "edgar"
+  },
+  "mueller-water-products": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3490",
+    "source": "edgar"
+  },
+  "nasdaq": {
+    "sector": "Banking/Finance",
+    "sic": "6200",
+    "source": "edgar"
+  },
+  "natera": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "national-vision": {
+    "sector": "Healthcare",
+    "sic": "3851",
+    "source": "edgar"
+  },
+  "navient": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "ncino": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "ncratleos": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3578",
+    "source": "edgar"
+  },
+  "nelnet": {
+    "sector": "Fintech",
+    "sic": "6141",
+    "source": "edgar"
+  },
+  "neogen": {
+    "sector": "Biotech/Pharma",
+    "sic": "2835",
+    "source": "edgar"
+  },
+  "nerdwallet": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "nerdy": {
+    "sector": "Education",
+    "sic": "8200",
+    "source": "edgar"
+  },
+  "netgear": {
+    "sector": "Telecom",
+    "sic": "3661",
+    "source": "edgar"
+  },
+  "netskope": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "neuropace": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "news": {
+    "sector": "Media/Entertainment",
+    "sic": "2711",
+    "source": "edgar"
+  },
+  "next-decade": {
+    "sector": "Energy/Climate",
+    "sic": "4923",
+    "source": "edgar"
+  },
+  "nextdoor": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "nexxen": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "niagenbioscience": {
+    "sector": "Biotech/Pharma",
+    "sic": "2833",
+    "source": "edgar"
+  },
+  "nice": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "nmi": {
+    "sector": "Insurance",
+    "sic": "6351",
+    "source": "edgar"
+  },
+  "noah": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "noble": {
+    "sector": "Energy/Climate",
+    "sic": "1381",
+    "source": "edgar"
+  },
+  "nordson": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3569",
+    "source": "edgar"
+  },
+  "northern": {
+    "sector": "Banking/Finance",
+    "sic": "6022",
+    "source": "edgar"
+  },
+  "norwegiancruiseline": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4400",
+    "source": "edgar"
+  },
+  "novanta": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "novartis": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "nvidia": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "oklo": {
+    "sector": "Energy/Climate",
+    "sic": "4911",
+    "source": "edgar"
+  },
+  "okta": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "omada-health": {
+    "sector": "Healthcare",
+    "sic": "8000",
+    "source": "edgar"
+  },
+  "ooma": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "oppfi": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "orange": {
+    "sector": "Telecom",
+    "sic": "4813",
+    "source": "edgar"
+  },
+  "orix": {
+    "sector": "Banking/Finance",
+    "sic": "6159",
+    "source": "edgar"
+  },
+  "orlamining": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1040",
+    "source": "edgar"
+  },
+  "outset-medical": {
+    "sector": "Healthcare",
+    "sic": "3845",
+    "source": "edgar"
+  },
+  "ovintiv": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "pagaya": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "pagerduty": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "palantir": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "papa-john-s": {
+    "sector": "Food/Beverage",
+    "sic": "5812",
+    "source": "edgar"
+  },
+  "parsons": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "patrick": {
+    "sector": "Automotive/Mobility",
+    "sic": "3714",
+    "source": "edgar"
+  },
+  "pattern": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "payoneer": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "paypal": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "paypay": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "pentair": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3550",
+    "source": "edgar"
+  },
+  "penumbra": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "people": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "perceptive": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "permian-resources": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "pfizer": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "pinterest": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "plexus": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3672",
+    "source": "edgar"
+  },
+  "plug-power": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3620",
+    "source": "edgar"
+  },
+  "polaris": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3790",
+    "source": "edgar"
+  },
+  "porch": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "post": {
+    "sector": "Food/Beverage",
+    "sic": "2040",
+    "source": "edgar"
+  },
+  "ppl": {
+    "sector": "Energy/Climate",
+    "sic": "4911",
+    "source": "edgar"
+  },
+  "prf": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "primemedicine": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "profoundmedical": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "prologis": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "protolabs": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3440",
+    "source": "edgar"
+  },
+  "prudential": {
+    "sector": "Insurance",
+    "sic": "6311",
+    "source": "edgar"
+  },
+  "publicstorage": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "pubmatic": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "pulsebiosciences": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "qcr": {
+    "sector": "Banking/Finance",
+    "sic": "6022",
+    "source": "edgar"
+  },
+  "quality": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3590",
+    "source": "edgar"
+  },
+  "qualys": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "quest-diagnostics": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "quinstreet": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "qvc": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "rapid-micro-biosystems": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "rcm": {
+    "sector": "Consulting/Services",
+    "sic": "7363",
+    "source": "edgar"
+  },
+  "ready": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "realty-income": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "recursionpharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "reddit": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "regal-rexnord": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3569",
+    "source": "edgar"
+  },
+  "regenxbio": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "remitly": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "renttherunway": {
+    "sector": "E-commerce/Retail",
+    "sic": "5990",
+    "source": "edgar"
+  },
+  "resmed": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "revvity": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "rezolute": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "rezolveai": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "rigetti-computing": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  },
+  "ringcentral": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "riskified": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "robert-half": {
+    "sector": "Consulting/Services",
+    "sic": "7363",
+    "source": "edgar"
+  },
+  "roblox": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "rocket": {
+    "sector": "Banking/Finance",
+    "sic": "6162",
+    "source": "edgar"
+  },
+  "rocketlab": {
+    "sector": "Aerospace/Defense",
+    "sic": "3760",
+    "source": "edgar"
+  },
+  "rockwellautomation": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3829",
+    "source": "edgar"
+  },
+  "roivantsciences": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "roku": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "rtx": {
+    "sector": "Aerospace/Defense",
+    "sic": "3724",
+    "source": "edgar"
+  },
+  "rubrik": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "rush-street-interactive": {
+    "sector": "Media/Entertainment",
+    "sic": "7990",
+    "source": "edgar"
+  },
+  "rythm": {
+    "sector": "Food/Beverage",
+    "sic": "0700",
+    "source": "edgar"
+  },
+  "saia": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4213",
+    "source": "edgar"
+  },
+  "salesforce": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "samsara": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "sandisk": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3572",
+    "source": "edgar"
+  },
+  "sanofi": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "satellogic": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "scholarrock": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "scholastic": {
+    "sector": "Media/Entertainment",
+    "sic": "2731",
+    "source": "edgar"
+  },
+  "scottsmiraclegro": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2870",
+    "source": "edgar"
+  },
+  "seagate": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3572",
+    "source": "edgar"
+  },
+  "securitize": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "seek": {
+    "sector": "Other",
+    "sic": "8880",
+    "source": "edgar"
+  },
+  "seer": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "sensata": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3823",
+    "source": "edgar"
+  },
+  "senstar": {
+    "sector": "Telecom",
+    "sic": "3669",
+    "source": "edgar"
+  },
+  "septerna": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "servicenow": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "sesai": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "sezzle": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "shakeshack": {
+    "sector": "E-commerce/Retail",
+    "sic": "5810",
+    "source": "edgar"
+  },
+  "sharkninja": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3630",
+    "source": "edgar"
+  },
+  "shutterstock": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "signet-jewelers": {
+    "sector": "E-commerce/Retail",
+    "sic": "5944",
+    "source": "edgar"
+  },
+  "silgan": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3411",
+    "source": "edgar"
+  },
+  "similarweb": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "sinclair": {
+    "sector": "Media/Entertainment",
+    "sic": "4833",
+    "source": "edgar"
+  },
+  "skillsoft": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "slb": {
+    "sector": "Energy/Climate",
+    "sic": "1389",
+    "source": "edgar"
+  },
+  "slideinsurance": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "smithfieldfoods": {
+    "sector": "Food/Beverage",
+    "sic": "2011",
+    "source": "edgar"
+  },
+  "sndl": {
+    "sector": "Biotech/Pharma",
+    "sic": "2833",
+    "source": "edgar"
+  },
+  "snowflake": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "sofi": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "solid-power": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "solv-energy": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1600",
+    "source": "edgar"
+  },
+  "spar": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "spectral": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "sphereentertainment": {
+    "sector": "Media/Entertainment",
+    "sic": "7900",
+    "source": "edgar"
+  },
+  "spire": {
+    "sector": "Energy/Climate",
+    "sic": "4924",
+    "source": "edgar"
+  },
+  "sportradar": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "sprinklr": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "sproutsocial": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "spyretherapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "standardbiotools": {
+    "sector": "Biotech/Pharma",
+    "sic": "3826",
+    "source": "edgar"
+  },
+  "statestreet": {
+    "sector": "Banking/Finance",
+    "sic": "6022",
+    "source": "edgar"
+  },
+  "stepstone": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "stitchfix": {
+    "sector": "E-commerce/Retail",
+    "sic": "5961",
+    "source": "edgar"
+  },
+  "stoneridge": {
+    "sector": "Automotive/Mobility",
+    "sic": "3714",
+    "source": "edgar"
+  },
+  "strathconaresources": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "stryker": {
+    "sector": "Healthcare",
+    "sic": "3841",
+    "source": "edgar"
+  },
+  "stubhub": {
+    "sector": "Media/Entertainment",
+    "sic": "7990",
+    "source": "edgar"
+  },
+  "sui": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "sunpower": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1700",
+    "source": "edgar"
+  },
+  "sunrun": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3690",
+    "source": "edgar"
+  },
+  "swarmer": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "sweetgreen": {
+    "sector": "Food/Beverage",
+    "sic": "5812",
+    "source": "edgar"
+  },
+  "swisscom": {
+    "sector": "Telecom",
+    "sic": "4813",
+    "source": "edgar"
+  },
+  "synchronyfinancial": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "syndaxpharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "sysco": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5140",
+    "source": "edgar"
+  },
+  "system1": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "t1-energy": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3674",
+    "source": "edgar"
+  },
+  "taiwan": {
+    "sector": "Other",
+    "sic": "0000",
+    "source": "edgar"
+  },
+  "talon": {
+    "sector": "Banking/Finance",
+    "sic": "6770",
+    "source": "edgar"
+  },
+  "tanger": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "target": {
+    "sector": "E-commerce/Retail",
+    "sic": "5331",
+    "source": "edgar"
+  },
+  "taskus": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "tc-energy": {
+    "sector": "Energy/Climate",
+    "sic": "4922",
+    "source": "edgar"
+  },
+  "telesat": {
+    "sector": "Telecom",
+    "sic": "4899",
+    "source": "edgar"
+  },
+  "telos": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "ten": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "terex": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3537",
+    "source": "edgar"
+  },
+  "terrascend": {
+    "sector": "Food/Beverage",
+    "sic": "0100",
+    "source": "edgar"
+  },
+  "tetra": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "thor": {
+    "sector": "Automotive/Mobility",
+    "sic": "3716",
+    "source": "edgar"
+  },
+  "titan": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3312",
+    "source": "edgar"
+  },
+  "toast": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "topbuild": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1700",
+    "source": "edgar"
+  },
+  "totalenergies": {
+    "sector": "Energy/Climate",
+    "sic": "1311",
+    "source": "edgar"
+  },
+  "townsquaremedia": {
+    "sector": "Media/Entertainment",
+    "sic": "4832",
+    "source": "edgar"
+  },
+  "tpg": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "trade-desk": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "travelers": {
+    "sector": "Insurance",
+    "sic": "6331",
+    "source": "edgar"
+  },
+  "travelzoo": {
+    "sector": "Media/Entertainment",
+    "sic": "7310",
+    "source": "edgar"
+  },
+  "travere-therapeutics": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "trimble": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3829",
+    "source": "edgar"
+  },
+  "trinity": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3743",
+    "source": "edgar"
+  },
+  "tripadvisor": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "trupanion": {
+    "sector": "Healthcare",
+    "sic": "6324",
+    "source": "edgar"
+  },
+  "tss": {
+    "sector": "Consulting/Services",
+    "sic": "8742",
+    "source": "edgar"
+  },
+  "tutorperini": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "1540",
+    "source": "edgar"
+  },
+  "twilio": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "twist-bioscience": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "tysonfoods": {
+    "sector": "Food/Beverage",
+    "sic": "2015",
+    "source": "edgar"
+  },
+  "u-haul": {
+    "sector": "Travel/Hospitality",
+    "sic": "7510",
+    "source": "edgar"
+  },
+  "ubiquiti": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "uipath": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "ultragenyxpharmaceutical": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "unilever": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "2840",
+    "source": "edgar"
+  },
+  "unisys": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "unum": {
+    "sector": "Insurance",
+    "sic": "6321",
+    "source": "edgar"
+  },
+  "unusual-machines": {
+    "sector": "Telecom",
+    "sic": "3663",
+    "source": "edgar"
+  },
+  "upbound": {
+    "sector": "Consulting/Services",
+    "sic": "7359",
+    "source": "edgar"
+  },
+  "upstart": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "upwork": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "us-foods": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "5140",
+    "source": "edgar"
+  },
+  "us-physical-therapy": {
+    "sector": "Healthcare",
+    "sic": "8000",
+    "source": "edgar"
+  },
+  "valmont": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3440",
+    "source": "edgar"
+  },
+  "vaxcyte": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "veeva": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "velo3d": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3559",
+    "source": "edgar"
+  },
+  "ventas": {
+    "sector": "RealEstate/PropTech",
+    "sic": "6798",
+    "source": "edgar"
+  },
+  "venture": {
+    "sector": "Energy/Climate",
+    "sic": "4924",
+    "source": "edgar"
+  },
+  "veracyte": {
+    "sector": "Healthcare",
+    "sic": "8071",
+    "source": "edgar"
+  },
+  "veralto": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3825",
+    "source": "edgar"
+  },
+  "verastem": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "verra-mobility": {
+    "sector": "Logistics/SupplyChain",
+    "sic": "4700",
+    "source": "edgar"
+  },
+  "versabank": {
+    "sector": "Banking/Finance",
+    "sic": "6029",
+    "source": "edgar"
+  },
+  "vertex": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "vertical-aerospace": {
+    "sector": "Aerospace/Defense",
+    "sic": "3721",
+    "source": "edgar"
+  },
+  "viatris": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "victory": {
+    "sector": "Banking/Finance",
+    "sic": "6282",
+    "source": "edgar"
+  },
+  "vida": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "vir-biotechnology": {
+    "sector": "Biotech/Pharma",
+    "sic": "2836",
+    "source": "edgar"
+  },
+  "virtu-financial": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "visa": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "vitalfarms": {
+    "sector": "Food/Beverage",
+    "sic": "2000",
+    "source": "edgar"
+  },
+  "vsmedia": {
+    "sector": "Media/Entertainment",
+    "sic": "7311",
+    "source": "edgar"
+  },
+  "vtex": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "walmart": {
+    "sector": "E-commerce/Retail",
+    "sic": "5331",
+    "source": "edgar"
+  },
+  "warner-bros-discovery": {
+    "sector": "Media/Entertainment",
+    "sic": "4841",
+    "source": "edgar"
+  },
+  "waste-connections": {
+    "sector": "Energy/Climate",
+    "sic": "4953",
+    "source": "edgar"
+  },
+  "waste-management": {
+    "sector": "Energy/Climate",
+    "sic": "4953",
+    "source": "edgar"
+  },
+  "watts-water": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3490",
+    "source": "edgar"
+  },
+  "wealthfront": {
+    "sector": "Fintech",
+    "sic": "6199",
+    "source": "edgar"
+  },
+  "weis-markets": {
+    "sector": "E-commerce/Retail",
+    "sic": "5411",
+    "source": "edgar"
+  },
+  "wendys": {
+    "sector": "E-commerce/Retail",
+    "sic": "5810",
+    "source": "edgar"
+  },
+  "weride": {
+    "sector": "Software/SaaS",
+    "sic": "7373",
+    "source": "edgar"
+  },
+  "western-union": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "westerndigital": {
+    "sector": "Semiconductors/Hardware",
+    "sic": "3572",
+    "source": "edgar"
+  },
+  "williams": {
+    "sector": "Energy/Climate",
+    "sic": "4922",
+    "source": "edgar"
+  },
+  "wisdomtree": {
+    "sector": "Banking/Finance",
+    "sic": "6211",
+    "source": "edgar"
+  },
+  "wise": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "workday": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "workiva": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "wpp": {
+    "sector": "Media/Entertainment",
+    "sic": "7311",
+    "source": "edgar"
+  },
+  "x-energy": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3443",
+    "source": "edgar"
+  },
+  "xcelenergy": {
+    "sector": "Energy/Climate",
+    "sic": "4931",
+    "source": "edgar"
+  },
+  "xenon-pharmaceuticals": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "xometry": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "xpeng": {
+    "sector": "Automotive/Mobility",
+    "sic": "3711",
+    "source": "edgar"
+  },
+  "yeti": {
+    "sector": "Manufacturing/Industrial",
+    "sic": "3949",
+    "source": "edgar"
+  },
+  "yext": {
+    "sector": "Software/SaaS",
+    "sic": "7374",
+    "source": "edgar"
+  },
+  "zenvia": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "zeta": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "zillow": {
+    "sector": "Consulting/Services",
+    "sic": "7389",
+    "source": "edgar"
+  },
+  "ziprecruiter": {
+    "sector": "Software/SaaS",
+    "sic": "7370",
+    "source": "edgar"
+  },
+  "zoetis": {
+    "sector": "Biotech/Pharma",
+    "sic": "2834",
+    "source": "edgar"
+  },
+  "zoominfo": {
+    "sector": "Software/SaaS",
+    "sic": "7372",
+    "source": "edgar"
+  },
+  "zscaler": {
+    "sector": "Software/SaaS",
+    "sic": "7371",
+    "source": "edgar"
+  }
+}
