@@ -51,10 +51,18 @@ __all__ = ["SuccessFactorsProvider"]
 
 PER_PAGE = 25  # SuccessFactors fixes the search page at 25 rows
 _SEARCH = "https://{host}/{siteid}/search/?q=&startrow={start}"
-# A SuccessFactors job URL: /{siteid}/job/{slug}/{numericId}/  (the numeric id is decisive).
-_JOB_RE = re.compile(r"^/([^/]+)/job/.+/(\d+)/?$")
+# A SuccessFactors job URL: /{siteid}/job/{slug}/{numericId}/ — the LONG numeric id (SF ids are
+# 9-10 digits) is the decisive, SF-specific signal.
+_JOB_RE = re.compile(r"^/([^/]+)/job/.+/(\d{6,})/?$")
 # A site landing link we can mine the siteid from: /{siteid}/search or /{siteid}/job/.../id/
 _SITEID_RE = re.compile(r'href="/([a-z0-9][a-z0-9-]*)/(?:search|job)/', re.IGNORECASE)
+# First-segment values that are locale/section markers, NOT an SF siteid — a bare
+# ``/{seg}/search/`` is too generic (apple ``/en-us/search``, amazon ``/en``, ibm ``/careers``),
+# so the /search/ shape only matches when the segment isn't one of these.
+_GENERIC_SEG = frozenset({
+    "en", "en-us", "en-gb", "de", "fr", "es", "it", "ja", "zh", "pt", "nl", "global",
+    "careers", "career", "search", "jobs", "job", "us", "uk", "content",
+})
 
 
 @register("successfactors")
@@ -80,7 +88,7 @@ class SuccessFactorsProvider(BaseProvider):
         if m:
             return f"{host}|{m.group(1).lower()}"
         seg = path.strip("/").split("/")
-        if len(seg) >= 2 and seg[1] == "search" and seg[0]:
+        if len(seg) >= 2 and seg[1] == "search" and seg[0] and seg[0].lower() not in _GENERIC_SEG:
             return f"{host}|{seg[0].lower()}"
         return None
 

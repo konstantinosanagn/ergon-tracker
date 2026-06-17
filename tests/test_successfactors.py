@@ -64,11 +64,17 @@ def test_matches_job_and_search_urls() -> None:
         p.matches("https://careers.ey.com/ey/job/Mumbai-Analyst/1395167233/") == "careers.ey.com|ey"
     )
     assert p.matches("https://careers.ey.com/ey/search/?q=audit") == "careers.ey.com|ey"
-    assert p.matches("https://jobs.sap.com/sap/job/Berlin-Dev/123/") == "jobs.sap.com|sap"
+    assert p.matches("https://jobs.sap.com/sap/job/Berlin-Dev/1381730633/") == "jobs.sap.com|sap"
     # non-SF shapes don't match
     assert p.matches("https://boards.greenhouse.io/airbnb") is None
     assert p.matches("https://careers.ey.com/ey/about") is None
     assert p.matches("https://example.com") is None
+    # generic locale/section first-segments must NOT be mistaken for a siteid
+    assert p.matches("https://jobs.apple.com/en-us/search?...") is None
+    assert p.matches("https://www.amazon.jobs/en/search") is None
+    assert p.matches("https://www.ibm.com/careers/search") is None
+    # a /job/ URL with a short (non-SF) id is rejected; only long numeric ids match
+    assert p.matches("https://x.com/foo/job/bar/42/") is None
 
 
 async def test_fetch_paginates_and_parses() -> None:
