@@ -152,6 +152,9 @@ class JobPosting(BaseModel):
     # Relevance score for the current query (set by the ranking layer; None when unranked).
     # Higher is more relevant. Transient/query-dependent — not part of the stored posting.
     score: float | None = None
+    # H-1B visa-sponsor signal: True if the employer appears in DoL LCA certified-filing data.
+    # None = unknown (absence is NOT proof a company doesn't sponsor — the data is historical).
+    visa_sponsor: bool | None = None
 
     @classmethod
     def create(
@@ -209,6 +212,8 @@ class SearchQuery(BaseModel):
     sector: str | None = None
     # When filtering by sector, also keep postings with no sector (default: drop them).
     include_unknown_sector: bool = False
+    # When True, keep only employers known to sponsor H-1B visas (DoL LCA data). None = no filter.
+    visa_sponsor: bool | None = None
     salary_min: float | None = None
     salary_max: float | None = None
     salary_currency: str | None = None
@@ -319,6 +324,10 @@ class SearchQuery(BaseModel):
             and self.sector.lower() not in (job.sector or "").lower()
             and not (self.include_unknown_sector and not job.sector)
         ):
+            return False
+
+        # Visa-sponsor filter: when True, keep only employers with positive H-1B evidence.
+        if self.visa_sponsor is True and job.visa_sponsor is not True:
             return False
 
         if not self._geo_ok(job):

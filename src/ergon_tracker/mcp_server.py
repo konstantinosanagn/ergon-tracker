@@ -52,6 +52,7 @@ def _job_to_dict(job: JobPosting) -> dict[str, Any]:
         "posted_at": job.posted_at.isoformat() if job.posted_at else None,
         "found_on": [p.source for p in job.provenance],
         "score": round(job.score, 4) if job.score is not None else None,
+        "visa_sponsor": job.visa_sponsor,
     }
 
 
@@ -70,6 +71,7 @@ async def search_jobs(
     city: str | None = None,
     salary_min: float | None = None,
     salary_max: float | None = None,
+    visa_sponsor: bool = False,
     infer_level_from_experience: bool = False,
     semantic: bool = False,
     limit: int = 20,
@@ -99,6 +101,8 @@ async def search_jobs(
         include_unknown_sector: keep postings with no detected sector.
         country / city: structured location filter.
         salary_min / salary_max: compensation range (jobs without salary data are kept).
+        visa_sponsor: if true, keep only employers known to have sponsored H-1B visas (from US
+            DoL LCA certified-filing data). Each job also reports a `visa_sponsor` flag.
         limit: max postings to return after dedup + ranking (default 20).
 
     Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
@@ -125,6 +129,7 @@ async def search_jobs(
         city=city,
         salary_min=salary_min,
         salary_max=salary_max,
+        visa_sponsor=True if visa_sponsor else None,
         infer_level_from_experience=infer_level_from_experience,
         semantic=semantic,
         limit=limit,

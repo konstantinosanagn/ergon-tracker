@@ -81,6 +81,9 @@ def search(
     country: str | None = typer.Option(None, "--country"),
     salary_min: float | None = typer.Option(None, "--salary-min"),
     salary_max: float | None = typer.Option(None, "--salary-max"),
+    visa_sponsor: bool = typer.Option(
+        False, "--visa-sponsor", help="only employers known to sponsor H-1B (DoL LCA data)"
+    ),
     infer_level: bool = typer.Option(
         False,
         "--infer-level",
@@ -111,6 +114,7 @@ def search(
             country=country,
             salary_min=salary_min,
             salary_max=salary_max,
+            visa_sponsor=True if visa_sponsor else None,
             infer_level_from_experience=infer_level,
             semantic=semantic,
             limit=limit,
