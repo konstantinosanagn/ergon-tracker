@@ -38,18 +38,96 @@ __all__ = [
 # leading-token fallback high-precision (measured: 6.7% registry coverage, no observed bad hits).
 _DESCRIPTORS = frozenset(
     {
-        "inc", "incorporated", "llc", "ltd", "limited", "corp", "corporation", "co", "company",
-        "plc", "lp", "llp", "pbc", "opco", "holding", "holdings", "group", "technologies",
-        "technology", "tech", "labs", "laboratories", "systems", "software", "solutions",
-        "services", "service", "financial", "capital", "partners", "ventures", "pharmaceuticals",
-        "pharma", "sciences", "science", "health", "healthcare", "usa", "us", "na", "america",
-        "american", "global", "international", "intl", "worldwide", "ai", "digital", "enterprises",
-        "industries", "networks", "communications", "consulting", "bank", "insurance", "studios",
-        "media", "brands", "retail", "stores", "motors", "foods", "energy", "power", "biosciences",
-        "therapeutics", "robotics", "security", "cloud", "data", "analytics", "payments",
-        "business", "com",
+        "inc",
+        "incorporated",
+        "llc",
+        "ltd",
+        "limited",
+        "corp",
+        "corporation",
+        "co",
+        "company",
+        "plc",
+        "lp",
+        "llp",
+        "pbc",
+        "opco",
+        "holding",
+        "holdings",
+        "group",
+        "technologies",
+        "technology",
+        "tech",
+        "labs",
+        "laboratories",
+        "systems",
+        "software",
+        "solutions",
+        "services",
+        "service",
+        "financial",
+        "capital",
+        "partners",
+        "ventures",
+        "pharmaceuticals",
+        "pharma",
+        "sciences",
+        "science",
+        "health",
+        "healthcare",
+        "usa",
+        "us",
+        "na",
+        "america",
+        "american",
+        "global",
+        "international",
+        "intl",
+        "worldwide",
+        "ai",
+        "digital",
+        "enterprises",
+        "industries",
+        "networks",
+        "communications",
+        "consulting",
+        "bank",
+        "insurance",
+        "studios",
+        "media",
+        "brands",
+        "retail",
+        "stores",
+        "motors",
+        "foods",
+        "energy",
+        "power",
+        "biosciences",
+        "therapeutics",
+        "robotics",
+        "security",
+        "cloud",
+        "data",
+        "analytics",
+        "payments",
+        "business",
+        "com",
     }
 )
+
+
+def _to_int(value: object) -> int:
+    """Best-effort int from an on-disk JSON value (int/float/numeric str), else 0."""
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, (int, float)):
+        return int(value)
+    if isinstance(value, str):
+        try:
+            return int(value)
+        except ValueError:
+            return 0
+    return 0
 
 
 class SponsorIndex:
@@ -112,11 +190,11 @@ class SponsorIndex:
         """
         q = normalize_company(query) if query else ""
         rows = [
-            {"name": name, "filings": int(rec.get("n") or 0), "last_filed": rec.get("last")}
+            {"name": name, "filings": _to_int(rec.get("n")), "last_filed": rec.get("last")}
             for name, rec in self._records.items()
             if not q or q in name
         ]
-        rows.sort(key=lambda r: -int(r["filings"]))  # type: ignore[arg-type]
+        rows.sort(key=lambda r: -_to_int(r["filings"]))
         return rows[:limit]
 
     def __len__(self) -> int:

@@ -33,12 +33,19 @@ def test_workday_rejects_wrong_tenant() -> None:
 def test_nonworkday_uses_display_company_name() -> None:
     # display name confirms the sponsor
     assert adjudicate("infosys", "smartrecruiters", "Infosys4", "Infosys", live=True)[0] is True
-    assert adjudicate("hcl america", "smartrecruiters", "HCLAmericaInc", "HCL America Inc",
-                      live=True)[0] is True
+    assert (
+        adjudicate("hcl america", "smartrecruiters", "HCLAmericaInc", "HCL America Inc", live=True)[
+            0
+        ]
+        is True
+    )
     # display name contradicts -> reject (MrApple board reads "Mr Apple", not Apple)
     assert adjudicate("apple", "smartrecruiters", "MrApple", "Mr Apple", live=True)[0] is False
     # a board literally named "Apple Bank" must not satisfy sponsor "apple"
-    assert adjudicate("apple", "workable", "applebank", "Apple Bank for Savings", live=True)[0] is False
+    assert (
+        adjudicate("apple", "workable", "applebank", "Apple Bank for Savings", live=True)[0]
+        is False
+    )
 
 
 def test_board_of_maps_urls() -> None:
@@ -49,9 +56,16 @@ def test_board_of_maps_urls() -> None:
 
 def test_to_candidate_splits_workday() -> None:
     assert to_candidate("greenhouse", "stripe") == {
-        "company": "stripe", "ats": "greenhouse", "token": "stripe", "domain": None,
+        "company": "stripe",
+        "ats": "greenhouse",
+        "token": "stripe",
+        "domain": None,
     }
     assert to_candidate("workday", "google|wd501|GOCJobs") == {
-        "company": "google", "ats": "workday", "tenant": "google", "wd": "wd501",
-        "site": "GOCJobs", "domain": None,
+        "company": "google",
+        "ats": "workday",
+        "tenant": "google",
+        "wd": "wd501",
+        "site": "GOCJobs",
+        "domain": None,
     }

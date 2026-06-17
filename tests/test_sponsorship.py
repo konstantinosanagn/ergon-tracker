@@ -40,7 +40,10 @@ def test_detect_sponsorship(text: str | None, expected: bool | None) -> None:
 
 def _job(desc: str | None) -> JobPosting:
     return JobPosting.create(
-        source="greenhouse", source_job_id="1", company="Acme", title="Engineer",
+        source="greenhouse",
+        source_job_id="1",
+        company="Acme",
+        title="Engineer",
         description_text=desc,
     )
 

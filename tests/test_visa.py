@@ -27,9 +27,16 @@ def _idx(**recs: dict[str, object]) -> SponsorIndex:
 # --- ETL parsing (pure, no workbook needed) ---------------------------------
 def test_sponsors_from_rows_keeps_certified_normalizes_and_dates() -> None:
     rows = [
-        {"EMPLOYER_NAME": "Stripe, Inc.", "CASE_STATUS": "Certified", "DECISION_DATE": "2025-01-10"},
-        {"EMPLOYER_NAME": "STRIPE INC", "CASE_STATUS": "Certified - Withdrawn",
-         "DECISION_DATE": "2025-06-30"},  # same employer, later date
+        {
+            "EMPLOYER_NAME": "Stripe, Inc.",
+            "CASE_STATUS": "Certified",
+            "DECISION_DATE": "2025-01-10",
+        },
+        {
+            "EMPLOYER_NAME": "STRIPE INC",
+            "CASE_STATUS": "Certified - Withdrawn",
+            "DECISION_DATE": "2025-06-30",
+        },  # same employer, later date
         {"EMPLOYER_NAME": "Denied Co", "CASE_STATUS": "Denied", "DECISION_DATE": "2025-05-01"},
         {"EMPLOYER_NAME": "Acme GmbH", "CASE_STATUS": "CERTIFIED", "DECISION_DATE": "2024-11-02"},
         {"EMPLOYER_NAME": "", "CASE_STATUS": "Certified", "DECISION_DATE": "2025-01-01"},
@@ -42,8 +49,13 @@ def test_sponsors_from_rows_keeps_certified_normalizes_and_dates() -> None:
 
 
 def test_sponsors_from_rows_handles_alt_header_and_us_dates() -> None:
-    rows = [{"EMPLOYER_LEGAL_BUSINESS_NAME": "Globex LLC", "case_status": "Certified",
-             "RECEIVED_DATE": "03/15/2025"}]
+    rows = [
+        {
+            "EMPLOYER_LEGAL_BUSINESS_NAME": "Globex LLC",
+            "case_status": "Certified",
+            "RECEIVED_DATE": "03/15/2025",
+        }
+    ]
     out = sponsors_from_rows(rows)
     assert out["globex"]["n"] == 1
     assert out["globex"]["last"] == "2025-03-15"  # M/D/Y parsed to ISO
