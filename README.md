@@ -1,10 +1,10 @@
 # ergon-tracker
 
 **A unified, free, reliable job-search engine in one Python package.** It fetches live
-postings across **22 sources** (company ATS feeds + aggregators), canonicalizes them into one
+postings across **30+ sources** (company ATS feeds + aggregators), canonicalizes them into one
 schema, **deduplicates the same job posted on many sites**, enriches each posting (level,
-location, salary, years-of-experience, sector), and **ranks results by relevance** — with an
-SDK, a CLI, and an **MCP server** so humans *and* AI agents can use it.
+location, salary, years-of-experience, sector, **H-1B visa sponsorship**), and **ranks results
+by relevance** — with an SDK, a CLI, and an **MCP server** so humans *and* AI agents can use it.
 
 > Package name note: the project / repo / install name is **`ergon-tracker`**; the Python
 > import is **`ergon_tracker`**; the commands are **`ergon-tracker`** and **`ergon-tracker-mcp`**.
@@ -23,11 +23,14 @@ free OSS tool was *reliable + unified + deduped + ergonomic* at once. ergon-trac
 - ✅ **Filters are real and strong.** Level, location (country/city), salary range, years of
   experience, sector, remote, employment type, posting recency — all typed and tested.
 - ✅ **Companies are easy to find & search.** Point at a domain (`stripe.com`) and it auto-detects
-  the ATS and pulls that company's roles. A **41,988-company** registry ships in the box.
+  the ATS and pulls that company's roles. A **46k-company** registry ships in the box.
 - ✅ **Search by natural language.** Lexical **BM25** ranking by default (zero deps); optional
   **semantic** (embeddings) ranking for meaning/synonyms.
-- ✅ **Agent-ready.** An MCP server exposes search/resolve/list as tools, with relevance `score`s
-  and structured fields, so an LLM can query it the way it expects.
+- ✅ **Visa-sponsorship aware.** Tags each job with whether the **employer is a known H-1B
+  sponsor** (from US DoL LCA data, with the most-recent filing date) and whether the **posting
+  itself** offers or refuses sponsorship — both filterable. Built for international applicants.
+- ✅ **Agent-ready.** An MCP server exposes search / sponsors / resolve / list as tools, with
+  relevance `score`s and structured fields, so an LLM can query it the way it expects.
 
 Everything here is **free** — no paid APIs required. Two optional sources (Adzuna, USAJOBS) use
 free API keys you provide.
@@ -99,15 +102,18 @@ async with AsyncErgonTracker() as et:
 ```bash
 ergon-tracker search "engineer" --country Germany --level senior --remote --limit 20
 ergon-tracker search "deep learning" --semantic            # embedding-ranked
+ergon-tracker search "backend" --visa-sponsor --sponsorship # known H-1B sponsor + posting doesn't refuse
+ergon-tracker sponsors "stripe"                             # browse known H-1B sponsors + last-filed date
 ergon-tracker resolve stripe.com                            # -> {ats: greenhouse, token: stripe}
-ergon-tracker sources                                       # list all 22 providers
+ergon-tracker sources                                       # list every registered provider
 ergon-tracker search "backend" --json | jq                 # machine-readable output
 ```
 
 ### MCP (for Claude / AI agents)
 
 ```bash
-ergon-tracker-mcp        # stdio MCP server exposing search_jobs / resolve_company / list_sources
+# stdio MCP server exposing: search_jobs / list_h1b_sponsors / resolve_company / list_sources
+ergon-tracker-mcp
 ```
 
 See **[docs/mcp-quickstart.md](docs/mcp-quickstart.md)** for the Claude Desktop / Claude Code
@@ -117,7 +123,7 @@ config block.
 
 ## Optional API keys (Adzuna & USAJOBS)
 
-Two of the 22 sources are free keyed search APIs. Add your keys to a `.env` file in the repo
+Two sources (Adzuna, USAJOBS) are free keyed search APIs. Add your keys to a `.env` file in the repo
 root (gitignored — never committed). Copy `.env.example` to get started:
 
 ```bash
@@ -138,15 +144,48 @@ keys at [developer.adzuna.com](https://developer.adzuna.com/) and
 
 ---
 
-## Sources (22)
+## Sources (30+ and growing)
 
-**Company ATS feeds (14):** Greenhouse · Lever · Ashby · Workday · SmartRecruiters · Workable ·
-Recruitee · Personio · BambooHR · Breezy · Teamtailor · join.com · Rippling · Pinpoint
+Run `ergon-tracker sources` for the live, exact list. Current coverage:
+
+**Company ATS feeds (20+):** Greenhouse · Lever · Ashby · Workday · SmartRecruiters · Workable ·
+Recruitee · Personio · BambooHR · Breezy · Teamtailor · join.com · Rippling · Pinpoint ·
+SuccessFactors · Oracle Recruiting Cloud · Oracle Taleo · iCIMS · Eightfold · Avature · JazzHR
 
 **Aggregators (8):** RemoteOK · Remotive · Arbeitnow · Jobicy · Himalayas · TheMuse ·
 **Adzuna** (keyed) · **USAJOBS** (keyed)
 
-ATS feeds are the authoritative source during dedup; aggregators broaden coverage.
+ATS feeds are the authoritative source during dedup; aggregators broaden coverage. The
+enterprise ATSes (SuccessFactors, Oracle, iCIMS, …) were added to reach the large H-1B-sponsor
+employers (e.g. EY, SAP) that smaller ATSes miss.
+
+---
+
+## Visa sponsorship (for international applicants)
+
+Two independent, deterministic signals — both surfaced on every job and filterable:
+
+- **`visa_sponsor`** — is the *employer* a known H-1B sponsor? Matched against **76k employers**
+  distilled from US DoL OFLC LCA certified filings (FY2025 + FY2026), with **`visa_last_filed`**
+  (most-recent filing date) so you can tell active sponsors from ones that went quiet.
+- **`sponsorship_offered`** — what the *posting text* says: `True` ("visa sponsorship available"),
+  `False` ("must not require sponsorship now or in the future"), or `None` (not stated — common).
+
+```python
+# only known H-1B sponsors, and hide postings that explicitly refuse sponsorship:
+res = search("software engineer", visa_sponsor=True, sponsorship_offered=True, limit=20)
+for j in res.jobs:
+    print(j.company, j.visa_sponsor, j.visa_last_filed, j.sponsorship_offered)
+```
+
+```bash
+ergon-tracker sponsors            # biggest known H-1B sponsors + last-filed date
+ergon-tracker sponsors "databricks"
+```
+
+Honesty note: `visa_sponsor` is *positive evidence only* (historical DoL data; absence ≠ "doesn't
+sponsor"), and `sponsorship_offered` is regex over JD text (precise on explicit phrasing, but most
+postings say nothing → `None`). Treat `None` as **unknown**, not no.
 
 ---
 

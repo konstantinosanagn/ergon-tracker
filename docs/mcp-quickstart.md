@@ -7,7 +7,7 @@ resolve a company's ATS, and list sources — as native tools.
 
 | Tool | What it does |
 |---|---|
-| `search_jobs` | Unified, deduped, relevance-ranked search across all 22 sources. Accepts `keywords`, `location`, `remote`, `companies`, `sources`, `level`, `sector`, `country`, `city`, `salary_min/max`, `visa_sponsor`, `semantic`, `limit`. Returns compact jobs each with a relevance `score` and `visa_sponsor`/`visa_last_filed`, plus per-source `health`. |
+| `search_jobs` | Unified, deduped, relevance-ranked search across 30+ sources. Accepts `keywords`, `location`, `remote`, `companies`, `sources`, `level`, `sector`, `country`, `city`, `salary_min/max`, `visa_sponsor`, `sponsorship_offered`, `semantic`, `limit`. Returns compact jobs each with a relevance `score`, `visa_sponsor`/`visa_last_filed`, and `sponsorship_offered`, plus per-source `health`. |
 | `list_h1b_sponsors` | Browse employers known to sponsor H-1B visas (US DoL LCA data), ranked by filing volume, with the most-recent filing date. Covers far more employers than we can fetch jobs for. |
 | `resolve_company` | Detect which ATS a domain/careers URL uses and its board token. |
 | `list_sources` | List registered providers + the bundled registry size. |
@@ -146,6 +146,19 @@ APIs — so you can't accidentally trigger the slow ~42k-company ATS crawl.
 
 **🏛️ Federal (USAJOBS)**
 - "Find senior data scientist federal jobs in Washington DC."
+
+**🛂 Visa sponsorship (for international applicants)**
+- "Find software roles at companies that sponsor H-1B and hide postings that say no sponsorship."
+  *(`visa_sponsor=true` + `sponsorship_offered=true`)*
+- "Which of Stripe, Ramp, and Databricks sponsor H-1B, and when did they last file?"
+  *(`list_h1b_sponsors` / `visa_last_filed`)*
+- "Show the biggest H-1B sponsors in fintech." *(`list_h1b_sponsors`)*
+
+**📄 From a résumé**
+- "Here's my résumé: [paste]. Find relevant roles that sponsor H-1B, ranked by fit."
+  The agent extracts your skills/level/location, calls `search_jobs` (with `semantic=true`,
+  `visa_sponsor=true`), then ranks the results against your résumé. (The MCP doesn't read files —
+  paste the text into the chat; the agent does the matching.)
 
 ### Tips so the agent stays fast and answers cleanly
 
