@@ -21,13 +21,24 @@ import math
 from functools import lru_cache
 from typing import TYPE_CHECKING
 
+from .config import get_env
+
 if TYPE_CHECKING:
     from .models import JobPosting
 
 __all__ = ["SemanticReranker", "get_semantic_reranker", "DEFAULT_MODEL"]
 
-# Small, fast, good-quality English embedding model (CPU/ONNX). Override via get_semantic_reranker.
+# Default: BAAI/bge-small-en-v1.5 — ~67 MB on disk, 384-dim. fastembed already ships it as a
+# quantized ONNX build (quantization is on by default — that's the whole point of fastembed over
+# sentence-transformers/PyTorch), so there is no separate "quantize it ourselves" step.
+# Two free, no-accuracy-loss tuning knobs are exposed via env / .env instead:
+#   ERGON_SEMANTIC_MODEL   — swap in a smaller/quantized variant (e.g. a *Q model) or a bigger one
+#   ERGON_SEMANTIC_THREADS — ONNX Runtime intra-op threads (cap CPU use, or raise for throughput)
 DEFAULT_MODEL = "BAAI/bge-small-en-v1.5"
+
+
+def _default_model() -> str:
+    return get_env("ERGON_SEMANTIC_MODEL") or DEFAULT_MODEL
 
 # How much of each posting to embed. Title carries the most signal; we prepend it and add a
 # bounded slice of the description so long postings don't dominate or slow things down.
@@ -59,8 +70,9 @@ class SemanticReranker:
     model is created lazily on first ``rerank`` call so constructing this object is cheap.
     """
 
-    def __init__(self, model_name: str = DEFAULT_MODEL) -> None:
-        self.model_name = model_name
+    def __init__(self, model_name: str | None = None, threads: int | None = None) -> None:
+        self.model_name = model_name or _default_model()
+        self.threads = threads
         self._model = None
 
     def _ensure_model(self) -> None:
@@ -72,7 +84,11 @@ class SemanticReranker:
             raise ImportError(
                 "Semantic search needs the optional extra: pip install 'ergon-tracker[semantic]'"
             ) from exc
-        self._model = TextEmbedding(model_name=self.model_name)
+        kwargs: dict[str, object] = {"model_name": self.model_name}
+        threads = self.threads if self.threads is not None else get_env("ERGON_SEMANTIC_THREADS")
+        if threads:
+            kwargs["threads"] = int(threads)
+        self._model = TextEmbedding(**kwargs)
 
     def rerank(self, query: str, jobs: list[JobPosting]) -> list[float]:
         if not jobs:
@@ -87,10 +103,11 @@ class SemanticReranker:
 
 
 @lru_cache(maxsize=4)
-def get_semantic_reranker(model_name: str = DEFAULT_MODEL) -> SemanticReranker:
+def get_semantic_reranker(model_name: str | None = None) -> SemanticReranker:
     """Return a memoized :class:`SemanticReranker` (one model load per process, per model name).
 
-    Raises ``ImportError`` with install guidance the first time it embeds if the ``semantic``
-    extra is not installed.
+    ``model_name=None`` resolves to ``ERGON_SEMANTIC_MODEL`` or :data:`DEFAULT_MODEL`. Raises
+    ``ImportError`` with install guidance the first time it embeds if the ``semantic`` extra is
+    not installed.
     """
     return SemanticReranker(model_name)
