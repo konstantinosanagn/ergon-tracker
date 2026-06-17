@@ -47,6 +47,8 @@ _ATS_PROVIDERS = frozenset(
         "oracle",
         "taleo",
         "icims",
+        "avature",
+        "jazzhr",
     }
 )
 _AGGREGATORS = frozenset(

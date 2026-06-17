@@ -26,6 +26,8 @@ SUPPORTED_ATS = {
     "oracle",
     "taleo",
     "icims",
+    "avature",
+    "jazzhr",
 }
 
 

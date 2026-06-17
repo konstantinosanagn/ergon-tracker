@@ -68,6 +68,8 @@ ATS_PRIORITY = {
     "oracle": 16,
     "taleo": 17,
     "icims": 18,
+    "avature": 19,
+    "jazzhr": 20,
 }
 
 

@@ -54,6 +54,8 @@ _BUILTIN_MODULES = (
     "oracle",
     "taleo",
     "icims",
+    "avature",
+    "jazzhr",
     "remotive",
     "arbeitnow",
     "jobicy",
