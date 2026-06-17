@@ -139,9 +139,13 @@ async def main() -> None:
     hits: dict[int, tuple[str, str]] = {}
     done = [0]
 
-    async def find(idx: int, sponsor: dict, fetcher: AsyncFetcher) -> None:
-        urls = await tavily(sponsor["name"], key, fetcher)
-        res = await detect(urls, fetcher)
+    # Two fetchers: Tavily needs retries to survive 429s, but the careers-host PROBES must NOT
+    # retry — most guessed hosts (careers.{dom}/jobs.{dom}) don't resolve, and retrying a
+    # TransportError 3x with backoff was the bottleneck (~15s wasted per dead guess). retries=1
+    # makes dead hosts fail instantly; a short timeout caps slow-but-alive ones.
+    async def find(idx: int, sponsor: dict, tav: AsyncFetcher, probe: AsyncFetcher) -> None:
+        urls = await tavily(sponsor["name"], key, tav)
+        res = await detect(urls, probe)
         if res:
             hits[idx] = res
         done[0] += 1
@@ -149,11 +153,12 @@ async def main() -> None:
             print(f"  scanned {done[0]}/{len(todo)} (hits: {len(hits)})", flush=True)
 
     async with (
-        AsyncFetcher(concurrency=16, per_host_rate=6, timeout=20.0) as fetcher,
+        AsyncFetcher(concurrency=8, per_host_rate=4, timeout=15.0, retries=3) as tav,
+        AsyncFetcher(concurrency=16, per_host_rate=8, timeout=6.0, retries=1) as probe,
         anyio.create_task_group() as tg,
     ):
         for idx, s in enumerate(todo):
-            tg.start_soon(find, idx, s, fetcher)
+            tg.start_soon(find, idx, s, tav, probe)
 
     by_ats = Counter(ats for ats, _ in hits.values())
     print(f"detected {len(hits)} candidates {dict(by_ats)}; verifying live ...", flush=True)
