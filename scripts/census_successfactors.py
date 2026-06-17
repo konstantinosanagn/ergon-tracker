@@ -7,12 +7,12 @@ siteid. Unlike Eightfold, SF sites are server-rendered HTML on the company's OWN
 
   1. Tavily-search ``{sponsor} careers`` (aggregators excluded) for the company's pages.
   2. Detect SF two ways: (a) a result URL is already an SF job/search URL
-     (SuccessFactorsProvider.matches), or (b) the top career host's landing HTML carries
-     an SF signature (successfactors / jobs2web / sitemal.xml / rmkcdn) and a
-     ``/{siteid}/(search|job)/`` link to mine the siteid from.
-  3. Provenance + verify gate: require a significant sponsor word in the host/siteid
-     (the careers domain is the company's own), then fetch live (limit=1) through the
-     provider. Only boards returning >=1 job and not already seeded are emitted.
+     (SuccessFactorsProvider.matches gives the exact siteid), or (b) RSS-confirm a candidate
+     SF host — the ``careers.``/``jobs.`` subdomain of a result domain answers
+     ``/services/rss/job/`` with RSS XML (404 otherwise: fast + definitive) — and use the
+     domain label as the siteid (careers.ey.com -> ey).
+  3. Verify gate: fetch live (limit=1) through the provider. Only boards returning >=1 job
+     and not already seeded are emitted, so a wrong siteid guess is dropped, not merged.
 
 Usage::
 
@@ -61,49 +61,38 @@ EXCLUDE = [
     "salary.com",
     "google.com",
 ]
-_SIG = ("successfactors", "jobs2web", "sitemal.xml", "rmkcdn", "/services/rss/job")
-_SITEID_RE = re.compile(r'href="/([a-z0-9][a-z0-9-]*)/(?:search|job)/', re.IGNORECASE)
+_RSS = "https://{host}/services/rss/job/"
 _SF = SuccessFactorsProvider()
 
 
-def _collapse(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", s.lower())
+def _host_of(url: str) -> str:
+    m = re.match(r"https?://([^/]+)", url or "")
+    return m.group(1).lower() if m else ""
 
 
-def _name_ok(sponsor: str, token: str) -> bool:
-    """Provenance: a significant sponsor word appears in the host or siteid (collapsed)."""
-    blob = _collapse(token)
-    words = [
-        _collapse(w)
-        for w in re.sub(r"[^a-z0-9 ]", " ", sponsor.lower()).split()
-        if len(w) >= 4
-        and w
-        not in (
-            "services",
-            "group",
-            "technologies",
-            "company",
-            "corp",
-            "inc",
-            "international",
-            "global",
-            "solutions",
-            "systems",
-            "consulting",
-        )
-    ]
-    return any(w in blob for w in words) or _collapse(sponsor)[:10] in blob
+def _domain_label(host: str) -> str:
+    """Registrable-domain main label = the usual SF siteid (careers.ey.com->ey, jobs.sap.com->sap)."""
+    parts = host.split(".")
+    return parts[-2] if len(parts) >= 2 else host
 
 
-def _hosts(urls: list[str]) -> list[str]:
-    out: list[str] = []
+def _sf_candidate_hosts(urls: list[str]) -> list[str]:
+    """SF host candidates from the sponsor's result URLs: the careers/jobs subdomains of each
+    result domain (the SF site usually lives there, e.g. www.ey.com -> careers.ey.com), then the
+    raw result hosts. Aggregators excluded; ``careers.``/``jobs.`` tried first."""
+    hosts: list[str] = []
+    raw: list[str] = []
     for u in urls:
-        m = re.match(r"https?://([^/]+)", u or "")
-        if m:
-            h = m.group(1).lower()
-            if h not in out and not any(x in h for x in EXCLUDE):
-                out.append(h)
-    return out
+        h = _host_of(u)
+        if not h or any(x in h for x in EXCLUDE):
+            continue
+        dom = ".".join(h.split(".")[-2:])
+        for guess in (f"careers.{dom}", f"jobs.{dom}"):
+            if guess not in hosts:
+                hosts.append(guess)
+        if h not in raw:
+            raw.append(h)
+    return hosts + [h for h in raw if h not in hosts]
 
 
 async def tavily(sponsor: str, key: str, fetcher: AsyncFetcher) -> list[str]:
@@ -115,26 +104,35 @@ async def tavily(sponsor: str, key: str, fetcher: AsyncFetcher) -> list[str]:
     return [r.get("url", "") for r in (data.get("results", []) if isinstance(data, dict) else [])]
 
 
+async def _is_sf(host: str, fetcher: AsyncFetcher) -> bool:
+    """A SuccessFactors host answers ``/services/rss/job/`` with RSS XML (404 otherwise).
+
+    This is fast, small, and definitive — far more reliable than scraping a slow homepage.
+    """
+    try:
+        resp = await fetcher.request(
+            "GET", _RSS.format(host=host), params={"keywords": "()"}, timeout=8.0
+        )
+    except Exception:  # noqa: BLE001
+        return False
+    return resp.status_code == 200 and "xml" in resp.headers.get("content-type", "").lower()
+
+
 async def detect(sponsor: str, urls: list[str], fetcher: AsyncFetcher) -> str | None:
-    """Return an SF ``"{host}|{siteid}"`` token for the sponsor, else None."""
-    # (a) a result URL is already an SF job/search URL
+    """Return an SF ``"{host}|{siteid}"`` token for the sponsor, else None.
+
+    (a) An exact SF job/search URL in the results gives the precise siteid. (b) Otherwise
+    RSS-confirm a candidate SF host (careers./jobs. subdomain of a result domain) and use the
+    domain label as the siteid. The verify gate (provider.fetch) validates the siteid, so a
+    wrong guess is dropped rather than merged.
+    """
     for u in urls:
         tok = _SF.matches(u)
-        if tok and _name_ok(sponsor, tok):
+        if tok:
             return tok
-    # (b) probe the top career hosts for an SF signature + a siteid link
-    for host in _hosts(urls)[:3]:
-        try:
-            html = await fetcher.get_text(f"https://{host}/")
-        except Exception:  # noqa: BLE001
-            continue
-        if not any(s in html.lower() for s in _SIG):
-            continue
-        m = _SITEID_RE.search(html)
-        if m:
-            tok = f"{host}|{m.group(1).lower()}"
-            if _name_ok(sponsor, tok):
-                return tok
+    for host in _sf_candidate_hosts(urls)[:5]:
+        if await _is_sf(host, fetcher):
+            return f"{host}|{_domain_label(host)}"
     return None
 
 
