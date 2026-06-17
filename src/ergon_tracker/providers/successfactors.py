@@ -59,10 +59,30 @@ _SITEID_RE = re.compile(r'href="/([a-z0-9][a-z0-9-]*)/(?:search|job)/', re.IGNOR
 # First-segment values that are locale/section markers, NOT an SF siteid — a bare
 # ``/{seg}/search/`` is too generic (apple ``/en-us/search``, amazon ``/en``, ibm ``/careers``),
 # so the /search/ shape only matches when the segment isn't one of these.
-_GENERIC_SEG = frozenset({
-    "en", "en-us", "en-gb", "de", "fr", "es", "it", "ja", "zh", "pt", "nl", "global",
-    "careers", "career", "search", "jobs", "job", "us", "uk", "content",
-})
+_GENERIC_SEG = frozenset(
+    {
+        "en",
+        "en-us",
+        "en-gb",
+        "de",
+        "fr",
+        "es",
+        "it",
+        "ja",
+        "zh",
+        "pt",
+        "nl",
+        "global",
+        "careers",
+        "career",
+        "search",
+        "jobs",
+        "job",
+        "us",
+        "uk",
+        "content",
+    }
+)
 
 
 @register("successfactors")
