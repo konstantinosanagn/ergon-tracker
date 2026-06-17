@@ -54,6 +54,7 @@ def _job_to_dict(job: JobPosting) -> dict[str, Any]:
         "score": round(job.score, 4) if job.score is not None else None,
         "visa_sponsor": job.visa_sponsor,
         "visa_last_filed": job.visa_last_filed,
+        "sponsorship_offered": job.sponsorship_offered,
     }
 
 
@@ -73,6 +74,7 @@ async def search_jobs(
     salary_min: float | None = None,
     salary_max: float | None = None,
     visa_sponsor: bool = False,
+    sponsorship_offered: bool | None = None,
     infer_level_from_experience: bool = False,
     semantic: bool = False,
     limit: int = 20,
@@ -104,6 +106,11 @@ async def search_jobs(
         salary_min / salary_max: compensation range (jobs without salary data are kept).
         visa_sponsor: if true, keep only employers known to have sponsored H-1B visas (from US
             DoL LCA certified-filing data). Each job also reports a `visa_sponsor` flag.
+        sponsorship_offered: filter on what the POSTING says about visa sponsorship. true =
+            postings that offer it; false = postings that explicitly don't. Unknown postings
+            (the majority) are kept by default. Each job reports `sponsorship_offered`
+            (true/false/null). Tip for international applicants: pass false-exclusion by using
+            true here to hide "no sponsorship" roles while keeping unstated ones.
         limit: max postings to return after dedup + ranking (default 20).
 
     Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
@@ -131,6 +138,7 @@ async def search_jobs(
         salary_min=salary_min,
         salary_max=salary_max,
         visa_sponsor=True if visa_sponsor else None,
+        sponsorship_offered=sponsorship_offered,
         infer_level_from_experience=infer_level_from_experience,
         semantic=semantic,
         limit=limit,

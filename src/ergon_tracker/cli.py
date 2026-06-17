@@ -108,6 +108,11 @@ def search(
     visa_sponsor: bool = typer.Option(
         False, "--visa-sponsor", help="only employers known to sponsor H-1B (DoL LCA data)"
     ),
+    sponsorship: bool = typer.Option(
+        False,
+        "--sponsorship",
+        help="hide postings that explicitly refuse visa sponsorship (keeps offered + unstated)",
+    ),
     infer_level: bool = typer.Option(
         False,
         "--infer-level",
@@ -139,6 +144,7 @@ def search(
             salary_min=salary_min,
             salary_max=salary_max,
             visa_sponsor=True if visa_sponsor else None,
+            sponsorship_offered=True if sponsorship else None,
             infer_level_from_experience=infer_level,
             semantic=semantic,
             limit=limit,

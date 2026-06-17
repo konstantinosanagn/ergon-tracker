@@ -60,15 +60,29 @@ def iter_extractors() -> list[FieldExtractor]:
     return list(_REGISTRY.values())
 
 
+def html_to_text(html: str | None) -> str | None:
+    """Strip HTML to plain text (selectolax). Returns None for empty input."""
+    if not html:
+        return None
+    from selectolax.parser import HTMLParser
+
+    text = HTMLParser(html).text(separator=" ", strip=True)
+    return text or None
+
+
 def input_from_job(job: JobPosting, *, company_key: str | None = None) -> ExtractInput:
-    """Build an ``ExtractInput`` from a (possibly partly-normalized) ``JobPosting``."""
+    """Build an ``ExtractInput`` from a (possibly partly-normalized) ``JobPosting``.
+
+    Many providers (most aggregators) populate only ``description_html``; fall back to a
+    stripped-text version so every text extractor (comp, yoe, sector, sponsorship) sees the JD.
+    """
     location_raw = None
     if job.locations:
         loc = job.locations[0]
         location_raw = loc.raw or loc.as_text() or None
     return ExtractInput(
         title=job.title,
-        description_text=job.description_text,
+        description_text=job.description_text or html_to_text(job.description_html),
         location_raw=location_raw,
         company_key=company_key,
         company_domain=job.company_domain,

@@ -158,6 +158,10 @@ class JobPosting(BaseModel):
     # Most-recent certified H-1B filing date (ISO 'YYYY-MM-DD') for this employer, when known —
     # lets a user judge whether a sponsor has gone quiet since then.
     visa_last_filed: str | None = None
+    # What the POSTING itself says about visa sponsorship (regex over the description):
+    # True = offered ("sponsorship available"), False = explicitly not ("must not require
+    # sponsorship"), None = not stated (common). Distinct from visa_sponsor (employer-level DoL).
+    sponsorship_offered: bool | None = None
 
     @classmethod
     def create(
@@ -217,6 +221,11 @@ class SearchQuery(BaseModel):
     include_unknown_sector: bool = False
     # When True, keep only employers known to sponsor H-1B visas (DoL LCA data). None = no filter.
     visa_sponsor: bool | None = None
+    # Filter on what the POSTING says about sponsorship. True = keep postings that offer it;
+    # False = keep postings that explicitly don't. None = no filter. By default unknown postings
+    # are KEPT (they're the majority) — set include_unknown_sponsorship=False for a strict filter.
+    sponsorship_offered: bool | None = None
+    include_unknown_sponsorship: bool = True
     salary_min: float | None = None
     salary_max: float | None = None
     salary_currency: str | None = None
@@ -331,6 +340,15 @@ class SearchQuery(BaseModel):
 
         # Visa-sponsor filter: when True, keep only employers with positive H-1B evidence.
         if self.visa_sponsor is True and job.visa_sponsor is not True:
+            return False
+
+        # Posting sponsorship-policy filter. Keeps matches; unknown postings kept unless the
+        # caller opts out (include_unknown_sponsorship=False) for a strict filter.
+        if (
+            self.sponsorship_offered is not None
+            and job.sponsorship_offered != self.sponsorship_offered
+            and not (job.sponsorship_offered is None and self.include_unknown_sponsorship)
+        ):
             return False
 
         if not self._geo_ok(job):

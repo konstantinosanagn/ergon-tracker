@@ -15,6 +15,7 @@ from .extract.comp import CompExtractor  # noqa: F401
 from .extract.geo import normalize_geo
 from .extract.level import LevelExtractor, infer_level, level_from_years  # noqa: F401
 from .extract.sector import SectorExtractor, SectorIndex, load_sector_index  # noqa: F401
+from .extract.sponsorship import detect_sponsorship  # noqa: F401
 from .extract.visa import h1b_last_filed, is_h1b_sponsor, load_sponsor_index  # noqa: F401
 from .extract.yoe import YoeExtractor  # noqa: F401
 from .models import JobLevel, JobPosting, Salary
@@ -62,6 +63,11 @@ def enrich_in_place(
     if job.visa_sponsor is None and is_h1b_sponsor(job.company):
         job.visa_sponsor = True
         job.visa_last_filed = h1b_last_filed(job.company)
+
+    # Posting-stated sponsorship policy (regex over the description); tri-state, often unknown.
+    # Uses inp.description_text, which falls back to stripped description_html for aggregators.
+    if job.sponsorship_offered is None:
+        job.sponsorship_offered = detect_sponsorship(inp.description_text)
 
     for loc in job.locations:
         normalize_geo(loc)
