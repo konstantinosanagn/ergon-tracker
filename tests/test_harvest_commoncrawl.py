@@ -25,9 +25,10 @@ def test_greenhouse_path_and_embed_for_param() -> None:
     assert _extract("greenhouse", "https://boards.greenhouse.io/stripe") == "stripe"
     assert _extract("greenhouse", "https://boards.greenhouse.io/stripe/jobs/123") == "stripe"
     # embed form carries the token in the ?for= query param
-    assert _extract(
-        "greenhouse", "https://boards.greenhouse.io/embed/job_board?for=airbnb"
-    ) == "airbnb"
+    assert (
+        _extract("greenhouse", "https://boards.greenhouse.io/embed/job_board?for=airbnb")
+        == "airbnb"
+    )
     # junk path segments are rejected
     assert _extract("greenhouse", "https://boards.greenhouse.io/embed/job_app") is None
 
@@ -40,9 +41,7 @@ def test_path_based_extractors() -> None:
 
 def test_smartrecruiters_preserves_case() -> None:
     # SmartRecruiters slugs are case-sensitive — must NOT be lowercased.
-    assert _extract(
-        "smartrecruiters", "https://careers.smartrecruiters.com/Visa1/abc"
-    ) == "Visa1"
+    assert _extract("smartrecruiters", "https://careers.smartrecruiters.com/Visa1/abc") == "Visa1"
 
 
 def test_subdomain_extractors() -> None:
@@ -65,18 +64,29 @@ def test_extract_tokens_dedupes_in_order() -> None:
 
 def test_parse_cc_urls_skips_bad_lines() -> None:
     nd = (
-        json.dumps({"url": "https://jobs.lever.co/a", "status": "200"}) + "\n"
+        json.dumps({"url": "https://jobs.lever.co/a", "status": "200"})
+        + "\n"
         + "not json\n"
-        + json.dumps({"status": "404"}) + "\n"  # no url
-        + json.dumps({"url": "https://jobs.lever.co/b"}) + "\n"
+        + json.dumps({"status": "404"})
+        + "\n"  # no url
+        + json.dumps({"url": "https://jobs.lever.co/b"})
+        + "\n"
     )
     assert parse_cc_urls(nd) == ["https://jobs.lever.co/a", "https://jobs.lever.co/b"]
 
 
 def test_latest_crawl_api_picks_cdx() -> None:
-    info = json.dumps([
-        {"id": "CC-MAIN-2025-21", "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-21-index"},
-        {"id": "CC-MAIN-2025-08", "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-08-index"},
-    ])
+    info = json.dumps(
+        [
+            {
+                "id": "CC-MAIN-2025-21",
+                "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-21-index",
+            },
+            {
+                "id": "CC-MAIN-2025-08",
+                "cdx-api": "https://index.commoncrawl.org/CC-MAIN-2025-08-index",
+            },
+        ]
+    )
     assert latest_crawl_api(info) == "https://index.commoncrawl.org/CC-MAIN-2025-21-index"
     assert latest_crawl_api("garbage") is None

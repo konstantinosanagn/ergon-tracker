@@ -65,8 +65,7 @@ def test_parse_explicit_ats_overrides_default() -> None:
 
 def test_parse_workday_token_split() -> None:
     csv_text = (
-        "name,ats,token,domain\n"
-        "NVIDIA,workday,nvidia|wd5|NVIDIAExternalCareerSite,nvidia.com\n"
+        "name,ats,token,domain\nNVIDIA,workday,nvidia|wd5|NVIDIAExternalCareerSite,nvidia.com\n"
     )
     cands, errors = parse_csv_rows(csv_text, "workday")
     assert errors == []
@@ -83,9 +82,7 @@ def test_parse_workday_token_split() -> None:
 
 
 def test_parse_workday_malformed_token_reported() -> None:
-    cands, errors = parse_csv_rows(
-        "name,ats,token,domain\nBad,workday,onlytenant,\n", "workday"
-    )
+    cands, errors = parse_csv_rows("name,ats,token,domain\nBad,workday,onlytenant,\n", "workday")
     assert cands == []
     assert len(errors) == 1
     assert "tenant|wd|site" in errors[0]
@@ -93,17 +90,13 @@ def test_parse_workday_malformed_token_reported() -> None:
 
 def test_parse_workday_default_ats_from_stem() -> None:
     # No ats cell; stem provides workday and the token still splits.
-    cands, errors = parse_csv_rows(
-        "name,ats,token,domain\nNVIDIA,,nvidia|wd5|Site,\n", "workday"
-    )
+    cands, errors = parse_csv_rows("name,ats,token,domain\nNVIDIA,,nvidia|wd5|Site,\n", "workday")
     assert errors == []
     assert cands[0]["wd"] == "wd5" and cands[0]["site"] == "Site"
 
 
 def test_parse_unsupported_ats_rejected() -> None:
-    cands, errors = parse_csv_rows(
-        "name,ats,token,domain\nAcme,bamboohr,acme,\n", "greenhouse"
-    )
+    cands, errors = parse_csv_rows("name,ats,token,domain\nAcme,bamboohr,acme,\n", "greenhouse")
     assert cands == []
     assert len(errors) == 1
     assert "unsupported ats" in errors[0]

@@ -167,9 +167,7 @@ class TeamtailorProvider(BaseProvider):
         loc_type = str(jp.get("jobLocationType") or "").strip().upper()
         if loc_type == "TELECOMMUTE":
             return RemoteType.REMOTE
-        haystack = " ".join(
-            [title, *(loc.raw or "" for loc in locations)]
-        ).lower()
+        haystack = " ".join([title, *(loc.raw or "" for loc in locations)]).lower()
         if "remote" in haystack:
             return RemoteType.REMOTE
         return RemoteType.UNKNOWN

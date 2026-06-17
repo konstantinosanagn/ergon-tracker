@@ -28,21 +28,25 @@ def test_row_to_candidate_simple_uses_slug() -> None:
 
 def test_row_to_candidate_falls_back_to_url_extraction() -> None:
     # No slug column -> recover the token from the url via the provider's matches().
-    c = row_to_candidate(
-        "greenhouse", {"name": "Acme", "url": "https://boards.greenhouse.io/acme"}
-    )
+    c = row_to_candidate("greenhouse", {"name": "Acme", "url": "https://boards.greenhouse.io/acme"})
     assert c is not None and c["token"] == "acme"
 
 
 def test_row_to_candidate_workday_parses_url_into_triple() -> None:
     c = row_to_candidate(
         "workday",
-        {"name": "NVIDIA",
-         "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite"},
+        {
+            "name": "NVIDIA",
+            "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
+        },
     )
     assert c == {
-        "company": "nvidia", "ats": "workday",
-        "tenant": "nvidia", "wd": "wd5", "site": "NVIDIAExternalCareerSite", "domain": None,
+        "company": "nvidia",
+        "ats": "workday",
+        "tenant": "nvidia",
+        "wd": "wd5",
+        "site": "NVIDIAExternalCareerSite",
+        "domain": None,
     }
 
 

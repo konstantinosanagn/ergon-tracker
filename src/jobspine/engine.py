@@ -125,7 +125,11 @@ async def run_search(query: SearchQuery, fetcher: AsyncFetcher) -> SearchResult:
                     continue
                 if target.domain and not job.company_domain:
                     job.company_domain = target.domain
-                enrich_in_place(job, company_key=target.label)
+                enrich_in_place(
+                    job,
+                    company_key=target.label,
+                    infer_level_from_experience=query.infer_level_from_experience,
+                )
                 if query.matches(job):
                     jobs.append(job)
             results[index] = jobs

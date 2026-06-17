@@ -102,14 +102,18 @@ class BreezyProvider(BaseProvider):
         p = raw.payload
 
         location = self._location(p)
-        remote = RemoteType.REMOTE if (location is not None and location.is_remote) else (
-            RemoteType.UNKNOWN
+        remote = (
+            RemoteType.REMOTE
+            if (location is not None and location.is_remote)
+            else (RemoteType.UNKNOWN)
         )
 
         category = p.get("category")
         department = (
-            category.get("name") if isinstance(category, dict) else None
-        ) or (p.get("department") if isinstance(p.get("department"), str) else None) or None
+            (category.get("name") if isinstance(category, dict) else None)
+            or (p.get("department") if isinstance(p.get("department"), str) else None)
+            or None
+        )
 
         description_html = p.get("description") or None
         description_text = self._to_text(description_html)

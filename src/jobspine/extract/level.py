@@ -23,7 +23,24 @@ import re
 from ..models import JobLevel
 from .base import ExtractInput, register_extractor
 
-__all__ = ["infer_level", "LevelExtractor"]
+__all__ = ["infer_level", "level_from_years", "LevelExtractor"]
+
+
+def level_from_years(min_years: int | None, max_years: int | None) -> JobLevel:
+    """Opt-in fallback: map a stated years-of-experience requirement to a coarse level.
+
+    Conservative on purpose — caps at SENIOR (staff/principal need an explicit title signal).
+    Uses the lower bound (the requirement floor). Returns UNKNOWN when no years are given.
+    """
+    years = min_years if min_years is not None else max_years
+    if years is None:
+        return JobLevel.UNKNOWN
+    if years <= 1:
+        return JobLevel.ENTRY
+    if years <= 4:
+        return JobLevel.MID
+    return JobLevel.SENIOR
+
 
 # --- Individual-contributor "Manager" functions -----------------------------
 # "<function> Manager/Mgr" is an IC role title, not a people-management level.

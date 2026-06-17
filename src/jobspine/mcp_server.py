@@ -66,6 +66,7 @@ async def search_jobs(
     city: str | None = None,
     salary_min: float | None = None,
     salary_max: float | None = None,
+    infer_level_from_experience: bool = False,
     limit: int = 20,
 ) -> dict[str, Any]:
     """Search jobs across company ATS feeds and aggregators, returning canonical postings.
@@ -98,6 +99,7 @@ async def search_jobs(
         city=city,
         salary_min=salary_min,
         salary_max=salary_max,
+        infer_level_from_experience=infer_level_from_experience,
         limit=limit,
     )
     async with AsyncJobSpine() as js:

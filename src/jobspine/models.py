@@ -208,6 +208,9 @@ class SearchQuery(BaseModel):
     min_years: int | None = None
     max_years: int | None = None
     include_unknown_years: bool = True
+    # opt-in: derive level from years-of-experience when the title has no seniority marker
+    # (boosts level coverage; trades some precision — off by default)
+    infer_level_from_experience: bool = False
 
     def _years_ok(self, job: JobPosting) -> bool:
         if self.min_years is None and self.max_years is None:

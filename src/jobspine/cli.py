@@ -68,6 +68,11 @@ def search(
     country: str | None = typer.Option(None, "--country"),
     salary_min: float | None = typer.Option(None, "--salary-min"),
     salary_max: float | None = typer.Option(None, "--salary-max"),
+    infer_level: bool = typer.Option(
+        False,
+        "--infer-level",
+        help="derive level from years of experience when title has no marker",
+    ),
     limit: int | None = typer.Option(None, "--limit", "-n"),
     as_json: bool = typer.Option(False, "--json", help="emit JSON instead of a table"),
 ) -> None:
@@ -85,6 +90,7 @@ def search(
             country=country,
             salary_min=salary_min,
             salary_max=salary_max,
+            infer_level_from_experience=infer_level,
             limit=limit,
         )
     except ValueError as exc:
