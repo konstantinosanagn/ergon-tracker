@@ -145,6 +145,26 @@ async def search_jobs(
 
 
 @mcp.tool()
+def list_h1b_sponsors(query: str | None = None, limit: int = 25) -> dict[str, Any]:
+    """Browse employers known to sponsor H-1B visas (US DoL LCA certified filings).
+
+    Use this to answer "does <company> sponsor H-1B?" or "show the biggest H-1B sponsors in
+    fintech/<name>". Returns sponsors ranked by filing volume, each with the most-recent filing
+    date (so you can judge whether they've gone quiet). This is sponsor *knowledge* — it covers
+    far more employers than we can fetch live jobs for, so it's useful even for big companies
+    (Microsoft/Google/Amazon) whose jobs live on custom career sites.
+
+    Args:
+        query: filter by employer name (blank/None = the largest sponsors overall).
+        limit: max rows (default 25).
+    """
+    from .extract.visa import search_sponsors
+
+    rows = search_sponsors(query, limit)
+    return {"count": len(rows), "sponsors": rows}
+
+
+@mcp.tool()
 def resolve_company(target: str) -> dict[str, Any]:
     """Detect which ATS a company uses and its board token, from a domain or careers URL.
 

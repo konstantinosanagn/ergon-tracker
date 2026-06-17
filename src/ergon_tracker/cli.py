@@ -27,6 +27,30 @@ def version() -> None:
 
 
 @app.command()
+def sponsors(
+    query: str = typer.Argument("", help="filter by employer name (blank = biggest sponsors)"),
+    limit: int = typer.Option(25, "--limit", "-n"),
+) -> None:
+    """Browse known H-1B visa sponsors (US DoL LCA data), ranked by filing volume."""
+    from .extract.visa import load_sponsor_index, search_sponsors
+
+    if len(load_sponsor_index()) == 0:
+        err_console.print(
+            "[yellow]No H-1B sponsor index built yet.[/] Run scripts/build_h1b_sponsors.py "
+            "against the DoL LCA disclosure file(s)."
+        )
+        raise typer.Exit(code=1)
+    rows = search_sponsors(query or None, limit)
+    table = Table(title=f"H-1B sponsors{f' matching {query!r}' if query else ''}")
+    table.add_column("employer", style="cyan")
+    table.add_column("filings", justify="right", style="yellow")
+    table.add_column("last filed", style="green")
+    for r in rows:
+        table.add_row(str(r["name"]).title(), str(r["filings"]), str(r["last_filed"] or "—"))
+    console.print(table)
+
+
+@app.command()
 def sources() -> None:
     """List registered providers and their availability."""
     from .providers.base import iter_providers, load_builtins, load_plugins

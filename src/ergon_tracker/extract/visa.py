@@ -23,7 +23,13 @@ from importlib.resources import files
 
 from ..dedup import normalize_company
 
-__all__ = ["SponsorIndex", "load_sponsor_index", "is_h1b_sponsor", "h1b_last_filed"]
+__all__ = [
+    "SponsorIndex",
+    "load_sponsor_index",
+    "is_h1b_sponsor",
+    "h1b_last_filed",
+    "search_sponsors",
+]
 
 # Corporate / geographic "continuation" tokens. A posting company name is accepted as a leading
 # prefix of an LCA legal name ("spotify" -> "spotify usa") ONLY when the very next token is one of
@@ -97,6 +103,22 @@ class SponsorIndex:
         last = (self._records.get(key) or {}).get("last")
         return str(last) if last else None
 
+    def search(self, query: str | None, limit: int = 20) -> list[dict[str, object]]:
+        """Browse the sponsor directory: name-substring match, ranked by filing volume.
+
+        Returns dicts ``{name, filings, last_filed}``. Empty/None query returns the biggest
+        sponsors overall. Powers the "directory" so a user can see employers we *know* sponsor
+        H-1B even when we can't fetch their jobs (custom/enterprise career sites).
+        """
+        q = normalize_company(query) if query else ""
+        rows = [
+            {"name": name, "filings": int(rec.get("n") or 0), "last_filed": rec.get("last")}
+            for name, rec in self._records.items()
+            if not q or q in name
+        ]
+        rows.sort(key=lambda r: -int(r["filings"]))  # type: ignore[arg-type]
+        return rows[:limit]
+
     def __len__(self) -> int:
         return len(self._records)
 
@@ -134,3 +156,8 @@ def is_h1b_sponsor(company: str | None) -> bool:
 def h1b_last_filed(company: str | None) -> str | None:
     """Most-recent certified H-1B filing date (ISO) for ``company``, else None."""
     return load_sponsor_index().last_filed(company)
+
+
+def search_sponsors(query: str | None = None, limit: int = 20) -> list[dict[str, object]]:
+    """Browse known H-1B sponsors by name (ranked by filing volume). See SponsorIndex.search."""
+    return load_sponsor_index().search(query, limit)

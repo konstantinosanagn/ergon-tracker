@@ -13,9 +13,14 @@ from ergon_tracker import mcp_server as srv  # noqa: E402
 pytestmark = pytest.mark.anyio
 
 
-async def test_three_tools_registered() -> None:
+async def test_tools_registered() -> None:
     tools = await srv.mcp.list_tools()
-    assert sorted(t.name for t in tools) == ["list_sources", "resolve_company", "search_jobs"]
+    assert sorted(t.name for t in tools) == [
+        "list_h1b_sponsors",
+        "list_sources",
+        "resolve_company",
+        "search_jobs",
+    ]
 
 
 async def test_every_tool_has_description_and_schema() -> None:

@@ -135,6 +135,22 @@ def test_space_collapsed_matches_concatenated_slug() -> None:
     assert idx2.is_sponsor("10xgenomics") is True
 
 
+# --- directory search -------------------------------------------------------
+def test_directory_search_ranks_by_volume_and_filters() -> None:
+    idx = _idx(
+        **{
+            "google": {"n": 9000, "last": "2026-03-31"},
+            "google cloud": {"n": 5, "last": "2025-01-01"},
+            "stripe": {"n": 100, "last": "2026-03-27"},
+        }
+    )
+    top = idx.search(None, limit=2)
+    assert [r["name"] for r in top] == ["google", "stripe"]  # ranked by filings desc
+    goog = idx.search("google", limit=10)
+    assert {r["name"] for r in goog} == {"google", "google cloud"}  # substring filter
+    assert goog[0]["name"] == "google" and goog[0]["filings"] == 9000
+
+
 # --- on-disk format tolerance ----------------------------------------------
 def test_coerce_legacy_formats() -> None:
     from ergon_tracker.extract.visa import _coerce_records
