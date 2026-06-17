@@ -28,6 +28,8 @@ SUPPORTED_ATS = {
     "icims",
     "avature",
     "jazzhr",
+    "jobvite",
+    "phenom",
 }
 
 

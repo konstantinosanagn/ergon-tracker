@@ -70,6 +70,8 @@ ATS_PRIORITY = {
     "icims": 18,
     "avature": 19,
     "jazzhr": 20,
+    "jobvite": 21,
+    "phenom": 22,
 }
 
 

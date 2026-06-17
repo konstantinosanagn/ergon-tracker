@@ -49,6 +49,8 @@ _ATS_PROVIDERS = frozenset(
         "icims",
         "avature",
         "jazzhr",
+        "jobvite",
+        "phenom",
     }
 )
 _AGGREGATORS = frozenset(

@@ -56,6 +56,8 @@ _BUILTIN_MODULES = (
     "icims",
     "avature",
     "jazzhr",
+    "jobvite",
+    "phenom",
     "remotive",
     "arbeitnow",
     "jobicy",
