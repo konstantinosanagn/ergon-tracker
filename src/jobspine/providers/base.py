@@ -52,6 +52,8 @@ _BUILTIN_MODULES = (
     "jobicy",
     "himalayas",
     "themuse",
+    "adzuna",
+    "usajobs",
 )
 
 _ENTRYPOINT_GROUP = "jobspine.providers"

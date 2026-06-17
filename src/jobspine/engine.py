@@ -35,6 +35,8 @@ AGGREGATOR_PROVIDERS = {
     "jobicy",
     "himalayas",
     "themuse",
+    "adzuna",
+    "usajobs",
 }
 
 

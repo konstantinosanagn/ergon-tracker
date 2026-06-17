@@ -42,7 +42,9 @@ _ATS_PROVIDERS = frozenset(
         "join",
     }
 )
-_AGGREGATORS = frozenset({"remoteok", "remotive", "arbeitnow", "jobicy", "himalayas", "themuse"})
+_AGGREGATORS = frozenset(
+    {"remoteok", "remotive", "arbeitnow", "jobicy", "himalayas", "themuse", "adzuna", "usajobs"}
+)
 
 # Company legal-form suffixes / generic descriptors collapsed so "Acme Inc" == "Acme".
 _COMPANY_STOPWORDS = frozenset(
