@@ -178,15 +178,29 @@ def parse_num_pages(text: str) -> int:
 
 def latest_crawl_api(collinfo: str) -> str | None:
     """Return the cdx-api URL of the most recent crawl from collinfo.json text."""
+    apis = recent_crawl_apis(collinfo, 1)
+    return apis[0] if apis else None
+
+
+def recent_crawl_apis(collinfo: str, n: int) -> list[str]:
+    """Return the cdx-api URLs of the ``n`` most recent crawls (collinfo.json is newest-first).
+
+    Looping several monthly crawls surfaces boards that appear in some snapshots but not
+    others (companies come and go, and CC's per-crawl coverage varies), so the union across
+    crawls is meaningfully larger than any single crawl.
+    """
     try:
         crawls = json.loads(collinfo)
     except ValueError:
-        return None
-    if not isinstance(crawls, list) or not crawls:
-        return None
-    # collinfo.json is newest-first; prefer the explicit cdx-api field.
-    top = crawls[0]
-    return top.get("cdx-api") if isinstance(top, dict) else None
+        return []
+    if not isinstance(crawls, list):
+        return []
+    out: list[str] = []
+    for crawl in crawls[: max(0, n)]:
+        api = crawl.get("cdx-api") if isinstance(crawl, dict) else None
+        if isinstance(api, str) and api:
+            out.append(api)
+    return out
 
 
 def extract_tokens(source: CCSource, urls: list[str]) -> list[str]:
@@ -210,14 +224,17 @@ def load_seed_keys(seed_path: Path = SEED) -> set[str]:
 # --- network harvest ---------------------------------------------------------------------------
 
 
-async def _resolve_crawl(fetcher: AsyncFetcher, override: str | None) -> str | None:
+async def _resolve_crawls(
+    fetcher: AsyncFetcher, override: str | None, n_crawls: int
+) -> list[str]:
+    """Resolve the list of CC index cdx-api URLs to query (pinned override, or N most recent)."""
     if override:
-        return f"https://index.commoncrawl.org/{override}-index"
+        return [f"https://index.commoncrawl.org/{override}-index"]
     try:
-        return latest_crawl_api(await fetcher.get_text(_COLLINFO))
+        return recent_crawl_apis(await fetcher.get_text(_COLLINFO), n_crawls)
     except Exception as exc:  # noqa: BLE001
         print(f"  collinfo fetch failed: {type(exc).__name__}: {exc}")
-        return None
+        return []
 
 
 async def _query_cc(api: str, source: CCSource, fetcher: AsyncFetcher, max_pages: int) -> list[str]:
@@ -259,19 +276,22 @@ async def _query_cc(api: str, source: CCSource, fetcher: AsyncFetcher, max_pages
 
 
 async def harvest(atses: list[str], fetcher: AsyncFetcher, limit: int, pages: int,
-                  crawl: str | None) -> list[dict[str, object]]:
-    api = await _resolve_crawl(fetcher, crawl)
-    if not api:
+                  n_crawls: int, crawl: str | None) -> list[dict[str, object]]:
+    apis = await _resolve_crawls(fetcher, crawl, n_crawls)
+    if not apis:
         print("  no usable Common Crawl index; aborting")
         return []
-    print(f"  using index: {api}")
+    print(f"  querying {len(apis)} crawl(s): {[a.rsplit('/', 1)[-1] for a in apis]}")
     seed_keys = load_seed_keys()
     candidates: list[dict[str, object]] = []
     global_seen: set[str] = set()
 
     for name in atses:
         source = CONFIGS[name]
-        urls = await _query_cc(api, source, fetcher, pages)
+        # Union URLs across every crawl, then extract tokens once over the combined set.
+        urls: list[str] = []
+        for api in apis:
+            urls.extend(await _query_cc(api, source, fetcher, pages))
         tokens = extract_tokens(source, urls)
         new = [t for t in tokens if t not in seed_keys and t not in global_seen][:limit]
         for t in new:
@@ -285,7 +305,8 @@ async def main() -> None:
     args = sys.argv[1:]
     out_path = DEFAULT_OUT
     limit = 100000  # per-ATS token cap (safety); pagination is the real lever
-    pages = 10  # max CC index pages per ATS (each page ~ a block of distinct URLs)
+    pages = 10  # max CC index pages per ATS per crawl (each page ~ a block of distinct URLs)
+    n_crawls = 1  # number of recent monthly crawls to union (--crawls)
     crawl: str | None = None
     atses: list[str] = []
     i = 0
@@ -297,6 +318,8 @@ async def main() -> None:
             limit = int(args[i + 1]); i += 2
         elif a == "--pages":
             pages = int(args[i + 1]); i += 2
+        elif a == "--crawls":
+            n_crawls = int(args[i + 1]); i += 2
         elif a == "--crawl":
             crawl = args[i + 1]; i += 2
         elif a.startswith("--"):
@@ -311,9 +334,10 @@ async def main() -> None:
         print(f"unknown ATS(es): {unknown}; known: {sorted(CONFIGS)}")
         return
 
-    print(f"harvesting Common Crawl for: {atses}  (max_pages/ats={pages}, cap={limit})")
+    print(f"harvesting Common Crawl for: {atses}  (crawls={n_crawls}, max_pages/ats={pages}, "
+          f"cap={limit})")
     async with AsyncFetcher(concurrency=6, per_host_rate=3, timeout=120.0) as fetcher:
-        candidates = await harvest(atses, fetcher, limit, pages, crawl)
+        candidates = await harvest(atses, fetcher, limit, pages, n_crawls, crawl)
 
     by_ats: dict[str, int] = {}
     for c in candidates:
