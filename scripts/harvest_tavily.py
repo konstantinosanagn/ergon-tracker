@@ -46,13 +46,25 @@ DEFAULT_ATSES = ("greenhouse", "lever", "ashby", "workable", "smartrecruiters", 
 # Broad function/role terms — each host-restricted query returns up to 20 distinct board URLs,
 # so variety (not depth) is how we widen coverage.
 DEFAULT_QUERIES = [
-    "software engineer", "senior software engineer", "data scientist", "data engineer",
-    "machine learning engineer", "product manager", "engineering manager", "product designer",
-    "frontend engineer", "backend engineer", "full stack engineer", "devops engineer",
-    "security engineer", "marketing manager", "sales", "account executive", "customer success",
-    "recruiter", "people operations", "finance", "accountant", "operations manager",
-    "business analyst", "program manager", "content writer", "customer support",
-    "solutions engineer", "research scientist", "internship", "director",
+    # Engineering
+    "software engineer", "senior software engineer", "staff software engineer",
+    "frontend engineer", "backend engineer", "full stack engineer", "mobile engineer",
+    "ios engineer", "android engineer", "devops engineer", "site reliability engineer",
+    "platform engineer", "security engineer", "data engineer", "machine learning engineer",
+    "ai engineer", "qa engineer", "embedded engineer", "engineering manager",
+    # Data & product
+    "data scientist", "data analyst", "product manager", "senior product manager",
+    "product designer", "ux designer", "ux researcher", "technical program manager",
+    # Go-to-market
+    "account executive", "sales development representative", "sales manager",
+    "marketing manager", "growth marketing", "content marketing", "demand generation",
+    "customer success manager", "solutions engineer", "partnerships manager",
+    # G&A
+    "recruiter", "technical recruiter", "people operations", "hr business partner",
+    "finance manager", "accountant", "controller", "operations manager", "legal counsel",
+    # Other / seniority
+    "research scientist", "business analyst", "project manager", "customer support",
+    "community manager", "internship", "new grad", "director", "vice president",
 ]
 
 
