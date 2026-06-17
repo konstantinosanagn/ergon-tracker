@@ -40,3 +40,6 @@ coverage.xml
 *.lock
 
 scripts/.h1b_cache/
+
+# wikidata harvester scratch
+scripts/.sector_wd_*.json

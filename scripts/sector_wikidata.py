@@ -31,14 +31,17 @@ VOCAB = ["Software/SaaS","AI/ML","Fintech","Banking/Finance","Insurance","Crypto
  "Travel/Hospitality","Food/Beverage","Government/Public","Other"]
 
 # Priority order for resolving a company that has multiple mapped industries.
-# More specific / informative sectors win over generic ones.
+# More specific / informative sectors win over generic ones. Software/SaaS is kept
+# above AI/ML so that a company tagging both "software" and "AI" resolves to
+# Software/SaaS (matches curated tendency); a pure-AI entity (only the AI tag)
+# still resolves to AI/ML.
 PRIORITY = ["Crypto/Web3","Biotech/Pharma","Semiconductors/Hardware","Cybersecurity",
  "Fintech","Gaming","Aerospace/Defense","Automotive/Mobility","Energy/Climate",
- "Insurance","Banking/Finance","Healthcare","AI/ML","Telecom","Logistics/SupplyChain",
- "RealEstate/PropTech","Education","Travel/Hospitality","Food/Beverage",
- "Automotive/Mobility","E-commerce/Retail","Media/Entertainment","Consumer/Lifestyle",
- "Manufacturing/Industrial","Aerospace/Defense","Government/Public","Consulting/Services",
- "Software/SaaS","Other"]
+ "Insurance","Banking/Finance","Healthcare","Telecom","Logistics/SupplyChain",
+ "RealEstate/PropTech","Education","Food/Beverage","Media/Entertainment",
+ "Travel/Hospitality","E-commerce/Retail","Consumer/Lifestyle",
+ "Manufacturing/Industrial","Government/Public","Consulting/Services",
+ "Software/SaaS","AI/ML","Other"]
 
 # Wikidata industry label (lowercased) -> our vocab.
 IND_MAP = {
@@ -238,6 +241,44 @@ IND_MAP = {
  "real estate investment trust":"RealEstate/PropTech","coworking":"RealEstate/PropTech",
  "transportation industry":"Logistics/SupplyChain","railroad":"Logistics/SupplyChain",
  "maritime transport":"Logistics/SupplyChain","trucking industry":"Logistics/SupplyChain",
+ # second round of unmapped labels seen on the full run
+ "rail transport":"Logistics/SupplyChain","public transport":"Logistics/SupplyChain",
+ "passenger transport":"Logistics/SupplyChain","transport industry":"Logistics/SupplyChain",
+ "air transport":"Travel/Hospitality","air transportation":"Travel/Hospitality",
+ "shipbuilding":"Manufacturing/Industrial","metal industry":"Manufacturing/Industrial",
+ "creative industries":"Media/Entertainment","anime industry":"Media/Entertainment",
+ "market research":"Consulting/Services","financial sector":"Banking/Finance",
+ "computer hardware industry":"Semiconductors/Hardware",
+ "health care industry":"Healthcare","health technology industry":"Healthcare",
+ "bicycle industry":"Consumer/Lifestyle","game industry":"Gaming",
+ "it systems and software consulting":"Consulting/Services","professional service":"Consulting/Services",
+ "business software industry":"Software/SaaS","cannabis industry":"Consumer/Lifestyle",
+ "technology":"Software/SaaS","information technology industry":"Software/SaaS",
+ "business and other management consultancy activities":"Consulting/Services",
+ "economics of banking":"Banking/Finance","quantum computing industry":"Semiconductors/Hardware",
+ "aerospace engineering":"Aerospace/Defense","aircraft":"Aerospace/Defense",
+ "business and professional associations, unions":"Government/Public",
+ "research and development":"Consulting/Services",
+ "construction industry":"Manufacturing/Industrial","building materials":"Manufacturing/Industrial",
+ "fashion industry":"Consumer/Lifestyle","jewellery":"Consumer/Lifestyle",
+ "tobacco industry":"Consumer/Lifestyle","retail banking":"Banking/Finance",
+ "social media industry":"Media/Entertainment","search engine":"Software/SaaS",
+ # third round of unmapped labels seen on the 42k full run
+ "electric power generation, transmission and distribution":"Energy/Climate",
+ "electricity generation":"Energy/Climate","public utility":"Energy/Climate",
+ "fast food":"Food/Beverage","sports industry":"Consumer/Lifestyle",
+ "internet portal":"Software/SaaS","computer network":"Software/SaaS",
+ "film production":"Media/Entertainment","show business":"Media/Entertainment",
+ "publishing house":"Media/Entertainment","publishing industry":"Media/Entertainment",
+ "weapons industry":"Aerospace/Defense","aircraft industry":"Aerospace/Defense",
+ "commercial aviation":"Travel/Hospitality","taxi service":"Automotive/Mobility",
+ "hospitals and rehabilitation":"Healthcare","hospital industry":"Healthcare",
+ "hedge fund":"Banking/Finance","crowdfunding":"Fintech",
+ "iron and steel industry":"Manufacturing/Industrial",
+ "manufacture of machinery and equipment":"Manufacturing/Industrial",
+ "product packaging industry":"Manufacturing/Industrial",
+ "educational system":"Education","e-commerce industry":"E-commerce/Retail",
+ "food manufacturing":"Food/Beverage","confectionery":"Food/Beverage",
 }
 
 def variants(slug):
@@ -253,22 +294,22 @@ def variants(slug):
     # drop pure-numeric / single char noise
     return {v for v in out if len(v) >= 2 and not v.isdigit()}
 
-def sparql(q, tries=8):
+def sparql(q, tries=4):
     data = urllib.parse.urlencode({"query": q, "format": "json"}).encode()
     last = None
-    for i in range(tries):
+    for i in range(tries):  # noqa
         try:
             req = urllib.request.Request(EP, data=data, headers={
                 "User-Agent": UA, "Accept": "application/sparql-results+json",
                 "Content-Type": "application/x-www-form-urlencoded"})
-            return json.loads(urllib.request.urlopen(req, timeout=120).read())
+            return json.loads(urllib.request.urlopen(req, timeout=35).read())
         except urllib.error.HTTPError as e:
             last = e
             if e.code in (429, 500, 502, 503, 504):
-                time.sleep(min(30, 2 * (i + 1))); continue
+                time.sleep(min(12, 2 * (i + 1))); continue
             raise
         except Exception as e:
-            last = e; time.sleep(min(30, 2 * (i + 1)))
+            last = e; time.sleep(min(12, 2 * (i + 1)))
     raise RuntimeError("sparql failed: %s" % last)
 
 def esc(s):
@@ -319,12 +360,22 @@ def resolve_sector(industries):
             return p
     return sorted(mapped)[0]
 
+RAW_JSON = os.path.join(HERE, ".sector_wd_raw.json")
+DONE_JSON = os.path.join(HERE, ".sector_wd_done.json")
+
 def main():
     sample = None
     if "--sample" in sys.argv:
         sample = int(sys.argv[sys.argv.index("--sample") + 1])
+    from_cache = "--from-cache" in sys.argv
     companies = json.load(open(SEED))["companies"]
     curated = json.load(open(SECTORS))["companies"]
+
+    if from_cache:
+        rawc = json.load(open(RAW_JSON))
+        raw = {k: {q: {"sl": v["sl"], "ind": set(v["ind"])} for q, v in qm.items()}
+               for k, qm in rawc.items()}
+        return finish(raw, companies, curated, sample=None)
 
     keys = list(companies.keys())
     if sample:
@@ -342,6 +393,22 @@ def main():
             dom_to_keys.setdefault(d.lower().strip(), []).append(k)
     # raw[key] = {qid: {"sl":int, "ind":set()}}
     raw = {}
+    # resume: reload previous checkpoint if present
+    if not sample and os.path.exists(RAW_JSON):
+        try:
+            prev = json.load(open(RAW_JSON))
+            raw = {k: {q: {"sl": v["sl"], "ind": set(v["ind"])} for q, v in qm.items()}
+                   for k, qm in prev.items()}
+            print("[resume] loaded %d cached keys" % len(raw), file=sys.stderr)
+        except Exception:
+            raw = {}
+    done = set()
+    if not sample and os.path.exists(DONE_JSON):
+        try:
+            done = set(json.load(open(DONE_JSON)))
+            print("[resume] %d label batches already done" % len(done), file=sys.stderr)
+        except Exception:
+            done = set()
     def add_row(key, qid, sl, ind):
         e = raw.setdefault(key, {}).setdefault(qid, {"sl": 0, "ind": set()})
         e["sl"] = max(e["sl"], int(sl)); e["ind"].add(ind)
@@ -351,34 +418,62 @@ def main():
     for dom in dom_to_keys:
         for u in domain_url_variants(dom):
             url_to_dom[u] = dom
-    urls = list(url_to_dom.keys())
+    urls = sorted(url_to_dom.keys())  # deterministic order
+    failed = 0
     print("[domain] %d domains, %d url variants, %d batches" % (len(dom_to_keys), len(urls), (len(urls)+99)//100), file=sys.stderr)
     for bi, batch in enumerate(chunk(urls, 100)):
-        d = sparql(domain_query(batch))
+        try:
+            d = sparql(domain_query(batch))
+        except Exception as e:
+            failed += 1; print("  [skip domain batch %d] %s" % (bi, e), file=sys.stderr); continue
         for b in d["results"]["bindings"]:
             dom = url_to_dom.get(b["url"]["value"])
             for key in dom_to_keys.get(dom, []):
                 add_row(key, b["company"]["value"].split("/")[-1], b["sl"]["value"], b["indLabel"]["value"])
         if bi % 5 == 0: print("  domain batch %d" % bi, file=sys.stderr)
-        time.sleep(0.3)
+        time.sleep(0.2)
 
     # ---- label pass ----
     cand_to_keys = {}
     for k in keys:
         for v in variants(k):
             cand_to_keys.setdefault(v, []).append(k)
-    cands = list(cand_to_keys.keys())
+    cands = sorted(cand_to_keys.keys())  # deterministic order (stable batches)
     nb = (len(cands)+149)//150
     print("[label] %d candidate strings in %d batches" % (len(cands), nb), file=sys.stderr)
+
+    def save_cache():
+        if sample: return
+        rawc = {k: {q: {"sl": v["sl"], "ind": sorted(v["ind"])} for q, v in qm.items()}
+                for k, qm in raw.items()}
+        json.dump(rawc, open(RAW_JSON, "w"))
+        json.dump(sorted(done), open(DONE_JSON, "w"))
+
     for bi, batch in enumerate(chunk(cands, 150)):
-        d = sparql(label_query(batch))
+        if bi in done:
+            continue
+        try:
+            d = sparql(label_query(batch))
+        except Exception as e:
+            failed += 1; print("  [skip label batch %d/%d] %s" % (bi, nb, e), file=sys.stderr); continue
         for b in d["results"]["bindings"]:
             cand = b["cand"]["value"]
             for key in cand_to_keys.get(cand, []):
                 add_row(key, b["company"]["value"].split("/")[-1], b["sl"]["value"], b["indLabel"]["value"])
-        if bi % 10 == 0: print("  label batch %d/%d (matched keys so far=%d)" % (bi, nb, len(raw)), file=sys.stderr)
-        time.sleep(0.25)
+        done.add(bi)
+        if bi % 10 == 0:
+            print("  label batch %d/%d (matched keys so far=%d, failed=%d)" % (bi, nb, len(raw), failed), file=sys.stderr)
+        if bi % 100 == 0:
+            save_cache()  # periodic checkpoint
+        time.sleep(0.15)
 
+    # ---- persist raw rows for offline re-resolution ----
+    save_cache()
+    print("cached raw -> %s (%d keys, %d failed batches)" % (RAW_JSON, len(raw), failed), file=sys.stderr)
+
+    return finish(raw, companies, curated, sample)
+
+def finish(raw, companies, curated, sample):
     # ---- resolve ----
     result = {}
     unmapped = {}

@@ -54,6 +54,9 @@ class SectorExtractor:
     name = "sector"
 
     def extract(self, inp: ExtractInput) -> str | None:
+        # Authoritative table only (curated + offline joins). A description-text fallback was
+        # measured at ~24% accuracy (JDs name-drop many industries) and dropped — returning
+        # None ("unknown") beats a mostly-wrong guess.
         return load_sector_index().get(key=inp.company_key, domain=inp.company_domain)
 
 
