@@ -104,7 +104,11 @@ def adjudicate(sponsor: str, ats: str, token: str, board_company: str, live: boo
     if len(tok) < 3:
         return False, f"token {tok!r} too short"
 
-    if ats == "workday":
+    # Workday and Eightfold expose no reliable display name (the board "company" is just the
+    # tenant slug), so the tenant slug IS the identity signal: require an exact or clean-prefix
+    # match against the sponsor name. (starbucks.eightfold.ai serving "starbucks coffee" jobs is
+    # decisive; an unrelated slug returning jobs is rejected.)
+    if ats in ("workday", "eightfold"):
         if tok in (snf, sn):
             return True, f"tenant {tok!r} exact-matches sponsor"
         if sn.startswith(tok) and len(tok) >= 4:
