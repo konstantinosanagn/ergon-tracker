@@ -109,7 +109,10 @@ async def layer1_host_search(sponsor: str, key: str, fetcher: AsyncFetcher) -> s
 
 
 async def layer2_static(sponsor: str, key: str, fetcher: AsyncFetcher) -> tuple[str | None, str]:
-    """Fetch the careers page's raw HTML and scan it. Returns (ats|None, careers_url)."""
+    """Find the careers page and scan its RESULT URLs for an ATS signature. Returns
+    (ats|None, careers_url). No slow HTML fetch — L3's headless browser does the deep read,
+    and careers pages are routinely slow/anti-bot, so fetching them here just stalls the sweep.
+    """
     body = {"query": f"{sponsor} careers jobs", "exclude_domains": EXCLUDE, "max_results": 3}
     try:
         data = await fetcher.post_json(_API, json=body, headers={"Authorization": f"Bearer {key}"})
@@ -120,13 +123,6 @@ async def layer2_static(sponsor: str, key: str, fetcher: AsyncFetcher) -> tuple[
         hit = detect_ats(u)
         if hit:
             return hit[0], (urls[0] if urls else "")
-    for u in urls[:2]:
-        try:
-            hit = detect_ats(await fetcher.get_text(u, headers=_UA))
-            if hit:
-                return hit[0], u
-        except Exception:  # noqa: BLE001
-            continue
     return None, (urls[0] if urls else "")
 
 
@@ -145,7 +141,7 @@ async def layer3_browser(url: str, browser, limiter: anyio.CapacityLimiter) -> s
             page.on("request", lambda r: reqs.append(r.url))
             try:
                 await page.goto(url, wait_until="domcontentloaded", timeout=30000)
-                await page.wait_for_timeout(4500)  # let the SPA fire its data XHR
+                await page.wait_for_timeout(3000)  # let the SPA fire its data XHR
             except Exception:  # noqa: BLE001
                 pass
             await ctx.close()
@@ -179,7 +175,7 @@ async def main() -> None:
     if not key:
         print("TAVILY_API_KEY not set."); return
     sponsors = json.loads(GAP.read_text())["uncovered_top"][:top]
-    print(f"L1+L2 (concurrent) over {len(sponsors)} sponsors ...")
+    print(f"L1+L2 (concurrent) over {len(sponsors)} sponsors ...", flush=True)
 
     # Phase A: layers 1 & 2 concurrently.
     resolved: dict[int, str] = {}
@@ -198,7 +194,7 @@ async def main() -> None:
             print(f"  L1+L2 {done[0]}/{len(sponsors)} ...", flush=True)
 
     async with (
-        AsyncFetcher(concurrency=10, per_host_rate=5, timeout=45.0) as fetcher,
+        AsyncFetcher(concurrency=16, per_host_rate=8, timeout=20.0) as fetcher,
         anyio.create_task_group() as tg,
     ):
         for idx, s in enumerate(sponsors):
@@ -209,11 +205,11 @@ async def main() -> None:
         ((idx, careers.get(idx, "")) for idx in range(len(sponsors)) if idx not in resolved),
         key=lambda t: -sponsors[t[0]]["filings"],
     )[:browser_cap]
-    print(f"L3 (headless browser) over {len(unknown)} unresolved sponsors ...")
+    print(f"L3 (headless browser) over {len(unknown)} unresolved sponsors ...", flush=True)
     try:
         from playwright.async_api import async_playwright
 
-        limiter = anyio.CapacityLimiter(4)
+        limiter = anyio.CapacityLimiter(6)
         async with async_playwright() as p:
             browser = await p.chromium.launch()
 
