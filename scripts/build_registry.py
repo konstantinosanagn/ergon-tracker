@@ -60,6 +60,7 @@ ATS_PRIORITY = {
     "bamboohr": 8,
     "breezy": 9,
     "teamtailor": 10,
+    "join": 11,
 }
 
 

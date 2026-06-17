@@ -65,7 +65,11 @@ SUPPORTED_ATSES = (
     "bamboohr",
     "breezy",
     "teamtailor",
+    "join",
 )
+
+# Where our provider name differs from jobhive's CSV stem.
+CSV_STEM = {"join": "join_com"}
 
 _KEY_RE = re.compile(r"[^a-z0-9]+")
 
@@ -146,7 +150,7 @@ def load_seed_keys(seed_path: Path = SEED) -> set[str]:
 
 async def fetch_csv(ats: str, fetcher: AsyncFetcher) -> str | None:
     try:
-        return await fetcher.get_text(_RAW.format(ats=ats))
+        return await fetcher.get_text(_RAW.format(ats=CSV_STEM.get(ats, ats)))
     except Exception as exc:  # noqa: BLE001 - report and continue
         print(f"  [{ats}] fetch failed: {type(exc).__name__}: {exc}")
         return None

@@ -46,6 +46,7 @@ _BUILTIN_MODULES = (
     "bamboohr",
     "breezy",
     "teamtailor",
+    "join",
     "remotive",
     "arbeitnow",
     "jobicy",

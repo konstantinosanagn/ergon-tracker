@@ -39,6 +39,7 @@ _ATS_PROVIDERS = frozenset(
         "bamboohr",
         "breezy",
         "teamtailor",
+        "join",
     }
 )
 _AGGREGATORS = frozenset({"remoteok"})
