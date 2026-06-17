@@ -18,11 +18,11 @@ import anyio
 
 from .dedup import deduplicate
 from .enrich import enrich_in_place
-from .ranking import rank
 from .http import AsyncFetcher
 from .models import JobPosting, SearchQuery, SearchResult, SourceHealth
 from .observability import build_health
 from .providers.base import get_provider, iter_providers, load_builtins, load_plugins
+from .ranking import rank
 from .registry.resolver import resolve
 from .registry.store import SeedRegistry
 

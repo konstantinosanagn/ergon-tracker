@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from .client import AsyncJobSpine
+from .client import AsyncErgonTracker
 from .exceptions import (
+    ErgonTrackerError,
     FetchError,
-    JobSpineError,
     ProviderError,
     RateLimitError,
     ResolveError,
@@ -24,7 +24,7 @@ from .models import (
     SearchResult,
     SourceHealth,
 )
-from .sync import JobSpine, search
+from .sync import ErgonTracker, search
 
 __version__ = "0.1.0"
 
@@ -32,8 +32,8 @@ __all__ = [
     "__version__",
     # clients
     "search",
-    "JobSpine",
-    "AsyncJobSpine",
+    "ErgonTracker",
+    "AsyncErgonTracker",
     # models
     "JobPosting",
     "SearchQuery",
@@ -48,7 +48,7 @@ __all__ = [
     "EmploymentType",
     "JobLevel",
     # exceptions
-    "JobSpineError",
+    "ErgonTrackerError",
     "ProviderError",
     "FetchError",
     "RateLimitError",

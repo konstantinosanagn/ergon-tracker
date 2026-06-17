@@ -65,10 +65,15 @@ def _clean(token: str | None, *, lower: bool = True) -> str | None:
 
 
 def _host_path(url: str) -> tuple[str, list[str], dict[str, list[str]]]:
-    s = urlsplit(url if "://" in url else "https://" + url)
-    host = s.netloc.split("@")[-1].split(":")[0].lower()
-    segs = [seg for seg in s.path.split("/") if seg]
-    return host, segs, parse_qs(s.query)
+    # urlsplit raises ValueError on malformed input (e.g. bad IPv6 brackets). Wild URLs from
+    # GitHub code fragments hit this, so degrade to "no match" instead of crashing the sweep.
+    try:
+        s = urlsplit(url if "://" in url else "https://" + url)
+        host = s.netloc.split("@")[-1].split(":")[0].lower()
+        segs = [seg for seg in s.path.split("/") if seg]
+        return host, segs, parse_qs(s.query)
+    except ValueError:
+        return "", [], {}
 
 
 def _extract_greenhouse(url: str) -> str | None:

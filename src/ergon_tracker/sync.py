@@ -2,7 +2,7 @@
 
 Note: these helpers call ``anyio.run`` and therefore must NOT be called from within a running
 event loop (e.g. inside ``async def`` or a Jupyter cell). In those contexts use
-``AsyncJobSpine`` directly.
+``AsyncErgonTracker`` directly.
 """
 
 from __future__ import annotations
@@ -11,17 +11,17 @@ from typing import TYPE_CHECKING, Any
 
 import anyio
 
-from .client import AsyncJobSpine
+from .client import AsyncErgonTracker
 from .models import SearchQuery, SearchResult
 
 if TYPE_CHECKING:
     from .registry.resolver import Resolution
 
-__all__ = ["search", "JobSpine"]
+__all__ = ["search", "ErgonTracker"]
 
 
 async def _run_search(query: SearchQuery, options: dict[str, Any]) -> SearchResult:
-    async with AsyncJobSpine(**options) as js:
+    async with AsyncErgonTracker(**options) as js:
         return await js.search(query)
 
 
@@ -51,7 +51,7 @@ def search(
     return anyio.run(_run_search, query, options)
 
 
-class JobSpine:
+class ErgonTracker:
     """Synchronous client. Holds options; each call spins the async core to completion."""
 
     def __init__(self, *, concurrency: int = 16, cache: bool = False) -> None:

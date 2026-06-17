@@ -1,8 +1,8 @@
 """ergon_tracker MCP server — exposes the SDK as Model Context Protocol tools.
 
-Run it (after ``pip install 'ergon_tracker[mcp]'``)::
+Run it (after ``pip install 'ergon-tracker[mcp]'``)::
 
-    ergon_tracker-mcp            # stdio transport (for Claude Desktop / MCP clients)
+    ergon-tracker-mcp            # stdio transport (for Claude Desktop / MCP clients)
 
 Tools:
 - ``search_jobs``     — unified search across ATS feeds + aggregators
@@ -19,7 +19,7 @@ from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 
-from .client import AsyncJobSpine
+from .client import AsyncErgonTracker
 from .models import JobLevel, JobPosting, SearchQuery
 from .providers.base import iter_providers, load_builtins, load_plugins
 from .registry.resolver import resolve
@@ -106,7 +106,7 @@ async def search_jobs(
         infer_level_from_experience=infer_level_from_experience,
         limit=limit,
     )
-    async with AsyncJobSpine() as js:
+    async with AsyncErgonTracker() as js:
         result = await js.search(query)
     return {
         "count": len(result.jobs),

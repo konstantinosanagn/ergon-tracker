@@ -128,12 +128,15 @@ def score_text(query: str, jobs: list[JobPosting]) -> list[float]:
     return totals
 
 
-def rank(jobs: list[JobPosting], query: str | None) -> list[JobPosting]:
+def rank(
+    jobs: list[JobPosting], query: str | None, *, reranker: Reranker | None = None
+) -> list[JobPosting]:
     """Return ``jobs`` ordered by relevance to ``query`` (descending), setting ``job.score``.
 
     Stable: equally-scored jobs keep their incoming order (authority/recency from dedup). With
-    no query (or no jobs) the list is returned unchanged and scores are left as-is. If a
-    reranker is registered, it reorders the lexical top-K for a final precision pass.
+    no query (or no jobs) the list is returned unchanged and scores are left as-is. A reranker
+    (the ``reranker`` argument, else the process-wide one from :func:`register_reranker`)
+    reorders the lexical top-K for a final precision pass.
     """
     if not query or len(jobs) <= 1:
         return jobs
@@ -142,14 +145,16 @@ def rank(jobs: list[JobPosting], query: str | None) -> list[JobPosting]:
     for job, sc in zip(jobs, scores, strict=True):
         job.score = sc
 
-    # Optional stronger reranker over the lexical top-K (kept small for cost).
-    if _RERANKER is not None:
+    # Optional stronger reranker over the lexical top-K (kept small for cost). A per-call
+    # reranker wins over the global default so concurrent searches never share mutable state.
+    active = reranker if reranker is not None else _RERANKER
+    if active is not None:
         top_k = min(len(jobs), 100)
         order = sorted(range(len(jobs)), key=lambda i: scores[i], reverse=True)
         head_idx = order[:top_k]
         head_jobs = [jobs[i] for i in head_idx]
         try:
-            re_scores = _RERANKER.rerank(query, head_jobs)
+            re_scores = active.rerank(query, head_jobs)
             for job, sc in zip(head_jobs, re_scores, strict=True):
                 job.score = sc
         except Exception:  # noqa: BLE001 - a reranker failure must not break search

@@ -9,7 +9,7 @@ from rich.console import Console
 from rich.table import Table
 
 from . import __version__
-from .exceptions import JobSpineError
+from .exceptions import ErgonTrackerError
 
 app = typer.Typer(
     add_completion=False,
@@ -48,11 +48,11 @@ def sources() -> None:
 @app.command()
 def resolve(target: str) -> None:
     """Detect which ATS a company/careers URL uses, and its board token."""
-    from .sync import JobSpine
+    from .sync import ErgonTracker
 
     try:
-        resolution = JobSpine().resolve(target)
-    except (JobSpineError, NotImplementedError, ImportError) as exc:
+        resolution = ErgonTracker().resolve(target)
+    except (ErgonTrackerError, NotImplementedError, ImportError) as exc:
         err_console.print(f"[red]resolve failed:[/] {exc}")
         raise typer.Exit(code=1) from exc
     console.print_json(json.dumps(getattr(resolution, "__dict__", {"result": str(resolution)})))
@@ -96,7 +96,7 @@ def search(
     except ValueError as exc:
         err_console.print(f"[red]invalid level:[/] {exc}")
         raise typer.Exit(code=1) from exc
-    except (JobSpineError, NotImplementedError, ImportError) as exc:
+    except (ErgonTrackerError, NotImplementedError, ImportError) as exc:
         err_console.print(f"[red]search failed:[/] {exc}")
         raise typer.Exit(code=1) from exc
 

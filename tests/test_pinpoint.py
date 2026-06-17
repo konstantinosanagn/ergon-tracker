@@ -14,7 +14,13 @@ import pytest
 import respx
 
 from ergon_tracker.http import AsyncFetcher
-from ergon_tracker.models import EmploymentType, RemoteType, SalaryInterval, SearchQuery, make_job_id
+from ergon_tracker.models import (
+    EmploymentType,
+    RemoteType,
+    SalaryInterval,
+    SearchQuery,
+    make_job_id,
+)
 from ergon_tracker.providers.pinpoint import PinpointProvider
 
 pytestmark = pytest.mark.anyio

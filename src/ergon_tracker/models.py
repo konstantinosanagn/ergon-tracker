@@ -344,14 +344,14 @@ class SearchResult(BaseModel):
         try:
             import pandas as pd
         except ImportError as exc:  # pragma: no cover - optional extra
-            raise ImportError("DataFrame export needs: pip install 'ergon_tracker[pandas]'") from exc
+            raise ImportError("DataFrame export needs: pip install 'ergon-tracker[pandas]'") from exc
         return pd.DataFrame(self.to_dicts())
 
     def to_polars(self) -> Any:  # optional dep, dynamic return type
         try:
             import polars as pl
         except ImportError as exc:  # pragma: no cover - optional extra
-            raise ImportError("DataFrame export needs: pip install 'ergon_tracker[polars]'") from exc
+            raise ImportError("DataFrame export needs: pip install 'ergon-tracker[polars]'") from exc
         return pl.DataFrame(self.to_dicts())
 
     @property

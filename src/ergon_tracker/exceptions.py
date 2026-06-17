@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 __all__ = [
-    "JobSpineError",
+    "ErgonTrackerError",
     "ProviderError",
     "FetchError",
     "TransientHTTPError",
@@ -12,11 +12,11 @@ __all__ = [
 ]
 
 
-class JobSpineError(Exception):
+class ErgonTrackerError(Exception):
     """Base class for all ergon_tracker errors."""
 
 
-class ProviderError(JobSpineError):
+class ProviderError(ErgonTrackerError):
     """A provider failed to fetch or normalize. Carries the provider name."""
 
     def __init__(self, provider: str, message: str) -> None:
@@ -24,7 +24,7 @@ class ProviderError(JobSpineError):
         super().__init__(f"[{provider}] {message}")
 
 
-class FetchError(JobSpineError):
+class FetchError(ErgonTrackerError):
     """A network/HTTP fetch failed in a non-retryable way (or after exhausting retries)."""
 
 
@@ -40,5 +40,5 @@ class RateLimitError(FetchError):
         super().__init__(message)
 
 
-class ResolveError(JobSpineError):
+class ResolveError(ErgonTrackerError):
     """ATS auto-discovery could not determine a provider/token for a URL or domain."""

@@ -1,4 +1,4 @@
-"""Async core: ``AsyncJobSpine`` holds the fetcher + provider registry and runs searches.
+"""Async core: ``AsyncErgonTracker`` holds the fetcher + provider registry and runs searches.
 
 The actual orchestration lives in ``search.py`` (Phase 2) and resolution in
 ``registry/resolver.py`` (Phase 1); both are imported lazily so the package imports cleanly
@@ -16,7 +16,7 @@ from .providers.base import load_builtins, load_plugins
 if TYPE_CHECKING:
     from .registry.resolver import Resolution
 
-__all__ = ["AsyncJobSpine"]
+__all__ = ["AsyncErgonTracker"]
 
 _providers_loaded = False
 
@@ -29,7 +29,7 @@ def _ensure_providers_loaded() -> None:
         _providers_loaded = True
 
 
-class AsyncJobSpine:
+class AsyncErgonTracker:
     def __init__(
         self,
         *,
@@ -54,7 +54,7 @@ class AsyncJobSpine:
     async def aclose(self) -> None:
         await self._fetcher.aclose()
 
-    async def __aenter__(self) -> AsyncJobSpine:
+    async def __aenter__(self) -> AsyncErgonTracker:
         return self
 
     async def __aexit__(self, *exc: object) -> None:

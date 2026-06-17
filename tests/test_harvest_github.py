@@ -35,6 +35,15 @@ def test_tokens_from_fragments_per_ats_rules() -> None:
     assert tokens_from_fragments("lever", ["https://boards.greenhouse.io/stripe"]) == []
 
 
+def test_tokens_from_fragments_tolerates_malformed_urls() -> None:
+    # GitHub fragments contain wild URLs; a bad one (IPv6 brackets) must not crash extraction.
+    frags = [
+        "https://[::1]:8080/greenhouse",  # malformed -> urlsplit raises, must be swallowed
+        "https://boards.greenhouse.io/stripe",
+    ]
+    assert tokens_from_fragments("greenhouse", frags) == ["stripe"]
+
+
 def test_fragments_from_search_pulls_text_matches() -> None:
     payload = {
         "items": [
