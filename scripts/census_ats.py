@@ -50,12 +50,17 @@ from ergon_tracker.http import AsyncFetcher  # noqa: E402
 from ergon_tracker.models import SearchQuery  # noqa: E402
 from ergon_tracker.providers.base import get_provider, load_builtins  # noqa: E402
 from ergon_tracker.providers.icims import ICIMSProvider  # noqa: E402
+from ergon_tracker.providers.phenom import PhenomProvider  # noqa: E402
 
 load_builtins()
 DEFAULT_OUT = ROOT / "scripts" / "candidates_ats.json"
 _ICIMS_API = "https://{host}/api/jobs?page=1&limit=1"
+_PHENOM_API = "https://{host}/widgets"
+_PHENOM_PROBE = {"ddoKey": "refineSearch", "jobs": True, "from": 0, "size": 1}
 # Host-based providers whose matches() recognises a careers URL directly (order = preference).
-_URL_ATSES = ("taleo", "oracle", "icims")
+# Each is host-specific (*.taleo.net, *.oraclecloud.com, *.icims.com, *.avature.net,
+# *.applytojob.com, jobs.jobvite.com, *.phenompeople.com) so order never causes mis-matches.
+_URL_ATSES = ("taleo", "oracle", "icims", "avature", "jazzhr", "jobvite", "phenom")
 
 
 def _slug(name: str) -> str:
@@ -77,6 +82,12 @@ def _company_key(sponsor: str, ats: str, token: str) -> str:
         return host.split(".")[0]  # tenant label (drhorton.taleo.net -> drhorton)
     if ats == "icims":
         return ICIMSProvider._host_company(host)  # careers-winco.icims.com -> winco
+    if ats == "phenom":
+        return PhenomProvider._host_company(host)  # careers.activisionblizzard.com -> activision...
+    if ats == "avature":
+        return host.split(".")[0]  # bloomberg.avature.net -> bloomberg
+    if ats in ("jazzhr", "jobvite"):
+        return token  # token IS the slug/subdomain (firstadvantage, buckman)
     return _slug(sponsor)  # oracle hosts are opaque codes -> use the sponsor slug
 
 
@@ -88,7 +99,8 @@ async def detect(urls: list[str], fetcher: AsyncFetcher) -> tuple[str, str] | No
             tok = get_provider(ats).matches(u)
             if tok:
                 return ats, tok
-    # (b) probe careers hosts: iCIMS vanity (/api/jobs JSON) then SuccessFactors (RSS)
+    # (b) probe careers hosts for the providers that live on vanity domains: iCIMS (/api/jobs
+    # JSON), Phenom (/widgets refineSearch), then SuccessFactors (RSS).
     for host in _sf_candidate_hosts(urls)[:5]:
         try:
             resp = await fetcher.request("GET", _ICIMS_API.format(host=host), timeout=8.0)
@@ -96,6 +108,16 @@ async def detect(urls: list[str], fetcher: AsyncFetcher) -> tuple[str, str] | No
                 body = resp.json()
                 if isinstance(body, dict) and ("jobs" in body or "totalCount" in body):
                     return "icims", host
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            resp = await fetcher.request(
+                "POST", _PHENOM_API.format(host=host), json=_PHENOM_PROBE, timeout=8.0
+            )
+            if resp.status_code == 200 and "json" in resp.headers.get("content-type", "").lower():
+                body = resp.json()
+                if isinstance(body, dict) and isinstance(body.get("refineSearch"), dict):
+                    return "phenom", host
         except Exception:  # noqa: BLE001
             pass
         if await _is_sf(host, fetcher):
