@@ -149,6 +149,9 @@ class JobPosting(BaseModel):
     updated_at: datetime | None = None
     provenance: list[Provenance] = Field(default_factory=list)
     raw: dict[str, Any] = Field(default_factory=dict)
+    # Relevance score for the current query (set by the ranking layer; None when unranked).
+    # Higher is more relevant. Transient/query-dependent — not part of the stored posting.
+    score: float | None = None
 
     @classmethod
     def create(

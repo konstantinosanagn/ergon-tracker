@@ -251,6 +251,36 @@ Cloned and read at the source level (not from README blurbs). **All three are si
 
 ---
 
+## 10. Coverage scorecard — how much of jobhive we extracted (2026-06-17)
+
+> The product is now **`ergon_tracker`** (formerly jobspine). The registry grew **1,453 → 41,988 verified-live company boards this effort** (~29×), every entry confirmed live through our own providers before merging — vs jobhive's static, partly-stale snapshot.
+
+**We extracted ~89% of jobhive's entire tenant universe.** jobhive publishes **26 ATS CSVs / 63,390 tenants**; we now have **providers for 14 of them**, covering **56,172 tenants (89%)**.
+
+**6 ATS providers were built from scratch this effort** to close the gap: `bamboohr`, `breezy`, `teamtailor`, `join`, `rippling`, `pinpoint`.
+
+### Covered (14 ATSes — 89% of jobhive's tenants)
+greenhouse, lever, ashby, workday, smartrecruiters, workable, recruitee, personio, **bamboohr**, **breezy**, **teamtailor**, **join** (their largest, 23.5k), **rippling**, **pinpoint**.
+
+### Still uncovered (12 ATSes — 7,218 tenants, 11%) — the hard tail
+
+| ATS | tenants | Why not (yet) |
+|---|---:|---|
+| jazzhr | 2,689 | board is HTML; JSON API needs a paid key |
+| icims | 1,363 | enterprise, heavy anti-bot |
+| successfactors | 1,271 | SAP OData, often auth-walled |
+| gem / oracle / recruiterbox / cornerstone / taleo / phenom / avature / eightfold / mercor | 1,895 | small + enterprise/complex; diminishing returns |
+
+These are exactly the "no bot-defense story" limitation flagged in §7 — anti-bot/enterprise ATSes that resist clean no-auth fetching. The reachable remainder (jazzhr aside) is low-yield.
+
+### Verdict
+**Yes — we got the realistic maximum from the competitors.** jobhive (the dominant data competitor) is drained to 89%; the brute-force technique (from company-career-scraper) and the Common Crawl concept + rippling/pinpoint endpoint specs (from careerscout) are all in production. What remains is a hard 11% tail behind real walls. Net new coverage now comes less from competitors and more from **web-scale discovery** (Common Crawl pagination/multi-crawl, GitHub code search, passive-DNS) reaching *beyond* anyone's curated list.
+
+### Discovery pipeline built (all feed one live verify-gate)
+`harvest_tokens.py` (brute-force names) · `ingest_jobhive_csvs.py` (jobhive CSVs → 14 ATSes) · `harvest_commoncrawl.py` (web-index tokens, now paginated) · `harvest_crtsh.py` (cert-transparency, negative result) · curated-CSV ingest + CI verify.
+
+---
+
 ## Sources
 
 Primary sources verified during research:
