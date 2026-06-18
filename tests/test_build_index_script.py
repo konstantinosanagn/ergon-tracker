@@ -37,3 +37,16 @@ def test_append_history_accumulates(tmp_path):
     import json
     rows = [json.loads(line) for line in h.read_text().splitlines()]
     assert [r["build_id"] for r in rows] == ["b1", "b2"]
+
+
+def test_build_and_publish_shards_gzips(tmp_path):
+    from build_index import build_and_publish_shards
+    from ergon_tracker.models import JobPosting
+
+    jobs = [JobPosting.create(source="greenhouse", source_job_id=str(i), company=f"Co{i}",
+                              title="Engineer", sector=("Fintech" if i % 2 else None)) for i in range(4)]
+    n = build_and_publish_shards(jobs, tmp_path, build_id="b1")
+    assert n == 2  # fintech + unknown
+    assert (tmp_path / "shards.json").exists()
+    gzs = {f.name for f in tmp_path.glob("shard-*.sqlite.gz")}
+    assert gzs == {"shard-fintech.sqlite.gz", "shard-unknown.sqlite.gz"}

@@ -87,6 +87,17 @@ def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
+def build_and_publish_shards(jobs: list, out: Path, *, build_id: str) -> int:
+    """Build per-sector shards from jobs and gzip each for release upload. Returns shard count."""
+    from ergon_tracker.index.build import build_sharded_index
+
+    manifest = build_sharded_index(jobs, out, build_id=build_id)
+    for info in manifest["shards"].values():
+        f = out / info["file"]
+        (out / (info["file"] + ".gz")).write_bytes(gzip.compress(f.read_bytes()))
+    return len(manifest["shards"])
+
+
 def append_history(history_path: Path, row: dict) -> None:
     """Append one build-summary row to the history JSONL time series (for drift detection)."""
     history_path.parent.mkdir(parents=True, exist_ok=True)
@@ -179,6 +190,7 @@ def main(argv: list[str]) -> None:
     limit = 300
     out = ROOT / "dist"
     incremental = False
+    sharded = False
     i = 0
     while i < len(argv):
         if argv[i] == "--limit-companies":
@@ -189,6 +201,9 @@ def main(argv: list[str]) -> None:
             i += 2
         elif argv[i] == "--incremental":
             incremental = True
+            i += 1
+        elif argv[i] == "--sharded":
+            sharded = True
             i += 1
         else:
             print(f"unknown flag: {argv[i]}")
@@ -240,6 +255,11 @@ def main(argv: list[str]) -> None:
                 "published": ok,
             },
         )
+        if ok and sharded:
+            from ergon_tracker.index.build import read_index_jobs as _rij
+
+            ns = build_and_publish_shards(_rij(db), out, build_id=build_id)
+            print(f"  + published {ns} sector shards")
         print(
             f"incremental build: crawled {len(outcome)} due boards, {len(fresh)} fresh jobs, "
             f"{n} total{' -> published' if ok else ' (gates FAILED, kept previous)'}"
@@ -253,6 +273,9 @@ def main(argv: list[str]) -> None:
     n = build_index(jobs, db_tmp, build_id=build_id)
     if not _gated_publish(db_tmp, db, out, build_id=build_id):
         raise SystemExit(1)
+    if sharded:
+        ns = build_and_publish_shards(jobs, out, build_id=build_id)
+        print(f"  + published {ns} sector shards")
     print(f"built index: {n} jobs -> {out}/index.sqlite.gz (+manifest.json)")
 
 

@@ -44,13 +44,14 @@ jobs:
       - name: Build incremental index (exits non-zero if data-quality gates fail)
         run: |
           uv run python scripts/build_index.py --incremental \
-            --limit-companies "${{ github.event.inputs.limit_companies || '10000' }}" --out dist
+            --limit-companies "${{ github.event.inputs.limit_companies || '10000' }}" --sharded --out dist
 
       - name: Publish snapshot to the stable index-latest release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          ASSETS="dist/index.sqlite.gz dist/manifest.json dist/gates.json dist/board_state.json dist/history.jsonl"
+          ASSETS="dist/index.sqlite.gz dist/manifest.json dist/gates.json dist/board_state.json dist/history.jsonl dist/shards.json"
+          ASSETS="$ASSETS $(ls dist/shard-*.sqlite.gz 2>/dev/null)"
           if gh release view index-latest >/dev/null 2>&1; then
             gh release upload index-latest $ASSETS --clobber
           else
