@@ -364,9 +364,8 @@ async def main() -> None:
 
     candidates.sort(key=lambda c: -(c.get("_filings") or 0))
     for c in candidates:
-        print(
-            f"  + {c['_sponsor'][:28]:28} ({c.get('_filings') or 0:>5}) {c['ats']:12} {c['token']}"
-        )
+        tok = c.get("token") or f"{c.get('tenant', '')}|{c.get('wd', '')}|{c.get('site', '')}"
+        print(f"  + {c['_sponsor'][:28]:28} ({c.get('_filings') or 0:>5}) {c['ats']:12} {tok}")
     out = [{k: v for k, v in c.items() if not k.startswith("_")} for c in candidates]
     out_path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
     print(
