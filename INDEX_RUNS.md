@@ -10,8 +10,9 @@ Per-run notes for the broad-discovery search index (spec:
 on all index files. Pipeline proven end-to-end on **live data**.
 
 **Live build** (`scripts/build_index.py --limit-companies 60`):
-- **18,469 jobs** crawled from 60 registry boards → `dist/index.sqlite` (28 MB raw / 3.8K… wait
-  the gz of the full 28MB ≈ a few MB; small-tier number), `integrity_check = ok`.
+- **18,469 jobs** crawled from 60 registry boards → `dist/index.sqlite` (28 MB raw),
+  `integrity_check = ok`. (Extrapolated, the full ~46k-board index would be ~hundreds of MB raw
+  / ~100 MB gzip — within the size budget; deltas/shards in v2 shrink per-query downloads.)
 - 60 companies; 3,814 jobs with salary; 10,242 with a known (non-unknown) level; 5,685 FTS
   matches for "engineer".
 
