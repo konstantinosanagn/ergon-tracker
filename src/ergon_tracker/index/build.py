@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
+import re
 from pathlib import Path
 
 from ..canonicalize import aggregate_companies
 from ..dedup import deduplicate, normalize_company
 from ..models import JobPosting
-from .db import connect, fresh_db
+from .db import SCHEMA_VERSION, connect, fresh_db
 from .mapping import from_row, to_row
 
 _JOB_COLS = (  # noqa: SIM905 - space-delimited string is far more readable than a 40-item list
@@ -125,3 +128,37 @@ def build_index(jobs: list[JobPosting], path: Path | str, *, build_id: str) -> i
         return len(deduped)
     finally:
         con.close()
+
+
+def sector_slug(sector: str | None) -> str:
+    """Filesystem-safe shard key for a sector ('AI/ML' -> 'ai-ml'); None/empty -> 'unknown'."""
+    if not sector:
+        return "unknown"
+    slug = re.sub(r"[^a-z0-9]+", "-", sector.lower()).strip("-")
+    return slug or "unknown"
+
+
+def build_sharded_index(jobs: list[JobPosting], out_dir: Path | str, *, build_id: str) -> dict:
+    """Build one SQLite shard per sector (+ 'unknown') + a shards.json manifest. Returns manifest.
+
+    Dedup once over the whole set, then partition by sector so a sector-scoped query later opens
+    only its shard. Each shard is a normal index DB (same schema), so ShardedIndexBackend can use
+    the same query path.
+    """
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    deduped = deduplicate(jobs)
+    by_sector: dict[str, list[JobPosting]] = {}
+    for j in deduped:
+        by_sector.setdefault(sector_slug(j.sector), []).append(j)
+
+    shards: dict[str, dict] = {}
+    for slug, sjobs in sorted(by_sector.items()):
+        fname = f"shard-{slug}.sqlite"
+        n = build_index(sjobs, out / fname, build_id=build_id)
+        raw = (out / fname).read_bytes()
+        shards[slug] = {"file": fname, "rows": n, "sha256": hashlib.sha256(raw).hexdigest()}
+
+    manifest = {"build_id": build_id, "schema_version": SCHEMA_VERSION, "shards": shards}
+    (out / "shards.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return manifest
