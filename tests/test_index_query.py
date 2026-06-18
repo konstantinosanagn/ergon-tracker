@@ -63,3 +63,31 @@ def test_matches_parity_on_filters(tmp_path):
         sql_ids = {r["id"] for r in search_rows(con, q)}
         match_ids = {j.id for j in jobs if q.matches(j)}
         assert sql_ids == match_ids, f"parity broke for {q}"
+
+
+def test_query_robust_against_adversarial_and_edge_input(tmp_path):
+    """FTS keyword path must never break or SQL-inject; edge inputs return sane results.
+
+    Locks in the live stress-test result: tokens are quoted before reaching FTS5, so
+    operators / quotes / specials are treated as literals, never as query syntax or SQL.
+    """
+    con = _db(
+        tmp_path,
+        [_job("1", "Senior Software Engineer", description_text="c++ and python"),
+         _job("2", "Data Scientist", description_text="ml research"),
+         _job("3", "Account Executive", description_text="sales")],
+    )
+    # adversarial keyword strings must not raise and must not return the whole table via injection
+    for kw in ('engineer" OR 1=1 --', "c++ (senior) AND/OR *", "AND OR NOT NEAR",
+               "'; DROP TABLE jobs; --", '"""', "ingénieur café", "engineer " * 200):
+        rows = search_rows(con, SearchQuery(keywords=kw, limit=50))
+        assert isinstance(rows, list)
+        assert all(r["title"] and r["company"] for r in rows)
+
+    # the injection table is intact (DROP did not execute)
+    assert con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0] == 3
+
+    # edge cases
+    assert search_rows(con, SearchQuery(keywords="zzxqkjwffbbq", limit=5)) == []  # no match
+    assert len(search_rows(con, SearchQuery(keywords="engineer", limit=1))) == 1  # limit honored
+    assert len(search_rows(con, SearchQuery(keywords="engineer", limit=100000))) <= 3  # huge limit

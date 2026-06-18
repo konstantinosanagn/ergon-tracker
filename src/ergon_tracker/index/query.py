@@ -71,12 +71,16 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
 def search_rows(con: sqlite3.Connection, q: SearchQuery) -> list[sqlite3.Row]:
     where, params = _where(q)
     limit = q.limit or 1000
-    if q.keywords:
+    # Branch on the *expanded* match expr: keywords with no alphanumeric tokens (e.g. '"""'
+    # or pure punctuation) yield "" — taking the FTS path then would `MATCH ''` and raise an
+    # FTS5 syntax error, so fall through to the filter-only path (no keyword constraint).
+    match = _match_expr(q.keywords) if q.keywords else ""
+    if match:
         sql = (
             "SELECT j.* FROM jobs j JOIN jobs_fts f ON j.rowid = f.rowid "
             "WHERE jobs_fts MATCH ? AND " + " AND ".join(where) + " ORDER BY bm25(jobs_fts, 10,3,3,1)"
             " LIMIT ?"
         )
-        return con.execute(sql, [_match_expr(q.keywords), *params, limit]).fetchall()
+        return con.execute(sql, [match, *params, limit]).fetchall()
     sql = "SELECT j.* FROM jobs j WHERE " + " AND ".join(where) + " ORDER BY j.posted_at DESC LIMIT ?"
     return con.execute(sql, [*params, limit]).fetchall()
