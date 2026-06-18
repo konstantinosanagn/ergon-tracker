@@ -70,3 +70,25 @@ not daily — the crawl load collapses while the index stays current.
 (M2) + gates/observability/daily Action (M3) all implemented, tested, and proven on live data.
 Remaining v1 polish: full structured-JSON logging + secret redaction + `INDEX_STATUS.md`
 generation, and the first real **full** (46k) CI build. Then v2 = Approach B (sector shards + deltas).
+
+## 2026-06-18 — BLOCKER: repo is private (breaks free anonymous index download)
+
+The daily Action ran **green** in CI (run 27746891189): incremental build → gates passed →
+published the `index-latest` release with all assets (index.sqlite.gz 6.1 MB, manifest, gates,
+board_state, history). The build/gate/publish pipeline works for real.
+
+**But the SDK download 404s** because the repo is currently **PRIVATE** (`gh repo view` →
+`isPrivate: true`). GitHub release assets on a private repo are not anonymously downloadable, so
+`IndexCache.ensure_fresh()` (anonymous urllib GET) gets 404. The whole free-CI-snapshot model
+assumes a **public** repo (anonymous free downloads + unlimited free Actions minutes).
+
+**This is a blocker for "v1 done / works for others." Options (user decision):**
+1. **Make the repo public** (`gh repo edit konstantinosanagn/ergon-tracker --visibility public`) —
+   restores the design's premise; users download the index anonymously for free. (The user chose
+   "Public" earlier when the repo was created; it became private since.)
+2. **Keep private** → the index can't be a free public download. Would need either (a) token-auth
+   downloads via the GitHub API asset endpoint (only token-holders, not "anyone"), or (b) host the
+   snapshot on a public host (HF Datasets / Cloudflare R2 / a separate public repo).
+
+v1 is **feature-complete and CI-green**, but NOT "officially done" until distribution works for
+others — i.e. until visibility is resolved. Not starting v2 until then.
