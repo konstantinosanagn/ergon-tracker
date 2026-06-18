@@ -184,8 +184,8 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
         state = states[bkey]
         # Cross-build conditional request: if this provider exposes a whole-board validator URL,
         # present the stored ETag/Last-Modified. A 304 means unchanged -> carry forward without
-        # re-downloading (the big throttle/bandwidth win). A 200 refreshes the stored validator;
-        # we still do a full fetch (accepted one-time/changed-board cost, see plan).
+        # re-downloading (the big throttle/bandwidth win). A 200 refreshes the validator and we
+        # parse that same body (no refetch) via raws_from_body.
         curl = provider.conditional_url(e["token"])
         try:
             if curl:
@@ -196,7 +196,12 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
                     outcome[bkey]["not_modified"] = True
                     return  # unchanged -> prev jobs carry forward (company set stays empty)
                 state.etag, state.last_modified = res.etag, res.last_modified
-            raws = await provider.fetch(e["token"], SearchQuery(), fetcher)
+                # Reuse the body we just downloaded (200) instead of refetching the same board.
+                raws = provider.raws_from_body(e["token"], res.body) if res.body else None
+                if raws is None:
+                    raws = await provider.fetch(e["token"], SearchQuery(), fetcher)
+            else:
+                raws = await provider.fetch(e["token"], SearchQuery(), fetcher)
         except RateLimitError:
             outcome[bkey].update(error=True, http_429=1)
             return

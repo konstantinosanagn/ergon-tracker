@@ -105,6 +105,15 @@ class LeverProvider(BaseProvider):
 
         url = _API.format(token=token)
         data = await fetcher.get_json(url, params=params)
+        return self._raws_from_data(data, token)
+
+    def raws_from_body(self, token: str, body: bytes) -> list[RawJob]:
+        """Parse an already-downloaded response body (from a conditional 200), avoiding a refetch."""
+        import json
+
+        return self._raws_from_data(json.loads(body), token)
+
+    def _raws_from_data(self, data: Any, token: str) -> list[RawJob]:
         postings: list[dict[str, Any]] = data if isinstance(data, list) else []
         company = token.replace("-", " ").title()
         raws: list[RawJob] = []

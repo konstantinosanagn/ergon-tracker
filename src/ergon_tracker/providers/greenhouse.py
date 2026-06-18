@@ -78,6 +78,15 @@ class GreenhouseProvider(BaseProvider):
         # Greenhouse has no server-side filtering: pull the whole board in one request.
         url = _API.format(token=token)
         data = await fetcher.get_json(url, params={"content": "true"})
+        return self._raws_from_data(data, token)
+
+    def raws_from_body(self, token: str, body: bytes) -> list[RawJob]:
+        """Parse an already-downloaded response body (from a conditional 200), avoiding a refetch."""
+        import json
+
+        return self._raws_from_data(json.loads(body), token)
+
+    def _raws_from_data(self, data: Any, token: str) -> list[RawJob]:
         postings: list[dict[str, Any]] = data.get("jobs", []) if isinstance(data, dict) else []
         raws: list[RawJob] = []
         for posting in postings:

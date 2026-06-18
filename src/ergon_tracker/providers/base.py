@@ -61,6 +61,7 @@ _BUILTIN_MODULES = (
     "brassring",
     "schemaorg",
     "apicapture",
+    "coveo",
     "remotive",
     "arbeitnow",
     "jobicy",
@@ -125,6 +126,11 @@ class BaseProvider:
     def conditional_url(self, token: str) -> str | None:
         """Default: not cheaply validatable. Providers with a single full-board response and
         ETag/Last-Modified support override this (see conditional-requests plan)."""
+        return None
+
+    def raws_from_body(self, token: str, body: bytes) -> list[RawJob] | None:
+        """Parse an already-downloaded body into RawJobs (lets the crawler reuse a conditional
+        200 instead of refetching). Default None = unsupported; the caller falls back to fetch."""
         return None
 
     # --- shared helpers -------------------------------------------------
