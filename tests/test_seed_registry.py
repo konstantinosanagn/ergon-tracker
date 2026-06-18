@@ -33,6 +33,7 @@ SUPPORTED_ATS = {
     "brassring",
     "schemaorg",
     "apicapture",
+    "adzuna",
 }
 
 

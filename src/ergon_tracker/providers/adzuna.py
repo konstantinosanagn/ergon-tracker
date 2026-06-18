@@ -18,6 +18,7 @@ server-side ``what``/``where`` filtering plus the client-side ``query.matches`` 
 
 from __future__ import annotations
 
+import re
 from datetime import datetime
 from typing import TYPE_CHECKING, Any
 
@@ -39,6 +40,20 @@ if TYPE_CHECKING:
 
 _API = "https://api.adzuna.com/v1/api/jobs/{country}/search/{page}"
 _DEFAULT_COUNTRY = "us"
+
+
+def _company_match(target: str, board: str) -> bool:
+    """True if an Adzuna result's employer matches the company token (guards Adzuna mixing in
+    related firms). Shares a significant (>=4 char) word, or one collapsed name contains the
+    other — so "JPMorgan Chase" matches "Chase"/"WELLS FARGO BANK" matches "Wells Fargo"."""
+    tw = {w for w in re.sub(r"[^a-z0-9 ]", " ", target.lower()).split() if len(w) >= 4}
+    bw = {w for w in re.sub(r"[^a-z0-9 ]", " ", board.lower()).split() if len(w) >= 4}
+    if tw & bw:
+        return True
+    tc = re.sub(r"[^a-z0-9]", "", target.lower())
+    bc = re.sub(r"[^a-z0-9]", "", board.lower())
+    return bool(tc) and bool(bc) and (tc in bc or bc in tc)
+
 
 # Countries Adzuna serves, mapped to local currency (the API omits a currency field).
 _COUNTRY_CURRENCY: dict[str, str] = {
@@ -154,6 +169,8 @@ class AdzunaProvider(BaseProvider):
         # Aggregator: never resolved from a company URL.
         return None
 
+    MAX_PAGES = 20  # company-scoped pagination ceiling (=1000 jobs)
+
     async def fetch(self, token: str, query: SearchQuery, fetcher: AsyncFetcher) -> list[RawJob]:
         app_id = get_env("ADZUNA_APP_ID")
         app_key = get_env("ADZUNA_APP_KEY")
@@ -162,35 +179,64 @@ class AdzunaProvider(BaseProvider):
             return []
 
         country = _country_slug(query.country)
+        # A non-empty token = a COMPANY board: search that company's name and keep only the
+        # results whose employer actually matches (Adzuna mixes in related firms). This is the
+        # last-resort fallback for "proxied" giants whose own site exposes no fetchable jobs but
+        # whose postings are aggregated here (JPMorgan, Deloitte, Cognizant, ...). Empty token =
+        # the original global keyword aggregator.
+        company = (token or "").strip()
         params: dict[str, Any] = {
             "app_id": app_id,
             "app_key": app_key,
-            "results_per_page": min(query.limit or 50, 50),
+            "results_per_page": 50,
             "content-type": "application/json",
         }
-        if query.keywords:
+        if company:
+            params["what_phrase"] = company
+        elif query.keywords:
             params["what"] = query.keywords
         where = query.city or query.location
         if where:
             params["where"] = where
 
-        url = _API.format(country=country, page=1)
-        data = await fetcher.get_json(url, params=params)
-        results = data.get("results", []) if isinstance(data, dict) else []
-        items = [j for j in results if isinstance(j, dict)]
-        if query.limit is not None:
-            items = items[: query.limit]
-        return [
-            RawJob(
-                source=self.name,
-                source_job_id=str(job.get("id", "")),
-                company=(job.get("company") or {}).get("display_name") or "",
-                token=None,
-                url=job.get("redirect_url"),
-                payload={**job, "_country": country},
+        limit = query.limit
+        raws: list[RawJob] = []
+        seen: set[str] = set()
+        pages = self.MAX_PAGES if company else 1
+        for page in range(1, pages + 1):
+            url = _API.format(country=country, page=page)
+            try:
+                data = await fetcher.get_json(url, params=params)
+            except Exception:
+                break
+            results = (
+                [j for j in data.get("results", []) if isinstance(j, dict)]
+                if isinstance(data, dict)
+                else []
             )
-            for job in items
-        ]
+            if not results:
+                break
+            for job in results:
+                co = (job.get("company") or {}).get("display_name") or ""
+                if company and not _company_match(company, co):
+                    continue
+                jid = str(job.get("id", ""))
+                if not jid or jid in seen:
+                    continue
+                seen.add(jid)
+                raws.append(
+                    RawJob(
+                        source=self.name,
+                        source_job_id=jid,
+                        company=co,
+                        token=None,
+                        url=job.get("redirect_url"),
+                        payload={**job, "_country": country},
+                    )
+                )
+                if limit is not None and len(raws) >= limit:
+                    return raws[:limit]
+        return raws
 
     def normalize(self, raw: RawJob) -> JobPosting:
         p = raw.payload
