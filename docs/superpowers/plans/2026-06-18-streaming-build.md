@@ -1,5 +1,9 @@
 # Streaming / SQL-Merge Index Build Implementation Plan
 
+> **STATUS: COMPLETE (2026-06-18).** Tasks 1–6 + integration done, parity-tested, and verified
+> end-to-end on a real 5-board crawl (1657 jobs → streamed → built → gated → sharded). The
+> incremental build is now memory-bounded (O(batch)+O(#companies)); swap is no longer required.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: superpowers:executing-plans. Checkbox steps.
 
 **Goal:** Build the index without ever holding all jobs in memory, so a full ~46k-board crawl
