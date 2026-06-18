@@ -140,3 +140,32 @@ def test_changed_companies_sql_no_prev(tmp_path):
     fresh = tmp_path / "fresh.sqlite"
     build_index([_job("1", "Stripe", "Eng"), _job("2", "Ramp", "Eng")], fresh, build_id="b1")
     assert changed_companies_sql(fresh, None) == {"stripe", "ramp"}  # all new == changed
+
+
+def test_build_from_fresh_db_matches_incremental(tmp_path):
+    # Crawl writes fresh jobs to a DB; build_index_from_fresh_db + carry-forward must match the
+    # in-memory build_index_incremental oracle.
+    from ergon_tracker.index.build import (
+        build_index_from_fresh_db,
+        build_index_streaming,
+    )
+
+    prev = tmp_path / "prev.sqlite"
+    build_index(
+        [_job("1", "Stripe", "Old Role"), _job("2", "Ramp", "Ramp Role")], prev, build_id="b0"
+    )
+    # the crawl's fresh DB (only re-crawled boards): Stripe changed
+    fresh_db_path = tmp_path / "fresh.sqlite"
+    build_index_streaming([[_job("3", "Stripe", "New Role")]], fresh_db_path, build_id="b1")
+    crawled = {"stripe"}
+
+    out = tmp_path / "out.sqlite"
+    build_index_from_fresh_db(fresh_db_path, out, build_id="b1", prev_db=prev, crawled_keys=crawled)
+    oracle = tmp_path / "oracle.sqlite"
+    build_index_incremental(prev, [_job("3", "Stripe", "New Role")], crawled, oracle, build_id="b1")
+
+    ids_out, _, _ = _rows(out)
+    ids_oracle, _, _ = _rows(oracle)
+    assert ids_out == ids_oracle
+    titles = {r[0] for r in connect(out, read_only=True).execute("SELECT title FROM jobs")}
+    assert titles == {"New Role", "Ramp Role"}  # Ramp carried forward, old Stripe role dropped

@@ -334,6 +334,37 @@ def build_index_streaming(
         con.close()
 
 
+def build_index_from_fresh_db(
+    fresh_db_path: Path | str,
+    path: Path | str,
+    *,
+    build_id: str,
+    prev_db: Path | str | None = None,
+    crawled_keys: set[str] | None = None,
+) -> int:
+    """Build the final index from a crawl's fresh-jobs DB + carry-forward, entirely in SQL.
+
+    The streaming crawl writes each board's jobs into ``fresh_db_path``; here we copy those into
+    a clean index, carry forward un-crawled companies from ``prev_db``, and finalize — never
+    loading job objects into memory. Memory is O(#companies) at finalize.
+    """
+    fresh_db(path)
+    con = connect(path)
+    try:
+        con.execute("PRAGMA foreign_keys = OFF")  # companies aggregated in finalize_index
+        con.execute("ATTACH DATABASE ? AS fr", (str(fresh_db_path),))
+        cols = ",".join(_JOB_COLS)
+        con.execute(f"INSERT OR IGNORE INTO jobs({cols}) SELECT {cols} FROM fr.jobs")  # noqa: S608
+        con.execute("INSERT OR IGNORE INTO job_sources SELECT * FROM fr.job_sources")
+        con.commit()
+        con.execute("DETACH DATABASE fr")
+        if prev_db is not None and crawled_keys is not None and Path(prev_db).exists():
+            carry_forward(con, prev_db, crawled_keys)
+        return finalize_index(con, build_id=build_id)
+    finally:
+        con.close()
+
+
 def sector_slug(sector: str | None) -> str:
     """Filesystem-safe shard key for a sector ('AI/ML' -> 'ai-ml'); None/empty -> 'unknown'."""
     if not sector:
