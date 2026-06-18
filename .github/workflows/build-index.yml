@@ -26,10 +26,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Add swap (headroom for large full crawls; build holds jobs in memory)
+        continue-on-error: true  # best-effort insurance; never block the build on swap setup
         run: |
           # A full ~46k-board crawl can build a ~1M-row index; the in-memory merge/build can
-          # exceed the runner's RAM. Add generous swap on the large /mnt disk so a peak spike
-          # pages out (slow but safe) instead of OOM-killing a multi-hour build.
+          # exceed the runner's RAM. The runner already has an active /mnt/swapfile — turn it off,
+          # recreate it much larger, and re-enable so a peak spike pages out instead of OOM-killing
+          # a multi-hour build.
+          sudo swapoff -a || true
+          sudo rm -f /mnt/swapfile || true
           sudo fallocate -l 16G /mnt/swapfile || sudo dd if=/dev/zero of=/mnt/swapfile bs=1M count=16384
           sudo chmod 600 /mnt/swapfile
           sudo mkswap /mnt/swapfile
