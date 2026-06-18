@@ -119,6 +119,7 @@ async def main() -> None:
     args = sys.argv[1:]
     out_path = DEFAULT_OUT
     cap = 2500
+    gap_files: tuple[Path, ...] = (GAP, MIDTIER)
     i = 0
     while i < len(args):
         if args[i] == "--out":
@@ -126,6 +127,9 @@ async def main() -> None:
             i += 2
         elif args[i] == "--cap":
             cap = int(args[i + 1])
+            i += 2
+        elif args[i] == "--gap-file":
+            gap_files = (Path(args[i + 1]),)  # targeted run over a single sponsor list
             i += 2
         else:
             print(f"unknown flag: {args[i]}")
@@ -137,7 +141,7 @@ async def main() -> None:
         return
 
     sponsors: dict[str, dict] = {}
-    for f in (GAP, MIDTIER):
+    for f in gap_files:
         if f.exists():
             for s in json.loads(f.read_text()).get("uncovered_top", []):
                 cur = sponsors.get(s["name"])
