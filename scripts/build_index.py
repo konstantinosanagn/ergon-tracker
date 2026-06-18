@@ -81,11 +81,75 @@ async def _crawl(limit_companies: int) -> list:
     return deduplicate(jobs)
 
 
+def _today() -> str:
+    from datetime import datetime, timezone
+
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
+    """Crawl ONLY the boards due today (per the scheduler) -> (fresh_jobs, per-board outcome).
+
+    outcome[boardkey] = {error, http_429, companies}. This is the throttle-proofing: a daily
+    build touches a fraction of the registry instead of all of it. Crash-isolated per board.
+    """
+    import anyio
+
+    from ergon_tracker.dedup import normalize_company
+    from ergon_tracker.enrich import enrich_in_place
+    from ergon_tracker.exceptions import RateLimitError
+    from ergon_tracker.http import AsyncFetcher
+    from ergon_tracker.index.scheduler import BoardState, due_boards
+    from ergon_tracker.models import SearchQuery
+    from ergon_tracker.providers.base import get_provider, load_builtins
+    from ergon_tracker.registry.store import SeedRegistry
+
+    load_builtins()
+    boards = {}
+    for key, e in list(SeedRegistry().all().items())[:limit_companies]:
+        if e.get("ats") and e.get("token"):
+            bs = BoardState(provider=e["ats"], token=e["token"])
+            boards[bs.key] = (key, e)
+            states.setdefault(bs.key, bs)
+    due = set(due_boards(list(states.values()), _today())) & set(boards)
+
+    fresh: list = []
+    outcome: dict[str, dict] = {b: {"error": False, "http_429": 0, "companies": set()} for b in due}
+
+    async def grab(bkey: str, fetcher: AsyncFetcher) -> None:
+        regkey, e = boards[bkey]
+        provider = get_provider(e["ats"])
+        try:
+            raws = await provider.fetch(e["token"], SearchQuery(), fetcher)
+        except RateLimitError:
+            outcome[bkey].update(error=True, http_429=1)
+            return
+        except Exception:  # noqa: BLE001
+            outcome[bkey]["error"] = True
+            return
+        for raw in raws:
+            try:
+                job = provider.normalize(raw)
+            except Exception:  # noqa: BLE001
+                continue
+            if e.get("domain") and not job.company_domain:
+                job.company_domain = e["domain"]
+            enrich_in_place(job, company_key=regkey)
+            fresh.append(job)
+            outcome[bkey]["companies"].add(normalize_company(job.company))
+
+    async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
+        for bkey in due:
+            tg.start_soon(grab, bkey, fetcher)
+    return fresh, outcome
+
+
 def main(argv: list[str]) -> None:
     import anyio
 
     limit = 300
     out = ROOT / "dist"
+    incremental = False
     i = 0
     while i < len(argv):
         if argv[i] == "--limit-companies":
@@ -94,13 +158,55 @@ def main(argv: list[str]) -> None:
         elif argv[i] == "--out":
             out = Path(argv[i + 1])
             i += 2
+        elif argv[i] == "--incremental":
+            incremental = True
+            i += 1
         else:
             print(f"unknown flag: {argv[i]}")
             return
-    build_id = "m1-local"  # M2 replaces with a CI-supplied timestamp
-    jobs = anyio.run(_crawl, limit)
     out.mkdir(parents=True, exist_ok=True)
     db = out / "index.sqlite"
+    build_id = f"build-{_today()}"
+
+    if incremental:
+        from ergon_tracker.index.build import (
+            build_index_incremental,
+            changed_companies,
+            read_index_jobs,
+        )
+        from ergon_tracker.index.scheduler import apply_outcome, load_state, save_state
+
+        state_path = out / "board_state.json"
+        states = load_state(state_path)
+        prev_jobs = read_index_jobs(db) if db.exists() else []
+        fresh, outcome = anyio.run(_crawl_due, limit, states)
+        changed = changed_companies(prev_jobs, fresh)
+        crawled_keys: set = (
+            set().union(*(o["companies"] for o in outcome.values())) if outcome else set()
+        )
+        # fold each board's outcome back into its state (tiering + throttle back-pressure)
+        for bkey, o in outcome.items():
+            board_changed = bool(o["companies"] & changed)
+            apply_outcome(
+                states[bkey],
+                today=_today(),
+                changed=board_changed and not o["error"],
+                error=o["error"],
+                http_429=o["http_429"],
+                requests=1,
+            )
+        n = build_index_incremental(
+            db if db.exists() else None, fresh, crawled_keys, db, build_id=build_id
+        )
+        save_state(states, state_path)
+        publish_artifacts(db, out, build_id=build_id)
+        print(
+            f"incremental build: crawled {len(outcome)} due boards, {len(fresh)} fresh jobs, "
+            f"{n} total -> {out}/index.sqlite.gz"
+        )
+        return
+
+    jobs = anyio.run(_crawl, limit)
     n = build_index(jobs, db, build_id=build_id)
     publish_artifacts(db, out, build_id=build_id)
     print(f"built index: {n} jobs -> {out}/index.sqlite.gz (+manifest.json)")
