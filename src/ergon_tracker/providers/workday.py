@@ -71,7 +71,8 @@ class WorkdayProvider(BaseProvider):
 
     PAGE_SIZE = 20  # Workday rejects limit > 20
     MAX_RESULTS = 10000  # absolute hard pagination cap
-    MAX_PAGES = 25  # per-board page cap (=500 jobs) to bound pagination cost
+    MAX_PAGES = 250  # per-board page cap (=5000 jobs); pages fetch CONCURRENTLY (bounded by the
+    # fetcher), so big giant boards (Citi ~2000) aren't truncated at the old 500.
 
     # --- token <-> composite ------------------------------------------------
 
