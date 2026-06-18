@@ -12,7 +12,8 @@ from pathlib import Path
 from .db import SCHEMA_VERSION
 
 log = logging.getLogger("ergon_tracker.index")
-_DEFAULT_BASE = "https://github.com/konstantinosanagn/ergon-tracker/releases/latest/download"
+# Stable per-tag asset URL (the daily Action clobbers assets on the 'index-latest' release).
+_DEFAULT_BASE = "https://github.com/konstantinosanagn/ergon-tracker/releases/download/index-latest"
 
 
 def _default_cache_dir() -> Path:

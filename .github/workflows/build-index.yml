@@ -1,0 +1,68 @@
+name: build-index
+
+# Daily search-index build (free on a public repo). One polite incremental crawl publishes a
+# SQLite/FTS5 snapshot to the stable `index-latest` release; the SDK downloads + queries it.
+on:
+  schedule:
+    - cron: "17 4 * * *"   # 04:17 UTC daily (off-peak minute, not :00)
+  workflow_dispatch:
+    inputs:
+      limit_companies:
+        description: "Max boards to crawl this run (bounds CI time; tiering keeps steady-state small)"
+        default: "10000"
+
+permissions:
+  contents: write          # to publish the release asset
+
+concurrency:
+  group: build-index
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330   # under the 6h hosted-runner ceiling
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install package
+        run: uv venv && uv pip install -e .
+
+      - name: Download previous snapshot (best-effort; first run has none)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dist
+          gh release download index-latest --dir dist --pattern 'index.sqlite.gz' || echo "no prev index"
+          gh release download index-latest --dir dist --pattern 'board_state.json' || echo "no prev state"
+          [ -f dist/index.sqlite.gz ] && gunzip -kf dist/index.sqlite.gz || true
+
+      - name: Build incremental index (exits non-zero if data-quality gates fail)
+        run: |
+          uv run python scripts/build_index.py --incremental \
+            --limit-companies "${{ github.event.inputs.limit_companies || '10000' }}" --out dist
+
+      - name: Publish snapshot to the stable index-latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ASSETS="dist/index.sqlite.gz dist/manifest.json dist/gates.json dist/board_state.json"
+          if gh release view index-latest >/dev/null 2>&1; then
+            gh release upload index-latest $ASSETS --clobber
+          else
+            gh release create index-latest $ASSETS --title index-latest \
+              --notes "Daily ergon-tracker search-index snapshot."
+          fi
+
+      - name: Upload build artifacts (diagnostics, retained even on failure)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-diagnostics
+          path: |
+            dist/manifest.json
+            dist/gates.json
+          if-no-files-found: ignore
