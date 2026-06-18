@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import time
 from collections import defaultdict
+from dataclasses import dataclass
 from email.utils import parsedate_to_datetime
 from typing import Any, cast
 from urllib.parse import urlsplit
@@ -21,7 +22,23 @@ from aiolimiter import AsyncLimiter
 
 from .exceptions import FetchError, RateLimitError, TransientHTTPError
 
-__all__ = ["AsyncFetcher", "DEFAULT_HEADERS"]
+__all__ = ["AsyncFetcher", "ConditionalResult", "DEFAULT_HEADERS"]
+
+
+@dataclass(frozen=True)
+class ConditionalResult:
+    """Outcome of a conditional GET (If-None-Match / If-Modified-Since).
+
+    ``not_modified`` True means the server returned 304 and ``body`` is None (nothing
+    re-downloaded — the caller carries forward its cached data). Otherwise ``body`` holds the
+    fresh bytes and ``etag``/``last_modified`` are the new validators to persist for next time.
+    """
+
+    not_modified: bool
+    status_code: int
+    etag: str | None = None
+    last_modified: str | None = None
+    body: bytes | None = None
 
 DEFAULT_HEADERS = {
     "User-Agent": (
@@ -232,6 +249,37 @@ class AsyncFetcher:
         resp = await self.request("GET", url, **kwargs)
         resp.raise_for_status()
         return resp.text
+
+    async def conditional_get(
+        self,
+        url: str,
+        *,
+        etag: str | None = None,
+        last_modified: str | None = None,
+        **kwargs: Any,
+    ) -> ConditionalResult:
+        """GET ``url`` with validators; return a 304 (no body) or 200 (body + new validators).
+
+        The cross-build crawl efficiency primitive: pass the validators stored from the last
+        crawl; a 304 means the board is unchanged so nothing is re-downloaded. Unlike
+        ``get_json``/``get_text`` this never raises on 304 and never parses an empty body.
+        """
+        headers = dict(kwargs.pop("headers", None) or {})
+        if etag:
+            headers["If-None-Match"] = etag
+        if last_modified:
+            headers["If-Modified-Since"] = last_modified
+        resp = await self.request("GET", url, headers=headers, **kwargs)
+        not_modified = resp.status_code == 304
+        if not not_modified:
+            resp.raise_for_status()
+        return ConditionalResult(
+            not_modified=not_modified,
+            status_code=resp.status_code,
+            etag=resp.headers.get("ETag"),
+            last_modified=resp.headers.get("Last-Modified"),
+            body=None if not_modified else resp.content,
+        )
 
     async def aclose(self) -> None:
         if self._owns_client:
