@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from datetime import datetime, timezone
 from typing import Any
 
@@ -15,6 +16,20 @@ def _iso(dt: datetime | None) -> str | None:
     return dt.isoformat() if dt else None
 
 
+def content_hash(job: JobPosting) -> str:
+    """Stable hash of the fields that define a posting's content (for change/delta detection).
+
+    Independent of the source id: two crawls of an unchanged posting hash identically; a changed
+    title/location/salary changes the hash, so the incremental builder can tell what moved.
+    """
+    loc = job.locations[0] if job.locations else None
+    loc_s = (loc.as_text() if loc else "").lower()
+    s = job.salary
+    sal_s = f"{s.min_amount}|{s.max_amount}|{s.currency}" if s else ""
+    basis = f"{normalize_company(job.company)}|{normalize_title(job.title)}|{loc_s}|{sal_s}"
+    return hashlib.sha1(basis.encode("utf-8")).hexdigest()[:16]
+
+
 def to_row(job: JobPosting, *, build_id: str, now: str | None = None) -> dict[str, Any]:
     now = now or datetime.now(timezone.utc).date().isoformat()
     loc = job.locations[0] if job.locations else None
@@ -22,7 +37,7 @@ def to_row(job: JobPosting, *, build_id: str, now: str | None = None) -> dict[st
     desc = job.description_text or ""
     return {
         "id": job.id,
-        "content_hash": job.id,  # M1: id is stable; M2 introduces a real content_hash
+        "content_hash": content_hash(job),
         "company_key": normalize_company(job.company),
         "source": job.source,
         "company": job.company,

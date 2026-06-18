@@ -50,3 +50,19 @@ def test_to_row_sets_role_family_and_company_key():
     assert row["company_key"] == normalize_company("Stripe")
     assert row["role_family"] == normalize_title("Senior Backend Engineer")
     assert row["snippet"].startswith("Build payments")
+
+
+def test_content_hash_stable_and_change_sensitive():
+    from ergon_tracker.index.mapping import content_hash
+    from ergon_tracker.models import JobLevel, JobPosting, Salary
+
+    base = JobPosting.create(source="greenhouse", source_job_id="1", company="Stripe",
+                             title="Backend Engineer", level=JobLevel.SENIOR)
+    same = JobPosting.create(source="lever", source_job_id="zzz", company="Stripe, Inc.",
+                             title="Backend Engineer", level=JobLevel.MID)
+    diff = JobPosting.create(source="greenhouse", source_job_id="1", company="Stripe",
+                             title="Frontend Engineer")
+    assert content_hash(base) == content_hash(same)  # same content, different source/id/level
+    assert content_hash(base) != content_hash(diff)  # title changed
+    withsal = base.model_copy(update={"salary": Salary(min_amount=100, max_amount=200)})
+    assert content_hash(base) != content_hash(withsal)  # salary changed
