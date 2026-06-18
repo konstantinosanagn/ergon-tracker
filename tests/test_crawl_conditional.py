@@ -47,10 +47,11 @@ class _Fetcher304:
         )
 
 
-def test_crawl_due_304_carries_forward(monkeypatch):
+def test_crawl_due_304_carries_forward(monkeypatch, tmp_path):
     import ergon_tracker.http as http_mod
     import ergon_tracker.providers.base as base_mod
     import ergon_tracker.registry.store as store_mod
+    from ergon_tracker.index.db import connect
 
     monkeypatch.setattr(store_mod, "SeedRegistry", _FakeReg)
     monkeypatch.setattr(base_mod, "get_provider", lambda n: _Provider304())
@@ -60,10 +61,13 @@ def test_crawl_due_304_carries_forward(monkeypatch):
     # Pre-seed state with a stored validator + a past due date so the board is crawled.
     bs = BoardState(provider="greenhouse", token="stripe", etag='W/"abc"', next_due="2000-01-01")
     states = {bs.key: bs}
+    fresh_db_path = tmp_path / "fresh.sqlite"
 
-    fresh, outcome = anyio.run(bi._crawl_due, 10, states)
+    outcome = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
 
-    assert fresh == []  # nothing re-downloaded
+    assert connect(fresh_db_path, read_only=True).execute(
+        "SELECT COUNT(*) FROM jobs"
+    ).fetchone()[0] == 0  # nothing re-downloaded
     assert outcome[bs.key]["not_modified"] is True
     assert outcome[bs.key]["companies"] == set()  # empty -> prev jobs carry forward in merge
 
@@ -111,10 +115,11 @@ class _Fetcher200:
         )
 
 
-def test_crawl_due_200_reuses_body_without_refetch(monkeypatch):
+def test_crawl_due_200_reuses_body_without_refetch(monkeypatch, tmp_path):
     import ergon_tracker.http as http_mod
     import ergon_tracker.providers.base as base_mod
     import ergon_tracker.registry.store as store_mod
+    from ergon_tracker.index.db import connect
 
     monkeypatch.setattr(store_mod, "SeedRegistry", _FakeReg)
     monkeypatch.setattr(base_mod, "get_provider", lambda n: _Provider200())
@@ -123,8 +128,10 @@ def test_crawl_due_200_reuses_body_without_refetch(monkeypatch):
 
     bs = BoardState(provider="greenhouse", token="stripe", etag='W/"old"', next_due="2000-01-01")
     states = {bs.key: bs}
-    fresh, outcome = anyio.run(bi._crawl_due, 10, states)
+    fresh_db_path = tmp_path / "fresh.sqlite"
+    outcome = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
 
-    assert len(fresh) == 1 and fresh[0].title == "Engineer"  # parsed from the 200 body
+    rows = connect(fresh_db_path, read_only=True).execute("SELECT title FROM jobs").fetchall()
+    assert len(rows) == 1 and rows[0][0] == "Engineer"  # parsed from the 200 body, streamed to DB
     assert outcome[bs.key]["not_modified"] is False
     assert states[bs.key].etag == 'W/"new"'  # validator refreshed for next run

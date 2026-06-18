@@ -98,6 +98,28 @@ def build_and_publish_shards(jobs: list, out: Path, *, build_id: str) -> int:
     return len(manifest["shards"])
 
 
+def build_and_publish_shards_from_db(db_path: Path, out: Path, *, build_id: str) -> int:
+    """Memory-bounded shard publish: partition the built index by sector via SQL, gzip each."""
+    from ergon_tracker.index.build import build_sharded_index_from_db
+
+    manifest = build_sharded_index_from_db(db_path, out, build_id=build_id)
+    for info in manifest["shards"].values():
+        f = out / info["file"]
+        (out / (info["file"] + ".gz")).write_bytes(gzip.compress(f.read_bytes()))
+    return len(manifest["shards"])
+
+
+def _count_jobs(db_path: Path) -> int:
+    """Row count of an index DB (cheap; avoids loading jobs into memory)."""
+    from ergon_tracker.index.db import connect
+
+    con = connect(db_path, read_only=True)
+    try:
+        return con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+    finally:
+        con.close()
+
+
 def publish_coverage(db_path: Path, out_dir: Path, *, build_id: str) -> dict:
     """Write coverage.json + INDEX_STATUS.md so users/forkers can see index coverage."""
     from ergon_tracker.index.coverage import compute_coverage, render_status_md
@@ -147,11 +169,12 @@ def _gated_publish(
     return True
 
 
-async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
-    """Crawl ONLY the boards due today (per the scheduler) -> (fresh_jobs, per-board outcome).
+async def _crawl_due(limit_companies: int, states: dict, fresh_db_path, build_id: str) -> dict:
+    """Crawl ONLY the boards due today, streaming each board's jobs into ``fresh_db_path``.
 
-    outcome[boardkey] = {error, http_429, companies}. This is the throttle-proofing: a daily
-    build touches a fraction of the registry instead of all of it. Crash-isolated per board.
+    Returns the per-board outcome (error/http_429/companies/not_modified). Jobs are written to the
+    fresh DB as boards complete (memory O(in-flight boards), not O(all jobs)) — the streaming path
+    that lets a full ~46k-board build run without holding ~1M jobs in RAM. Crash-isolated per board.
     """
     import anyio
 
@@ -159,6 +182,8 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
     from ergon_tracker.enrich import enrich_in_place
     from ergon_tracker.exceptions import RateLimitError
     from ergon_tracker.http import AsyncFetcher
+    from ergon_tracker.index.build import append_jobs
+    from ergon_tracker.index.db import connect, fresh_db
     from ergon_tracker.index.scheduler import BoardState, due_boards
     from ergon_tracker.models import SearchQuery
     from ergon_tracker.providers.base import get_provider, load_builtins
@@ -173,10 +198,13 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
             states.setdefault(bs.key, bs)
     due = set(due_boards(list(states.values()), _today())) & set(boards)
 
-    fresh: list = []
     outcome: dict[str, dict] = {
         b: {"error": False, "http_429": 0, "companies": set(), "not_modified": False} for b in due
     }
+    fresh_db(fresh_db_path)
+    con = connect(fresh_db_path)
+    con.execute("PRAGMA foreign_keys = OFF")  # companies aggregated later (build_index_from_fresh_db)
+    write_lock = anyio.Lock()
 
     async def grab(bkey: str, fetcher: AsyncFetcher) -> None:
         regkey, e = boards[bkey]
@@ -208,6 +236,7 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
         except Exception:  # noqa: BLE001
             outcome[bkey]["error"] = True
             return
+        board_jobs: list = []
         for raw in raws:
             try:
                 job = provider.normalize(raw)
@@ -216,13 +245,21 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
             if e.get("domain") and not job.company_domain:
                 job.company_domain = e["domain"]
             enrich_in_place(job, company_key=regkey)
-            fresh.append(job)
+            board_jobs.append(job)
             outcome[bkey]["companies"].add(normalize_company(job.company))
+        if board_jobs:
+            # one shared connection; the lock serializes the (sync, fast) batch insert
+            async with write_lock:
+                append_jobs(con, board_jobs, build_id=build_id)
 
-    async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
-        for bkey in due:
-            tg.start_soon(grab, bkey, fetcher)
-    return fresh, outcome
+    try:
+        async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
+            for bkey in due:
+                tg.start_soon(grab, bkey, fetcher)
+        con.commit()
+    finally:
+        con.close()
+    return outcome
 
 
 def main(argv: list[str]) -> None:
@@ -255,17 +292,19 @@ def main(argv: list[str]) -> None:
 
     if incremental:
         from ergon_tracker.index.build import (
-            build_index_incremental,
-            changed_companies,
-            read_index_jobs,
+            build_index_from_fresh_db,
+            changed_companies_sql,
         )
         from ergon_tracker.index.scheduler import apply_outcome, load_state, save_state
 
         state_path = out / "board_state.json"
         states = load_state(state_path)
-        prev_jobs = read_index_jobs(db) if db.exists() else []
-        fresh, outcome = anyio.run(_crawl_due, limit, states)
-        changed = changed_companies(prev_jobs, fresh)
+        prev_db = db if db.exists() else None
+        prev_row_count = _count_jobs(db) if prev_db else None
+        # Streaming crawl: jobs are written to fresh.sqlite as boards complete (memory-bounded).
+        fresh_path = out / "fresh.sqlite"
+        outcome = anyio.run(_crawl_due, limit, states, fresh_path, build_id)
+        changed = changed_companies_sql(fresh_path, prev_db)  # SQL diff, no jobs in memory
         crawled_keys: set = (
             set().union(*(o["companies"] for o in outcome.values())) if outcome else set()
         )
@@ -280,30 +319,30 @@ def main(argv: list[str]) -> None:
                 http_429=o["http_429"],
                 requests=1,
             )
+        fresh_jobs_count = _count_jobs(fresh_path)
         db_tmp = out / "index.tmp.sqlite"
-        n = build_index_incremental(
-            db if db.exists() else None, fresh, crawled_keys, db_tmp, build_id=build_id
+        n = build_index_from_fresh_db(
+            fresh_path, db_tmp, build_id=build_id, prev_db=prev_db, crawled_keys=crawled_keys
         )
         save_state(states, state_path)  # record the crawl regardless of publish outcome
-        ok = _gated_publish(db_tmp, db, out, build_id=build_id, prev_row_count=len(prev_jobs) or None)
+        ok = _gated_publish(db_tmp, db, out, build_id=build_id, prev_row_count=prev_row_count)
         append_history(
             out / "history.jsonl",
             {
                 "build_id": build_id, "date": _today(), "due_boards": len(outcome),
-                "fresh_jobs": len(fresh), "total_jobs": n, "changed_companies": len(changed),
+                "fresh_jobs": fresh_jobs_count, "total_jobs": n, "changed_companies": len(changed),
                 "throttled_boards": sum(1 for o in outcome.values() if o["http_429"]),
                 "errored_boards": sum(1 for o in outcome.values() if o["error"]),
                 "not_modified_boards": sum(1 for o in outcome.values() if o.get("not_modified")),
                 "published": ok,
             },
         )
+        fresh_path.unlink(missing_ok=True)
         if ok and sharded:
-            from ergon_tracker.index.build import read_index_jobs as _rij
-
-            ns = build_and_publish_shards(_rij(db), out, build_id=build_id)
+            ns = build_and_publish_shards_from_db(db, out, build_id=build_id)
             print(f"  + published {ns} sector shards")
         print(
-            f"incremental build: crawled {len(outcome)} due boards, {len(fresh)} fresh jobs, "
+            f"incremental build: crawled {len(outcome)} due boards, {fresh_jobs_count} fresh jobs, "
             f"{n} total{' -> published' if ok else ' (gates FAILED, kept previous)'}"
         )
         if not ok:
