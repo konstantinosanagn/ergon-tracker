@@ -98,6 +98,24 @@ def build_and_publish_shards(jobs: list, out: Path, *, build_id: str) -> int:
     return len(manifest["shards"])
 
 
+def publish_coverage(db_path: Path, out_dir: Path, *, build_id: str) -> dict:
+    """Write coverage.json + INDEX_STATUS.md so users/forkers can see index coverage."""
+    from ergon_tracker.index.coverage import compute_coverage, render_status_md
+    from ergon_tracker.index.db import connect
+
+    con = connect(db_path, read_only=True)
+    try:
+        cov = compute_coverage(con)
+    finally:
+        con.close()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    md = render_status_md(cov, build_id=build_id)
+    (out_dir / "coverage.json").write_text(json.dumps(cov, indent=2))
+    (out_dir / "INDEX_STATUS.md").write_text(md)  # release asset
+    (ROOT / "INDEX_STATUS.md").write_text(md)  # browsable in repo root
+    return cov
+
+
 def append_history(history_path: Path, row: dict) -> None:
     """Append one build-summary row to the history JSONL time series (for drift detection)."""
     history_path.parent.mkdir(parents=True, exist_ok=True)
@@ -123,7 +141,9 @@ def _gated_publish(
         return False
     tmp_db.replace(final_db)  # atomic promote
     publish_artifacts(final_db, out, build_id=build_id)
-    print(f"gates passed: {rep.summary()}")
+    cov = publish_coverage(final_db, out, build_id=build_id)
+    print(f"gates passed: {rep.summary()} | coverage: {cov['total_jobs']} jobs, "
+          f"{len(cov['by_source'])} providers, {len(cov['by_sector'])} sectors")
     return True
 
 
