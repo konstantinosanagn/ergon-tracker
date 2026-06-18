@@ -174,12 +174,28 @@ async def _crawl_due(limit_companies: int, states: dict) -> tuple[list, dict]:
     due = set(due_boards(list(states.values()), _today())) & set(boards)
 
     fresh: list = []
-    outcome: dict[str, dict] = {b: {"error": False, "http_429": 0, "companies": set()} for b in due}
+    outcome: dict[str, dict] = {
+        b: {"error": False, "http_429": 0, "companies": set(), "not_modified": False} for b in due
+    }
 
     async def grab(bkey: str, fetcher: AsyncFetcher) -> None:
         regkey, e = boards[bkey]
         provider = get_provider(e["ats"])
+        state = states[bkey]
+        # Cross-build conditional request: if this provider exposes a whole-board validator URL,
+        # present the stored ETag/Last-Modified. A 304 means unchanged -> carry forward without
+        # re-downloading (the big throttle/bandwidth win). A 200 refreshes the stored validator;
+        # we still do a full fetch (accepted one-time/changed-board cost, see plan).
+        curl = provider.conditional_url(e["token"])
         try:
+            if curl:
+                res = await fetcher.conditional_get(
+                    curl, etag=state.etag, last_modified=state.last_modified
+                )
+                if res.not_modified:
+                    outcome[bkey]["not_modified"] = True
+                    return  # unchanged -> prev jobs carry forward (company set stays empty)
+                state.etag, state.last_modified = res.etag, res.last_modified
             raws = await provider.fetch(e["token"], SearchQuery(), fetcher)
         except RateLimitError:
             outcome[bkey].update(error=True, http_429=1)
@@ -272,6 +288,7 @@ def main(argv: list[str]) -> None:
                 "fresh_jobs": len(fresh), "total_jobs": n, "changed_companies": len(changed),
                 "throttled_boards": sum(1 for o in outcome.values() if o["http_429"]),
                 "errored_boards": sum(1 for o in outcome.values() if o["error"]),
+                "not_modified_boards": sum(1 for o in outcome.values() if o.get("not_modified")),
                 "published": ok,
             },
         )
