@@ -30,3 +30,22 @@ were all green while the live path was broken.)
 **Next:** M2 (smart-tiered incremental crawl + conditional requests + throttle back-pressure +
 GitHub Action) and M3 (observability + data-quality gates) complete v1. Then v2 = Approach B
 (sector-sharded index + deltas) for optimized search.
+
+## 2026-06-18 — M2 (smart-tiered incremental crawl): scheduler + incremental + live proof
+
+**Status:** M2 Tasks 1–7 done (TDD): adaptive scheduler (`index/scheduler.py` — BoardState,
+tiers hot/warm/cold/quarantine, due-selection, throttle back-pressure), real `content_hash`,
+`build_index_incremental` (carry-forward uncrawled boards, expire gone), `changed_companies`
+diff, and `build_index.py --incremental` (crawl only due boards, persist `board_state.json`).
+699 tests pass, ruff clean on index files.
+
+**Live incremental build** (`--incremental --limit-companies 25`): crawled 25 due boards →
+13,343 fresh → **9,723 deduped** → `index.sqlite` (15 MB) + `board_state.json` (25 boards).
+
+**Throttle-proofing demonstrated** (on the real persisted state): Day 1 all 25 due (cold start);
+after a month of no changes all → `cold`; **Day 2 due = 0/25** (carry-forward serves the index,
+zero ATS contact); Day 8 → 25 due (weekly cold re-check). i.e. a stable board is crawled ~weekly,
+not daily — the crawl load collapses while the index stays current.
+
+**Remaining for v1:** M2 Task 8 (GitHub Action daily cron + publish to Releases) and M3
+(observability + full data-quality gate suite). Then v2 = Approach B (sector shards + deltas).
