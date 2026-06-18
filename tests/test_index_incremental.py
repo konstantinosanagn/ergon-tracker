@@ -67,3 +67,18 @@ def test_build_incremental_cold_start_no_prev(tmp_path):
         path=out, build_id="b1",
     )
     assert n == 1
+
+
+def test_changed_companies_detects_diffs():
+    from ergon_tracker.index.build import changed_companies
+
+    prev = [_job("1", "Stripe", "Backend Engineer"), _job("2", "Ramp", "Ramp Engineer")]
+    # Stripe gains a new role (changed); Ramp identical (unchanged); Notion is new (changed)
+    fresh = [
+        _job("1", "Stripe", "Backend Engineer"),
+        _job("3", "Stripe", "Frontend Engineer"),
+        _job("2", "Ramp", "Ramp Engineer"),
+        _job("9", "Notion", "PM"),
+    ]
+    changed = changed_companies(prev, fresh)
+    assert "stripe" in changed and "notion" in changed and "ramp" not in changed

@@ -32,6 +32,26 @@ def read_index_jobs(path: Path | str) -> list[JobPosting]:
         con.close()
 
 
+def changed_companies(
+    prev_jobs: list[JobPosting], fresh_jobs: list[JobPosting]
+) -> set[str]:
+    """Company keys whose content set differs between prior and fresh crawls (for tiering).
+
+    Compares the set of content hashes per normalized company. A company present in fresh with a
+    different hash-set than before (added/removed/edited postings) is "changed" -> stays hot.
+    """
+    from .mapping import content_hash
+
+    def by_company(jobs: list[JobPosting]) -> dict[str, set[str]]:
+        out: dict[str, set[str]] = {}
+        for j in jobs:
+            out.setdefault(normalize_company(j.company), set()).add(content_hash(j))
+        return out
+
+    prev_by, fresh_by = by_company(prev_jobs), by_company(fresh_jobs)
+    return {k for k, hashes in fresh_by.items() if prev_by.get(k) != hashes}
+
+
 def merge_incremental(
     prev_jobs: list[JobPosting], fresh_jobs: list[JobPosting], crawled_keys: set[str]
 ) -> list[JobPosting]:
