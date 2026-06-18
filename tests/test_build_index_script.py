@@ -41,6 +41,7 @@ def test_append_history_accumulates(tmp_path):
 
 def test_build_and_publish_shards_gzips(tmp_path):
     from build_index import build_and_publish_shards
+
     from ergon_tracker.models import JobPosting
 
     jobs = [JobPosting.create(source="greenhouse", source_job_id=str(i), company=f"Co{i}",
