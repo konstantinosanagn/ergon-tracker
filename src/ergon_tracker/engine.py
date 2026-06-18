@@ -105,6 +105,17 @@ async def run_search(query: SearchQuery, fetcher: AsyncFetcher) -> SearchResult:
     load_builtins()
     load_plugins()
 
+    # Broad-discovery fast path: serve from the prebuilt index (no ATS contact). Targeted
+    # queries (companies=/sources=) and any index failure fall through to the live engine.
+    from .index.router import try_index
+
+    indexed = try_index(query)
+    if indexed is not None:
+        return SearchResult(
+            jobs=indexed,
+            health=[build_health("index", ok=True, count=len(indexed))],
+        )
+
     targets = _plan_targets(query)
     results: dict[int, list[JobPosting]] = {}
     stats: dict[str, _ProviderStat] = {}
