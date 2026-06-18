@@ -55,6 +55,41 @@ def changed_companies(
     return {k for k, hashes in fresh_by.items() if prev_by.get(k) != hashes}
 
 
+def changed_companies_sql(fresh_db: Path | str, prev_db: Path | str | None) -> set[str]:
+    """SQL equivalent of changed_companies: companies in the fresh index whose content-hash set
+    differs from the previous index — computed by comparing two index DBs, no jobs in memory.
+
+    A company present in fresh but absent (or with a different hash-set) in prev is "changed".
+    """
+    import sqlite3
+
+    con = sqlite3.connect(":memory:")
+    try:
+        con.execute("ATTACH DATABASE ? AS f", (str(fresh_db),))
+        if not prev_db or not Path(prev_db).exists():
+            # no prior index -> every fresh company is new == changed
+            rows = con.execute(
+                "SELECT DISTINCT company_key FROM f.jobs WHERE company_key IS NOT NULL"
+            ).fetchall()
+            return {r[0] for r in rows}
+        con.execute("ATTACH DATABASE ? AS p", (str(prev_db),))
+        rows = con.execute(
+            "SELECT DISTINCT company_key FROM ("
+            "  SELECT company_key, content_hash FROM f.jobs"
+            "  EXCEPT SELECT company_key, content_hash FROM p.jobs"
+            ") "
+            "UNION "
+            "SELECT DISTINCT company_key FROM ("
+            "  SELECT company_key, content_hash FROM p.jobs"
+            "  WHERE company_key IN (SELECT DISTINCT company_key FROM f.jobs)"
+            "  EXCEPT SELECT company_key, content_hash FROM f.jobs"
+            ")"
+        ).fetchall()
+        return {r[0] for r in rows if r[0]}
+    finally:
+        con.close()
+
+
 def merge_incremental(
     prev_jobs: list[JobPosting], fresh_jobs: list[JobPosting], crawled_keys: set[str]
 ) -> list[JobPosting]:

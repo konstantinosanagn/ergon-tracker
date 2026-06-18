@@ -104,3 +104,39 @@ def test_streaming_carry_forward_matches_incremental(tmp_path):
     assert companies_s == {"Stripe", "Ramp"}
     titles_s = {r[0] for r in connect(s, read_only=True).execute("SELECT title FROM jobs")}
     assert titles_s == {"New Stripe Role", "Ramp Role"}  # old Stripe role gone
+
+
+def test_changed_companies_sql_parity(tmp_path):
+    from ergon_tracker.index.build import changed_companies, changed_companies_sql
+
+    prev_jobs = [
+        _job("1", "Stripe", "Backend Engineer"),
+        _job("2", "Ramp", "Payments Engineer"),
+        _job("3", "OpenAI", "ML Engineer"),
+    ]
+    # fresh: Stripe unchanged, Ramp added a role (changed), OpenAI dropped (not in fresh),
+    # NewCo appears (changed/new). Stripe identical -> NOT changed.
+    fresh_jobs = [
+        _job("1", "Stripe", "Backend Engineer"),
+        _job("2", "Ramp", "Payments Engineer"),
+        _job("4", "Ramp", "New Ramp Role"),
+        _job("5", "NewCo", "Founding Engineer"),
+    ]
+    prev = tmp_path / "prev.sqlite"
+    fresh = tmp_path / "fresh.sqlite"
+    build_index(prev_jobs, prev, build_id="b0")
+    build_index(fresh_jobs, fresh, build_id="b1")
+
+    in_mem = changed_companies(prev_jobs, fresh_jobs)
+    via_sql = changed_companies_sql(fresh, prev)
+    assert via_sql == in_mem
+    assert "ramp" in via_sql and "newco" in via_sql  # changed + new
+    assert "stripe" not in via_sql  # identical -> unchanged
+
+
+def test_changed_companies_sql_no_prev(tmp_path):
+    from ergon_tracker.index.build import changed_companies_sql
+
+    fresh = tmp_path / "fresh.sqlite"
+    build_index([_job("1", "Stripe", "Eng"), _job("2", "Ramp", "Eng")], fresh, build_id="b1")
+    assert changed_companies_sql(fresh, None) == {"stripe", "ramp"}  # all new == changed
