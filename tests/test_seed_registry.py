@@ -30,6 +30,7 @@ SUPPORTED_ATS = {
     "jazzhr",
     "jobvite",
     "phenom",
+    "brassring",
 }
 
 

@@ -72,6 +72,7 @@ ATS_PRIORITY = {
     "jazzhr": 20,
     "jobvite": 21,
     "phenom": 22,
+    "brassring": 23,
 }
 
 

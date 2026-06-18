@@ -58,6 +58,7 @@ _BUILTIN_MODULES = (
     "jazzhr",
     "jobvite",
     "phenom",
+    "brassring",
     "remotive",
     "arbeitnow",
     "jobicy",

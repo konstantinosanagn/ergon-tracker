@@ -51,6 +51,7 @@ import sys
 from pathlib import Path
 
 import anyio
+from rapidfuzz import fuzz
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -76,6 +77,15 @@ DEFAULT_OUT = ROOT / "scripts" / "candidates_tokens.json"
 # Path-based, single-token ATSes, probed in this priority order. The first ATS+variant that
 # returns jobs for a company wins (short-circuit). NOT recruitee/personio/workday.
 TARGET_ATSES = ("greenhouse", "lever", "ashby", "smartrecruiters", "workable")
+
+# Subdomain/host-based ATSes whose careers HOST is guessable from the company slug — where the
+# mid-tier *enterprise* H-1B sponsors actually live (the path-based ATSes above are startup-
+# heavy). Probed AFTER the path-based ones. Most guessed hosts don't resolve, so this is only
+# cheap with a fail-fast fetcher (retries=1) — a retried NXDOMAIN is the classic 20x slowdown.
+HOST_ATSES: dict[str, tuple[str, ...]] = {
+    "icims": ("careers-{s}.icims.com", "{s}.icims.com", "jobs-{s}.icims.com"),
+    "taleo": ("{s}.taleo.net",),
+}
 
 # Corporate-form suffixes stripped from a trailing position to recover the "core" name. Ordered
 # longest-first so multi-word forms are tried before their substrings.
@@ -249,33 +259,72 @@ def load_existing(seed_path: Path = SEED) -> tuple[set[str], dict[str, set[str]]
 # --- network probing --------------------------------------------------------------------------
 
 
-async def _is_live(ats: str, token: str, fetcher: AsyncFetcher) -> bool:
-    """True if ``ats`` returns >=1 job for ``token``. Network errors -> False (never raise)."""
-    provider = get_provider(ats)
-    if provider is None:
+def _core(name: str) -> str:
+    """Suffix-stripped, collapsed core of a company name ("Saama Technologies Inc" -> "saama")."""
+    words = re.sub(r"[^a-z0-9 ]", " ", _strip_leading_the(name).lower()).split()
+    return "".join(_strip_suffixes(words))
+
+
+def name_match(sponsor: str, board_company: str) -> bool:
+    """True if a board's displayed company name plausibly IS the sponsor (guards slug collisions).
+
+    A path-based ATS slug is company-chosen and usually unique, but a generated name-slug can
+    coincidentally hit an UNRELATED company's live board. We compare the suffix-stripped CORE of
+    each name, which normalizes legal-form differences ("Saama Technologies" and "Saama" both ->
+    "saama") while still rejecting a different company that merely shares a leading word ("Apple"
+    sponsor vs "Apple Bank for Savings" board -> "apple" != "applebankforsavings"). Without this,
+    brute-forcing tens of thousands of names would pollute the registry.
+    """
+    sk, bk = _core(sponsor), _core(board_company)
+    if not sk or not bk:
         return False
-    try:
-        raws = await provider.fetch(token, SearchQuery(limit=1), fetcher)
-    except Exception:  # noqa: BLE001 - a dead token / 404 / timeout just means "not this one"
-        return False
-    return bool(raws)
+    return sk == bk or fuzz.ratio(sk, bk) >= 92
 
 
 async def probe_company(
     name: str, domain: str | None, fetcher: AsyncFetcher
 ) -> dict[str, object] | None:
-    """Probe one company across the target ATSes and return its first live candidate, or None.
+    """Probe one company across the target ATSes and return its first ADJUDICATED candidate.
 
     Walks ATSes in :data:`TARGET_ATSES` priority order; for each ATS tries the generated token
-    variations in order and short-circuits on the first hit. Never raises — a fully-dead
-    company simply yields ``None``.
+    variations in order. A variation is accepted only when it returns >=1 job AND the board's
+    displayed company name matches ``name`` (see :func:`name_match`) — so a slug that hits an
+    unrelated company's board is rejected, not merged. Never raises; a fully-dead company -> None.
     """
     variations = generate_token_variations(name, domain)
     key = company_key(name)
+    # path-based ATSes: the token IS the slug (boards.greenhouse.io/{slug}, ...)
     for ats in TARGET_ATSES:
+        provider = get_provider(ats)
+        if provider is None:
+            continue
         for token in variations:
-            if await _is_live(ats, token, fetcher):
+            try:
+                raws = await provider.fetch(token, SearchQuery(limit=1), fetcher)
+            except Exception:  # noqa: BLE001 - dead token / 404 / timeout just means "not this one"
+                continue
+            if raws and name_match(name, raws[0].company or ""):
                 return {"company": key, "ats": ats, "token": token, "domain": domain}
+
+    # host-based ATSes: build candidate hostnames from the top collapsed slug forms
+    host_slugs = [v for v in variations if "-" not in v and len(v) >= 3][:3]
+    seen_hosts: set[str] = set()
+    for ats, templates in HOST_ATSES.items():
+        provider = get_provider(ats)
+        if provider is None:
+            continue
+        for s in host_slugs:
+            for tmpl in templates:
+                host = tmpl.format(s=s)
+                if host in seen_hosts:
+                    continue
+                seen_hosts.add(host)
+                try:
+                    raws = await provider.fetch(host, SearchQuery(limit=1), fetcher)
+                except Exception:  # noqa: BLE001
+                    continue
+                if raws and name_match(name, raws[0].company or ""):
+                    return {"company": key, "ats": ats, "token": host, "domain": domain}
     return None
 
 
@@ -343,10 +392,13 @@ async def main() -> None:
     companies = parse_companies(in_path.read_text())
     if limit is not None:
         companies = companies[:limit]
-    print(f"probing {len(companies)} companies across {list(TARGET_ATSES)}  (limit={limit})")
+    atses = list(TARGET_ATSES) + list(HOST_ATSES)
+    print(f"probing {len(companies)} companies across {atses}  (limit={limit})")
 
     load_builtins()
-    async with AsyncFetcher(concurrency=12, per_host_rate=8, timeout=30.0) as fetcher:
+    # retries=1 + short timeout: most host-guesses (careers-{s}.icims.com, {s}.taleo.net) are
+    # NXDOMAIN — retrying them is the 20x slowdown we must avoid. Path-based hosts always resolve.
+    async with AsyncFetcher(concurrency=16, per_host_rate=8, timeout=12.0, retries=1) as fetcher:
         candidates = await harvest(companies, fetcher)
 
     by_ats: dict[str, int] = {}
