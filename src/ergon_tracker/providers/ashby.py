@@ -68,6 +68,11 @@ class AshbyProvider(BaseProvider):
         token = split.path.strip("/").split("/")[0]
         return token or None
 
+    def conditional_url(self, token: str) -> str | None:
+        # Whole board in one response; validated via Last-Modified (If-Modified-Since -> 304).
+        # Same URL fetch uses (includes ?includeCompensation=true).
+        return _API.format(token=token)
+
     async def fetch(self, token: str, query: SearchQuery, fetcher: AsyncFetcher) -> list[RawJob]:
         data = await fetcher.get_json(_API.format(token=token))
         jobs = data.get("jobs", []) if isinstance(data, dict) else []

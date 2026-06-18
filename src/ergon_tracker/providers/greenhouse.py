@@ -69,6 +69,11 @@ class GreenhouseProvider(BaseProvider):
                     return token
         return None
 
+    def conditional_url(self, token: str) -> str | None:
+        # Whole board in one response with a strong ETag (honors If-None-Match -> 304). Must
+        # match fetch's exact URL incl. ?content=true so the validator is for the same payload.
+        return _API.format(token=token) + "?content=true"
+
     async def fetch(self, token: str, query: SearchQuery, fetcher: AsyncFetcher) -> list[RawJob]:
         # Greenhouse has no server-side filtering: pull the whole board in one request.
         url = _API.format(token=token)

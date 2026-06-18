@@ -97,6 +97,14 @@ class Provider(Protocol):
         """Map one ``RawJob`` to a canonical ``JobPosting``."""
         ...
 
+    def conditional_url(self, token: str) -> str | None:
+        """The single URL whose ETag/Last-Modified validates this board's WHOLE response, or
+        None if the provider can't be validated cheaply (multi-page, no validator headers).
+
+        Must equal the exact URL+query ``fetch`` requests, so the stored validator corresponds
+        to the same representation. Used by the crawler for cross-build conditional requests."""
+        ...
+
 
 class BaseProvider:
     """Optional convenience base with shared helpers. Subclasses must set ``name`` and
@@ -113,6 +121,11 @@ class BaseProvider:
 
     def normalize(self, raw: RawJob) -> JobPosting:
         raise NotImplementedError
+
+    def conditional_url(self, token: str) -> str | None:
+        """Default: not cheaply validatable. Providers with a single full-board response and
+        ETag/Last-Modified support override this (see conditional-requests plan)."""
+        return None
 
     # --- shared helpers -------------------------------------------------
 

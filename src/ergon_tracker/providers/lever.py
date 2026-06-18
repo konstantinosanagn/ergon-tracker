@@ -89,6 +89,11 @@ class LeverProvider(BaseProvider):
         token = rest.split("/")[0].split("?")[0].split("#")[0].strip()
         return token or None
 
+    def conditional_url(self, token: str) -> str | None:
+        # Whole board in one JSON response with a strong ETag. The crawler fetches with an empty
+        # query, so the validatable representation is exactly ?mode=json.
+        return _API.format(token=token) + "?mode=json"
+
     async def fetch(self, token: str, query: SearchQuery, fetcher: AsyncFetcher) -> list[RawJob]:
         params: dict[str, str] = {"mode": "json"}
         if query.location:
