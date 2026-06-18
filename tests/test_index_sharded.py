@@ -83,3 +83,50 @@ def test_sharded_parity_with_single_file(tmp_path):
     single_ids = {j.id for j in SqliteIndexBackend(single).search(q)}
     sharded_ids = {j.id for j in ShardedIndexBackend(sharded_dir).search(q)}
     assert single_ids == sharded_ids  # same result set, just stored sharded
+
+
+def _publish_shards(remote, src_dir):
+    """gzip each shard + copy shards.json into a file:// 'remote' (mimics the release assets)."""
+    import gzip
+    import shutil
+    remote.mkdir(parents=True, exist_ok=True)
+    shutil.copy(src_dir / "shards.json", remote / "shards.json")
+    for f in src_dir.glob("shard-*.sqlite"):
+        (remote / (f.name + ".gz")).write_bytes(gzip.compress(f.read_bytes()))
+
+
+def test_shardcache_downloads_only_needed_shard(tmp_path):
+    from ergon_tracker.index.cache import ShardCache
+    from ergon_tracker.models import SearchQuery
+
+    src = tmp_path / "build"
+    build_sharded_index(
+        [_job("1", "Stripe", "Backend Engineer", sector="Fintech"),
+         _job("2", "HF", "ML Engineer", sector="AI/ML")],
+        src, build_id="b1",
+    )
+    remote = tmp_path / "remote"
+    _publish_shards(remote, src)
+    cache = ShardCache(base_url=remote.as_uri(), cache_dir=tmp_path / "cache")
+
+    d = cache.ensure(SearchQuery(keywords="engineer", sector="Fintech", limit=5))
+    assert d is not None
+    files = {f.name for f in d.glob("shard-*.sqlite")}
+    assert files == {"shard-fintech.sqlite"}  # ONLY the fintech shard pulled
+
+    # cross-sector pulls all shards
+    d2 = cache.ensure(SearchQuery(keywords="engineer", limit=5))
+    files2 = {f.name for f in d2.glob("shard-*.sqlite")}
+    assert files2 == {"shard-fintech.sqlite", "shard-ai-ml.sqlite"}
+
+
+def test_shardcache_missing_sector_returns_none(tmp_path):
+    from ergon_tracker.index.cache import ShardCache
+    from ergon_tracker.models import SearchQuery
+
+    src = tmp_path / "build"
+    build_sharded_index([_job("1", "Stripe", "Eng", sector="Fintech")], src, build_id="b1")
+    remote = tmp_path / "remote"
+    _publish_shards(remote, src)
+    cache = ShardCache(base_url=remote.as_uri(), cache_dir=tmp_path / "cache")
+    assert cache.ensure(SearchQuery(sector="Healthcare")) is None  # no such shard -> fallback

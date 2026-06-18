@@ -51,6 +51,17 @@ def _get(url: str, *, token: str | None = None, accept: str | None = None) -> by
         return r.read()
 
 
+def _asset_fetcher(base_url: str, repo: str, tag: str) -> Callable[[str], bytes]:
+    """Return ``fetch(asset_name) -> bytes`` using token-auth API if available, else anonymous."""
+    token = _token()
+    if token and base_url.startswith("https://github.com"):
+        api = f"https://api.github.com/repos/{repo}/releases/tags/{tag}"
+        rel = json.loads(_get(api, token=token, accept="application/vnd.github+json"))
+        assets = {a["name"]: a["url"] for a in rel.get("assets", [])}
+        return lambda name: _get(assets[name], token=token, accept="application/octet-stream")
+    return lambda name: _get(f"{base_url}/{name}")
+
+
 class IndexCache:
     def __init__(
         self,
@@ -67,14 +78,7 @@ class IndexCache:
         self.local_manifest = self.cache_dir / "manifest.json"
 
     def _make_fetch(self) -> Callable[[str], bytes]:
-        """Return ``fetch(asset_name) -> bytes`` using token-auth API if available, else anonymous."""
-        token = _token()
-        if token and self.base_url.startswith("https://github.com"):
-            api = f"https://api.github.com/repos/{self.repo}/releases/tags/{self.tag}"
-            rel = json.loads(_get(api, token=token, accept="application/vnd.github+json"))
-            assets = {a["name"]: a["url"] for a in rel.get("assets", [])}
-            return lambda name: _get(assets[name], token=token, accept="application/octet-stream")
-        return lambda name: _get(f"{self.base_url}/{name}")
+        return _asset_fetcher(self.base_url, self.repo, self.tag)
 
     def ensure_fresh(self) -> Path | None:
         """Return a verified, schema-compatible index path, or None (caller live-falls-back)."""
@@ -105,3 +109,62 @@ class IndexCache:
         self.local_manifest.write_text(json.dumps(remote))
         log.info("index updated to build %s (%d bytes)", remote.get("build_id"), len(raw))
         return self.db_path
+
+
+class ShardCache:
+    """Download the shard manifest + only the shard(s) a query needs (v2 optimized path)."""
+
+    def __init__(
+        self, base_url: str | None = None, cache_dir: Path | None = None,
+        repo: str = _REPO, tag: str = _TAG,
+    ) -> None:
+        self.base_url = (base_url or _DEFAULT_BASE).rstrip("/")
+        self.repo, self.tag = repo, tag
+        self.dir = Path(cache_dir or _default_cache_dir()) / "shards"
+        self.manifest_path = self.dir / "shards.json"
+
+    def _ensure_shard(self, info: dict, fetch: Callable[[str], bytes]) -> bool:
+        dest = self.dir / info["file"]
+        if dest.exists() and hashlib.sha256(dest.read_bytes()).hexdigest() == info["sha256"]:
+            return True  # already cached for this build
+        try:
+            raw = gzip.decompress(fetch(info["file"] + ".gz"))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("shard download failed (%s)", exc)
+            return False
+        if hashlib.sha256(raw).hexdigest() != info["sha256"]:
+            log.warning("shard sha256 mismatch; rejecting")
+            return False
+        tmp = dest.with_suffix(".tmp")
+        tmp.write_bytes(raw)
+        tmp.replace(dest)
+        return True
+
+    def ensure(self, query) -> Path | None:
+        """Ensure the manifest + needed shards are cached; return the shard dir, or None."""
+        self.dir.mkdir(parents=True, exist_ok=True)
+        try:
+            fetch = _asset_fetcher(self.base_url, self.repo, self.tag)
+            remote = json.loads(fetch("shards.json"))
+        except Exception as exc:  # noqa: BLE001 - no shards published -> caller falls back
+            log.warning("shard manifest fetch failed (%s)", exc)
+            return None
+        if int(remote.get("schema_version", -1)) != SCHEMA_VERSION:
+            return None
+        shards = remote.get("shards", {})
+        if not shards:
+            return None
+        from .build import sector_slug
+
+        if query.sector:
+            slug = sector_slug(query.sector)
+            if slug not in shards:
+                return None  # sector not present -> let caller try single-file/live
+            needed = [slug]
+        else:
+            needed = list(shards)
+        self.manifest_path.write_text(json.dumps(remote))  # full shard list (for the backend)
+        for slug in needed:
+            if not self._ensure_shard(shards[slug], fetch):
+                return None
+        return self.dir
