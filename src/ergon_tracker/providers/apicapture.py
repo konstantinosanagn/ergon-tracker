@@ -18,6 +18,7 @@ import re
 from datetime import datetime
 from importlib.resources import files
 from typing import TYPE_CHECKING, Any
+from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
 from ..models import EmploymentType, JobPosting, Location, RawJob, RemoteType, SearchQuery
 from .base import BaseProvider, register
@@ -66,6 +67,14 @@ def _set(obj: Any, path: list[Any], value: Any) -> None:
     obj[path[-1]] = value
 
 
+def _set_query(url: str, param: str, value: int) -> str:
+    """Return ``url`` with query ``param`` set to ``value`` (for GET pagination)."""
+    parts = urlsplit(url)
+    qs = parse_qs(parts.query)
+    qs[param] = [str(value)]
+    return urlunsplit(parts._replace(query=urlencode(qs, doseq=True)))
+
+
 @register("apicapture")
 class ApiCaptureProvider(BaseProvider):
     name = "apicapture"
@@ -87,6 +96,7 @@ class ApiCaptureProvider(BaseProvider):
             return []
         url, method = spec["url"], spec.get("method", "POST").upper()
         page_path = spec.get("page_path") or []
+        page_param = spec.get("page_param")  # GET: pagination via this query param
         page_start = int(spec.get("page_start", 0))
         size = int(spec.get("size", 50))
         rec_path, tot_path = spec.get("records_path") or [], spec.get("total_path") or []
@@ -105,6 +115,8 @@ class ApiCaptureProvider(BaseProvider):
             try:
                 if method == "POST":
                     data = await fetcher.post_json(url, json=body)
+                elif page_param:
+                    data = await fetcher.get_json(_set_query(url, page_param, page_start + page))
                 else:
                     data = await fetcher.get_json(url)
             except Exception:
