@@ -1,5 +1,8 @@
 # Cross-Build Conditional Requests Implementation Plan
 
+> **STATUS: COMPLETE (2026-06-18).** All tasks implemented + tested (greenhouse/lever/ashby
+> opted in; smartrecruiters deferred — paginated). Remaining optimization noted at the end.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: superpowers:subagent-driven-development or
 > superpowers:executing-plans. Steps use checkbox (`- [ ]`) syntax.
 
@@ -86,3 +89,22 @@ sends `If-None-Match`/`If-Modified-Since` only when validators are provided.
 - Double-fetch only on CHANGED boards (minority in steady state) — acceptable; documented.
 - Validators are opaque strings echoed back verbatim (no parsing) → robust to weak/strong ETags.
 - recruitee/others without validators are unaffected (graceful default-None path).
+
+## Completion notes (2026-06-18)
+
+- Task 1 ✅ `AsyncFetcher.conditional_get` + `ConditionalResult` (`tests/test_http_conditional.py`).
+- Task 2 ✅ `Provider.conditional_url` (base default None) + greenhouse/lever/ashby overrides
+  (`tests/test_provider_conditional_url.py`). smartrecruiters intentionally NOT opted in (paginated).
+- Task 3 ✅ `_crawl_due` conditional pre-check (`tests/test_crawl_conditional.py`): 304 → carry
+  forward, no `provider.fetch`; 200 → refresh validator + fetch. Validators persist via `save_state`.
+- Task 4 ✅ scheduler ages 304 boards (`changed=False`) hot→warm→cold
+  (`test_repeated_unchanged_ages_board_and_lengthens_interval`).
+- Task 5 ✅ `not_modified_boards` in `history.jsonl`.
+- **Live-proven:** unchanged greenhouse/lever/ashby boards return 304 with 0 bytes vs 1–3.6MB.
+
+### Remaining optimization (future, optional)
+
+On a 200 (changed/first crawl) the board is fetched twice (conditional GET downloads the body,
+then `provider.fetch` re-downloads). Eliminate by adding `parse_body(token, body)` to the 3
+opted-in providers and having the crawler parse `res.body` directly. Only matters for the
+changed minority + one-time first crawl; steady-state unchanged boards already cost one cheap 304.

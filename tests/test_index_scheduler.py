@@ -56,6 +56,19 @@ def test_outcome_change_resets_to_hot():
     assert s.tier == "hot" and s.last_changed == TODAY and s.consecutive_unchanged == 0
 
 
+def test_repeated_unchanged_ages_board_and_lengthens_interval():
+    # A board that keeps returning unchanged (e.g. a 304 every crawl) must age hot -> warm ->
+    # cold so it is crawled progressively LESS often. This is what makes conditional requests
+    # pay off: stable boards drop out of the daily crawl set.
+    s = _s(last_changed="2026-06-01", consecutive_unchanged=0)  # last real change 17d ago
+    apply_outcome(s, today=TODAY, changed=False)
+    assert s.consecutive_unchanged == 1
+    assert s.tier == "cold"  # >14d since last change
+    # cold boards get a multi-day next_due (not crawled again tomorrow)
+    assert s.next_due > TODAY
+    assert s.last_changed == "2026-06-01"  # unchanged crawl never bumps last_changed
+
+
 def test_outcome_throttle_drives_quarantine():
     s = _s(last_changed="2026-06-17")
     for _ in range(4):  # sustained 429s push EWMA past THROTTLE_MAX
