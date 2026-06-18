@@ -115,6 +115,32 @@ async def detect(urls: list[str], fetcher: AsyncFetcher) -> tuple[str, str] | No
     return None
 
 
+def _checkpoint_append(path: Path, record: dict) -> None:
+    """Append one candidate to a JSONL checkpoint immediately, so a crash/kill never loses it.
+
+    Synchronous one-line append between awaits — atomic enough under anyio's cooperative
+    scheduling (no await inside), and crash-safe (each line is independently parseable).
+    """
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def _load_checkpoint(path: Path) -> list[dict]:
+    """Recover candidates from a partial checkpoint (skips any truncated final line)."""
+    if not path.exists():
+        return []
+    out: list[dict] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            out.append(json.loads(line))
+        except ValueError:
+            continue  # a half-written final line from a hard kill — ignore
+    return out
+
+
 async def main() -> None:
     args = sys.argv[1:]
     out_path = DEFAULT_OUT
@@ -154,19 +180,28 @@ async def main() -> None:
     # Phase 1: Tavily + detect (concurrent).
     hits: dict[int, tuple[str, str]] = {}
     done = [0]
+    errors = [0]
 
     # Two fetchers: Tavily needs retries to survive 429s, but the careers-host PROBES must NOT
     # retry — most guessed hosts (careers.{dom}/jobs.{dom}) don't resolve, and retrying a
     # TransportError 3x with backoff was the bottleneck (~15s wasted per dead guess). retries=1
     # makes dead hosts fail instantly; a short timeout caps slow-but-alive ones.
     async def find(idx: int, sponsor: dict, tav: AsyncFetcher, probe: AsyncFetcher) -> None:
-        urls = await tavily(sponsor["name"], key, tav)
-        res = await detect(urls, probe)
-        if res:
-            hits[idx] = res
+        # Crash-isolated: one sponsor's failure must NEVER cancel the task group (which would
+        # abort the whole sweep and skip the save). Worst case we lose that one sponsor.
+        try:
+            urls = await tavily(sponsor["name"], key, tav)
+            res = await detect(urls, probe)
+            if res:
+                hits[idx] = res
+        except Exception:  # noqa: BLE001 - per-record isolation is the whole point
+            errors[0] += 1
         done[0] += 1
         if done[0] % 200 == 0:
-            print(f"  scanned {done[0]}/{len(todo)} (hits: {len(hits)})", flush=True)
+            print(
+                f"  scanned {done[0]}/{len(todo)} (hits: {len(hits)}, errors: {errors[0]})",
+                flush=True,
+            )
 
     async with (
         AsyncFetcher(concurrency=8, per_host_rate=4, timeout=15.0, retries=3) as tav,
@@ -180,30 +215,31 @@ async def main() -> None:
     print(f"detected {len(hits)} candidates {dict(by_ats)}; verifying live ...", flush=True)
 
     # Phase 2: verify each live (limit=1) through its provider; keep live + unseeded.
+    # Each accepted candidate is checkpointed to a JSONL file the instant it's verified, so a
+    # crash or Ctrl-C never loses the work already done.
     candidates: list[dict] = []
     taken: set[str] = set()
+    ckpt_path = out_path.with_name(out_path.name + ".partial.jsonl")
+    ckpt_path.unlink(missing_ok=True)  # fresh run
 
     async def verify(idx: int, ats: str, token: str, fetcher: AsyncFetcher) -> None:
-        sponsor = todo[idx]["name"]
-        ck = _company_key(sponsor, ats, token).lower()
-        if not ck or ck in seed_keys or ck in taken:
-            return
+        # Fully crash-isolated: nothing in here may propagate and cancel the group / skip the save.
         try:
-            raws = await get_provider(ats).fetch(token, SearchQuery(limit=1), fetcher)
-        except Exception:  # noqa: BLE001
-            raws = []
-        if raws:
-            taken.add(ck)
-            candidates.append(
-                {
-                    "company": ck,
-                    "ats": ats,
-                    "token": token,
-                    "domain": None,
-                    "_sponsor": sponsor,
-                    "_filings": todo[idx].get("filings"),
-                }
-            )
+            sponsor = todo[idx]["name"]
+            ck = _company_key(sponsor, ats, token).lower()
+            if not ck or ck in seed_keys or ck in taken:
+                return
+            try:
+                raws = await get_provider(ats).fetch(token, SearchQuery(limit=1), fetcher)
+            except Exception:  # noqa: BLE001 - dead/blocked board -> just not a candidate
+                raws = []
+            if raws:
+                taken.add(ck)
+                rec = {"company": ck, "ats": ats, "token": token, "domain": None}
+                _checkpoint_append(ckpt_path, rec)  # durable BEFORE we risk anything else
+                candidates.append({**rec, "_sponsor": sponsor, "_filings": todo[idx].get("filings")})
+        except Exception:  # noqa: BLE001 - one bad record must never sink the run
+            pass
 
     async with (
         AsyncFetcher(concurrency=10, per_host_rate=6, timeout=25.0) as fetcher,
@@ -220,11 +256,12 @@ async def main() -> None:
         )
     out = [{k: v for k, v in c.items() if not k.startswith("_")} for c in candidates]
     out_path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
+    ckpt_path.unlink(missing_ok=True)  # clean finish — the JSON supersedes the checkpoint
     try:
         shown = out_path.relative_to(ROOT)
     except ValueError:
         shown = out_path
-    print(f"\nwrote {len(out)} candidates {dict(kept)} -> {shown}")
+    print(f"\nwrote {len(out)} candidates {dict(kept)} -> {shown}  (phase-1 errors: {errors[0]})")
     print(f"next: .venv/bin/python scripts/build_registry.py {shown}")
 
 

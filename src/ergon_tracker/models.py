@@ -100,6 +100,24 @@ class Salary(BaseModel):
     currency: str | None = None
     interval: SalaryInterval | None = None
 
+    def as_text(self) -> str:
+        """Human-readable salary, robust to partial data.
+
+        Handles min-only, max-only, equal min==max, missing currency/interval, and the
+        empty case — so callers can format a salary without a "max=None blew up the format
+        string" crash. Returns "" when there is no amount at all.
+        """
+        lo, hi = self.min_amount, self.max_amount
+        if lo is None and hi is None:
+            return ""
+        prefix = f"{self.currency} " if self.currency else ""
+        if lo is not None and hi is not None and lo != hi:
+            body = f"{lo:,.0f}–{hi:,.0f}"
+        else:
+            body = f"{(lo if lo is not None else hi):,.0f}"
+        suffix = f"/{self.interval.value}" if self.interval else ""
+        return f"{prefix}{body}{suffix}"
+
 
 class RawJob(BaseModel):
     """Pre-normalization container: exactly what a source returned for one posting."""
@@ -198,8 +216,20 @@ class JobPosting(BaseModel):
 
 
 class SearchQuery(BaseModel):
-    """A unified query. ``matches()`` is the client-side filter applied to sources that have
-    no server-side keyword search (i.e. most ATS feeds)."""
+    """A unified query, plus the client-side ``matches()`` filter.
+
+    Keyword handling is hybrid by design:
+
+    * **Server-side pre-filter (4 providers):** ``adzuna``, ``smartrecruiters``, ``usajobs`` and
+      ``workday`` pass ``keywords`` straight to their remote API, so they only return matching
+      postings (and, for paginating Workday, fetch fewer pages). See each provider's ``fetch``.
+    * **Client-side filter (every other provider):** Greenhouse/Lever/Ashby/etc. have **no**
+      keyword API — their boards return everything, so ``matches()`` is the keyword filter applied
+      after fetch. The cost there is the number of boards, not the number of jobs.
+
+    All structured filters (level, geo, salary, years, sector, sponsorship, …) are always applied
+    client-side by ``matches()`` regardless of source.
+    """
 
     keywords: str | None = None
     location: str | None = None
