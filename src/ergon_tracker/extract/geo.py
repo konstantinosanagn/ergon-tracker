@@ -297,6 +297,11 @@ def normalize_geo(loc: Location) -> Location:
     All-deterministic: split on separators, strip ATS noise, then resolve country by
     (1) explicit country token, (2) US state name/abbrev, (3) city -> country gazetteer.
     """
+    # Canonicalize an explicitly-provided country ("US"/"USA"/full names) so the index does
+    # not fragment "US" vs "United States". Applied to the explicit field only — segment
+    # parsing below keeps its own state-collision-aware resolution (e.g. "CA" = California).
+    if loc.country:
+        loc.country = _COUNTRY_ALIASES.get(loc.country.strip().lower(), loc.country)
     if not loc.raw:
         return loc
     raw = loc.raw.strip()

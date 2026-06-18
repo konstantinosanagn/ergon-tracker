@@ -1,104 +1,119 @@
 # Index Status
 
-Build `m1-local-18469` — **18,469** jobs (18,469 active, 0 expired) across **60** companies.
+Build `build-2026-06-18` — **134,930** jobs (134,930 active, 0 expired) across **2,947** companies.
 
-- Salary disclosed: 3,823 (21% of active)
-- Visa-sponsor history: 15,254
-- Sponsorship offered: 386
+- Salary disclosed: 38,942 (29% of active)
+- Visa-sponsor history: 76,662
+- Sponsorship offered: 657
 
 ## By provider (ATS)
 
 | Provider | Jobs |
 | --- | ---: |
-| workday | 13,169 |
-| greenhouse | 3,871 |
-| ashby | 1,109 |
-| lever | 320 |
+| workday | 38,850 |
+| greenhouse | 36,699 |
+| smartrecruiters | 23,633 |
+| ashby | 15,628 |
+| lever | 10,673 |
+| workable | 4,818 |
+| recruitee | 2,681 |
+| personio | 1,948 |
 
 ## By sector
 
 | Sector | Jobs |
 | --- | ---: |
-| Software/SaaS | 2,954 |
-| Aerospace/Defense | 2,387 |
-| Biotech/Pharma | 2,290 |
-| Healthcare | 1,807 |
-| Semiconductors/Hardware | 1,712 |
-| AI/ML | 1,659 |
-| Banking/Finance | 1,595 |
-| Insurance | 860 |
-| Fintech | 849 |
-| Consulting/Services | 671 |
-| Manufacturing/Industrial | 655 |
-| Telecom | 400 |
-| Travel/Hospitality | 226 |
-| Media/Entertainment | 200 |
-| Cybersecurity | 122 |
-| Crypto/Web3 | 82 |
+| Consulting/Services | 16,417 |
+| Software/SaaS | 13,057 |
+| Healthcare | 12,236 |
+| Biotech/Pharma | 9,040 |
+| Semiconductors/Hardware | 8,453 |
+| Manufacturing/Industrial | 7,508 |
+| Banking/Finance | 5,396 |
+| Fintech | 4,709 |
+| AI/ML | 4,642 |
+| Automotive/Mobility | 3,588 |
+| E-commerce/Retail | 3,154 |
+| Aerospace/Defense | 2,445 |
+| Media/Entertainment | 2,405 |
+| Cybersecurity | 2,129 |
+| Insurance | 1,801 |
+| Telecom | 1,728 |
+| Consumer/Lifestyle | 1,723 |
+| Energy/Climate | 1,543 |
+| Other | 1,401 |
+| Travel/Hospitality | 1,199 |
+| Gaming | 1,163 |
+| Education | 1,040 |
+| Crypto/Web3 | 999 |
+| Government/Public | 517 |
+| Logistics/SupplyChain | 495 |
+| RealEstate/PropTech | 486 |
+| Food/Beverage | 467 |
 
 ## By level
 
 | Level | Jobs |
 | --- | ---: |
-| unknown | 8,227 |
-| senior | 3,637 |
-| manager | 2,496 |
-| director | 1,244 |
-| lead | 1,008 |
-| principal | 525 |
-| entry | 355 |
-| staff | 345 |
-| mid | 234 |
-| executive | 213 |
-| intern | 152 |
-| junior | 33 |
+| unknown | 74,828 |
+| senior | 18,240 |
+| manager | 12,802 |
+| director | 6,982 |
+| lead | 5,443 |
+| entry | 3,671 |
+| intern | 3,170 |
+| staff | 2,759 |
+| principal | 2,432 |
+| mid | 1,946 |
+| executive | 1,745 |
+| junior | 912 |
 
 ## Top countries
 
 | Country | Jobs |
 | --- | ---: |
-| United States | 7,887 |
-| India | 1,301 |
-| United Kingdom | 552 |
-| China | 418 |
-| Canada | 395 |
-| Japan | 263 |
-| Ireland | 253 |
-| Singapore | 244 |
-| Mexico | 226 |
-| Germany | 192 |
-| France | 157 |
-| Australia | 155 |
-| Israel | 152 |
-| USA | 151 |
-| Spain | 148 |
-| South Korea | 119 |
-| Philippines | 117 |
-| Brazil | 115 |
-| Netherlands | 113 |
-| Vietnam | 103 |
+| United States | 48,196 |
+| US | 9,652 |
+| India | 5,468 |
+| United Kingdom | 4,247 |
+| Canada | 2,760 |
+| Singapore | 2,320 |
+| Germany | 2,205 |
+| DE | 1,781 |
+| China | 1,609 |
+| USA | 1,418 |
+| FR | 1,336 |
+| Japan | 1,301 |
+| Brazil | 1,295 |
+| France | 1,260 |
+| Ireland | 1,248 |
+| IN | 1,231 |
+| GB | 1,113 |
+| Mexico | 970 |
+| Australia | 968 |
+| Indonesia | 960 |
 
 ## Top companies
 
 | Company | Jobs |
 | --- | ---: |
-| abbott | 1,752 |
-| nvidia | 1,493 |
+| Bosch Group | 3,938 |
+| AECOM | 2,245 |
+| micron | 2,131 |
+| abbott | 1,765 |
+| target | 1,765 |
+| citi | 1,721 |
+| Carvana | 1,548 |
+| Boxlunch | 1,512 |
+| nvidia | 1,504 |
+| Collabera | 1,446 |
 | Anduril Industries | 1,422 |
-| salesforce | 1,232 |
-| amgen | 1,120 |
-| astrazeneca | 1,104 |
+| salesforce | 1,250 |
+| danaher | 1,179 |
+| stryker | 1,140 |
+| Alphabe Insight Inc | 1,127 |
+| pwc | 1,121 |
+| amgen | 1,119 |
+| astrazeneca | 1,105 |
+| AbbVie | 1,096 |
 | capitalone | 1,071 |
-| boeing | 965 |
-| adobe | 760 |
-| accenture | 654 |
-| 3m | 626 |
-| openai | 620 |
-| autodesk | 508 |
-| aig | 463 |
-| Databricks | 454 |
-| Stripe | 438 |
-| att | 368 |
-| Anthropic | 355 |
-| allstate | 310 |
-| blackrock | 302 |

@@ -62,3 +62,24 @@ def test_does_not_overwrite_preset_fields() -> None:
     normalize_geo(loc)
     assert loc.city == "Munich"
     assert loc.country == "Austria"
+
+
+def test_canonicalizes_preset_country_code() -> None:
+    # Providers emit structured country codes ("US"/"USA"); canonicalize them so the index
+    # does not fragment "US" (9.6k rows) vs "United States" (48k rows) for country filters.
+    for code in ("US", "us", "USA", "U.S.A.", "united states of america"):
+        loc = Location(raw="New York", country=code)
+        normalize_geo(loc)
+        assert loc.country == "United States", code
+
+
+def test_canonical_country_left_unchanged() -> None:
+    loc = Location(raw="London", country="United Kingdom")
+    normalize_geo(loc)
+    assert loc.country == "United Kingdom"
+
+
+def test_canonicalizes_country_with_empty_raw() -> None:
+    loc = Location(raw="", country="US")  # structured-only location, no raw string
+    normalize_geo(loc)
+    assert loc.country == "United States"
