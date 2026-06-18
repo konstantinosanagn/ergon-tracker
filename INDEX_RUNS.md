@@ -92,3 +92,14 @@ assumes a **public** repo (anonymous free downloads + unlimited free Actions min
 
 v1 is **feature-complete and CI-green**, but NOT "officially done" until distribution works for
 others — i.e. until visibility is resolved. Not starting v2 until then.
+
+## 2026-06-18 — ✅ v1 OFFICIALLY DONE (anonymous distribution proven)
+
+Repo set public (kept public through v1/v2 per user; hosting decoupling revisited later). The
+full pipeline is proven end-to-end **for an anonymous user**: daily Action builds incrementally →
+gates → publishes `index-latest` release → SDK `IndexCache` downloads it **with no token/auth**
+(HTTP 200) → queries locally (14,999 jobs, "engineer" → real results) with zero ATS contact.
+
+All v1 goals met: queryable index across ATSes · tiered throttle-proof incremental crawl ·
+gated/automated daily build · free for others. **Starting v2 (Approach B: sector-sharded index +
+daily deltas for optimized search).** A larger real build is running to populate the live index.
