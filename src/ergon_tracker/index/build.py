@@ -130,6 +130,175 @@ def build_index(jobs: list[JobPosting], path: Path | str, *, build_id: str) -> i
         con.close()
 
 
+# --- Streaming / SQL-merge build (memory-bounded: O(batch) + O(#companies), not O(#jobs)) ----
+#
+# The in-memory build_index above materializes every job (and several derived lists) at once,
+# which OOMs at ~1M rows. The streaming path inserts jobs batch-by-batch, carries forward the
+# previous index via SQL ATTACH (no Python job objects), and aggregates companies + builds FTS
+# from the DB. Dedup here is exact-id only (INSERT OR IGNORE on the unique `id`); deduplicate()'s
+# fuzzy within-company merge is not reproduced (acceptable for a broad-discovery index at scale —
+# callers may deduplicate() each batch first to catch intra-batch fuzzy dupes).
+
+
+def append_jobs(con: object, jobs: object, *, build_id: str) -> int:
+    """Insert a batch of JobPostings (+ provenance) into an open index connection.
+
+    Exact-id dedup via INSERT OR IGNORE on the unique ``id``. Returns the number of *new* job
+    rows inserted. Memory is O(batch), so the caller can stream arbitrarily many batches.
+    """
+    import sqlite3
+    from collections.abc import Iterable
+
+    assert isinstance(con, sqlite3.Connection)
+    batch: list[JobPosting] = list(jobs) if isinstance(jobs, Iterable) else []
+    if not batch:
+        return 0
+    before = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+    placeholders = ",".join(":" + c for c in _JOB_COLS)
+    con.executemany(
+        f"INSERT OR IGNORE INTO jobs({','.join(_JOB_COLS)}) VALUES({placeholders})",
+        [to_row(j, build_id=build_id) for j in batch],
+    )
+    con.executemany(
+        "INSERT OR IGNORE INTO job_sources(job_id,source,source_job_id,apply_url,fetched_at) "
+        "VALUES(?,?,?,?,?)",
+        [
+            (j.id, p.source, p.source_job_id, p.apply_url, p.fetched_at.isoformat())
+            for j in batch
+            for p in j.provenance
+        ],
+    )
+    after = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+    return after - before
+
+
+def carry_forward(con: object, prev_db_path: Path | str, crawled_keys: set[str]) -> int:
+    """Copy prior-index rows for companies we did NOT crawl into ``con`` (SQL ATTACH, no objects).
+
+    Companies in ``crawled_keys`` were refreshed this run (their fresh rows are already inserted),
+    so we skip them; everything else carries forward. Returns rows carried.
+    """
+    import sqlite3
+
+    assert isinstance(con, sqlite3.Connection)
+    if not Path(prev_db_path).exists():
+        return 0
+    con.execute("CREATE TEMP TABLE IF NOT EXISTS _crawled(k TEXT PRIMARY KEY)")
+    con.execute("DELETE FROM _crawled")
+    con.executemany("INSERT OR IGNORE INTO _crawled(k) VALUES(?)", [(k,) for k in crawled_keys])
+    con.execute("ATTACH DATABASE ? AS prev", (str(prev_db_path),))
+    try:
+        cols = ",".join(_JOB_COLS)
+        before = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+        con.execute(
+            f"INSERT OR IGNORE INTO jobs({cols}) SELECT {cols} FROM prev.jobs "  # noqa: S608 - fixed cols
+            "WHERE company_key IS NULL OR company_key NOT IN (SELECT k FROM _crawled)"
+        )
+        con.execute(
+            "INSERT OR IGNORE INTO job_sources SELECT s.* FROM prev.job_sources s "
+            "WHERE s.job_id IN (SELECT id FROM jobs)"
+        )
+        after = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+        con.commit()
+        return after - before
+    finally:
+        con.execute("DETACH DATABASE prev")
+
+
+def _aggregate_companies_streamed(con: object) -> list:
+    """Aggregate Company rows by streaming the jobs cursor (memory O(#companies), not O(#jobs)).
+
+    Mirrors canonicalize.aggregate_companies: keyed by normalize_company, open_roles counted,
+    first non-null domain/sector kept, H-1B flags from the gazetteer.
+    """
+    import sqlite3
+
+    from ..extract.visa import h1b_last_filed, is_h1b_sponsor
+    from ..models import Company
+
+    assert isinstance(con, sqlite3.Connection)
+    out: dict[str, Company] = {}
+    cur = con.execute("SELECT company, company_domain, source, sector FROM jobs")
+    while True:
+        rows = cur.fetchmany(10000)
+        if not rows:
+            break
+        for company, domain, source, sector in rows:
+            key = normalize_company(company)
+            if not key:
+                continue
+            c = out.get(key)
+            if c is None:
+                out[key] = Company(
+                    company_key=key, display_name=company, domain=domain, primary_ats=source,
+                    sector=sector, h1b_sponsor=True if is_h1b_sponsor(company) else None,
+                    h1b_last_filed=h1b_last_filed(company), open_roles=1,
+                )
+            else:
+                c.open_roles += 1
+                if not c.domain and domain:
+                    c.domain = domain
+                if not c.sector and sector:
+                    c.sector = sector
+    return list(out.values())
+
+
+def finalize_index(con: object, *, build_id: str) -> int:
+    """Insert companies (streamed), build FTS, write meta, ANALYZE/VACUUM, integrity-check."""
+    import sqlite3
+
+    assert isinstance(con, sqlite3.Connection)
+    companies = _aggregate_companies_streamed(con)
+    con.executemany(
+        "INSERT OR REPLACE INTO companies(company_key,display_name,domain,primary_ats,board_token,"
+        "sector,h1b_sponsor,h1b_last_filed,open_roles,first_seen,last_seen) "
+        "VALUES(:company_key,:display_name,:domain,:primary_ats,:board_token,:sector,"
+        ":h1b_sponsor,:h1b_last_filed,:open_roles,:first_seen,:last_seen)",
+        [{**c.model_dump(), "h1b_sponsor": 1 if c.h1b_sponsor else None} for c in companies],
+    )
+    n = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+    con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('build_id',?)", (build_id,))
+    con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('row_count',?)", (str(n),))
+    con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('rebuild')")
+    con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('optimize')")
+    con.commit()
+    con.execute("ANALYZE")
+    con.execute("VACUUM")
+    ok = con.execute("PRAGMA integrity_check").fetchone()[0]
+    if ok != "ok":
+        raise IndexBuildError(f"integrity_check failed: {ok}")
+    return n
+
+
+def build_index_streaming(
+    job_batches: object,
+    path: Path | str,
+    *,
+    build_id: str,
+    prev_db: Path | str | None = None,
+    crawled_keys: set[str] | None = None,
+) -> int:
+    """Memory-bounded build: stream job batches in, carry forward prev via SQL, finalize.
+
+    ``job_batches`` is an iterable of JobPosting iterables (e.g. one per board). When ``prev_db``
+    + ``crawled_keys`` are given, prior rows for un-crawled companies are carried forward in SQL.
+    """
+    fresh_db(path)
+    con = connect(path)
+    try:
+        # Jobs are inserted before companies exist (companies are aggregated from jobs in
+        # finalize_index), so defer FK enforcement; finalize's integrity_check + the
+        # company_fk_intact gate confirm referential integrity once companies are written.
+        con.execute("PRAGMA foreign_keys = OFF")
+        for batch in job_batches:
+            append_jobs(con, batch, build_id=build_id)
+        if prev_db is not None and crawled_keys is not None and Path(prev_db).exists():
+            carry_forward(con, prev_db, crawled_keys)
+        return finalize_index(con, build_id=build_id)
+    finally:
+        con.close()
+
+
 def sector_slug(sector: str | None) -> str:
     """Filesystem-safe shard key for a sector ('AI/ML' -> 'ai-ml'); None/empty -> 'unknown'."""
     if not sector:
