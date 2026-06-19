@@ -52,6 +52,11 @@ from ergon_tracker.models import JobLevel
         ("VP", JobLevel.EXECUTIVE),
         ("VP Product, Core Products", JobLevel.EXECUTIVE),
         ("Chief Technology Officer", JobLevel.EXECUTIVE),
+        # --- New-grad / campus-hire markers -> entry ----------------------
+        ("Software Engineer (New Grads 2025-2026)", JobLevel.ENTRY),  # plural "new grads"
+        ("Software Engineer New Grads", JobLevel.ENTRY),
+        ("2026 Campus Hire - Commercial Pricing", JobLevel.ENTRY),
+        ("Campus Recruiting Analyst", JobLevel.ENTRY),
         # --- Sales-development roles -> entry ------------------------------
         ("SDR", JobLevel.ENTRY),
         ("Sales Development Representative", JobLevel.ENTRY),

@@ -148,7 +148,8 @@ _JUNIOR = re.compile(r"\b(?:junior|jr\.?|jnr)\b", re.I)
 # that the gold set does not treat as entry. Only the leading "Associate, X"
 # form (early-career rotational hires) is matched.
 _ENTRY = re.compile(
-    r"\b(?:entry[- ]level|new ?grad|graduate|trainee|early[- ]career)\b"
+    r"\b(?:entry[- ]level|new ?grads?|graduate|trainee|early[- ]career"
+    r"|campus (?:hire|recruit(?:ing|ment)?))\b"
     r"|^\s*associate,"
     r"|\b(?:business |partner |sales )?development representative\b"
     r"|\bsales development\b"
