@@ -77,10 +77,23 @@ for job in res.jobs:
 # Strong filters, all combinable:
 res = search(
     "backend",
-    country="Germany",
+    country="Germany",    # accepts aliases: "USA"/"US" -> United States, "UK", ...
     level="senior",
     salary_min=80000,
     remote=True,
+    limit=20,
+)
+
+# New-grad search, exactly: SWE, 0-2 years, NYC (metro-aware), USD >= $140k, posted this month:
+from datetime import datetime, timedelta, timezone
+
+res = search(
+    "software engineer",
+    city="New York",          # also matches NYC boroughs / "New York City" / "NYC"
+    max_years=2, include_unknown_years=False,   # only roles that state <= 2 years
+    salary_min=140_000, salary_currency="USD",  # USD only (won't return EUR/GBP)
+    employment_type="full_time",
+    posted_after=datetime.now(timezone.utc) - timedelta(days=30),
     limit=20,
 )
 
@@ -104,6 +117,9 @@ async with AsyncErgonTracker() as et:
 
 ```bash
 ergon-tracker search "engineer" --country Germany --level senior --remote --limit 20
+# New-grad: <=2 yrs (stated), NYC metro, USD >=$140k, posted in the last 30 days:
+ergon-tracker search "software engineer" --city "New York" --max-years 2 --strict-years \
+  --salary-min 140000 --salary-currency USD --posted-within-days 30
 ergon-tracker search "deep learning" --semantic            # embedding-ranked
 ergon-tracker search "backend" --visa-sponsor --sponsorship # known H-1B sponsor + posting doesn't refuse
 ergon-tracker sponsors "stripe"                             # browse known H-1B sponsors + last-filed date
