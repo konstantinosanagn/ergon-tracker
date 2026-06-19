@@ -71,6 +71,15 @@ _JOB_PATH_RE = re.compile(r"/jobs?/[^/]", re.IGNORECASE)
 _NOT_JOB_RE = re.compile(r"/(?:search|search-results|category|results)\b", re.IGNORECASE)
 # Opt-in scheme prefix the discovery matcher recognises.
 _SCHEME_RE = re.compile(r"^schema(?:org)?:", re.IGNORECASE)
+# Many career sites that DO server-render JobPosting JSON-LD (for Google) still 403 a non-browser
+# UA (e.g. dexian.com). The JSON-LD is meant for crawlers, so a browser UA is the right fetch
+# identity here — safe for existing captures (browser UA is universally accepted).
+_BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+    )
+}
 
 # Common sitemap locations probed when robots.txt lists none (ordered most→least specific).
 _CANDIDATE_PATHS = (
@@ -126,6 +135,38 @@ def _parse_date(value: Any) -> datetime | None:
     return dt
 
 
+class _DualFetch:
+    """get_text via the shared fetcher (HTTP/2, rate-limited) with browser UA; on a block (403 /
+    transport error) retry that URL through a lazily-created HTTP/1.1 browser client. Some career
+    sites server-render JobPosting JSON-LD for crawlers but WAF-block the fetcher's HTTP/2
+    fingerprint (e.g. dexian.com) — HTTP/1.1 + browser UA gets through."""
+
+    def __init__(self, fetcher: AsyncFetcher) -> None:
+        self._f = fetcher
+        self._h1: Any = None
+
+    async def get_text(self, url: str) -> str:
+        try:
+            return await self._f.get_text(url, headers=_BROWSER_HEADERS)
+        except Exception:
+            if self._h1 is None:
+                import httpx
+
+                self._h1 = httpx.AsyncClient(
+                    http2=False, follow_redirects=True, timeout=20.0, headers=_BROWSER_HEADERS
+                )
+            r = await self._h1.get(url)
+            r.raise_for_status()
+            return r.text
+
+    async def aclose(self) -> None:
+        if self._h1 is not None:
+            import contextlib
+
+            with contextlib.suppress(Exception):
+                await self._h1.aclose()
+
+
 @register("schemaorg")
 class SchemaOrgProvider(BaseProvider):
     name = "schemaorg"
@@ -158,23 +199,27 @@ class SchemaOrgProvider(BaseProvider):
         if cap == 0:
             return []
 
-        roots, host = await self._resolve_sitemaps(token, fetcher)
-        if not roots:
-            return []
+        df = _DualFetch(fetcher)
+        try:
+            roots, host = await self._resolve_sitemaps(token, df)
+            if not roots:
+                return []
 
-        # Over-collect a little: some detail pages carry no server-rendered JobPosting and are
-        # skipped, so we need a buffer of candidate URLs to still reach ``cap`` real jobs.
-        collect_target = min(cap * 3, self.HARD_CAP * 3)
-        job_urls = await self._collect_job_urls(roots, fetcher, collect_target)
+            # Over-collect a little: some detail pages carry no server-rendered JobPosting and are
+            # skipped, so we need a buffer of candidate URLs to still reach ``cap`` real jobs.
+            collect_target = min(cap * 3, self.HARD_CAP * 3)
+            job_urls = await self._collect_job_urls(roots, df, collect_target)
 
-        raws: list[RawJob] = []
-        for url in job_urls:
-            raw = await self._fetch_detail(url, host, fetcher)
-            if raw is not None:
-                raws.append(raw)
+            raws: list[RawJob] = []
+            for url in job_urls:
+                raw = await self._fetch_detail(url, host, df)
+                if raw is not None:
+                    raws.append(raw)
                 if len(raws) >= cap:
                     break
-        return raws
+            return raws
+        finally:
+            await df.aclose()
 
     # --- sitemap resolution ----------------------------------------------
 
