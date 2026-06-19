@@ -60,3 +60,29 @@ def test_build_and_publish_shards_gzips(tmp_path):
     assert (tmp_path / "shards.json").exists()
     gzs = {f.name for f in tmp_path.glob("shard-*.sqlite.gz")}
     assert gzs == {"shard-fintech.sqlite.gz", "shard-unknown.sqlite.gz"}
+
+
+def test_new_boards_selects_unseen_and_caps():
+    import importlib.util
+    import pathlib
+
+    spec = importlib.util.spec_from_file_location(
+        "_bi", pathlib.Path(__file__).parent.parent / "scripts" / "build_index.py"
+    )
+    bi = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bi)
+    from ergon_tracker.index.scheduler import BoardState
+
+    items = [
+        ("a", {"ats": "greenhouse", "token": "acme"}),
+        ("b", {"ats": "lever", "token": "beta"}),
+        ("c", {"ats": "ashby", "token": "gamma"}),
+        ("d", {"ats": None, "token": None}),  # not crawlable -> ignored
+    ]
+    # 'a' already has state -> only b,c are new
+    seen = {BoardState(provider="greenhouse", token="acme").key: object()}
+    new = bi._new_boards(items, seen)
+    tokens = {e["token"] for _, e in new}
+    assert tokens == {"beta", "gamma"}
+    # cap is respected
+    assert len(bi._new_boards(items, {}, cap=1)) == 1

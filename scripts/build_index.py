@@ -241,6 +241,26 @@ def _gated_publish(
     return True
 
 
+def _new_boards(registry_items, states: dict, cap: int = 2000) -> list:
+    """Registry boards with no board_state entry yet (added since the last build), capped.
+
+    These get crawled in the next build regardless of the rotating cursor, so freshly-captured ATS
+    boards become queryable immediately instead of waiting for the window to reach them. The cap
+    keeps a cold start (everything unseen) bounded to the window size.
+    """
+    from ergon_tracker.index.scheduler import BoardState
+
+    out: list = []
+    for key, e in registry_items:
+        if len(out) >= cap:
+            break
+        if not (e.get("ats") and e.get("token")):
+            continue
+        if BoardState(provider=e["ats"], token=e["token"]).key not in states:
+            out.append((key, e))
+    return out
+
+
 def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
     """Return (window, next_cursor): a rotating slice of crawlable registry boards.
 
@@ -291,6 +311,19 @@ async def _crawl_due(
         bs = BoardState(provider=e["ats"], token=e["token"])
         boards[bs.key] = (key, e)
         states.setdefault(bs.key, bs)
+    # Also crawl NEVER-SEEN boards (added to the registry since the last build) regardless of the
+    # cursor, so fresh captures appear in the very next build instead of waiting for the window to
+    # rotate to them. Bounded so a cold start (everything unseen) still respects the window size.
+    if len(states) > limit_companies:  # past the initial cold-start rotation
+        from ergon_tracker.registry.store import SeedRegistry
+
+        new = _new_boards(SeedRegistry().all().items(), states)
+        for key, e in new:
+            bs = BoardState(provider=e["ats"], token=e["token"])
+            boards[bs.key] = (key, e)
+            states[bs.key] = bs
+        if new:
+            print(f"  + {len(new)} never-seen board(s) pulled in ahead of the cursor")
     due = set(due_boards(list(states.values()), _today())) & set(boards)
 
     outcome: dict[str, dict] = {
