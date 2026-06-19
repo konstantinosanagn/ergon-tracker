@@ -35,6 +35,9 @@ class _Provider304:
 
 
 class _Fetcher304:
+    def __init__(self, *args, **kwargs):  # tolerate AsyncFetcher(timeout=, retries=) kwargs
+        pass
+
     async def __aenter__(self):
         return self
 
@@ -102,6 +105,9 @@ class _Provider200:
 
 class _Fetcher200:
     _BODY = b'{"jobs": [{"id": 1, "title": "Engineer"}]}'
+
+    def __init__(self, *args, **kwargs):  # tolerate AsyncFetcher(timeout=, retries=) kwargs
+        pass
 
     async def __aenter__(self):
         return self
