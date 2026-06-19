@@ -111,6 +111,23 @@ async def run_search(query: SearchQuery, fetcher: AsyncFetcher) -> SearchResult:
 
     indexed = try_index(query)
     if indexed is not None:
+        if query.semantic and query.keywords and len(indexed) > 1:
+            # The index ranks lexically (BM25). Honor semantic=True by reranking a WIDER candidate
+            # pool from the index by embedding similarity, then truncating to the limit — so
+            # broad semantic queries actually reorder by meaning (not silently lexical). Opt-in
+            # extra; on any failure (e.g. fastembed not installed) fall back to the lexical order.
+            try:
+                import logging
+
+                from .semantic import get_semantic_reranker
+
+                want = query.limit or 20
+                pool = try_index(query.model_copy(update={"limit": max(want * 10, 200)})) or indexed
+                indexed = rank(pool, query.keywords, reranker=get_semantic_reranker())[:want]
+            except Exception as exc:  # noqa: BLE001
+                logging.getLogger("ergon_tracker.index").warning(
+                    "semantic rerank on index unavailable (%s); lexical order", exc
+                )
         return SearchResult(
             jobs=indexed,
             health=[build_health("index", ok=True, count=len(indexed))],
