@@ -121,6 +121,12 @@ def test_extractor_falls_back_to_name(extractor: SectorExtractor) -> None:
         ("Deloitte", "Consulting/Services"),
         ("METRO/MAKRO", "E-commerce/Retail"),
         ("KIPP", "Education"),
+        ("Mattel", "Consumer/Lifestyle"),
+        ("Canonical", "Software/SaaS"),
+        ("Ubisoft", "Gaming"),
+        ("Sutherland", "Consulting/Services"),
+        ("Shieldai", "Aerospace/Defense"),
+        ("altamed", "Healthcare"),
     ],
 )
 def test_company_sector_exact_brand_map(company: str, sector: str) -> None:
