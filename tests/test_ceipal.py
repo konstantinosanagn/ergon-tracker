@@ -17,7 +17,9 @@ CP = "CPID456"
 URL = f"https://careerapi.ceipal.com/{AK}/CareerPortalJobPostings/"
 
 
-def _job(jid: int, title: str, state: str, country: str = "United States", remote: str = "2") -> dict:
+def _job(
+    jid: int, title: str, state: str, country: str = "United States", remote: str = "2"
+) -> dict:
     return {
         "job_id": jid,
         "id": f"enc-{jid}",
@@ -40,8 +42,12 @@ def _mock(respx_mock: respx.MockRouter, pages: list[list[dict]]) -> None:
         results = pages[page - 1] if 1 <= page <= n else []
         return httpx.Response(
             200,
-            json={"count": sum(len(p) for p in pages), "num_pages": n,
-                  "host": "https://talenthire.ceipal.com", "results": results},
+            json={
+                "count": sum(len(p) for p in pages),
+                "num_pages": n,
+                "host": "https://talenthire.ceipal.com",
+                "results": results,
+            },
         )
 
     respx_mock.post(URL).mock(side_effect=_resp)
