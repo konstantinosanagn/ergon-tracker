@@ -67,3 +67,52 @@ def test_index_city_filter_is_metro_aware(tmp_path):
     }
     # boroughs + city variants, NOT the NY-state town (Armonk) or Austin
     assert got == {"New York", "New York City", "Brooklyn"}
+
+
+def test_country_alias_resolution():
+    from ergon_tracker.extract.geo import country_match_term, country_matches
+
+    assert country_match_term("USA") == "united states"
+    assert country_match_term("US") == "united states"
+    assert country_match_term("U.S.") == "united states"
+    assert country_match_term("UK") == "united kingdom"
+    assert country_match_term("England") == "united kingdom"
+    assert country_match_term("Germany") == "germany"
+    # matching against a posting's parsed country
+    assert country_matches("USA", "United States", "New York, United States")
+    assert country_matches("US", "United States", "")
+    assert not country_matches("USA", "Canada", "Toronto, Canada")
+
+
+def test_country_matches_substring_fallback_on_unparsed():
+    from ergon_tracker.extract.geo import country_matches
+
+    # country unparsed on the posting but present in raw text -> still matches (index/SDK parity)
+    assert country_matches("Germany", None, "Berlin, Germany")
+
+
+def test_index_country_filter_alias_aware(tmp_path):
+    from ergon_tracker.index.backend import SqliteIndexBackend
+    from ergon_tracker.index.build import build_index
+    from ergon_tracker.models import JobPosting, Location, SearchQuery
+
+    def job(sid, country, raw):
+        return JobPosting.create(
+            source="greenhouse",
+            source_job_id=sid,
+            company="Co",
+            title="Engineer",
+            locations=[Location(raw=raw, country=country)],
+        )
+
+    p = tmp_path / "i.sqlite"
+    build_index(
+        [job("1", "United States", "Austin, United States"), job("2", "Canada", "Toronto, Canada")],
+        p,
+        build_id="b1",
+    )
+    got = {
+        (j.locations[0].country if j.locations else None)
+        for j in SqliteIndexBackend(p).search(SearchQuery(country="USA", limit=50))
+    }
+    assert got == {"United States"}  # alias "USA" resolved, Canada excluded

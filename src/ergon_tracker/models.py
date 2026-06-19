@@ -325,10 +325,11 @@ class SearchQuery(BaseModel):
 
     def _geo_ok(self, job: JobPosting) -> bool:
         if self.country:
-            needle = self.country.lower()
+            # Alias-resolved (USA/US -> United States), shared with the index SQL.
+            from .extract.geo import country_matches
+
             if not any(
-                (loc.country or "").lower() == needle or needle in (loc.raw or "").lower()
-                for loc in job.locations
+                country_matches(self.country, loc.country, loc.raw) for loc in job.locations
             ):
                 return False
         if self.city:

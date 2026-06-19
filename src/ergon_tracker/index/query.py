@@ -36,8 +36,15 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
             cl.append("LOWER(j.sector) LIKE ?")
             p.append(f"%{q.sector.lower()}%")
     if q.country:
-        cl.append("LOWER(j.country) = ?")
-        p.append(q.country.lower())
+        # Alias-resolve the query (USA/US/U.S. -> united states) and mirror matches(): exact on the
+        # parsed country OR substring of the location text. Country names don't collide with city/
+        # state names, so the substring is safe (unlike the city filter).
+        from ..extract.geo import country_match_term
+
+        term = country_match_term(q.country)
+        cl.append("(LOWER(j.country) = ? OR LOWER(j.location) LIKE ?)")
+        p.append(term)
+        p.append(f"%{term}%")
     if q.city:
         # Metro-aware exact match (mirrors SearchQuery.matches()._geo_ok via city_match_terms):
         # widens "New York" to its labelled variants ("New York City"/"Brooklyn"/"NYC") so a city

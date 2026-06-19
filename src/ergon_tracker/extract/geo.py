@@ -14,7 +14,13 @@ from importlib.resources import files
 
 from ..models import Location
 
-__all__ = ["normalize_geo", "city_match_terms", "city_matches"]
+__all__ = [
+    "normalize_geo",
+    "city_match_terms",
+    "city_matches",
+    "country_match_term",
+    "country_matches",
+]
 
 # Metro/synonym groups: names that denote the SAME city a user means when they type the key.
 # High-precision — only true aliases and constituent boroughs/districts (a borough of NYC IS NYC),
@@ -61,6 +67,22 @@ def city_matches(city_query: str, loc_city: str | None, loc_raw: str | None) -> 
     """
     lc = (loc_city or "").strip().lower()
     return any(lc == t for t in city_match_terms(city_query))
+
+
+def country_match_term(country: str) -> str:
+    """Canonical lowercased country for a filter, resolving common aliases (USA/US/U.S. -> united
+    states; UK/England -> united kingdom). Lets a query use any common spelling and still match the
+    geo-normalized country stored on postings."""
+    key = country.strip().lower()
+    return _COUNTRY_ALIASES.get(key, country.strip()).lower()
+
+
+def country_matches(country_query: str, loc_country: str | None, loc_raw: str | None) -> bool:
+    """True if a parsed location matches a country filter (alias-resolved). Mirrors the index SQL."""
+    term = country_match_term(country_query)
+    if (loc_country or "").strip().lower() == term:
+        return True
+    return term in (loc_raw or "").lower()
 
 
 # Country aliases -> canonical name (extend freely).
