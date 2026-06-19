@@ -952,5 +952,37 @@
    "url": "link",
    "description": "content.rendered"
   }
+ },
+ "decisionsix": {
+  "url": "https://decisionsix.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
+  "method": "GET",
+  "records_path": [],
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "company": "Decision Six",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  }
+ },
+ "gspanntechnologies": {
+  "url": "https://careers.gspann.com/page-data/jobs/find-a-position/page-data.json",
+  "method": "GET",
+  "records_path": [
+   "result",
+   "data",
+   "allPrismicJobDescriptionPage",
+   "edges"
+  ],
+  "record_unwrap": [
+   "node"
+  ],
+  "company": "GSPANN Technologies",
+  "fields": {
+   "id": "uid",
+   "title": "data.page_display_name.text"
+  }
  }
 }
