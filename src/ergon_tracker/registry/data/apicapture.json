@@ -1318,5 +1318,164 @@
    "url": "jobURL",
    "description": "jobAdvertisementTeaser"
   }
+ },
+ "applabsystems": {
+  "url": "https://www.applabsystems.com/api/jobs/active",
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "company": "applab systems",
+  "fields": {
+   "id": "job_id",
+   "title": "job_title",
+   "location": "",
+   "department": "job_category",
+   "url": "",
+   "description": "job_descplace",
+   "posted_at": "post_date"
+  }
+ },
+ "ventois": {
+  "url": "https://api-us-west-2.hygraph.com/v2/cld0a097x09rl01tg3sjk91o0/master",
+  "method": "POST",
+  "body": {
+   "query": "{jobListings(first:200,where:{isActive:true}){id jobTitle slug projectLocations description{html} createdAt}}"
+  },
+  "records_path": [
+   "data",
+   "jobListings"
+  ],
+  "total_path": [],
+  "company": "ventois",
+  "fields": {
+   "id": "id",
+   "title": "jobTitle",
+   "location": "projectLocations",
+   "url": "",
+   "description": "description.html",
+   "posted_at": "createdAt"
+  }
+ },
+ "valuemomentum": {
+  "url": "https://www.valuemomentum.com/wp-json/jobs/list",
+  "method": "POST",
+  "body": {
+   "title": "",
+   "location": ""
+  },
+  "records_path": [],
+  "total_path": [],
+  "company": "valuemomentum",
+  "fields": {
+   "id": "dcrs_jobid",
+   "title": "dcrs_jobtitle",
+   "location": "dcrs_location",
+   "department": "aavm_departmentname"
+  }
+ },
+ "neoprism": {
+  "url": "https://neoprisminc.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "company": "Neo Prism Solutions",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "location": "",
+   "department": "",
+   "url": "link",
+   "description": "content.rendered"
+  }
+ },
+ "vistaltech": {
+  "url": "https://www.vistaltech.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "company": "VistalTech",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "location": "",
+   "department": "",
+   "url": "link",
+   "description": "content.rendered"
+  }
+ },
+ "meghaz": {
+  "url": "https://api.oorwin.ai/api/v2/careers/getJobList",
+  "method": "POST",
+  "body": {
+   "limit": 100,
+   "page": 1,
+   "order": "desc",
+   "list_type": 1,
+   "sub_domain": "meghaz",
+   "getDefaultData": true
+  },
+  "records_path": [
+   "data",
+   "list_details",
+   "data"
+  ],
+  "total_path": [],
+  "company": "Meghaz",
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "city",
+   "department": "",
+   "url": "",
+   "posted_at": "cp_published_on"
+  }
+ },
+ "floridainternationaluniversity": {
+  "url": "https://us-east1-fiu-careers.cloudfunctions.net/jobs",
+  "method": "GET",
+  "records_path": [
+   "JOB_POSTINGS"
+  ],
+  "total_path": [],
+  "company": "Florida International University",
+  "fields": {
+   "id": "JOB_OPENING_ID",
+   "title": "POSTING_TITLE",
+   "location": "LOCATION",
+   "department": "DEPARTMENT",
+   "url": "URL",
+   "description": "DESCRIPTION",
+   "posted_at": "OPEN_DT"
+  }
+ },
+ "universityofpittsburghphysicians": {
+  "url": "https://jobsapi-google.m-cloud.io/api/job/search?pageSize=100&companyName=companies/4c0b87d3-a9b3-4243-b9c7-2ad12c533ab3&orderBy=posting_publish_time desc",
+  "method": "GET",
+  "page_param": "offset",
+  "page_start": 0,
+  "page_step": 100,
+  "records_path": [
+   "searchResults"
+  ],
+  "record_unwrap": [
+   "job"
+  ],
+  "total_path": [
+   "totalHits"
+  ],
+  "company": "UPMC",
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "primary_city",
+   "department": "department",
+   "url": "url",
+   "description": "description",
+   "posted_at": "open_date"
+  }
  }
 }
