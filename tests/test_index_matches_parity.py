@@ -168,3 +168,32 @@ def test_slim_tier_identical_to_full_for_routed_queries(tmp_path):
     assert not mismatches, (
         f"slim != full for {len(mismatches)} routed queries, e.g. {mismatches[0]}"
     )
+
+
+def test_shard_tier_identical_to_full_for_sector_queries(tmp_path):
+    # The router sends sector-scoped queries to a single shard. Lock that contract: a sector query
+    # against the sharded backend must return exactly the full index's results for that sector —
+    # else sharding silently drops/duplicates results.
+    from ergon_tracker.index.backend import ShardedIndexBackend
+    from ergon_tracker.index.build import build_sharded_index
+
+    rng = random.Random(7)
+    jobs = _make_jobs(rng, 80)
+    full = tmp_path / "full.sqlite"
+    build_index(jobs, full, build_id="b1")
+    build_sharded_index(jobs, tmp_path, build_id="b1")
+    fb = SqliteIndexBackend(full)
+    sharded = ShardedIndexBackend(tmp_path)
+
+    checked = 0
+    mismatches = []
+    for _ in range(150):
+        q = _random_query(rng)
+        q = q.model_copy(update={"sector": rng.choice([s for s in _SECTORS if s])})
+        checked += 1
+        if {j.id for j in fb.search(q)} != {j.id for j in sharded.search(q)}:
+            mismatches.append(q.model_dump(exclude_none=True))
+    assert checked > 50
+    assert not mismatches, (
+        f"shard != full for {len(mismatches)} sector queries, e.g. {mismatches[0]}"
+    )
