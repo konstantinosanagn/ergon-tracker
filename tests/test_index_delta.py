@@ -131,3 +131,63 @@ def test_apply_delta_rejects_wrong_base_build(tmp_path):
 
     with pytest.raises(Exception):  # noqa: B017 - any refusal is acceptable; base build mismatch
         apply_delta(other, delta)
+
+
+def test_sequential_deltas_chain_to_fresh_build(tmp_path):
+    # v2.2 foundation: a user several builds behind can apply consecutive deltas in sequence and
+    # reach the latest index. apply_delta's from_build_id guard enforces correct ordering, so
+    # chaining is just repeated application. Verify the chained result == a fresh build of the latest.
+    b0 = [
+        _job("1", "Stripe", "Backend Engineer"),
+        _job("2", "Ramp", "Frontend Engineer"),
+        _job("3", "OpenAI", "ML Engineer"),
+    ]
+    b1 = [
+        _job("1", "Stripe", "Backend Engineer"),
+        _job("2", "Ramp", "Staff Frontend Engineer"),  # changed
+        _job("4", "Cursor", "Founding Engineer"),  # added (OpenAI dropped)
+    ]
+    b2 = [
+        _job("1", "Stripe", "Senior Backend Engineer"),  # changed
+        _job("4", "Cursor", "Founding Engineer"),
+        _job("5", "Anthropic", "Research Engineer"),  # added (Ramp dropped)
+    ]
+    p0, p1, p2 = (tmp_path / f"b{i}.sqlite" for i in range(3))
+    build_index(b0, p0, build_id="b0")
+    build_index(b1, p1, build_id="b1")
+    build_index(b2, p2, build_id="b2")
+    d01, d12 = tmp_path / "d01.sqlite", tmp_path / "d12.sqlite"
+    build_delta(p0, p1, d01, from_build_id="b0", to_build_id="b1")
+    build_delta(p1, p2, d12, from_build_id="b1", to_build_id="b2")
+
+    # user at b0 applies the chain d01 -> d12
+    applied = tmp_path / "applied.sqlite"
+    applied.write_bytes(p0.read_bytes())
+    apply_delta(applied, d01)
+    apply_delta(applied, d12)
+
+    aj, ac, abid = _snapshot(applied)
+    cj, cc, cbid = _snapshot(p2)
+    assert aj == cj  # ids + content_hash + titles identical to a fresh b2 build
+    assert ac == cc  # companies re-aggregated identically
+    assert abid == cbid == "b2"
+
+
+def test_delta_chain_rejects_out_of_order_application(tmp_path):
+    # Applying a delta whose from_build_id != base build_id must refuse (keeps a chain consistent).
+    import pytest
+
+    b0 = [_job("1", "Stripe", "Eng")]
+    b1 = [_job("1", "Stripe", "Eng"), _job("2", "Ramp", "Eng")]
+    b2 = [_job("1", "Stripe", "Eng"), _job("2", "Ramp", "Eng"), _job("3", "X", "Eng")]
+    p0, p1, p2 = (tmp_path / f"b{i}.sqlite" for i in range(3))
+    build_index(b0, p0, build_id="b0")
+    build_index(b1, p1, build_id="b1")
+    build_index(b2, p2, build_id="b2")
+    d12 = tmp_path / "d12.sqlite"
+    build_delta(p1, p2, d12, from_build_id="b1", to_build_id="b2")
+    # base is still at b0 -> applying d12 (needs b1) must refuse, not silently corrupt
+    applied = tmp_path / "applied.sqlite"
+    applied.write_bytes(p0.read_bytes())
+    with pytest.raises(Exception):  # noqa: B017
+        apply_delta(applied, d12)
