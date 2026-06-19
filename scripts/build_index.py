@@ -256,7 +256,14 @@ async def _crawl_due(limit_companies: int, states: dict, fresh_db_path, build_id
                 append_jobs(con, board_jobs, build_id=build_id)
 
     try:
-        async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
+        # Crawl-tuned fetcher: fail fast on dead/slow boards (a big fraction of a 46k-board cold
+        # crawl). Defaults (25s timeout, 3 retries + backoff) can burn ~88s per dead board; 12s +
+        # 1 retry caps that at ~24s. Per-host rate limiting + circuit breaker still apply, and
+        # transiently-missed boards stay 'hot' and are retried next build (tiering).
+        async with (
+            AsyncFetcher(timeout=12.0, retries=2) as fetcher,
+            anyio.create_task_group() as tg,
+        ):
             for bkey in due:
                 tg.start_soon(grab, bkey, fetcher)
         con.commit()
