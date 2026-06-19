@@ -433,6 +433,9 @@ class SourceHealth(BaseModel):
     error: str | None = None
     elapsed_ms: int = 0
     truncated: bool = False
+    # For snapshot sources (the prebuilt index): which build served the query, so callers can
+    # judge data freshness. None for live sources (always current).
+    as_of: str | None = None
 
 
 class SearchResult(BaseModel):

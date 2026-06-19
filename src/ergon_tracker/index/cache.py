@@ -34,6 +34,25 @@ def _default_cache_dir() -> Path:
     return Path.home() / ".cache" / "ergon-tracker"
 
 
+def cached_index_build_id(cache_dir: Path | None = None) -> str | None:
+    """build_id of the locally-cached index (for freshness reporting), or None if uncached.
+
+    Reads whichever tier manifest is present (full / slim / shards) — all tiers share a build, so
+    any one answers 'how fresh is the data I just served'.
+    """
+    d = Path(cache_dir or _default_cache_dir())
+    for rel in ("manifest.json", "manifest-slim.json", "shards/shards.json"):
+        p = d / rel
+        if p.exists():
+            try:
+                bid = json.loads(p.read_text()).get("build_id")
+                if bid:
+                    return str(bid)
+            except Exception:  # noqa: BLE001
+                continue
+    return None
+
+
 def _token() -> str | None:
     return (
         os.environ.get("ERGON_GH_TOKEN")

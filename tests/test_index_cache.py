@@ -469,3 +469,16 @@ def test_delta_chain_failure_leaves_local_db_unchanged(tmp_path):
     con.close()
     assert bid == "b0"
     assert titles == {"Backend Engineer"}  # untouched; Frontend Eng (b1) did NOT leak in
+
+
+def test_cached_index_build_id_reads_manifest(tmp_path):
+    from ergon_tracker.index.cache import cached_index_build_id
+
+    assert cached_index_build_id(tmp_path) is None  # nothing cached yet
+    (tmp_path / "manifest.json").write_text(json.dumps({"build_id": "build-2026-06-19-7"}))
+    assert cached_index_build_id(tmp_path) == "build-2026-06-19-7"
+    # falls back to the slim manifest when the full one is absent
+    d2 = tmp_path / "d2"
+    d2.mkdir()
+    (d2 / "manifest-slim.json").write_text(json.dumps({"build_id": "slim-build-9"}))
+    assert cached_index_build_id(d2) == "slim-build-9"

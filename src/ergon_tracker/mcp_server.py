@@ -199,10 +199,20 @@ async def search_jobs(
 
         indexed = try_index_ranked(query)  # index serving + semantic rerank (shared with engine)
         if indexed is not None:
+            from .index.cache import cached_index_build_id
+
             return {
                 "count": len(indexed),
                 "jobs": [_job_to_dict(j) for j in indexed],
-                "health": [{"source": "index", "ok": True, "count": len(indexed), "error": None}],
+                "health": [
+                    {
+                        "source": "index",
+                        "ok": True,
+                        "count": len(indexed),
+                        "error": None,
+                        "as_of": cached_index_build_id(),  # which daily build served this (freshness)
+                    }
+                ],
             }
         query = query.model_copy(update={"sources": list(AGGREGATOR_PROVIDERS)})  # index down
 

@@ -168,3 +168,17 @@ async def test_job_dict_includes_years_and_core_fields() -> None:
     assert d["salary"]["currency"] == "USD"
     for k in ("company", "title", "apply_url", "level", "sector", "posted_at", "visa_sponsor"):
         assert k in d
+
+
+async def test_index_health_reports_freshness(monkeypatch) -> None:
+    # The index health must carry as_of (which daily build served the query) so an agent can judge
+    # data freshness.
+    from ergon_tracker.index import router
+
+    monkeypatch.setattr(router, "try_index_ranked", lambda q: [])
+    monkeypatch.setattr(
+        "ergon_tracker.index.cache.cached_index_build_id", lambda *a, **k: "build-2026-06-19-42"
+    )
+    out = await srv.search_jobs(keywords="engineer")
+    assert out["health"][0]["source"] == "index"
+    assert out["health"][0]["as_of"] == "build-2026-06-19-42"

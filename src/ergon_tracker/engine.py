@@ -113,9 +113,13 @@ async def run_search(query: SearchQuery, fetcher: AsyncFetcher) -> SearchResult:
         query
     )  # index serving + semantic rerank (shared with the MCP server)
     if indexed is not None:
+        from .index.cache import cached_index_build_id
+
         return SearchResult(
             jobs=indexed,
-            health=[build_health("index", ok=True, count=len(indexed))],
+            health=[
+                build_health("index", ok=True, count=len(indexed), as_of=cached_index_build_id())
+            ],
         )
 
     targets = _plan_targets(query)
