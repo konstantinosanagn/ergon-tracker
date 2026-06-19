@@ -40,6 +40,7 @@ SUPPORTED_ATS = {
     "jobdiva",
     "ripplehire",
     "zwayam",
+    "ceipal",
     "usajobs",
     "dejobs",
     "themuse",

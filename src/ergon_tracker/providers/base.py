@@ -68,6 +68,7 @@ _BUILTIN_MODULES = (
     "jobdiva",
     "ripplehire",
     "zwayam",
+    "ceipal",
     "remotive",
     "arbeitnow",
     "jobicy",
