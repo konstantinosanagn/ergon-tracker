@@ -984,5 +984,65 @@
    "id": "uid",
    "title": "data.page_display_name.text"
   }
+ },
+ "kirklandandellis": {
+  "url": "https://staffjobsus.kirkland.com/search/jobs.json",
+  "method": "GET",
+  "records_path": [
+   "entries"
+  ],
+  "total_path": [
+   "total_entries"
+  ],
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "company": "Kirkland & Ellis",
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "location.locality"
+  },
+  "tls_impersonate": true
+ },
+ "fuyaoglassamerica": {
+  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=25319558-d6a9-48ab-93d2-99e4878a8ffc&timeZoneId=America/New_York",
+  "method": "GET",
+  "records_path": [
+   "jobRequisitions"
+  ],
+  "total_path": [
+   "meta",
+   "totalNumber"
+  ],
+  "page_param": "$skip",
+  "page_start": 0,
+  "page_step": 20,
+  "company": "Fuyao Glass America",
+  "fields": {
+   "id": "itemID",
+   "title": "requisitionTitle",
+   "location": "requisitionLocations.0.address.cityName"
+  }
+ },
+ "hlmandoamerica": {
+  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=3a3b6287-34e0-4496-a0d1-5645f474744b&timeZoneId=America/New_York",
+  "method": "GET",
+  "records_path": [
+   "jobRequisitions"
+  ],
+  "total_path": [
+   "meta",
+   "totalNumber"
+  ],
+  "page_param": "$skip",
+  "page_start": 0,
+  "page_step": 20,
+  "company": "HL Mando America",
+  "fields": {
+   "id": "itemID",
+   "title": "requisitionTitle",
+   "location": "requisitionLocations.0.address.cityName"
+  }
  }
 }

@@ -226,6 +226,43 @@ class _BrowserCaller:
         return text
 
 
+class _CurlCaller:
+    """TLS-impersonation client (curl_cffi, Chrome fingerprint) for own-domain JSON APIs behind
+    TLS-fingerprint bot walls (Talemetry/Akamai) that reject httpx outright — same no-browser
+    lever schemaorg uses. Opt-in via spec ``"tls_impersonate": true``; never used in tests (no
+    spec carries the flag), so curl_cffi never bypasses respx in the hermetic suite."""
+
+    def __init__(self, spec: dict[str, Any]) -> None:
+        self._spec = spec
+        self._s: Any = None
+
+    async def open(self) -> None:
+        from curl_cffi.requests import AsyncSession
+
+        self._s = AsyncSession(impersonate="chrome124", verify=False, timeout=30)
+
+    async def close(self) -> None:
+        if self._s is not None:
+            with contextlib.suppress(Exception):
+                await self._s.close()
+
+    async def post_json(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
+        r = await self._s.post(url, json=body, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def get_json(self, url: str, headers: dict[str, str] | None) -> Any:
+        r = await self._s.get(url, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def get_text(self, url: str, headers: dict[str, str] | None) -> str:
+        r = await self._s.get(url, headers=headers)
+        r.raise_for_status()
+        text: str = r.text
+        return text
+
+
 @register("apicapture")
 class ApiCaptureProvider(BaseProvider):
     name = "apicapture"
@@ -262,7 +299,12 @@ class ApiCaptureProvider(BaseProvider):
         # Some own-domain APIs sit behind bot-management that rejects the shared fetcher's HTTP/2 +
         # bot-UA (TikTok USDS -> 405). A browser_http1 spec routes requests through a dedicated
         # HTTP/1.1 + browser-UA client instead (cookie-warmed if warm_url is set).
-        client = _BrowserCaller(spec) if spec.get("browser_http1") else _FetcherCaller(fetcher)
+        if spec.get("tls_impersonate"):
+            client: Any = _CurlCaller(spec)
+        elif spec.get("browser_http1"):
+            client = _BrowserCaller(spec)
+        else:
+            client = _FetcherCaller(fetcher)
 
         limit = query.limit
         raws: list[RawJob] = []
