@@ -213,6 +213,7 @@ def carry_forward(con: object, prev_db_path: Path | str, crawled_keys: set[str])
     Companies in ``crawled_keys`` were refreshed this run (their fresh rows are already inserted),
     so we skip them; everything else carries forward. Returns rows carried.
     """
+    import logging
     import sqlite3
 
     assert isinstance(con, sqlite3.Connection)
@@ -221,7 +222,15 @@ def carry_forward(con: object, prev_db_path: Path | str, crawled_keys: set[str])
     con.execute("CREATE TEMP TABLE IF NOT EXISTS _crawled(k TEXT PRIMARY KEY)")
     con.execute("DELETE FROM _crawled")
     con.executemany("INSERT OR IGNORE INTO _crawled(k) VALUES(?)", [(k,) for k in crawled_keys])
-    con.execute("ATTACH DATABASE ? AS prev", (str(prev_db_path),))
+    try:
+        con.execute("ATTACH DATABASE ? AS prev", (str(prev_db_path),))
+    except sqlite3.Error as exc:
+        # A truncated/corrupt prev index (e.g. from a past OOM) must not crash the whole build —
+        # degrade to a fresh-only build; the row_floor gate then decides whether to publish.
+        logging.getLogger("ergon_tracker.index").warning(
+            "carry_forward: cannot ATTACH prev index (%s); building fresh-only", exc
+        )
+        return 0
     try:
         cols = ",".join(_JOB_COLS)
         before = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
@@ -236,6 +245,12 @@ def carry_forward(con: object, prev_db_path: Path | str, crawled_keys: set[str])
         after = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
         con.commit()
         return after - before
+    except sqlite3.DatabaseError as exc:
+        logging.getLogger("ergon_tracker.index").warning(
+            "carry_forward: prev index read failed mid-copy (%s); fresh-only", exc
+        )
+        con.rollback()
+        return 0
     finally:
         con.execute("DETACH DATABASE prev")
 

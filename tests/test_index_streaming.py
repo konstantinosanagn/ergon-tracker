@@ -169,3 +169,21 @@ def test_build_from_fresh_db_matches_incremental(tmp_path):
     assert ids_out == ids_oracle
     titles = {r[0] for r in connect(out, read_only=True).execute("SELECT title FROM jobs")}
     assert titles == {"New Role", "Ramp Role"}  # Ramp carried forward, old Stripe role dropped
+
+
+def test_carry_forward_corrupt_prev_degrades_to_fresh_only(tmp_path):
+    # A truncated/corrupt prev index must NOT crash the build — it degrades to fresh-only.
+    from ergon_tracker.index.build import build_index_from_fresh_db, build_index_streaming
+
+    fresh = tmp_path / "fresh.sqlite"
+    build_index_streaming([[_job("1", "Stripe", "Backend Engineer")]], fresh, build_id="b1")
+    corrupt = tmp_path / "prev.sqlite"
+    corrupt.write_bytes(b"this is not a sqlite database at all")
+
+    out = tmp_path / "out.sqlite"
+    n = build_index_from_fresh_db(
+        fresh, out, build_id="b1", prev_db=corrupt, crawled_keys={"stripe"}
+    )
+    # fresh-only build succeeded (1 job), no exception
+    _ids, _comp, total = _rows(out)
+    assert total == 1 and n == 1
