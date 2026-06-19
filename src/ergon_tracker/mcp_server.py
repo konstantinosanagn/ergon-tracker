@@ -15,6 +15,7 @@ compact view of each posting (no raw payload / HTML) to keep tool responses smal
 
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from mcp.server.fastmcp import FastMCP
@@ -77,6 +78,7 @@ async def search_jobs(
     sponsorship_offered: bool | None = None,
     infer_level_from_experience: bool = False,
     semantic: bool = False,
+    max_age_days: int | None = None,
     limit: int = 20,
 ) -> dict[str, Any]:
     """Search jobs across company ATS feeds and aggregators, returning canonical postings.
@@ -115,6 +117,8 @@ async def search_jobs(
             required years of experience (boosts level coverage; combine with a `level` filter).
         semantic: rank by meaning via embeddings instead of exact-token matching (handles
             synonyms / natural-language intent). Needs the server's `semantic` extra.
+        max_age_days: drop postings older than this many days (by `posted_at`). Postings with no
+            known date are KEPT (most ATS feeds omit it). Use e.g. 30 to cut stale listings.
         limit: max postings to return after dedup + ranking (default 20).
 
     Returns a dict with `count`, `jobs` (compact, relevance-ranked, each with a `score`),
@@ -135,10 +139,15 @@ async def search_jobs(
         # restrict to specific sources (incl. ATS names = deliberate, slower crawl)
         search_jobs(keywords="rust", sources=["greenhouse", "lever", "ashby"])
     """
+    posted_after: datetime | None = None
+    if max_age_days is not None:
+        posted_after = datetime.now(timezone.utc) - timedelta(days=max_age_days)
+
     query = SearchQuery(
         keywords=keywords,
         location=location,
         remote=remote,
+        posted_after=posted_after,
         companies=companies,
         sources=sources,
         level=JobLevel(level) if level else None,
