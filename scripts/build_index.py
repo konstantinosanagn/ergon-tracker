@@ -45,9 +45,7 @@ def publish_artifacts(db_path: Path, out_dir: Path, *, build_id: str) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     sha, nbytes = _gzip_file(db_path, out_dir / "index.sqlite.gz")
     (out_dir / "manifest.json").write_text(
-        json.dumps(
-            {"build_id": build_id, "schema_version": 1, "sha256": sha, "bytes": nbytes}
-        )
+        json.dumps({"build_id": build_id, "schema_version": 1, "sha256": sha, "bytes": nbytes})
     )
 
 
@@ -148,8 +146,9 @@ def publish_coverage(db_path: Path, out_dir: Path, *, build_id: str) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     md = render_status_md(cov, build_id=build_id)
     (out_dir / "coverage.json").write_text(json.dumps(cov, indent=2))
-    (out_dir / "INDEX_STATUS.md").write_text(md)  # release asset
-    (ROOT / "INDEX_STATUS.md").write_text(md)  # browsable in repo root
+    (out_dir / "INDEX_STATUS.md").write_text(md)  # published as a release asset (always current)
+    # NB: do NOT write ROOT/INDEX_STATUS.md here — that polluted the repo on every local/test
+    # build. The repo-root copy is a periodic snapshot; the release asset is the live one.
     return cov
 
 
@@ -179,8 +178,10 @@ def _gated_publish(
     tmp_db.replace(final_db)  # atomic promote
     publish_artifacts(final_db, out, build_id=build_id)
     cov = publish_coverage(final_db, out, build_id=build_id)
-    print(f"gates passed: {rep.summary()} | coverage: {cov['total_jobs']} jobs, "
-          f"{len(cov['by_source'])} providers, {len(cov['by_sector'])} sectors")
+    print(
+        f"gates passed: {rep.summary()} | coverage: {cov['total_jobs']} jobs, "
+        f"{len(cov['by_source'])} providers, {len(cov['by_sector'])} sectors"
+    )
     return True
 
 
@@ -195,11 +196,7 @@ def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
     """
     from ergon_tracker.registry.store import SeedRegistry
 
-    items = [
-        (k, e)
-        for k, e in SeedRegistry().all().items()
-        if e.get("ats") and e.get("token")
-    ]
+    items = [(k, e) for k, e in SeedRegistry().all().items() if e.get("ats") and e.get("token")]
     total = len(items)
     if total == 0:
         return [], 0
@@ -245,7 +242,9 @@ async def _crawl_due(
     }
     fresh_db(fresh_db_path)
     con = connect(fresh_db_path)
-    con.execute("PRAGMA foreign_keys = OFF")  # companies aggregated later (build_index_from_fresh_db)
+    con.execute(
+        "PRAGMA foreign_keys = OFF"
+    )  # companies aggregated later (build_index_from_fresh_db)
     write_lock = anyio.Lock()
     pending = {"rows": 0}  # uncommitted row count; mutated only while holding write_lock
 
@@ -411,12 +410,18 @@ def main(argv: list[str]) -> None:
         append_history(
             out / "history.jsonl",
             {
-                "build_id": build_id, "date": _today(), "due_boards": len(outcome),
-                "fresh_jobs": fresh_jobs_count, "total_jobs": n, "changed_companies": len(changed),
+                "build_id": build_id,
+                "date": _today(),
+                "due_boards": len(outcome),
+                "fresh_jobs": fresh_jobs_count,
+                "total_jobs": n,
+                "changed_companies": len(changed),
                 "throttled_boards": sum(1 for o in outcome.values() if o["http_429"]),
                 "errored_boards": sum(1 for o in outcome.values() if o["error"]),
                 "not_modified_boards": sum(1 for o in outcome.values() if o.get("not_modified")),
-                "cursor": cursor, "next_cursor": next_cursor, "window": limit,
+                "cursor": cursor,
+                "next_cursor": next_cursor,
+                "window": limit,
                 "published": ok,
             },
         )
