@@ -1588,5 +1588,20 @@
    "url": "link",
    "description": "content.rendered"
   }
+ },
+ "bnpparibassecurities": {
+  "url": "https://usa.bnpparibas/wp-json/wp/v2/jobs?per_page=100",
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "company": "BNP Paribas USA",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link",
+   "description": "content.rendered"
+  }
  }
 }
