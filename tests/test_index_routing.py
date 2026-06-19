@@ -136,3 +136,54 @@ def test_router_skips_slim_for_keyword_query(tmp_path, monkeypatch):
 def test_env_off_disables_index(monkeypatch):
     monkeypatch.setenv("ERGON_INDEX", "off")
     assert router.try_index(SearchQuery(keywords="x")) is None
+
+
+def test_try_index_ranked_no_semantic_equals_try_index(tmp_path, monkeypatch):
+    from ergon_tracker.index.backend import SqliteIndexBackend
+    from ergon_tracker.index.build import build_index
+
+    p = tmp_path / "i.sqlite"
+    build_index(
+        [
+            JobPosting.create(
+                source="greenhouse", source_job_id=str(i), company="Co", title=f"Engineer {i}"
+            )
+            for i in range(5)
+        ],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(router, "_load_slim", lambda: None)
+    monkeypatch.setattr(router, "_load_backend", lambda: SqliteIndexBackend(p))
+    q = SearchQuery(keywords="engineer", limit=10)
+    assert {j.id for j in router.try_index_ranked(q)} == {j.id for j in router.try_index(q)}
+
+
+def test_try_index_ranked_semantic_degrades_gracefully(tmp_path, monkeypatch):
+    # semantic=True must still return index results even if the reranker is unavailable (the MCP +
+    # engine both rely on this shared path; it must never crash a broad semantic query).
+    from ergon_tracker.index.backend import SqliteIndexBackend
+    from ergon_tracker.index.build import build_index
+
+    p = tmp_path / "i.sqlite"
+    build_index(
+        [
+            JobPosting.create(
+                source="greenhouse", source_job_id=str(i), company="Co", title=f"ML Engineer {i}"
+            )
+            for i in range(5)
+        ],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(router, "_load_slim", lambda: None)
+    monkeypatch.setattr(router, "_load_backend", lambda: SqliteIndexBackend(p))
+    # force the reranker import to fail -> must fall back to lexical, not raise
+    monkeypatch.setattr(
+        "ergon_tracker.semantic.get_semantic_reranker",
+        lambda: (_ for _ in ()).throw(RuntimeError("no fastembed")),
+    )
+    out = router.try_index_ranked(SearchQuery(keywords="ml", semantic=True, limit=10))
+    assert out is not None and len(out) >= 1  # graceful lexical fallback

@@ -77,3 +77,28 @@ def try_index(query: SearchQuery) -> list[JobPosting] | None:
     except Exception as exc:  # noqa: BLE001 - index is a fast path, never a hard dependency
         log.warning("index query failed (%s); live fallback", exc)
         return None
+
+
+def try_index_ranked(query: SearchQuery) -> list[JobPosting] | None:
+    """try_index + semantic rerank when query.semantic — the full index serving path.
+
+    Shared by BOTH the live engine and the MCP server so a broad ``semantic=True`` query is
+    embedding-reranked no matter which surface issues it (the index itself only ranks lexically via
+    BM25). On any rerank failure (e.g. the optional fastembed extra is absent) it degrades to the
+    index's lexical order. Returns None to signal 'fall back to live' exactly like try_index.
+    """
+    indexed = try_index(query)
+    if indexed is None:
+        return None
+    if query.semantic and query.keywords and len(indexed) > 1:
+        # Rerank a WIDER candidate pool from the index by embedding similarity, then truncate.
+        try:
+            from ..ranking import rank
+            from ..semantic import get_semantic_reranker
+
+            want = query.limit or 20
+            pool = try_index(query.model_copy(update={"limit": max(want * 10, 200)})) or indexed
+            indexed = rank(pool, query.keywords, reranker=get_semantic_reranker())[:want]
+        except Exception as exc:  # noqa: BLE001 - reranker optional; lexical order is fine
+            log.warning("semantic rerank on index unavailable (%s); lexical order", exc)
+    return indexed

@@ -195,9 +195,9 @@ async def search_jobs(
     # aggregator/keyed APIs (NEVER a live fan-out across the whole ~46k-board registry, which would
     # be slow + rate-limit-prone for an interactive agent). Targeted queries skip this entirely.
     if not companies and not sources:
-        from .index.router import try_index
+        from .index.router import try_index_ranked
 
-        indexed = try_index(query)
+        indexed = try_index_ranked(query)  # index serving + semantic rerank (shared with engine)
         if indexed is not None:
             return {
                 "count": len(indexed),
