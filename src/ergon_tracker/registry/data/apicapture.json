@@ -1527,5 +1527,66 @@
    "posted_at": "pubDate",
    "description": "description"
   }
+ },
+ "camelotintegratedsolutions": {
+  "url": "https://camelotis.com/feed/?post_type=jobs",
+  "method": "GET",
+  "rss": true,
+  "records_path": [],
+  "total_path": [],
+  "company": "Camelot Integrated Solutions",
+  "fields": {
+   "id": "link",
+   "title": "title",
+   "url": "link",
+   "description": "description",
+   "posted_at": "pubDate"
+  }
+ },
+ "eficenssystems": {
+  "url": "https://eficens.ai/careers",
+  "method": "GET",
+  "html_table": {
+   "row_css": "tr",
+   "skip_rows": 1
+  },
+  "columns": {
+   "id": {
+    "col": 0
+   },
+   "title": {
+    "col": 1
+   },
+   "location": {
+    "col": 2
+   },
+   "employment_type": {
+    "col": 3
+   }
+  },
+  "records_path": [],
+  "total_path": [],
+  "company": "Eficens Systems",
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "location",
+   "employment_type": "employment_type"
+  }
+ },
+ "ancile": {
+  "url": "https://ancile.com/wp-json/wp/v2/job-listings?per_page=100",
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "company": "ANCILE Solutions",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link",
+   "description": "content.rendered"
+  }
  }
 }
