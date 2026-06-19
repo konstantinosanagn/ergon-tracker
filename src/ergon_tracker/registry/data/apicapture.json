@@ -1,4 +1,17 @@
 {
+ "dataquad": {
+  "url": "https://dataqinc.com/wp-json/wp/v2/jobpost?per_page=100",
+  "method": "GET",
+  "records_path": [],
+  "page_param": "page",
+  "page_start": 1,
+  "company": "Dataquad",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  }
+ },
  "goldmansachs": {
   "url": "https://api-higher.gs.com/gateway/api/v1/graphql",
   "method": "POST",
@@ -1058,6 +1071,99 @@
    "id": "id",
    "title": "title.rendered",
    "url": "link"
+  }
+ },
+ "tatacs": {
+  "url": "https://ibegin.tcsapps.com/candidate/api/v1/jobs/searchJ",
+  "method": "POST",
+  "body": {
+   "jobTitle": null,
+   "jobCity": null,
+   "jobFunction": null,
+   "jobExperience": null,
+   "jobSkill": null,
+   "pageNumber": 1,
+   "userText": "",
+   "jobTitleOrder": null,
+   "jobCityOrder": null,
+   "jobFunctionOrder": null,
+   "jobExperienceOrder": null,
+   "applyByOrder": null,
+   "regular": true,
+   "walkin": false
+  },
+  "page_path": [
+   "pageNumber"
+  ],
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "data",
+   "jobs"
+  ],
+  "total_path": [
+   "data",
+   "totalJobs"
+  ],
+  "company": "tata consultancy services",
+  "fields": {
+   "id": "id",
+   "title": "jobTitle",
+   "location": "location",
+   "department": "functionName",
+   "experience": "experience"
+  },
+  "tls_impersonate": true
+ },
+ "tekninjas": {
+  "url": "https://tekninjasjobs.kinsta.cloud/wp-json/wp/v2/matador-job-listings?per_page=100",
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "page_param": "page",
+  "page_start": 1,
+  "company": "Tek Ninjas",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "location": "",
+   "department": "",
+   "url": "link",
+   "description": "content.rendered",
+   "posted_at": "date"
+  }
+ },
+ "federalsoftsystems": {
+  "url": "https://api.federalsoftsystems.com/career/getJobs?country=USA",
+  "method": "GET",
+  "records_path": [
+   "data"
+  ],
+  "total_path": [],
+  "company": "Federal Soft Systems",
+  "fields": {
+   "id": "_id",
+   "title": "job_title",
+   "location": "job_location",
+   "department": "",
+   "employment_type": "job_mode",
+   "url": "",
+   "description": ""
+  }
+ },
+ "dataedgeusa": {
+  "url": "https://www.dataedgeusa.com/?feed=job_feed",
+  "method": "GET",
+  "rss": true,
+  "records_path": [],
+  "total_path": [],
+  "company": "DataEdge USA",
+  "fields": {
+   "id": "link",
+   "title": "title",
+   "url": "link",
+   "posted_at": "pubDate",
+   "description": "description"
   }
  }
 }
