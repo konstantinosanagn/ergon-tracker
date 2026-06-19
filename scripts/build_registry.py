@@ -80,7 +80,8 @@ ATS_PRIORITY = {
     "apicapture": 25,  # captured own-domain JSON/GraphQL API (proxied giants)
     "coveo": 26,
     "peopleadmin": 27,  # higher-ed/public-sector Atom feed (complete)  # Coveo-for-Sitecore same-origin job proxy (SLB etc.)
-    "usajobs": 28,  # authoritative federal-agency board (Organization code) — gov giants only
+    "usajobs": 28,
+    "dejobs": 28.5,  # DirectEmployers federation (recruiter-direct, company-filtered)  # authoritative federal-agency board (Organization code) — gov giants only
     "themuse": 29,  # curated aggregator company board (employer-matched) — for unreachable giants
     "adzuna": 30,  # aggregator fallback for truly-proxied giants (lowest priority)
 }

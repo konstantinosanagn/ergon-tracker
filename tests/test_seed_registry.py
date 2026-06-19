@@ -39,6 +39,7 @@ SUPPORTED_ATS = {
     "jobdiva",
     "ripplehire",
     "usajobs",
+    "dejobs",
     "themuse",
     "adzuna",
 }

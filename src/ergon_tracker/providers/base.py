@@ -73,6 +73,7 @@ _BUILTIN_MODULES = (
     "themuse",
     "adzuna",
     "usajobs",
+    "dejobs",
 )
 
 _ENTRYPOINT_GROUP = "ergon_tracker.providers"
