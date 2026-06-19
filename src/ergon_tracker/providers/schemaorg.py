@@ -69,6 +69,8 @@ _LOC_RE = re.compile(r"<loc>\s*(.*?)\s*</loc>", re.IGNORECASE | re.DOTALL)
 _JOB_PATH_RE = re.compile(r"/jobs?/[^/]", re.IGNORECASE)
 # Listing/search shapes to exclude even though they carry a /job(s)/ segment.
 _NOT_JOB_RE = re.compile(r"/(?:search|search-results|category|results)\b", re.IGNORECASE)
+# A sitemap doc whose own URL marks it as job/career-specific (its every <loc> is a job page).
+_JOB_SITEMAP_RE = re.compile(r"(?:job|career)[a-z0-9_\-]*sitemap|sitemap[a-z0-9_\-]*(?:job|career)", re.IGNORECASE)
 # Opt-in scheme prefix the discovery matcher recognises.
 _SCHEME_RE = re.compile(r"^schema(?:org)?:", re.IGNORECASE)
 # Many career sites that DO server-render JobPosting JSON-LD (for Google) still 403 a non-browser
@@ -135,6 +137,16 @@ def _parse_date(value: Any) -> datetime | None:
     return dt
 
 
+def _is_block(exc: Exception) -> bool:
+    """True when ``exc`` looks like an anti-bot BLOCK (403/401/429/503 or a transport/TLS error)
+    worth a heavier retry — NOT a 404/410 "genuinely missing" (those shouldn't escalate)."""
+    import httpx
+
+    if isinstance(exc, httpx.HTTPStatusError):
+        return exc.response.status_code in (401, 403, 406, 429, 503)
+    return isinstance(exc, httpx.TransportError)
+
+
 class _DualFetch:
     """get_text via the shared fetcher (HTTP/2, rate-limited) with browser UA; on a block (403 /
     transport error) retry that URL through a lazily-created HTTP/1.1 browser client. Some career
@@ -144,11 +156,16 @@ class _DualFetch:
     def __init__(self, fetcher: AsyncFetcher) -> None:
         self._f = fetcher
         self._h1: Any = None
+        self._cc: Any = None
 
     async def get_text(self, url: str) -> str:
+        blocked = False
         try:
             return await self._f.get_text(url, headers=_BROWSER_HEADERS)
-        except Exception:
+        except Exception as exc:
+            blocked = _is_block(exc)
+        # HTTP/1.1 + browser-UA fallback (bypasses HTTP/2-fingerprint WAFs, e.g. dexian.com).
+        try:
             if self._h1 is None:
                 import httpx
 
@@ -159,13 +176,34 @@ class _DualFetch:
             r.raise_for_status()
             text: str = r.text
             return text
+        except Exception as exc:
+            blocked = blocked or _is_block(exc)
+        # Only escalate to curl_cffi for a genuine BLOCK (403/401/429/transport), not a 404/410
+        # "missing" — TLS-retrying an absent page is pointless (and keeps tests hermetic, since a
+        # 404-mocked URL never reaches the real-network curl_cffi path).
+        if not blocked:
+            raise ConnectionError(f"schemaorg: {url} unreachable (not a block)")
+        # curl_cffi Chrome-TLS-impersonation fallback (no browser/JS) for sites blocked even at the
+        # HTTP/1.1+browser-UA TLS-fingerprint layer (e.g. citadel.com). Raises if curl_cffi is
+        # unavailable (URL then skipped upstream).
+        from curl_cffi.requests import AsyncSession
+
+        if self._cc is None:
+            self._cc = AsyncSession(impersonate="chrome124", timeout=20, verify=False)
+        rc = await self._cc.get(url)
+        rc.raise_for_status()
+        cc_text: str = rc.text
+        return cc_text
 
     async def aclose(self) -> None:
-        if self._h1 is not None:
-            import contextlib
+        import contextlib
 
+        if self._h1 is not None:
             with contextlib.suppress(Exception):
                 await self._h1.aclose()
+        if self._cc is not None:
+            with contextlib.suppress(Exception):
+                await self._cc.close()
 
 
 @register("schemaorg")
@@ -276,6 +314,10 @@ class SchemaOrgProvider(BaseProvider):
             docs += 1
 
             is_index = "<sitemapindex" in text.lower()
+            # A job/career-specific sitemap (e.g. ``career-sitemap.xml``, ``job-sitemap.xml``) lists
+            # ONLY job detail pages, which may not carry a ``/job(s)/`` path segment (Citadel uses
+            # ``/careers/details/{slug}``). For those, accept every URL (minus search/category shapes).
+            job_sitemap = bool(_JOB_SITEMAP_RE.search(sm))
             for match in _LOC_RE.findall(text):
                 loc = _html.unescape(match).strip()
                 if not loc:
@@ -287,7 +329,8 @@ class SchemaOrgProvider(BaseProvider):
                 if loc in seen_urls:
                     continue
                 path = urlsplit(loc).path
-                if _JOB_PATH_RE.search(path) and not _NOT_JOB_RE.search(path):
+                matches_job = _JOB_PATH_RE.search(path) or (job_sitemap and path.count("/") >= 2)
+                if matches_job and not _NOT_JOB_RE.search(path):
                     seen_urls.add(loc)
                     out.append(loc)
                     if len(out) >= target:
