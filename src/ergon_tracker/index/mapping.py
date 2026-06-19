@@ -7,7 +7,15 @@ from datetime import datetime, timezone
 from typing import Any
 
 from ..dedup import normalize_company, normalize_title
-from ..models import JobLevel, JobPosting, Location, RemoteType, Salary, SalaryInterval
+from ..models import (
+    EmploymentType,
+    JobLevel,
+    JobPosting,
+    Location,
+    RemoteType,
+    Salary,
+    SalaryInterval,
+)
 
 _SNIPPET = 300
 
@@ -114,6 +122,7 @@ def from_row(row: Any) -> JobPosting:
         locations=locs,
         remote=RemoteType(row["remote"]),
         level=JobLevel(row["level"]),
+        employment_type=EmploymentType(row["employment_type"]),
         salary=sal,
         years_experience_min=row["years_min"],
         years_experience_max=row["years_max"],

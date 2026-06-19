@@ -74,26 +74,37 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
         else:
             cl.append("j.sponsorship_offered = ?")
             p.append(v)
+    # Salary range overlap, exactly mirroring SearchQuery._salary_ok: a posting with NO salary at
+    # all (both bounds NULL) is kept only when include_unknown_salary; a partial range uses the one
+    # present bound for both ends (COALESCE), so a min-only posting below the floor is still dropped.
+    _sal_unknown = "(j.salary_min IS NULL AND j.salary_max IS NULL)"
     if q.salary_min is not None:
-        cl.append(
-            "(j.salary_max IS NULL OR j.salary_max >= ?)"
-            if q.include_unknown_salary
-            else "j.salary_max >= ?"
-        )
+        overlap = "COALESCE(j.salary_max, j.salary_min) >= ?"  # job_hi >= wanted floor
+        cl.append(f"({_sal_unknown} OR {overlap})" if q.include_unknown_salary else overlap)
         p.append(q.salary_min)
     if q.salary_max is not None:
-        cl.append(
-            "(j.salary_min IS NULL OR j.salary_min <= ?)"
-            if q.include_unknown_salary
-            else "j.salary_min <= ?"
-        )
+        overlap = "COALESCE(j.salary_min, j.salary_max) <= ?"  # job_lo <= wanted ceiling
+        cl.append(f"({_sal_unknown} OR {overlap})" if q.include_unknown_salary else overlap)
         p.append(q.salary_max)
     if q.salary_currency and (q.salary_min is not None or q.salary_max is not None):
-        # Mirror SearchQuery._salary_ok: when a salary bound is active, drop postings whose currency
-        # is set and differs (a USD floor must not return EUR/GBP). NULL-currency postings are kept
-        # (currency unknown), exactly as matches() does.
+        # Mirror _salary_ok: when a salary bound is active, drop postings whose currency is set and
+        # differs (a USD floor must not return EUR/GBP). NULL-currency postings are kept.
         cl.append("(j.salary_currency IS NULL OR UPPER(j.salary_currency) = ?)")
         p.append(q.salary_currency.upper())
+    # Years-of-experience overlap, mirroring _years_ok (same COALESCE/unknown semantics as salary).
+    _yr_unknown = "(j.years_min IS NULL AND j.years_max IS NULL)"
+    if q.min_years is not None:
+        overlap = "COALESCE(j.years_max, j.years_min) >= ?"
+        cl.append(f"({_yr_unknown} OR {overlap})" if q.include_unknown_years else overlap)
+        p.append(q.min_years)
+    if q.max_years is not None:
+        overlap = "COALESCE(j.years_min, j.years_max) <= ?"
+        cl.append(f"({_yr_unknown} OR {overlap})" if q.include_unknown_years else overlap)
+        p.append(q.max_years)
+    if q.employment_type is not None:
+        # Mirror matches(): keep the requested type plus UNKNOWN (most postings don't state it).
+        cl.append("(j.employment_type = ? OR j.employment_type = 'unknown')")
+        p.append(q.employment_type.value)
     return cl, p
 
 
