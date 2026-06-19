@@ -70,7 +70,9 @@ _JOB_PATH_RE = re.compile(r"/jobs?/[^/]", re.IGNORECASE)
 # Listing/search shapes to exclude even though they carry a /job(s)/ segment.
 _NOT_JOB_RE = re.compile(r"/(?:search|search-results|category|results)\b", re.IGNORECASE)
 # A sitemap doc whose own URL marks it as job/career-specific (its every <loc> is a job page).
-_JOB_SITEMAP_RE = re.compile(r"(?:job|career)[a-z0-9_\-]*sitemap|sitemap[a-z0-9_\-]*(?:job|career)", re.IGNORECASE)
+_JOB_SITEMAP_RE = re.compile(
+    r"(?:job|career)[a-z0-9_\-]*sitemap|sitemap[a-z0-9_\-]*(?:job|career)", re.IGNORECASE
+)
 # Opt-in scheme prefix the discovery matcher recognises.
 _SCHEME_RE = re.compile(r"^schema(?:org)?:", re.IGNORECASE)
 # Many career sites that DO server-render JobPosting JSON-LD (for Google) still 403 a non-browser
