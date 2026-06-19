@@ -127,6 +127,12 @@ def test_extractor_falls_back_to_name(extractor: SectorExtractor) -> None:
         ("Sutherland", "Consulting/Services"),
         ("Shieldai", "Aerospace/Defense"),
         ("altamed", "Healthcare"),
+        ("Starbucks", "Food/Beverage"),
+        ("qualcomm", "Semiconductors/Hardware"),
+        ("SpaceX", "Aerospace/Defense"),
+        ("tjx", "E-commerce/Retail"),
+        ("jpmc", "Banking/Finance"),
+        ("Mount Sinai", "Healthcare"),
     ],
 )
 def test_company_sector_exact_brand_map(company: str, sector: str) -> None:
