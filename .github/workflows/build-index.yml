@@ -73,6 +73,7 @@ jobs:
           # some), so one missing file never fails the whole publish.
           ASSETS=""
           for f in index.sqlite.gz manifest.json index-slim.sqlite.gz manifest-slim.json \
+                   index-delta.sqlite.gz manifest-delta.json \
                    gates.json board_state.json history.jsonl \
                    shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do
             [ -f "dist/$f" ] && ASSETS="$ASSETS dist/$f"

@@ -122,6 +122,42 @@ def build_and_publish_shards_from_db(db_path: Path, out: Path, *, build_id: str)
     return len(manifest["shards"])
 
 
+def build_and_publish_delta(prev_db: Path, curr_db: Path, out: Path, *, build_id: str) -> dict:
+    """Diff the prior published index against the new one and publish a compact row-level delta.
+
+    A returning user one build behind downloads ``index-delta.sqlite.gz`` (only changed/deleted
+    rows — typically a few % of the file) and applies it locally, instead of the whole index.
+    Returns the delta info (or {} when there's no usable prior build).
+    """
+    from ergon_tracker.index.build import build_delta
+    from ergon_tracker.index.db import connect
+
+    try:
+        con = connect(prev_db, read_only=True)
+        row = con.execute("SELECT value FROM meta WHERE key='build_id'").fetchone()
+        con.close()
+        from_build_id = row[0] if row else None
+    except Exception as exc:  # noqa: BLE001 - corrupt/missing prior -> skip delta, full still works
+        print(f"  (skip delta: cannot read prev build_id: {exc})")
+        return {}
+    if not from_build_id or from_build_id == build_id:
+        return {}
+    delta = out / "index-delta.sqlite"
+    info = build_delta(prev_db, curr_db, delta, from_build_id=from_build_id, to_build_id=build_id)
+    sha, nbytes = _gzip_file(delta, out / "index-delta.sqlite.gz")
+    delta.unlink(missing_ok=True)
+    manifest = {
+        "schema_version": 1,
+        "from_build_id": from_build_id,
+        "to_build_id": build_id,
+        "sha256": sha,
+        "bytes": nbytes,
+        **info,
+    }
+    (out / "manifest-delta.json").write_text(json.dumps(manifest))
+    return manifest
+
+
 def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
     """Build the slim broad-query tier (no snippet, FTS over title+company) and gzip it.
 
@@ -426,7 +462,16 @@ def main(argv: list[str]) -> None:
         n = build_index_from_fresh_db(
             fresh_path, db_tmp, build_id=build_id, prev_db=prev_db, crawled_keys=crawled_keys
         )
+        # Preserve the prior index (move aside, instant on same fs) so we can diff it for the delta
+        # AFTER the gated promote overwrites `db`. Build_index_from_fresh_db has already read it.
+        prev_snap = None
+        if prev_db is not None and db.exists():
+            prev_snap = out / "index.prev.sqlite"
+            db.replace(prev_snap)
         ok = _gated_publish(db_tmp, db, out, build_id=build_id, prev_row_count=prev_row_count)
+        if not ok and prev_snap is not None:
+            prev_snap.replace(db)  # gates failed -> restore the previous snapshot
+            prev_snap = None
         append_history(
             out / "history.jsonl",
             {
@@ -451,6 +496,17 @@ def main(argv: list[str]) -> None:
             print(f"  + published {ns} sector shards")
             nslim = build_and_publish_slim(db, out, build_id=build_id)
             print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
+        if ok and prev_snap is not None and prev_snap.exists():
+            try:
+                di = build_and_publish_delta(prev_snap, db, out, build_id=build_id)
+                if di:
+                    print(
+                        f"  + published delta {di['from_build_id']}->{di['to_build_id']} "
+                        f"({di.get('upserts', 0)} upserts, {di.get('deletes', 0)} deletes, "
+                        f"{di.get('bytes', 0) / 1e6:.1f}MB)"
+                    )
+            finally:
+                prev_snap.unlink(missing_ok=True)  # reclaim the ~500MB snapshot
         print(
             f"incremental build: crawled {len(outcome)} due boards, {fresh_jobs_count} fresh jobs, "
             f"{n} total{' -> published' if ok else ' (gates FAILED, kept previous)'}"

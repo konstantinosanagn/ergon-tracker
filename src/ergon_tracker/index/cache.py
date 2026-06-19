@@ -82,6 +82,52 @@ class IndexCache:
     def _make_fetch(self) -> Callable[[str], bytes]:
         return _asset_fetcher(self.base_url, self.repo, self.tag)
 
+    def _try_delta(
+        self, fetch: Callable[[str], bytes], local_build_id: str, remote: dict[str, Any]
+    ) -> Path | None:
+        """Apply a row-level delta in place if one bridges local_build_id -> the remote build.
+
+        Returns the updated db path on success, or None to fall back to a full download (no delta
+        published, base mismatch, integrity failure, etc.). Never raises.
+        """
+        from .build import apply_delta
+
+        try:
+            dmeta = json.loads(fetch("manifest-delta.json"))
+        except Exception as exc:  # noqa: BLE001 - no delta published -> full download
+            log.debug("no delta manifest (%s); full download", exc)
+            return None
+        if dmeta.get("from_build_id") != local_build_id or dmeta.get("to_build_id") != remote.get(
+            "build_id"
+        ):
+            log.debug("delta does not bridge local build; full download")
+            return None
+        try:
+            raw = gzip.decompress(fetch("index-delta.sqlite.gz"))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("delta download failed (%s); full download", exc)
+            return None
+        if hashlib.sha256(raw).hexdigest() != dmeta.get("sha256"):
+            log.warning("delta sha256 mismatch; full download")
+            return None
+        delta_tmp = self.cache_dir / "index-delta.sqlite"
+        delta_tmp.write_bytes(raw)
+        try:
+            apply_delta(self.db_path, delta_tmp)
+        except Exception as exc:  # noqa: BLE001 - corrupt base/delta -> full download recovers
+            log.warning("delta apply failed (%s); full download", exc)
+            return None
+        finally:
+            delta_tmp.unlink(missing_ok=True)
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info(
+            "index updated via delta %s->%s (%d bytes)",
+            local_build_id,
+            remote.get("build_id"),
+            len(raw),
+        )
+        return self.db_path
+
     def ensure_fresh(self) -> Path | None:
         """Return a verified, schema-compatible index path, or None (caller live-falls-back)."""
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -97,6 +143,13 @@ class IndexCache:
         local = json.loads(self.local_manifest.read_text()) if self.local_manifest.exists() else {}
         if local.get("build_id") == remote.get("build_id") and self.db_path.exists():
             return self.db_path  # already current
+        # Incremental path: if we're exactly one build behind, a row-level delta is far smaller than
+        # the whole file. Falls through to the full download on any miss (no delta, wrong base, etc.).
+        local_build_id = local.get("build_id")
+        if local_build_id and self.db_path.exists():
+            delta_path = self._try_delta(fetch, str(local_build_id), remote)
+            if delta_path is not None:
+                return delta_path
         try:
             raw = gzip.decompress(fetch("index.sqlite.gz"))
         except Exception as exc:  # noqa: BLE001

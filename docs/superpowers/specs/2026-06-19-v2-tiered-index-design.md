@@ -45,9 +45,25 @@ adds `index-slim.sqlite.gz` + sha to the manifest.
    to full; default broad keyword matches title/company so slim suffices).
 5. Live dogfood: broad query downloads ~60 MB slim, returns same top results as full.
 
-## Deferred (v2.1)
-Per-tier/shard **deltas** — download only changed rows daily instead of whole files. Bigger once
-the slim tier + shards are the default paths.
+## v2.1 — Row-level deltas (SHIPPED 2026-06-19)
+A returning user one build behind downloads only **changed/deleted rows**, not the whole file.
+- `build_delta(prev_db, curr_db, out)` emits a compact SQLite of `delta_upserts` (rows new or whose
+  content-bearing columns changed — per-build bookkeeping `build_id/fetched_at/last_seen` excluded so
+  unchanged postings aren't re-sent every build) + `delta_deletes` (ids gone) + meta
+  (`from_build_id`/`to_build_id`). `apply_delta(base_db, delta_db)` mutates the cached base in place
+  (refuses unless `base.build_id == delta.from_build_id`), re-aggregates companies, rebuilds FTS,
+  advances `build_id`, integrity-checks.
+- Build publishes `index-delta.sqlite.gz` + `manifest-delta.json` (diff of the prior published index
+  vs the new one). `IndexCache.ensure_fresh` tries the delta first when exactly one build behind,
+  falling back to the full download on any miss (no delta / base mismatch / integrity failure).
+- **Measured:** for a realistic ~4% daily churn over the real 380K-job index, the delta is **2.9 MB
+  gz vs 130 MB full — ~45× smaller**; `apply_delta` reproduces the new index exactly (ids, titles,
+  companies, FTS, integrity).
+
+## Deferred (v2.2)
+Per-**shard** deltas (currently deltas cover the single-file index; ShardCache still does
+shard-level conditional fetch). Multi-build-behind delta chaining (today: one build behind → delta,
+else full download).
 
 ## Non-goals
 A server-side query API (not free/static). The index stays a static GH-Release artifact.
