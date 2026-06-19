@@ -55,6 +55,7 @@ jobs:
           gh release download index-latest --dir dist --pattern 'board_state.json' || echo "no prev state"
           gh release download index-latest --dir dist --pattern 'history.jsonl' || echo "no history"
           gh release download index-latest --dir dist --pattern 'crawl_cursor.json' || echo "no cursor"
+          gh release download index-latest --dir dist --pattern 'deltas.json' || echo "no deltas window"
           [ -f dist/index.sqlite.gz ] && gunzip -kf dist/index.sqlite.gz || true
 
       - name: Build incremental index (exits non-zero if data-quality gates fail)
@@ -73,18 +74,27 @@ jobs:
           # some), so one missing file never fails the whole publish.
           ASSETS=""
           for f in index.sqlite.gz manifest.json index-slim.sqlite.gz manifest-slim.json \
-                   index-delta.sqlite.gz manifest-delta.json \
+                   index-delta.sqlite.gz manifest-delta.json deltas.json \
                    gates.json board_state.json history.jsonl \
                    shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do
             [ -f "dist/$f" ] && ASSETS="$ASSETS dist/$f"
           done
           ASSETS="$ASSETS $(ls dist/shard-*.sqlite.gz 2>/dev/null)"
+          ASSETS="$ASSETS $(ls dist/index-delta-*.sqlite.gz 2>/dev/null)"  # v2.2 chain deltas
           if [ -z "$ASSETS" ]; then echo "no assets to publish"; exit 0; fi
           if gh release view index-latest >/dev/null 2>&1; then
             gh release upload index-latest $ASSETS --clobber
           else
             gh release create index-latest $ASSETS --title index-latest \
               --notes "Daily ergon-tracker search-index snapshot."
+          fi
+          # Prune chain deltas that have rolled out of the deltas.json window (best-effort).
+          if [ -f dist/deltas.json ]; then
+            KEPT=$(python3 -c "import json,sys; print(' '.join(d['file'] for d in json.load(open('dist/deltas.json')).get('deltas',[])))" 2>/dev/null || echo "")
+            for asset in $(gh release view index-latest --json assets \
+                --jq '.assets[].name | select(startswith("index-delta-"))' 2>/dev/null); do
+              case " $KEPT " in *" $asset "*) : ;; *) gh release delete-asset index-latest "$asset" -y || true ;; esac
+            done
           fi
 
       - name: Upload build artifacts (diagnostics, retained even on failure)

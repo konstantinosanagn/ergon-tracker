@@ -100,8 +100,9 @@ class IndexCache:
         if dmeta.get("from_build_id") != local_build_id or dmeta.get("to_build_id") != remote.get(
             "build_id"
         ):
-            log.debug("delta does not bridge local build; full download")
-            return None
+            # Not exactly one build behind — try chaining consecutive deltas (v2.2) before giving
+            # up to a full download.
+            return self._try_delta_chain(fetch, local_build_id, remote)
         try:
             raw = gzip.decompress(fetch("index-delta.sqlite.gz"))
         except Exception as exc:  # noqa: BLE001
@@ -125,6 +126,68 @@ class IndexCache:
             local_build_id,
             remote.get("build_id"),
             len(raw),
+        )
+        return self.db_path
+
+    def _try_delta_chain(
+        self, fetch: Callable[[str], bytes], local_build_id: str, remote: dict[str, Any]
+    ) -> Path | None:
+        """Apply a CHAIN of consecutive deltas to catch up a base that's >1 build behind (v2.2).
+
+        Reads the published ``deltas.json`` window, walks the from->to links from the local build to
+        the remote build, and applies each in order via apply_delta (which re-checks ordering). Any
+        gap, oversized chain, download/integrity/apply failure -> None (full download recovers).
+        """
+        from .build import apply_delta
+
+        try:
+            window = json.loads(fetch("deltas.json")).get("deltas", [])
+        except Exception as exc:  # noqa: BLE001 - no window published -> full download
+            log.debug("no deltas window (%s); full download", exc)
+            return None
+        by_from = {d["from_build_id"]: d for d in window}
+        target = remote.get("build_id")
+        chain: list[dict[str, Any]] = []
+        cur = local_build_id
+        seen: set[str] = set()
+        while cur != target and cur in by_from and cur not in seen:
+            seen.add(cur)
+            step = by_from[cur]
+            chain.append(step)
+            cur = step["to_build_id"]
+        if cur != target or not chain:
+            log.debug("no contiguous delta chain local->remote; full download")
+            return None
+        # Only chain when it's actually cheaper than the full file.
+        if sum(int(d.get("bytes", 0)) for d in chain) >= int(remote.get("bytes", 0) or 1 << 62):
+            return None
+        total = 0
+        for step in chain:
+            try:
+                raw = gzip.decompress(fetch(step["file"]))
+            except Exception as exc:  # noqa: BLE001
+                log.warning("chain delta download failed (%s); full download", exc)
+                return None
+            if hashlib.sha256(raw).hexdigest() != step.get("sha256"):
+                log.warning("chain delta sha mismatch; full download")
+                return None
+            delta_tmp = self.cache_dir / "index-delta-chain.sqlite"
+            delta_tmp.write_bytes(raw)
+            try:
+                apply_delta(self.db_path, delta_tmp)
+            except Exception as exc:  # noqa: BLE001
+                log.warning("chain delta apply failed (%s); full download", exc)
+                return None
+            finally:
+                delta_tmp.unlink(missing_ok=True)
+            total += len(raw)
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info(
+            "index updated via %d-delta chain %s->%s (%d bytes)",
+            len(chain),
+            local_build_id,
+            target,
+            total,
         )
         return self.db_path
 

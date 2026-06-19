@@ -102,6 +102,20 @@ def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
+def _build_id() -> str:
+    """Unique id per build: ``build-<date>-<suffix>``.
+
+    Date-only ids repeat across same-day builds, which makes row-level delta chains ambiguous
+    (v2.2). The suffix is the CI run number when available (monotonic, unique per workflow run),
+    else a UTC HHMMSS stamp — so every build is distinctly addressable for from->to delta links.
+    """
+    import os
+    from datetime import datetime, timezone
+
+    suffix = os.environ.get("GITHUB_RUN_NUMBER") or datetime.now(timezone.utc).strftime("%H%M%S")
+    return f"build-{_today()}-{suffix}"
+
+
 def build_and_publish_shards(jobs: list, out: Path, *, build_id: str) -> int:
     """Build per-sector shards from jobs and gzip each for release upload. Returns shard count."""
     from ergon_tracker.index.build import build_sharded_index
@@ -144,7 +158,14 @@ def build_and_publish_delta(prev_db: Path, curr_db: Path, out: Path, *, build_id
         return {}
     delta = out / "index-delta.sqlite"
     info = build_delta(prev_db, curr_db, delta, from_build_id=from_build_id, to_build_id=build_id)
-    sha, nbytes = _gzip_file(delta, out / "index-delta.sqlite.gz")
+    sha, nbytes = _gzip_file(
+        delta, out / "index-delta.sqlite.gz"
+    )  # 1-behind fast path (stable name)
+    # Per-build copy (unique name) so a user N>1 builds behind can chain consecutive deltas (v2.2).
+    chain_file = f"index-delta-{build_id}.sqlite.gz"
+    import shutil
+
+    shutil.copyfile(out / "index-delta.sqlite.gz", out / chain_file)
     delta.unlink(missing_ok=True)
     manifest = {
         "schema_version": 1,
@@ -155,7 +176,40 @@ def build_and_publish_delta(prev_db: Path, curr_db: Path, out: Path, *, build_id
         **info,
     }
     (out / "manifest-delta.json").write_text(json.dumps(manifest))
+    _update_deltas_window(
+        out,
+        {
+            "from_build_id": from_build_id,
+            "to_build_id": build_id,
+            "file": chain_file,
+            "sha256": sha,
+            "bytes": nbytes,
+        },
+    )
     return manifest
+
+
+_DELTA_WINDOW = 10  # how many recent per-build deltas to keep for chaining
+
+
+def _update_deltas_window(out: Path, entry: dict) -> list[str]:
+    """Append a delta to the rolling deltas.json window (last _DELTA_WINDOW), drop stale ones.
+
+    Returns the filenames pruned out of the window so the publish step can delete those release
+    assets. The window must form a contiguous from->to chain ending at the newest build.
+    """
+    path = out / "deltas.json"
+    try:
+        data = json.loads(path.read_text()) if path.exists() else {}
+    except Exception:  # noqa: BLE001
+        data = {}
+    deltas = [d for d in data.get("deltas", []) if d.get("to_build_id") != entry["to_build_id"]]
+    deltas.append(entry)
+    deltas = deltas[-_DELTA_WINDOW:]
+    kept = {d["file"] for d in deltas}
+    pruned = [d["file"] for d in data.get("deltas", []) if d["file"] not in kept]
+    path.write_text(json.dumps({"schema_version": 1, "deltas": deltas}))
+    return pruned
 
 
 def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
@@ -453,7 +507,7 @@ def main(argv: list[str]) -> None:
             return
     out.mkdir(parents=True, exist_ok=True)
     db = out / "index.sqlite"
-    build_id = f"build-{_today()}"
+    build_id = _build_id()
 
     if incremental:
         from ergon_tracker.index.build import (

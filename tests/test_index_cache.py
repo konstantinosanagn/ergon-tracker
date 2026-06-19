@@ -250,3 +250,115 @@ def test_cache_falls_back_to_full_when_delta_base_mismatches(tmp_path):
         j.title for j in SqliteIndexBackend(path).search(SearchQuery(keywords="engineer", limit=10))
     }
     assert "Founding Engineer" in titles and "Old Role" not in titles  # got b2, not the b0 delta
+
+
+def test_cache_applies_delta_chain_when_multiple_builds_behind(tmp_path):
+    # A user 2 builds behind (b0) catches up to b2 by chaining deltas via deltas.json — no full
+    # download. The full file is corrupt so success can ONLY come from the chain.
+    from ergon_tracker.index.build import build_delta, build_index
+
+    remote = tmp_path / "remote"
+    remote.mkdir()
+    cache_dir = tmp_path / "cache"
+
+    def _job2(sid, company, title):
+        from ergon_tracker.models import Location, RemoteType
+
+        return JobPosting.create(
+            source="greenhouse",
+            source_job_id=sid,
+            company=company,
+            title=title,
+            locations=[Location(raw="Remote", is_remote=True)],
+            remote=RemoteType.REMOTE,
+        )
+
+    b0 = tmp_path / "b0.sqlite"
+    b1 = tmp_path / "b1.sqlite"
+    b2 = tmp_path / "b2.sqlite"
+    build_index([_job2("1", "Stripe", "Backend Engineer")], b0, build_id="b0")
+    build_index(
+        [_job2("1", "Stripe", "Backend Engineer"), _job2("2", "Ramp", "Frontend Eng")],
+        b1,
+        build_id="b1",
+    )
+    build_index(
+        [
+            _job2("1", "Stripe", "Backend Engineer"),
+            _job2("2", "Ramp", "Frontend Eng"),
+            _job2("3", "Cursor", "Founding Engineer"),
+        ],
+        b2,
+        build_id="b2",
+    )
+
+    # prime local cache at b0
+    cache_dir.mkdir()
+    (cache_dir / "index.sqlite").write_bytes(b0.read_bytes())
+    (cache_dir / "manifest.json").write_text(json.dumps({"build_id": "b0", "schema_version": 1}))
+
+    # remote: b2 full (corrupt so only the chain works) + manifest + deltas window + chain files
+    raw2 = b2.read_bytes()
+    (remote / "index.sqlite.gz").write_bytes(b"corrupt-full")
+    (remote / "manifest.json").write_text(
+        json.dumps(
+            {
+                "build_id": "b2",
+                "sha256": hashlib.sha256(raw2).hexdigest(),
+                "bytes": len(raw2),
+                "schema_version": 1,
+            }
+        )
+    )
+    # the 1-behind manifest-delta only bridges b1->b2 (won't match local b0) -> chain kicks in
+    d01, d12 = tmp_path / "d01.sqlite", tmp_path / "d12.sqlite"
+    build_delta(b0, b1, d01, from_build_id="b0", to_build_id="b1")
+    build_delta(b1, b2, d12, from_build_id="b1", to_build_id="b2")
+    g01, g12 = gzip.compress(d01.read_bytes()), gzip.compress(d12.read_bytes())
+    (remote / "index-delta-b1.sqlite.gz").write_bytes(g01)
+    (remote / "index-delta-b2.sqlite.gz").write_bytes(g12)
+    (remote / "manifest-delta.json").write_text(
+        json.dumps(
+            {
+                "from_build_id": "b1",
+                "to_build_id": "b2",
+                "sha256": hashlib.sha256(d12.read_bytes()).hexdigest(),
+                "bytes": len(d12.read_bytes()),
+                "schema_version": 1,
+            }
+        )
+    )
+    (remote / "deltas.json").write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "deltas": [
+                    {
+                        "from_build_id": "b0",
+                        "to_build_id": "b1",
+                        "file": "index-delta-b1.sqlite.gz",
+                        "sha256": hashlib.sha256(d01.read_bytes()).hexdigest(),
+                        "bytes": len(d01.read_bytes()),
+                    },
+                    {
+                        "from_build_id": "b1",
+                        "to_build_id": "b2",
+                        "file": "index-delta-b2.sqlite.gz",
+                        "sha256": hashlib.sha256(d12.read_bytes()).hexdigest(),
+                        "bytes": len(d12.read_bytes()),
+                    },
+                ],
+            }
+        )
+    )
+
+    cache = IndexCache(base_url=remote.as_uri(), cache_dir=cache_dir)
+    path = cache.ensure_fresh()
+    assert path is not None
+    from ergon_tracker.models import SearchQuery
+
+    titles = {
+        j.title for j in SqliteIndexBackend(path).search(SearchQuery(keywords="engineer", limit=10))
+    }
+    assert "Founding Engineer" in titles  # reached b2 via the 2-delta chain
+    assert json.loads((cache_dir / "manifest.json").read_text())["build_id"] == "b2"
