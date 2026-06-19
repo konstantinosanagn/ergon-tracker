@@ -1280,5 +1280,43 @@
    "title": "title.rendered",
    "url": "link"
   }
+ },
+ "experisus": {
+  "url": "https://www.experis.com/api/services/Jobs/searchjobs",
+  "method": "POST",
+  "body": {
+   "filter": {
+    "page": "1",
+    "offset": 0,
+    "totalCount": 0,
+    "limit": 50,
+    "searchkeyword": null,
+    "haslocation": false,
+    "language": "en"
+   }
+  },
+  "page_path": [
+   "filter",
+   "offset"
+  ],
+  "page_start": 0,
+  "page_step": 50,
+  "size_path": [
+   "filter",
+   "limit"
+  ],
+  "size": 50,
+  "records_path": [
+   "jobsItems"
+  ],
+  "total_path": [],
+  "company": "Experis",
+  "fields": {
+   "id": "jobID",
+   "title": "jobTitle",
+   "location": "jobLocation",
+   "url": "jobURL",
+   "description": "jobAdvertisementTeaser"
+  }
  }
 }
