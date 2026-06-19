@@ -52,6 +52,11 @@ from ergon_tracker.models import JobLevel
         ("VP", JobLevel.EXECUTIVE),
         ("VP Product, Core Products", JobLevel.EXECUTIVE),
         ("Chief Technology Officer", JobLevel.EXECUTIVE),
+        # 4-letter C-suite acronyms (CISO/CHRO/CSO/CRO/CDO) — were slipping through c[etfoi]o
+        ("CISO", JobLevel.EXECUTIVE),
+        ("CISO Argentina", JobLevel.EXECUTIVE),
+        ("CHRO", JobLevel.EXECUTIVE),
+        ("Chief Data Officer", JobLevel.EXECUTIVE),
         # --- New-grad / campus-hire markers -> entry ----------------------
         ("Software Engineer (New Grads 2025-2026)", JobLevel.ENTRY),  # plural "new grads"
         ("Software Engineer New Grads", JobLevel.ENTRY),

@@ -125,7 +125,8 @@ _DIRECTOR = re.compile(
 )
 
 _EXECUTIVE = re.compile(
-    r"\b(?:chief|c[etfoi]o|cxo|cmo|cpo|svp|evp|vp|vice president|president)\b",
+    r"\b(?:chief|c[etfoi]o|ciso|chro|cso|cro|cdo|cxo|cmo|cpo|svp|evp|vp"
+    r"|vice president|president)\b",
     re.I,
 )
 
