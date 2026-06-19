@@ -133,6 +133,11 @@ def test_extractor_falls_back_to_name(extractor: SectorExtractor) -> None:
         ("tjx", "E-commerce/Retail"),
         ("jpmc", "Banking/Finance"),
         ("Mount Sinai", "Healthcare"),
+        ("verizon", "Telecom"),
+        ("medtronic", "Healthcare"),
+        ("homedepot", "E-commerce/Retail"),
+        ("City of New York", "Government/Public"),
+        ("infineon", "Semiconductors/Hardware"),
     ],
 )
 def test_company_sector_exact_brand_map(company: str, sector: str) -> None:
