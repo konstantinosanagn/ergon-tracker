@@ -667,25 +667,6 @@
   "page_param": "page",
   "page_start": 1
  },
- "celoristech": {
-  "url": "https://www.tiktokw.us/api/global-footer/graphql",
-  "method": "POST",
-  "records_path": [
-   "data",
-   "footer",
-   "navigation",
-   2,
-   "navTabs"
-  ],
-  "total_path": [],
-  "company": "celoris tech",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "",
-   "department": ""
-  }
- },
  "federalsoftsystems": {
   "url": "https://gladiator.iimjobs.com/job/similar-company-jobs?page=0",
   "method": "GET",
