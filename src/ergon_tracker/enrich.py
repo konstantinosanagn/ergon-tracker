@@ -13,7 +13,12 @@ from .extract.base import get_extractor, input_from_job
 # Importing the extractor modules registers them. Also re-exported for backward compatibility.
 from .extract.comp import CompExtractor  # noqa: F401
 from .extract.geo import normalize_geo
-from .extract.level import LevelExtractor, infer_level, level_from_years  # noqa: F401
+from .extract.level import (  # noqa: F401
+    LevelExtractor,
+    infer_level,
+    level_from_description,
+    level_from_years,
+)
 from .extract.sector import SectorExtractor, SectorIndex, load_sector_index  # noqa: F401
 from .extract.sponsorship import detect_sponsorship  # noqa: F401
 from .extract.visa import h1b_last_filed, is_h1b_sponsor, load_sponsor_index  # noqa: F401
@@ -47,7 +52,11 @@ def enrich_in_place(
     if level is not None and job.level is JobLevel.UNKNOWN:
         job.level = level.extract(inp)
     if infer_level_from_experience and job.level is JobLevel.UNKNOWN:
-        job.level = level_from_years(job.years_experience_min, job.years_experience_max)
+        # 1) explicit early-career phrase in the JD ("new grad", "entry-level") — high precision;
+        # 2) else map the stated years-of-experience requirement to a coarse level.
+        job.level = level_from_description(inp.description_text)
+        if job.level is JobLevel.UNKNOWN:
+            job.level = level_from_years(job.years_experience_min, job.years_experience_max)
 
     comp = get_extractor("comp")
     if comp is not None and job.salary is None:

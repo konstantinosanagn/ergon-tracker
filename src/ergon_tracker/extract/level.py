@@ -23,7 +23,40 @@ import re
 from ..models import JobLevel
 from .base import ExtractInput, register_extractor
 
-__all__ = ["infer_level", "level_from_years", "LevelExtractor"]
+__all__ = ["infer_level", "level_from_years", "level_from_description", "LevelExtractor"]
+
+# Description-level cues — ONLY high-confidence early-career phrases. Job-description prose is
+# noisy (the reason title+desc sector classification was ~24% accurate), so we deliberately infer
+# only the RELIABLE entry/intern signals here; senior is left to the title + years-of-experience
+# (a generic "senior" in a JD — "senior stakeholders", "report to senior leadership" — is not a
+# level signal). "graduate" alone is excluded (graduate degree/school); only explicit new-grad
+# phrasings match.
+_DESC_INTERN = re.compile(
+    r"\b(?:internship|summer intern|intern(?:ship)?\s+(?:program|position)|co-?op program)\b", re.I
+)
+_DESC_ENTRY = re.compile(
+    r"\b(?:new[- ]?grad(?:uate)?s?|recent (?:college )?graduates?|new college graduates?"
+    r"|entry[- ]level (?:role|position|opportunity|hire)?|early[- ]career"
+    r"|university graduate program|campus (?:hire|recruit(?:ing)?)"
+    r"|no (?:prior |professional )?experience (?:is )?(?:required|necessary|needed))\b",
+    re.I,
+)
+
+
+def level_from_description(text: str | None) -> JobLevel:
+    """Coarse level from HIGH-confidence description phrases (entry/intern only); else UNKNOWN.
+
+    Recovers early-career roles whose TITLE is bare ("Software Engineer") but whose JD says
+    "new grad" / "entry-level" / "no experience required". Conservative by design — never infers
+    mid/senior from prose (unreliable); those come from the title or years-of-experience.
+    """
+    if not text:
+        return JobLevel.UNKNOWN
+    if _DESC_INTERN.search(text):
+        return JobLevel.INTERN
+    if _DESC_ENTRY.search(text):
+        return JobLevel.ENTRY
+    return JobLevel.UNKNOWN
 
 
 def level_from_years(min_years: int | None, max_years: int | None) -> JobLevel:
