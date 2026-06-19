@@ -122,6 +122,26 @@ def build_and_publish_shards_from_db(db_path: Path, out: Path, *, build_id: str)
     return len(manifest["shards"])
 
 
+def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
+    """Build the slim broad-query tier (no snippet, FTS over title+company) and gzip it.
+
+    Broad keyword/filter queries that need no description hit this (~half the full-file bytes)
+    instead of the full single file. Returns the row count.
+    """
+    from ergon_tracker.index.build import build_slim_index
+
+    slim = out / "index-slim.sqlite"
+    n = build_slim_index(db_path, slim, build_id=build_id)
+    sha, nbytes = _gzip_file(slim, out / "index-slim.sqlite.gz")
+    slim.unlink(missing_ok=True)
+    (out / "manifest-slim.json").write_text(
+        json.dumps(
+            {"build_id": build_id, "schema_version": 1, "sha256": sha, "bytes": nbytes, "rows": n}
+        )
+    )
+    return n
+
+
 def _count_jobs(db_path: Path) -> int:
     """Row count of an index DB (cheap; avoids loading jobs into memory)."""
     from ergon_tracker.index.db import connect
@@ -429,6 +449,8 @@ def main(argv: list[str]) -> None:
         if ok and sharded:
             ns = build_and_publish_shards_from_db(db, out, build_id=build_id)
             print(f"  + published {ns} sector shards")
+            nslim = build_and_publish_slim(db, out, build_id=build_id)
+            print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
         print(
             f"incremental build: crawled {len(outcome)} due boards, {fresh_jobs_count} fresh jobs, "
             f"{n} total{' -> published' if ok else ' (gates FAILED, kept previous)'}"
@@ -445,6 +467,8 @@ def main(argv: list[str]) -> None:
     if sharded:
         ns = build_and_publish_shards(jobs, out, build_id=build_id)
         print(f"  + published {ns} sector shards")
+        nslim = build_and_publish_slim(db, out, build_id=build_id)
+        print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
     print(f"built index: {n} jobs -> {out}/index.sqlite.gz (+manifest.json)")
 
 

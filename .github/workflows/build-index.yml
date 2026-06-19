@@ -72,7 +72,8 @@ jobs:
           # Only upload artifacts that actually exist (a gate failure or --no-sharded run may omit
           # some), so one missing file never fails the whole publish.
           ASSETS=""
-          for f in index.sqlite.gz manifest.json gates.json board_state.json history.jsonl \
+          for f in index.sqlite.gz manifest.json index-slim.sqlite.gz manifest-slim.json \
+                   gates.json board_state.json history.jsonl \
                    shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do
             [ -f "dist/$f" ] && ASSETS="$ASSETS dist/$f"
           done

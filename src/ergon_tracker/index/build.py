@@ -424,6 +424,70 @@ def build_index_from_fresh_db(
         con.close()
 
 
+# Columns nulled in the slim broad-query tier: heavy/free-text fields a BROAD keyword search
+# doesn't need to match or display. Kept: id, company, title, level, sector, city/country/location,
+# remote, salary*, visa*, sponsorship, apply_url, posted_at, source, status, dates (schema NOT NULL
+# cols must stay). The FTS over title+company+department+snippet auto-shrinks since department +
+# snippet become NULL. content_hash stays (NOT NULL + cheap, 16 hex).
+_SLIM_NULL_COLS = frozenset(
+    {
+        "snippet",
+        "department",
+        "role_family",
+        "company_domain",
+        "listing_url",
+        "board_token",
+        "salary_annual",
+        "years_min",
+        "years_max",
+        "visa_last_filed",
+        "updated_at",
+        "closes_at",
+        "expired_at",
+        "expiry_reason",
+    }
+)
+
+
+def build_slim_index(full_db: Path | str, slim_path: Path | str, *, build_id: str) -> int:
+    """Build the compact broad-query tier from a full index (SQL copy, memory-bounded).
+
+    Same schema as the full index (so SqliteIndexBackend/search_rows work unchanged), but heavy
+    free-text columns are nulled and provenance (job_sources) is skipped, so a BROAD keyword query
+    downloads a much smaller file. Keyword matching still works on title+company (snippet/department
+    nulled -> the FTS shrinks). A query needing the description falls back to the full index.
+    """
+    fresh_db(slim_path)
+    con = connect(slim_path)
+    try:
+        con.execute("PRAGMA foreign_keys = OFF")
+        con.execute("ATTACH DATABASE ? AS full", (str(full_db),))
+        select_cols = ",".join(f"NULL AS {c}" if c in _SLIM_NULL_COLS else c for c in _JOB_COLS)
+        insert_cols = ",".join(_JOB_COLS)
+        con.execute(
+            f"INSERT INTO jobs({insert_cols}) SELECT {select_cols} FROM full.jobs"  # noqa: S608
+        )
+        con.execute(
+            "INSERT INTO companies SELECT * FROM full.companies"  # companies needed for FK + nav
+        )
+        con.commit()
+        con.execute("DETACH DATABASE full")
+        n = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+        con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('build_id',?)", (build_id,))
+        con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('row_count',?)", (str(n),))
+        con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('rebuild')")
+        con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('optimize')")
+        con.commit()
+        con.execute("ANALYZE")
+        con.execute("VACUUM")  # reclaim the nulled-column slack — being small IS the point here
+        ok = con.execute("PRAGMA integrity_check").fetchone()[0]
+        if ok != "ok":
+            raise IndexBuildError(f"slim integrity_check failed: {ok}")
+        return int(n)
+    finally:
+        con.close()
+
+
 def sector_slug(sector: str | None) -> str:
     """Filesystem-safe shard key for a sector ('AI/ML' -> 'ai-ml'); None/empty -> 'unknown'."""
     if not sector:

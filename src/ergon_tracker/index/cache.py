@@ -113,6 +113,58 @@ class IndexCache:
         return self.db_path
 
 
+class SlimCache:
+    """Download the compact slim broad-query tier (no snippet/years; ~half the full-file bytes).
+
+    Same shape as IndexCache but for ``index-slim.sqlite.gz`` + ``manifest-slim.json``. Used for
+    broad structured-filter queries that need no description text — a strict download-size win
+    with identical results to the full index for those queries.
+    """
+
+    def __init__(
+        self,
+        base_url: str | None = None,
+        cache_dir: Path | None = None,
+        repo: str = _REPO,
+        tag: str = _TAG,
+    ) -> None:
+        self.base_url = (base_url or _DEFAULT_BASE).rstrip("/")
+        self.cache_dir = Path(cache_dir or _default_cache_dir())
+        self.repo = repo
+        self.tag = tag
+        self.db_path = self.cache_dir / "index-slim.sqlite"
+        self.local_manifest = self.cache_dir / "manifest-slim.json"
+
+    def ensure_fresh(self) -> Path | None:
+        """Return a verified slim index path, or None (caller falls back to full/live)."""
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            fetch = _asset_fetcher(self.base_url, self.repo, self.tag)
+            remote = json.loads(fetch("manifest-slim.json"))
+        except Exception as exc:  # noqa: BLE001 - no slim published -> caller uses full index
+            log.debug("no slim manifest (%s); falling back to full index", exc)
+            return None
+        if int(remote.get("schema_version", -1)) != SCHEMA_VERSION:
+            return None
+        local = json.loads(self.local_manifest.read_text()) if self.local_manifest.exists() else {}
+        if local.get("build_id") == remote.get("build_id") and self.db_path.exists():
+            return self.db_path  # already current
+        try:
+            raw = gzip.decompress(fetch("index-slim.sqlite.gz"))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("slim download failed (%s)", exc)
+            return self.db_path if self.db_path.exists() else None
+        if hashlib.sha256(raw).hexdigest() != remote.get("sha256"):
+            log.warning("slim sha256 mismatch; rejecting download")
+            return None
+        tmp = self.db_path.with_suffix(".tmp")
+        tmp.write_bytes(raw)
+        tmp.replace(self.db_path)  # atomic
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info("slim index updated to build %s (%d bytes)", remote.get("build_id"), len(raw))
+        return self.db_path
+
+
 class ShardCache:
     """Download the shard manifest + only the shard(s) a query needs (v2 optimized path)."""
 

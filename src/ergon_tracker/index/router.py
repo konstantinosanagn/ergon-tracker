@@ -7,7 +7,7 @@ import os
 
 from ..models import JobPosting, SearchQuery
 from .backend import ShardedIndexBackend, SqliteIndexBackend
-from .cache import IndexCache, ShardCache
+from .cache import IndexCache, ShardCache, SlimCache
 
 log = logging.getLogger("ergon_tracker.index")
 
@@ -16,6 +16,28 @@ def _load_sharded(query: SearchQuery) -> ShardedIndexBackend | None:
     """v2 path: download only the shard(s) this query needs, return a sharded backend."""
     shard_dir = ShardCache().ensure(query)
     return ShardedIndexBackend(shard_dir) if shard_dir else None
+
+
+def _slim_serves(query: SearchQuery) -> bool:
+    """True when the slim tier returns IDENTICAL results to the full index for this query.
+
+    The slim tier nulls snippet/description (so keyword matches in the description would be lost)
+    and years (so year filters can't apply) and skips semantic embeddings. It is therefore exactly
+    equivalent to the full index only for broad STRUCTURED-FILTER queries: no keywords, no year
+    filter, no semantic rerank. Those download ~half the bytes with zero recall loss.
+    """
+    return (
+        not query.keywords
+        and not query.semantic
+        and query.min_years is None
+        and query.max_years is None
+    )
+
+
+def _load_slim() -> SqliteIndexBackend | None:
+    """v2 path: the compact slim broad-query tier (~half the full-file download)."""
+    path = SlimCache().ensure_fresh()
+    return SqliteIndexBackend(path) if path else None
 
 
 def _load_backend() -> SqliteIndexBackend | None:
@@ -42,6 +64,12 @@ def try_index(query: SearchQuery) -> list[JobPosting] | None:
             sharded = _load_sharded(query)
             if sharded is not None and sharded.available():
                 return sharded.search(query)
+        # Broad structured-filter query (no keywords/years/semantic): the slim tier is an exact,
+        # smaller-download equivalent of the full index — prefer it, fall through to full if absent.
+        if _slim_serves(query):
+            slim = _load_slim()
+            if slim is not None and slim.available():
+                return slim.search(query)
         backend = _load_backend()
         if backend is None or not backend.available():
             return None
