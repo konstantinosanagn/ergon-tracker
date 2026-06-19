@@ -193,6 +193,8 @@ _TOK_MID = re.compile(r"\(\s*mid\b|\bmid[- ]level\b", re.I)
 _LADDER = re.compile(r"\b(?:IC|[LEP])-?([1-9])\b")
 # Roman/arabic suffix levels (word boundaries; roman is case-sensitive so "II"
 # is never matched inside lowercase words).
+_ROMAN_PRINCIPAL = re.compile(r"\bVI\b")  # level 6
+_ROMAN_STAFF = re.compile(r"\bV\b")  # level 5 (checked after VI; \bV\b can't match inside "VI")
 _ROMAN_SENIOR = re.compile(r"\b(?:III|IV)\b")
 _ROMAN_MID = re.compile(r"\bII\b")
 _ROMAN_ENTRY = re.compile(r"\bI\b")
@@ -230,6 +232,10 @@ def _parse_level_token(title: str) -> JobLevel | None:
     # Normalise a non-breaking space sometimes embedded in roman suffixes
     # ("Software Engineer I​I") so the roman matcher sees "II".
     t = title.replace("​", "").replace("\xa0", " ")
+    if _ROMAN_PRINCIPAL.search(t):
+        return JobLevel.PRINCIPAL
+    if _ROMAN_STAFF.search(t):
+        return JobLevel.STAFF
     if _ROMAN_SENIOR.search(t):
         return JobLevel.SENIOR
     if _ROMAN_MID.search(t):

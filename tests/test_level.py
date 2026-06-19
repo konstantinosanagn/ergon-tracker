@@ -57,6 +57,10 @@ from ergon_tracker.models import JobLevel
         ("CISO Argentina", JobLevel.EXECUTIVE),
         ("CHRO", JobLevel.EXECUTIVE),
         ("Chief Data Officer", JobLevel.EXECUTIVE),
+        # --- numbered ladder completes through V/VI ---
+        ("Software Engineer V", JobLevel.STAFF),
+        ("Software Engineer VI", JobLevel.PRINCIPAL),
+        ("Software Engineer IV", JobLevel.SENIOR),
         # --- "Staff X": senior IC for tech, rank-and-file for other professions ---
         ("Staff Software Engineer", JobLevel.STAFF),
         ("Staff Data Scientist", JobLevel.STAFF),
