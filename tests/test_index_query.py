@@ -91,3 +91,24 @@ def test_query_robust_against_adversarial_and_edge_input(tmp_path):
     assert search_rows(con, SearchQuery(keywords="zzxqkjwffbbq", limit=5)) == []  # no match
     assert len(search_rows(con, SearchQuery(keywords="engineer", limit=1))) == 1  # limit honored
     assert len(search_rows(con, SearchQuery(keywords="engineer", limit=100000))) <= 3  # huge limit
+
+
+def test_matches_parity_on_location(tmp_path):
+    # The index must filter on the free-text `location` exactly like SearchQuery.matches() —
+    # regression for the index silently ignoring `location` (returned non-matching jobs).
+    from ergon_tracker.models import Location
+
+    jobs = [
+        JobPosting.create(source="greenhouse", source_job_id="1", company="A", title="Eng Berlin",
+                          locations=[Location(raw="Berlin, Germany", city="Berlin", country="Germany")]),
+        JobPosting.create(source="greenhouse", source_job_id="2", company="B", title="Eng London",
+                          locations=[Location(raw="London, UK", city="London", country="United Kingdom")]),
+        JobPosting.create(source="greenhouse", source_job_id="3", company="C", title="Eng NYC",
+                          locations=[Location(raw="New York, US", city="New York", country="United States")]),
+    ]
+    con = _db(tmp_path, jobs)
+    for q in [SearchQuery(location="Germany"), SearchQuery(location="London"),
+              SearchQuery(location="New York"), SearchQuery(location="zzz-nowhere")]:
+        sql_ids = {r["id"] for r in search_rows(con, q)}
+        match_ids = {j.id for j in jobs if q.matches(j)}
+        assert sql_ids == match_ids, f"location parity broke for {q.location!r}"

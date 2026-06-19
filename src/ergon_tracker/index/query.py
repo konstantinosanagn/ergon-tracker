@@ -41,6 +41,12 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
     if q.city:
         cl.append("LOWER(j.city) = ?")
         p.append(q.city.lower())
+    if q.location:
+        # Mirror SearchQuery.matches(): the free-text location must appear in the job's location
+        # text (substring). Without this the index ignored `location` and returned non-matching
+        # jobs (parity bug vs the live engine).
+        cl.append("LOWER(j.location) LIKE ?")
+        p.append(f"%{q.location.lower()}%")
     if q.visa_sponsor is True:
         cl.append("j.visa_sponsor = 1")
     if q.sponsorship_offered is not None:
