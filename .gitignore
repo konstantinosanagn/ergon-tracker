@@ -44,3 +44,21 @@ scripts/.h1b_cache/
 
 # wikidata harvester scratch
 scripts/.sector_wd_*.json
+
+# residual-giants discovery/maintenance scripts (exploration tooling, kept local)
+scripts/aggregator_scan.py
+scripts/audit_completeness.py
+scripts/bruteforce_ats.py
+scripts/capture_ats_host.py
+scripts/capture_corps.py
+scripts/capture_interactive.py
+scripts/capture_request.py
+scripts/census_residual.py
+scripts/census_universities.py
+scripts/detect_own_ats.py
+scripts/discover_jobdiva.py
+scripts/find_job_api.py
+scripts/map_adzuna_ats.py
+scripts/recheck_revisit.py
+scripts/sweep_residual.py
+scripts/upgrade_registry.py
