@@ -91,6 +91,8 @@ def _random_query(rng):
         q["include_unknown_sector"] = rng.random() < 0.5
     if rng.random() < 0.4:
         q["city"] = rng.choice([c for c in _CITIES if c])
+    if rng.random() < 0.25:
+        q["location"] = rng.choice(["new york", "san francisco", "germany", "remote", "austin"])
     if rng.random() < 0.3:
         q["country"] = rng.choice(["USA", "US", "United States", "Canada", "Germany"])
     if rng.random() < 0.3:
