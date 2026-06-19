@@ -278,8 +278,14 @@ def _aggregate_companies_streamed(con: object) -> list:
     return list(out.values())
 
 
-def finalize_index(con: object, *, build_id: str) -> int:
-    """Insert companies (streamed), build FTS, write meta, ANALYZE/VACUUM, integrity-check."""
+def finalize_index(con: object, *, build_id: str, vacuum: bool = False) -> int:
+    """Insert companies (streamed), build FTS, write meta, ANALYZE, integrity-check.
+
+    VACUUM is OFF by default: the index is built write-once into a fresh DB (no updates/deletes),
+    so there's no free space to reclaim — VACUUM would just rewrite the whole file, needing ~2x
+    disk (ENOSPC risk at ~1GB × 30 shard builds) and minutes of time for ~no benefit (the gz
+    handles size). Pass vacuum=True only if a build path actually churns rows.
+    """
     import sqlite3
 
     assert isinstance(con, sqlite3.Connection)
@@ -298,7 +304,8 @@ def finalize_index(con: object, *, build_id: str) -> int:
     con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('optimize')")
     con.commit()
     con.execute("ANALYZE")
-    con.execute("VACUUM")
+    if vacuum:
+        con.execute("VACUUM")
     ok = con.execute("PRAGMA integrity_check").fetchone()[0]
     if ok != "ok":
         raise IndexBuildError(f"integrity_check failed: {ok}")

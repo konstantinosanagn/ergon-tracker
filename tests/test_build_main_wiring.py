@@ -18,8 +18,8 @@ import build_index as bi  # noqa: E402
 from ergon_tracker.index.db import connect  # noqa: E402
 
 
-async def _fake_crawl_due(limit_companies, states, fresh_db_path, build_id):
-    """Write a few jobs straight into the fresh DB (no network), return an empty board outcome."""
+async def _fake_crawl_due(limit_companies, states, fresh_db_path, build_id, cursor=0):
+    """Write a few jobs straight into the fresh DB (no network), return (outcome, next_cursor)."""
     from ergon_tracker.index.build import append_jobs
     from ergon_tracker.index.db import connect as _connect
     from ergon_tracker.index.db import fresh_db
@@ -39,7 +39,7 @@ async def _fake_crawl_due(limit_companies, states, fresh_db_path, build_id):
     append_jobs(con, jobs, build_id=build_id)
     con.commit()
     con.close()
-    return {}  # no due boards -> exercises build/publish wiring without apply_outcome
+    return {}, 0  # (outcome, next_cursor): no due boards -> exercises build/publish wiring
 
 
 def test_main_incremental_streaming_wiring(tmp_path, monkeypatch):

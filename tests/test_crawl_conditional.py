@@ -66,7 +66,7 @@ def test_crawl_due_304_carries_forward(monkeypatch, tmp_path):
     states = {bs.key: bs}
     fresh_db_path = tmp_path / "fresh.sqlite"
 
-    outcome = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
+    outcome, _cursor = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
 
     assert connect(fresh_db_path, read_only=True).execute(
         "SELECT COUNT(*) FROM jobs"
@@ -135,9 +135,48 @@ def test_crawl_due_200_reuses_body_without_refetch(monkeypatch, tmp_path):
     bs = BoardState(provider="greenhouse", token="stripe", etag='W/"old"', next_due="2000-01-01")
     states = {bs.key: bs}
     fresh_db_path = tmp_path / "fresh.sqlite"
-    outcome = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
+    outcome, _cursor = anyio.run(bi._crawl_due, 10, states, fresh_db_path, "b1")
 
     rows = connect(fresh_db_path, read_only=True).execute("SELECT title FROM jobs").fetchall()
     assert len(rows) == 1 and rows[0][0] == "Engineer"  # parsed from the 200 body, streamed to DB
     assert outcome[bs.key]["not_modified"] is False
     assert states[bs.key].etag == 'W/"new"'  # validator refreshed for next run
+
+
+def test_registry_window_rotates_and_wraps(monkeypatch):
+    import ergon_tracker.registry.store as store_mod
+
+    class _Reg:
+        def all(self):  # 5 crawlable boards: t0..t4
+            return {f"c{i}": {"ats": "greenhouse", "token": f"t{i}"} for i in range(5)}
+
+    monkeypatch.setattr(store_mod, "SeedRegistry", _Reg)
+
+    # window smaller than total -> rotating slice + advancing cursor
+    win, nxt = bi._registry_window(0, 2)
+    assert [e["token"] for _, e in win] == ["t0", "t1"] and nxt == 2
+    win, nxt = bi._registry_window(2, 2)
+    assert [e["token"] for _, e in win] == ["t2", "t3"] and nxt == 4
+    # wraparound: cursor 4, window 2 -> t4, t0 ; next cursor wraps to 1
+    win, nxt = bi._registry_window(4, 2)
+    assert [e["token"] for _, e in win] == ["t4", "t0"] and nxt == 1
+    # window >= total -> everything, cursor resets to 0 (full pass)
+    win, nxt = bi._registry_window(0, 99)
+    assert len(win) == 5 and nxt == 0
+
+
+def test_registry_window_skips_uncrawlable(monkeypatch):
+    import ergon_tracker.registry.store as store_mod
+
+    class _Reg:
+        def all(self):
+            return {
+                "a": {"ats": "greenhouse", "token": "t1"},
+                "b": {"ats": "greenhouse"},  # no token -> skipped
+                "c": {"token": "t2"},  # no ats -> skipped
+                "d": {"ats": "lever", "token": "t3"},
+            }
+
+    monkeypatch.setattr(store_mod, "SeedRegistry", _Reg)
+    win, nxt = bi._registry_window(0, 10)
+    assert {e["token"] for _, e in win} == {"t1", "t3"} and nxt == 0

@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
     inputs:
       limit_companies:
-        description: "Max boards to crawl this run (bounds CI time; tiering keeps steady-state small)"
-        default: "10000"
+        description: "Rotating-window size: boards considered this run (cursor advances each run; full registry covered over ceil(total/window) runs). Bounds CI time."
+        default: "12000"
 
 permissions:
   contents: write          # to publish the release asset
@@ -54,19 +54,30 @@ jobs:
           gh release download index-latest --dir dist --pattern 'index.sqlite.gz' || echo "no prev index"
           gh release download index-latest --dir dist --pattern 'board_state.json' || echo "no prev state"
           gh release download index-latest --dir dist --pattern 'history.jsonl' || echo "no history"
+          gh release download index-latest --dir dist --pattern 'crawl_cursor.json' || echo "no cursor"
           [ -f dist/index.sqlite.gz ] && gunzip -kf dist/index.sqlite.gz || true
 
       - name: Build incremental index (exits non-zero if data-quality gates fail)
+        env:
+          SQLITE_TMPDIR: /mnt        # large temp disk for FTS/sort spills (/ has only ~14GB)
+          TMPDIR: /mnt
         run: |
           uv run python scripts/build_index.py --incremental \
-            --limit-companies "${{ github.event.inputs.limit_companies || '10000' }}" --sharded --out dist
+            --limit-companies "${{ github.event.inputs.limit_companies || '12000' }}" --sharded --out dist
 
       - name: Publish snapshot to the stable index-latest release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          ASSETS="dist/index.sqlite.gz dist/manifest.json dist/gates.json dist/board_state.json dist/history.jsonl dist/shards.json dist/coverage.json dist/INDEX_STATUS.md"
+          # Only upload artifacts that actually exist (a gate failure or --no-sharded run may omit
+          # some), so one missing file never fails the whole publish.
+          ASSETS=""
+          for f in index.sqlite.gz manifest.json gates.json board_state.json history.jsonl \
+                   shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do
+            [ -f "dist/$f" ] && ASSETS="$ASSETS dist/$f"
+          done
           ASSETS="$ASSETS $(ls dist/shard-*.sqlite.gz 2>/dev/null)"
+          if [ -z "$ASSETS" ]; then echo "no assets to publish"; exit 0; fi
           if gh release view index-latest >/dev/null 2>&1; then
             gh release upload index-latest $ASSETS --clobber
           else
