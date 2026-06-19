@@ -72,3 +72,45 @@ async def test_search_jobs_returns_compact_jobs_and_health() -> None:
     assert "raw" not in job  # compact view, no payload bloat
     health = {h["source"]: h for h in out["health"]}
     assert health["greenhouse"]["ok"]
+
+
+async def test_search_jobs_broad_uses_index_not_live(monkeypatch) -> None:
+    # A broad search (no companies/sources) must be served by the prebuilt index, NOT fanned out
+    # to live aggregators/registry. Regression for the agent-safety guard that used to force
+    # sources=aggregators and thereby bypass the index entirely.
+    import ergon_tracker.index.router as router
+    from ergon_tracker.models import JobPosting
+
+    fake = [JobPosting.create(source="greenhouse", source_job_id="1", company="Acme", title="ML Eng")]
+    monkeypatch.setattr(router, "try_index", lambda q: fake)
+
+    out = await srv.search_jobs(keywords="ml engineer", sector="AI/ML", remote=True, limit=5)
+    assert out["count"] == 1
+    assert out["health"][0]["source"] == "index"  # served from index, zero ATS calls
+    assert out["jobs"][0]["company"] == "Acme"
+
+
+async def test_search_jobs_broad_falls_back_to_aggregators_when_index_down(monkeypatch) -> None:
+    # If the index is unavailable, a broad search falls back to aggregators (fast/safe), NEVER a
+    # live fan-out across the whole registry.
+    import ergon_tracker.index.router as router
+
+    monkeypatch.setattr(router, "try_index", lambda q: None)
+    captured = {}
+
+    class _FakeJS:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *a):
+            return False
+
+        async def search(self, query):
+            captured["sources"] = query.sources
+            from ergon_tracker.models import SearchResult
+
+            return SearchResult(jobs=[], health=[])
+
+    monkeypatch.setattr(srv, "AsyncErgonTracker", lambda *a, **k: _FakeJS())
+    await srv.search_jobs(keywords="nurse", limit=5)
+    assert set(captured["sources"]) == set(srv.AGGREGATOR_PROVIDERS)  # aggregators, not 46k boards

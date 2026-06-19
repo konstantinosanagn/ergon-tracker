@@ -135,13 +135,6 @@ async def search_jobs(
         # restrict to specific sources (incl. ATS names = deliberate, slower crawl)
         search_jobs(keywords="rust", sources=["greenhouse", "lever", "ashby"])
     """
-    # Agent-safety: an unscoped search (no companies, no sources) would otherwise fan out to the
-    # entire ~42k-company ATS registry — slow and rate-limit-prone for an interactive agent. Default
-    # such searches to the fast, single-call aggregator/keyed APIs instead. Targeting companies, or
-    # naming sources explicitly (incl. ATS names for a deliberate crawl), overrides this.
-    if not companies and not sources:
-        sources = list(AGGREGATOR_PROVIDERS)
-
     query = SearchQuery(
         keywords=keywords,
         location=location,
@@ -162,6 +155,22 @@ async def search_jobs(
         semantic=semantic,
         limit=limit,
     )
+    # Broad search (no companies, no sources): serve from the prebuilt INDEX — fast, throttle-proof,
+    # and covering ALL ATSes we track. Only if the index is unavailable do we fall back to the fast
+    # aggregator/keyed APIs (NEVER a live fan-out across the whole ~46k-board registry, which would
+    # be slow + rate-limit-prone for an interactive agent). Targeted queries skip this entirely.
+    if not companies and not sources:
+        from .index.router import try_index
+
+        indexed = try_index(query)
+        if indexed is not None:
+            return {
+                "count": len(indexed),
+                "jobs": [_job_to_dict(j) for j in indexed],
+                "health": [{"source": "index", "ok": True, "count": len(indexed), "error": None}],
+            }
+        query = query.model_copy(update={"sources": list(AGGREGATOR_PROVIDERS)})  # index down
+
     async with AsyncErgonTracker() as js:
         result = await js.search(query)
     return {
