@@ -359,11 +359,17 @@ class SearchQuery(BaseModel):
                 return False
 
         if self.remote is True:
-            is_remote = job.remote in (RemoteType.REMOTE, RemoteType.HYBRID) or any(
-                loc.is_remote for loc in job.locations
+            # Precise (mirrors the index SQL): keep a job only with a positive remote signal —
+            # remote/hybrid, a remote location flag, or "remote" in the location text. Generic
+            # UNKNOWN-remote jobs with no such signal are dropped (a remote filter that returns
+            # every untagged onsite posting is useless).
+            loc_text = " ".join(loc.as_text() for loc in job.locations).lower()
+            is_remote = (
+                job.remote in (RemoteType.REMOTE, RemoteType.HYBRID)
+                or any(loc.is_remote for loc in job.locations)
+                or "remote" in loc_text
             )
-            # Keep UNKNOWN-remote jobs only when no location constraint contradicts it.
-            if not is_remote and job.remote != RemoteType.UNKNOWN:
+            if not is_remote:
                 return False
 
         if self.employment_type and job.employment_type not in (

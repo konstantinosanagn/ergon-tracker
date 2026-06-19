@@ -20,7 +20,10 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
     cl: list[str] = ["j.status = 'active'"]
     p: list[Any] = []
     if q.remote is True:
-        cl.append("(j.remote IN ('remote','hybrid'))")
+        # Mirror SearchQuery.matches(): remote/hybrid OR a "remote" signal in the location text.
+        # Recovers postings tagged remote only in their location string (remote='unknown' but
+        # location says "Remote") that an exact-column match would miss.
+        cl.append("(j.remote IN ('remote','hybrid') OR LOWER(j.location) LIKE '%remote%')")
     if q.level is not None:
         if q.include_unknown_level:
             cl.append("(j.level = ? OR j.level = 'unknown')")
