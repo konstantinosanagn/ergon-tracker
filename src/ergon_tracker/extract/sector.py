@@ -10,7 +10,13 @@ from importlib.resources import files
 
 from .base import ExtractInput, register_extractor
 
-__all__ = ["SectorIndex", "load_sector_index", "SectorExtractor", "name_sector"]
+__all__ = [
+    "SectorIndex",
+    "load_sector_index",
+    "SectorExtractor",
+    "name_sector",
+    "company_sector",
+]
 
 # High-precision company-NAME -> sector tokens. ONLY unambiguous industry words belong here:
 # a company literally named "<X> Bank" / "<X> Hospitality" / "<X> Manufacturing" is in that
@@ -144,6 +150,79 @@ def name_sector(company: str | None) -> str | None:
     return _NAME_SECTOR[m.group(1)] if m else None
 
 
+# Exact company-NAME -> sector for the largest opaque-brand employers the curated table/registry
+# and name-token rules miss (e.g. "Domino's", "Red Bull", "Anduril"). These carry huge job counts
+# in the index (Domino's alone is ~6% of all postings) but have no industry word in their name, so
+# they'd stay "unknown". Hand-curated, high-confidence, job-count-weighted; keyed by the normalized
+# company name so every posting from that employer matches regardless of source/registry key.
+_COMPANY_SECTOR_RAW: dict[str, str] = {
+    "Domino's": "Food/Beverage",
+    "Red Bull": "Food/Beverage",
+    "Greene King": "Food/Beverage",
+    "Insomnia Cookies": "Food/Beverage",
+    "Insomniacookies": "Food/Beverage",
+    "Guzman y Gomez": "Food/Beverage",
+    "CROSSMARK": "Consulting/Services",
+    "Turner & Townsend": "Consulting/Services",
+    "Securitas": "Consulting/Services",
+    "Inetum": "Consulting/Services",
+    "Devoteam": "Consulting/Services",
+    "Ramboll": "Consulting/Services",
+    "Capco": "Consulting/Services",
+    "Deloitte": "Consulting/Services",
+    "Dexterra": "Consulting/Services",
+    "Veolia Environnement": "Energy/Climate",
+    "Veolia": "Energy/Climate",
+    "Home Instead": "Healthcare",
+    "Vohra": "Healthcare",
+    "Lifestance": "Healthcare",
+    "LifeStance Health": "Healthcare",
+    "AgeCare": "Healthcare",
+    "albanymed": "Healthcare",
+    "Eurofins": "Biotech/Pharma",
+    "Anduril Industries": "Aerospace/Defense",
+    "Anduril": "Aerospace/Defense",
+    "Boxlunch": "E-commerce/Retail",
+    "advanceauto": "E-commerce/Retail",
+    "METRO/MAKRO": "E-commerce/Retail",
+    "Sears": "E-commerce/Retail",
+    "Frasers Group": "E-commerce/Retail",
+    "Maersk": "Logistics/SupplyChain",
+    "Equinox": "Consumer/Lifestyle",
+    "Relais & Châteaux": "Travel/Hospitality",
+    "Minor International": "Travel/Hospitality",
+    "Sika": "Manufacturing/Industrial",
+    "Sika AG": "Manufacturing/Industrial",
+    "Smiths Group": "Manufacturing/Industrial",
+    "Cornerstone Building Brands": "Manufacturing/Industrial",
+    "KIPP": "Education",
+    "SIXT": "Automotive/Mobility",
+    "NBCUniversal": "Media/Entertainment",
+}
+
+
+@lru_cache(maxsize=1)
+def _company_sector_map() -> dict[str, str]:
+    """Normalized-company-name -> sector (built once from the curated raw map)."""
+    from ..dedup import normalize_company
+
+    out: dict[str, str] = {}
+    for raw, sector in _COMPANY_SECTOR_RAW.items():
+        key = normalize_company(raw)
+        if key:
+            out[key] = sector
+    return out
+
+
+def company_sector(company: str | None) -> str | None:
+    """Exact, high-precision sector for a known large opaque-brand employer, else None."""
+    if not company:
+        return None
+    from ..dedup import normalize_company
+
+    return _company_sector_map().get(normalize_company(company))
+
+
 class SectorIndex:
     """Company -> sector lookup, by registry key and by domain."""
 
@@ -193,7 +272,11 @@ class SectorExtractor:
         # industries) and dropped; the company-name signal is far higher precision (~100% on a
         # live spot-check), so returning None ("unknown") still beats a mostly-wrong guess.
         table = load_sector_index().get(key=inp.company_key, domain=inp.company_domain)
-        return table if table else name_sector(inp.company)
+        if table:
+            return table
+        # (2) Exact match for large opaque-brand employers (Domino's, Anduril, ...). (3) Unambiguous
+        # industry word in the company's own name. Both high-precision; else "unknown" (None).
+        return company_sector(inp.company) or name_sector(inp.company)
 
 
 register_extractor(SectorExtractor())
