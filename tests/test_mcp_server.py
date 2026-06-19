@@ -147,3 +147,24 @@ async def test_search_jobs_forwards_new_filters_to_index(monkeypatch) -> None:
     assert q.employment_type == EmploymentType.FULL_TIME
     assert q.salary_min == 140000 and q.salary_currency == "USD"
     assert q.posted_after is not None  # posted_within_days -> cutoff datetime
+
+
+async def test_job_dict_includes_years_and_core_fields() -> None:
+    # "fetch information": the agent-facing dict must surface the rich fields, incl. the years a
+    # role requires (so a years-filtered result can show why it matched).
+    from ergon_tracker.models import JobPosting, Salary
+
+    j = JobPosting.create(
+        source="greenhouse",
+        source_job_id="1",
+        company="Co",
+        title="SWE",
+        years_experience_min=0,
+        years_experience_max=2,
+        salary=Salary(min_amount=140000, max_amount=180000, currency="USD"),
+    )
+    d = srv._job_to_dict(j)
+    assert d["years_min"] == 0 and d["years_max"] == 2
+    assert d["salary"]["currency"] == "USD"
+    for k in ("company", "title", "apply_url", "level", "sector", "posted_at", "visa_sponsor"):
+        assert k in d

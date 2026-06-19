@@ -57,6 +57,8 @@ def _job_to_dict(job: JobPosting) -> dict[str, Any]:
         "sector": job.sector,
         "employment_type": job.employment_type.value,
         "salary": salary,
+        "years_min": job.years_experience_min,
+        "years_max": job.years_experience_max,
         "apply_url": job.apply_url,
         "source": job.source,
         "posted_at": job.posted_at.isoformat() if job.posted_at else None,
