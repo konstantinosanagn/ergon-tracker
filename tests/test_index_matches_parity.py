@@ -138,3 +138,33 @@ def test_index_filter_parity_with_matches(tmp_path):
         if index_ids != oracle_ids:
             mismatches.append((q.model_dump(exclude_none=True), index_ids ^ oracle_ids))
     assert not mismatches, f"{len(mismatches)} index/matches() divergences, e.g. {mismatches[0]}"
+
+
+def test_slim_tier_identical_to_full_for_routed_queries(tmp_path):
+    # The slim tier nulls some columns (years, snippet, ...); the router only sends it queries that
+    # _slim_serves() deems safe. This locks that contract: for EVERY routed query, slim must return
+    # exactly the same results as the full index — else _slim_serves is out of sync with the nulled
+    # columns and slim would silently serve wrong results.
+    from ergon_tracker.index.build import build_slim_index
+    from ergon_tracker.index.router import _slim_serves
+
+    rng = random.Random(99)
+    full = tmp_path / "full.sqlite"
+    slim = tmp_path / "slim.sqlite"
+    build_index(_make_jobs(rng, 80), full, build_id="b1")
+    build_slim_index(full, slim, build_id="b1")
+    fb, sb = SqliteIndexBackend(full), SqliteIndexBackend(slim)
+
+    checked = 0
+    mismatches = []
+    for _ in range(200):
+        q = _random_query(rng)
+        if not _slim_serves(q):
+            continue
+        checked += 1
+        if {j.id for j in fb.search(q)} != {j.id for j in sb.search(q)}:
+            mismatches.append(q.model_dump(exclude_none=True))
+    assert checked > 20, "expected the router to route a healthy share of queries to slim"
+    assert not mismatches, (
+        f"slim != full for {len(mismatches)} routed queries, e.g. {mismatches[0]}"
+    )
