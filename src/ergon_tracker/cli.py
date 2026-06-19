@@ -102,9 +102,32 @@ def search(
     include_unknown_sector: bool = typer.Option(
         False, "--include-unknown-sector", help="keep roles with no detected sector when filtering"
     ),
-    country: str | None = typer.Option(None, "--country"),
+    country: str | None = typer.Option(None, "--country", help="USA/US -> United States, UK, ..."),
+    city: str | None = typer.Option(
+        None, "--city", help='metro-aware (e.g. "New York" also matches NYC boroughs)'
+    ),
     salary_min: float | None = typer.Option(None, "--salary-min"),
     salary_max: float | None = typer.Option(None, "--salary-max"),
+    salary_currency: str | None = typer.Option(
+        None,
+        "--salary-currency",
+        help="e.g. USD — when a salary bound is set, drop other currencies",
+    ),
+    min_years: int | None = typer.Option(
+        None, "--min-years", help="minimum years of experience required"
+    ),
+    max_years: int | None = typer.Option(
+        None, "--max-years", help='maximum years of experience (e.g. --max-years 2 for "new grad")'
+    ),
+    include_unknown_years: bool = typer.Option(
+        True, "--include-unknown-years/--strict-years", help="keep roles with no stated years"
+    ),
+    employment_type: str | None = typer.Option(
+        None, "--employment-type", help="full_time/part_time/contract/internship/temporary"
+    ),
+    posted_within_days: int | None = typer.Option(
+        None, "--posted-within-days", help="only roles posted within the last N days"
+    ),
     visa_sponsor: bool = typer.Option(
         False, "--visa-sponsor", help="only employers known to sponsor H-1B (DoL LCA data)"
     ),
@@ -127,9 +150,16 @@ def search(
     as_json: bool = typer.Option(False, "--json", help="emit JSON instead of a table"),
 ) -> None:
     """Search jobs across all sources."""
-    from .models import JobLevel
+    from datetime import datetime, timedelta, timezone
+
+    from .models import EmploymentType, JobLevel
     from .sync import search as run_search
 
+    posted_after = (
+        datetime.now(timezone.utc) - timedelta(days=posted_within_days)
+        if posted_within_days and posted_within_days > 0
+        else None
+    )
     try:
         result = run_search(
             keywords,
@@ -141,8 +171,15 @@ def search(
             sector=sector,
             include_unknown_sector=include_unknown_sector,
             country=country,
+            city=city,
             salary_min=salary_min,
             salary_max=salary_max,
+            salary_currency=salary_currency,
+            min_years=min_years,
+            max_years=max_years,
+            include_unknown_years=include_unknown_years,
+            employment_type=EmploymentType(employment_type) if employment_type else None,
+            posted_after=posted_after,
             visa_sponsor=True if visa_sponsor else None,
             sponsorship_offered=True if sponsorship else None,
             infer_level_from_experience=infer_level,
@@ -150,7 +187,7 @@ def search(
             limit=limit,
         )
     except ValueError as exc:
-        err_console.print(f"[red]invalid level:[/] {exc}")
+        err_console.print(f"[red]invalid level/employment-type:[/] {exc}")
         raise typer.Exit(code=1) from exc
     except (ErgonTrackerError, NotImplementedError, ImportError) as exc:
         err_console.print(f"[red]search failed:[/] {exc}")
