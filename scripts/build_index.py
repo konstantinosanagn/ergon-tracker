@@ -87,7 +87,7 @@ async def _crawl(limit_companies: int) -> list:
                 continue
             if entry.get("domain") and not job.company_domain:
                 job.company_domain = entry["domain"]
-            enrich_in_place(job, company_key=key)
+            enrich_in_place(job, company_key=key, infer_level_from_experience=True)
             jobs.append(job)
 
     async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
@@ -289,7 +289,7 @@ async def _crawl_due(
                     continue
                 if e.get("domain") and not job.company_domain:
                     job.company_domain = e["domain"]
-                enrich_in_place(job, company_key=regkey)
+                enrich_in_place(job, company_key=regkey, infer_level_from_experience=True)
                 board_jobs.append(job)
                 outcome[bkey]["companies"].add(normalize_company(job.company))
             if board_jobs:
