@@ -27,7 +27,24 @@ from .providers.base import iter_providers, load_builtins, load_plugins
 from .registry.resolver import resolve
 from .registry.store import SeedRegistry
 
-mcp = FastMCP("ergon-tracker")
+_INSTRUCTIONS = """\
+ergon-tracker: unified job search across company ATS feeds (49k+ boards) + aggregators.
+
+Index vs. live — how to choose your `search_jobs` call:
+- "roles at <company>" → pass `companies=[...]` (domains/careers URLs). This fetches LIVE from
+  that company's ATS: fresh and exact. Use it whenever the user names a specific employer.
+- "find me <X> jobs" (broad discovery, no specific company) → leave `companies` and `sources`
+  empty. This serves from the prebuilt INDEX: fast, throttle-proof, complete coverage across
+  every board we track.
+- Every index-served response carries `as_of` (the `build-…` id) in its `health`, so freshness
+  is always visible. The index is a daily snapshot and can lag a known company's live board by a
+  day or two — if a user needs guaranteed up-to-the-second results for a named company, target it
+  LIVE via `companies=[...]` even for an otherwise-broad query.
+- Passing ATS provider names in `sources` (e.g. greenhouse, lever) forces a deliberate live crawl
+  of those providers — slower; only do it when explicitly scoping to a provider.
+"""
+
+mcp = FastMCP("ergon-tracker", instructions=_INSTRUCTIONS)
 
 
 def _days_ago(days: int | None) -> datetime | None:
