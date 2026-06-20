@@ -16,7 +16,7 @@
 3. **Free-API aggregators converge on the same providers jobspine uses** (Remotive, Arbeitnow, Adzuna, Jooble, JSearch, USAJOBS) — validating provider choices. Differentiation comes from **ATS-direct coverage + extraction quality**, not from chasing more free boards.
 4. **Two sourcing strategies exist, with different durability:**
    - *Board scraping* (JobSpy): broad reach, fragile, proxy-dependent, ToS-gray.
-   - *ATS-API direct* (jobspine's lane): narrower per-source but durable, clean JSON, no browser.
+   - *ATS-API direct* (jobspine's lane): narrower per-source but durable, clean JSON, no full browser (curl_cffi TLS-impersonation for a few TLS/WAF-walled boards; still no JS runtime, proxies, or keys).
 
 ---
 
@@ -151,7 +151,7 @@ Read at the source level on 2026-06-16 (jobhive @ `b45c12a` 2026-05-30; careersc
 | Shape | Installable SDK, **live fetch at call time** | SDK **+ batch pipeline** publishing a dataset to R2/CDN | Distributed crawl **infrastructure** (Kafka/Postgres/Fargate) |
 | Discovery | `seed.json` (**~49,000** verified-live boards: curated + jobhive-CSV ingest + brute-force/Common-Crawl discovery) + offline resolver + dormant HTML-signature probe | Curated CSVs (**63,390** tenants, 26 ATSes) maintained by PRs | Automated: Majestic Million + crt.sh + Common Crawl → probe |
 | ATS-direct scrapers | **8** (GH, Lever, Ashby, Workday, SmartRecruiters, Workable, Recruitee, Personio) | ~26 multi-tenant ATS + 7 big-tech + 4 govt + ~11 boards (**49 modules**) | **15** probers + dynamic XHR shape classifier |
-| Fetch method | Public JSON/XML APIs only — **no browser, no auth, no keys** | Public APIs + **stealth browser** (Tesla/Meta) + TLS-impersonation | Headless Chrome to *discover* endpoints, then **raw HTTP replay** |
+| Fetch method | Public JSON/XML APIs + **curl_cffi TLS-impersonation** for a few TLS/WAF-walled boards — **no full browser, no proxies, no keys** | Public APIs + **stealth browser** (Tesla/Meta) + TLS-impersonation | Headless Chrome to *discover* endpoints, then **raw HTTP replay** |
 | Freshness | **Live at query time** | Snapshot dataset (as fresh as last pipeline run) | Scheduled re-fetch (+6h) / replay loop |
 | Dedup | Cross-source, company-blocked, rapidfuzz ≥90, **provenance union** | 5-pass, rapidfuzz ≥90, ATS-priority survivor | DB upsert on `(source_id, external_id)` |
 | Enrichment | Deterministic: level, comp, yoe, sector, geo gazetteer | Deterministic, narrow (remote-from-title, salary regex); LLM deferred | regex + optional **Gemini Flash** schema auto-detect |
@@ -170,12 +170,12 @@ Read at the source level on 2026-06-16 (jobhive @ `b45c12a` 2026-05-30; careersc
 2. **Cleanest consumption** — typed SDK + CLI + **working MCP server** with per-source health. jobhive has no MCP; careerscout has no client surface.
 3. **Best enrichment** — our level/comp/yoe/sector/geo extractors dwarf jobhive's two rules and careerscout's regex.
 4. **Cross-source merge with provenance union** — collapsing a Greenhouse posting + a RemoteOK re-list into one job, both sources attributed. Neither competitor does this.
-5. **No browser, no proxies, no keys** — lowest operational burden; trivially embeddable.
+5. **No full browser, no proxies, no keys** — public APIs plus curl_cffi TLS-impersonation for a handful of TLS/WAF-walled boards (no JS runtime). Lowest operational burden; trivially embeddable.
 
 **Where jobspine is behind (honestly):**
 1. **Coverage: ~49,000 vs jobhive's 63,390 tenants.** Still behind on absolute count, but now the same order of magnitude (we extracted ~89% of jobhive) — no longer the chasm it once was.
 2. **No automated discovery wired in.** `aresolve()` (HTML-signature probe) exists but the engine never calls it; today growth = hand-editing `seed.json`.
-3. **No bot-defense story.** Clean public APIs only. Workday-at-scale, Tesla, Meta, Akamai-fronted boards are walls jobhive solved with stealth browsers and careerscout with eBPF/replay.
+3. **Partial bot-defense story.** curl_cffi TLS-impersonation now cracks several TLS/WAF-walled boards no-JS (PageUp via the canonical host, Akamai-fronted schema.org pages, PeopleSoft's ICAction postback, Salesforce-Aura guest endpoints), and a one-time Playwright *discovery* pass captures a request to replay headlessly. But there's still no stealth-browser/proxy answer for the hardest JS-challenge/fingerprinting walls (Tesla/Meta-class) that jobhive solved with stealth browsers and careerscout with eBPF/replay.
 
 ### Three ideas worth borrowing (concept, not code — they're Go/pipeline-shaped)
 
