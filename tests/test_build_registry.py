@@ -80,6 +80,33 @@ def test_dedupe_best_prefers_more_jobs_then_ats_priority():
     assert best2["acme"][0]["ats"] == "greenhouse"
 
 
+def test_trusted_empties_only_json_providers_and_clean_empty():
+    # dead = (entry, token, err). Only err=None (clean empty) on a trusted JSON ATS onboards.
+    dead = [
+        ({"company": "a", "ats": "greenhouse"}, "a", None),  # trusted + empty -> yes
+        ({"company": "b", "ats": "lever"}, "b", None),  # trusted + empty -> yes
+        ({"company": "c", "ats": "join"}, "c", None),  # untrusted (HTML) -> no
+        ({"company": "d", "ats": "personio"}, "d", None),  # untrusted (feed) -> no
+        ({"company": "e", "ats": "greenhouse"}, "e", "HTTPStatusError: 404"),  # gone -> no
+        ({"company": "f", "ats": "ashby"}, "f", "ReadTimeout"),  # transient -> no
+    ]
+    out = br.trusted_empties(dead, br.TRUSTED_EMPTY_PROVIDERS)
+    assert sorted(e["company"] for e, _t in out) == ["a", "b"]
+
+
+def test_trusted_provider_allowlist_excludes_html_scrapers():
+    assert {"greenhouse", "lever", "ashby", "workable"} <= br.TRUSTED_EMPTY_PROVIDERS
+    assert br.TRUSTED_EMPTY_PROVIDERS.isdisjoint({"join", "personio", "jazzhr"})
+
+
+def test_dedupe_best_prefers_live_over_empty_same_company():
+    gh_empty = {"company": "acme", "ats": "greenhouse"}
+    lv_live = {"company": "acme", "ats": "lever"}
+    best = br.dedupe_best([(gh_empty, 0, "acme"), (lv_live, 2, "acme")])
+    assert best["acme"][0]["ats"] == "lever"  # live (2 jobs) beats empty (0)
+    assert best["acme"][1] == 2
+
+
 def test_partition_splits_live_from_dead_carrying_err():
     results = {
         0: ({"company": "a", "ats": "lever"}, 4, "a", None),

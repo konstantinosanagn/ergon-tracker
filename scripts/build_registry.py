@@ -15,7 +15,11 @@ tunable so a recovery run can pace itself well under the ATS limits.
 Usage:
     .venv/bin/python scripts/build_registry.py [candidates.json] [--dry-run]
         [--concurrency N] [--per-host-rate N] [--timeout SECS] [--retries N]
-        [--gentle] [--no-retry-transient]
+        [--gentle] [--no-retry-transient] [--onboard-empty]
+
+``--onboard-empty`` also registers confirmed-empty boards (HTTP 200, valid, 0 jobs) on trusted
+JSON ATSes, so the daily build (which only crawls boards already in the registry) will pick up
+their future postings. Off by default (strict >=1-job gate).
 """
 
 from __future__ import annotations
@@ -180,6 +184,41 @@ def is_transient(err: str | None) -> bool:
     return classify_dead(err) in _TRANSIENT_CATEGORIES
 
 
+# Providers that fetch a pure JSON API: a 200 with an empty job list unambiguously means "this
+# board exists and simply has no openings right now" (a non-existent token 404s instead). For
+# these we can safely ONBOARD an empty board so the daily build picks up its FUTURE postings
+# (the daily crawl only visits boards already in the registry — it never discovers new ones).
+# HTML/feed scrapers (personio, join, jazzhr — all get_text) are excluded: an "empty" parse
+# there can mean a changed page, not a confirmed-empty board.
+TRUSTED_EMPTY_PROVIDERS = frozenset(
+    {
+        "greenhouse",
+        "lever",
+        "ashby",
+        "smartrecruiters",
+        "workable",
+        "recruitee",
+        "bamboohr",
+        "breezy",
+        "teamtailor",
+        "rippling",
+        "pinpoint",
+    }
+)
+
+
+def trusted_empties(
+    dead: list[tuple[dict, str, str | None]], trusted: frozenset[str]
+) -> list[tuple[dict, str]]:
+    """From the dead set, the confirmed-empty boards on trusted JSON ATSes — onboardable as
+    zero-job registry entries (returns (entry, token))."""
+    return [
+        (entry, token)
+        for entry, token, err in dead
+        if classify_dead(err) == "empty" and entry["ats"] in trusted
+    ]
+
+
 def partition(
     results: dict[int, tuple[dict, int, str, str | None]],
 ) -> tuple[list[tuple[dict, int, str]], list[tuple[dict, str, str | None]]]:
@@ -285,6 +324,7 @@ async def main() -> None:
     dry_run = "--dry-run" in sys.argv
     gentle = "--gentle" in sys.argv
     retry_transient = "--no-retry-transient" not in sys.argv
+    onboard_empty = "--onboard-empty" in sys.argv
     # Defaults: the historical pacing (conc=12, rate=8). `--gentle` paces phase 1 like phase 2's
     # recovery profile (best for a re-verify of an already-throttled set). Explicit flags win.
     base = (
@@ -359,15 +399,25 @@ async def main() -> None:
                 f"final dead-by-reason={dict(cats)}"
             )
 
-    best = dedupe_best(verified)
+    # Pool the live boards with, optionally, confirmed-empty boards on trusted JSON ATSes
+    # (count=0). dedupe_best keeps a live board over an empty one for the same company, and lets
+    # ATS priority break ties among empties.
+    pool = list(verified)
+    empties: list[tuple[dict, str]] = []
+    if onboard_empty:
+        empties = trusted_empties(dead, TRUSTED_EMPTY_PROVIDERS)
+        pool += [(entry, 0, token) for entry, token in empties]
+        print(f"\nonboard-empty: {len(empties)} confirmed-empty boards on trusted JSON ATSes")
+    best = dedupe_best(pool)
 
     # Read-merge-write under the lock so concurrent runs compose instead of clobbering.
     with seed_lock():
         seed = json.loads(SEED.read_text())
         companies: dict[str, dict] = seed["companies"]
         added = 0
+        added_empty = 0
         purged = purge_demo_boards(companies)  # self-heal: drop any demo board already present
-        for key, (entry, _count, token) in sorted(best.items()):
+        for key, (entry, count, token) in sorted(best.items()):
             # Registry keys are always lowercase; the token keeps its case (some ATSes, e.g.
             # SmartRecruiters, are case-sensitive on the token but not the company key).
             lk = key.lower()
@@ -379,6 +429,8 @@ async def main() -> None:
                 "domain": entry.get("domain"),
             }
             added += 1
+            if count == 0:
+                added_empty += 1
 
         seed["_meta"]["version"] = 2
         seed["_meta"]["updated"] = "2026-06-16"
@@ -391,7 +443,10 @@ async def main() -> None:
         for entry, _c, _t in best.values():
             by_ats[entry["ats"]] = by_ats.get(entry["ats"], 0) + 1
         print(f"unique verified by ats: {by_ats}")
-        print(f"added={added}  purged_demo={purged}  registry_total={len(companies)}")
+        print(
+            f"added={added} (of which empty-onboarded={added_empty})  "
+            f"purged_demo={purged}  registry_total={len(companies)}"
+        )
         if dead:
             print("\nDEAD (first 20):")
             for entry, _token, err in dead[:20]:
