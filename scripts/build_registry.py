@@ -226,7 +226,9 @@ async def main() -> None:
         if dry_run:
             print("\n--dry-run: seed.json NOT written")
             return
-        SEED.write_text(json.dumps(seed, indent=2, ensure_ascii=False) + "\n")
+        # indent=1 matches the committed seed.json format (the curated file uses 1-space
+        # indent); writing indent=2 here would re-indent all ~49k lines on every merge.
+        SEED.write_text(json.dumps(seed, indent=1, ensure_ascii=False) + "\n")
         print(f"\nwrote {SEED.relative_to(ROOT)}")
 
 
