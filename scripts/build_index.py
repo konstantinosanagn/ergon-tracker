@@ -136,6 +136,33 @@ async def _crawl(limit_companies: int, network_pages: int = 0) -> list:
     return deduplicate(jobs)
 
 
+async def _fold_network_into_fresh(fresh_path, network_pages: int, build_id: str) -> set[str]:
+    """Append the workable_network bulk feed into a streaming crawl's ``fresh.sqlite`` and return
+    the set of normalized company keys it added.
+
+    Used by the incremental build: the fresh rows flow into the final index via
+    ``build_index_from_fresh_db`` (INSERT ... FROM fr.jobs), and returning the company keys lets
+    the caller add them to ``crawled_keys`` so ``carry_forward`` treats those companies as
+    refreshed — otherwise a network company that also had a prior per-board row would be carried
+    forward as a stale duplicate.
+    """
+    from ergon_tracker.dedup import deduplicate, normalize_company
+    from ergon_tracker.index.build import append_jobs
+    from ergon_tracker.index.db import connect
+
+    net = deduplicate(await _crawl_network(network_pages))
+    if not net:
+        return set()
+    con = connect(fresh_path)
+    try:
+        con.execute("PRAGMA foreign_keys = OFF")  # companies are aggregated later, at finalize
+        append_jobs(con, net, build_id=build_id)
+        con.commit()
+    finally:
+        con.close()
+    return {normalize_company(j.company) for j in net}
+
+
 def _today() -> str:
     from datetime import datetime, timezone
 
@@ -569,10 +596,15 @@ def main(argv: list[str]) -> None:
         # Streaming crawl over a rotating window: jobs stream to fresh.sqlite as boards complete.
         fresh_path = out / "fresh.sqlite"
         outcome, next_cursor = anyio.run(_crawl_due, limit, states, fresh_path, build_id, cursor)
+        # Fold the first-party Workable network feed into the same fresh.sqlite (its rows flow into
+        # the index alongside the crawled boards). Done before changed_companies_sql so new network
+        # companies register as changed.
+        net_keys = anyio.run(_fold_network_into_fresh, fresh_path, network_pages, build_id)
         changed = changed_companies_sql(fresh_path, prev_db)  # SQL diff, no jobs in memory
         crawled_keys: set = (
             set().union(*(o["companies"] for o in outcome.values())) if outcome else set()
         )
+        crawled_keys |= net_keys  # network companies are refreshed -> no stale carry-forward dupes
         # fold each board's outcome back into its state (tiering + throttle back-pressure)
         for bkey, o in outcome.items():
             board_changed = bool(o["companies"] & changed)

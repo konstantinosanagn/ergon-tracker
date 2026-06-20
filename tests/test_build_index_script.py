@@ -7,7 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_index import _crawl_network, publish_artifacts  # noqa: E402
+from build_index import (  # noqa: E402
+    _crawl_network,
+    _fold_network_into_fresh,
+    publish_artifacts,
+)
 
 from ergon_tracker.index.build import build_index  # noqa: E402
 from ergon_tracker.models import JobPosting  # noqa: E402
@@ -49,6 +53,58 @@ def test_crawl_network_folds_in_workable_network_jobs():
     assert jobs[0].source == "workable_network"
     assert jobs[0].company == "NetCo"
     assert jobs[0].title == "Platform Engineer"
+
+
+def test_fold_network_into_fresh_appends_and_returns_keys(tmp_path):
+    import anyio
+    import httpx
+    import respx
+
+    from ergon_tracker.dedup import normalize_company
+    from ergon_tracker.index.db import connect, fresh_db
+
+    fresh = tmp_path / "fresh.sqlite"
+    fresh_db(fresh)  # create the index schema the incremental crawl streams into
+
+    page = {
+        "jobs": [
+            {
+                "id": "fn1",
+                "title": "SRE",
+                "company": {"title": "FoldCo", "website": "https://foldco.com"},
+                "workplace": "remote",
+                "employmentType": "Full-time",
+                "location": {"city": "Austin", "subregion": None, "countryName": "United States"},
+                "created": "2026-06-19T00:00:00.000Z",
+                "url": "https://jobs.workable.com/view/fn1/x",
+                "description": "<p>Run things.</p>",
+            }
+        ],
+        "nextPageToken": None,
+    }
+    with respx.mock:
+        respx.get("https://jobs.workable.com/api/v1/jobs").mock(
+            return_value=httpx.Response(200, json=page)
+        )
+        keys = anyio.run(_fold_network_into_fresh, fresh, 1, "build-test")
+
+    assert keys == {normalize_company("FoldCo")}
+    con = connect(fresh)
+    try:
+        n = con.execute("SELECT COUNT(*) FROM jobs WHERE source='workable_network'").fetchone()[0]
+    finally:
+        con.close()
+    assert n == 1
+
+
+def test_fold_network_into_fresh_noop_when_disabled(tmp_path):
+    import anyio
+
+    from ergon_tracker.index.db import fresh_db
+
+    fresh = tmp_path / "fresh.sqlite"
+    fresh_db(fresh)
+    assert anyio.run(_fold_network_into_fresh, fresh, 0, "build-test") == set()
 
 
 def test_publish_writes_gz_and_manifest(tmp_path):
