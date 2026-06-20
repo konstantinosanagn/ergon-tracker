@@ -289,6 +289,75 @@ def list_sources() -> dict[str, Any]:
     }
 
 
+@mcp.tool()
+def list_companies(
+    status: str | None = None,
+    query: str | None = None,
+    limit: int = 50,
+) -> dict[str, Any]:
+    """Directory of the companies in our registry with their live posting status.
+
+    Every company we track is either:
+    - ``active``  — has >=1 live posting right now (``open_roles`` gives the count), or
+    - ``dormant`` — registered (a confirmed real board) but with no current openings.
+
+    Status + counts are derived from the latest daily index (recomputed each build, never a stale
+    flag), so a dormant company flips to active automatically once it posts. Returns full totals
+    (``registered``/``active``/``dormant``, plus ``index_only`` = companies with postings that
+    aren't in our registry, e.g. aggregator-only) and a per-company list (each with ``company``,
+    ``ats``, ``domain``, ``status``, ``open_roles``), sorted by ``open_roles`` desc.
+
+    Args:
+        status: filter the list to 'active' or 'dormant' (None = all). Counts are always full.
+        query: case-insensitive substring on the company key.
+        limit: max companies in the list (default 50; counts are unaffected).
+    """
+    import sqlite3
+
+    from .index.cache import IndexCache, cached_index_build_id
+    from .index.coverage import company_directory
+
+    registry = dict(SeedRegistry().all())
+    cache = IndexCache()
+    db = None
+    try:
+        db = cache.ensure_fresh()  # download/refresh like the search path; cached copy on failure
+    except Exception:  # noqa: BLE001 - index is a fast path, never a hard dependency
+        db = None
+    if db is None and cache.db_path.exists():
+        db = cache.db_path
+    if db is None or not db.exists():
+        # No index available: we can still list the registry, all as dormant (unknown postings).
+        return {
+            "registered": len(registry),
+            "active": 0,
+            "dormant": len(registry),
+            "index_only": 0,
+            "as_of": None,
+            "note": "index unavailable; posting status unknown (all shown dormant)",
+            "companies": company_directory(
+                _empty_companies_con(), registry, status=status, query=query, limit=limit
+            )["companies"],
+        }
+    con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    try:
+        result = company_directory(con, registry, status=status, query=query, limit=limit)
+    finally:
+        con.close()
+    result["as_of"] = cached_index_build_id()
+    return result
+
+
+def _empty_companies_con() -> Any:
+    """An in-memory connection with an empty ``companies`` table, so company_directory works (all
+    dormant) when no index is available."""
+    import sqlite3
+
+    con = sqlite3.connect(":memory:")
+    con.execute("CREATE TABLE companies(company_key TEXT, open_roles INTEGER)")
+    return con
+
+
 def main() -> None:
     """Console-script entry point: run the MCP server over stdio."""
     mcp.run()

@@ -11,6 +11,75 @@ from __future__ import annotations
 import sqlite3
 from typing import Any
 
+from ..dedup import normalize_company
+
+
+def company_directory(
+    con: sqlite3.Connection,
+    registry: dict[str, dict[str, Any]],
+    *,
+    status: str | None = None,
+    query: str | None = None,
+    limit: int | None = None,
+) -> dict[str, Any]:
+    """Join the registry (every known board = the universe) with the index's per-company
+    ``open_roles`` to label each registered company **active** (>=1 live posting) or **dormant**
+    (registered, no current postings), and report how many postings each has.
+
+    The join is on ``normalize_company`` of both sides: the registry key is a slug
+    (``palantir-technologies``) while the index ``company_key`` is the normalized company name
+    (``palantir technologies``); ``board_token`` in the index is not the registry token, so it
+    can't be used. Status is *derived per build* (never a stale stored flag) — a company that
+    starts posting flips to active on the next build automatically.
+
+    ``status`` filters the returned list ('active'/'dormant'/None=all); ``query`` is a
+    case-insensitive substring on the company key; ``limit`` caps the list (counts are always the
+    full totals). Companies with postings that aren't in the registry (e.g. aggregator-only) are
+    reported as ``index_only``.
+    """
+    roles: dict[str, int] = {}
+    for company_key, open_roles in con.execute("SELECT company_key, open_roles FROM companies"):
+        n = normalize_company(company_key)
+        roles[n] = roles.get(n, 0) + int(open_roles or 0)
+
+    matched: set[str] = set()
+    companies: list[dict[str, Any]] = []
+    active = 0
+    for key, entry in registry.items():
+        n = normalize_company(key)
+        matched.add(n)
+        open_roles = roles.get(n, 0)
+        is_active = open_roles > 0
+        active += int(is_active)
+        companies.append(
+            {
+                "company": key,
+                "ats": entry.get("ats"),
+                "domain": entry.get("domain"),
+                "status": "active" if is_active else "dormant",
+                "open_roles": open_roles,
+            }
+        )
+    index_only = sum(1 for n, r in roles.items() if r > 0 and n not in matched)
+
+    rows = companies
+    if status in ("active", "dormant"):
+        rows = [c for c in rows if c["status"] == status]
+    if query:
+        q = query.lower()
+        rows = [c for c in rows if q in str(c["company"]).lower()]
+    rows = sorted(rows, key=lambda c: (-c["open_roles"], c["company"]))
+    if limit is not None:
+        rows = rows[:limit]
+
+    return {
+        "registered": len(registry),
+        "active": active,
+        "dormant": len(registry) - active,
+        "index_only": index_only,
+        "companies": rows,
+    }
+
 
 def _counts(con: sqlite3.Connection, col: str, *, limit: int | None = None) -> dict[str, int]:
     """`{value: count}` for a column over active jobs, NULLs skipped, sorted by count desc."""
