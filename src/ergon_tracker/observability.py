@@ -30,6 +30,7 @@ def build_health(
     error: str | None = None,
     elapsed_ms: int = 0,
     truncated: bool = False,
+    as_of: str | None = None,
 ) -> SourceHealth:
     """Thin, explicit constructor for a per-source health record."""
     return SourceHealth(
@@ -39,6 +40,7 @@ def build_health(
         error=error,
         elapsed_ms=elapsed_ms,
         truncated=truncated,
+        as_of=as_of,
     )
 
 

@@ -108,6 +108,10 @@ class ShardedIndexBackend:
         if query.sector:
             slug = sector_slug(query.sector)
             targets = [shards[slug]["file"]] if slug in shards else []
+            # include_unknown_sector keeps no-sector postings too — they live in the 'unknown'
+            # shard, so it must be opened as well or those matches are silently dropped.
+            if query.include_unknown_sector and slug != "unknown" and "unknown" in shards:
+                targets.append(shards["unknown"]["file"])
         else:
             targets = [s["file"] for s in shards.values()]
 

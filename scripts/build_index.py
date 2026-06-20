@@ -102,6 +102,20 @@ def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
+def _build_id() -> str:
+    """Unique id per build: ``build-<date>-<suffix>``.
+
+    Date-only ids repeat across same-day builds, which makes row-level delta chains ambiguous
+    (v2.2). The suffix is the CI run number when available (monotonic, unique per workflow run),
+    else a UTC HHMMSS stamp — so every build is distinctly addressable for from->to delta links.
+    """
+    import os
+    from datetime import datetime, timezone
+
+    suffix = os.environ.get("GITHUB_RUN_NUMBER") or datetime.now(timezone.utc).strftime("%H%M%S")
+    return f"build-{_today()}-{suffix}"
+
+
 def build_and_publish_shards(jobs: list, out: Path, *, build_id: str) -> int:
     """Build per-sector shards from jobs and gzip each for release upload. Returns shard count."""
     from ergon_tracker.index.build import build_sharded_index
@@ -120,6 +134,102 @@ def build_and_publish_shards_from_db(db_path: Path, out: Path, *, build_id: str)
     for info in manifest["shards"].values():
         _gzip_file(out / info["file"], out / (info["file"] + ".gz"))
     return len(manifest["shards"])
+
+
+def build_and_publish_delta(prev_db: Path, curr_db: Path, out: Path, *, build_id: str) -> dict:
+    """Diff the prior published index against the new one and publish a compact row-level delta.
+
+    A returning user one build behind downloads ``index-delta.sqlite.gz`` (only changed/deleted
+    rows — typically a few % of the file) and applies it locally, instead of the whole index.
+    Returns the delta info (or {} when there's no usable prior build).
+    """
+    from ergon_tracker.index.build import build_delta
+    from ergon_tracker.index.db import connect
+
+    try:
+        con = connect(prev_db, read_only=True)
+        row = con.execute("SELECT value FROM meta WHERE key='build_id'").fetchone()
+        con.close()
+        from_build_id = row[0] if row else None
+    except Exception as exc:  # noqa: BLE001 - corrupt/missing prior -> skip delta, full still works
+        print(f"  (skip delta: cannot read prev build_id: {exc})")
+        return {}
+    if not from_build_id or from_build_id == build_id:
+        return {}
+    delta = out / "index-delta.sqlite"
+    info = build_delta(prev_db, curr_db, delta, from_build_id=from_build_id, to_build_id=build_id)
+    sha, nbytes = _gzip_file(
+        delta, out / "index-delta.sqlite.gz"
+    )  # 1-behind fast path (stable name)
+    # Per-build copy (unique name) so a user N>1 builds behind can chain consecutive deltas (v2.2).
+    chain_file = f"index-delta-{build_id}.sqlite.gz"
+    import shutil
+
+    shutil.copyfile(out / "index-delta.sqlite.gz", out / chain_file)
+    delta.unlink(missing_ok=True)
+    manifest = {
+        "schema_version": 1,
+        "from_build_id": from_build_id,
+        "to_build_id": build_id,
+        "sha256": sha,
+        "bytes": nbytes,
+        **info,
+    }
+    (out / "manifest-delta.json").write_text(json.dumps(manifest))
+    _update_deltas_window(
+        out,
+        {
+            "from_build_id": from_build_id,
+            "to_build_id": build_id,
+            "file": chain_file,
+            "sha256": sha,
+            "bytes": nbytes,
+        },
+    )
+    return manifest
+
+
+_DELTA_WINDOW = 10  # how many recent per-build deltas to keep for chaining
+
+
+def _update_deltas_window(out: Path, entry: dict) -> list[str]:
+    """Append a delta to the rolling deltas.json window (last _DELTA_WINDOW), drop stale ones.
+
+    Returns the filenames pruned out of the window so the publish step can delete those release
+    assets. The window must form a contiguous from->to chain ending at the newest build.
+    """
+    path = out / "deltas.json"
+    try:
+        data = json.loads(path.read_text()) if path.exists() else {}
+    except Exception:  # noqa: BLE001
+        data = {}
+    deltas = [d for d in data.get("deltas", []) if d.get("to_build_id") != entry["to_build_id"]]
+    deltas.append(entry)
+    deltas = deltas[-_DELTA_WINDOW:]
+    kept = {d["file"] for d in deltas}
+    pruned = [d["file"] for d in data.get("deltas", []) if d["file"] not in kept]
+    path.write_text(json.dumps({"schema_version": 1, "deltas": deltas}))
+    return pruned
+
+
+def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
+    """Build the slim broad-query tier (no snippet, FTS over title+company) and gzip it.
+
+    Broad keyword/filter queries that need no description hit this (~half the full-file bytes)
+    instead of the full single file. Returns the row count.
+    """
+    from ergon_tracker.index.build import build_slim_index
+
+    slim = out / "index-slim.sqlite"
+    n = build_slim_index(db_path, slim, build_id=build_id)
+    sha, nbytes = _gzip_file(slim, out / "index-slim.sqlite.gz")
+    slim.unlink(missing_ok=True)
+    (out / "manifest-slim.json").write_text(
+        json.dumps(
+            {"build_id": build_id, "schema_version": 1, "sha256": sha, "bytes": nbytes, "rows": n}
+        )
+    )
+    return n
 
 
 def _count_jobs(db_path: Path) -> int:
@@ -185,6 +295,26 @@ def _gated_publish(
     return True
 
 
+def _new_boards(registry_items, states: dict, cap: int = 2000) -> list:
+    """Registry boards with no board_state entry yet (added since the last build), capped.
+
+    These get crawled in the next build regardless of the rotating cursor, so freshly-captured ATS
+    boards become queryable immediately instead of waiting for the window to reach them. The cap
+    keeps a cold start (everything unseen) bounded to the window size.
+    """
+    from ergon_tracker.index.scheduler import BoardState
+
+    out: list = []
+    for key, e in registry_items:
+        if len(out) >= cap:
+            break
+        if not (e.get("ats") and e.get("token")):
+            continue
+        if BoardState(provider=e["ats"], token=e["token"]).key not in states:
+            out.append((key, e))
+    return out
+
+
 def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
     """Return (window, next_cursor): a rotating slice of crawlable registry boards.
 
@@ -235,6 +365,19 @@ async def _crawl_due(
         bs = BoardState(provider=e["ats"], token=e["token"])
         boards[bs.key] = (key, e)
         states.setdefault(bs.key, bs)
+    # Also crawl NEVER-SEEN boards (added to the registry since the last build) regardless of the
+    # cursor, so fresh captures appear in the very next build instead of waiting for the window to
+    # rotate to them. Bounded so a cold start (everything unseen) still respects the window size.
+    if len(states) > limit_companies:  # past the initial cold-start rotation
+        from ergon_tracker.registry.store import SeedRegistry
+
+        new = _new_boards(SeedRegistry().all().items(), states)
+        for key, e in new:
+            bs = BoardState(provider=e["ats"], token=e["token"])
+            boards[bs.key] = (key, e)
+            states[bs.key] = bs
+        if new:
+            print(f"  + {len(new)} never-seen board(s) pulled in ahead of the cursor")
     due = set(due_boards(list(states.values()), _today())) & set(boards)
 
     outcome: dict[str, dict] = {
@@ -364,7 +507,7 @@ def main(argv: list[str]) -> None:
             return
     out.mkdir(parents=True, exist_ok=True)
     db = out / "index.sqlite"
-    build_id = f"build-{_today()}"
+    build_id = _build_id()
 
     if incremental:
         from ergon_tracker.index.build import (
@@ -406,7 +549,16 @@ def main(argv: list[str]) -> None:
         n = build_index_from_fresh_db(
             fresh_path, db_tmp, build_id=build_id, prev_db=prev_db, crawled_keys=crawled_keys
         )
+        # Preserve the prior index (move aside, instant on same fs) so we can diff it for the delta
+        # AFTER the gated promote overwrites `db`. Build_index_from_fresh_db has already read it.
+        prev_snap = None
+        if prev_db is not None and db.exists():
+            prev_snap = out / "index.prev.sqlite"
+            db.replace(prev_snap)
         ok = _gated_publish(db_tmp, db, out, build_id=build_id, prev_row_count=prev_row_count)
+        if not ok and prev_snap is not None:
+            prev_snap.replace(db)  # gates failed -> restore the previous snapshot
+            prev_snap = None
         append_history(
             out / "history.jsonl",
             {
@@ -429,6 +581,19 @@ def main(argv: list[str]) -> None:
         if ok and sharded:
             ns = build_and_publish_shards_from_db(db, out, build_id=build_id)
             print(f"  + published {ns} sector shards")
+            nslim = build_and_publish_slim(db, out, build_id=build_id)
+            print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
+        if ok and prev_snap is not None and prev_snap.exists():
+            try:
+                di = build_and_publish_delta(prev_snap, db, out, build_id=build_id)
+                if di:
+                    print(
+                        f"  + published delta {di['from_build_id']}->{di['to_build_id']} "
+                        f"({di.get('upserts', 0)} upserts, {di.get('deletes', 0)} deletes, "
+                        f"{di.get('bytes', 0) / 1e6:.1f}MB)"
+                    )
+            finally:
+                prev_snap.unlink(missing_ok=True)  # reclaim the ~500MB snapshot
         print(
             f"incremental build: crawled {len(outcome)} due boards, {fresh_jobs_count} fresh jobs, "
             f"{n} total{' -> published' if ok else ' (gates FAILED, kept previous)'}"
@@ -445,6 +610,8 @@ def main(argv: list[str]) -> None:
     if sharded:
         ns = build_and_publish_shards(jobs, out, build_id=build_id)
         print(f"  + published {ns} sector shards")
+        nslim = build_and_publish_slim(db, out, build_id=build_id)
+        print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
     print(f"built index: {n} jobs -> {out}/index.sqlite.gz (+manifest.json)")
 
 

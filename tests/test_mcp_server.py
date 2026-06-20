@@ -116,3 +116,69 @@ async def test_search_jobs_broad_falls_back_to_aggregators_when_index_down(monke
     monkeypatch.setattr(srv, "AsyncErgonTracker", lambda *a, **k: _FakeJS())
     await srv.search_jobs(keywords="nurse", limit=5)
     assert set(captured["sources"]) == set(srv.AGGREGATOR_PROVIDERS)  # aggregators, not 46k boards
+
+
+async def test_search_jobs_forwards_new_filters_to_index(monkeypatch) -> None:
+    # The years/employment/currency/recency filters must reach the SearchQuery the index sees,
+    # so a friend can use them via MCP (the years filter is the "0-2 yrs / new grad" use case).
+    from ergon_tracker.index import router
+    from ergon_tracker.models import EmploymentType
+
+    captured = {}
+
+    def fake_try_index(q):
+        captured["q"] = q
+        return []  # serve from index, empty result
+
+    monkeypatch.setattr(router, "try_index", fake_try_index)
+    out = await srv.search_jobs(
+        keywords="engineer",
+        min_years=0,
+        max_years=2,
+        include_unknown_years=False,
+        employment_type="full_time",
+        salary_min=140000,
+        salary_currency="USD",
+        posted_within_days=30,
+    )
+    assert out["health"][0]["source"] == "index"  # served from index, throttle-proof
+    q = captured["q"]
+    assert q.min_years == 0 and q.max_years == 2 and q.include_unknown_years is False
+    assert q.employment_type == EmploymentType.FULL_TIME
+    assert q.salary_min == 140000 and q.salary_currency == "USD"
+    assert q.posted_after is not None  # posted_within_days -> cutoff datetime
+
+
+async def test_job_dict_includes_years_and_core_fields() -> None:
+    # "fetch information": the agent-facing dict must surface the rich fields, incl. the years a
+    # role requires (so a years-filtered result can show why it matched).
+    from ergon_tracker.models import JobPosting, Salary
+
+    j = JobPosting.create(
+        source="greenhouse",
+        source_job_id="1",
+        company="Co",
+        title="SWE",
+        years_experience_min=0,
+        years_experience_max=2,
+        salary=Salary(min_amount=140000, max_amount=180000, currency="USD"),
+    )
+    d = srv._job_to_dict(j)
+    assert d["years_min"] == 0 and d["years_max"] == 2
+    assert d["salary"]["currency"] == "USD"
+    for k in ("company", "title", "apply_url", "level", "sector", "posted_at", "visa_sponsor"):
+        assert k in d
+
+
+async def test_index_health_reports_freshness(monkeypatch) -> None:
+    # The index health must carry as_of (which daily build served the query) so an agent can judge
+    # data freshness.
+    from ergon_tracker.index import router
+
+    monkeypatch.setattr(router, "try_index_ranked", lambda q: [])
+    monkeypatch.setattr(
+        "ergon_tracker.index.cache.cached_index_build_id", lambda *a, **k: "build-2026-06-19-42"
+    )
+    out = await srv.search_jobs(keywords="engineer")
+    assert out["health"][0]["source"] == "index"
+    assert out["health"][0]["as_of"] == "build-2026-06-19-42"

@@ -68,6 +68,9 @@ ATS_PRIORITY = {
     "oracle": 16,
     "jobdiva": 16.5,  # authoritative staffing/IT-firm candidate portal (own JSON API)
     "ripplehire": 16.6,  # IT-services career-site ATS (own XML API): Mphasis, CitiusTech
+    "zwayam": 16.7,  # Indian IT-services ATS (public.zwayam.com 2-step ES API): Tavant
+    "ceipal": 16.8,  # dominant US/Indian IT-staffing ATS (careerapi.ceipal.com referer-gated API)
+    "radancy": 16.9,  # Radancy/TalentBrew /search-jobs server-rendered board: PwC, Carnival
     "taleo": 17,
     "taleobe": 17.5,  # Taleo Business Edition (CwsV2 HTML)
     "icims": 18,
@@ -92,6 +95,22 @@ def token_for(entry: dict) -> str:
     if entry["ats"] == "workday":
         return f"{entry['tenant']}|{entry['wd']}|{entry['site']}"
     return entry["token"]
+
+
+def is_demo_board(ats: str | None, token: str | None) -> bool:
+    """True for vendor demo/training boards that carry FAKE postings (e.g. Lever's 'leverdemo*'
+    accounts list 'Truck Driver'/'Computer Builder' with nonsense salaries). These pollute the
+    index, so they're denied at registry-build time and purged on every run."""
+    t = str(token or "").lower()
+    return ats == "lever" and t.startswith("leverdemo")
+
+
+def purge_demo_boards(companies: dict) -> int:
+    """Drop any demo/test boards already in the registry (self-healing if one slips back in)."""
+    dead = [k for k, e in companies.items() if is_demo_board(e.get("ats"), e.get("token"))]
+    for k in dead:
+        del companies[k]
+    return len(dead)
 
 
 async def verify_one(
@@ -174,11 +193,12 @@ async def main() -> None:
         seed = json.loads(SEED.read_text())
         companies: dict[str, dict] = seed["companies"]
         added = 0
+        purged = purge_demo_boards(companies)  # self-heal: drop any demo board already present
         for key, (entry, _count, token) in sorted(best.items()):
             # Registry keys are always lowercase; the token keeps its case (some ATSes, e.g.
             # SmartRecruiters, are case-sensitive on the token but not the company key).
             lk = key.lower()
-            if lk in companies:
+            if lk in companies or is_demo_board(entry["ats"], token):
                 continue
             companies[lk] = {
                 "ats": entry["ats"],
@@ -195,7 +215,7 @@ async def main() -> None:
         for entry, _c, _t in best.values():
             by_ats[entry["ats"]] = by_ats.get(entry["ats"], 0) + 1
         print(f"unique verified by ats: {by_ats}")
-        print(f"added={added}  registry_total={len(companies)}")
+        print(f"added={added}  purged_demo={purged}  registry_total={len(companies)}")
         if dead:
             print("\nDEAD (first 20):")
             for entry, err in dead[:20]:

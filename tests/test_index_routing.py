@@ -90,6 +90,100 @@ def test_router_skips_shards_for_broad_query(tmp_path, monkeypatch):
     assert out is not None and out[0].title == "Senior Backend Engineer"
 
 
+def test_router_prefers_slim_for_broad_filter_query(tmp_path, monkeypatch):
+    # A broad structured-filter query (no keywords/years/semantic) must use the slim tier and
+    # NOT download the full single-file index.
+    p = tmp_path / "slim.sqlite"
+    build_index(
+        [
+            JobPosting.create(
+                source="greenhouse",
+                source_job_id="1",
+                company="Co",
+                title="Senior Backend Engineer",
+                level=JobLevel.SENIOR,
+            )
+        ],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(router, "_load_slim", lambda: SqliteIndexBackend(p))
+    monkeypatch.setattr(
+        router, "_load_backend", lambda: (_ for _ in ()).throw(AssertionError("used full index"))
+    )
+    out = router.try_index(SearchQuery(level=JobLevel.SENIOR, limit=5))  # no keywords
+    assert out is not None and out[0].title == "Senior Backend Engineer"
+
+
+def test_router_skips_slim_for_keyword_query(tmp_path, monkeypatch):
+    # A keyword query may match in the description (nulled in slim) -> must use the full index.
+    p = tmp_path / "full.sqlite"
+    build_index(
+        [JobPosting.create(source="greenhouse", source_job_id="1", company="Co", title="Engineer")],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(
+        router, "_load_slim", lambda: (_ for _ in ()).throw(AssertionError("slim used for keyword"))
+    )
+    monkeypatch.setattr(router, "_load_backend", lambda: SqliteIndexBackend(p))
+    out = router.try_index(SearchQuery(keywords="engineer", limit=5))
+    assert out is not None
+
+
 def test_env_off_disables_index(monkeypatch):
     monkeypatch.setenv("ERGON_INDEX", "off")
     assert router.try_index(SearchQuery(keywords="x")) is None
+
+
+def test_try_index_ranked_no_semantic_equals_try_index(tmp_path, monkeypatch):
+    from ergon_tracker.index.backend import SqliteIndexBackend
+    from ergon_tracker.index.build import build_index
+
+    p = tmp_path / "i.sqlite"
+    build_index(
+        [
+            JobPosting.create(
+                source="greenhouse", source_job_id=str(i), company="Co", title=f"Engineer {i}"
+            )
+            for i in range(5)
+        ],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(router, "_load_slim", lambda: None)
+    monkeypatch.setattr(router, "_load_backend", lambda: SqliteIndexBackend(p))
+    q = SearchQuery(keywords="engineer", limit=10)
+    assert {j.id for j in router.try_index_ranked(q)} == {j.id for j in router.try_index(q)}
+
+
+def test_try_index_ranked_semantic_degrades_gracefully(tmp_path, monkeypatch):
+    # semantic=True must still return index results even if the reranker is unavailable (the MCP +
+    # engine both rely on this shared path; it must never crash a broad semantic query).
+    from ergon_tracker.index.backend import SqliteIndexBackend
+    from ergon_tracker.index.build import build_index
+
+    p = tmp_path / "i.sqlite"
+    build_index(
+        [
+            JobPosting.create(
+                source="greenhouse", source_job_id=str(i), company="Co", title=f"ML Engineer {i}"
+            )
+            for i in range(5)
+        ],
+        p,
+        build_id="b1",
+    )
+    monkeypatch.setattr(router, "_load_sharded", lambda q: None)
+    monkeypatch.setattr(router, "_load_slim", lambda: None)
+    monkeypatch.setattr(router, "_load_backend", lambda: SqliteIndexBackend(p))
+    # force the reranker import to fail -> must fall back to lexical, not raise
+    monkeypatch.setattr(
+        "ergon_tracker.semantic.get_semantic_reranker",
+        lambda: (_ for _ in ()).throw(RuntimeError("no fastembed")),
+    )
+    out = router.try_index_ranked(SearchQuery(keywords="ml", semantic=True, limit=10))
+    assert out is not None and len(out) >= 1  # graceful lexical fallback

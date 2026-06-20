@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import html as _htmlmod
 import json
 import re
 from datetime import datetime
@@ -63,6 +64,92 @@ def _extract_embed(html: str, script_id: str) -> Any:
         return json.loads(m.group(1).strip())
     except ValueError:
         return {}
+
+
+def _parse_html_table(html: str, spec: dict[str, Any]) -> list[dict[str, Any]]:
+    """Parse a server-rendered HTML ``<table>`` of jobs into record dicts.
+
+    Some body-shops expose their board as a plain HTML table (no JSON API). The spec drives it:
+
+      ``"html_table"``: ``{"row_css": "tbody tr", "skip_rows": 1}`` — CSS for the job rows and how
+      many leading rows to drop (the header).
+      ``"columns"``: per-field extraction, each either ``{"col": N}`` (0-based ``<td>`` text) or
+      ``{"re": "pattern"}`` (first capture group of a regex over the row's inner HTML — handy for an
+      id/url buried in an ``href``). Keys match the ``fields`` map values, so normalize reads them
+      straight through.
+    """
+    from selectolax.parser import HTMLParser
+
+    cfg = spec.get("html_table") or {}
+    row_css = cfg.get("row_css", "tr")
+    skip = int(cfg.get("skip_rows", 0))
+    columns: dict[str, dict[str, Any]] = spec.get("columns") or {}
+    tree = HTMLParser(html)
+    rows = tree.css(row_css)[skip:]
+    out: list[dict[str, Any]] = []
+    for row in rows:
+        cells = row.css("td")
+        inner = row.html or ""
+        rec: dict[str, Any] = {}
+        ok = False
+        for field, how in columns.items():
+            val: str | None = None
+            if "col" in how:
+                i = int(how["col"])
+                if 0 <= i < len(cells):
+                    val = cells[i].text(strip=True)
+            elif "re" in how:
+                m = re.search(how["re"], inner, re.S)
+                if m:
+                    # Regex runs over raw HTML, so decode entities (hrefs carry &amp;) for clean
+                    # ids/urls; cell text() is already entity-decoded by the parser.
+                    val = _htmlmod.unescape((m.group(1) if m.groups() else m.group(0)).strip())
+            if val:
+                ok = True
+            rec[field] = val
+        if ok:
+            out.append(rec)
+    return out
+
+
+_RSS_TAGS = ("title", "link", "guid", "pubDate", "description", "category")
+
+
+def _parse_rss(text: str) -> list[dict[str, Any]]:
+    """Parse an RSS/Atom careers feed (``<item>`` blocks) into record dicts.
+
+    Many WordPress careers sites with no REST job CPT still expose a ``/feed/`` (or
+    ``/careers/feed/``) RSS feed. We extract the standard item tags (CDATA-unwrapped,
+    entity-decoded) keyed by tag name, so the ``fields`` map reads them straight through
+    (e.g. ``"title"``, ``"link"``; use ``link`` as the id when there's no numeric guid).
+    """
+    out: list[dict[str, Any]] = []
+    for block in re.findall(r"<item[ >](.*?)</item>", text, re.S | re.I):
+        rec: dict[str, Any] = {}
+        for tag in _RSS_TAGS:
+            m = re.search(
+                rf"<{tag}[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</{tag}>", block, re.S | re.I
+            )
+            rec[tag] = _htmlmod.unescape(m.group(1).strip()) if m else None
+        if rec.get("title") or rec.get("link"):
+            out.append(rec)
+    return out
+
+
+def _recover_json(text: str) -> Any:
+    """Extract the first valid top-level JSON array embedded in ``text`` that is otherwise junk.
+
+    Some WordPress hosts prepend an adsense ``<script>`` and a PHP "headers already sent" warning
+    before the REST array, so ``resp.json()`` chokes. We scan ``[`` positions and ``raw_decode``
+    (ignores trailing junk), returning the first non-empty list — the job array. Prefer arrays over
+    objects so a stray JS object literal in the junk prefix can't win."""
+    dec = json.JSONDecoder()
+    for m in re.finditer(r"\[", text):
+        with contextlib.suppress(ValueError):
+            obj, _ = dec.raw_decode(text, m.start())
+            if isinstance(obj, list) and obj:
+                return obj
+    return None
 
 
 def _dig(obj: Any, path: list[Any]) -> Any:
@@ -155,6 +242,43 @@ class _BrowserCaller:
         return text
 
 
+class _CurlCaller:
+    """TLS-impersonation client (curl_cffi, Chrome fingerprint) for own-domain JSON APIs behind
+    TLS-fingerprint bot walls (Talemetry/Akamai) that reject httpx outright — same no-browser
+    lever schemaorg uses. Opt-in via spec ``"tls_impersonate": true``; never used in tests (no
+    spec carries the flag), so curl_cffi never bypasses respx in the hermetic suite."""
+
+    def __init__(self, spec: dict[str, Any]) -> None:
+        self._spec = spec
+        self._s: Any = None
+
+    async def open(self) -> None:
+        from curl_cffi.requests import AsyncSession
+
+        self._s = AsyncSession(impersonate="chrome124", verify=False, timeout=30)
+
+    async def close(self) -> None:
+        if self._s is not None:
+            with contextlib.suppress(Exception):
+                await self._s.close()
+
+    async def post_json(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
+        r = await self._s.post(url, json=body, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def get_json(self, url: str, headers: dict[str, str] | None) -> Any:
+        r = await self._s.get(url, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def get_text(self, url: str, headers: dict[str, str] | None) -> str:
+        r = await self._s.get(url, headers=headers)
+        r.raise_for_status()
+        text: str = r.text
+        return text
+
+
 @register("apicapture")
 class ApiCaptureProvider(BaseProvider):
     name = "apicapture"
@@ -191,7 +315,12 @@ class ApiCaptureProvider(BaseProvider):
         # Some own-domain APIs sit behind bot-management that rejects the shared fetcher's HTTP/2 +
         # bot-UA (TikTok USDS -> 405). A browser_http1 spec routes requests through a dedicated
         # HTTP/1.1 + browser-UA client instead (cookie-warmed if warm_url is set).
-        client = _BrowserCaller(spec) if spec.get("browser_http1") else _FetcherCaller(fetcher)
+        if spec.get("tls_impersonate"):
+            client: Any = _CurlCaller(spec)
+        elif spec.get("browser_http1"):
+            client = _BrowserCaller(spec)
+        else:
+            client = _FetcherCaller(fetcher)
 
         limit = query.limit
         raws: list[RawJob] = []
@@ -207,22 +336,33 @@ class ApiCaptureProvider(BaseProvider):
                 if spec.get("size_path"):
                     _set(body, spec["size_path"], size)
                 try:
-                    if embed:
+                    if spec.get("html_table"):
+                        page_url = _set_query(url, page_param, offset) if page_param else url
+                        html = await client.get_text(page_url, headers)
+                        records = _parse_html_table(html, spec)
+                    elif spec.get("rss"):
+                        page_url = _set_query(url, page_param, offset) if page_param else url
+                        records = _parse_rss(await client.get_text(page_url, headers))
+                    elif embed:
                         page_url = _set_query(url, page_param, offset) if page_param else url
                         html = await client.get_text(page_url, headers)
                         data = _extract_embed(html, embed)
+                        records = _dig(data, rec_path)
                     elif method == "POST":
                         data = await client.post_json(url, body, headers)
-                    elif page_param:
-                        data = await client.get_json(_set_query(url, page_param, offset), headers)
+                        records = _dig(data, rec_path)
                     else:
-                        data = await client.get_json(url, headers)
+                        get_url = _set_query(url, page_param, offset) if page_param else url
+                        if spec.get("json_text_recover"):
+                            data = _recover_json(await client.get_text(get_url, headers))
+                        else:
+                            data = await client.get_json(get_url, headers)
+                        records = _dig(data, rec_path)
                 except Exception:
                     break
-                if total is None:
+                if total is None and not (spec.get("html_table") or spec.get("rss")):
                     t = _dig(data, tot_path)
                     total = t if isinstance(t, int) else None
-                records = _dig(data, rec_path)
                 if not isinstance(records, list) or not records:
                     break
                 new = 0

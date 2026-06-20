@@ -45,9 +45,52 @@ adds `index-slim.sqlite.gz` + sha to the manifest.
    to full; default broad keyword matches title/company so slim suffices).
 5. Live dogfood: broad query downloads ~60 MB slim, returns same top results as full.
 
-## Deferred (v2.1)
-Per-tier/shard **deltas** — download only changed rows daily instead of whole files. Bigger once
-the slim tier + shards are the default paths.
+## v2.1 — Row-level deltas (SHIPPED 2026-06-19)
+A returning user one build behind downloads only **changed/deleted rows**, not the whole file.
+- `build_delta(prev_db, curr_db, out)` emits a compact SQLite of `delta_upserts` (rows new or whose
+  content-bearing columns changed — per-build bookkeeping `build_id/fetched_at/last_seen` excluded so
+  unchanged postings aren't re-sent every build) + `delta_deletes` (ids gone) + meta
+  (`from_build_id`/`to_build_id`). `apply_delta(base_db, delta_db)` mutates the cached base in place
+  (refuses unless `base.build_id == delta.from_build_id`), re-aggregates companies, rebuilds FTS,
+  advances `build_id`, integrity-checks.
+- Build publishes `index-delta.sqlite.gz` + `manifest-delta.json` (diff of the prior published index
+  vs the new one). `IndexCache.ensure_fresh` tries the delta first when exactly one build behind,
+  falling back to the full download on any miss (no delta / base mismatch / integrity failure).
+- **Measured:** for a realistic ~4% daily churn over the real 380K-job index, the delta is **2.9 MB
+  gz vs 130 MB full — ~45× smaller**; `apply_delta` reproduces the new index exactly (ids, titles,
+  companies, FTS, integrity).
+
+## v2.2 — Multi-build-behind delta chaining (in progress)
+Today deltas only help a user EXACTLY one build behind; a user N>1 behind full-downloads. Chaining
+lets them apply consecutive deltas (d_{k→k+1}, d_{k+1→k+2}, …) to catch up cheaply.
+
+**Foundation proven (test, shipped):** `apply_delta` already guards `base.build_id ==
+delta.from_build_id` and advances the build_id, so applying deltas in sequence is correct by
+construction — `tests/test_index_delta.py::test_sequential_deltas_chain_to_fresh_build` verifies a
+chained `b0→b1→b2` equals a fresh `b2` build (ids/companies/FTS), and out-of-order application is
+refused.
+
+**PREREQUISITE discovered — unique build_ids.** `build_id` is currently date-only
+(`build-YYYY-MM-DD`) and REPEATS across same-day builds (history shows 4 `build-2026-06-19`
+entries). Chaining needs a unique id per build (else from→to links are ambiguous). But making
+build_id unique *without* chaining wired would make same-day rebuilds look "new" to the cache →
+MORE full re-downloads. So v2.2 must land as ONE coordinated change:
+1. Unique build_id (e.g. append the workflow run-number / a timestamp). Verify the cache
+   "already-current" check + 1-behind delta + gates/history still hold.
+2. Publish per-build delta files (`index-delta-<to>.sqlite.gz`) + a rolling `deltas.json` (last K,
+   pruned), in addition to the existing `index-delta.sqlite.gz` (1-behind fast path).
+3. Workflow: upload the per-build deltas + `deltas.json`; best-effort `gh release delete-asset` for
+   files dropped from the window.
+4. Cache: read `deltas.json`, build a chain local→remote, download+verify+apply each via the
+   existing `apply_delta`; fall back to single-delta then full on any gap.
+
+**Value caveat:** benefits users >1 build behind who need the FULL index (broad keyword queries);
+broad-filter users already have the slim tier and sector users have shards, so the beneficiary set
+is narrow. Schedule against that.
+
+## Deferred (v2.3)
+Per-**shard** deltas (currently deltas cover the single-file index; ShardCache still does
+shard-level conditional fetch).
 
 ## Non-goals
 A server-side query API (not free/static). The index stays a static GH-Release artifact.

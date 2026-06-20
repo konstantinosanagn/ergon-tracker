@@ -125,15 +125,44 @@ _DIRECTOR = re.compile(
 )
 
 _EXECUTIVE = re.compile(
-    r"\b(?:chief|c[etfoi]o|cxo|cmo|cpo|svp|evp|vp|vice president|president)\b",
+    r"\b(?:chief|c[etfoi]o|ciso|chro|cso|cro|cdo|cxo|cmo|cpo|svp|evp|vp"
+    r"|vice president|president)\b",
     re.I,
 )
 
-_PRINCIPAL = re.compile(r"\b(?:principal|distinguished|fellow)\b", re.I)
+_PRINCIPAL = re.compile(r"\b(?:principal|distinguished)\b", re.I)
+# "Fellow" is overloaded: in tech it's the principal-IC rung ("Technical/Distinguished Fellow",
+# "Fellow Engineer"), but in academia/medicine it's an EARLY-CAREER trainee ("Research Fellow",
+# "Postdoctoral Fellow", "Clinical Fellow"). Only the explicitly-tech form maps to principal; the
+# academic/medical forms are handled by _ACADEMIC (-> junior) or left unknown.
+_TECH_FELLOW = re.compile(
+    r"\b(?:technical|distinguished|principal|senior)\s+fellow\b|\bfellow\s+engineer\b", re.I
+)
 # "Member of Technical Staff" / MTS is an IC ladder, NOT staff-level. Handle before _STAFF so
 # "Technical Staff" doesn't trip the plain staff rule.
 _MTS = re.compile(r"\bmember of technical staff\b|\bmts\b", re.I)
 _STAFF = re.compile(r"\bstaff\b", re.I)
+# "Staff X" is the senior IC rung in tech/eng/product, but for many other professions "Staff" just
+# means rank-and-file ("Staff Accountant", "Staff Nurse", "Staff Auditor") — NOT staff-level. These
+# are denied so they fall through to UNKNOWN rather than being mislabelled senior-staff.
+_STAFF_RANKFILE = re.compile(
+    r"\bstaff\s+(?:accountant|nurse|auditor|pharmacist|writer|assistant|clerk|bookkeeper|"
+    r"therapist|technician|attorney|paralegal|cpa|cashier|associate|receptionist|"
+    r"physician|dentist|hygienist|teacher|editor|reporter)\b",
+    re.I,
+)
+# Unambiguous title-only academic/medical conventions (the role noun fixes the level regardless of
+# sector): assistant/associate professor, postdoc, etc. Checked after generic seniority words so an
+# explicit "Senior/Junior" qualifier still wins.
+_ACADEMIC: list[tuple[re.Pattern[str], JobLevel]] = [
+    (re.compile(r"\bassistant professor\b", re.I), JobLevel.ENTRY),
+    (re.compile(r"\bassociate professor\b", re.I), JobLevel.MID),
+    (re.compile(r"\b(?:post-?doctoral|post-?doc)\b", re.I), JobLevel.JUNIOR),
+    (
+        re.compile(r"\b(?:research|postdoctoral|postdoc|teaching|clinical) fellow\b", re.I),
+        JobLevel.JUNIOR,
+    ),
+]
 _LEAD = re.compile(r"\b(?:lead|tech lead|team lead)\b", re.I)
 # "Mid / Senior" combos resolve to mid (lower bound), handled before SENIOR.
 _MID_SENIOR = re.compile(r"\bmid\s*/\s*senior\b", re.I)
@@ -148,7 +177,8 @@ _JUNIOR = re.compile(r"\b(?:junior|jr\.?|jnr)\b", re.I)
 # that the gold set does not treat as entry. Only the leading "Associate, X"
 # form (early-career rotational hires) is matched.
 _ENTRY = re.compile(
-    r"\b(?:entry[- ]level|new ?grad|graduate|trainee|early[- ]career)\b"
+    r"\b(?:entry[- ]level|new ?grads?|graduate|trainee|early[- ]career"
+    r"|campus (?:hire|recruit(?:ing|ment)?))\b"
     r"|^\s*associate,"
     r"|\b(?:business |partner |sales )?development representative\b"
     r"|\bsales development\b"
@@ -163,6 +193,8 @@ _TOK_MID = re.compile(r"\(\s*mid\b|\bmid[- ]level\b", re.I)
 _LADDER = re.compile(r"\b(?:IC|[LEP])-?([1-9])\b")
 # Roman/arabic suffix levels (word boundaries; roman is case-sensitive so "II"
 # is never matched inside lowercase words).
+_ROMAN_PRINCIPAL = re.compile(r"\bVI\b")  # level 6
+_ROMAN_STAFF = re.compile(r"\bV\b")  # level 5 (checked after VI; \bV\b can't match inside "VI")
 _ROMAN_SENIOR = re.compile(r"\b(?:III|IV)\b")
 _ROMAN_MID = re.compile(r"\bII\b")
 _ROMAN_ENTRY = re.compile(r"\bI\b")
@@ -200,6 +232,10 @@ def _parse_level_token(title: str) -> JobLevel | None:
     # Normalise a non-breaking space sometimes embedded in roman suffixes
     # ("Software Engineer I​I") so the roman matcher sees "II".
     t = title.replace("​", "").replace("\xa0", " ")
+    if _ROMAN_PRINCIPAL.search(t):
+        return JobLevel.PRINCIPAL
+    if _ROMAN_STAFF.search(t):
+        return JobLevel.STAFF
     if _ROMAN_SENIOR.search(t):
         return JobLevel.SENIOR
     if _ROMAN_MID.search(t):
@@ -249,12 +285,12 @@ def infer_level(title: str) -> JobLevel:
     # "<function> Manager" titles fall through so the seniority word wins.
     if _is_people_manager(t):
         return JobLevel.MANAGER
-    if _PRINCIPAL.search(t):
+    if _PRINCIPAL.search(t) or _TECH_FELLOW.search(t):
         return JobLevel.PRINCIPAL
     if _MTS.search(t):
         # IC level: default mid, but honor an explicit senior qualifier.
         return JobLevel.SENIOR if _SENIOR.search(t) else JobLevel.MID
-    if _STAFF.search(t):
+    if _STAFF.search(t) and not _STAFF_RANKFILE.search(t):
         return JobLevel.STAFF
     if _LEAD.search(t):
         return JobLevel.LEAD
@@ -266,6 +302,12 @@ def infer_level(title: str) -> JobLevel:
         return JobLevel.JUNIOR
     if _ENTRY.search(t):
         return JobLevel.ENTRY
+
+    # Unambiguous academic/medical role conventions (after generic seniority words so an explicit
+    # "Senior Research Fellow" still resolves to senior via _SENIOR above).
+    for rx, lvl in _ACADEMIC:
+        if rx.search(t):
+            return lvl
 
     token = _parse_level_token(t)
     if token is not None:

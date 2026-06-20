@@ -424,6 +424,192 @@ def build_index_from_fresh_db(
         con.close()
 
 
+# Columns nulled in the slim broad-query tier: heavy/free-text fields a BROAD keyword search
+# doesn't need to match or display. Kept: id, company, title, level, sector, city/country/location,
+# remote, salary*, visa*, sponsorship, apply_url, posted_at, source, status, dates (schema NOT NULL
+# cols must stay). The FTS over title+company+department+snippet auto-shrinks since department +
+# snippet become NULL. content_hash stays (NOT NULL + cheap, 16 hex).
+_SLIM_NULL_COLS = frozenset(
+    {
+        "snippet",
+        "department",
+        "role_family",
+        "company_domain",
+        "listing_url",
+        "board_token",
+        "salary_annual",
+        "years_min",
+        "years_max",
+        "visa_last_filed",
+        "updated_at",
+        "closes_at",
+        "expired_at",
+        "expiry_reason",
+    }
+)
+
+
+def build_slim_index(full_db: Path | str, slim_path: Path | str, *, build_id: str) -> int:
+    """Build the compact broad-query tier from a full index (SQL copy, memory-bounded).
+
+    Same schema as the full index (so SqliteIndexBackend/search_rows work unchanged), but heavy
+    free-text columns are nulled and provenance (job_sources) is skipped, so a BROAD keyword query
+    downloads a much smaller file. Keyword matching still works on title+company (snippet/department
+    nulled -> the FTS shrinks). A query needing the description falls back to the full index.
+    """
+    fresh_db(slim_path)
+    con = connect(slim_path)
+    try:
+        con.execute("PRAGMA foreign_keys = OFF")
+        con.execute("ATTACH DATABASE ? AS full", (str(full_db),))
+        select_cols = ",".join(f"NULL AS {c}" if c in _SLIM_NULL_COLS else c for c in _JOB_COLS)
+        insert_cols = ",".join(_JOB_COLS)
+        con.execute(
+            f"INSERT INTO jobs({insert_cols}) SELECT {select_cols} FROM full.jobs"  # noqa: S608
+        )
+        con.execute(
+            "INSERT INTO companies SELECT * FROM full.companies"  # companies needed for FK + nav
+        )
+        con.commit()
+        con.execute("DETACH DATABASE full")
+        n = con.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+        con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('build_id',?)", (build_id,))
+        con.execute("INSERT OR REPLACE INTO meta(key,value) VALUES('row_count',?)", (str(n),))
+        con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('rebuild')")
+        con.execute("INSERT INTO jobs_fts(jobs_fts) VALUES('optimize')")
+        con.commit()
+        con.execute("ANALYZE")
+        con.execute("VACUUM")  # reclaim the nulled-column slack — being small IS the point here
+        ok = con.execute("PRAGMA integrity_check").fetchone()[0]
+        if ok != "ok":
+            raise IndexBuildError(f"slim integrity_check failed: {ok}")
+        return int(n)
+    finally:
+        con.close()
+
+
+# Per-build bookkeeping that advances for EVERY row each build (even unchanged postings). Excluded
+# from delta change-detection so a delta carries only genuinely changed rows, not the whole index.
+_DELTA_VOLATILE_COLS = frozenset({"build_id", "fetched_at", "last_seen"})
+
+
+def build_delta(
+    prev_db: Path | str,
+    curr_db: Path | str,
+    out_path: Path | str,
+    *,
+    from_build_id: str,
+    to_build_id: str,
+) -> dict[str, Any]:
+    """Emit a compact row-level delta from ``prev_db`` to ``curr_db`` (v2.1 incremental download).
+
+    The delta carries only what changed: ``delta_upserts`` = jobs new in curr or whose
+    content_hash differs (+ their job_sources), and ``delta_deletes`` = ids present in prev but
+    gone in curr. A returning user one build behind downloads this instead of the whole index.
+    Returns ``{upserts, deletes, from_build_id, to_build_id}``.
+    """
+    import sqlite3
+
+    con = sqlite3.connect(str(out_path))
+    try:
+        cols = ",".join(_JOB_COLS)
+        con.execute(f"CREATE TABLE delta_upserts({cols})")  # noqa: S608 - fixed col list
+        con.execute(
+            "CREATE TABLE delta_upserts_sources(job_id,source,source_job_id,apply_url,fetched_at)"
+        )
+        con.execute("CREATE TABLE delta_deletes(id TEXT PRIMARY KEY)")
+        con.execute("CREATE TABLE meta(key TEXT PRIMARY KEY, value TEXT)")
+        con.execute("ATTACH DATABASE ? AS prev", (str(prev_db),))
+        con.execute("ATTACH DATABASE ? AS curr", (str(curr_db),))
+        # upserts: row is new (id not in prev) OR any content-bearing column differs. Per-build
+        # bookkeeping (_DELTA_VOLATILE_COLS) is excluded so an unchanged posting isn't re-sent every
+        # build just because its build_id/fetched_at advanced. NULL-safe via IS.
+        same = " AND ".join(f"p.{c} IS c.{c}" for c in _JOB_COLS if c not in _DELTA_VOLATILE_COLS)
+        con.execute(
+            f"INSERT INTO delta_upserts({cols}) SELECT {cols} FROM curr.jobs c "  # noqa: S608
+            f"WHERE NOT EXISTS (SELECT 1 FROM prev.jobs p WHERE p.id = c.id AND {same})"
+        )
+        con.execute(
+            "INSERT INTO delta_upserts_sources SELECT s.* FROM curr.job_sources s "
+            "WHERE s.job_id IN (SELECT id FROM delta_upserts)"
+        )
+        # deletes: in prev, absent from curr
+        con.execute(
+            "INSERT INTO delta_deletes(id) SELECT p.id FROM prev.jobs p "
+            "WHERE NOT EXISTS (SELECT 1 FROM curr.jobs c WHERE c.id = p.id)"
+        )
+        ups = int(con.execute("SELECT COUNT(*) FROM delta_upserts").fetchone()[0])
+        dels = int(con.execute("SELECT COUNT(*) FROM delta_deletes").fetchone()[0])
+        con.commit()  # release the attached DBs before detaching
+        con.execute("DETACH DATABASE prev")
+        con.execute("DETACH DATABASE curr")
+        meta = {
+            "from_build_id": from_build_id,
+            "to_build_id": to_build_id,
+            "schema_version": str(SCHEMA_VERSION),
+        }
+        con.executemany("INSERT INTO meta(key,value) VALUES(?,?)", list(meta.items()))
+        con.commit()
+        con.execute("VACUUM")  # keep the delta as small as possible — the entire point
+        return {
+            "upserts": ups,
+            "deletes": dels,
+            "from_build_id": from_build_id,
+            "to_build_id": to_build_id,
+        }
+    finally:
+        con.close()
+
+
+def apply_delta(base_db: Path | str, delta_db: Path | str) -> int:
+    """Apply a row-level delta IN PLACE onto a cached base index, advancing it to the delta target.
+
+    Refuses unless the base's build_id equals the delta's ``from_build_id`` (a delta is only valid
+    against the exact build it was diffed from). Deletes gone rows, upserts changed/new rows,
+    re-aggregates companies, rebuilds FTS, advances build_id, and integrity-checks. Returns the
+    resulting job count.
+    """
+    con = connect(base_db)
+    try:
+        con.execute("ATTACH DATABASE ? AS d", (str(delta_db),))
+        dmeta = {r[0]: r[1] for r in con.execute("SELECT key, value FROM d.meta").fetchall()}
+        base_build = con.execute("SELECT value FROM meta WHERE key='build_id'").fetchone()
+        base_build_id = base_build[0] if base_build else None
+        if dmeta.get("from_build_id") != base_build_id:
+            raise IndexBuildError(
+                f"delta from_build_id={dmeta.get('from_build_id')!r} != base build_id="
+                f"{base_build_id!r}; cannot apply"
+            )
+        # FK off during mutation: upserted jobs may reference new company_keys not aggregated yet
+        # (companies are rebuilt below). job_sources for removed ids are cleaned manually since the
+        # ON DELETE CASCADE only fires with FK on. integrity_check in finalize validates the result.
+        con.execute("PRAGMA foreign_keys = OFF")
+        # ids leaving or being replaced -> drop their stale job_sources first
+        con.execute(
+            "DELETE FROM job_sources WHERE job_id IN (SELECT id FROM d.delta_deletes) "
+            "OR job_id IN (SELECT id FROM d.delta_upserts)"
+        )
+        # 1. deletes
+        con.execute("DELETE FROM jobs WHERE id IN (SELECT id FROM d.delta_deletes)")
+        # 2. upserts: drop any existing row with the same id, then insert the new version
+        con.execute("DELETE FROM jobs WHERE id IN (SELECT id FROM d.delta_upserts)")
+        cols = ",".join(_JOB_COLS)
+        con.execute(f"INSERT INTO jobs({cols}) SELECT {cols} FROM d.delta_upserts")  # noqa: S608
+        con.execute(
+            "INSERT OR IGNORE INTO job_sources(job_id,source,source_job_id,apply_url,fetched_at) "
+            "SELECT job_id,source,source_job_id,apply_url,fetched_at FROM d.delta_upserts_sources"
+        )
+        con.commit()
+        con.execute("DETACH DATABASE d")
+        # 3. re-aggregate companies from the mutated jobs table (open_roles etc. shift)
+        con.execute("DELETE FROM companies")
+        to_build_id = dmeta["to_build_id"]
+        n = finalize_index(con, build_id=to_build_id, vacuum=True)
+        return n
+    finally:
+        con.close()
+
+
 def sector_slug(sector: str | None) -> str:
     """Filesystem-safe shard key for a sector ('AI/ML' -> 'ai-ml'); None/empty -> 'unknown'."""
     if not sector:

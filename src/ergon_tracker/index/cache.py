@@ -34,6 +34,25 @@ def _default_cache_dir() -> Path:
     return Path.home() / ".cache" / "ergon-tracker"
 
 
+def cached_index_build_id(cache_dir: Path | None = None) -> str | None:
+    """build_id of the locally-cached index (for freshness reporting), or None if uncached.
+
+    Reads whichever tier manifest is present (full / slim / shards) — all tiers share a build, so
+    any one answers 'how fresh is the data I just served'.
+    """
+    d = Path(cache_dir or _default_cache_dir())
+    for rel in ("manifest.json", "manifest-slim.json", "shards/shards.json"):
+        p = d / rel
+        if p.exists():
+            try:
+                bid = json.loads(p.read_text()).get("build_id")
+                if bid:
+                    return str(bid)
+            except Exception:  # noqa: BLE001
+                continue
+    return None
+
+
 def _token() -> str | None:
     return (
         os.environ.get("ERGON_GH_TOKEN")
@@ -82,6 +101,126 @@ class IndexCache:
     def _make_fetch(self) -> Callable[[str], bytes]:
         return _asset_fetcher(self.base_url, self.repo, self.tag)
 
+    def _try_delta(
+        self, fetch: Callable[[str], bytes], local_build_id: str, remote: dict[str, Any]
+    ) -> Path | None:
+        """Apply a row-level delta in place if one bridges local_build_id -> the remote build.
+
+        Returns the updated db path on success, or None to fall back to a full download (no delta
+        published, base mismatch, integrity failure, etc.). Never raises.
+        """
+        from .build import apply_delta
+
+        try:
+            dmeta = json.loads(fetch("manifest-delta.json"))
+        except Exception as exc:  # noqa: BLE001 - no delta published -> full download
+            log.debug("no delta manifest (%s); full download", exc)
+            return None
+        if dmeta.get("from_build_id") != local_build_id or dmeta.get("to_build_id") != remote.get(
+            "build_id"
+        ):
+            # Not exactly one build behind — try chaining consecutive deltas (v2.2) before giving
+            # up to a full download.
+            return self._try_delta_chain(fetch, local_build_id, remote)
+        try:
+            raw = gzip.decompress(fetch("index-delta.sqlite.gz"))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("delta download failed (%s); full download", exc)
+            return None
+        if hashlib.sha256(raw).hexdigest() != dmeta.get("sha256"):
+            log.warning("delta sha256 mismatch; full download")
+            return None
+        delta_tmp = self.cache_dir / "index-delta.sqlite"
+        delta_tmp.write_bytes(raw)
+        try:
+            apply_delta(self.db_path, delta_tmp)
+        except Exception as exc:  # noqa: BLE001 - corrupt base/delta -> full download recovers
+            log.warning("delta apply failed (%s); full download", exc)
+            return None
+        finally:
+            delta_tmp.unlink(missing_ok=True)
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info(
+            "index updated via delta %s->%s (%d bytes)",
+            local_build_id,
+            remote.get("build_id"),
+            len(raw),
+        )
+        return self.db_path
+
+    def _try_delta_chain(
+        self, fetch: Callable[[str], bytes], local_build_id: str, remote: dict[str, Any]
+    ) -> Path | None:
+        """Apply a CHAIN of consecutive deltas to catch up a base that's >1 build behind (v2.2).
+
+        Reads the published ``deltas.json`` window, walks the from->to links from the local build to
+        the remote build, and applies each in order via apply_delta (which re-checks ordering). Any
+        gap, oversized chain, download/integrity/apply failure -> None (full download recovers).
+        """
+        from .build import apply_delta
+
+        try:
+            window = json.loads(fetch("deltas.json")).get("deltas", [])
+        except Exception as exc:  # noqa: BLE001 - no window published -> full download
+            log.debug("no deltas window (%s); full download", exc)
+            return None
+        by_from = {d["from_build_id"]: d for d in window}
+        target = remote.get("build_id")
+        chain: list[dict[str, Any]] = []
+        cur = local_build_id
+        seen: set[str] = set()
+        while cur != target and cur in by_from and cur not in seen:
+            seen.add(cur)
+            step = by_from[cur]
+            chain.append(step)
+            cur = step["to_build_id"]
+        if cur != target or not chain:
+            log.debug("no contiguous delta chain local->remote; full download")
+            return None
+        # Only chain when it's actually cheaper than the full file.
+        if sum(int(d.get("bytes", 0)) for d in chain) >= int(remote.get("bytes", 0) or 1 << 62):
+            return None
+        # Apply the chain to a COPY and swap atomically only on full success: each apply_delta
+        # commits separately, so applying in place would leave the cached db half-advanced if a
+        # later step fails. Working on a copy keeps the live db pristine for the full-download
+        # fallback.
+        import shutil
+
+        work = self.db_path.with_suffix(".chain.sqlite")
+        delta_tmp = self.cache_dir / "index-delta-chain.sqlite"
+        try:
+            shutil.copyfile(self.db_path, work)
+            total = 0
+            for step in chain:
+                try:
+                    raw = gzip.decompress(fetch(step["file"]))
+                except Exception as exc:  # noqa: BLE001
+                    log.warning("chain delta download failed (%s); full download", exc)
+                    return None
+                if hashlib.sha256(raw).hexdigest() != step.get("sha256"):
+                    log.warning("chain delta sha mismatch; full download")
+                    return None
+                delta_tmp.write_bytes(raw)
+                try:
+                    apply_delta(work, delta_tmp)
+                except Exception as exc:  # noqa: BLE001
+                    log.warning("chain delta apply failed (%s); full download", exc)
+                    return None
+                total += len(raw)
+            work.replace(self.db_path)  # atomic promote — only reached if every step succeeded
+        finally:
+            delta_tmp.unlink(missing_ok=True)
+            work.unlink(missing_ok=True)
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info(
+            "index updated via %d-delta chain %s->%s (%d bytes)",
+            len(chain),
+            local_build_id,
+            target,
+            total,
+        )
+        return self.db_path
+
     def ensure_fresh(self) -> Path | None:
         """Return a verified, schema-compatible index path, or None (caller live-falls-back)."""
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -97,6 +236,13 @@ class IndexCache:
         local = json.loads(self.local_manifest.read_text()) if self.local_manifest.exists() else {}
         if local.get("build_id") == remote.get("build_id") and self.db_path.exists():
             return self.db_path  # already current
+        # Incremental path: if we're exactly one build behind, a row-level delta is far smaller than
+        # the whole file. Falls through to the full download on any miss (no delta, wrong base, etc.).
+        local_build_id = local.get("build_id")
+        if local_build_id and self.db_path.exists():
+            delta_path = self._try_delta(fetch, str(local_build_id), remote)
+            if delta_path is not None:
+                return delta_path
         try:
             raw = gzip.decompress(fetch("index.sqlite.gz"))
         except Exception as exc:  # noqa: BLE001
@@ -110,6 +256,58 @@ class IndexCache:
         tmp.replace(self.db_path)  # atomic
         self.local_manifest.write_text(json.dumps(remote))
         log.info("index updated to build %s (%d bytes)", remote.get("build_id"), len(raw))
+        return self.db_path
+
+
+class SlimCache:
+    """Download the compact slim broad-query tier (no snippet/years; ~half the full-file bytes).
+
+    Same shape as IndexCache but for ``index-slim.sqlite.gz`` + ``manifest-slim.json``. Used for
+    broad structured-filter queries that need no description text — a strict download-size win
+    with identical results to the full index for those queries.
+    """
+
+    def __init__(
+        self,
+        base_url: str | None = None,
+        cache_dir: Path | None = None,
+        repo: str = _REPO,
+        tag: str = _TAG,
+    ) -> None:
+        self.base_url = (base_url or _DEFAULT_BASE).rstrip("/")
+        self.cache_dir = Path(cache_dir or _default_cache_dir())
+        self.repo = repo
+        self.tag = tag
+        self.db_path = self.cache_dir / "index-slim.sqlite"
+        self.local_manifest = self.cache_dir / "manifest-slim.json"
+
+    def ensure_fresh(self) -> Path | None:
+        """Return a verified slim index path, or None (caller falls back to full/live)."""
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            fetch = _asset_fetcher(self.base_url, self.repo, self.tag)
+            remote = json.loads(fetch("manifest-slim.json"))
+        except Exception as exc:  # noqa: BLE001 - no slim published -> caller uses full index
+            log.debug("no slim manifest (%s); falling back to full index", exc)
+            return None
+        if int(remote.get("schema_version", -1)) != SCHEMA_VERSION:
+            return None
+        local = json.loads(self.local_manifest.read_text()) if self.local_manifest.exists() else {}
+        if local.get("build_id") == remote.get("build_id") and self.db_path.exists():
+            return self.db_path  # already current
+        try:
+            raw = gzip.decompress(fetch("index-slim.sqlite.gz"))
+        except Exception as exc:  # noqa: BLE001
+            log.warning("slim download failed (%s)", exc)
+            return self.db_path if self.db_path.exists() else None
+        if hashlib.sha256(raw).hexdigest() != remote.get("sha256"):
+            log.warning("slim sha256 mismatch; rejecting download")
+            return None
+        tmp = self.db_path.with_suffix(".tmp")
+        tmp.write_bytes(raw)
+        tmp.replace(self.db_path)  # atomic
+        self.local_manifest.write_text(json.dumps(remote))
+        log.info("slim index updated to build %s (%d bytes)", remote.get("build_id"), len(raw))
         return self.db_path
 
 

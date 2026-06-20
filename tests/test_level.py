@@ -52,6 +52,37 @@ from ergon_tracker.models import JobLevel
         ("VP", JobLevel.EXECUTIVE),
         ("VP Product, Core Products", JobLevel.EXECUTIVE),
         ("Chief Technology Officer", JobLevel.EXECUTIVE),
+        # 4-letter C-suite acronyms (CISO/CHRO/CSO/CRO/CDO) — were slipping through c[etfoi]o
+        ("CISO", JobLevel.EXECUTIVE),
+        ("CISO Argentina", JobLevel.EXECUTIVE),
+        ("CHRO", JobLevel.EXECUTIVE),
+        ("Chief Data Officer", JobLevel.EXECUTIVE),
+        # --- numbered ladder completes through V/VI ---
+        ("Software Engineer V", JobLevel.STAFF),
+        ("Software Engineer VI", JobLevel.PRINCIPAL),
+        ("Software Engineer IV", JobLevel.SENIOR),
+        # --- "Staff X": senior IC for tech, rank-and-file for other professions ---
+        ("Staff Software Engineer", JobLevel.STAFF),
+        ("Staff Data Scientist", JobLevel.STAFF),
+        ("Staff Accountant", JobLevel.UNKNOWN),
+        ("Staff Nurse", JobLevel.UNKNOWN),
+        ("Staff Auditor", JobLevel.UNKNOWN),
+        # --- "Fellow": tech principal-IC vs academic/medical trainee ---
+        ("Technical Fellow", JobLevel.PRINCIPAL),
+        ("Distinguished Fellow", JobLevel.PRINCIPAL),
+        ("Fellow Engineer", JobLevel.PRINCIPAL),
+        ("Research Fellow", JobLevel.JUNIOR),
+        ("Postdoctoral Fellow", JobLevel.JUNIOR),
+        ("Postdoc", JobLevel.JUNIOR),
+        ("Senior Research Fellow", JobLevel.SENIOR),  # explicit senior wins
+        # --- unambiguous academic ladder (title fixes level regardless of sector) ---
+        ("Assistant Professor", JobLevel.ENTRY),
+        ("Associate Professor", JobLevel.MID),
+        # --- New-grad / campus-hire markers -> entry ----------------------
+        ("Software Engineer (New Grads 2025-2026)", JobLevel.ENTRY),  # plural "new grads"
+        ("Software Engineer New Grads", JobLevel.ENTRY),
+        ("2026 Campus Hire - Commercial Pricing", JobLevel.ENTRY),
+        ("Campus Recruiting Analyst", JobLevel.ENTRY),
         # --- Sales-development roles -> entry ------------------------------
         ("SDR", JobLevel.ENTRY),
         ("Sales Development Representative", JobLevel.ENTRY),

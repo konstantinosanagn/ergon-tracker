@@ -20,7 +20,10 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
     cl: list[str] = ["j.status = 'active'"]
     p: list[Any] = []
     if q.remote is True:
-        cl.append("(j.remote IN ('remote','hybrid'))")
+        # Mirror SearchQuery.matches(): remote/hybrid OR a "remote" signal in the location text.
+        # Recovers postings tagged remote only in their location string (remote='unknown' but
+        # location says "Remote") that an exact-column match would miss.
+        cl.append("(j.remote IN ('remote','hybrid') OR LOWER(j.location) LIKE '%remote%')")
     if q.level is not None:
         if q.include_unknown_level:
             cl.append("(j.level = ? OR j.level = 'unknown')")
@@ -36,11 +39,25 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
             cl.append("LOWER(j.sector) LIKE ?")
             p.append(f"%{q.sector.lower()}%")
     if q.country:
-        cl.append("LOWER(j.country) = ?")
-        p.append(q.country.lower())
+        # Alias-resolve the query (USA/US/U.S. -> united states) and mirror matches(): exact on the
+        # parsed country OR substring of the location text. Country names don't collide with city/
+        # state names, so the substring is safe (unlike the city filter).
+        from ..extract.geo import country_match_term
+
+        term = country_match_term(q.country)
+        cl.append("(LOWER(j.country) = ? OR LOWER(j.location) LIKE ?)")
+        p.append(term)
+        p.append(f"%{term}%")
     if q.city:
-        cl.append("LOWER(j.city) = ?")
-        p.append(q.city.lower())
+        # Metro-aware exact match (mirrors SearchQuery.matches()._geo_ok via city_match_terms):
+        # widens "New York" to its labelled variants ("New York City"/"Brooklyn"/"NYC") so a city
+        # filter doesn't miss ~28% of NYC postings, while exact (trimmed) matching avoids the
+        # "New York"-the-state / "Brooklyn Park, MN" false positives a substring match would add.
+        from ..extract.geo import city_match_terms
+
+        terms = city_match_terms(q.city)
+        cl.append("(" + " OR ".join("TRIM(LOWER(j.city)) = ?" for _ in terms) + ")")
+        p.extend(terms)
     if q.location:
         # Mirror SearchQuery.matches(): the free-text location must appear in the job's location
         # text (substring). Without this the index ignored `location` and returned non-matching
@@ -57,20 +74,42 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
         else:
             cl.append("j.sponsorship_offered = ?")
             p.append(v)
+    # Salary range overlap, exactly mirroring SearchQuery._salary_ok: a posting with NO salary at
+    # all (both bounds NULL) is kept only when include_unknown_salary; a partial range uses the one
+    # present bound for both ends (COALESCE), so a min-only posting below the floor is still dropped.
+    _sal_unknown = "(j.salary_min IS NULL AND j.salary_max IS NULL)"
     if q.salary_min is not None:
-        cl.append(
-            "(j.salary_max IS NULL OR j.salary_max >= ?)"
-            if q.include_unknown_salary
-            else "j.salary_max >= ?"
-        )
+        overlap = "COALESCE(j.salary_max, j.salary_min) >= ?"  # job_hi >= wanted floor
+        cl.append(f"({_sal_unknown} OR {overlap})" if q.include_unknown_salary else overlap)
         p.append(q.salary_min)
     if q.salary_max is not None:
-        cl.append(
-            "(j.salary_min IS NULL OR j.salary_min <= ?)"
-            if q.include_unknown_salary
-            else "j.salary_min <= ?"
-        )
+        overlap = "COALESCE(j.salary_min, j.salary_max) <= ?"  # job_lo <= wanted ceiling
+        cl.append(f"({_sal_unknown} OR {overlap})" if q.include_unknown_salary else overlap)
         p.append(q.salary_max)
+    if q.salary_currency and (q.salary_min is not None or q.salary_max is not None):
+        # Mirror _salary_ok: when a salary bound is active, drop postings whose currency is set and
+        # differs (a USD floor must not return EUR/GBP). NULL-currency postings are kept.
+        cl.append("(j.salary_currency IS NULL OR UPPER(j.salary_currency) = ?)")
+        p.append(q.salary_currency.upper())
+    # Years-of-experience overlap, mirroring _years_ok (same COALESCE/unknown semantics as salary).
+    _yr_unknown = "(j.years_min IS NULL AND j.years_max IS NULL)"
+    if q.min_years is not None:
+        overlap = "COALESCE(j.years_max, j.years_min) >= ?"
+        cl.append(f"({_yr_unknown} OR {overlap})" if q.include_unknown_years else overlap)
+        p.append(q.min_years)
+    if q.max_years is not None:
+        overlap = "COALESCE(j.years_min, j.years_max) <= ?"
+        cl.append(f"({_yr_unknown} OR {overlap})" if q.include_unknown_years else overlap)
+        p.append(q.max_years)
+    if q.employment_type is not None:
+        # Mirror matches(): keep the requested type plus UNKNOWN (most postings don't state it).
+        cl.append("(j.employment_type = ? OR j.employment_type = 'unknown')")
+        p.append(q.employment_type.value)
+    if q.posted_after is not None:
+        # Mirror matches(): drop postings older than the cutoff; keep those with no posted_at
+        # (unknown date). posted_at is stored as an ISO-8601 string, which sorts chronologically.
+        cl.append("(j.posted_at IS NULL OR j.posted_at >= ?)")
+        p.append(q.posted_after.isoformat())
     return cl, p
 
 

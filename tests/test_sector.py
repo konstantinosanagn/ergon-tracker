@@ -106,3 +106,59 @@ def test_extractor_falls_back_to_name(extractor: SectorExtractor) -> None:
         title="Teller", company="Riverside Community Bank", company_key="zzz-not-in-table"
     )
     assert extractor.extract(inp) == "Banking/Finance"
+
+
+@pytest.mark.parametrize(
+    "company,sector",
+    [
+        ("Domino's", "Food/Beverage"),
+        ("Red Bull", "Food/Beverage"),
+        ("Anduril Industries", "Aerospace/Defense"),
+        ("Veolia Environnement SA", "Energy/Climate"),
+        ("Eurofins", "Biotech/Pharma"),
+        ("Home Instead", "Healthcare"),
+        ("Maersk", "Logistics/SupplyChain"),
+        ("Deloitte", "Consulting/Services"),
+        ("METRO/MAKRO", "E-commerce/Retail"),
+        ("KIPP", "Education"),
+        ("Mattel", "Consumer/Lifestyle"),
+        ("Canonical", "Software/SaaS"),
+        ("Ubisoft", "Gaming"),
+        ("Sutherland", "Consulting/Services"),
+        ("Shieldai", "Aerospace/Defense"),
+        ("altamed", "Healthcare"),
+        ("Starbucks", "Food/Beverage"),
+        ("qualcomm", "Semiconductors/Hardware"),
+        ("SpaceX", "Aerospace/Defense"),
+        ("tjx", "E-commerce/Retail"),
+        ("jpmc", "Banking/Finance"),
+        ("Mount Sinai", "Healthcare"),
+        ("verizon", "Telecom"),
+        ("medtronic", "Healthcare"),
+        ("homedepot", "E-commerce/Retail"),
+        ("City of New York", "Government/Public"),
+        ("infineon", "Semiconductors/Hardware"),
+    ],
+)
+def test_company_sector_exact_brand_map(company: str, sector: str) -> None:
+    # Large opaque-brand employers with no industry word in their name are classified by the
+    # high-precision exact company-name map (job-count-weighted coverage win).
+    from ergon_tracker.extract.sector import company_sector
+
+    assert company_sector(company) == sector
+
+
+def test_company_sector_unknown_stays_none() -> None:
+    from ergon_tracker.extract.sector import company_sector
+
+    assert company_sector("Some Opaque Holdings LLC") is None
+    assert company_sector(None) is None
+
+
+def test_extractor_uses_company_map_when_registry_key_misses(
+    extractor: SectorExtractor,
+) -> None:
+    # The registry key isn't in the curated table (as happens for franchise/aggregator postings),
+    # but the exact company-name map still classifies the brand.
+    inp = ExtractInput(title="Assistant Manager", company="Domino's", company_key="not-in-table")
+    assert extractor.extract(inp) == "Food/Beverage"

@@ -7,13 +7,31 @@ from datetime import datetime, timezone
 from typing import Any
 
 from ..dedup import normalize_company, normalize_title
-from ..models import JobLevel, JobPosting, Location, RemoteType, Salary, SalaryInterval
+from ..models import (
+    EmploymentType,
+    JobLevel,
+    JobPosting,
+    Location,
+    RemoteType,
+    Salary,
+    SalaryInterval,
+)
 
 _SNIPPET = 300
 
 
 def _iso(dt: datetime | None) -> str | None:
     return dt.isoformat() if dt else None
+
+
+def _parse_dt(s: Any) -> datetime | None:
+    """Parse a stored ISO datetime string back to a datetime (None/blank/garbage -> None)."""
+    if not s:
+        return None
+    try:
+        return datetime.fromisoformat(s)
+    except (ValueError, TypeError):
+        return None
 
 
 def content_hash(job: JobPosting) -> str:
@@ -114,10 +132,13 @@ def from_row(row: Any) -> JobPosting:
         locations=locs,
         remote=RemoteType(row["remote"]),
         level=JobLevel(row["level"]),
+        employment_type=EmploymentType(row["employment_type"]),
         salary=sal,
         years_experience_min=row["years_min"],
         years_experience_max=row["years_max"],
         apply_url=row["apply_url"],
+        posted_at=_parse_dt(row["posted_at"]),
+        updated_at=_parse_dt(row["updated_at"]),
         visa_sponsor=True if row["visa_sponsor"] == 1 else None,
         visa_last_filed=row["visa_last_filed"],
         sponsorship_offered=(None if sp is None else bool(sp)),

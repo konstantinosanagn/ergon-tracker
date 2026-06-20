@@ -324,15 +324,19 @@ class SearchQuery(BaseModel):
         return not (job_hi < want_lo or job_lo > want_hi)
 
     def _geo_ok(self, job: JobPosting) -> bool:
-        for field, value in (("country", self.country), ("city", self.city)):
-            if not value:
-                continue
-            needle = value.lower()
-            hit = any(
-                (getattr(loc, field) or "").lower() == needle or needle in (loc.raw or "").lower()
-                for loc in job.locations
-            )
-            if not hit:
+        if self.country:
+            # Alias-resolved (USA/US -> United States), shared with the index SQL.
+            from .extract.geo import country_matches
+
+            if not any(
+                country_matches(self.country, loc.country, loc.raw) for loc in job.locations
+            ):
+                return False
+        if self.city:
+            # Metro-aware city match (NYC boroughs/"NYC", "SF", ...) shared with the index SQL.
+            from .extract.geo import city_matches
+
+            if not any(city_matches(self.city, loc.city, loc.raw) for loc in job.locations):
                 return False
         return True
 
@@ -355,11 +359,17 @@ class SearchQuery(BaseModel):
                 return False
 
         if self.remote is True:
-            is_remote = job.remote in (RemoteType.REMOTE, RemoteType.HYBRID) or any(
-                loc.is_remote for loc in job.locations
+            # Precise (mirrors the index SQL): keep a job only with a positive remote signal —
+            # remote/hybrid, a remote location flag, or "remote" in the location text. Generic
+            # UNKNOWN-remote jobs with no such signal are dropped (a remote filter that returns
+            # every untagged onsite posting is useless).
+            loc_text = " ".join(loc.as_text() for loc in job.locations).lower()
+            is_remote = (
+                job.remote in (RemoteType.REMOTE, RemoteType.HYBRID)
+                or any(loc.is_remote for loc in job.locations)
+                or "remote" in loc_text
             )
-            # Keep UNKNOWN-remote jobs only when no location constraint contradicts it.
-            if not is_remote and job.remote != RemoteType.UNKNOWN:
+            if not is_remote:
                 return False
 
         if self.employment_type and job.employment_type not in (
@@ -423,6 +433,9 @@ class SourceHealth(BaseModel):
     error: str | None = None
     elapsed_ms: int = 0
     truncated: bool = False
+    # For snapshot sources (the prebuilt index): which build served the query, so callers can
+    # judge data freshness. None for live sources (always current).
+    as_of: str | None = None
 
 
 class SearchResult(BaseModel):
