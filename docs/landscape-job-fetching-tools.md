@@ -149,7 +149,7 @@ Read at the source level on 2026-06-16 (jobhive @ `b45c12a` 2026-05-30; careersc
 | Stack | Python, async (httpx/anyio) | Python, async + browser fallbacks | Go core + Rust replay + Python ML + C eBPF |
 | License | MIT | MIT | MIT |
 | Shape | Installable SDK, **live fetch at call time** | SDK **+ batch pipeline** publishing a dataset to R2/CDN | Distributed crawl **infrastructure** (Kafka/Postgres/Fargate) |
-| Discovery | Curated `seed.json` (**~1,400** companies) + offline resolver + dormant HTML-signature probe | Curated CSVs (**~88,000** tenants, 26 ATSes) maintained by PRs | Automated: Majestic Million + crt.sh + Common Crawl → probe |
+| Discovery | `seed.json` (**~49,000** verified-live boards: curated + jobhive-CSV ingest + brute-force/Common-Crawl discovery) + offline resolver + dormant HTML-signature probe | Curated CSVs (**63,390** tenants, 26 ATSes) maintained by PRs | Automated: Majestic Million + crt.sh + Common Crawl → probe |
 | ATS-direct scrapers | **8** (GH, Lever, Ashby, Workday, SmartRecruiters, Workable, Recruitee, Personio) | ~26 multi-tenant ATS + 7 big-tech + 4 govt + ~11 boards (**49 modules**) | **15** probers + dynamic XHR shape classifier |
 | Fetch method | Public JSON/XML APIs only — **no browser, no auth, no keys** | Public APIs + **stealth browser** (Tesla/Meta) + TLS-impersonation | Headless Chrome to *discover* endpoints, then **raw HTTP replay** |
 | Freshness | **Live at query time** | Snapshot dataset (as fresh as last pipeline run) | Scheduled re-fetch (+6h) / replay loop |
@@ -159,7 +159,7 @@ Read at the source level on 2026-06-16 (jobhive @ `b45c12a` 2026-05-30; careersc
 
 ### The core difference is the answer to "which boards do I query?"
 
-- **jobspine — curate small, fetch live.** ~1,400 hand-picked companies, resolved offline, fetched fresh every call. Best *freshness* + *simplicity*; smallest *universe*.
+- **jobspine — curate + ingest + discover, fetch live.** ~49,000 boards (hand-curated seed + jobhive-CSV ingest + brute-force/Common-Crawl discovery), resolved offline, fetched fresh every call. Best *freshness*; coverage now in jobhive's order of magnitude.
 - **jobhive — curate big, batch-publish.** ~88k tenant CSVs grown by PRs, scraped on a schedule, published as Parquet/CSV behind a CDN. The library **downloads a snapshot** — it does *not* fetch live. Best *coverage*; data is as fresh as the last run.
 - **careerscout — discover automatically.** No curated lists: harvests domains from Common Crawl + certificate transparency + Majestic Million, then *probes* to detect ATS. Most *ambitious*, but a design/portfolio repo (single commit, marquee eBPF/ML features stubbed, "5.5M" unverifiable; actual = 15 probers, 0 committed data).
 
@@ -173,7 +173,7 @@ Read at the source level on 2026-06-16 (jobhive @ `b45c12a` 2026-05-30; careersc
 5. **No browser, no proxies, no keys** — lowest operational burden; trivially embeddable.
 
 **Where jobspine is behind (honestly):**
-1. **Coverage: ~1,400 vs ~88,000 companies.** The gap that matters.
+1. **Coverage: ~49,000 vs jobhive's 63,390 tenants.** Still behind on absolute count, but now the same order of magnitude (we extracted ~89% of jobhive) — no longer the chasm it once was.
 2. **No automated discovery wired in.** `aresolve()` (HTML-signature probe) exists but the engine never calls it; today growth = hand-editing `seed.json`.
 3. **No bot-defense story.** Clean public APIs only. Workday-at-scale, Tesla, Meta, Akamai-fronted boards are walls jobhive solved with stealth browsers and careerscout with eBPF/replay.
 
@@ -253,7 +253,7 @@ Cloned and read at the source level (not from README blurbs). **All three are si
 
 ## 10. Coverage scorecard — how much of jobhive we extracted (2026-06-17)
 
-> The product is now **`ergon_tracker`** (formerly jobspine). The registry grew **1,453 → 41,988 verified-live company boards this effort** (~29×), every entry confirmed live through our own providers before merging — vs jobhive's static, partly-stale snapshot.
+> The product is now **`ergon_tracker`** (formerly jobspine). The registry grew **1,453 → ~49,051 verified-live company boards** (~34×, and still growing via giant-capture + jobhive ingest), every entry confirmed live through our own providers before merging — vs jobhive's static, partly-stale snapshot.
 
 **We extracted ~89% of jobhive's entire tenant universe.** jobhive publishes **26 ATS CSVs / 63,390 tenants**; we now have **providers for 14 of them**, covering **56,172 tenants (89%)**.
 
