@@ -195,6 +195,10 @@ class _FetcherCaller:
     async def post_json(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
         return await self._f.post_json(url, json=body, headers=headers)
 
+    async def post_form(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
+        resp = await self._f.request("POST", url, data=body, headers=headers)
+        return resp.json()
+
     async def get_json(self, url: str, headers: dict[str, str] | None) -> Any:
         return await self._f.get_json(url, headers=headers)
 
@@ -227,6 +231,11 @@ class _BrowserCaller:
 
     async def post_json(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
         r = await self._client.post(url, json=body, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def post_form(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
+        r = await self._client.post(url, data=body, headers=headers)
         r.raise_for_status()
         return r.json()
 
@@ -264,6 +273,11 @@ class _CurlCaller:
 
     async def post_json(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
         r = await self._s.post(url, json=body, headers=headers)
+        r.raise_for_status()
+        return r.json()
+
+    async def post_form(self, url: str, body: Any, headers: dict[str, str] | None) -> Any:
+        r = await self._s.post(url, data=body, headers=headers)
         r.raise_for_status()
         return r.json()
 
@@ -328,9 +342,15 @@ class ApiCaptureProvider(BaseProvider):
         total: int | None = None
         await client.open()
         try:
+            # Salesforce Experience-Cloud guest Aura: the fwuid + loaded app-version in aura.context
+            # rotate when the org is upgraded (a stale pair yields aura:expired). Re-scrape them from
+            # a fresh GET of the page so the replay self-heals.
+            aura_ctx = await self._refresh_aura(client, spec, headers) if spec.get("aura_refresh") else None
             for page in range(self.MAX_PAGES):
                 offset = page_start + page * page_step
                 body = copy.deepcopy(spec.get("body"))
+                if aura_ctx and isinstance(body, dict):
+                    body["aura.context"] = aura_ctx
                 if page_path:
                     _set(body, page_path, offset)
                 if spec.get("size_path"):
@@ -349,7 +369,10 @@ class ApiCaptureProvider(BaseProvider):
                         data = _extract_embed(html, embed)
                         records = _dig(data, rec_path)
                     elif method == "POST":
-                        data = await client.post_json(url, body, headers)
+                        if spec.get("form_encoded"):
+                            data = await client.post_form(url, body, headers)
+                        else:
+                            data = await client.post_json(url, body, headers)
                         records = _dig(data, rec_path)
                     else:
                         get_url = _set_query(url, page_param, offset) if page_param else url
@@ -393,6 +416,27 @@ class ApiCaptureProvider(BaseProvider):
         finally:
             await client.close()
         return raws
+
+    @staticmethod
+    async def _refresh_aura(client: Any, spec: dict[str, Any], headers: dict[str, str] | None) -> str | None:
+        """Re-scrape ``fwuid`` and the loaded app-version from the live page and patch them into the
+        spec body's ``aura.context`` string (Salesforce rotates these on org upgrades). Falls back to
+        the stored context on any failure so a transient page error doesn't break the pull."""
+        ctx = (spec.get("body") or {}).get("aura.context")
+        if not isinstance(ctx, str):
+            return None
+        try:
+            page = await client.get_text(spec["aura_refresh"], headers)
+        except Exception:
+            return ctx
+        fw = re.search(r'"fwuid":"([^"]+)"', page)
+        if fw:
+            ctx = re.sub(r'("fwuid":")[^"]*(")', lambda m: m.group(1) + fw.group(1) + m.group(2), ctx)
+        ld = re.search(r'"(APPLICATION@markup://[^"]+)":"([^"]+)"', page)
+        if ld:
+            key, val = re.escape(ld.group(1)), ld.group(2)
+            ctx = re.sub(r'("' + key + r'":")[^"]*(")', lambda m: m.group(1) + val + m.group(2), ctx)
+        return ctx
 
     @staticmethod
     def _field(rec: dict[str, Any], spec: dict[str, Any], name: str) -> str | None:

@@ -1165,5 +1165,34 @@
    "posted_at": "pubDate",
    "description": "description"
   }
+ },
+ "balyasny": {
+  "url": "https://bambusdev.my.site.com/s/sfsites/aura?r=2&aura.ApexAction.execute=1",
+  "method": "POST",
+  "form_encoded": true,
+  "tls_impersonate": true,
+  "aura_refresh": "https://bambusdev.my.site.com/s/",
+  "headers": {
+   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+  },
+  "body": {
+   "message": "{\"actions\": [{\"id\": \"124;a\", \"descriptor\": \"aura://ApexActionController/ACTION$execute\", \"callingDescriptor\": \"UNKNOWN\", \"params\": {\"namespace\": \"\", \"classname\": \"BamJobRequisitionInfoDataService\", \"method\": \"searchJobRequisitions\", \"params\": {\"isVendorPortal\": false, \"site\": \"BAM Website\", \"searchKey\": \"\", \"locationFilters\": [], \"departmentFilter\": [], \"availableLocations\": [], \"experienceLevelFilter\": []}, \"cacheable\": true, \"isContinuation\": false}}]}",
+   "aura.context": "{\"mode\": \"PROD\", \"fwuid\": \"PLACEHOLDER\", \"app\": \"siteforce:communityApp\", \"loaded\": {\"APPLICATION@markup://siteforce:communityApp\": \"PLACEHOLDER\"}, \"dn\": [], \"globals\": {}, \"uad\": true}",
+   "aura.pageURI": "/s/",
+   "aura.token": "null"
+  },
+  "records_path": [
+   "actions",
+   0,
+   "returnValue",
+   "returnValue"
+  ],
+  "company": "Balyasny Asset Management",
+  "fields": {
+   "id": "Id",
+   "title": "Publish_Title__c",
+   "department": "Department__c",
+   "location": "Job_Requisition_Positions__r.0.Location__r.External_Name__c"
+  }
  }
 }
