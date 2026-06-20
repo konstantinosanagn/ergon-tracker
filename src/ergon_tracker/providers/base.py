@@ -71,6 +71,7 @@ _BUILTIN_MODULES = (
     "ceipal",
     "radancy",
     "pageup",
+    "peoplesoft",
     "remotive",
     "arbeitnow",
     "jobicy",

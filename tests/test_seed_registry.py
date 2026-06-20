@@ -43,6 +43,7 @@ SUPPORTED_ATS = {
     "ceipal",
     "radancy",
     "pageup",
+    "peoplesoft",
     "usajobs",
     "dejobs",
     "themuse",
