@@ -13,7 +13,8 @@ import inspect
 from ergon_tracker.providers.base import get_provider, load_builtins, provider_names
 
 # Providers whose remote API supports keyword search (verified in their fetch()).
-KEYWORD_CAPABLE = {"adzuna", "coveo", "smartrecruiters", "usajobs", "workday"}
+# workable_network passes `query=` to the jobs.workable.com network API (server-side filtering).
+KEYWORD_CAPABLE = {"adzuna", "coveo", "smartrecruiters", "usajobs", "workday", "workable_network"}
 
 
 def _fetch_uses_keywords(name: str) -> bool:

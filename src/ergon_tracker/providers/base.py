@@ -41,6 +41,7 @@ _BUILTIN_MODULES = (
     "remoteok",
     "smartrecruiters",
     "workable",
+    "workable_network",
     "recruitee",
     "personio",
     "bamboohr",

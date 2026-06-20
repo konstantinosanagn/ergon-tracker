@@ -38,6 +38,7 @@ AGGREGATOR_PROVIDERS = {
     "themuse",
     "adzuna",
     "usajobs",
+    "workable_network",
 }
 
 

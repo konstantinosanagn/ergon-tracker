@@ -237,9 +237,10 @@ class SearchQuery(BaseModel):
 
     Keyword handling is hybrid by design:
 
-    * **Server-side pre-filter (4 providers):** ``adzuna``, ``smartrecruiters``, ``usajobs`` and
-      ``workday`` pass ``keywords`` straight to their remote API, so they only return matching
-      postings (and, for paginating Workday, fetch fewer pages). See each provider's ``fetch``.
+    * **Server-side pre-filter:** ``adzuna``, ``smartrecruiters``, ``usajobs``, ``workday`` and
+      ``workable_network`` pass ``keywords`` straight to their remote API, so they only return
+      matching postings (and, for paginating Workday / the Workable network feed, fetch fewer
+      pages). See each provider's ``fetch``.
     * **Client-side filter (every other provider):** Greenhouse/Lever/Ashby/etc. have **no**
       keyword API — their boards return everything, so ``matches()`` is the keyword filter applied
       after fetch. The cost there is the number of boards, not the number of jobs.
