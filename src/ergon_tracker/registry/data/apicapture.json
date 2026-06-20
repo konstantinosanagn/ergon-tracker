@@ -1194,5 +1194,33 @@
    "department": "Department__c",
    "location": "Job_Requisition_Positions__r.0.Location__r.External_Name__c"
   }
+ },
+ "bostonuniversity": {
+  "url": "https://jobs.silkroad.com/BU/External",
+  "method": "GET",
+  "html_table": {
+   "row_css": "a.sr-panel",
+   "skip_rows": 0
+  },
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "company": "Boston University",
+  "columns": {
+   "id": {
+    "re": "/External/jobs/(\\d+)"
+   },
+   "title": {
+    "re": "sr-panel__title[^>]*>([\\s\\S]*?)</div>"
+   },
+   "location": {
+    "re": "sr-panel__meta[^>]*>([\\s\\S]*?)</span>"
+   }
+  },
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "location"
+  }
  }
 }
