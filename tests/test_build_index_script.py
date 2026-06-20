@@ -7,10 +7,48 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_index import publish_artifacts  # noqa: E402
+from build_index import _crawl_network, publish_artifacts  # noqa: E402
 
 from ergon_tracker.index.build import build_index  # noqa: E402
 from ergon_tracker.models import JobPosting  # noqa: E402
+
+
+def test_crawl_network_disabled_returns_empty():
+    import anyio
+
+    assert anyio.run(_crawl_network, 0) == []
+
+
+def test_crawl_network_folds_in_workable_network_jobs():
+    import anyio
+    import httpx
+    import respx
+
+    page = {
+        "jobs": [
+            {
+                "id": "n1",
+                "title": "Platform Engineer",
+                "company": {"title": "NetCo", "website": "https://netco.com"},
+                "workplace": "remote",
+                "employmentType": "Full-time",
+                "location": {"city": "Lisbon", "subregion": None, "countryName": "Portugal"},
+                "created": "2026-06-19T00:00:00.000Z",
+                "url": "https://jobs.workable.com/view/n1/x",
+                "description": "<p>Build.</p>",
+            }
+        ],
+        "nextPageToken": None,
+    }
+    with respx.mock:
+        respx.get("https://jobs.workable.com/api/v1/jobs").mock(
+            return_value=httpx.Response(200, json=page)
+        )
+        jobs = anyio.run(_crawl_network, 1)
+    assert len(jobs) == 1
+    assert jobs[0].source == "workable_network"
+    assert jobs[0].company == "NetCo"
+    assert jobs[0].title == "Platform Engineer"
 
 
 def test_publish_writes_gz_and_manifest(tmp_path):

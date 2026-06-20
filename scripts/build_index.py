@@ -2,6 +2,8 @@
 
 Usage:
   .venv/bin/python scripts/build_index.py --limit-companies 300 --out dist/
+  # also fold in the first-party Workable network feed (N pages, ~20 jobs/page):
+  .venv/bin/python scripts/build_index.py --limit-companies 300 --network-pages 200 --out dist/
 """
 
 from __future__ import annotations
@@ -49,11 +51,48 @@ def publish_artifacts(db_path: Path, out_dir: Path, *, build_id: str) -> None:
     )
 
 
-async def _crawl(limit_companies: int) -> list:
+async def _crawl_network(cap_pages: int) -> list:
+    """Bulk-fetch the ``workable_network`` aggregator feed and return normalized + enriched jobs
+    (NOT yet deduped — the caller folds these into its own list and dedups once).
+
+    This is the one ATS that exposes its whole active customer base first-party
+    (``jobs.workable.com/api/v1/jobs``, ~172k jobs), so a build can reach Workable companies that
+    were never in the per-board registry. ``cap_pages`` bounds the paged pull (0 disables it).
+    """
+    if cap_pages <= 0:
+        return []
+    from ergon_tracker.enrich import enrich_in_place
+    from ergon_tracker.http import AsyncFetcher
+    from ergon_tracker.models import SearchQuery
+    from ergon_tracker.providers.base import get_provider, load_builtins
+
+    load_builtins()
+    provider = get_provider("workable_network")
+    if provider is None:
+        return []
+    provider.MAX_PAGES = cap_pages  # raise the live cap for a bulk build pull
+    jobs: list = []
+    async with AsyncFetcher() as fetcher:
+        try:
+            raws = await provider.fetch("", SearchQuery(), fetcher)
+        except Exception:  # noqa: BLE001 - network feed down: build proceeds without it
+            return []
+    for raw in raws:
+        try:
+            job = provider.normalize(raw)
+        except Exception:  # noqa: BLE001
+            continue
+        enrich_in_place(job, infer_level_from_experience=True)
+        jobs.append(job)
+    return jobs
+
+
+async def _crawl(limit_companies: int, network_pages: int = 0) -> list:
     """Bounded registry crawl: fetch N boards directly by their stored (ats, token).
 
     Bypasses resolve() (which is for arbitrary user domains/URLs) and reuses the providers +
-    enrich + dedup, crash-isolated per board so one dead board never sinks the run.
+    enrich + dedup, crash-isolated per board so one dead board never sinks the run. When
+    ``network_pages`` > 0, also folds in the ``workable_network`` bulk feed before the final dedup.
     """
     import anyio
 
@@ -93,6 +132,7 @@ async def _crawl(limit_companies: int) -> list:
     async with AsyncFetcher() as fetcher, anyio.create_task_group() as tg:
         for key, entry in items:
             tg.start_soon(grab, key, entry, fetcher)
+    jobs.extend(await _crawl_network(network_pages))  # first-party Workable network coverage
     return deduplicate(jobs)
 
 
@@ -488,6 +528,7 @@ def main(argv: list[str]) -> None:
     out = ROOT / "dist"
     incremental = False
     sharded = False
+    network_pages = 0  # 0 disables the workable_network bulk feed; >0 = pages to pull
     i = 0
     while i < len(argv):
         if argv[i] == "--limit-companies":
@@ -495,6 +536,9 @@ def main(argv: list[str]) -> None:
             i += 2
         elif argv[i] == "--out":
             out = Path(argv[i + 1])
+            i += 2
+        elif argv[i] == "--network-pages":
+            network_pages = int(argv[i + 1])
             i += 2
         elif argv[i] == "--incremental":
             incremental = True
@@ -602,7 +646,7 @@ def main(argv: list[str]) -> None:
             raise SystemExit(1)
         return
 
-    jobs = anyio.run(_crawl, limit)
+    jobs = anyio.run(_crawl, limit, network_pages)
     db_tmp = out / "index.tmp.sqlite"
     n = build_index(jobs, db_tmp, build_id=build_id)
     if not _gated_publish(db_tmp, db, out, build_id=build_id):
