@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ergon_tracker import JobPosting, Location, RemoteType, Salary
+from ergon_tracker import JobLevel, JobPosting, Location, RemoteType, Salary
 from ergon_tracker.dedup import deduplicate, normalize_company, normalize_title
 
 
@@ -106,6 +106,75 @@ def test_incompatible_cities_do_not_merge() -> None:
         locations=[Location(city="Tokyo")],
     )
     out = deduplicate([a, b])
+    assert len(out) == 2
+
+
+def test_different_levels_do_not_merge() -> None:
+    # Same role + same city, but distinct seniorities are distinct openings (users filter on
+    # `level`). A title-only fuzzy match would collapse these; the level gate must keep them apart.
+    senior = JobPosting.create(
+        source="lever",
+        source_job_id="1",
+        company="Palantir",
+        title="Senior Backend Software Engineer - Application Development",
+        locations=[Location(city="New York")],
+        level=JobLevel.SENIOR,
+    )
+    plain = JobPosting.create(
+        source="lever",
+        source_job_id="2",
+        company="Palantir",
+        title="Backend Software Engineer - Application Development",
+        locations=[Location(city="New York")],
+        level=JobLevel.UNKNOWN,
+    )
+    out = deduplicate([senior, plain])
+    assert len(out) == 2
+
+
+def test_same_level_cross_source_still_merges() -> None:
+    # The legitimate cross-source case: same job, same seniority, one source drops the city.
+    ats = JobPosting.create(
+        source="greenhouse",
+        source_job_id="g1",
+        company="Acme",
+        title="Senior Backend Engineer",
+        locations=[Location(city="Berlin")],
+        level=JobLevel.SENIOR,
+    )
+    agg = JobPosting.create(
+        source="remoteok",
+        source_job_id="r1",
+        company="Acme",
+        title="Sr. Backend Engineer",
+        locations=[Location(is_remote=True)],
+        remote=RemoteType.REMOTE,
+        level=JobLevel.SENIOR,
+    )
+    out = deduplicate([ats, agg])
+    assert len(out) == 1
+    assert {p.source for p in out[0].provenance} == {"greenhouse", "remoteok"}
+
+
+def test_remote_postings_in_different_cities_do_not_merge() -> None:
+    # Hybrid/remote must NOT be a wildcard that collapses distinct cities — `city` is a filter.
+    ny = JobPosting.create(
+        source="lever",
+        source_job_id="1",
+        company="Palantir",
+        title="Deployment Strategist",
+        locations=[Location(city="New York")],
+        remote=RemoteType.HYBRID,
+    )
+    london = JobPosting.create(
+        source="lever",
+        source_job_id="2",
+        company="Palantir",
+        title="Deployment Strategist",
+        locations=[Location(city="London")],
+        remote=RemoteType.HYBRID,
+    )
+    out = deduplicate([ny, london])
     assert len(out) == 2
 
 

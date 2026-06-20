@@ -38,13 +38,19 @@ def content_hash(job: JobPosting) -> str:
     """Stable hash of the fields that define a posting's content (for change/delta detection).
 
     Independent of the source id: two crawls of an unchanged posting hash identically; a changed
-    title/location/salary changes the hash, so the incremental builder can tell what moved.
+    title/level/location/salary changes the hash, so the incremental builder can tell what moved.
+    ``level`` is part of the identity because ``normalize_title`` strips seniority — without it a
+    "Senior X" and a plain "X" in the same city would collide to one hash (mirrors dedup's
+    level gate, so distinct seniorities stay distinct rows in the delta stream too).
     """
     loc = job.locations[0] if job.locations else None
     loc_s = (loc.as_text() if loc else "").lower()
     s = job.salary
     sal_s = f"{s.min_amount}|{s.max_amount}|{s.currency}" if s else ""
-    basis = f"{normalize_company(job.company)}|{normalize_title(job.title)}|{loc_s}|{sal_s}"
+    basis = (
+        f"{normalize_company(job.company)}|{normalize_title(job.title)}"
+        f"|{job.level.value}|{loc_s}|{sal_s}"
+    )
     return hashlib.sha1(basis.encode("utf-8")).hexdigest()[:16]
 
 

@@ -154,27 +154,32 @@ def blocking_key(job: JobPosting) -> str:
 
 
 # --------------------------------------------------------------------------------------------
-# Location compatibility
+# Identity gates: same opening only if role + level + location all line up
 # --------------------------------------------------------------------------------------------
 def _job_cities(job: JobPosting) -> set[str]:
     return {loc.city.strip().lower() for loc in job.locations if loc.city}
 
 
-def _is_remote(job: JobPosting) -> bool:
-    return job.remote in (RemoteType.REMOTE, RemoteType.HYBRID) or any(
-        loc.is_remote for loc in job.locations
-    )
-
-
-def _compatible_location(a: JobPosting, b: JobPosting) -> bool:
-    """Two postings are location-compatible if they share a city, or either side is
-    remote / has no known city (unknown locations never block a merge)."""
-    if _is_remote(a) or _is_remote(b):
-        return True
+def _same_location(a: JobPosting, b: JobPosting) -> bool:
+    """Same opening only if the two postings share a city — or at least one side states no city
+    at all (cross-source records routinely drop location, and an unknown city must not block a
+    merge). Two DIFFERENT known cities are distinct, filterable postings and never merge, even
+    when remote/hybrid: a hybrid New York role and a hybrid London role are separate openings.
+    """
     ca, cb = _job_cities(a), _job_cities(b)
     if not ca or not cb:
         return True
     return bool(ca & cb)
+
+
+def _same_level(a: JobPosting, b: JobPosting) -> bool:
+    """Same opening only if the seniority matches. ``UNKNOWN`` matches only ``UNKNOWN``, so a
+    posting explicitly graded (Senior / New-Grad / Staff …) is never absorbed into an unlevelled
+    sibling — distinct seniorities are distinct openings that users filter on via ``level``.
+    Same-level postings from different sources still merge (the legitimate cross-source case); the
+    worst outcome of a level mismatch is a visible duplicate, never a vanished role.
+    """
+    return a.level == b.level
 
 
 # --------------------------------------------------------------------------------------------
@@ -291,7 +296,8 @@ def deduplicate(jobs: list[JobPosting], *, threshold: float = 90.0) -> list[JobP
       2. BLOCKING — candidates are bucketed by normalized company; fuzzy comparison only
          happens inside a company block (never global O(n^2)).
       3. FUZZY — within a block, ``rapidfuzz.token_sort_ratio`` on the normalized title must
-         clear ``threshold`` AND the location must be compatible to count as a duplicate.
+         clear ``threshold`` AND the level must match AND the location must match to count as a
+         duplicate (distinct seniorities or distinct cities are distinct, filterable openings).
       4. MERGE — keep the richest/most-authoritative record (ATS > aggregator, then field
          completeness), union provenance, and backfill the primary's missing fields.
     """
@@ -319,7 +325,7 @@ def deduplicate(jobs: list[JobPosting], *, threshold: float = 90.0) -> list[JobP
         for cluster in candidates:
             rep = cluster.rep
             score = fuzz.token_sort_ratio(title, normalize_title(rep.title))
-            if score >= threshold and _compatible_location(job, rep):
+            if score >= threshold and _same_level(job, rep) and _same_location(job, rep):
                 matched = cluster
                 break
 

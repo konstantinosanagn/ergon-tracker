@@ -215,8 +215,22 @@ def test_delta_applied_index_queries_identically_to_fresh_build(tmp_path):
         if i % 5 == 0:
             continue  # dropped
         if i % 3 == 0:
+            # mutate: keep the posting's identity (id/source/source_job_id/title/location) and
+            # change only volatile fields, exactly as a re-crawl of the same req would. (Forging
+            # `id` onto a fresh random job would decouple it from (source, source_job_id) — an
+            # impossible production state that also collides ids once dedup correctly keeps
+            # distinct-level postings apart.)
+            m = _make_jobs(rng, 1)[0]
             curr_jobs.append(
-                _make_jobs(rng, 1)[0].model_copy(update={"id": j.id, "title": j.title})
+                j.model_copy(
+                    update={
+                        "salary": m.salary,
+                        "level": m.level,
+                        "years_experience_min": m.years_experience_min,
+                        "years_experience_max": m.years_experience_max,
+                        "sector": m.sector,
+                    }
+                )
             )
         else:
             curr_jobs.append(j)

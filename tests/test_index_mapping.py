@@ -69,12 +69,14 @@ def test_content_hash_stable_and_change_sensitive():
         source_job_id="zzz",
         company="Stripe, Inc.",
         title="Backend Engineer",
-        level=JobLevel.MID,
+        level=JobLevel.SENIOR,
     )
     diff = JobPosting.create(
         source="greenhouse", source_job_id="1", company="Stripe", title="Frontend Engineer"
     )
-    assert content_hash(base) == content_hash(same)  # same content, different source/id/level
+    relevel = base.model_copy(update={"level": JobLevel.MID})
+    assert content_hash(base) == content_hash(same)  # same content, different source/id
     assert content_hash(base) != content_hash(diff)  # title changed
+    assert content_hash(base) != content_hash(relevel)  # level is part of the identity
     withsal = base.model_copy(update={"salary": Salary(min_amount=100, max_amount=200)})
     assert content_hash(base) != content_hash(withsal)  # salary changed
