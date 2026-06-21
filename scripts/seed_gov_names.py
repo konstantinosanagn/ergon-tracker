@@ -31,11 +31,27 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from company_resolve import is_covered  # noqa: E402
 from harvest_tokens import company_key, load_existing  # noqa: E402
+
+from ergon_tracker.registry.store import SeedRegistry  # noqa: E402
 
 H1B = ROOT / "src" / "ergon_tracker" / "registry" / "data" / "h1b_sponsors.json"
 EDGAR = ROOT / "scripts" / "_edgar_candidates.json"
 DEFAULT_OUT = ROOT / "scripts" / "gov_names.txt"
+
+
+def sec_names(titles: list[str], reg_key_index: set[str], limit: int) -> list[str]:
+    """SEC public-company names NOT already covered in the registry (entity-resolved, so
+    "Cisco Systems, Inc." is skipped when we already have "cisco"), capped at ``limit``."""
+    out: list[str] = []
+    for title in titles:
+        if is_covered(title, reg_key_index):
+            continue
+        out.append(title)
+        if len(out) >= limit:
+            break
+    return out
 
 
 def h1b_prioritized(sponsors: dict, existing_keys: set[str], limit: int) -> list[str]:
@@ -76,9 +92,13 @@ def build_seed(
     *,
     h1b_limit: int,
     edgar_limit: int,
+    sec_titles: list[str] | None = None,
+    reg_key_index: set[str] | None = None,
+    sec_limit: int = 0,
 ) -> list[str]:
-    """Combined name list: H-1B (priority-ordered) first, then EDGAR, deduped across both seeds
-    and against the registry."""
+    """Combined name list: H-1B (priority-ordered), then EDGAR, then SEC public companies, deduped
+    across seeds and filtered against the registry (H-1B/EDGAR by exact slug; SEC by entity
+    resolution so legal names like "Cisco Systems, Inc." are dropped when we already have "cisco")."""
     names = h1b_prioritized(sponsors, existing_keys, h1b_limit)
     seen = {company_key(n) for n in names}
     for name in edgar_names(edgar, existing_keys, edgar_limit):
@@ -86,6 +106,12 @@ def build_seed(
         if key not in seen:
             seen.add(key)
             names.append(name)
+    if sec_titles and sec_limit and reg_key_index is not None:
+        for name in sec_names(sec_titles, reg_key_index, sec_limit):
+            key = company_key(name)
+            if key not in seen:
+                seen.add(key)
+                names.append(name)
     return names
 
 
@@ -94,6 +120,8 @@ def main() -> None:
     out_path = DEFAULT_OUT
     h1b_limit = 400
     edgar_limit = 400
+    sec_limit = 0
+    sec_cache = Path("/tmp/sec_company_tickers.json")
     i = 0
     while i < len(args):
         if args[i] == "--out":
@@ -105,6 +133,9 @@ def main() -> None:
         elif args[i] == "--edgar-limit":
             edgar_limit = int(args[i + 1])
             i += 2
+        elif args[i] == "--sec-limit":
+            sec_limit = int(args[i + 1])
+            i += 2
         elif args[i] == "--limit":
             h1b_limit = edgar_limit = int(args[i + 1])
             i += 2
@@ -115,12 +146,31 @@ def main() -> None:
     sponsors = json.loads(H1B.read_text()).get("sponsors", {}) if H1B.exists() else {}
     edgar = json.loads(EDGAR.read_text()) if EDGAR.exists() else {}
     existing_keys, _ = load_existing()
-    names = build_seed(sponsors, edgar, existing_keys, h1b_limit=h1b_limit, edgar_limit=edgar_limit)
+
+    sec_titles: list[str] = []
+    reg_key_index: set[str] = set()
+    if sec_limit:
+        from audit_public_coverage import fetch_sec
+        from company_resolve import build_key_index
+
+        sec_titles = list(fetch_sec(sec_cache).values())
+        reg_key_index = build_key_index(SeedRegistry().all().keys())
+
+    names = build_seed(
+        sponsors,
+        edgar,
+        existing_keys,
+        h1b_limit=h1b_limit,
+        edgar_limit=edgar_limit,
+        sec_titles=sec_titles,
+        reg_key_index=reg_key_index,
+        sec_limit=sec_limit,
+    )
     out_path.write_text("\n".join(names) + "\n")
     rel = out_path.relative_to(ROOT) if out_path.is_relative_to(ROOT) else out_path
     print(
-        f"h1b_sponsors={len(sponsors)} edgar={len(edgar)} registry={len(existing_keys)} "
-        f"-> {len(names)} prioritized new names"
+        f"h1b_sponsors={len(sponsors)} edgar={len(edgar)} sec={len(sec_titles)} "
+        f"registry={len(existing_keys)} -> {len(names)} prioritized new names"
     )
     print(f"wrote {rel}")
     print(f"next: .venv/bin/python scripts/harvest_tokens.py {rel} --limit 50")

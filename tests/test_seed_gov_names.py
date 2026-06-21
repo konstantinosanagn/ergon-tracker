@@ -35,6 +35,24 @@ def test_edgar_names_excludes_registry_and_caps():
     assert set(out) == {"nvidia", "broadcom"}
 
 
+def test_sec_names_skips_entity_resolved_registry_hits():
+    # "Cisco Systems, Inc." must be skipped when the registry already has "cisco" (entity match);
+    # a genuinely-missing public co is kept.
+    import importlib.util
+    import pathlib
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location("_cr", root / "scripts" / "company_resolve.py")
+    cr = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cr)
+
+    reg_idx = cr.build_key_index(["cisco", "stripe"])
+    out = sg.sec_names(
+        ["Cisco Systems, Inc.", "Exxon Mobil Corp", "Stripe, Inc."], reg_idx, limit=10
+    )
+    assert out == ["Exxon Mobil Corp"]  # cisco + stripe already covered, exxon missing
+
+
 def test_build_seed_dedups_across_seeds():
     sponsors = {"acme": {"n": 10, "last": "2026-01-01"}}
     edgar = {"acme": 1, "nvidia": 2}  # acme overlaps the H-1B seed -> only once

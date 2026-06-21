@@ -64,3 +64,5 @@ scripts/sweep_residual.py
 scripts/upgrade_registry.py
 scripts/gov_names.txt
 scripts/candidates_*.json
+scripts/missing_public_companies.txt
+scripts/gov_names.txt
