@@ -78,6 +78,7 @@ _BUILTIN_MODULES = (
     "ukg",
     "adp",
     "dayforce",
+    "paycom",
     "remotive",
     "arbeitnow",
     "jobicy",
