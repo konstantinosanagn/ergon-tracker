@@ -1,0 +1,11 @@
+university census over 28 residual universities ...
+  processed 10/28 (captured: 2)
+  processed 20/28 (captured: 3)
+  + trustees of university of pennsylv (  704) workday  upenn|wd1|careers-at-penn
+  + arizona state university           (  315) workday  asuep|wd5|ASUFoundation
+  + west virginia university           (  211) workday  wvumedicine|wd1|WVUH
+  + university of cincinnati           (  117) workday  cincinnatichildrens|wd5|careersatcincinnatichildrens
+  + oklahoma state university          (   97) workday  osu|wd1|OSUCareers
+  + research foundation for state univ (   91) workday  rfcuny|wd108|RFCUNY
+
+wrote 6 university candidates -> candidates_uni.json

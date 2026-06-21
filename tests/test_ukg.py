@@ -20,9 +20,13 @@ TOKEN = "recruiting.ultipro.com|ACME01|g-1|Acme"
 
 def _rec(i: int) -> dict:
     return {
-        "Id": f"id-{i}", "Title": f"Job {i}", "RequisitionNumber": f"REQ{i}",
-        "JobCategoryName": "Engineering", "FullTime": True,
-        "PostedDate": "2026-06-18T21:37:28.111Z", "BriefDescription": f"<p>Role {i}</p>",
+        "Id": f"id-{i}",
+        "Title": f"Job {i}",
+        "RequisitionNumber": f"REQ{i}",
+        "JobCategoryName": "Engineering",
+        "FullTime": True,
+        "PostedDate": "2026-06-18T21:37:28.111Z",
+        "BriefDescription": f"<p>Role {i}</p>",
         "Locations": [{"Address": {"City": "Alexandria", "State": {"Code": "VA"}}}],
     }
 
@@ -30,6 +34,7 @@ def _rec(i: int) -> dict:
 def _mock(respx_mock: respx.MockRouter, total: int, server_cap: int = 50) -> None:
     """Mock LoadSearchResults paging; ``server_cap`` = max records the server returns per call
     regardless of requested Top (simulates a server-side Top cap)."""
+
     def handler(request: httpx.Request) -> httpx.Response:
         d = json.loads(request.content)
         top = d["opportunitySearch"]["Top"]
@@ -42,19 +47,35 @@ def _mock(respx_mock: respx.MockRouter, total: int, server_cap: int = 50) -> Non
 
 
 def test_parse_token() -> None:
-    assert UKGProvider._parse("recruiting2.ultipro.com|C|g|Acme") == ("recruiting2.ultipro.com", "C", "g", "Acme")
-    assert UKGProvider._parse("recruiting.ultipro.com|C|g") == ("recruiting.ultipro.com", "C", "g", None)
+    assert UKGProvider._parse("recruiting2.ultipro.com|C|g|Acme") == (
+        "recruiting2.ultipro.com",
+        "C",
+        "g",
+        "Acme",
+    )
+    assert UKGProvider._parse("recruiting.ultipro.com|C|g") == (
+        "recruiting.ultipro.com",
+        "C",
+        "g",
+        None,
+    )
     assert UKGProvider._parse("C|g") == ("recruiting.ultipro.com", "C", "g", None)  # host defaulted
 
 
 def test_matches_board_url() -> None:
-    assert UKGProvider.matches(
-        "https://recruiting2.ultipro.com/UNI1027UDRT/JobBoard/6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1/"
-    ) == "recruiting2.ultipro.com|UNI1027UDRT|6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1"
+    assert (
+        UKGProvider.matches(
+            "https://recruiting2.ultipro.com/UNI1027UDRT/JobBoard/6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1/"
+        )
+        == "recruiting2.ultipro.com|UNI1027UDRT|6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1"
+    )
     # UKG's newer rec.pro.ukg.net host (same JobBoard API)
-    assert UKGProvider.matches(
-        "https://biolifesolution.rec.pro.ukg.net/BIO1501BLSI/JobBoard/4d900524-48eb-4343-a232-4c2b27be9029/"
-    ) == "biolifesolution.rec.pro.ukg.net|BIO1501BLSI|4d900524-48eb-4343-a232-4c2b27be9029"
+    assert (
+        UKGProvider.matches(
+            "https://biolifesolution.rec.pro.ukg.net/BIO1501BLSI/JobBoard/4d900524-48eb-4343-a232-4c2b27be9029/"
+        )
+        == "biolifesolution.rec.pro.ukg.net|BIO1501BLSI|4d900524-48eb-4343-a232-4c2b27be9029"
+    )
     assert UKGProvider.matches("https://careers.example.com/jobs") is None  # not ultipro
 
 

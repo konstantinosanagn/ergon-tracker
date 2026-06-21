@@ -1,0 +1,153 @@
+API-capture over 308 residual giants ...
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  captured 25/308 (API specs: 5)
+  captured 50/308 (API specs: 7)
+  captured 75/308 (API specs: 11)
+  captured 100/308 (API specs: 14)
+  captured 125/308 (API specs: 17)
+Exception in callback AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97
+handle: <Handle AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97>
+Traceback (most recent call last):
+  File "/Users/kanagn/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 105, in callback
+    self.emit("error", exc)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 70, in emit
+    return super().emit(event, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 223, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 181, in _emit_handle_potential_error
+    raise error
+  File "/Users/kanagn/Desktop/job-researcher/scripts/capture_api.py", line 252, in on_resp
+    spec = infer_spec(r.url, r.request.method, r.request.post_data, d, name)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 167, in post_data
+    return mapping.from_maybe_impl(self._impl_obj.post_data)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/_impl/_network.py", line 215, in post_data
+    return base64.b64decode(base64_post_data).decode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+  captured 150/308 (API specs: 21)
+  captured 175/308 (API specs: 26)
+Exception in callback AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97
+handle: <Handle AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97>
+Traceback (most recent call last):
+  File "/Users/kanagn/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 105, in callback
+    self.emit("error", exc)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 70, in emit
+    return super().emit(event, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 223, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 181, in _emit_handle_potential_error
+    raise error
+  File "/Users/kanagn/Desktop/job-researcher/scripts/capture_api.py", line 252, in on_resp
+    spec = infer_spec(r.url, r.request.method, r.request.post_data, d, name)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 167, in post_data
+    return mapping.from_maybe_impl(self._impl_obj.post_data)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/_impl/_network.py", line 215, in post_data
+    return base64.b64decode(base64_post_data).decode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 1653: invalid start byte
+  captured 200/308 (API specs: 28)
+  captured 225/308 (API specs: 34)
+  captured 250/308 (API specs: 38)
+  captured 275/308 (API specs: 42)
+Exception in callback AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97
+handle: <Handle AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97>
+Traceback (most recent call last):
+  File "/Users/kanagn/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 105, in callback
+    self.emit("error", exc)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 70, in emit
+    return super().emit(event, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 223, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 181, in _emit_handle_potential_error
+    raise error
+  File "/Users/kanagn/Desktop/job-researcher/scripts/capture_api.py", line 252, in on_resp
+    spec = infer_spec(r.url, r.request.method, r.request.post_data, d, name)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 167, in post_data
+    return mapping.from_maybe_impl(self._impl_obj.post_data)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/_impl/_network.py", line 215, in post_data
+    return base64.b64decode(base64_post_data).decode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+  captured 300/308 (API specs: 47)
+
+inferred 50 API specs -> apicapture.json; wrote 50 candidates -> candidates_apicap.json
+  optumservices          GET  https://api.altrulabs.com/dist-api/us/widgets/12000240
+  johnshopkinsuniversity GET  https://www.juicer.io/api/feeds/hopkinsmedicine?per=15&origi
+  federalexpress         GET  https://fedex.paradox.ai/api/widget/cmsjzqfqksxtfzyzqzlk/rul
+  goldmansachsbankusa    POST https://www.kenyt.ai/botapp/api/botsetup/loadchatwindow?botI
+  cvssharedservicesresources GET  https://bot-jobs.com/api/jobalerts-options
+  universityofvirginia   POST https://jobs.virginia.edu/widgets
+  slkamerica             GET  https://bebee.com/api/jobs/oneredce-6874_8e6566fbb3b8b119970
+  nyugrossmanschoolofmedicine GET  https://sidebar.bugherd.com/sidebar/resources?apikey=j6976nt
+  boardofregentsofuniversityofnebraska POST https://c950.chronicle.com/DG/DEFAULT/rest/rpc/925?referer=h
+  trusteesofbostonuniversity GET  https://www.ellis.com/api/posts?depth=1
+  qualcommatheros        GET  https://bebee.com/api/jobs/theirstack-667820195/enrichment?c
+  pricewaterhousecoopersllp GET  https://sidebar.bugherd.com/sidebar/resources?apikey=apumfv2
+  akkodis                POST https://www.akkodis.com/api/data/jobs/summarized
+  annapurnalabsus        GET  https://amazon.jobs/en/search?base_query=&result_limit=5&off
+  balyasnyassetmanagementlp GET  https://job-search-ui.efinancialcareers.com/v1/efc/jobs/sear
+  borusgaoboaugustauniversity GET  https://www.ellis.com/api/posts?depth=1
+  lelandstanfordjrunivslacnationalacceleratorlab GET  https://h1btrends-api.onrender.com/api/h1b/jobs/staff-engine
+  technumen              GET  https://gladiator.iimjobs.com/job/similar-company-jobs?page=
+  evercorepartnersserviceseast GET  https://www.ellis.com/api/posts?depth=1
+  orpine                 GET  https://ws.jobdiva.com/candPortal/rest/reg/reg_without_resum
+  kingston               GET  https://olivia.paradox.ai/api/widget/ntvzprkmqrdhvtrrrrpv/ru
+  dataquad               GET  https://gladiator.iimjobs.com/job/similar-company-jobs?page=
+  rjtcompuquestdbaapolis GET  https://h1btrends-api.onrender.com/api/h1b/companies/rjt-com
+  emonics                GET  https://careers.ontologize.com/api/jobalerts-options
+  ibaseoperations        GET  https://bebee.com/api/jobs/techmap_us_ibase-t_37615/enrichme
+  universityofgeorgiaoge GET  https://bebee.com/api/jobs/theirstack-673232578/enrichment?c
+  veridicsolutions       GET  https://gladiator.iimjobs.com/job/similar-company-jobs?page=
+  jriamerica             GET  https://api-widget.soundcloud.com/playlists/52521283?represe
+  upstartnetwork         POST https://jobs.gaingels.com/api-boards/search-jobs
+  xyloconsulting         GET  https://bebee.com/api/jobs/theirstack-712593520/enrichment?c
+  relevantztechnologyservices GET  https://sidebar.bugherd.com/sidebar/resources?apikey=qjovzsp
+  intellisoftsystems     GET  https://ws.jobdiva.com/candPortal/rest/reg/reg_without_resum
+  mediatekusa            GET  https://prod-api.oysterlink.com/search/jobs?skip=0&take=10&o
+  trinetusa              GET  https://jobs.trinet.com/api/pcsx/search?domain=trinet.com&qu
+  suescuelalanguageacademy GET  https://bebee.com/api/jobs/theirstack-665761293/enrichment?c
+  tekinvaderz            GET  https://www.tekinvaderz.com/_api/tag-manager/api/v1/tags/sit
+  sinaihospitalofbaltimore GET  https://www.vivian.com/api/self/available-seo-entities?disci
+  carnival               GET  https://distillery.pixlee.co/getJSON?api_key=u5eU3mCLPUXBRPN
+  celoristech            POST https://www.tiktokw.us/api/global-footer/graphql
+  federalsoftsystems     GET  https://gladiator.iimjobs.com/job/similar-company-jobs?page=
+  inteliroute            GET  https://www.ellis.com/api/posts?depth=1
+  4consulting            GET  https://bebee.com/api/jobs/oneredce-6874_5fc76c7aa891464c07b
+  gavstechnologiesna     GET  https://www.instahyre.com/api/v1/employer_misc/employer_prof
+  amarthyitsolutions     GET  https://h1btrends-api.onrender.com/api/h1b/companies/amarthy
+  epsoft                 GET  https://gladiator.iimjobs.com/job/similar-company-jobs?page=
+  dreamventure           GET  https://bebee.com/api/jobs/theirstack-651449530/enrichment?c
+  cbsinteractive         GET  https://d3hb14vkzrxvla.cloudfront.net/v1/d513777f-eae9-4f4b-
+  foxcablenetworkservices GET  https://sidebar.bugherd.com/sidebar/resources?apikey=qgy99te
+  triadmathandscienceacademy GET  https://bebee.com/api/jobs/appcast-13509_99963497/enrichment
+  geprecisionhealthcare  GET  https://content-us.phenompeople.com/api/GEVGHLGLOBAL/getRegi

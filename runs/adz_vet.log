@@ -1,0 +1,18 @@
+cgitechnologiesandsolution tok=CGI                matched= 80/80 cos=['CGI', 'CGI Technologies and Solutions, Inc.']
+hcamanagementserviceslp    tok=HCA Healthcare     matched= 80/80 cos=['HCA Healthcare Colleton Hospital', 'Medical City Healthcare at Home']
+fujitsunorthamerica        tok=Fujitsu            matched= 25/25 cos=['Fujitsu', 'Fujitsu Frontech North America Inc']
+hdrengineering             tok=HDR                matched= 33/33 cos=['HDR, Inc.', 'HDR Remodeling']
+dprconstructionageneralpar tok=DPR Construction   matched=  6/80 cos=['DPR Construction']
+terraconconsultants        tok=Terracon           matched= 80/80 cos=['Terracon', 'Description Terracon']
+cnhindustrialamerica       tok=CNH Industrial     matched= 11/11 cos=['CNH Industrial', 'CNH Industrial Reman']
+bnpparibassecurities       tok=BNP Paribas        matched=  4/4 cos=['BNP Paribas']
+cirruslogicinternationalse tok=Cirrus Logic       matched=  0/0 cos=[]
+itcinfotechusa             tok=ITC Infotech       matched=  5/5 cos=['ITC Infotech , Inc']
+rutgersstateuniversityofne tok=Rutgers University matched= 80/80 cos=['Rutgers University-New Brunswick', 'Rutgers University']
+battelleenergyalliance     tok=Battelle           matched= 80/80 cos=['Battelle Memorial Institute', 'Battelle']
+maimonidesmedicalcenter    tok=Maimonides         matched= 23/23 cos=['Maimonides Cancer Center', 'Maimonides Educational Center']
+curatorsofuniversityofmiss tok=University of Miss matched= 80/80 cos=['University of Missouri School of Medicine', 'University of Missouri Health Care']
+boardofregentsofuniversity tok=University of Nebr matched= 80/80 cos=['Children’s Nebraska', 'University of Nebraska Foundation Careers']
+trusteesofdartmouthcollege tok=Dartmouth          matched= 80/80 cos=['Dartmouth-Hitchcock Health', 'Dartmouth Health']
+
+wrote 13 verified candidates

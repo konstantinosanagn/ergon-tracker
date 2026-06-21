@@ -1,0 +1,358 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - paragraph [ref=e4]: This site uses cookies to store information on your computer. Some are essential to make our site work; others help us improve the user experience. By using the site, you consent to the placement of these cookies. Read our Privacy Notice to learn more.
+    - button "Accept Use Of Cookies" [ref=e5] [cursor=pointer]: Accept
+    - button "Close Cookies Notice" [ref=e6] [cursor=pointer]: Close
+  - generic [ref=e7]:
+    - banner [ref=e8]:
+      - generic:
+        - link "Skip to main content":
+          - /url: "#content"
+      - navigation "Header Menu" [ref=e12]:
+        - link [ref=e13] [cursor=pointer]:
+          - /url: https://www.eastman.com/en/careers
+          - img [ref=e14]
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - button "Featured Jobs" [ref=e17] [cursor=pointer]: Featured Jobs
+          - listitem [ref=e19]:
+            - button "Join Our Talent Community" [ref=e20] [cursor=pointer]: Join Our Talent Community
+          - listitem [ref=e22]:
+            - link "Return to Eastman Careers" [ref=e23] [cursor=pointer]:
+              - /url: https://www.eastman.com/en/careers
+      - generic [ref=e25]:
+        - button "Language" [ref=e27] [cursor=pointer]: Language
+        - link "View Profile" [ref=e31] [cursor=pointer]:
+          - /url: "#"
+    - main [ref=e33]:
+      - generic [ref=e34]:
+        - navigation "Breadcrumb" [ref=e36]:
+          - list [ref=e37]:
+            - listitem [ref=e38]:
+              - link "Home" [ref=e39] [cursor=pointer]:
+                - /url: /
+        - heading "Search results for \"\"." [level=1] [ref=e40]
+        - search [ref=e43]:
+          - generic [ref=e45]:
+            - generic [ref=e47]:
+              - generic [ref=e48]:
+                - generic [ref=e49]: Search by Keyword
+                - textbox "Search by Keyword" [ref=e50]
+              - generic [ref=e51]:
+                - generic [ref=e52]: Search by Location
+                - textbox "Search by Location" [ref=e53]
+            - generic [ref=e56]:
+              - button "Search Jobs" [ref=e58] [cursor=pointer]
+              - button "Clear" [ref=e60] [cursor=pointer]
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic "Results 1 – 25" [ref=e65]: Results 1 – 25 of 104
+            - text: Page 1 of 5
+          - list [ref=e66]:
+            - listitem:
+              - link "First Page" [ref=e67] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc"
+                - text: «
+            - listitem:
+              - link "1" [ref=e68]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc"
+            - listitem:
+              - link "2" [ref=e69] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=25"
+            - listitem:
+              - link "3" [ref=e70] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=50"
+            - listitem:
+              - link "4" [ref=e71] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=75"
+            - listitem:
+              - link "5" [ref=e72] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=100"
+            - listitem:
+              - link "Last Page" [ref=e73] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=100"
+                - text: »
+        - table "Search results for . Page 1 of 5, Results 1 to 25 of 104" [ref=e75]:
+          - rowgroup [ref=e76]:
+            - row "Title Location Date Sort descending" [ref=e77]:
+              - columnheader "Title" [ref=e78]:
+                - button "Title" [ref=e80] [cursor=pointer]
+              - columnheader "Location" [ref=e81]:
+                - button "Location" [ref=e83] [cursor=pointer]
+              - columnheader "Date Sort descending" [ref=e84]:
+                - button "Date Sort descending" [ref=e86] [cursor=pointer]:
+                  - text: Date
+                  - img "Sort descending" [ref=e87]
+              - cell [ref=e88]
+            - row "Filter Reset" [ref=e89]:
+              - cell [ref=e90]:
+                - textbox "Title" [ref=e91]
+              - cell [ref=e92]:
+                - textbox "Location" [ref=e93]
+              - cell [ref=e94]:
+                - textbox "Date (M/d/yy)" [ref=e95]
+              - cell "Filter Reset" [ref=e96]:
+                - generic [ref=e97]:
+                  - button "Filter" [ref=e98] [cursor=pointer]
+                  - button "Reset" [ref=e99] [cursor=pointer]
+          - rowgroup [ref=e100]:
+            - row "Business Development Manager Kingsport, TN, US, 37660 Jun 20, 2026" [ref=e101]:
+              - cell "Business Development Manager" [ref=e102]:
+                - link "Business Development Manager" [ref=e104] [cursor=pointer]:
+                  - /url: /job/Kingsport-Business-Development-Manager-TN-37660/1393459900/
+              - cell "Kingsport, TN, US, 37660" [ref=e105]
+              - cell "Jun 20, 2026" [ref=e106]
+              - cell [ref=e107]
+            - row "Litigation & Compliance Counsel Kingsport, TN, US, 37660 +3 more… Jun 20, 2026" [ref=e108]:
+              - cell "Litigation & Compliance Counsel" [ref=e109]:
+                - link "Litigation & Compliance Counsel" [ref=e111] [cursor=pointer]:
+                  - /url: /job/Kingsport-Litigation-&-Compliance-Counsel-TN-37660/1393421400/
+              - cell "Kingsport, TN, US, 37660 +3 more…" [ref=e112]:
+                - generic [ref=e113]: Kingsport, TN, US, 37660 +3 more…
+              - cell "Jun 20, 2026" [ref=e114]
+              - cell [ref=e115]
+            - row "Customer Service Representative Advanced Material Interlayers - German speaker Rotterdam, NL, 3067 GG Jun 20, 2026" [ref=e116]:
+              - cell "Customer Service Representative Advanced Material Interlayers - German speaker" [ref=e117]:
+                - link "Customer Service Representative Advanced Material Interlayers - German speaker" [ref=e119] [cursor=pointer]:
+                  - /url: /job/Rotterdam-Customer-Service-Representative-Advanced-Material-Interlayers-German-speaker-3067-GG/1393270800/
+              - cell "Rotterdam, NL, 3067 GG" [ref=e120]
+              - cell "Jun 20, 2026" [ref=e121]
+              - cell [ref=e122]
+            - row "Supply Chain Manager Kingsport, TN, US, 37660 Jun 20, 2026" [ref=e123]:
+              - cell "Supply Chain Manager" [ref=e124]:
+                - link "Supply Chain Manager" [ref=e126] [cursor=pointer]:
+                  - /url: /job/Kingsport-Supply-Chain-Manager-TN-37660/1392871600/
+              - cell "Kingsport, TN, US, 37660" [ref=e127]
+              - cell "Jun 20, 2026" [ref=e128]
+              - cell [ref=e129]
+            - row "Operations Technician St Gabriel, LA, US, 70776 Jun 19, 2026" [ref=e130]:
+              - cell "Operations Technician" [ref=e131]:
+                - link "Operations Technician" [ref=e133] [cursor=pointer]:
+                  - /url: /job/St-Gabriel-Operations-Technician-LA-70776/1376139800/
+              - cell "St Gabriel, LA, US, 70776" [ref=e134]
+              - cell "Jun 19, 2026" [ref=e135]
+              - cell [ref=e136]
+            - row "Inside Sales Representative Mississauga, ON, CA, L5L 6A9 Jun 19, 2026" [ref=e137]:
+              - cell "Inside Sales Representative" [ref=e138]:
+                - link "Inside Sales Representative" [ref=e140] [cursor=pointer]:
+                  - /url: /job/Mississauga-Inside-Sales-Representative-ON-L5L-6A9/1348948900/
+              - cell "Mississauga, ON, CA, L5L 6A9" [ref=e141]
+              - cell "Jun 19, 2026" [ref=e142]
+              - cell [ref=e143]
+            - row "Associate Applications Scientist Kingsport, TN, US, 37660 Jun 19, 2026" [ref=e144]:
+              - cell "Associate Applications Scientist" [ref=e145]:
+                - link "Associate Applications Scientist" [ref=e147] [cursor=pointer]:
+                  - /url: /job/Kingsport-Associate-Applications-Scientist-TN-37660/1384642900/
+              - cell "Kingsport, TN, US, 37660" [ref=e148]
+              - cell "Jun 19, 2026" [ref=e149]
+              - cell [ref=e150]
+            - row "Senior Innovation Project Leader Kingsport, TN, US, 37660 Jun 19, 2026" [ref=e151]:
+              - cell "Senior Innovation Project Leader" [ref=e152]:
+                - link "Senior Innovation Project Leader" [ref=e154] [cursor=pointer]:
+                  - /url: /job/Kingsport-Senior-Innovation-Project-Leader-TN-37660/1401659900/
+              - cell "Kingsport, TN, US, 37660" [ref=e155]
+              - cell "Jun 19, 2026" [ref=e156]
+              - cell [ref=e157]
+            - row "Account/New Business Development Manager- Specialty Plastics Paris La Defense Cedex, FR, 92977 Jun 19, 2026" [ref=e158]:
+              - cell "Account/New Business Development Manager- Specialty Plastics" [ref=e159]:
+                - link "Account/New Business Development Manager- Specialty Plastics" [ref=e161] [cursor=pointer]:
+                  - /url: /job/Paris-La-Defense-Cedex-AccountNew-Business-Development-Manager-Specialty-Plastics-92977/1401548700/
+              - cell "Paris La Defense Cedex, FR, 92977" [ref=e162]
+              - cell "Jun 19, 2026" [ref=e163]
+              - cell [ref=e164]
+            - row "Business Development Manager - Naia Textiles Rotterdam, NL, 3067 GG Jun 19, 2026" [ref=e165]:
+              - cell "Business Development Manager - Naia Textiles" [ref=e166]:
+                - link "Business Development Manager - Naia Textiles" [ref=e168] [cursor=pointer]:
+                  - /url: /job/Rotterdam-Business-Development-Manager-Naia-Textiles-3067-GG/1401548800/
+              - cell "Rotterdam, NL, 3067 GG" [ref=e169]
+              - cell "Jun 19, 2026" [ref=e170]
+              - cell [ref=e171]
+            - row "Customer Service Representative - Langenfeld, Germany Langenfeld, DE, 40764 Jun 19, 2026" [ref=e172]:
+              - cell "Customer Service Representative - Langenfeld, Germany" [ref=e173]:
+                - link "Customer Service Representative - Langenfeld, Germany" [ref=e175] [cursor=pointer]:
+                  - /url: /job/Langenfeld-Customer-Service-Representative-Langenfeld%2C-Germany-40764/1401550200/
+              - cell "Langenfeld, DE, 40764" [ref=e176]
+              - cell "Jun 19, 2026" [ref=e177]
+              - cell [ref=e178]
+            - row "Advanced Treasury Analyst Kingsport, TN, US, 37660 Jun 18, 2026" [ref=e179]:
+              - cell "Advanced Treasury Analyst" [ref=e180]:
+                - link "Advanced Treasury Analyst" [ref=e182] [cursor=pointer]:
+                  - /url: /job/Kingsport-Advanced-Treasury-Analyst-TN-37660/1392822400/
+              - cell "Kingsport, TN, US, 37660" [ref=e183]
+              - cell "Jun 18, 2026" [ref=e184]
+              - cell [ref=e185]
+            - row "Account Manager - Aviation Distribution Linden, NJ, US, 07036 Jun 18, 2026" [ref=e186]:
+              - cell "Account Manager - Aviation Distribution" [ref=e187]:
+                - link "Account Manager - Aviation Distribution" [ref=e189] [cursor=pointer]:
+                  - /url: /job/Linden-Account-Manager-Aviation-Distribution-NJ-07036/1392642900/
+              - cell "Linden, NJ, US, 07036" [ref=e190]
+              - cell "Jun 18, 2026" [ref=e191]
+              - cell [ref=e192]
+            - row "HR Manager Fieldale, VA, US, 24089 Jun 18, 2026" [ref=e193]:
+              - cell "HR Manager" [ref=e194]:
+                - link "HR Manager" [ref=e196] [cursor=pointer]:
+                  - /url: /job/Fieldale-HR-Manager-VA-24089/1392553800/
+              - cell "Fieldale, VA, US, 24089" [ref=e197]
+              - cell "Jun 18, 2026" [ref=e198]
+              - cell [ref=e199]
+            - row "Sales Coordinator - AMI Pudong New Area, SH, CN, 201210 Jun 18, 2026" [ref=e200]:
+              - cell "Sales Coordinator - AMI" [ref=e201]:
+                - link "Sales Coordinator - AMI" [ref=e203] [cursor=pointer]:
+                  - /url: /job/Pudong-New-Area-Sales-Coordinator-AMI-SH-201210/1384039900/
+              - cell "Pudong New Area, SH, CN, 201210" [ref=e204]
+              - cell "Jun 18, 2026" [ref=e205]
+              - cell [ref=e206]
+            - row "Auditor Kingsport, TN, US, 37660 Jun 18, 2026" [ref=e207]:
+              - cell "Auditor" [ref=e208]:
+                - link "Auditor" [ref=e210] [cursor=pointer]:
+                  - /url: /job/Kingsport-Auditor-TN-37660/1392660600/
+              - cell "Kingsport, TN, US, 37660" [ref=e211]
+              - cell "Jun 18, 2026" [ref=e212]
+              - cell [ref=e213]
+            - row "Auditor Kingsport, TN, US, 37660 Jun 18, 2026" [ref=e214]:
+              - cell "Auditor" [ref=e215]:
+                - link "Auditor" [ref=e217] [cursor=pointer]:
+                  - /url: /job/Kingsport-Auditor-TN-37660/1392680700/
+              - cell "Kingsport, TN, US, 37660" [ref=e218]
+              - cell "Jun 18, 2026" [ref=e219]
+              - cell [ref=e220]
+            - row "Strategy Manager Kingsport, TN, US, 37660 Jun 18, 2026" [ref=e221]:
+              - cell "Strategy Manager" [ref=e222]:
+                - link "Strategy Manager" [ref=e224] [cursor=pointer]:
+                  - /url: /job/Kingsport-Strategy-Manager-TN-37660/1401213100/
+              - cell "Kingsport, TN, US, 37660" [ref=e225]
+              - cell "Jun 18, 2026" [ref=e226]
+              - cell [ref=e227]
+            - row "Strategy Analyst Kingsport, TN, US, 37660 Jun 18, 2026" [ref=e228]:
+              - cell "Strategy Analyst" [ref=e229]:
+                - link "Strategy Analyst" [ref=e231] [cursor=pointer]:
+                  - /url: /job/Kingsport-Strategy-Analyst-TN-37660/1401240300/
+              - cell "Kingsport, TN, US, 37660" [ref=e232]
+              - cell "Jun 18, 2026" [ref=e233]
+              - cell [ref=e234]
+            - row "Raw Materials Engineer Fieldale, VA, US, 24089 Jun 17, 2026" [ref=e235]:
+              - cell "Raw Materials Engineer" [ref=e236]:
+                - link "Raw Materials Engineer" [ref=e238] [cursor=pointer]:
+                  - /url: /job/Fieldale-Raw-Materials-Engineer-VA-24089/1392111100/
+              - cell "Fieldale, VA, US, 24089" [ref=e239]
+              - cell "Jun 17, 2026" [ref=e240]
+              - cell [ref=e241]
+            - row "Office assistant Merelbeke, BE, 9820 Jun 17, 2026" [ref=e242]:
+              - cell "Office assistant" [ref=e243]:
+                - link "Office assistant" [ref=e245] [cursor=pointer]:
+                  - /url: /job/Merelbeke-Office-assistant-9820/1392074300/
+              - cell "Merelbeke, BE, 9820" [ref=e246]
+              - cell "Jun 17, 2026" [ref=e247]
+              - cell [ref=e248]
+            - row "Procesoperator Gent Noord Ghent, BE, 9000 Jun 17, 2026" [ref=e249]:
+              - cell "Procesoperator Gent Noord" [ref=e250]:
+                - link "Procesoperator Gent Noord" [ref=e252] [cursor=pointer]:
+                  - /url: /job/Ghent-Procesoperator-Gent-Noord-9000/1371290800/
+              - cell "Ghent, BE, 9000" [ref=e253]
+              - cell "Jun 17, 2026" [ref=e254]
+              - cell [ref=e255]
+            - row "Production Operator Sun Prairie, WI, US, 53590 Jun 17, 2026" [ref=e256]:
+              - cell "Production Operator" [ref=e257]:
+                - link "Production Operator" [ref=e259] [cursor=pointer]:
+                  - /url: /job/Sun-Prairie-Production-Operator-WI-53590/1383697500/
+              - cell "Sun Prairie, WI, US, 53590" [ref=e260]
+              - cell "Jun 17, 2026" [ref=e261]
+              - cell [ref=e262]
+            - row "Customer Service Representative - Kingsport Kingsport, TN, US, 37660 Jun 17, 2026" [ref=e263]:
+              - cell "Customer Service Representative - Kingsport" [ref=e264]:
+                - link "Customer Service Representative - Kingsport" [ref=e266] [cursor=pointer]:
+                  - /url: /job/Kingsport-Customer-Service-Representative-Kingsport-TN-37660/1400802300/
+              - cell "Kingsport, TN, US, 37660" [ref=e267]
+              - cell "Jun 17, 2026" [ref=e268]
+              - cell [ref=e269]
+            - row "E/I Technician Newport, South Wales, GB, NP194XF Jun 16, 2026" [ref=e270]:
+              - cell "E/I Technician" [ref=e271]:
+                - link "E/I Technician" [ref=e273] [cursor=pointer]:
+                  - /url: /job/Newport%2C-South-Wales-EI-Technician-NP194XF/1391769600/
+              - cell "Newport, South Wales, GB, NP194XF" [ref=e274]
+              - cell "Jun 16, 2026" [ref=e275]
+              - cell [ref=e276]
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - generic "Results 1 – 25" [ref=e281]: Results 1 – 25 of 104
+            - text: Page 1 of 5
+          - list [ref=e282]:
+            - listitem:
+              - link "First Page" [ref=e283] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc"
+                - text: «
+            - listitem:
+              - link "1" [ref=e284]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc"
+            - listitem:
+              - link "2" [ref=e285] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=25"
+            - listitem:
+              - link "3" [ref=e286] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=50"
+            - listitem:
+              - link "4" [ref=e287] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=75"
+            - listitem:
+              - link "5" [ref=e288] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=100"
+            - listitem:
+              - link "Last Page" [ref=e289] [cursor=pointer]:
+                - /url: "?q=&sortColumn=referencedate&sortDirection=desc&startrow=100"
+                - text: »
+    - contentinfo [ref=e291]:
+      - generic [ref=e294]:
+        - link [ref=e295] [cursor=pointer]:
+          - /url: https://www.eastman.com/en/careers
+          - img [ref=e296]
+        - list
+        - list [ref=e298]:
+          - listitem [ref=e299]:
+            - link "Visit our Facebook page" [ref=e300] [cursor=pointer]:
+              - /url: https://www.facebook.com/eastman/
+              - generic [ref=e301]: Opens in a new tab.
+              - img [ref=e302]
+          - listitem [ref=e304]:
+            - link "Follow us on X" [ref=e305] [cursor=pointer]:
+              - /url: https://twitter.com/EastmanChemCo
+              - generic [ref=e306]: Opens in a new tab.
+              - img [ref=e307]
+          - listitem [ref=e309]:
+            - link "Follow us on LinkedIn" [ref=e310] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/eastman-chemical-company/
+              - generic [ref=e311]: Opens in a new tab.
+              - img [ref=e312]
+          - listitem [ref=e314]:
+            - link "Visit our YouTube channel" [ref=e315] [cursor=pointer]:
+              - /url: https://www.youtube.com/c/eastman
+              - generic [ref=e316]: Opens in a new tab.
+              - img [ref=e317]
+      - contentinfo [ref=e321]:
+        - navigation [ref=e322]:
+          - heading [level=2]
+          - list [ref=e323]:
+            - listitem [ref=e324]:
+              - link "Eastman.com" [ref=e325] [cursor=pointer]:
+                - /url: https://www.eastman.com/en
+            - listitem [ref=e326]:
+              - link "Privacy Policy" [ref=e327] [cursor=pointer]:
+                - /url: https://www.eastman.com/privacy/Pages/Overview.aspx
+            - listitem [ref=e328]:
+              - link "View All Jobs" [ref=e329] [cursor=pointer]:
+                - /url: https://jobs.eastman.com/search/?q=&locationsearch=
+        - navigation [ref=e330]:
+          - heading [level=2]
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link "Supply Chain Responsibility" [ref=e333] [cursor=pointer]:
+                - /url: https://www.eastman.com/SiteCollectionDocuments/EMN-Statement-Human-Trafficking.pdf
+            - listitem [ref=e334]:
+              - link "Legal" [ref=e335] [cursor=pointer]:
+                - /url: https://www.eastman.com/Pages/Legal_Information.aspx
+        - navigation [ref=e336]:
+          - heading [level=2]
+          - list [ref=e337]:
+            - listitem [ref=e338]:
+              - link "Contact Us" [ref=e339] [cursor=pointer]:
+                - /url: https://www.eastman.com/en/contact-us/corporate-contact-form
+      - paragraph [ref=e342]: © 2020 Eastman Chemical Company or its subsidiaries. All rights reserved. As used herein, ® denotes registered trademark status in the U.S. only. Thank you for your interest in careers at Eastman. Eastman Chemical Company is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, sexual orientation, gender identity, national origin, disability, pregnancy, veteran status or any other protected classes as designated by law. Eastman is committed to creating a highly engaged workplace, where everyone can contribute to their fullest potential each day. As part of our recruiting and hiring process, Eastman will not ask for fees, payments or credit card information. If any person requests this during the recruitment process or as part of an employment offer or you have doubts regarding the legitimacy of information you’ve received, please contact us directly via eastman.com.

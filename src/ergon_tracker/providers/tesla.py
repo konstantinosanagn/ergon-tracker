@@ -55,7 +55,9 @@ class TeslaProvider(BaseProvider):
     @classmethod
     def matches(cls, url_or_host: str) -> str | None:
         u = url_or_host.lower()
-        if "tesla.com" in u and ("career" in u or "cua-api" in u or u.rstrip("/").endswith("tesla.com")):
+        if "tesla.com" in u and (
+            "career" in u or "cua-api" in u or u.rstrip("/").endswith("tesla.com")
+        ):
             return "tesla"
         return None
 
@@ -65,7 +67,9 @@ class TeslaProvider(BaseProvider):
         async with AsyncSession(impersonate="chrome124", verify=False, timeout=45) as s:
             try:
                 # Prime: the careers page sets the WAF-clearance cookies the API call needs.
-                await s.get(_PRIME_URL, headers={"Accept": "text/html", "Accept-Language": "en-US,en;q=0.9"})
+                await s.get(
+                    _PRIME_URL, headers={"Accept": "text/html", "Accept-Language": "en-US,en;q=0.9"}
+                )
                 resp = await s.get(
                     _STATE_URL,
                     headers={
@@ -107,8 +111,12 @@ class TeslaProvider(BaseProvider):
                     url=_JOB_URL.format(id=jid),
                     payload={
                         "title": rec.get("t") or "",
-                        "location": locs.get(str(rec.get("l"))) if rec.get("l") is not None else None,
-                        "department": deps.get(str(rec.get("dp"))) if rec.get("dp") is not None else None,
+                        "location": locs.get(str(rec.get("l")))
+                        if rec.get("l") is not None
+                        else None,
+                        "department": deps.get(str(rec.get("dp")))
+                        if rec.get("dp") is not None
+                        else None,
                         "type": types.get(str(rec.get("y"))) if rec.get("y") is not None else None,
                     },
                 )

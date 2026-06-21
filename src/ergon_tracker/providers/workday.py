@@ -149,7 +149,9 @@ class WorkdayProvider(BaseProvider):
         # the site is OFTEN named after the tenant (``/AAON`` for tenant ``aaon``) -> keep it. Only
         # a leading tenant *followed by* a real site (``/{tenant}/{site}``) is a redundant prefix.
         meaningful = [
-            seg for seg in segments if seg.lower() not in frame and not _LOCALE_RE.match(seg.lower())
+            seg
+            for seg in segments
+            if seg.lower() not in frame and not _LOCALE_RE.match(seg.lower())
         ]
         if not meaningful:
             return None

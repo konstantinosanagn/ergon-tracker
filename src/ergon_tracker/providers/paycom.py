@@ -94,7 +94,9 @@ class PaycomProvider(BaseProvider):
         except ImportError:
             return []
         limit = query.limit
-        portal = f"https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={key}&fromClientSide=true"
+        portal = (
+            f"https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={key}&fromClientSide=true"
+        )
         captured: dict[str, str] = {}
         posts: list[dict[str, Any]] = []
         async with async_playwright() as p:

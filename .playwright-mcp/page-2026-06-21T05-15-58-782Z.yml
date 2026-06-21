@@ -1,0 +1,354 @@
+- generic [ref=e1]:
+  - generic:
+    - alert [active] [ref=e384]: "Please note: This website includes an accessibility system. Press Control-F11 to adjust the website to people with visual disabilities who are using a screen reader; Press Control-F10 to open an accessibility menu."
+    - button "Accessibility" [ref=e3]:
+      - img
+      - img [ref=e4]
+      - generic [ref=e6]: Accessibility
+    - generic:
+      - list:
+        - listitem:
+          - button "Press enter for Accessibility for blind people who use screen readers" [ref=e7] [cursor=pointer]:
+            - text: Press enter for Accessibility for blind people
+            - generic [ref=e8]: who use screen readers
+        - listitem:
+          - button "Press enter for Keyboard Navigation" [ref=e9] [cursor=pointer]
+        - listitem:
+          - button "Press enter for Accessibility menu" [ref=e10] [cursor=pointer]
+  - banner [ref=e11]:
+    - navigation [ref=e13]:
+      - generic [ref=e14]:
+        - link "KPMG Header Logo" [ref=e15] [cursor=pointer]:
+          - /url: https://www.kpmguscareers.com/
+          - img "KPMG Header Logo" [ref=e16]
+        - list [ref=e20]:
+          - listitem [ref=e21]:
+            - link "Why KPMG" [ref=e22] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/why-kpmg/
+          - listitem [ref=e23]:
+            - link "Practice Areas" [ref=e24] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/practice-areas/
+          - listitem [ref=e25]:
+            - link "Early Career" [ref=e26] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/early-career/
+          - listitem [ref=e27]:
+            - link "Experienced" [ref=e28] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/experienced/
+          - listitem [ref=e29]:
+            - link "Contractor" [ref=e30] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/contractor/
+          - listitem [ref=e31]:
+            - link "Executive" [ref=e32] [cursor=pointer]:
+              - /url: https://www.kpmguscareers.com/executive/
+          - listitem [ref=e33]:
+            - link "Job Search" [ref=e34] [cursor=pointer]:
+              - /url: /job-search
+            - img "search" [ref=e35]
+            - img "arrow - right" [ref=e39]
+  - main [ref=e44]:
+    - generic [ref=e49]:
+      - generic [ref=e51]:
+        - link "My Profile" [ref=e52] [cursor=pointer]:
+          - /url: "https://us-talentcommunity.kpmg.com/tc "
+          - text: My Profile
+          - img [ref=e53]
+        - button "My Saved Jobs" [ref=e56] [cursor=pointer]:
+          - text: My Saved Jobs
+          - img [ref=e57]
+      - generic [ref=e63]:
+        - heading "KPMG. Make the Difference." [level=4] [ref=e64]
+        - heading "Job Search" [level=1] [ref=e65]
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - textbox "Search Keywords" [ref=e70]
+        - generic [ref=e72]:
+          - link [ref=e73] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e74]
+          - textbox "Location & Zip Code" [ref=e76]: New York
+          - button [ref=e77] [cursor=pointer]:
+            - img [ref=e78]
+        - button [ref=e81] [cursor=pointer]:
+          - img [ref=e82]
+      - generic [ref=e84]:
+        - link "Career Level" [ref=e86] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e88]
+          - generic [ref=e91]: Career Level
+        - link "Practice Areas" [ref=e93] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e95]
+          - generic [ref=e98]: Practice Areas
+        - link "Locations" [ref=e100] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e102]
+          - generic [ref=e105]: Locations
+        - link "Clear all filters" [ref=e107] [cursor=pointer]:
+          - /url: /job-search/
+          - generic [ref=e108]: Clear all filters
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e112]: 246 Results
+        - generic [ref=e113]:
+          - button "Grid View" [ref=e114] [cursor=pointer]:
+            - text: Grid View
+            - img [ref=e115]
+          - button "List View" [ref=e117] [cursor=pointer]:
+            - img [ref=e118]
+            - text: List View
+        - combobox [ref=e121]:
+          - option "Most Relevant" [selected]
+          - option "Most Recent"
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - link "Manager, Tax, (Multiple Positions), New York, NY Tax | New York, NY" [ref=e126] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133820
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - generic [ref=e129]: Manager, Tax, (Multiple Positions), New York, NY
+                - generic [ref=e130]: Tax | New York, NY
+              - img [ref=e133]
+          - link "Assistant General Counsel Business Support Services | Baltimore, MD; Boston, MA; McLean, VA; Montvale, NJ; New York, NY; Orlando, FL; Providence, RI; Short Hills, NJ; Stamford, CT; Washington, DC" [ref=e136] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=132410
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]: Assistant General Counsel
+                - generic [ref=e140]: Business Support Services | Baltimore, MD; Boston, MA; McLean, VA; Montvale, NJ; New York, NY; Orlando, FL; Providence, RI; Short Hills, NJ; Stamford, CT; Washington, DC
+              - img [ref=e143]
+          - link "Managing Director -TMT Sales Leader Advisory | Montvale, NJ; New York, NY; San Francisco, CA; Short Hills, NJ" [ref=e146] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=132573
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - generic [ref=e149]: Managing Director -TMT Sales Leader
+                - generic [ref=e150]: Advisory | Montvale, NJ; New York, NY; San Francisco, CA; Short Hills, NJ
+              - img [ref=e153]
+          - link "Senior Associate, Unclaimed Property Tax | Atlanta, GA; Boston, MA; Los Angeles, CA; New York, NY; Philadelphia, PA; San Diego, CA" [ref=e156] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133385
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - generic [ref=e159]: Senior Associate, Unclaimed Property
+                - generic [ref=e160]: Tax | Atlanta, GA; Boston, MA; Los Angeles, CA; New York, NY; Philadelphia, PA; San Diego, CA
+              - img [ref=e163]
+          - link "Senior Associate, Business Tax Services Tax | Melville, NY; New York, NY; Short Hills, NJ" [ref=e166] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=134105
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e169]: Senior Associate, Business Tax Services
+                - generic [ref=e170]: Tax | Melville, NY; New York, NY; Short Hills, NJ
+              - img [ref=e173]
+          - link "Senior Associate, NYFS Real Estate Tax | New York, NY" [ref=e176] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133643
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - generic [ref=e179]: Senior Associate, NYFS Real Estate
+                - generic [ref=e180]: Tax | New York, NY
+              - img [ref=e183]
+          - link "Tax Senior Associate - Exempt Organizations Tax | New York, NY; Short Hills, NJ" [ref=e186] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133833
+            - generic [ref=e187]:
+              - generic [ref=e188]:
+                - generic [ref=e189]: Tax Senior Associate - Exempt Organizations
+                - generic [ref=e190]: Tax | New York, NY; Short Hills, NJ
+              - img [ref=e193]
+          - link "Senior Associate, Integrated Partnership Solutions Tax | Melville, NY; New York, NY; Short Hills, NJ" [ref=e196] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=134106
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]: Senior Associate, Integrated Partnership Solutions
+                - generic [ref=e200]: Tax | Melville, NY; New York, NY; Short Hills, NJ
+              - img [ref=e203]
+          - link "Senior Managing Director Tax | Montvale, NJ; New York, NY; Short Hills, NJ; Stamford, CT" [ref=e206] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133909
+            - generic [ref=e207]:
+              - generic [ref=e208]:
+                - generic [ref=e209]: Senior Managing Director
+                - generic [ref=e210]: Tax | Montvale, NJ; New York, NY; Short Hills, NJ; Stamford, CT
+              - img [ref=e213]
+          - link "Senior Associate, SALT Asset Management Tax | New York, NY; Short Hills, NJ; Stamford, CT" [ref=e216] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133208
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e219]: Senior Associate, SALT Asset Management
+                - generic [ref=e220]: Tax | New York, NY; Short Hills, NJ; Stamford, CT
+              - img [ref=e223]
+          - link "Senior Manager, NYFS Banking and Capital Markets Tax | New York, NY; Short Hills, NJ; Stamford, CT" [ref=e226] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133680
+            - generic [ref=e227]:
+              - generic [ref=e228]:
+                - generic [ref=e229]: Senior Manager, NYFS Banking and Capital Markets
+                - generic [ref=e230]: Tax | New York, NY; Short Hills, NJ; Stamford, CT
+              - img [ref=e233]
+          - link "Mutual Fund Tax RIC- Manager, NYFS Tax | New York, NY; Short Hills, NJ; Stamford, CT" [ref=e236] [cursor=pointer]:
+            - /url: /jobdetail/?jobId=133645
+            - generic [ref=e237]:
+              - generic [ref=e238]:
+                - generic [ref=e239]: Mutual Fund Tax RIC- Manager, NYFS
+                - generic [ref=e240]: Tax | New York, NY; Short Hills, NJ; Stamford, CT
+              - img [ref=e243]
+        - navigation "Pagination" [ref=e246]:
+          - navigation "Pagination" [ref=e247]:
+            - listitem [ref=e248]:
+              - generic: Previous
+            - listitem [ref=e249]:
+              - generic: "1"
+            - listitem [ref=e250]:
+              - generic "Page 2" [ref=e251] [cursor=pointer]: "2"
+            - listitem [ref=e252]:
+              - generic "Page 3" [ref=e253] [cursor=pointer]: "3"
+            - listitem [ref=e254]:
+              - generic "Page 4" [ref=e255] [cursor=pointer]: "4"
+            - listitem [ref=e256]:
+              - generic "Page 5" [ref=e257] [cursor=pointer]: "5"
+            - listitem [ref=e258]:
+              - generic "Next page" [ref=e259] [cursor=pointer]: Next
+    - generic [ref=e261]:
+      - generic [ref=e264]:
+        - img "KPMG Footer Logo" [ref=e266]
+        - generic [ref=e267]:
+          - generic [ref=e268]:
+            - list [ref=e271]:
+              - listitem [ref=e272]:
+                - link "Careers Home" [ref=e273] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e274]:
+                - link "Early Career" [ref=e275] [cursor=pointer]:
+                  - /url: /early-career
+              - listitem [ref=e276]:
+                - link "Experienced" [ref=e277] [cursor=pointer]:
+                  - /url: /experienced
+              - listitem [ref=e278]:
+                - link "Contractor" [ref=e279] [cursor=pointer]:
+                  - /url: /contractor
+              - listitem [ref=e280]:
+                - link "Executive" [ref=e281] [cursor=pointer]:
+                  - /url: /executive
+            - list [ref=e284]:
+              - listitem [ref=e285]:
+                - link "Practice Areas" [ref=e286] [cursor=pointer]:
+                  - /url: /practice-areas
+              - listitem [ref=e287]:
+                - link "Advisory" [ref=e288] [cursor=pointer]:
+                  - /url: /practice-areas/advisory
+              - listitem [ref=e289]:
+                - link "Audit and Assurance" [ref=e290] [cursor=pointer]:
+                  - /url: /practice-areas/audit-and-assurance
+              - listitem [ref=e291]:
+                - link "Tax" [ref=e292] [cursor=pointer]:
+                  - /url: /practice-areas/tax
+              - listitem [ref=e293]:
+                - link "Business Support Services" [ref=e294] [cursor=pointer]:
+                  - /url: /practice-areas/business
+              - listitem [ref=e295]:
+                - link "Innovation & Technology" [ref=e296] [cursor=pointer]:
+                  - /url: /practice-areas/it
+            - list [ref=e299]:
+              - listitem [ref=e300]:
+                - link "Why KPMG" [ref=e301] [cursor=pointer]:
+                  - /url: /why-kpmg
+              - listitem [ref=e302]:
+                - link "Who We Are" [ref=e303] [cursor=pointer]:
+                  - /url: /why-kpmg/#who-we-are
+              - listitem [ref=e304]:
+                - link "Benefits & How We Work" [ref=e305] [cursor=pointer]:
+                  - /url: /why-kpmg/#benefits
+              - listitem [ref=e306]:
+                - link "Professional Development" [ref=e307] [cursor=pointer]:
+                  - /url: /why-kpmg/#professional
+              - listitem [ref=e308]:
+                - link "Community Impact" [ref=e309] [cursor=pointer]:
+                  - /url: /why-kpmg/#community
+            - list [ref=e312]:
+              - listitem [ref=e313]:
+                - link "Job Search" [ref=e314] [cursor=pointer]:
+                  - /url: /job-search
+              - listitem [ref=e315]:
+                - link "US-KPMG.com" [ref=e316] [cursor=pointer]:
+                  - /url: https://www.kpmg.us/
+          - list [ref=e319]:
+            - listitem [ref=e320]:
+              - link "twitter" [ref=e321] [cursor=pointer]:
+                - /url: https://twitter.com/KPMGThrive
+                - img "twitter" [ref=e322]
+            - listitem [ref=e323]:
+              - link "facebook" [ref=e324] [cursor=pointer]:
+                - /url: https://www.facebook.com/KPMGThrive
+                - img "facebook" [ref=e325]
+            - listitem [ref=e326]:
+              - link "instagram" [ref=e327] [cursor=pointer]:
+                - /url: https://www.instagram.com/KPMGThrive/
+                - img "instagram" [ref=e328]
+            - listitem [ref=e329]:
+              - link "linkedin" [ref=e330] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/kpmg-us/
+                - img "linkedin" [ref=e331]
+            - listitem [ref=e332]:
+              - link "youtube" [ref=e333] [cursor=pointer]:
+                - /url: https://www.youtube.com/user/KPMGGo/
+                - img "youtube" [ref=e334]
+            - listitem [ref=e335]:
+              - link "glassdoor" [ref=e336] [cursor=pointer]:
+                - /url: https://www.glassdoor.com/Overview/Working-at-KPMG-EI_IE2867.11,15.htm
+                - img "glassdoor" [ref=e337]
+      - generic [ref=e339]:
+        - list [ref=e341]:
+          - listitem [ref=e342]:
+            - link "KPMG" [ref=e343] [cursor=pointer]:
+              - /url: http://kpmg.com/US
+            - text: "|"
+          - listitem [ref=e344]:
+            - link "LEGAL" [ref=e345] [cursor=pointer]:
+              - /url: http://www.kpmg.com/US/en/Pages/onlinedisclaimer.aspx
+            - text: "|"
+          - listitem [ref=e346]:
+            - link "PRIVACY" [ref=e347] [cursor=pointer]:
+              - /url: http://www.kpmg.com/us/en/Pages/privacy.aspx
+            - text: "|"
+          - listitem [ref=e348]:
+            - link "FEDERAL EMPLOYMENT-RELATED POSTERS" [ref=e349] [cursor=pointer]:
+              - /url: https://resources.kpmguscareers.com/Federal%20Employment%20Related%20Posters.pdf
+            - text: "|"
+          - listitem [ref=e350]:
+            - link "ACCESSIBILITY" [ref=e351] [cursor=pointer]:
+              - /url: http://www.kpmg.com/us/en/Pages/accessibility.aspx
+            - text: "|"
+          - listitem [ref=e352]:
+            - link "JOB SCAM ALERT" [ref=e353] [cursor=pointer]:
+              - /url: https://resources.kpmguscareers.com/Job%20Scam%20Warning_2022.pdf
+            - text: "|"
+          - listitem [ref=e354]:
+            - link "TECHNICAL SUPPORT" [ref=e355] [cursor=pointer]:
+              - /url: mailto:us-hrscatsadmin@kpmg.com?subject=KPMG Career Site Technical Support
+            - text: "|"
+          - listitem [ref=e356]: COOKIE PREFERENCES|
+          - listitem [ref=e357]:
+            - link "DO NOT SELL OR SHARE MY PERSONAL INFORMATION" [ref=e358] [cursor=pointer]:
+              - /url: https://www.kpmg.us/forms/data-privacy-request.html
+            - text: "|"
+        - generic [ref=e360]:
+          - paragraph [ref=e361]: © 2026 KPMG LLP, a Delaware Limited Liability Partnership, and its subsidiaries are part of the KPMG global organization of independent member firms affiliated with KPMG International Limited, a private English company limited by guarantee. All rights reserved.
+          - paragraph [ref=e362]: The KPMG name and logo are trademarks used under license by the independent member firms of the KPMG global organization.
+          - paragraph [ref=e363]:
+            - text: For more details about the structure of the KPMG global organization, please visit
+            - link "https://home.kpmg/governance" [ref=e364] [cursor=pointer]:
+              - /url: https://home.kpmg/governance
+          - paragraph [ref=e365]:
+            - text: KPMG LLP and its affiliates and subsidiaries ("KPMG") offer a comprehensive compensation and benefits package. KPMG is an equal opportunity employer. KPMG complies with all applicable federal, state, and local laws regarding recruitment and hiring. All qualified applicants are considered for employment without regard to race, color, religion, age, sex, sexual orientation, gender identity, national origin, disability, protected veteran status, or any other category protected by applicable federal, state, or local laws. The
+            - link "attached link" [ref=e366] [cursor=pointer]:
+              - /url: https://resources.kpmguscareers.com/EEO.pdf
+            - text: contains further information regarding the firm's compliance with federal, state, and local recruitment and hiring laws. KPMG maintains a drug-free workplace.
+          - paragraph [ref=e367]: Employment with KPMG is "At Will," which means that employment may be terminated with or without cause and with or without notice at any time at the discretion of either KPMG or the employee.
+  - region "Cookie banner" [ref=e368]:
+    - dialog "We Care About Your Privacy" [ref=e369]:
+      - generic [ref=e371]:
+        - generic [ref=e373]:
+          - heading "We Care About Your Privacy" [level=2] [ref=e374]
+          - generic [ref=e375]:
+            - text: KPMG LLP (“KPMG”) uses cookies and related technologies to help enhance and personalize your experience on this site. By selecting "Accept All Cookies," you authorize KPMG to collect, use, and share information about your site interactions with third-party advertising and analytics providers, to tailor our services, digital experiences, and advertising content to your preferences. You have the right to change your consent at any time by clicking "Cookie Preferences" at the bottom footer of this site and then selecting "Reject All Optional Cookies.” This allows you to reject non-essential cookies. By clicking "Reject All Optional Cookies," you can opt-out of performance, functional, and targeting/advertising cookies while still permitting necessary cookies required for the site's core functionality. For more information, please review KPMG's
+            - link "Legal Information, opens in a new tab" [ref=e376] [cursor=pointer]:
+              - /url: https://kpmg.com/us/en/how-we-work/privacy.html
+              - text: Privacy Statement.
+        - generic [ref=e378]:
+          - button "Do Not Sell or Share My Personal Information, Opens the preference center dialog" [ref=e379] [cursor=pointer]: Do Not Sell or Share My Personal Information
+          - button "Reject All Optional Cookies" [ref=e380] [cursor=pointer]
+          - button "Accept All Cookies" [ref=e381] [cursor=pointer]
+      - button "Close" [ref=e383] [cursor=pointer]

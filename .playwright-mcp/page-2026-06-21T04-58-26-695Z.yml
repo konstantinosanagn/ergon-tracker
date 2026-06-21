@@ -1,0 +1,118 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - banner [ref=e4]:
+      - heading "Tesla Logo Careers Skip to main content" [level=1] [ref=e6]:
+        - link "Tesla Logo" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: Tesla homepage
+        - link "Careers" [ref=e11] [cursor=pointer]:
+          - /url: /careers
+        - link "Skip to main content" [ref=e12] [cursor=pointer]:
+          - /url: "#main-content"
+      - list [ref=e71]:
+        - listitem [ref=e72]:
+          - link "Explore Jobs" [ref=e73] [cursor=pointer]:
+            - /url: /careers/search
+            - generic [ref=e74]: Explore Jobs
+        - listitem [ref=e75]:
+          - link "Manufacturing" [ref=e76] [cursor=pointer]:
+            - /url: /manufacturing
+            - generic [ref=e77]: Manufacturing
+        - listitem [ref=e78]:
+          - link "AI" [ref=e79] [cursor=pointer]:
+            - /url: /ai
+            - generic [ref=e80]: AI
+        - listitem [ref=e81]:
+          - link "Terafab" [ref=e82] [cursor=pointer]:
+            - /url: https://terafab.ai/
+            - generic [ref=e83]: Terafab
+        - listitem [ref=e84]:
+          - link "Vehicle Software" [ref=e85] [cursor=pointer]:
+            - /url: /careers/vehicle-software
+            - generic [ref=e86]: Vehicle Software
+        - listitem [ref=e87]:
+          - link "Internships" [ref=e88] [cursor=pointer]:
+            - /url: /careers/internships
+            - generic [ref=e89]: Internships
+        - listitem [ref=e90]:
+          - link "About Us" [ref=e91] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e92]: About Us
+      - list [ref=e93]:
+        - listitem [ref=e94]:
+          - link "Profile" [ref=e95] [cursor=pointer]:
+            - /url: https://profile.tesla.com
+            - generic [ref=e96]: Profile
+        - listitem [ref=e97]:
+          - button "US" [ref=e98]:
+            - img [ref=e99]
+            - generic [ref=e101]: US
+  - generic [ref=e44]:
+    - heading "Build your Career at Tesla" [level=1] [ref=e45]
+    - img "Tesla Careers Hero" [ref=e46]
+  - generic [ref=e105]:
+    - main [ref=e106]
+    - complementary [ref=e107]:
+      - generic [ref=e109]:
+        - list [ref=e110]:
+          - listitem [ref=e111]:
+            - strong [ref=e112]: 4387 Results
+          - listitem [ref=e113]:
+            - button "Clear Filters (1)" [ref=e114] [cursor=pointer]
+        - generic [ref=e116]:
+          - img [ref=e118]
+          - textbox "Search by role or keyword" [ref=e120]
+        - generic [ref=e121]:
+          - generic [ref=e122]: Job Category
+          - generic [ref=e123] [cursor=pointer]:
+            - generic [ref=e126]: "- Select -"
+            - combobox "Job Category" [ref=e127]
+            - img [ref=e129]
+        - generic [ref=e131]:
+          - generic [ref=e132]: Job Type
+          - generic [ref=e133] [cursor=pointer]:
+            - generic [ref=e136]: "- Select -"
+            - combobox "Job Type" [ref=e137]
+            - img [ref=e139]
+        - generic [ref=e141]:
+          - generic [ref=e142]: Region
+          - generic [ref=e143] [cursor=pointer]:
+            - generic [ref=e146]: "- Select -"
+            - combobox "Region" [ref=e147]
+            - img [ref=e149]
+        - generic [ref=e151]:
+          - generic [ref=e152]: Location
+          - generic [ref=e153] [cursor=pointer]:
+            - generic [ref=e156]: United States of America
+            - combobox "Location" [ref=e157]: US
+            - img [ref=e159]
+        - generic [ref=e161]:
+          - generic [ref=e162]: State
+          - generic [ref=e163] [cursor=pointer]:
+            - generic [ref=e166]: "- Select -"
+            - combobox "State" [ref=e167]
+            - img [ref=e169]
+  - contentinfo [ref=e54]:
+    - navigation [ref=e55]:
+      - list [ref=e56]:
+        - listitem [ref=e57]:
+          - link "Tesla © 2026" [ref=e58] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e59]:
+          - link "Privacy & Legal" [ref=e60] [cursor=pointer]:
+            - /url: /about/legal
+        - listitem [ref=e61]:
+          - link "Tesla Connect" [ref=e62] [cursor=pointer]:
+            - /url: https://inside.tesla.com
+  - generic [ref=e63]:
+    - generic [ref=e64]:
+      - strong [ref=e65]: Help Us Improve Our Website with Cookies
+      - paragraph [ref=e66]:
+        - text: We use cookies and process data from your device to analyze website performance, personalize ad content, and improve your experience. Your consent includes data transfers outside of the country you’re located. View
+        - link "Cookie Settings" [ref=e67] [cursor=pointer]:
+          - /url: https://www.tesla.com/legal/cookies
+        - text: for more information.
+    - generic [ref=e68]:
+      - button "Accept" [ref=e69]
+      - button "Reject" [ref=e70]

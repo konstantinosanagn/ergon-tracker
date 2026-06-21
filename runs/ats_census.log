@@ -1,0 +1,319 @@
+unified ATS census over 2379 uncovered sponsors ...
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 200/2379 (hits: 35)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 400/2379 (hits: 66)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 600/2379 (hits: 98)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 800/2379 (hits: 116)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 1000/2379 (hits: 147)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 1200/2379 (hits: 177)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 1400/2379 (hits: 195)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 1600/2379 (hits: 218)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 1800/2379 (hits: 243)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 2000/2379 (hits: 275)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 2200/2379 (hits: 293)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+detected 310 candidates {'successfactors': 89, 'oracle': 48, 'icims': 157, 'taleo': 16}; verifying live ...
+  + ltimindtree                    ( 3369) successfactors careers.ltimindtree.com|ltimindtree
+  + oracle america                 ( 1724) oracle         eeho.fa.us2.oraclecloud.com|CX_1
+  + tech mahindra americas         ( 1614) successfactors jobs.mahindracareers.com|mahindracareers
+  + ford motor                     ( 1332) oracle         efds.fa.em5.oraclecloud.com|CX_1
+  + l and t technology services    (  974) successfactors jobs.ltts.com|ltts
+  + mayo clinic                    (  830) oracle         fa-euwp-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + persistent systems             (  662) icims          careers-persistentsystems.icims.com
+  + emory university               (  616) icims          staff-emory.icims.com
+  + ut southwestern medical center (  518) taleo          utsw.taleo.net||
+  + dfs corporate services         (  485) successfactors careers.dfs.com|dfs
+  + zs associates                  (  436) icims          jobs.zs.com
+  + ut battelle oak ridge national (  401) successfactors jobs.ornl.gov|ornl
+  + trustees of princeton universi (  394) icims          service-princeton.icims.com
+  + university of california los a (  363) icims          jobs.ucla.edu
+  + devereux foundation            (  338) icims          careers-devereux.icims.com
+  + first citizens bank and trust  (  325) successfactors careers.firstcitizenstt.com|firstcitizenstt
+  + safeway                        (  317) oracle         eofd.fa.us6.oraclecloud.com|CX_1001
+  + dell usa l p                   (  314) oracle         iawmqy.fa.ocs.oraclecloud.com|CX_1
+  + university of utah             (  310) icims          careers-uuhc.icims.com
+  + akamai technologies            (  296) oracle         fa-extu-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + deere and                      (  278) successfactors jobs.deere.com|deere
+  + honeywell international        (  273) oracle         ibqbjb.fa.ocs.oraclecloud.com|CX_1
+  + navy federal credit union      (  269) oracle         fa-etbx-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + northwell health               (  267) oracle         eppr.fa.us2.oraclecloud.com|CX_2
+  + citizens financial group       (  262) oracle         hcgn.fa.us2.oraclecloud.com|CX_1
+  + birlasoft                      (  262) successfactors jobs.birlasoft.com|birlasoft
+  + fortinet                       (  261) oracle         edel.fa.us2.oraclecloud.com|CX_2001
+  + netapp                         (  254) successfactors jobs.netapp.com|netapp
+  + bank of new york mellon        (  243) oracle         eofe.fa.us2.oraclecloud.com|CX_1
+  + dell products l p              (  234) oracle         iawmqy.fa.ocs.oraclecloud.com|CX_1
+  + cotiviti                       (  232) icims          careers-cotiviti.icims.com
+  + staples                        (  199) oracle         fa-exhh-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + university of tennessee        (  196) oracle         fa-ewlq-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + oregon health and science univ (  194) icims          externalcareers-ohsu.icims.com
+  + united wholesale mortgage      (  193) icims          careers-uwmcareers.icims.com
+  + dish network                   (  192) icims          jobs.dish.com
+  + jefferies                      (  191) oracle         hdid.fa.us2.oraclecloud.com|CX_1
+  + administrators of tulane educa (  173) oracle         tulane-ibqejb.fa.ocs.oraclecloud.com|CX_1
+  + birlasoft solutions            (  172) successfactors jobs.birlasoft.com|birlasoft
+  + university of massachusetts ch (  172) icims          careers-umms.icims.com
+  + semiconductor components indus (  168) oracle         hctz.fa.us2.oraclecloud.com|CX_1001
+  + temple university a commonweal (  150) taleo          temple.taleo.net|tu_ex_staff|
+  + arcadis u s                    (  146) oracle         ebcs.fa.em2.oraclecloud.com|CX_1
+  + marriott international         (  145) oracle         ejwl.fa.us2.oraclecloud.com|CX
+  + w m rice university            (  144) oracle         emdz.fa.us2.oraclecloud.com|CX_2001
+  + farmers group                  (  140) successfactors jobs.farmersinsurance.com|farmersinsurance
+  + auburn university              (  139) icims          jobs.aum.edu
+  + yash technologies              (  138) successfactors careers.yash.com|yash
+  + university of pittsburgh physi (  135) taleo          cfopitt.taleo.net|pitt_staff_external|
+  + zurich american insurance      (  134) successfactors careers.zurich.com|zurich
+  + macy s systems and technology  (  134) oracle         ebwh.fa.us2.oraclecloud.com|CX_1001
+  + vanderbilt university          (  133) oracle         ecsr.fa.us2.oraclecloud.com|CX_1
+  + liberty mutual technology grou (  132) icims          careers-libertymutual.icims.com
+  + tufts university               (  127) icims          jobs.tufts.edu
+  + nomura holding america         (  118) successfactors careers.nomura.com|nomura
+  + gainwell technologies          (  114) successfactors jobs.gainwelltechnologies.com|gainwelltechnologies
+  + prime healthcare management    (  114) icims          careers-primehealthcare.icims.com
+  + sherwin williams               (  108) oracle         ejhp.fa.us6.oraclecloud.com|CX_2
+  + analysis group                 (  108) icims          analystcareers-analysisgroup.icims.com
+  + autozone                       (  105) oracle         egud.fa.us2.oraclecloud.com|CX_1
+  + children s national medical ce (  103) taleo          cnhs.taleo.net|1|
+  + dexian                         (  101) icims          jobs.ucla.edu
+  + nomura securities internationa (   95) successfactors careers.nomura.com|nomura
+  + warnermedia services           (   95) icims          jobs.discovery.com
+  + dell marketing l p             (   93) oracle         iawmqy.fa.ocs.oraclecloud.com|CX_1
+  + qorvo us                       (   90) successfactors careers.qorvo.com|qorvo
+  + juniper networks us            (   90) icims          careers-carousel.icims.com
+  + trinet usa                     (   87) oracle         fa-etgw-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + ust healthproof                (   84) icims          careers-healthedge.icims.com
+  + ip heights                     (   81) oracle         iazbqy.fa.ocs.oraclecloud.com|CX_1
+  + university community hospital  (   81) icims          careers-uhnjcareers.icims.com
+  + nextera energy resources       (   80) successfactors jobs.nexteraenergy.com|nexteraenergy
+  + it resources                   (   79) icims          careers-nyit.icims.com
+  + dk crown                       (   78) successfactors jobs.danishcrown.com|danishcrown
+  + vsion technologies             (   77) icims          careers-visiontechnologies.icims.com
+  + bechtel energy                 (   76) successfactors jobs.bechtel.com|bechtel
+  + ryder system                   (   76) icims          warehouse-ryder.icims.com
+  + quest diagnostics              (   74) oracle         hdox.fa.us6.oraclecloud.com|CX_1
+  + arthur j gallagher service     (   73) icims          jobs.ajg.com
+  + wsp usa buildings              (   73) oracle         emit.fa.ca3.oraclecloud.com|CX_2001
+  + bronxcare health system        (   73) icims          careers-bronxcare.icims.com
+  + m a mortenson                  (   71) oracle         fa-esgu-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + institute                      (   71) icims          careers-nyit.icims.com
+  + skywest airlines               (   70) icims          jobs.skywest.com
+  + utah state university          (   69) icims          careers-usu.icims.com
+  + bank of nova scotia            (   68) successfactors jobs.scotiabank.com|scotiabank
+  + yale new haven hospital        (   68) icims          jobs.ynhhs.org
+  + dartmouth hitchcock clinic     (   66) icims          careers-dartmouth-hitchcock.icims.com
+  + charles river laboratories     (   65) successfactors careers.criver.com|criver
+  + successfactors                 (   65) successfactors careers.veritasprime.com|veritasprime
+  + first solar                    (   65) oracle         fa-esbv-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + zf active safety us            (   64) successfactors jobs.zf.com|zf
+  + gulfstream aerospace           (   62) successfactors careers.gulfstream.com|gulfstream
+  + lennox international           (   62) icims          ushourly-lennox.icims.com
+  + dignity health                 (   61) icims          careers-strosenh.icims.com
+  + east west bank                 (   61) icims          careers-eastwestbank.icims.com
+  + corning                        (   60) successfactors careers.owenscorning.com|owenscorning
+  + michael baker international    (   60) oracle         ebxs.fa.us2.oraclecloud.com|CX_2
+  + mary imogene bassett hospital  (   59) icims          learningexperiences-bassett.icims.com
+  + pacific gas and electric       (   58) successfactors careers.pge.com|pge
+  + state farm mutual automobile i (   58) icims          jobs.statefarm.com
+  + selective insurance of america (   58) icims          jobs.selective.com
+  + ford motor credit              (   58) oracle         efds.fa.em5.oraclecloud.com|CX_1
+  + tsmc technology                (   58) successfactors ro.careers.tsmc.com|tsmc
+  + milbank llp                    (   58) icims          careers-milbank.icims.com
+  + bio rad laboratories           (   55) icims          careers-en-biorad.icims.com
+  + air worldwide                  (   53) successfactors jobs.wfs.aero|wfs
+  + lincoln national               (   53) successfactors jobs.lincolnfinancial.com|lincolnfinancial
+  + united health services hospita (   53) icims          jobs.uhsinc.com
+  + greensky management            (   53) icims          careers-greensky.icims.com
+  + americold logistics            (   52) oracle         fa-ewwt-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + grainger corporate services    (   51) successfactors jobs.grainger.com|grainger
+  + hallmark global technologies   (   51) successfactors careers.duke.edu|duke
+  + lear                           (   51) successfactors jobs.lear.com|lear
+  + teksystems                     (   51) icims          careers-en-gb-teksystems.icims.com
+  + halliburton energy services    (   50) successfactors jobs.halliburton.com|halliburton
+  + duke university health system  (   50) successfactors careers.duke.edu|duke
+  + quantumscape battery           (   49) successfactors careers.quantumscape.com|quantumscape
+  + exelon business services       (   49) icims          jobs.exeloncorp.com
+  + cytel                          (   49) oracle         iblyjb.fa.ocs.oraclecloud.com|CX_1
+  + constellation energy generatio (   48) icims          jobs.constellationenergy.com
+  + luxottica of america           (   48) successfactors careers.essilorluxottica.com|essilorluxottica
+  + williams sonoma                (   48) oracle         ehac.fa.us6.oraclecloud.com|CX_1
+  + nrg energy                     (   47) successfactors careers.nrgenergy.com|nrgenergy
+  + rheem manufacturing            (   47) oracle         hdde.fa.us2.oraclecloud.com|CX
+  + blackhawk network              (   47) icims          careers-blackhawknetwork.icims.com
+  + fitch ratings                  (   46) successfactors careers.fitch.group|fitch
+  + hmh hospitals                  (   46) icims          homecare-hackensackmeridianhealth.icims.com
+  + super micro computer           (   45) successfactors jobs.supermicro.com|supermicro
+  + blue cross and blue shield of  (   45) oracle         fa-etum-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + guthrie lourdes hospital       (   45) oracle         elfw.fa.us2.oraclecloud.com|CX_1001
+  + university hospitals medical g (   45) icims          careers-uhnjcareers.icims.com
+  + jetblue airways                (   44) successfactors careers.jetblue.com|jetblue
+  + integris health                (   44) oracle         ertr.fa.us2.oraclecloud.com|CX_3001
+  + intelligrated systems          (   44) oracle         ibqbjb.fa.ocs.oraclecloud.com|CX_1
+  + isr info way                   (   43) oracle         edel.fa.us2.oraclecloud.com|CX_1
+  + swiss re america holding       (   43) successfactors careers.swissre.com|swissre
+  + denso international america    (   43) oracle         hcwt.fa.us2.oraclecloud.com|CX
+  + cognizant trizetto software gr (   43) taleo          cognizant.taleo.net|naukri|
+  + cravath swaine and moore llp   (   43) icims          careers-cravath.icims.com
+  + florida hospital medical group (   42) icims          jobs.ufhealth.org
+  + kettering medical center       (   42) icims          careers-ketteringhealth.icims.com
+  + cintas                         (   41) successfactors careers.cintas.com|cintas
+  + ebsco publishing               (   41) successfactors careers.ebscoind.com|ebscoind
+  + w w grainger                   (   41) successfactors jobs.grainger.com|grainger
+  + teradyne                       (   41) successfactors careers.teradyne.com|teradyne
+  + novo nordisk                   (   41) successfactors careers.novonordisk.com|novonordisk
+  + chs                            (   41) oracle         fa-evxo-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + volvo group north america      (   41) successfactors jobs.volvogroup.com|volvogroup
+  + alkermes                       (   41) oracle         hbap.fa.us1.oraclecloud.com|CX_1
+  + sapien infotech                (   40) successfactors careers.sapiens.com|sapiens
+  + new york power authority       (   39) successfactors careers.nypa.gov|nypa
+  + baylor university              (   39) oracle         ejof.fa.us2.oraclecloud.com|CX_1
+  + covenant medical center        (   39) icims          careers-covenanthealth.icims.com
+  + gannett fleming                (   39) icims          careers-gannettfleming.icims.com
+  + novelis                        (   39) icims          careers-novelis.icims.com
+  + judge technical services       (   39) icims          careers-judge.icims.com
+  + north american lighting        (   38) successfactors jobs.nal.com|nal
+  + macias gini and o connell llp  (   38) icims          careers-mgocpa.icims.com
+  + mohawk industries              (   38) icims          professional-mohawk.icims.com
+  + sri international              (   38) icims          careers-sri.icims.com
+  + allegis group                  (   37) icims          careers-allegisgroup.icims.com
+  + discovery communications       (   36) icims          jobs.discovery.com
+  + discovery analytics            (   36) icims          jobs.discovery.com
+  + fitch group services           (   36) successfactors careers.fitch.group|fitch
+  + depaul university              (   36) oracle         ekze.fa.us2.oraclecloud.com|CX_1001
+  + mercury insurance services     (   36) icims          careers-mercuryinsurance.icims.com
+
+wrote 167 candidates {'successfactors': 52, 'oracle': 48, 'icims': 62, 'taleo': 5} -> scripts/candidates_ats.json
+next: .venv/bin/python scripts/build_registry.py scripts/candidates_ats.json

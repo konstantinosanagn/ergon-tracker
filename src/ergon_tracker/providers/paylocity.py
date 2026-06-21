@@ -34,7 +34,9 @@ __all__ = ["PaylocityProvider"]
 
 _V2 = "https://recruiting.paylocity.com/recruiting/v2/api/feed/jobs/{guid}"
 _V1 = "https://recruiting.paylocity.com/recruiting/api/feed/jobs/{guid}"
-_GUID_RE = re.compile(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}")
+_GUID_RE = re.compile(
+    r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+)
 _EMPLOYMENT = {
     "full time": EmploymentType.FULL_TIME,
     "full-time": EmploymentType.FULL_TIME,

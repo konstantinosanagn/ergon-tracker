@@ -1,0 +1,9 @@
+[    1589ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.amesnational.com/App_Themes/images/ShadowBarRepeater.png:0
+[    1819ms] [WARNING] jQuery.Deferred exception: Cannot read properties of undefined (reading 'click') TypeError: Cannot read properties of undefined (reading 'click')
+    at HTMLDocument.<anonymous> (https://www.amesnational.com/App_Themes/ANC2022/app.js:1:2283)
+    at e (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js:2:27028)
+    at t (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js:2:27330) undefined @ https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js:1
+[    1820ms] TypeError: Cannot read properties of undefined (reading 'click')
+    at HTMLDocument.<anonymous> (https://www.amesnational.com/App_Themes/ANC2022/app.js:1:2283)
+    at e (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js:2:27028)
+    at t (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js:2:27330)

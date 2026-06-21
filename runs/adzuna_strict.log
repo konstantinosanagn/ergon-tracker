@@ -1,0 +1,18 @@
+strict Adzuna scan (149 residual)...
+  30/149 (hits 2)
+  60/149 (hits 6)
+  90/149 (hits 9)
+  120/149 (hits 9)
+
+=== 10 STRICT Adzuna hits (name_match, >=6 jobs) ===
+    385 massachusetts institute of tec tok=massachusetts inst   8j co=Massachusetts Institut
+    297 michigan state university      tok=michigan state uni  16j co=Michigan State Univers
+    137 tekaccel                       tok=tekaccel            10j co=Tekaccel, Inc
+    134 university of new mexico       tok=university of new   13j co=University of New Mexi
+    133 fred hutchinson cancer center  tok=fred hutchinson ca   9j co=Fred Hutchinson Cancer
+    118 mouri tech                     tok=mouri tech           6j co=MOURI Tech
+    112 swanktek                       tok=swanktek             6j co=Swanktek Inc
+    110 university of alabama          tok=university of alab  30j co=University of Alabama
+     92 gandara mental health center   tok=gandara mental hea   7j co=Gandara Mental Health 
+     79 etek it services               tok=etek it services    10j co=eTek IT Services, Inc.
+wrote 10 candidates

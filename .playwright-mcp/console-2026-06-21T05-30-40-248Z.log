@@ -1,0 +1,4 @@
+[     243ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[     471ms] [INFO] %cDownload the React DevTools for a better development experience: https://fb.me/react-devtools font-weight:bold @ https://careers.progressive.com/search/jobs/:8
+[     781ms] [ERROR] Access to CSS stylesheet at 'https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css' from origin 'https://careers.progressive.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ about:blank:0
+[     781ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css:0

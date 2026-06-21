@@ -1,0 +1,238 @@
+- generic [active] [ref=e1]:
+  - navigation "Skip to main content"
+  - form "Form" [ref=e5]:
+    - generic [ref=e6]:
+      - text:            
+      - generic [ref=e7]:
+        - banner [ref=e8]:
+          - generic [ref=e11]:
+            - link "Skip to main content" [ref=e12] [cursor=pointer]:
+              - /url: "#maincontent"
+            - link "AXT Homepage" [ref=e17] [cursor=pointer]:
+              - /url: http://www.axt.com/
+              - img "AXT Homepage" [ref=e18]
+            - generic [ref=e20]:
+              - generic:
+                - generic:
+                  - generic:
+                    - text:     
+                    - button "Click to open mobile menu" [ref=e21]:
+                      - generic [ref=e22]: 
+          - generic [ref=e24]:
+            - heading "Investor Relations" [level=1] [ref=e29]
+            - generic [ref=e33]:
+              - 'link "Read More of NASDAQ: AXTI stock information" [ref=e34] [cursor=pointer]':
+                - /url: /Investors/stock-info/stock-quote/default.aspx
+              - generic [ref=e35]:
+                - generic [ref=e36]:
+                  - generic [ref=e37]: "NASDAQ: AXTI"
+                  - generic [ref=e38]: $84.57
+                - generic [ref=e39]:
+                  - generic [ref=e40]: "-7.54 ( -8.19% )"
+                  - text: Volume
+                  - generic [ref=e41]: Pricing delayed by 20 minutes
+                  - generic [ref=e42]: Last Updated 06/18/2026 4:00 PM
+        - main [ref=e43]:
+          - navigation "secondary" [ref=e47]
+          - generic [ref=e50]:
+            - generic [ref=e53]:
+              - heading "Corporate Overview" [level=2] [ref=e54]
+              - paragraph [ref=e56]: AXT is a material science company that develops and manufactures high-performance compound and single element semiconductor wafer substrates comprising indium phosphide (InP), gallium arsenide (GaAs) and germanium (Ge). The company’s wafer substrates are used when a typical silicon wafer substrate cannot meet the performance requirements of a semiconductor or optoelectronic device. AXT’s worldwide headquarters are in Fremont, California and includes sales, administration and customer service functions. AXT’s subsidiary in China (“Tongmei”) has similar functions as well as manufacturing facilities to produce wafer substrates. In addition, as part of the supply chain strategy, AXT, Tongmei and Tongmei subsidiaries collectively have partial ownership in ten companies in China producing raw materials.
+            - generic [ref=e59]:
+              - heading "End Markets" [level=2] [ref=e60]
+              - generic [ref=e63]:
+                - generic [ref=e64]: showing 1-4 of 4.
+                - generic [ref=e65]:
+                  - generic [ref=e69]:
+                    - img "heart" [ref=e70]
+                    - paragraph [ref=e71]: Telecom infrastructure
+                  - generic [ref=e75]:
+                    - img "microscope" [ref=e76]
+                    - paragraph [ref=e77]: Data center connectivity
+                  - generic [ref=e81]:
+                    - img "health insurance" [ref=e82]
+                    - paragraph [ref=e83]: Consumer devices
+                  - generic [ref=e87]:
+                    - img "health insurance" [ref=e88]
+                    - paragraph [ref=e89]: Industrial lasers, automotive, wireless and IoT
+            - generic [ref=e93]:
+              - heading "Latest News" [level=2] [ref=e94]
+              - generic [ref=e96]:
+                - generic [ref=e97]: showing 1-3 of 3.
+                - generic [ref=e98]:
+                  - generic [ref=e102]:
+                    - generic [ref=e103]: 05/18/2026
+                    - link "AXT, Inc. Announces Financial Conference Participation for the Second Quarter 2026" [ref=e105] [cursor=pointer]:
+                      - /url: /Investors/news/news-details/2026/AXT-Inc--Announces-Financial-Conference-Participation-for-the-Second-Quarter-2026/default.aspx
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: 05/15/2026
+                    - link "AXT Announces Adjournment of 2026 Annual Meeting of Stockholders" [ref=e112] [cursor=pointer]:
+                      - /url: /Investors/news/news-details/2026/AXT-Announces-Adjournment-of-2026-Annual-Meeting-of-Stockholders/default.aspx
+                  - generic [ref=e116]:
+                    - generic [ref=e117]: 04/30/2026
+                    - link "AXT, Inc. Announces First Quarter 2026 Financial Results" [ref=e119] [cursor=pointer]:
+                      - /url: /Investors/news/news-details/2026/AXT-Inc--Announces-First-Quarter-2026-Financial-Results/default.aspx
+              - link "View all news " [ref=e120] [cursor=pointer]:
+                - /url: /Investors/news/default.aspx
+            - generic [ref=e125]:
+              - generic [ref=e127]:
+                - heading "Featured Presentation" [level=2] [ref=e128]
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - generic [ref=e132]: March 24, 2025
+                    - generic [ref=e133]: AXT Corporate Presentation 2025
+                    - link "Download PDF for AXT Corporate Presentation 2025 (opens in new window)" [ref=e135] [cursor=pointer]:
+                      - /url: https://s202.q4cdn.com/832677016/files/doc_presentations/2025/Mar/24/AXTI-Corporate-Deck-2025.pdf
+                      - generic [ref=e136]: 
+                      - generic [ref=e137]:
+                        - text: Download PDF
+                        - generic [ref=e138]: for AXT Corporate Presentation 2025
+                      - generic [ref=e139]: (opens in new window)
+                    - link "View All Presentations " [ref=e140] [cursor=pointer]:
+                      - /url: /Investors/events-and-presentations/default.aspx
+                  - iframe [ref=e144]:
+                    - generic [ref=f9e3]:
+                      - generic [ref=f9e36]:
+                        - generic [ref=f9e38]:
+                          - button "Zoom In" [ref=f9e40]:
+                            - generic: Zoom In
+                          - button "Zoom Out" [disabled] [ref=f9e43]:
+                            - generic: Zoom Out
+                        - generic [ref=f9e45]:
+                          - button " Previous Page" [disabled] [ref=f9e47]:
+                            - text: 
+                            - generic: Previous Page
+                          - spinbutton "Current Page Number / Find Page" [ref=f9e50]: "1"
+                          - text: of 12
+                          - button " Next Page" [ref=f9e52]:
+                            - text: 
+                            - generic: Next Page
+                      - list:
+                        - listitem "Go to First Page"
+                        - listitem "Go to Last Page"
+                        - listitem "Rotate Clockwise"
+                        - listitem "Rotate Counterclockwise"
+              - generic [ref=e146]:
+                - heading "Latest Events" [level=2] [ref=e147]
+                - generic [ref=e148]:
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: 06/23/2026 at 08:00 am PT
+                    - link "Northland Securities Virtual Growth Conference 2026" [ref=e152] [cursor=pointer]:
+                      - /url: /Investors/events-and-presentations/event-details/2026/Northland-Securities-Virtual-Growth-Conference-2026--2026-5rUZVQ4QdT/default.aspx
+                    - generic [ref=e154]:
+                      - button "Add Northland Securities Virtual Growth Conference 2026 to Calendar" [ref=e155] [cursor=pointer]:
+                        - generic [ref=e156]: 
+                        - generic [ref=e157]:
+                          - text: Add
+                          - generic [ref=e158]: Northland Securities Virtual Growth Conference 2026
+                          - text: to Calendar
+                      - text:     Select your Calendar
+                  - generic [ref=e159]:
+                    - generic [ref=e160]: 05/28/2026 at 08:00 am CT
+                    - link "23rd Annual Craig-Hallum Institutional Investor Conference" [ref=e162] [cursor=pointer]:
+                      - /url: /Investors/events-and-presentations/event-details/2026/23rd-Annual-Craig-Hallum-Institutional-Investor-Conference--2026-vXjftajFP9/default.aspx
+                - link "View All Events " [ref=e163] [cursor=pointer]:
+                  - /url: /Investors/events-and-presentations/default.aspx
+            - generic [ref=e166]:
+              - heading "Latest Quarterly Reports" [level=2] [ref=e167]
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - generic [ref=e172]: Q4
+                    - generic [ref=e173]: "2025"
+                  - link "Press Release Q4 2025 (opens in new window)" [ref=e175] [cursor=pointer]:
+                    - /url: http://investors.axt.com/Investors/news/news-details/2026/AXT-Inc--Announces-Fourth-Quarter-and-Fiscal-Year-2025-Financial-Results
+                    - generic [ref=e176]: 
+                    - generic [ref=e177]:
+                      - text: Press Release
+                      - generic [ref=e178]: Q4 2025
+                    - generic [ref=e179]: (opens in new window)
+                  - link "Earnings Webcast Q4 2025 (opens in new window)" [ref=e181] [cursor=pointer]:
+                    - /url: https://events.q4inc.com/attendee/690941886
+                    - generic [ref=e182]: 
+                    - generic [ref=e183]:
+                      - text: Earnings Webcast
+                      - generic [ref=e184]: Q4 2025
+                    - generic [ref=e185]: (opens in new window)
+                  - link "Financial Statement Q4 2025 (opens in new window)" [ref=e187] [cursor=pointer]:
+                    - /url: https://d18rn0p25nwr6d.cloudfront.net/CIK-0001051627/6cdfa3d7-e2d7-49df-a8c8-676a2c2cdafb.pdf
+                    - generic [ref=e188]: 
+                    - generic [ref=e189]:
+                      - text: Financial Statement
+                      - generic [ref=e190]: Q4 2025
+                    - generic [ref=e191]: (opens in new window)
+                  - link "Financial Statement Q4 2025 (opens in new window)" [ref=e193] [cursor=pointer]:
+                    - /url: https://d18rn0p25nwr6d.cloudfront.net/CIK-0001051627/1dfeb170-edd3-4291-a401-c24d60a05b9d.pdf
+                    - generic [ref=e194]: 
+                    - generic [ref=e195]:
+                      - text: Financial Statement
+                      - generic [ref=e196]: Q4 2025
+                    - generic [ref=e197]: (opens in new window)
+                - link "View All Financial Reports " [ref=e198] [cursor=pointer]:
+                  - /url: /Investors/financials/quarterly-results/default.aspx
+        - contentinfo [ref=e199]:
+          - generic [ref=e202]:
+            - generic [ref=e206]:
+              - heading "Contact Us" [level=2] [ref=e207]
+              - generic [ref=e208]:
+                - paragraph [ref=e209]:
+                  - text: Leslie Green
+                  - text: Investor Relations
+                - link "Send Email" [ref=e210] [cursor=pointer]:
+                  - /url: mailto:leslie@greencommunicationsllc.com
+                  - generic [ref=e211]: 
+                  - text: Send Email
+            - generic [ref=e214]:
+              - heading "Quick Links" [level=3] [ref=e215]
+              - list [ref=e217]:
+                - listitem [ref=e218]:
+                  - link "SEC Filings" [ref=e219] [cursor=pointer]:
+                    - /url: https://investors.axt.com/Investors/financials/sec-filings/default.aspx
+                - listitem [ref=e220]:
+                  - link "Investor FAQs" [ref=e221] [cursor=pointer]:
+                    - /url: https://investors.axt.com/Investors/resources/investor-faqs/default.aspx
+                - listitem [ref=e222]:
+                  - link "Information Request Form" [ref=e223] [cursor=pointer]:
+                    - /url: https://investors.axt.com/Investors/resources/information-request-form/default.aspx
+            - generic [ref=e226]:
+              - heading "Investor Email Alerts" [level=3] [ref=e227]: Investor Email Alerts
+              - generic [ref=e229]:
+                - generic [ref=e230]: Email Address
+                - textbox "Email Address" [ref=e231]:
+                  - /placeholder: Enter your Email Address
+                - group "Investor Alert Options" [ref=e232]:
+                  - generic [ref=e233]: Investor Alert Options
+                  - checkbox "News" [ref=e234]
+                  - generic [ref=e235] [cursor=pointer]: News
+                  - checkbox "Quarterly Reports" [ref=e236]
+                  - generic [ref=e237] [cursor=pointer]: Quarterly Reports
+                  - checkbox "SEC Filings" [ref=e238]
+                  - generic [ref=e239] [cursor=pointer]: SEC Filings
+                  - checkbox "End of Day Stock Quote" [ref=e240]
+                  - generic [ref=e241] [cursor=pointer]: End of Day Stock Quote
+                  - checkbox "Events & Presentations" [ref=e242]
+                  - generic [ref=e243] [cursor=pointer]: Events & Presentations
+                - button "Sign Up" [ref=e245] [cursor=pointer]
+                - link "Unsubscribe" [ref=e247] [cursor=pointer]:
+                  - /url: /Investors/resources/investor-email-alerts/#unsubscribe
+          - generic [ref=e249]:
+            - generic: 
+            - link "AXT, Inc." [ref=e253] [cursor=pointer]:
+              - /url: http://www.axt.com/site/index.php?q=node/1
+              - img "AXT, Inc." [ref=e254]
+            - list [ref=e258]:
+              - listitem [ref=e259]:
+                - link "Privacy Policy" [ref=e260] [cursor=pointer]:
+                  - /url: http://www.axt.com/site/index.php?q=node/22
+              - listitem [ref=e261]:
+                - text: "|"
+                - link "Site Map" [ref=e262] [cursor=pointer]:
+                  - /url: https://investors.axt.com/site-map/default.aspx
+            - generic [ref=e266]:
+              - text: ©
+              - text: AXT, Inc. - All rights reserved
+            - link "Powered By Q4 Inc. 5.182.1.3 (opens in new window)" [ref=e271] [cursor=pointer]:
+              - /url: https://www.q4inc.com/Powered-by-Q4/
+              - text: Powered By Q4 Inc. 5.182.1.3
+              - generic [ref=e272]: (opens in new window)
+          - generic [ref=e273]: opens in new window

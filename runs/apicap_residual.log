@@ -1,0 +1,84 @@
+API-capture over 193 residual giants ...
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  captured 25/193 (API specs: 2)
+  captured 50/193 (API specs: 5)
+  captured 75/193 (API specs: 6)
+  captured 100/193 (API specs: 8)
+Exception in callback AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97
+handle: <Handle AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97>
+Traceback (most recent call last):
+  File "/Users/kanagn/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 105, in callback
+    self.emit("error", exc)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 70, in emit
+    return super().emit(event, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 223, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 181, in _emit_handle_potential_error
+    raise error
+  File "/Users/kanagn/Desktop/job-researcher/scripts/capture_api.py", line 252, in on_resp
+    spec = infer_spec(r.url, r.request.method, r.request.post_data, d, name)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 167, in post_data
+    return mapping.from_maybe_impl(self._impl_obj.post_data)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/_impl/_network.py", line 215, in post_data
+    return base64.b64decode(base64_post_data).decode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+Exception in callback AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97
+handle: <Handle AsyncIOEventEmitter._emit_run.<locals>.callback(<Task finishe... start byte')>) at /Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py:97>
+Traceback (most recent call last):
+  File "/Users/kanagn/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 105, in callback
+    self.emit("error", exc)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/asyncio.py", line 70, in emit
+    return super().emit(event, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 223, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/pyee/base.py", line 181, in _emit_handle_potential_error
+    raise error
+  File "/Users/kanagn/Desktop/job-researcher/scripts/capture_api.py", line 252, in on_resp
+    spec = infer_spec(r.url, r.request.method, r.request.post_data, d, name)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 167, in post_data
+    return mapping.from_maybe_impl(self._impl_obj.post_data)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanagn/Desktop/job-researcher/.venv/lib/python3.12/site-packages/playwright/_impl/_network.py", line 215, in post_data
+    return base64.b64decode(base64_post_data).decode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+  captured 125/193 (API specs: 12)
+  captured 150/193 (API specs: 14)
+  captured 175/193 (API specs: 16)
+
+inferred 18 API specs -> apicapture.json; wrote 18 candidates -> candidates_apicap_residual.json
+  trusteesofuniversityofpennsylvania POST https://c950.chronicle.com/DG/DEFAULT/rest/rpc/604?referer=h
+  federalexpress         GET  https://fedex.paradox.ai/api/widget/cmsjzqfqksxtfzyzqzlk/rul
+  eficenssystems         GET  https://www.ellis.com/api/posts?depth=1
+  slalom                 GET  https://h1bvisajobs.com/api/jobs
+  maplebear              GET  https://kogvltaubmsmqycfyipd.supabase.co/rest/v1/careers?sel
+  annapurnalabsus        GET  https://amazon.jobs/api/v1/recommendations/jobs?job_id=31759
+  orpine                 GET  https://ws.jobdiva.com/candPortal/rest/reg/reg_without_resum
+  kingston               GET  https://olivia.paradox.ai/api/widget/ntvzprkmqrdhvtrrrrpv/ru
+  saipsit                GET  https://h1btrends-api.onrender.com/api/h1b/companies/saipsit
+  cnhindustrialamerica   GET  https://app.consentmo.com/users/getCookieConsentSettings?sho
+  uniconpharma           GET  https://uniconpharma.com/backend/api/blog.php
+  viacore                GET  https://bebee.com/api/jobs/theirstack-679967119/enrichment?c
+  intellisoftsystems     GET  https://ws.jobdiva.com/candPortal/rest/reg/reg_without_resum
+  econtenti              GET  https://bebee.com/api/jobs/theirstack-709493128/enrichment?c
+  sphereinstitute        POST https://jobs.a16z.com/api-boards/search-jobs
+  comtrixsolutions       GET  https://h1btrends-api.onrender.com/api/h1b/companies/comtrix
+  beaninfosystems        GET  https://bebee.com/api/jobs/theirstack-710466569/enrichment?c
+  floridainternationaluniversity POST https://c950.chronicle.com/DG/DEFAULT/rest/rpc/302?referer=h

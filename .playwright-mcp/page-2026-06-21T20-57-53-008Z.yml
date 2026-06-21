@@ -1,0 +1,676 @@
+- generic [active] [ref=e1]:
+  - link "Go to the main content section." [ref=e2] [cursor=pointer]:
+    - /url: "#mainContent"
+  - generic [ref=e3]:
+    - link "Weyerhaeuser" [ref=e7] [cursor=pointer]:
+      - /url: https://www.weyerhaeuser.com/
+      - img "Weyerhaeuser" [ref=e8]
+    - list [ref=e14]:
+      - listitem [ref=e15]:
+        - link "Timberlands" [ref=e16] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/timberlands/
+      - listitem [ref=e17]:
+        - link "Recreation" [ref=e18] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/recreation/
+      - listitem [ref=e19]:
+        - link "Land" [ref=e20] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/land/
+      - listitem [ref=e21]:
+        - link "Wood Products" [ref=e22] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/wood-products/
+      - listitem [ref=e23]:
+        - link "Energy" [ref=e24] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/energy/
+      - listitem [ref=e25]:
+        - link "Sustainability" [ref=e26] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/sustainability/
+      - listitem [ref=e27]:
+        - link "Investors" [ref=e28] [cursor=pointer]:
+          - /url: http://investor.weyerhaeuser.com/
+      - listitem [ref=e29]:
+        - link "Careers" [ref=e30] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/careers/
+      - listitem [ref=e31]:
+        - link "Company" [ref=e32] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/company/
+  - generic [ref=e41]:
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - paragraph
+        - generic [ref=e47]:
+          - paragraph
+        - generic [ref=e48]:
+          - paragraph
+        - generic [ref=e49]:
+          - paragraph
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - text: Welcome. You are not signed in.
+          - generic [ref=e52]:
+            - text: "|"
+            - link "My Account Options" [ref=e54] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e57]:
+          - img "My Job Cart" [ref=e58]
+          - link "My Job Cart" [ref=e60] [cursor=pointer]:
+            - /url: "#"
+          - text: "|"
+          - link "Sign In" [ref=e63] [cursor=pointer]:
+            - /url: "#"
+        - generic:
+          - paragraph
+        - list [ref=e64]:
+          - listitem [ref=e65]:
+            - generic [ref=e66]:
+              - paragraph
+            - generic [ref=e67]: Job Search
+          - listitem [ref=e68]:
+            - link "My Job Page" [ref=e69] [cursor=pointer]:
+              - /url: "#"
+      - list [ref=e70]:
+        - listitem [ref=e71]: Basic Search
+        - listitem [ref=e72]: "|"
+        - listitem [ref=e73]:
+          - link "Advanced Search" [ref=e74] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e75]: "|"
+        - listitem [ref=e76]:
+          - link "All Jobs" [ref=e77] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic:
+            - paragraph
+          - generic [ref=e82]:
+            - heading "Basic Job Search" [level=1] [ref=e85]
+            - heading "Search Criteria" [level=2] [ref=e88]
+            - generic [ref=e90]:
+              - generic [ref=e91]: Specify your job search criteria, then click "Search for Jobs".
+              - generic [ref=e92]:
+                - link "Hide Search Criteria" [expanded] [ref=e94] [cursor=pointer]:
+                  - /url: "#"
+                - text: "|"
+                - link "Save this Search" [ref=e96] [cursor=pointer]:
+                  - /url: "#"
+          - generic:
+            - paragraph
+        - generic [ref=e99]:
+          - generic [ref=e101]:
+            - text: Job Number
+            - textbox "Job Number" [ref=e102]
+            - generic [ref=e103]:
+              - text: Keywords
+              - textbox "Keywords" [ref=e104]
+            - generic:
+              - paragraph
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - paragraph
+              - generic [ref=e108]:
+                - paragraph
+              - generic [ref=e109]:
+                - paragraph
+              - generic [ref=e110]:
+                - paragraph
+            - list [ref=e111]:
+              - listitem [ref=e112]:
+                - 'img "This criteria can be used for RSS feed creation: Job Field" [ref=e114]'
+                - text: Job Field
+            - generic [ref=e116]:
+              - text: Job Field
+              - combobox "Job Field" [ref=e118]:
+                - option "All" [selected]
+                - option "Accounting & Finance"
+                - option "Administrative, General Management, Legal, Real Estate, & Miscellaneous"
+                - option "Communications & Government Affairs"
+                - option "Customer Service, Design, Sales & Marketing"
+                - option "Engineering, Science, & Architecture"
+                - option "Human Resources & Health/Safety/Quality"
+                - option "Information Technology"
+                - option "Operations, Manufacturing, & Construction"
+                - option "Procurement, Logistics, & Transportation"
+              - button "Add Job Field" [ref=e121] [cursor=pointer]
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - paragraph
+              - generic [ref=e125]:
+                - paragraph
+              - generic [ref=e126]:
+                - paragraph
+              - generic [ref=e127]:
+                - paragraph
+            - generic:
+              - paragraph
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - paragraph
+              - generic [ref=e131]:
+                - paragraph
+              - generic [ref=e132]:
+                - paragraph
+              - generic [ref=e133]:
+                - paragraph
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - 'img "This criteria can be used for RSS feed creation: Location" [ref=e137]'
+                - text: Location
+            - generic [ref=e139]:
+              - text: Location
+              - combobox "Location" [ref=e141]:
+                - option "All" [selected]
+                - option "Canada"
+                - option "United States"
+              - button "Add Location" [ref=e144] [cursor=pointer]
+            - generic [ref=e146]:
+              - generic [ref=e147]:
+                - paragraph
+              - generic [ref=e148]:
+                - paragraph
+              - generic [ref=e149]:
+                - paragraph
+              - generic [ref=e150]:
+                - paragraph
+            - generic:
+              - paragraph
+          - generic [ref=e151]:
+            - heading "Search Tips" [level=3] [ref=e152]:
+              - generic [ref=e153]: Search Tips
+            - generic [ref=e154]: You can search jobs by selecting relevant criteria in the drop-down menus. You can also use a job number or a keyword.
+            - generic [ref=e155]:
+              - generic [ref=e156]:
+                - heading "Multiple selections" [level=3] [ref=e157]:
+                  - generic [ref=e158]: Multiple selections
+                - generic [ref=e159]: You can search for jobs in more than one job field, location and organization. After selecting a value in one of these fields, click "Add..." and make another selection.
+              - generic [ref=e160]:
+                - heading "Advanced job search" [level=3] [ref=e161]:
+                  - generic [ref=e162]: Advanced job search
+                - generic [ref=e163]: To perform a job search using advanced search criteria, click the "Advanced Search" tab and select the relevant criteria.
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - button "Search for Jobs" [ref=e168] [cursor=pointer]
+          - button "Clear" [ref=e169] [cursor=pointer]
+          - link "Create an RSS feed" [ref=e171] [cursor=pointer]:
+            - /url: "#"
+            - img "Create an RSS feed" [ref=e172]
+        - generic [ref=e174]:
+          - generic [ref=e175]:
+            - paragraph
+          - generic [ref=e176]:
+            - paragraph
+          - generic [ref=e177]:
+            - paragraph
+          - generic [ref=e178]:
+            - paragraph
+      - generic [ref=e179]:
+        - link "Beginning of the main content section." [ref=e180] [cursor=pointer]:
+          - /url: "#"
+        - heading "Search Results (141 jobs found)" [level=2] [ref=e184]
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - generic [ref=e188]:
+                - generic [ref=e189]: Results per page
+                - combobox "Results per page" [ref=e190]:
+                  - option "5"
+                  - option "10"
+                  - option "25" [selected]
+                  - option "50"
+                  - option "100"
+              - generic [ref=e191]:
+                - generic [ref=e192]: Sort by
+                - combobox "Sort by" [ref=e193]:
+                  - option "Posting Date (Ascending Order)"
+                  - option "Posting Date (Descending Order)" [selected]
+                  - option "Job Title (Ascending Order)"
+                  - option "Job Title (Descending Order)"
+                  - option "Location (Ascending Order)"
+                  - option "Location (Descending Order)"
+              - generic:
+                - paragraph
+            - generic:
+              - paragraph
+            - generic [ref=e194]:
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - heading "Production Associate- Annacis Island" [level=3] [ref=e199]:
+                    - link "Production Associate- Annacis Island" [ref=e201] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e205]: CAN-BC-Delta
+                  - generic [ref=e206]: Job Posting:Jun 19, 2026-Jul 3, 2026-Requisition ID 01024483
+                - generic [ref=e208]:
+                  - link "Apply" [ref=e210] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e212] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e213]:
+                - generic [ref=e214]:
+                  - heading "HR Director - Panels" [level=3] [ref=e217]:
+                    - link "HR Director - Panels" [ref=e219] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e223]: USA-WA-Seattle
+                  - generic [ref=e224]: Job Posting:Jun 19, 2026-Jul 10, 2026-Requisition ID 01024482
+                - generic [ref=e226]:
+                  - link "Apply" [ref=e228] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e230] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e231]:
+                - generic [ref=e232]:
+                  - heading "HR Director - Engineered Wood Products" [level=3] [ref=e235]:
+                    - link "HR Director - Engineered Wood Products" [ref=e237] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e241]: USA-WA-Seattle
+                  - generic [ref=e242]: Job Posting:Jun 19, 2026-Jul 10, 2026-Requisition ID 01024481
+                - generic [ref=e244]:
+                  - link "Apply" [ref=e246] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e248] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e249]:
+                - generic [ref=e250]:
+                  - heading "Harvest Manager- Vail Tree Farm, Rainier, Washington" [level=3] [ref=e253]:
+                    - link "Harvest Manager- Vail Tree Farm, Rainier, Washington" [ref=e255] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e259]: USA-WA-Rainier
+                  - generic [ref=e260]: Job Posting:Jun 19, 2026-Jun 24, 2026-Requisition ID 01024478
+                - generic [ref=e262]:
+                  - link "Apply" [ref=e264] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e266] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e267]:
+                - generic [ref=e268]:
+                  - heading "Forester" [level=3] [ref=e271]:
+                    - link "Forester" [ref=e273] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e277]: USA-WA-Aberdeen
+                  - generic [ref=e278]: Job Posting:Jun 19, 2026-Jul 6, 2026-Requisition ID 01024471
+                - generic [ref=e280]:
+                  - link "Apply" [ref=e282] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e284] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e285]:
+                - generic [ref=e286]:
+                  - heading "Area By-Products Manager" [level=3] [ref=e289]:
+                    - link "Area By-Products Manager" [ref=e291] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e295]: USA-WA-Longview
+                  - generic [ref=e296]: Job Posting:Jun 19, 2026-Jul 19, 2026-Requisition ID 01024444
+                - generic [ref=e298]:
+                  - link "Apply" [ref=e300] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e302] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e303]:
+                - generic [ref=e304]:
+                  - heading "Product Manager - Engineered Wood" [level=3] [ref=e307]:
+                    - link "Product Manager - Engineered Wood" [ref=e309] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e313]: USA-SC-Columbia, USA-WA-Seattle, USA-AR-Hot Springs
+                  - generic [ref=e314]: Job Posting:Jun 19, 2026-Jul 5, 2026-Requisition ID 01024466
+                - generic [ref=e316]:
+                  - link "Apply" [ref=e318] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e320] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e321]:
+                - generic [ref=e322]:
+                  - heading "Product Manager - Lumber" [level=3] [ref=e325]:
+                    - link "Product Manager - Lumber" [ref=e327] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e331]: USA-SC-Columbia, USA-WA-Seattle, USA-AR-Hot Springs
+                  - generic [ref=e332]: Job Posting:Jun 19, 2026-Jul 5, 2026-Requisition ID 01024467
+                - generic [ref=e334]:
+                  - link "Apply" [ref=e336] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e338] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e339]:
+                - generic [ref=e340]:
+                  - heading "Business Integration & Procurement Excellence Analyst" [level=3] [ref=e343]:
+                    - link "Business Integration & Procurement Excellence Analyst" [ref=e345] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e349]: USA-WA-Seattle
+                  - generic [ref=e350]: Job Posting:Jun 19, 2026-Jul 19, 2026-Requisition ID 01024472
+                - generic [ref=e352]:
+                  - link "Apply" [ref=e354] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e356] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e357]:
+                - generic [ref=e358]:
+                  - heading "Precision Maintenance Tech" [level=3] [ref=e361]:
+                    - link "Precision Maintenance Tech" [ref=e363] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e367]: USA-MS-Magnolia
+                  - generic [ref=e368]: Job Posting:Jun 18, 2026-Jul 2, 2026-Requisition ID 01024474
+                - generic [ref=e370]:
+                  - link "Apply" [ref=e372] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e374] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e375]:
+                - generic [ref=e376]:
+                  - heading "Roads Maintenance Operator" [level=3] [ref=e379]:
+                    - link "Roads Maintenance Operator" [ref=e381] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e385]: USA-WA-Rainier
+                  - generic [ref=e386]: Job Posting:Jun 18, 2026-Jul 6, 2026-Requisition ID 01024473
+                - generic [ref=e388]:
+                  - link "Apply" [ref=e390] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e392] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e393]:
+                - generic [ref=e394]:
+                  - heading "Alberta Provincial Forester" [level=3] [ref=e397]:
+                    - link "Alberta Provincial Forester" [ref=e399] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e403]: CAN-Alberta, CAN-AB-Edmonton
+                  - generic [ref=e404]: Job Posting:Jun 18, 2026-Jul 6, 2026-Requisition ID 01024410
+                - generic [ref=e406]:
+                  - link "Apply" [ref=e408] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e410] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e411]:
+                - generic [ref=e412]:
+                  - heading "HR Business Partner" [level=3] [ref=e415]:
+                    - link "HR Business Partner" [ref=e417] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e421]: CAN-AB-Drayton Valley
+                  - generic [ref=e422]: Job Posting:Jun 18, 2026-Jul 18, 2026-Requisition ID 01024305
+                - generic [ref=e424]:
+                  - link "Apply" [ref=e426] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e428] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e429]:
+                - generic [ref=e430]:
+                  - heading "Information Governance Experienced Analyst" [level=3] [ref=e433]:
+                    - link "Information Governance Experienced Analyst" [ref=e435] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e439]: USA-WA-Seattle
+                  - generic [ref=e440]: Job Posting:Jun 18, 2026-Jul 2, 2026-Requisition ID 01024388
+                - generic [ref=e442]:
+                  - link "Apply" [ref=e444] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e446] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e447]:
+                - generic [ref=e448]:
+                  - heading "Sales Coordinator" [level=3] [ref=e451]:
+                    - link "Sales Coordinator" [ref=e453] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e457]: USA-WA-Tacoma
+                  - generic [ref=e458]: Job Posting:Jun 17, 2026-Jun 30, 2026-Requisition ID 01024187
+                - generic [ref=e460]:
+                  - link "Apply" [ref=e462] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e464] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e465]:
+                - generic [ref=e466]:
+                  - heading "Lead Forester" [level=3] [ref=e469]:
+                    - link "Lead Forester" [ref=e471] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e475]: USA-WA-Castle Rock
+                  - generic [ref=e476]: Job Posting:Jun 17, 2026-Jul 5, 2026-Requisition ID 01024469
+                - generic [ref=e478]:
+                  - link "Apply" [ref=e480] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e482] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e483]:
+                - generic [ref=e484]:
+                  - heading "Process Control Engineer" [level=3] [ref=e487]:
+                    - link "Process Control Engineer" [ref=e489] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e493]: USA-NC-Elkin
+                  - generic [ref=e494]: Job Posting:Jun 17, 2026-Jul 1, 2026-Requisition ID 01024456
+                - generic [ref=e496]:
+                  - link "Apply" [ref=e498] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e500] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e501]:
+                - generic [ref=e502]:
+                  - heading "Timberlands Marketing Team Leader (Washington)" [level=3] [ref=e505]:
+                    - link "Timberlands Marketing Team Leader (Washington)" [ref=e507] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e511]: USA-WA-Longview
+                  - generic [ref=e512]: Job Posting:Jun 17, 2026-Jun 28, 2026-Requisition ID 01024465
+                - generic [ref=e514]:
+                  - link "Apply" [ref=e516] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e518] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e519]:
+                - generic [ref=e520]:
+                  - heading "Log Yard Supervisor" [level=3] [ref=e523]:
+                    - link "Log Yard Supervisor" [ref=e525] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e529]: USA-SC-Cottageville
+                  - generic [ref=e530]: Job Posting:Jun 17, 2026-Jul 7, 2026-Requisition ID 01024083
+                - generic [ref=e532]:
+                  - link "Apply" [ref=e534] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e536] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e537]:
+                - generic [ref=e538]:
+                  - heading "Blackhawk Mechanic" [level=3] [ref=e541]:
+                    - link "Blackhawk Mechanic" [ref=e543] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e547]: USA-OR-McMinnville
+                  - generic [ref=e548]: Job Posting:Jun 17, 2026-Jun 29, 2026-Requisition ID 01024199
+                - generic [ref=e550]:
+                  - link "Apply" [ref=e552] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e554] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e555]:
+                - generic [ref=e556]:
+                  - heading "Ground Support Technician" [level=3] [ref=e559]:
+                    - link "Ground Support Technician" [ref=e561] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e565]: USA-OR-McMinnville
+                  - generic [ref=e566]: Job Posting:Jun 17, 2026-Jun 29, 2026-Requisition ID 01024201
+                - generic [ref=e568]:
+                  - link "Apply" [ref=e570] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e572] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e573]:
+                - generic [ref=e574]:
+                  - heading "Blackhawk Pilot" [level=3] [ref=e577]:
+                    - link "Blackhawk Pilot" [ref=e579] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e583]: USA-OR-McMinnville
+                  - generic [ref=e584]: Job Posting:Jun 17, 2026-Jun 29, 2026-Requisition ID 01024198
+                - generic [ref=e586]:
+                  - link "Apply" [ref=e588] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e590] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e591]:
+                - generic [ref=e592]:
+                  - heading "Ethics & Compliance Manager" [level=3] [ref=e595]:
+                    - link "Ethics & Compliance Manager" [ref=e597] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e601]: USA-WA-Seattle
+                  - generic [ref=e602]: Job Posting:Jun 17, 2026-Jul 17, 2026-Requisition ID 01024457
+                - generic [ref=e604]:
+                  - link "Apply" [ref=e606] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e608] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e609]:
+                - generic [ref=e610]:
+                  - heading "Log Truck Driver - Goshen" [level=3] [ref=e613]:
+                    - link "Log Truck Driver - Goshen" [ref=e615] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e619]: USA-OR-Eugene
+                  - generic [ref=e620]: Job Posting:Jun 17, 2026-Jul 1, 2026-Requisition ID 01024464
+                - generic [ref=e622]:
+                  - link "Apply" [ref=e624] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e626] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e627]:
+                - generic [ref=e628]:
+                  - heading "Forklift & Building Materials Operator - Billings" [level=3] [ref=e631]:
+                    - link "Forklift & Building Materials Operator - Billings" [ref=e633] [cursor=pointer]:
+                      - /url: "#"
+                  - generic [ref=e637]: USA-MT-Billings
+                  - generic [ref=e638]: Job Posting:Jun 17, 2026-Jun 30, 2026-Requisition ID 01023734
+                - generic [ref=e640]:
+                  - link "Apply" [ref=e642] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Add to My Job Cart" [ref=e644] [cursor=pointer]:
+                    - /url: "#"
+            - generic [ref=e645]:
+              - generic [ref=e646]:
+                - generic [ref=e647]: Jobs - Page 1 out of 6
+                - link "Previous" [disabled] [ref=e650]:
+                  - /url: "#"
+                  - text: Previous
+                - generic [ref=e653]: "|"
+                - link "1" [disabled] [ref=e656]:
+                  - /url: "#"
+                  - text: "1"
+                - link "2" [ref=e661] [cursor=pointer]:
+                  - /url: "#"
+                  - text: "2"
+                - link "3" [ref=e666] [cursor=pointer]:
+                  - /url: "#"
+                  - text: "3"
+                - link "4" [ref=e671] [cursor=pointer]:
+                  - /url: "#"
+                  - text: "4"
+                - link "5" [ref=e676] [cursor=pointer]:
+                  - /url: "#"
+                  - text: "5"
+                - generic [ref=e679]: "|"
+                - link "Next" [ref=e682] [cursor=pointer]:
+                  - /url: "#"
+                  - text: Next
+              - alert [ref=e685]
+          - generic [ref=e686]:
+            - generic [ref=e687]:
+              - heading "Candidate Profile" [level=3] [ref=e689]:
+                - generic [ref=e690]: Candidate Profile
+              - generic [ref=e692]: Take a few minutes to create or modify your employment profile and to specify your preferred working criteria for future openings matching your interests.
+              - link "Access my profile" [ref=e694] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e699]:
+              - heading "Icon Legend" [level=3] [ref=e701]:
+                - generic [ref=e702]: Icon Legend
+              - img "More information" [ref=e703]
+              - generic [ref=e705]: More information
+              - img "Urgent need job" [ref=e706]
+              - generic [ref=e708]: Urgent need job
+              - img "Added to the job cart" [ref=e709]
+              - generic [ref=e711]: Added to the job cart
+              - img "Draft submission" [ref=e714]
+              - generic [ref=e717]: Draft submission
+              - img "Completed submission" [ref=e720]
+              - generic [ref=e723]: Completed submission
+    - generic [ref=e726]:
+      - generic:
+        - generic:
+          - paragraph
+  - generic [ref=e729]:
+    - text: .
+    - link "Any personal information you provide is subject to the terms of our Privacy Policy" [ref=e730] [cursor=pointer]:
+      - /url: https://www.weyerhaeuser.com/privacy/privacy-policy
+    - 'link "California residents: Our California Privacy Notice for Job Applicants details what personal information we collect and for what purposes." [ref=e731] [cursor=pointer]':
+      - /url: https://www.weyerhaeuser.com/privacy/ccpa/job-applicants/
+  - generic [ref=e734]:
+    - paragraph [ref=e735]: Connect with us
+    - list [ref=e736]:
+      - listitem [ref=e737]:
+        - link "" [ref=e738] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/weyerhaeuser
+          - generic [ref=e739]: 
+      - listitem [ref=e740]:
+        - link "" [ref=e741] [cursor=pointer]:
+          - /url: https://www.facebook.com/weyerhaeusercompany
+          - generic [ref=e742]: 
+      - listitem [ref=e743]:
+        - link "" [ref=e744] [cursor=pointer]:
+          - /url: https://www.instagram.com/weyerhaeuser
+          - generic [ref=e745]: 
+      - listitem [ref=e746]:
+        - link "" [ref=e747] [cursor=pointer]:
+          - /url: https://twitter.com/weyerhaeuser
+          - generic [ref=e748]: 
+  - generic [ref=e749]:
+    - list [ref=e754]:
+      - listitem [ref=e755]:
+        - link "Weyerhaeuser Home" [ref=e756] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com
+          - img "Weyerhaeuser Home" [ref=e757]
+      - listitem [ref=e758]:
+        - link "Timberlands" [ref=e759] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/timberlands/
+      - listitem [ref=e760]:
+        - link "Recreation" [ref=e761] [cursor=pointer]:
+          - /url: https://recreation.weyerhaeuser.com/
+      - listitem [ref=e762]:
+        - link "Land" [ref=e763] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/land/
+      - listitem [ref=e764]:
+        - link "Wood Products" [ref=e765] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/wood-products/
+      - listitem [ref=e766]:
+        - link "Energy" [ref=e767] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/energy/
+      - listitem [ref=e768]:
+        - link "Sustainability" [ref=e769] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/sustainability/
+      - listitem [ref=e770]:
+        - link "Investors" [ref=e771] [cursor=pointer]:
+          - /url: http://investor.weyerhaeuser.com/
+      - listitem [ref=e772]:
+        - link "Careers" [ref=e773] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/careers/
+      - listitem [ref=e774]:
+        - link "Company" [ref=e775] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/company/
+    - list [ref=e778]:
+      - listitem [ref=e779]:
+        - text: "|"
+        - link "Legal Notices" [ref=e780] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/legal-notices
+        - link "Privacy Policy" [ref=e781] [cursor=pointer]:
+          - /url: https://www.weyerhaeuser.com/privacy/privacy-policy/
+    - paragraph [ref=e784]: © 2025 Weyerhaeuser Company. All Rights Reserved.

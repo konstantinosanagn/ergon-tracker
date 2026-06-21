@@ -1,0 +1,380 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#main"
+      - generic [ref=e6]:
+        - link "Home Electronic Arts" [ref=e8] [cursor=pointer]:
+          - /url: https://jobs.ea.com/en_US/careers
+          - img "Home" [ref=e9]
+          - heading "Electronic Arts" [level=1] [ref=e10]
+        - navigation "Main menu" [ref=e12]:
+          - generic [ref=e13]:
+            - list [ref=e14]:
+              - listitem [ref=e15]:
+                - link "Open Roles" [ref=e16] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/SearchJobs
+                  - generic [ref=e17]: Open Roles
+              - listitem [ref=e18]:
+                - link "About EA" [ref=e19] [cursor=pointer]:
+                  - /url: https://www.ea.com/about
+                  - generic [ref=e20]: About EA
+              - listitem [ref=e21]:
+                - link "EA Careers" [ref=e22] [cursor=pointer]:
+                  - /url: https://www.ea.com/careers
+                  - generic [ref=e23]: EA Careers
+              - listitem [ref=e24]:
+                - link "EA News" [ref=e25] [cursor=pointer]:
+                  - /url: https://www.ea.com/news
+                  - generic [ref=e26]: EA News
+            - list [ref=e27]:
+              - listitem [ref=e28]:
+                - link "Login" [ref=e29] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/Login
+                  - generic [ref=e30]: Login
+            - list [ref=e31]:
+              - listitem [ref=e32]:
+                - link "English - US " [ref=e33]:
+                  - /url: "#"
+                  - generic [ref=e34]: English - US
+                  - text: 
+    - heading "Our Open Roles" [level=2] [ref=e38]
+    - main [ref=e39]:
+      - list "breadcrumbs" [ref=e43]:
+        - listitem [ref=e44]:
+          - link "Home" [ref=e45] [cursor=pointer]:
+            - /url: https://jobs.ea.com/en_US/careers/Home
+        - listitem [ref=e46]:
+          - generic [ref=e47]: Open Roles
+      - generic [ref=e51]:
+        - generic [ref=e53]:
+          - heading "Filter roles by" [level=2] [ref=e55]
+          - generic: J
+          - generic "Search form" [ref=e57]:
+            - search [ref=e59]:
+              - group "Filter roles by" [ref=e60]:
+                - generic [ref=e61]: Filter roles by
+                - generic [ref=e62]:
+                  - alert [ref=e63]
+                  - group [ref=e64]:
+                    - generic [ref=e65]:
+                      - generic [ref=e66]: Keywords
+                      - generic [ref=e67]: Search keywords related to roles, including location, title, studio, or skills!
+                      - combobox "Keywords" [ref=e68]
+                    - generic [ref=e69]:
+                      - generic [ref=e70]: Country
+                      - generic [ref=e71]:
+                        - listbox [ref=e72]
+                        - combobox "Country" [ref=e75]:
+                          - group [ref=e76]:
+                            - searchbox "Country" [ref=e77]
+                    - generic [ref=e78]:
+                      - generic [ref=e79]: Job Category
+                      - generic [ref=e80]:
+                        - listbox [ref=e81]
+                        - combobox "Job Category" [ref=e84]:
+                          - group [ref=e85]:
+                            - searchbox "Job Category" [ref=e86]
+                    - generic [ref=e87]:
+                      - generic [ref=e88]: Worker Type
+                      - generic [ref=e89]:
+                        - listbox [ref=e90]
+                        - combobox "Worker Type" [ref=e93]:
+                          - group [ref=e94]:
+                            - searchbox "Worker Type" [ref=e95]
+                    - generic [ref=e96]:
+                      - generic [ref=e97]: Studio/Department
+                      - generic [ref=e98]:
+                        - listbox [ref=e99]
+                        - combobox "Studio/Department" [ref=e102]:
+                          - group [ref=e103]:
+                            - searchbox "Studio/Department" [ref=e104]
+                    - generic [ref=e105]:
+                      - generic [ref=e106]: Work Model
+                      - generic [ref=e107]:
+                        - listbox [ref=e108]
+                        - combobox "Work Model" [ref=e111]:
+                          - group [ref=e112]:
+                            - searchbox "Work Model" [ref=e113]
+                    - group [ref=e115]:
+                      - button "Search" [ref=e117] [cursor=pointer]
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - generic "408 results" [ref=e122]: 1-20 of 408 results
+            - generic "Sort by" [ref=e124]:
+              - button "Sort by" [ref=e125] [cursor=pointer]
+              - text:        
+          - generic [ref=e127]:
+            - article [ref=e128]:
+              - generic [ref=e130]:
+                - heading "Narrative Lead" [level=3] [ref=e131]:
+                  - link "Narrative Lead" [ref=e132] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Narrative-Lead/214799
+                - generic [ref=e133]: Guildford, United Kingdom • Role ID 214799 • Regular Employee • EA Studios - Criterion Games
+              - generic [ref=e134]:
+                - link "More Information" [ref=e135] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Narrative-Lead/214799
+                - button "Share Narrative Lead in social media" [ref=e137] [cursor=pointer]:
+                  - generic [ref=e138]: V
+            - article [ref=e139]:
+              - generic [ref=e141]:
+                - heading "Assistant Gameplay Producer - EA SPORTS FC™ Online" [level=3] [ref=e142]:
+                  - link "Assistant Gameplay Producer - EA SPORTS FC™ Online" [ref=e143] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Gameplay-Producer/214812
+                - generic [ref=e144]: Seoul, Korea, Republic of • Role ID 214812 • Regular Employee • EA Studios - Mobile Korea
+              - generic [ref=e145]:
+                - link "More Information" [ref=e146] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Gameplay-Producer/214812
+                - button "Share Assistant Gameplay Producer - EA SPORTS FC™ Online in social media" [ref=e148] [cursor=pointer]:
+                  - generic [ref=e149]: V
+            - article [ref=e150]:
+              - generic [ref=e152]:
+                - heading "Senior Product Manager (18 months contract)" [level=3] [ref=e153]:
+                  - link "Senior Product Manager (18 months contract)" [ref=e154] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Product-Manager/214840
+                - generic [ref=e155]: Austin, United States of America • Role ID 214840 • Temporary Employee • CT - IT
+              - generic [ref=e156]:
+                - link "More Information" [ref=e157] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Product-Manager/214840
+                - button "Share Senior Product Manager (18 months contract) in social media" [ref=e159] [cursor=pointer]:
+                  - generic [ref=e160]: V
+            - article [ref=e161]:
+              - generic [ref=e163]:
+                - heading "Development Manager - EA SPORTS FC (12 Months Temporary)" [level=3] [ref=e164]:
+                  - link "Development Manager - EA SPORTS FC (12 Months Temporary)" [ref=e165] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Development-Manager-EA-SPORTS-FC-12-Months-Temporary/214933
+                - generic [ref=e166]: Bucharest, Romania • Role ID 214933 • Temporary Employee • EA Studios - SPORTS
+              - generic [ref=e167]:
+                - link "More Information" [ref=e168] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Development-Manager-EA-SPORTS-FC-12-Months-Temporary/214933
+                - button "Share Development Manager - EA SPORTS FC (12 Months Temporary) in social media" [ref=e170] [cursor=pointer]:
+                  - generic [ref=e171]: V
+            - article [ref=e172]:
+              - generic [ref=e174]:
+                - heading "Technical AI Product Lead" [level=3] [ref=e175]:
+                  - link "Technical AI Product Lead" [ref=e176] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Technical-AI-Product-Lead/214207
+                - generic [ref=e177]: Kirkland, United States of America • Role ID 214207 • Regular Employee • Experiences
+              - generic [ref=e178]:
+                - link "More Information" [ref=e179] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Technical-AI-Product-Lead/214207
+                - button "Share Technical AI Product Lead in social media" [ref=e181] [cursor=pointer]:
+                  - generic [ref=e182]: V
+            - article [ref=e183]:
+              - generic [ref=e185]:
+                - heading "Site Reliability Engineer III" [level=3] [ref=e186]:
+                  - link "Site Reliability Engineer III" [ref=e187] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Site-Reliability-Engineer-Infrastructure-Platform/214230
+                - generic [ref=e188]: Hyderabad, India • Role ID 214230 • Regular Employee • CT - Infrastructure & Platform
+              - generic [ref=e189]:
+                - link "More Information" [ref=e190] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Site-Reliability-Engineer-Infrastructure-Platform/214230
+                - button "Share Site Reliability Engineer III in social media" [ref=e192] [cursor=pointer]:
+                  - generic [ref=e193]: V
+            - article [ref=e194]:
+              - generic [ref=e196]:
+                - heading "SRE III" [level=3] [ref=e197]:
+                  - link "SRE III" [ref=e198] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/SRE-III/214248
+                - generic [ref=e199]: Hyderabad, India • Role ID 214248 • Regular Employee • CT - Infrastructure & Platform
+              - generic [ref=e200]:
+                - link "More Information" [ref=e201] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/SRE-III/214248
+                - button "Share SRE III in social media" [ref=e203] [cursor=pointer]:
+                  - generic [ref=e204]: V
+            - article [ref=e205]:
+              - generic [ref=e207]:
+                - heading "Senior Software Engineer - Marketplace" [level=3] [ref=e208]:
+                  - link "Senior Software Engineer - Marketplace" [ref=e209] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Software-Engineer-Marketplace/214756
+                - generic [ref=e210]: Vancouver, Canada • Role ID 214756 • Regular Employee • CT - Infrastructure & Platform
+              - generic [ref=e211]:
+                - link "More Information" [ref=e212] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Software-Engineer-Marketplace/214756
+                - button "Share Senior Software Engineer - Marketplace in social media" [ref=e214] [cursor=pointer]:
+                  - generic [ref=e215]: V
+            - article [ref=e216]:
+              - generic [ref=e218]:
+                - heading "Accountant I" [level=3] [ref=e219]:
+                  - link "Accountant I" [ref=e220] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Accountant-I/214764
+                - generic [ref=e221]: Hyderabad, India • Role ID 214764 • Temporary Employee • Finance
+              - generic [ref=e222]:
+                - link "More Information" [ref=e223] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Accountant-I/214764
+                - button "Share Accountant I in social media" [ref=e225] [cursor=pointer]:
+                  - generic [ref=e226]: V
+            - article [ref=e227]:
+              - generic [ref=e229]:
+                - heading "Senior Technical Artist - EA SPORTS FC" [level=3] [ref=e230]:
+                  - link "Senior Technical Artist - EA SPORTS FC" [ref=e231] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Technical-Artist-EA-SPORTS-FC/214777
+                - generic [ref=e232]: Vancouver, Canada • Role ID 214777 • Regular Employee • EA Studios - SPORTS
+              - generic [ref=e233]:
+                - link "More Information" [ref=e234] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Technical-Artist-EA-SPORTS-FC/214777
+                - button "Share Senior Technical Artist - EA SPORTS FC in social media" [ref=e236] [cursor=pointer]:
+                  - generic [ref=e237]: V
+            - article [ref=e238]:
+              - generic [ref=e240]:
+                - heading "Senior Environment Technical Artist - EA SPORTS Technology" [level=3] [ref=e241]:
+                  - link "Senior Environment Technical Artist - EA SPORTS Technology" [ref=e242] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Environment-Technical-Artist-EA-SPORTS-Technology/214780
+                - generic [ref=e243]: Vancouver, Canada • Role ID 214780 • Temporary Employee • EA Studios - SPORTS
+              - generic [ref=e244]:
+                - link "More Information" [ref=e245] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Environment-Technical-Artist-EA-SPORTS-Technology/214780
+                - button "Share Senior Environment Technical Artist - EA SPORTS Technology in social media" [ref=e247] [cursor=pointer]:
+                  - generic [ref=e248]: V
+            - article [ref=e249]:
+              - generic [ref=e251]:
+                - heading "Assistant Content Producer - EA SPORTS™ FC (12 Months Temporary)" [level=3] [ref=e252]:
+                  - link "Assistant Content Producer - EA SPORTS™ FC (12 Months Temporary)" [ref=e253] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Assistant-Content-Producer-EA-SPORTS-FC-12-Month-Temporary/214841
+                - generic [ref=e254]: Bucharest, Romania • Role ID 214841 • Temporary Employee • EA Studios - SPORTS
+              - generic [ref=e255]:
+                - link "More Information" [ref=e256] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Assistant-Content-Producer-EA-SPORTS-FC-12-Month-Temporary/214841
+                - button "Share Assistant Content Producer - EA SPORTS™ FC (12 Months Temporary) in social media" [ref=e258] [cursor=pointer]:
+                  - generic [ref=e259]: V
+            - article [ref=e260]:
+              - generic [ref=e262]:
+                - heading "Quality Assurance Lead Tester - NHL (12 Month TFT)" [level=3] [ref=e263]:
+                  - link "Quality Assurance Lead Tester - NHL (12 Month TFT)" [ref=e264] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/QA-Lead-Tester-NHL/214852
+                - generic [ref=e265]: Vancouver, Canada • Role ID 214852 • Temporary Employee • EA Studios - Quality Verification
+              - generic [ref=e266]:
+                - link "More Information" [ref=e267] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/QA-Lead-Tester-NHL/214852
+                - button "Share Quality Assurance Lead Tester - NHL (12 Month TFT) in social media" [ref=e269] [cursor=pointer]:
+                  - generic [ref=e270]: V
+            - article [ref=e271]:
+              - generic [ref=e273]:
+                - heading "IT Desktop Support Specialist (12 month contract)" [level=3] [ref=e274]:
+                  - link "IT Desktop Support Specialist (12 month contract)" [ref=e275] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Desktop-IT-Support-Specialist/214899
+                - generic [ref=e276]: Los Angeles - Chatsworth, United States of America • Role ID 214899 • Temporary Employee • CT - IT
+              - generic [ref=e277]:
+                - link "More Information" [ref=e278] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Desktop-IT-Support-Specialist/214899
+                - button "Share IT Desktop Support Specialist (12 month contract) in social media" [ref=e280] [cursor=pointer]:
+                  - generic [ref=e281]: V
+            - article [ref=e282]:
+              - generic [ref=e284]:
+                - heading "Data Analyst, Player & Quality Insights" [level=3] [ref=e285]:
+                  - link "Data Analyst, Player & Quality Insights" [ref=e286] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Data-Analyst-Player-Quality-Insights/214917
+                - generic [ref=e287]: Vancouver, Canada • Role ID 214917 • Regular Employee • EA Studios - Quality Verification
+              - generic [ref=e288]:
+                - link "More Information" [ref=e289] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Data-Analyst-Player-Quality-Insights/214917
+                - button "Share Data Analyst, Player & Quality Insights in social media" [ref=e291] [cursor=pointer]:
+                  - generic [ref=e292]: V
+            - article [ref=e293]:
+              - generic [ref=e295]:
+                - heading "Development Manager" [level=3] [ref=e296]:
+                  - link "Development Manager" [ref=e297] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Development-Manager/213952
+                - generic [ref=e298]: Hyderabad, India • Role ID 213952 • Regular Employee • EA Mobile - Pogo
+              - generic [ref=e299]:
+                - link "More Information" [ref=e300] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Development-Manager/213952
+                - button "Share Development Manager in social media" [ref=e302] [cursor=pointer]:
+                  - generic [ref=e303]: V
+            - article [ref=e304]:
+              - generic [ref=e306]:
+                - heading "Senior Data Analyst" [level=3] [ref=e307]:
+                  - link "Senior Data Analyst" [ref=e308] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Data-Analyst/214109
+                - generic [ref=e309]: Hyderabad, India • Role ID 214109 • Regular Employee • CT - Data & Insights
+              - generic [ref=e310]:
+                - link "More Information" [ref=e311] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Data-Analyst/214109
+                - button "Share Senior Data Analyst in social media" [ref=e313] [cursor=pointer]:
+                  - generic [ref=e314]: V
+            - article [ref=e315]:
+              - generic [ref=e317]:
+                - heading "Principal Software Engineer - Security" [level=3] [ref=e318]:
+                  - link "Principal Software Engineer - Security" [ref=e319] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Principal-Software-Engineer-Security/214338
+                - generic [ref=e320]:
+                  - text: Austin, United States of America •
+                  - generic [ref=e321]: Austin, United States of America, Texas
+                  - text: • Role ID 214338 • Regular Employee • CT - Security
+              - generic [ref=e322]:
+                - link "More Information" [ref=e323] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Principal-Software-Engineer-Security/214338
+                - button "Share Principal Software Engineer - Security in social media" [ref=e325] [cursor=pointer]:
+                  - generic [ref=e326]: V
+            - article [ref=e327]:
+              - generic [ref=e329]:
+                - heading "Director, Analytics - EAX" [level=3] [ref=e330]:
+                  - link "Director, Analytics - EAX" [ref=e331] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Director-Analytics-EAX/214364
+                - generic [ref=e332]: Vancouver, Canada • Role ID 214364 • Regular Employee • CT - Data & Insights
+              - generic [ref=e333]:
+                - link "More Information" [ref=e334] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Director-Analytics-EAX/214364
+                - button "Share Director, Analytics - EAX in social media" [ref=e336] [cursor=pointer]:
+                  - generic [ref=e337]: V
+            - article [ref=e338]:
+              - generic [ref=e340]:
+                - heading "Senior Data Analyst - EA Sports FC" [level=3] [ref=e341]:
+                  - link "Senior Data Analyst - EA Sports FC" [ref=e342] [cursor=pointer]:
+                    - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Data-Analyst-EA-Sports-FC/214690
+                - generic [ref=e343]: Vancouver, Canada • Role ID 214690 • Regular Employee • EA Studios - SPORTS
+              - generic [ref=e344]:
+                - link "More Information" [ref=e345] [cursor=pointer]:
+                  - /url: https://jobs.ea.com/en_US/careers/JobDetail/Senior-Data-Analyst-EA-Sports-FC/214690
+                - button "Share Senior Data Analyst - EA Sports FC in social media" [ref=e347] [cursor=pointer]:
+                  - generic [ref=e348]: V
+          - generic [ref=e349]:
+            - generic "408 results" [ref=e351]: 1-20 of 408 results
+            - navigation "Pagination Navigation" [ref=e353]:
+              - generic "Page 1" [ref=e354] [cursor=pointer]:
+                - generic [ref=e355]: Page
+                - text: "1"
+              - link "Go to Page Number 2" [ref=e356] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=20
+                - text: "2"
+              - link "Go to Page Number 3" [ref=e357] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=40
+                - text: "3"
+              - link "Go to Page Number 4" [ref=e358] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=60
+                - text: "4"
+              - link "Go to Page Number 5" [ref=e359] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=80
+                - text: "5"
+              - link "Go to Page Number 6" [ref=e360] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=100
+                - text: "6"
+              - link "Go to Next Page, Number 2" [ref=e361] [cursor=pointer]:
+                - /url: https://jobs.ea.com/en_US/careers/SearchJobs/?jobRecordsPerPage=20&jobOffset=20
+                - text: Next >>
+    - generic [ref=e362]:
+      - heading "Didn't find what you're looking for? Create a job alert" [level=2] [ref=e365]:
+        - text: Didn't find what you're looking for?
+        - link "Create a job alert" [ref=e366] [cursor=pointer]:
+          - /url: https://jobs.ea.com/en_US/careers/Login
+      - contentinfo "Footer" [ref=e367]:
+        - generic [ref=e369]:
+          - generic [ref=e371]: © 2026 Electronic Arts Inc.
+          - generic [ref=e372]:
+            - link "Candidate Privacy Notice" [ref=e373] [cursor=pointer]:
+              - /url: https://www.ea.com/careers/data-privacy-policy
+            - generic [ref=e374]: "|"
+            - link "Notice at Collection (California)" [ref=e375] [cursor=pointer]:
+              - /url: https://www.ea.com/legal/privacy-and-cookie-policy#information-we-collect
+          - generic [ref=e376]:
+            - link "Linkedin" [ref=e377] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/electronic-arts
+            - link "Facebook" [ref=e378] [cursor=pointer]:
+              - /url: https://www.facebook.com/EA/
+            - link "Twitter" [ref=e379] [cursor=pointer]:
+              - /url: https://twitter.com/ea
+            - link "Youtube" [ref=e380] [cursor=pointer]:
+              - /url: https://www.youtube.com/EA
+            - link "Instagram" [ref=e381] [cursor=pointer]:
+              - /url: https://www.instagram.com/ea/
+  - status [ref=e382]

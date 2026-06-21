@@ -1,0 +1,23 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - img [ref=e5]
+    - heading "The page cannot be found!" [level=1] [ref=e7]
+  - generic [ref=e8]:
+    - generic [ref=e9]: Please try one of the following...
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "GO BACK" [ref=e12] [cursor=pointer]:
+          - /url: "javascript: history.go(-1);"
+      - listitem [ref=e13]:
+        - link "CONTACT US" [ref=e14] [cursor=pointer]:
+          - /url: https://www.jobvite.com/support/
+    - generic [ref=e15]:
+      - text: © 2026 Talemetry, Inc. All Rights Reserved.
+      - link "Terms of Use" [ref=e16] [cursor=pointer]:
+        - /url: https://www.jobvite.com/terms-of-use/
+      - text: "|"
+      - link "Privacy Policy" [ref=e17] [cursor=pointer]:
+        - /url: https://www.employinc.com/privacy/
+      - text: "|"
+      - link "Contact Support" [ref=e18] [cursor=pointer]:
+        - /url: https://www.jobvite.com/support/

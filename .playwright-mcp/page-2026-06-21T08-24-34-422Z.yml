@@ -1,0 +1,107 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e9]:
+        - navigation "Menu" [ref=e10]:
+          - list [ref=e11]:
+            - listitem [ref=e12]:
+              - link "Home" [ref=e13] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/
+            - listitem [ref=e14]:
+              - link "Science" [ref=e15] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/science/
+            - listitem [ref=e16]:
+              - link "Programs" [ref=e17] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/programs/
+            - listitem [ref=e18]:
+              - link "Investors" [ref=e19] [cursor=pointer]:
+                - /url: https://ir.aardvarktherapeutics.com/
+            - listitem [ref=e20]:
+              - link "Team" [ref=e21] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/team/
+        - text:  
+      - link [ref=e25] [cursor=pointer]:
+        - /url: https://aardvarktherapeutics.com
+      - link "Contact Us" [ref=e30] [cursor=pointer]:
+        - /url: https://aardvarktherapeutics.com/contact/
+        - generic [ref=e32]: Contact Us
+    - generic [ref=e35]:
+      - generic [ref=e38]:
+        - heading "Rethinking Metabolic Health" [level=2] [ref=e41]
+        - paragraph [ref=e44]: Aardvark Therapeutics is a clinical-stage biopharmaceutical company developing novel, small-molecule therapies designed to inhibit hunger and treat metabolic diseases.
+        - link "Contact Us" [ref=e48] [cursor=pointer]:
+          - /url: /contact/
+          - generic [ref=e50]: Contact Us
+      - generic [ref=e58]:
+        - heading "Hunger & Appetite are Wired Differently" [level=2] [ref=e61]:
+          - text: Hunger & Appetite are
+          - text: Wired Differently
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: Hunger and appetite are distinct neurologic drives that influence a person’s behavior toward food consumption. Appetite reflects desire for reward or pleasure whereas hunger is driven by the need to avoid pain and discomfort. Although these perceptions interact neurologically in complementary ways, they remain unique and distinguishable processes.
+          - paragraph [ref=e65]: Aardvark is focused on alleviating hunger to treat metabolic diseases and delivering transformative outcomes for patients.
+        - link "Learn More" [ref=e69] [cursor=pointer]:
+          - /url: /science/
+          - generic [ref=e71]: Learn More
+      - generic [ref=e78]:
+        - heading "ARD-101" [level=2] [ref=e81]
+        - paragraph [ref=e84]: Our lead compound, ARD-101, is an oral investigational drug being developed for the treatment of hunger-associated rare diseases. ARD-101 is primarily limited to the digestive tract, where it activates bitter taste receptors (TAS2Rs) to trigger the local release of satiety hormones to activate gut-brain signals that suppress hunger.
+      - generic [ref=e86]:
+        - heading "Unlocking Opportunities in Obesity" [level=2] [ref=e89]
+        - paragraph [ref=e92]: Our goal is to become a leader in the treatment of hunger, which has potential applications in the treatment of hyperphagia in rare diseases as well as obesity and obesity-related conditions.
+        - generic [ref=e93]:
+          - link "Prader-Willi Syndrome" [ref=e97] [cursor=pointer]:
+            - /url: /programs/#trial-1700
+            - generic [ref=e99]: Prader-Willi Syndrome
+          - link "General Obesity" [ref=e103] [cursor=pointer]:
+            - /url: /programs/#trial-1697
+            - generic [ref=e105]: General Obesity
+    - generic [ref=e106]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - heading "Get in Touch to Discover More" [level=4] [ref=e114]
+          - link "Contact Us" [ref=e118] [cursor=pointer]:
+            - /url: /contact/
+            - generic [ref=e120]: Contact Us
+        - navigation "Menu" [ref=e124]:
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Home" [ref=e127] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/
+            - listitem [ref=e128]:
+              - link "Science" [ref=e129] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/science/
+            - listitem [ref=e130]:
+              - link "Programs" [ref=e131] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/programs/
+            - listitem [ref=e132]:
+              - link "Investors" [ref=e133] [cursor=pointer]:
+                - /url: https://ir.aardvarktherapeutics.com/
+            - listitem [ref=e134]:
+              - link "Team" [ref=e135] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/team/
+        - generic [ref=e139]:
+          - link "Instagram " [ref=e141] [cursor=pointer]:
+            - /url: https://www.instagram.com/aardvarktherapeutics/
+            - generic [ref=e142]: Instagram
+            - generic [ref=e143]: 
+          - link "Facebook " [ref=e145] [cursor=pointer]:
+            - /url: https://www.facebook.com/aardvarktherapeutics
+            - generic [ref=e146]: Facebook
+            - generic [ref=e147]: 
+          - link "Linkedin " [ref=e149] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/aardvark-therapeutics
+            - generic [ref=e150]: Linkedin
+            - generic [ref=e151]: 
+      - generic [ref=e154]:
+        - generic [ref=e156]: © 2026 Aardvark Therapeutics, Inc. All Rights Reserved.
+        - navigation "Menu" [ref=e159]:
+          - list [ref=e160]:
+            - listitem [ref=e161]:
+              - link "Privacy Policy" [ref=e162] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/legal/privacy-policy/
+            - listitem [ref=e163]:
+              - link "Terms of Use" [ref=e164] [cursor=pointer]:
+                - /url: https://aardvarktherapeutics.com/legal/terms-of-use/
+  - generic [ref=e165]: desktop

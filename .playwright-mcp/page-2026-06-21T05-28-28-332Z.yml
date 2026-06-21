@@ -1,0 +1,519 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e8]:
+      - img "Corporate careers webpage banner" [ref=e9]
+      - generic:
+        - banner:
+          - navigation [ref=e10]:
+            - generic [ref=e11]:
+              - link "Go to Infosys Home" [ref=e13] [cursor=pointer]:
+                - /url: https://www.infosys.com
+                - img "Infosys Careers" [ref=e14]
+              - generic:
+                - list
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - main "open menu":
+                    - link "open menu" [expanded] [ref=e16] [cursor=pointer]:
+                      - /url: javascript:void(0);
+      - paragraph [ref=e20]:
+        - link "Infosys Careers" [ref=e21] [cursor=pointer]:
+          - /url: https://www.infosys.com/careers/
+          - text: Infosys Careers
+          - generic [ref=e22]: 
+        - link "Explore Opportunities" [ref=e23] [cursor=pointer]:
+          - /url: javascript://
+          - text: Explore Opportunities
+          - generic [ref=e24]: 
+        - text: Jobs in USA
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - generic [ref=e31]: Jobs in USA
+        - listitem [ref=e32]:
+          - link "Search jobs" [ref=e34] [cursor=pointer]:
+            - /url: javascript://
+    - generic [ref=e35]:
+      - generic [ref=e40]: Infosys provides equal employment opportunities to applicants and employees without regard to race; color; sex; gender identity; sexual orientation; religious practices and observances; national origin; pregnancy, childbirth, or related medical conditions; status as a protected veteran or spouse/family member of a protected veteran; or disability.
+      - generic [ref=e42]:
+        - text: Please click on the
+        - link "Know Your Rights" [ref=e43] [cursor=pointer]:
+          - /url: https://smartdreamers-com.s3.eu-central-1.amazonaws.com/infosys/KnowYourRights.pdf
+        - text: ", and"
+        - link "Pay Transparency Act" [ref=e44] [cursor=pointer]:
+          - /url: https://smartdreamers.s3.eu-central-1.amazonaws.com/infosys/Pay+Transparency+Act.pdf
+        - text: and
+        - link "IER Right to Work Document" [ref=e45] [cursor=pointer]:
+          - /url: https://smartdreamers-com.s3.eu-central-1.amazonaws.com/infosys/IER_RightToWorkPoster+Eng_Es.pdf
+        - text: .
+      - generic [ref=e47]:
+        - text: Infosys is an equal employment/affirmative action employer. If you need accommodation for any part of the application process because of a medical condition or disability, please send an email to
+        - link "Infy_REC_Helpdesk@infosys.com" [ref=e48] [cursor=pointer]:
+          - /url: mailto:Infy_REC_Helpdesk@infosys.com
+        - text: or call 1-866-472-0935 to let us know the nature of your request.
+      - generic [ref=e53]:
+        - generic:
+          - generic:
+            - generic [ref=e54]:
+              - paragraph [ref=e55]: Filters
+              - generic [ref=e56] [cursor=pointer]: Clear all filters
+              - generic [ref=e57]:
+                - generic [ref=e60]:
+                  - generic [ref=e61]:
+                    - text: USA
+                    - link "×" [ref=e62] [cursor=pointer]:
+                      - /url: javascript:void(0)
+                  - textbox "Search location" [ref=e63]:
+                    - /placeholder: Country
+                - textbox "Search region" [ref=e67]:
+                  - /placeholder: State
+                - textbox "Search city" [ref=e71]:
+                  - /placeholder: City
+                - textbox "Skills" [ref=e75] [cursor=pointer]
+                - textbox "Company" [ref=e79] [cursor=pointer]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - navigation:
+                  - generic:
+                    - paragraph [ref=e84]: Showing 1 to 25 of 481 matching jobs
+                    - generic [ref=e85]:
+                      - generic:
+                        - generic [ref=e86] [cursor=pointer]: "Results per page:"
+                        - combobox "Results per page" [ref=e87] [cursor=pointer]:
+                          - option "25" [selected]
+                          - option "50"
+                          - option "100"
+              - textbox "Search job" [ref=e90]
+              - generic [ref=e91]:
+                - link "Teamcenter Application Administrator San Jose, CA - USA 149587BR" [ref=e92] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149587BR
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Teamcenter Application Administrator
+                    - generic [ref=e95]:
+                      - generic [ref=e96]: San Jose, CA
+                      - generic [ref=e97]: "-"
+                      - generic [ref=e98]: USA
+                    - generic [ref=e100]: 149587BR
+                - link "Teamcenter Solution Architect Raleigh, NC - USA 149585BR" [ref=e101] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149585BR
+                  - generic [ref=e102]:
+                    - generic [ref=e103]: Teamcenter Solution Architect
+                    - generic [ref=e104]:
+                      - generic [ref=e105]: Raleigh, NC
+                      - generic [ref=e106]: "-"
+                      - generic [ref=e107]: USA
+                    - generic [ref=e109]: 149585BR
+                - link "Teamcenter Principal Consultant San Jose, CA - USA 149584BR" [ref=e110] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149584BR
+                  - generic [ref=e111]:
+                    - generic [ref=e112]: Teamcenter Principal Consultant
+                    - generic [ref=e113]:
+                      - generic [ref=e114]: San Jose, CA
+                      - generic [ref=e115]: "-"
+                      - generic [ref=e116]: USA
+                    - generic [ref=e118]: 149584BR
+                - link "FullStack Architect Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149563BR" [ref=e119] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149563BR
+                  - generic [ref=e120]:
+                    - generic [ref=e121]: FullStack Architect
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: Plano, TX
+                      - generic [ref=e124]: ","
+                      - generic [ref=e125]: Raleigh, NC
+                      - generic [ref=e126]: ","
+                      - generic [ref=e127]: Reston, VA
+                      - generic [ref=e128]: ","
+                      - generic [ref=e129]: Richardson, TX
+                      - generic [ref=e130]: ","
+                      - generic [ref=e131]: Tempe, AZ
+                      - generic [ref=e132]: "-"
+                      - generic [ref=e133]: USA
+                    - generic [ref=e135]: 149563BR
+                - link "Technical Project Manager Raleigh, NC , Reston, VA , Richardson, TX - USA 149562BR" [ref=e136] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149562BR
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: Technical Project Manager
+                    - generic [ref=e139]:
+                      - generic [ref=e140]: Raleigh, NC
+                      - generic [ref=e141]: ","
+                      - generic [ref=e142]: Reston, VA
+                      - generic [ref=e143]: ","
+                      - generic [ref=e144]: Richardson, TX
+                      - generic [ref=e145]: "-"
+                      - generic [ref=e146]: USA
+                    - generic [ref=e148]: 149562BR
+                - link "Technical Project Manager Raleigh, NC , Reston, VA , Richardson, TX - USA 149561BR" [ref=e149] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149561BR
+                  - generic [ref=e150]:
+                    - generic [ref=e151]: Technical Project Manager
+                    - generic [ref=e152]:
+                      - generic [ref=e153]: Raleigh, NC
+                      - generic [ref=e154]: ","
+                      - generic [ref=e155]: Reston, VA
+                      - generic [ref=e156]: ","
+                      - generic [ref=e157]: Richardson, TX
+                      - generic [ref=e158]: "-"
+                      - generic [ref=e159]: USA
+                    - generic [ref=e161]: 149561BR
+                - link "Principal Enterprise Applications SAP Tech Architect Anywhere in the US and/or Remote - USA 149549BR" [ref=e162] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149549BR
+                  - generic [ref=e163]:
+                    - generic [ref=e164]: Principal Enterprise Applications SAP Tech Architect
+                    - generic [ref=e165]:
+                      - generic [ref=e166]: Anywhere in the US and/or Remote
+                      - generic [ref=e167]: "-"
+                      - generic [ref=e168]: USA
+                    - generic [ref=e170]: 149549BR
+                - link "Senior Practice Engagement Manager Anywhere in the US and/or Remote - USA 149295BR" [ref=e171] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149295BR
+                  - generic [ref=e172]:
+                    - generic [ref=e173]: Senior Practice Engagement Manager
+                    - generic [ref=e174]:
+                      - generic [ref=e175]: Anywhere in the US and/or Remote
+                      - generic [ref=e176]: "-"
+                      - generic [ref=e177]: USA
+                    - generic [ref=e179]: 149295BR
+                - link "Tech and Non-Tech Services Managers Chicago, IL - USA 148975BR" [ref=e180] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/148975BR
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: Tech and Non-Tech Services Managers
+                    - generic [ref=e183]:
+                      - generic [ref=e184]: Chicago, IL
+                      - generic [ref=e185]: "-"
+                      - generic [ref=e186]: USA
+                    - generic [ref=e188]: 148975BR
+                - link "Consultant Chicago, IL - USA 148972BR" [ref=e189] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/148972BR
+                  - generic [ref=e190]:
+                    - generic [ref=e191]: Consultant
+                    - generic [ref=e192]:
+                      - generic [ref=e193]: Chicago, IL
+                      - generic [ref=e194]: "-"
+                      - generic [ref=e195]: USA
+                    - generic [ref=e197]: 148972BR
+                - link "Java SDET Automation Tester Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149552BR" [ref=e198] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149552BR
+                  - generic [ref=e199]:
+                    - generic [ref=e200]: Java SDET Automation Tester
+                    - generic [ref=e201]:
+                      - generic [ref=e202]: Plano, TX
+                      - generic [ref=e203]: ","
+                      - generic [ref=e204]: Raleigh, NC
+                      - generic [ref=e205]: ","
+                      - generic [ref=e206]: Reston, VA
+                      - generic [ref=e207]: ","
+                      - generic [ref=e208]: Richardson, TX
+                      - generic [ref=e209]: ","
+                      - generic [ref=e210]: Tempe, AZ
+                      - generic [ref=e211]: "-"
+                      - generic [ref=e212]: USA
+                    - generic [ref=e214]: 149552BR
+                - link "TIBCO Platform Integration Developer Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149421BR" [ref=e215] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149421BR
+                  - generic [ref=e216]:
+                    - generic [ref=e217]: TIBCO Platform Integration Developer
+                    - generic [ref=e218]:
+                      - generic [ref=e219]: Plano, TX
+                      - generic [ref=e220]: ","
+                      - generic [ref=e221]: Raleigh, NC
+                      - generic [ref=e222]: ","
+                      - generic [ref=e223]: Reston, VA
+                      - generic [ref=e224]: ","
+                      - generic [ref=e225]: Richardson, TX
+                      - generic [ref=e226]: ","
+                      - generic [ref=e227]: Tempe, AZ
+                      - generic [ref=e228]: "-"
+                      - generic [ref=e229]: USA
+                    - generic [ref=e231]: 149421BR
+                - link "Java Full Stack Developer Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149422BR" [ref=e232] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149422BR
+                  - generic [ref=e233]:
+                    - generic [ref=e234]: Java Full Stack Developer
+                    - generic [ref=e235]:
+                      - generic [ref=e236]: Raleigh, NC
+                      - generic [ref=e237]: ","
+                      - generic [ref=e238]: Reston, VA
+                      - generic [ref=e239]: ","
+                      - generic [ref=e240]: Richardson, TX
+                      - generic [ref=e241]: ","
+                      - generic [ref=e242]: Tempe, AZ
+                      - generic [ref=e243]: "-"
+                      - generic [ref=e244]: USA
+                    - generic [ref=e246]: 149422BR
+                - link "Dotnet Developer Hartford, CT - USA 149581BR" [ref=e247] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149581BR
+                  - generic [ref=e248]:
+                    - generic [ref=e249]: Dotnet Developer
+                    - generic [ref=e250]:
+                      - generic [ref=e251]: Hartford, CT
+                      - generic [ref=e252]: "-"
+                      - generic [ref=e253]: USA
+                    - generic [ref=e255]: 149581BR
+                - link "DevOps Engineer Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149541BR" [ref=e256] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149541BR
+                  - generic [ref=e257]:
+                    - generic [ref=e258]: DevOps Engineer
+                    - generic [ref=e259]:
+                      - generic [ref=e260]: Plano, TX
+                      - generic [ref=e261]: ","
+                      - generic [ref=e262]: Raleigh, NC
+                      - generic [ref=e263]: ","
+                      - generic [ref=e264]: Reston, VA
+                      - generic [ref=e265]: ","
+                      - generic [ref=e266]: Richardson, TX
+                      - generic [ref=e267]: ","
+                      - generic [ref=e268]: Tempe, AZ
+                      - generic [ref=e269]: "-"
+                      - generic [ref=e270]: USA
+                    - generic [ref=e272]: 149541BR
+                - link "Java Full Stack Developer Fort Lauderdale, FL , Philadelphia, PA - USA 149063BR" [ref=e273] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149063BR
+                  - generic [ref=e274]:
+                    - generic [ref=e275]: Java Full Stack Developer
+                    - generic [ref=e276]:
+                      - generic [ref=e277]: Fort Lauderdale, FL
+                      - generic [ref=e278]: ","
+                      - generic [ref=e279]: Philadelphia, PA
+                      - generic [ref=e280]: "-"
+                      - generic [ref=e281]: USA
+                    - generic [ref=e283]: 149063BR
+                - link "Java Developer Hartford, CT - USA 149548BR" [ref=e284] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149548BR
+                  - generic [ref=e285]:
+                    - generic [ref=e286]: Java Developer
+                    - generic [ref=e287]:
+                      - generic [ref=e288]: Hartford, CT
+                      - generic [ref=e289]: "-"
+                      - generic [ref=e290]: USA
+                    - generic [ref=e292]: 149548BR
+                - link "Java Developer Hartford, CT - USA 149547BR" [ref=e293] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149547BR
+                  - generic [ref=e294]:
+                    - generic [ref=e295]: Java Developer
+                    - generic [ref=e296]:
+                      - generic [ref=e297]: Hartford, CT
+                      - generic [ref=e298]: "-"
+                      - generic [ref=e299]: USA
+                    - generic [ref=e301]: 149547BR
+                - link "DevSecOps Consultant Richardson, TX - USA 149485BR" [ref=e302] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149485BR
+                  - generic [ref=e303]:
+                    - generic [ref=e304]: DevSecOps Consultant
+                    - generic [ref=e305]:
+                      - generic [ref=e306]: Richardson, TX
+                      - generic [ref=e307]: "-"
+                      - generic [ref=e308]: USA
+                    - generic [ref=e310]: 149485BR
+                - link "Teamcenter Consultant Raleigh, NC - USA 149358BR" [ref=e311] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149358BR
+                  - generic [ref=e312]:
+                    - generic [ref=e313]: Teamcenter Consultant
+                    - generic [ref=e314]:
+                      - generic [ref=e315]: Raleigh, NC
+                      - generic [ref=e316]: "-"
+                      - generic [ref=e317]: USA
+                    - generic [ref=e319]: 149358BR
+                - link "DevSecOps Consultant Richardson, TX - USA 149484BR" [ref=e320] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149484BR
+                  - generic [ref=e321]:
+                    - generic [ref=e322]: DevSecOps Consultant
+                    - generic [ref=e323]:
+                      - generic [ref=e324]: Richardson, TX
+                      - generic [ref=e325]: "-"
+                      - generic [ref=e326]: USA
+                    - generic [ref=e328]: 149484BR
+                - link "Java Springboot AI Developer Addison, TX , Charlotte, NC - USA 149415BR" [ref=e329] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149415BR
+                  - generic [ref=e330]:
+                    - generic [ref=e331]: Java Springboot AI Developer
+                    - generic [ref=e332]:
+                      - generic [ref=e333]: Addison, TX
+                      - generic [ref=e334]: ","
+                      - generic [ref=e335]: Charlotte, NC
+                      - generic [ref=e336]: "-"
+                      - generic [ref=e337]: USA
+                    - generic [ref=e339]: 149415BR
+                - link "Telematics Tech. Lead Costa Mesa, CA - USA 149199BR" [ref=e340] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149199BR
+                  - generic [ref=e341]:
+                    - generic [ref=e342]: Telematics Tech. Lead
+                    - generic [ref=e343]:
+                      - generic [ref=e344]: Costa Mesa, CA
+                      - generic [ref=e345]: "-"
+                      - generic [ref=e346]: USA
+                    - generic [ref=e348]: 149199BR
+                - link "Enterprise Integration Solution Architect Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149520BR" [ref=e349] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149520BR
+                  - generic [ref=e350]:
+                    - generic [ref=e351]: Enterprise Integration Solution Architect
+                    - generic [ref=e352]:
+                      - generic [ref=e353]: Plano, TX
+                      - generic [ref=e354]: ","
+                      - generic [ref=e355]: Raleigh, NC
+                      - generic [ref=e356]: ","
+                      - generic [ref=e357]: Reston, VA
+                      - generic [ref=e358]: ","
+                      - generic [ref=e359]: Richardson, TX
+                      - generic [ref=e360]: ","
+                      - generic [ref=e361]: Tempe, AZ
+                      - generic [ref=e362]: "-"
+                      - generic [ref=e363]: USA
+                    - generic [ref=e365]: 149520BR
+                - link "Appian Architect Plano, TX , Raleigh, NC , Reston, VA , Richardson, TX , Tempe, AZ - USA 149519BR" [ref=e366] [cursor=pointer]:
+                  - /url: https://digitalcareers.infosys.com/global-careers/company-job/description/reqid/149519BR
+                  - generic [ref=e367]:
+                    - generic [ref=e368]: Appian Architect
+                    - generic [ref=e369]:
+                      - generic [ref=e370]: Plano, TX
+                      - generic [ref=e371]: ","
+                      - generic [ref=e372]: Raleigh, NC
+                      - generic [ref=e373]: ","
+                      - generic [ref=e374]: Reston, VA
+                      - generic [ref=e375]: ","
+                      - generic [ref=e376]: Richardson, TX
+                      - generic [ref=e377]: ","
+                      - generic [ref=e378]: Tempe, AZ
+                      - generic [ref=e379]: "-"
+                      - generic [ref=e380]: USA
+                    - generic [ref=e382]: 149519BR
+                - generic:
+                  - navigation:
+                    - generic:
+                      - paragraph [ref=e384]: Showing 1 to 25 of 481 matching jobs
+                      - generic [ref=e385]:
+                        - generic:
+                          - generic [ref=e386]: Prev
+                          - link "Next" [ref=e387] [cursor=pointer]:
+                            - /url: https://digitalcareers.infosys.com/infosys/global-careers?page=2&per_page=25&job_type=experienced&location=USA
+    - generic [ref=e390]:
+      - generic [ref=e391]:
+        - heading "Company" [level=2] [ref=e392]
+        - list [ref=e393]:
+          - listitem [ref=e394]:
+            - link "Navigate your next" [ref=e395] [cursor=pointer]:
+              - /url: https://www.infosys.com/navigate-your-next.html
+          - listitem [ref=e396]:
+            - link "About us" [ref=e397] [cursor=pointer]:
+              - /url: https://www.infosys.com/about.html
+          - listitem [ref=e398]:
+            - link "Careers" [ref=e399] [cursor=pointer]:
+              - /url: https://www.infosys.com/careers/
+          - listitem [ref=e400]:
+            - link "Corporate Responsibility" [ref=e401] [cursor=pointer]:
+              - /url: https://www.infosys.com/about/corporate-responsibility.html
+          - listitem [ref=e402]:
+            - link "Investors" [ref=e403] [cursor=pointer]:
+              - /url: https://www.infosys.com/investors.html
+          - listitem [ref=e404]:
+            - link "Newsroom" [ref=e405] [cursor=pointer]:
+              - /url: https://www.infosys.com/newsroom.html
+          - listitem [ref=e406]:
+            - link "Alumni" [ref=e407] [cursor=pointer]:
+              - /url: https://alumni.infosys.com/app-welcome
+      - generic [ref=e408]:
+        - heading "Subsidiaries" [level=2] [ref=e409]
+        - list [ref=e410]:
+          - listitem [ref=e411]:
+            - link "EdgeVerve Systems" [ref=e412] [cursor=pointer]:
+              - /url: https://www.edgeverve.com/
+          - listitem [ref=e413]:
+            - link "Infosys BPM" [ref=e414] [cursor=pointer]:
+              - /url: https://www.infosysbpm.com/
+          - listitem [ref=e415]:
+            - link "Infosys Consulting" [ref=e416] [cursor=pointer]:
+              - /url: https://www.infosys.com/services/consulting.html
+          - listitem [ref=e417]:
+            - link "Infosys Public Services" [ref=e418] [cursor=pointer]:
+              - /url: https://www.infosyspublicservices.com/
+      - generic [ref=e419]:
+        - heading "Programs" [level=2] [ref=e420]
+        - list [ref=e421]:
+          - listitem [ref=e422]:
+            - link "Infosys Foundation" [ref=e423] [cursor=pointer]:
+              - /url: "https://www.infosys.com/infosys-foundation.html  "
+          - listitem [ref=e424]:
+            - link "Infosys Foundation USA" [ref=e425] [cursor=pointer]:
+              - /url: https://www.infosys.org/infosys-foundation-usa
+          - listitem [ref=e426]:
+            - link "Infosys Science Foundation" [ref=e427] [cursor=pointer]:
+              - /url: https://www.infosys-science-foundation.com/
+          - listitem [ref=e428]:
+            - link "Infosys Leadership Institute" [ref=e429] [cursor=pointer]:
+              - /url: https://www.infosys.com/leadership-institute.html
+      - generic [ref=e430]:
+        - heading "Support" [level=2] [ref=e431]
+        - list [ref=e432]:
+          - listitem [ref=e433]:
+            - link "Terms of Use" [ref=e434] [cursor=pointer]:
+              - /url: https://www.infosys.com/terms-of-use.html
+          - listitem [ref=e435]:
+            - link "Privacy Statement" [ref=e436] [cursor=pointer]:
+              - /url: https://www.infosys.com/privacy-statement.html
+          - listitem [ref=e437]:
+            - link "Cookie Policy" [ref=e438] [cursor=pointer]:
+              - /url: https://www.infosys.com/privacy-statement/cookie-policy.html
+          - listitem [ref=e439]:
+            - link "Safe Harbour Provision" [ref=e440] [cursor=pointer]:
+              - /url: https://www.infosys.com/safe-harbor-provision.html
+          - listitem [ref=e441]:
+            - link "Trademarks" [ref=e442] [cursor=pointer]:
+              - /url: https://www.infosys.com/trademarks.html
+          - listitem [ref=e443]:
+            - link "Site Map" [ref=e444] [cursor=pointer]:
+              - /url: https://www.infosys.com/sitemap.html
+          - listitem [ref=e445]:
+            - link "Modern Slavery Statement" [ref=e446] [cursor=pointer]:
+              - /url: https://www.infosys.com/investors/corporate-governance/documents/statement-under-modern-slavery-act.pdf
+          - listitem [ref=e447]:
+            - link "Payment Guide for Suppliers" [ref=e448] [cursor=pointer]:
+              - /url: https://www.infosys.com/payment-information-suppliers.html
+          - listitem [ref=e449]:
+            - link "Privacy Notice EMEA" [ref=e450] [cursor=pointer]:
+              - /url: https://digitalcareers.infosys.com/infosys/privacy-notice-emea
+      - generic [ref=e451]:
+        - heading "Connect with us" [level=2] [ref=e452]
+        - list [ref=e453]:
+          - listitem [ref=e454]:
+            - link "Follow us on LinkedIn" [ref=e455] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/infosys
+              - img "LinkedIn" [ref=e456]
+          - listitem [ref=e457]:
+            - link "Follow us on Facebook" [ref=e458] [cursor=pointer]:
+              - /url: https://www.facebook.com/Infosys
+              - img "Facebook" [ref=e459]
+          - listitem [ref=e460]:
+            - link "Follow us on Instagram" [ref=e461] [cursor=pointer]:
+              - /url: https://www.instagram.com/infosyscareers/
+              - img "Instagram" [ref=e462]
+          - listitem [ref=e463]:
+            - link "Follow us on YouTube" [ref=e464] [cursor=pointer]:
+              - /url: http://youtube.com/user/infosys
+              - img "YouTube" [ref=e465]
+          - listitem [ref=e466]:
+            - link "Follow us on Twitter" [ref=e467] [cursor=pointer]:
+              - /url: https://twitter.com/Infosys
+              - img "Twitter" [ref=e468]
+    - generic [ref=e469]:
+      - generic [ref=e471]:
+        - paragraph [ref=e473]: Copyright © 2025 Infosys Limited
+        - link "Click to Select Country/region" [ref=e478] [cursor=pointer]:
+          - /url: javascript:void(0);
+          - text: Select Country/region
+          - generic [ref=e479]: 
+      - link "Arrow up" [ref=e480] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - img "Arrow up" [ref=e481]
+  - region "Cookie banner" [ref=e482]:
+    - alertdialog "Privacy" [ref=e483]:
+      - generic [ref=e485]:
+        - generic [ref=e488]:
+          - text: We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also disclose information about your use of our site with our social media, advertising and analytics partners. Additional details are available in our
+          - link "More information about your privacy, opens in a new tab" [active] [ref=e489] [cursor=pointer]:
+            - /url: https://www.infosys.com/privacy-statement/cookie-policy.html
+            - text: Cookie Policy
+        - generic [ref=e491]:
+          - button "Choose Cookies" [ref=e492] [cursor=pointer]
+          - button "Accept All Cookies" [ref=e493] [cursor=pointer]

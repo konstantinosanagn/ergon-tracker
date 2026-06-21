@@ -1,0 +1,38 @@
+discovering ATS host for 364 proxied giants ...
+  scanned 50/364 (hits: 10)
+  scanned 100/364 (hits: 25)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 150/364 (hits: 31)
+  scanned 200/364 (hits: 39)
+  scanned 250/364 (hits: 44)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 300/364 (hits: 52)
+  scanned 350/364 (hits: 58)
+detected 58 {'successfactors': 5, 'oracle': 19, 'workday': 9, 'workable': 1, 'greenhouse': 5, 'avature': 2, 'eightfold': 1, 'breezy': 2, 'bamboohr': 3, 'icims': 3, 'ashby': 1, 'smartrecruiters': 2, 'jobvite': 1, 'phenom': 3, 'rippling': 1}; verifying ...
+  + cummins                      ( 1227) oracle       fa-espx-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + american express travel rela (  946) oracle       egug.fa.us2.oraclecloud.com|CX_1
+  + hexaware technologies        (  842) oracle       fa-etqo-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + fis management services      (  749) workday      fis|wd5|SearchJobs
+  + university of florida        (  572) oracle       fa-ewkd-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + social finance               (  308) greenhouse   socialfinance
+  + university of texas health s (  146) oracle       fa-eomf-saasfaprod1.fa.ocs.oraclecloud.com|CX_1002
+  + novartis institutes for biom (  128) workday      novartis|wd3|Internal_Careers_for_Acquired_Entities
+  + university of wyoming        (   87) oracle       eeik.fa.us2.oraclecloud.com|CX_1
+  + acetech group                (   77) bamboohr     acetech
+  + cummins emission solutions   (   71) oracle       fa-espx-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+
+wrote 11 candidates {'oracle': 7, 'workday': 2, 'greenhouse': 1, 'bamboohr': 1} -> candidates_giants.json

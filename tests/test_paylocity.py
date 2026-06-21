@@ -42,9 +42,12 @@ _FEED = {
 
 
 def test_matches() -> None:
-    assert PaylocityProvider.matches(
-        f"https://recruiting.paylocity.com/recruiting/jobs/All/{GUID}/Careers"
-    ) == GUID
+    assert (
+        PaylocityProvider.matches(
+            f"https://recruiting.paylocity.com/recruiting/jobs/All/{GUID}/Careers"
+        )
+        == GUID
+    )
     assert PaylocityProvider.matches("https://recruiting.paylocity.com/") is None
     assert PaylocityProvider.matches("https://example.com/" + GUID) is None
 

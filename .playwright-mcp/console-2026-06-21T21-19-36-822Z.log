@@ -1,0 +1,13 @@
+[     837ms] [LOG] detect_nested_iframe.js--> Iframe detection logic excecution completed! @ https://targaresources.referrals.selectminds.com/teeintegration/detect_nested_iframe.js:15
+[     997ms] [LOG] LOGGING ACTIVATED @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1000ms] [LOG] No notifier type specified @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1000ms] [LOG] Cookie Acceptance feature not enabled, Hence continue to setBrowser Locale @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1001ms] [LOG] The browser language is en-us @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1221ms] [LOG] desktop.js refresh @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1306ms] [LOG] setRegStatus: unregistered @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1306ms] [LOG] handleUserInfoUpdated, TVAPP.mode = undefined | unregistered @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1307ms] [LOG] setRegStatusLikely: unregistered @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1307ms] [LOG] hash =  @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1308ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://targaresources.referrals.selectminds.com/styles/chosen-sprite@2x.png:0
+[    1309ms] [LOG] Site language is set to en-us @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287
+[    1314ms] [LOG] job_list.js refresh @ https://targaresources.referrals.selectminds.com/desktop.js?v=apptss.2026.PRD.1.1.16:287

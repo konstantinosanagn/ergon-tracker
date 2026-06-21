@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e11]:
+      - link "Skip to page content" [ref=e12] [cursor=pointer]:
+        - /url: javascript:void(0)
+      - generic [ref=e13]:
+        - navigation [ref=e15]:
+          - link "Go to homepage" [ref=e17] [cursor=pointer]:
+            - /url: /bby
+            - img "Best Buy Careers Home" [ref=e18]
+          - menubar "Header menu" [ref=e20]:
+            - menuitem "::item.label" [ref=e21] [cursor=pointer]:
+              - text: Explore Jobs
+              - img [ref=e23]
+            - menuitem "::item.label" [ref=e24] [cursor=pointer]:
+              - text: Culture
+              - img [ref=e26]
+            - menuitem "::item.label" [ref=e27] [cursor=pointer]:
+              - text: Company
+              - img [ref=e29]
+            - menuitem "::item.label" [ref=e30] [cursor=pointer]:
+              - text: Candidate Resources
+              - img [ref=e32]
+            - menuitem "::item.label" [ref=e33] [cursor=pointer]:
+              - text: Returning Applicant
+              - img [ref=e35]
+        - text:  
+        - generic:
+          - generic:
+            - button " Feedback" [ref=e37] [cursor=pointer]:
+              - generic [ref=e38]: 
+              - text: Feedback
+            - text:    
+    - generic [ref=e6]:
+      - main [ref=e39]:
+        - heading "Best Buy Jobs" [level=1] [ref=e40]
+        - generic [ref=e42]:
+          - generic [ref=e45]:
+            - iframe [ref=e47]:
+              
+            - button [ref=e50] [cursor=pointer]
+          - generic [ref=e58]:
+            - heading "Tomorrow works here.™" [level=1] [ref=e60]
+            - paragraph [ref=e61]: If change motivates you, if technology inspires you—we are here for you.
+        - generic "Search Jobs" [ref=e69]:
+          - generic [ref=e70]: Job Search
+          - generic [ref=e71]:
+            - generic [ref=e73]:
+              - combobox "Search by title, skill, or other keyword" [ref=e75]
+              - combobox [ref=e77]:
+                - option "United States" [selected]
+              - combobox "Location" [ref=e79]
+              - button "Search Jobs" [ref=e81] [cursor=pointer]
+            - generic [ref=e82]:
+              - paragraph [ref=e83]: Not Sure?
+              - link "Explore the Possibilities" [ref=e84] [cursor=pointer]:
+                - /url: "?id=explore_possibilities"
+        - generic [ref=e95]:
+          - generic [ref=e98]:
+            - heading "Employee Benefits" [level=2] [ref=e100]
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: See the various benefits Best Buy offers employees to live a happy, healthy, productive life.
+              - link "Take me there" [ref=e103] [cursor=pointer]:
+                - /url: "?id=item_detail&content=benefits"
+          - generic [ref=e106]:
+            - heading "People of Best Buy" [level=2] [ref=e108]
+            - generic [ref=e109]:
+              - paragraph [ref=e110]: Watch videos of real employees talking about their experiences working for Best Buy.
+              - link "Take me there" [ref=e111] [cursor=pointer]:
+                - /url: "?id=people_of_best_buy"
+          - generic [ref=e114]:
+            - heading "About Us" [level=2] [ref=e116]
+            - generic [ref=e117]:
+              - paragraph [ref=e118]: Learn about what makes Best Buy unique in our mission to enrich lives through technology.
+              - link "Take me there" [ref=e119] [cursor=pointer]:
+                - /url: "?id=item_detail&content=about_us"
+      - contentinfo [ref=e120]:
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - heading "Join our Talent Community!" [level=2] [ref=e125]
+            - link "Sign Up" [ref=e126] [cursor=pointer]:
+              - /url: https://community.brassring.com/BestBuy/BBY_01
+          - generic [ref=e127]:
+            - list [ref=e128]:
+              - listitem [ref=e129]:
+                - link "Bestbuy.com" [ref=e130] [cursor=pointer]:
+                  - /url: https://www.bestbuy.com/
+              - listitem [ref=e131]:
+                - link "Equal Employment Opportunity" [ref=e132] [cursor=pointer]:
+                  - /url: /myhr?id=kb_article&sysparm_article=KB0149277
+              - listitem [ref=e133]:
+                - link "Privacy Policy" [ref=e134] [cursor=pointer]:
+                  - /url: "?id=item_detail&content=privacy_policy"
+              - listitem [ref=e135]:
+                - link "Corporate Site" [ref=e136] [cursor=pointer]:
+                  - /url: https://corporate.bestbuy.com/
+              - listitem [ref=e137]:
+                - link "FAQ" [ref=e138] [cursor=pointer]:
+                  - /url: "?id=faq"
+              - listitem [ref=e139]:
+                - link "Best Buy Canada Jobs" [ref=e140] [cursor=pointer]:
+                  - /url: https://www.bestbuy.ca/en-ca/careers/
+            - list [ref=e141]:
+              - listitem [ref=e142]:
+                - link "YouTube YouTube" [ref=e143] [cursor=pointer]:
+                  - /url: https://www.youtube.com/user/bestbuy/
+                  - img "YouTube" [ref=e144]
+                  - img "YouTube" [ref=e145]
+              - listitem [ref=e146]:
+                - link "LinkedIn LinkedIn" [ref=e147] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/best-buy/
+                  - img "LinkedIn" [ref=e148]
+                  - img "LinkedIn" [ref=e149]
+              - listitem [ref=e150]:
+                - link "Facebook Facebook" [ref=e151] [cursor=pointer]:
+                  - /url: https://www.facebook.com/bestbuy/
+                  - img "Facebook" [ref=e152]
+                  - img "Facebook" [ref=e153]
+              - listitem [ref=e154]:
+                - link "Instagram Instagram" [ref=e155] [cursor=pointer]:
+                  - /url: https://www.instagram.com/bestbuy/
+                  - img "Instagram" [ref=e156]
+                  - img "Instagram" [ref=e157]
+            - paragraph [ref=e158]: © 2026 Best Buy. All rights reserved. BEST BUY, the BEST BUY logo, the tag design, and MY BEST BUY are trademarks of Best Buy and its affiliated companies.
+  - status [ref=e52]

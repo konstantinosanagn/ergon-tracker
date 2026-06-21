@@ -1,0 +1,10 @@
+aggregator scan 130 residual (muse+adzuna)...
+  30/130 (hits 1)
+  60/130 (hits 1)
+  90/130 (hits 2)
+  120/130 (hits 2)
+
+=== 2 CLEAN aggregator hits ===
+    140 stier solutions              adzuna   tok=stier             57j co=Stier Solutions
+     95 maimonides medical center    adzuna   tok=maimonides        23j co=Maimonides Medical C
+wrote 2 candidates

@@ -1,0 +1,3 @@
+[   20334ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://jobs.ea.com/api/jobs:0
+[   20506ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://jobs.ea.com/opphub-api/jobs?from=0&size=10:0
+[   20593ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://jobs.ea.com/api/apply/v2/jobs:0

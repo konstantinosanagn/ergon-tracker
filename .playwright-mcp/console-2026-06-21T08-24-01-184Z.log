@@ -1,0 +1,14 @@
+[    1026ms] [WARNING] Studio jQuery 3.7.1 is now $tudio @ https://investors.axt.com/js/module/widgets/dist/dependencies/evergreen.core.1.0.0.min.js:0
+[    2329ms] [WARNING] The provided value 'moz-chunked-arraybuffer' is not a valid enum value of type XMLHttpRequestResponseType. @ https://widgets.q4app.com/widgets/requireslib/pdf-js/build/pdf.js:6210
+[    2332ms] [LOG] en-US @ https://widgets.q4app.com/widgets/requireslib/pdf-js/web/viewer.js:182
+[    2344ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://s202.q4cdn.com/832677016/files/js/pdf-js/viewer.html?file=https%3a%2f%2fs202.q4cdn.com%2f832677016%2ffiles%2fdoc_presentations%2f2025%2fMar%2f24%2fAXTI-Corporate-Deck-2025.pdf#zoom=page-fit:0
+[    2363ms] [WARNING] jQuery.Deferred exception: Cannot read properties of null (reading 'setAttribute') TypeError: Cannot read properties of null (reading 'setAttribute')
+    at HTMLDocument.<anonymous> (https://investors.axt.com/Investors/Overview/default.aspx:1039:41)
+    at e (https://widgets.q4app.com/widgets/dependencies/q4.core.1.1.9.min.js:1:29565)
+    at t (https://widgets.q4app.com/widgets/dependencies/q4.core.1.1.9.min.js:1:29891) undefined @ https://widgets.q4app.com/widgets/dependencies/q4.core.1.1.9.min.js:0
+[    2390ms] Uncaught TypeError: Cannot read properties of null (reading 'setAttribute')
+    at <anonymous> (https://investors.axt.com/Investors/Overview/default.aspx:1038:40)
+    at e (https://widgets.q4app.com/widgets/dependencies/q4.core.1.1.9.min.js:0:29564)
+    at t (https://widgets.q4app.com/widgets/dependencies/q4.core.1.1.9.min.js:0:29890)
+[    2652ms] [LOG] PDF 829eeacd05922d4f9d36ec83df68529e [1.7 - / -] (PDF.js: 1.9.426) @ https://widgets.q4app.com/widgets/requireslib/pdf-js/web/viewer.js:1681
+[    2708ms] [LOG] Warning: TT: undefined function: 32 @ https://widgets.q4app.com/widgets/requireslib/pdf-js/build/pdf.worker.js:345

@@ -1,0 +1,18 @@
+brute-forcing 160 residual giants...
+  HIT   313 indeed                         ('icims', 'careers-indeed.icims.com', 'Indeed')
+  HIT   168 ardor it solutions             ('smartrecruiters', 'ardoritsolutions', 'Ardor IT Solutions')
+  30/160 (hits 2)
+  60/160 (hits 2)
+  HIT   103 unicon pharma                  ('smartrecruiters', 'uniconpharma', 'Unicon Pharma')
+  90/160 (hits 3)
+  HIT    89 econtenti                      ('smartrecruiters', 'econtenti', 'Econtenti')
+  HIT    85 ipivot                         ('smartrecruiters', 'ipivot', 'ipivot')
+  120/160 (hits 5)
+  150/160 (hits 5)
+
+=== 5 brute-force hits ===
+    313 indeed                             ('icims', 'careers-indeed.icims.com', 'Indeed')
+    168 ardor it solutions                 ('smartrecruiters', 'ardoritsolutions', 'Ardor IT Solutions')
+    103 unicon pharma                      ('smartrecruiters', 'uniconpharma', 'Unicon Pharma')
+     89 econtenti                          ('smartrecruiters', 'econtenti', 'Econtenti')
+     85 ipivot                             ('smartrecruiters', 'ipivot', 'ipivot')

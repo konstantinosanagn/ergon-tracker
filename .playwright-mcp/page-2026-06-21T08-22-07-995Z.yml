@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e12]:
+          - navigation [ref=e14]:
+            - list [ref=e15]:
+              - listitem [ref=e16]:
+                - link "CoilZone" [ref=e17] [cursor=pointer]:
+                  - /url: https://coilzone.precoat.com/login
+              - listitem [ref=e18]:
+                - link "Facility Locator" [ref=e19] [cursor=pointer]:
+                  - /url: https://www.azz.com/locations/
+              - listitem [ref=e20]:
+                - link "Careers" [ref=e21] [cursor=pointer]:
+                  - /url: https://www.azz.com/careers/
+              - listitem [ref=e22]:
+                - link "Contact Us" [ref=e23] [cursor=pointer]:
+                  - /url: https://www.azz.com/contact-us/
+          - text: a
+        - generic [ref=e29]:
+          - link [ref=e32] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e33]:
+            - navigation [ref=e35]:
+              - list [ref=e36]:
+                - listitem [ref=e37]:
+                  - link "Metal Coatings 3" [ref=e38] [cursor=pointer]:
+                    - /url: https://www.azz.com/metal-coatings/
+                - listitem [ref=e39]:
+                  - link "Precoat Metals 3" [ref=e40] [cursor=pointer]:
+                    - /url: https://www.azz.com/precoat-metals/
+                - listitem [ref=e41]:
+                  - link "Company 3" [ref=e42] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e43]:
+                  - link "Sustainability" [ref=e44] [cursor=pointer]:
+                    - /url: https://www.azz.com/esg/
+                - listitem [ref=e45]:
+                  - link "Investors" [ref=e46] [cursor=pointer]:
+                    - /url: https://investor.azz.com/
+            - button "U" [ref=e47] [cursor=pointer]
+            - text: a
+          - text: M
+        - text: 3 3 3 U a M
+    - generic [ref=e48]:
+      - article [ref=e50]:
+        - generic [ref=e54]:
+          - generic [ref=e57]:
+            - heading "Careers" [level=1] [ref=e60]
+            - generic [ref=e62]: "Explore your future with us: join our team"
+          - generic [ref=e66]:
+            - generic [ref=e70]:
+              - heading "We believe our employees are our greatest asset" [level=2] [ref=e71]
+              - paragraph [ref=e72]: We strive to create an environment where employees encounter many new experiences and rewards. We hire the best people for the job, equip them with what they need, and empower them to do whatever it takes to get the job done right. With facilities strategically placed all across the country and continual growth in innovation, we are always seeking talented people to join our team and strengthen our foundation.
+            - generic [ref=e73]:
+              - generic [ref=e74] [cursor=pointer]:
+                - img ", AZZ" [ref=e77]
+                - heading "Visit the AZZ Metal Coatings and Corporate Careers Portal" [level=3] [ref=e80]
+              - generic [ref=e81] [cursor=pointer]:
+                - img ", AZZ" [ref=e84]
+                - heading "Visit the AZZ Precoat Metals Careers Portal" [level=3] [ref=e87]
+      - contentinfo [ref=e88]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - link "Logo" [ref=e94] [cursor=pointer]:
+              - /url: /home/
+              - img "Logo" [ref=e96]
+            - generic [ref=e99]:
+              - heading "AZZ Inc." [level=3] [ref=e100]
+              - paragraph [ref=e101]:
+                - text: One Museum Place
+                - text: 3100 West 7th Street, Suite 500
+                - text: Fort Worth, Texas 76107
+            - paragraph [ref=e105]: © 2026 AZZ Inc.
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "" [ref=e109] [cursor=pointer]:
+                  - /url: https://www.facebook.com/azzincorporated/
+              - listitem [ref=e110]:
+                - link "" [ref=e111] [cursor=pointer]:
+                  - /url: https://twitter.com/azzincorporated?lang=en
+              - listitem [ref=e112]:
+                - link "" [ref=e113] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/azz-incorporated
+              - listitem [ref=e114]:
+                - link "" [ref=e115] [cursor=pointer]:
+                  - /url: https://www.instagram.com/azzinc.corp/
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - heading "Galvanizing" [level=5] [ref=e120]:
+                - link "Galvanizing" [ref=e121] [cursor=pointer]:
+                  - /url: /galvanizing/
+              - paragraph [ref=e124]:
+                - link "Accreditations" [ref=e126] [cursor=pointer]:
+                  - /url: /galvanizing/accreditations/
+                - link "Awards" [ref=e128] [cursor=pointer]:
+                  - /url: /galvanizing/awards/
+                - generic [ref=e129]:
+                  - link "Essential Zinc" [ref=e130] [cursor=pointer]:
+                    - /url: /galvanizing/essential-zinc/
+                    - text: Essential Zinc
+                  - link "Facility Locations" [ref=e131] [cursor=pointer]:
+                    - /url: /galvanizing/#locations
+                - link "GalvXtra" [ref=e133] [cursor=pointer]:
+                  - /url: /galvanizing/galvxtra/
+                - link "Hot-Dip Galvanizing Process" [ref=e135] [cursor=pointer]:
+                  - /url: /galvanizing/hot-dip-galvanizing-process/
+                  - text: Hot-Dip Galvanizing Process
+                - link "Spin Galvanizing" [ref=e137] [cursor=pointer]:
+                  - /url: /galvanizing/spin-galvanizing/
+                - link "Sustainability" [ref=e139] [cursor=pointer]:
+                  - /url: /galvanizing/sustainability/
+                - link "Why Galvanizing" [ref=e141] [cursor=pointer]:
+                  - /url: /galvanizing/why-galvanizing/
+            - generic [ref=e142]:
+              - heading "Surface Technologies" [level=5] [ref=e145]:
+                - link "Surface Technologies" [ref=e146] [cursor=pointer]:
+                  - /url: /surface-technologies/
+              - paragraph [ref=e149]:
+                - link "Duplex Coating" [ref=e151] [cursor=pointer]:
+                  - /url: /surface-technologies/duplex-coating/
+                - generic [ref=e152]:
+                  - link "E-Coating" [ref=e153] [cursor=pointer]:
+                    - /url: /surface-technologies/e-coating/
+                    - text: E-Coating
+                  - link "Facility Locations" [ref=e154] [cursor=pointer]:
+                    - /url: /surface-technologies/#locations
+                - generic [ref=e155]:
+                  - link "Mil-Spec" [ref=e156] [cursor=pointer]:
+                    - /url: /surface-technologies/mil-spec/
+                    - text: Mil-Spec
+                  - link "Plating" [ref=e157] [cursor=pointer]:
+                    - /url: /surface-technologies/plating/
+                - link "Powder Coating" [ref=e159] [cursor=pointer]:
+                  - /url: /surface-technologies/powder-coating/
+                - link "Surface Prep" [ref=e161] [cursor=pointer]:
+                  - /url: /surface-technologies/surface-prep/
+                - link "Wet Coating" [ref=e163] [cursor=pointer]:
+                  - /url: /surface-technologies/wet-coating/
+            - generic [ref=e164]:
+              - heading "Precoat Metals" [level=5] [ref=e167]:
+                - link "Precoat Metals" [ref=e168] [cursor=pointer]:
+                  - /url: /precoat-metals/
+              - generic [ref=e170]:
+                - paragraph [ref=e171]:
+                  - link "Capabilities" [ref=e172] [cursor=pointer]:
+                    - /url: /coil-coating-capabilities/
+                  - link "Coil Coating Process" [ref=e173] [cursor=pointer]:
+                    - /url: /coil-coating-process/
+                  - link "CoilZone" [ref=e174] [cursor=pointer]:
+                    - /url: https://coilzone.precoat.com/login
+                  - link "Facility Locations" [ref=e175] [cursor=pointer]:
+                    - /url: /precoat-metals/#locations
+                  - link "Markets" [ref=e176] [cursor=pointer]:
+                    - /url: /precoat-markets/
+                  - link "Why Choose Coil Coating" [ref=e177] [cursor=pointer]:
+                    - /url: /why-choose-coil-coating/
+                - paragraph [ref=e178]
+            - generic [ref=e179]:
+              - heading "Company" [level=5] [ref=e182]
+              - generic [ref=e184]:
+                - paragraph [ref=e185]:
+                  - generic [ref=e186]:
+                    - link "About Us" [ref=e187] [cursor=pointer]:
+                      - /url: /about-us/
+                      - text: About Us
+                    - link "Our Culture" [ref=e188] [cursor=pointer]:
+                      - /url: /our-culture/
+                      - text: Our Culture
+                    - link "Our History" [ref=e189] [cursor=pointer]:
+                      - /url: /historical-timeline/
+                    - link "ESG" [ref=e190] [cursor=pointer]:
+                      - /url: /esg/
+                      - text: ESG
+                    - link:
+                      - /url: /our-culture/
+                    - link:
+                      - /url: /about-us/
+                  - link "Featured Stories" [ref=e192] [cursor=pointer]:
+                    - /url: /featured-stories/
+                  - generic [ref=e193]:
+                    - link "Case Studies" [ref=e194] [cursor=pointer]:
+                      - /url: /case-studies/
+                      - text: Case Studies
+                    - link "Careers" [ref=e195] [cursor=pointer]:
+                      - /url: /careers/
+                  - link "Contact Us" [ref=e197] [cursor=pointer]:
+                    - /url: /contact-us/
+                  - link "Terms and Conditions" [ref=e198] [cursor=pointer]:
+                    - /url: /terms-and-conditions/
+                - paragraph [ref=e199]:
+                  - generic [ref=e200]: Do Not Sell or Share My Personal Information
+                - paragraph [ref=e201]:
+                  - link "Privacy Policy" [ref=e202] [cursor=pointer]:
+                    - /url: /privacy-policy/
+                  - link "Cookies Policy" [ref=e203] [cursor=pointer]:
+                    - /url: /cookies-policy/
+                - paragraph [ref=e204]
+                - heading "Locator" [level=5] [ref=e205]:
+                  - link "Locator" [ref=e207] [cursor=pointer]:
+                    - /url: /locator/
+            - generic [ref=e208]:
+              - heading "Investors" [level=5] [ref=e211]
+              - paragraph [ref=e214]:
+                - generic [ref=e215]:
+                  - link "Investor Relations" [ref=e216] [cursor=pointer]:
+                    - /url: https://investor.azz.com/
+                  - link "Financial Information":
+                    - /url: /financial-information/
+                - generic [ref=e217]:
+                  - link "AZZ Press Releases" [ref=e218] [cursor=pointer]:
+                    - /url: https://investor.azz.com/press-releases
+                  - link "Investor Events" [ref=e219] [cursor=pointer]:
+                    - /url: https://investor.azz.com/events
+                - generic:
+                  - link:
+                    - /url: /locator/
+  - text: "2"

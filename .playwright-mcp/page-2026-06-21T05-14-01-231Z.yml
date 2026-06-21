@@ -1,0 +1,1086 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link [ref=e5] [cursor=pointer]:
+          - /url: https://zoom.us
+          - img [ref=e6]
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Join a meeting" [ref=e10] [cursor=pointer]:
+              - /url: https://zoom.us/join
+          - listitem [ref=e11]:
+            - link "Sign in" [ref=e12] [cursor=pointer]:
+              - /url: https://zoom.us/signin
+          - listitem [ref=e13]:
+            - link "Sign up, It's free" [ref=e14] [cursor=pointer]:
+              - /url: https://zoom.us/signup
+    - navigation [ref=e15]:
+      - generic [ref=e16]:
+        - list [ref=e18]:
+          - listitem [ref=e19]:
+            - link "Home" [ref=e20] [cursor=pointer]:
+              - /url: /home
+          - listitem [ref=e21]:
+            - link "AI" [ref=e22] [cursor=pointer]:
+              - /url: /discover-ai-at-Zoom
+          - listitem [ref=e23]:
+            - link "Engineering" [ref=e24] [cursor=pointer]:
+              - /url: /engineering
+          - listitem [ref=e25]:
+            - link "Sales" [ref=e26] [cursor=pointer]:
+              - /url: /Sales
+          - listitem [ref=e27]:
+            - link "Veterans" [ref=e28] [cursor=pointer]:
+              - /url: /veterans
+          - listitem [ref=e29]:
+            - link "Benefits" [ref=e30] [cursor=pointer]:
+              - /url: /benefits
+          - listitem [ref=e31]:
+            - link "Your Settings" [ref=e33] [cursor=pointer]:
+              - /url: /me/settings
+              - text: Your Settings
+        - list [ref=e36]:
+          - listitem [ref=e37]:
+            - link "View all jobs" [ref=e38] [cursor=pointer]:
+              - /url: /jobs/search
+  - generic [ref=e40]:
+    - heading "We're Hiring!" [level=1] [ref=e50]
+    - generic [ref=e59]:
+      - heading "Zoom offers a structured hybrid working environment for our employees." [level=3] [ref=e60]
+      - paragraph [ref=e61]: Our structured hybrid approach is centered around our offices and remote work environments. The work style of each role, Hybrid, Remote, or In-Person is indicated in the job description/posting.
+    - generic [ref=e72]:
+      - link "Skip to jobs search results" [ref=e73] [cursor=pointer]:
+        - /url: "#jobs_search_results_84f9764e5be808b2ac7e679d606ba8d5"
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - button "Clear Filters" [ref=e76] [cursor=pointer]
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - heading "Remote" [level=4] [ref=e79]
+              - group "Remote Jobs" [ref=e80]:
+                - generic [ref=e81]: Remote Jobs
+                - list [ref=e82]:
+                  - listitem [ref=e83]:
+                    - generic [ref=e84]:
+                      - checkbox "Remote Jobs" [ref=e85]
+                      - text: Remote Jobs
+            - region "Filter jobs" [ref=e86]:
+              - generic [ref=e87]:
+                - heading "Category" [level=4] [ref=e88]
+                - generic [ref=e89]: Search categories
+                - textbox "Search categories" [ref=e90]:
+                  - /placeholder: Search
+                - group "Category" [ref=e91]:
+                  - generic [ref=e92]: 12 filter options found
+                  - generic [ref=e93]: Category
+                  - list [ref=e94]:
+                    - listitem [ref=e95]:
+                      - generic [ref=e96]:
+                        - checkbox "Corporate & Business Services (2 items)" [ref=e97]
+                        - text: Corporate & Business Services
+                        - generic [ref=e98]: (2 items)
+                    - listitem [ref=e99]:
+                      - generic [ref=e100]:
+                        - checkbox "Customer Services (CS) (1 items)" [ref=e101]
+                        - text: Customer Services (CS)
+                        - generic [ref=e102]: (1 items)
+                    - listitem [ref=e103]:
+                      - generic [ref=e104]:
+                        - checkbox "Engineering (43 items)" [ref=e105]
+                        - text: Engineering
+                        - generic [ref=e106]: (43 items)
+                    - listitem [ref=e107]:
+                      - generic [ref=e108]:
+                        - checkbox "Engineering (EN) (1 items)" [ref=e109]
+                        - text: Engineering (EN)
+                        - generic [ref=e110]: (1 items)
+                    - listitem [ref=e111]:
+                      - generic [ref=e112]:
+                        - checkbox "Engineering Operations (4 items)" [ref=e113]
+                        - text: Engineering Operations
+                        - generic [ref=e114]: (4 items)
+                    - listitem [ref=e115]:
+                      - generic [ref=e116]:
+                        - checkbox "Finance & Accounting (1 items)" [ref=e117]
+                        - text: Finance & Accounting
+                        - generic [ref=e118]: (1 items)
+                    - listitem [ref=e119]:
+                      - generic [ref=e120]:
+                        - checkbox "Go To Market Operations (2 items)" [ref=e121]
+                        - text: Go To Market Operations
+                        - generic [ref=e122]: (2 items)
+                    - listitem [ref=e123]:
+                      - generic [ref=e124]:
+                        - checkbox "Graduate Program (1 items)" [ref=e125]
+                        - text: Graduate Program
+                        - generic [ref=e126]: (1 items)
+                    - listitem [ref=e127]:
+                      - generic [ref=e128]:
+                        - checkbox "Information Technology (4 items)" [ref=e129]
+                        - text: Information Technology
+                        - generic [ref=e130]: (4 items)
+                    - listitem [ref=e131]:
+                      - generic [ref=e132]:
+                        - checkbox "Marketing (2 items)" [ref=e133]
+                        - text: Marketing
+                        - generic [ref=e134]: (2 items)
+                    - listitem [ref=e135]:
+                      - generic [ref=e136]:
+                        - checkbox "Product (6 items)" [ref=e137]
+                        - text: Product
+                        - generic [ref=e138]: (6 items)
+                    - listitem [ref=e139]:
+                      - generic [ref=e140]:
+                        - checkbox "Sales (35 items)" [ref=e141]
+                        - text: Sales
+                        - generic [ref=e142]: (35 items)
+              - generic [ref=e143]:
+                - heading "Country" [level=4] [ref=e144]
+                - generic [ref=e145]: Search countries
+                - textbox "Search countries" [ref=e146]:
+                  - /placeholder: Search
+                - group "Country" [ref=e147]:
+                  - generic [ref=e148]: 13 filter options found
+                  - generic [ref=e149]: Country
+                  - list [ref=e150]:
+                    - listitem [ref=e151]:
+                      - generic [ref=e152]:
+                        - checkbox "Australia (2 items)" [ref=e153]
+                        - text: Australia
+                        - generic [ref=e154]: (2 items)
+                    - listitem [ref=e155]:
+                      - generic [ref=e156]:
+                        - checkbox "Germany (2 items)" [ref=e157]
+                        - text: Germany
+                        - generic [ref=e158]: (2 items)
+                    - listitem [ref=e159]:
+                      - generic [ref=e160]:
+                        - checkbox "India (2 items)" [ref=e161]
+                        - text: India
+                        - generic [ref=e162]: (2 items)
+                    - listitem [ref=e163]:
+                      - generic [ref=e164]:
+                        - checkbox "Ireland (1 items)" [ref=e165]
+                        - text: Ireland
+                        - generic [ref=e166]: (1 items)
+                    - listitem [ref=e167]:
+                      - generic [ref=e168]:
+                        - checkbox "Japan (21 items)" [ref=e169]
+                        - text: Japan
+                        - generic [ref=e170]: (21 items)
+                    - listitem [ref=e171]:
+                      - generic [ref=e172]:
+                        - checkbox "Malaysia (1 items)" [ref=e173]
+                        - text: Malaysia
+                        - generic [ref=e174]: (1 items)
+                    - listitem [ref=e175]:
+                      - generic [ref=e176]:
+                        - checkbox "Netherlands (1 items)" [ref=e177]
+                        - text: Netherlands
+                        - generic [ref=e178]: (1 items)
+                    - listitem [ref=e179]:
+                      - generic [ref=e180]:
+                        - checkbox "Norway (1 items)" [ref=e181]
+                        - text: Norway
+                        - generic [ref=e182]: (1 items)
+                    - listitem [ref=e183]:
+                      - generic [ref=e184]:
+                        - checkbox "Saudi Arabia (2 items)" [ref=e185]
+                        - text: Saudi Arabia
+                        - generic [ref=e186]: (2 items)
+                    - listitem [ref=e187]:
+                      - generic [ref=e188]:
+                        - checkbox "Singapore (3 items)" [ref=e189]
+                        - text: Singapore
+                        - generic [ref=e190]: (3 items)
+                    - listitem [ref=e191]:
+                      - generic [ref=e192]:
+                        - checkbox "Sweden (2 items)" [ref=e193]
+                        - text: Sweden
+                        - generic [ref=e194]: (2 items)
+                    - listitem [ref=e195]:
+                      - generic [ref=e196]:
+                        - checkbox "United Kingdom (6 items)" [ref=e197]
+                        - text: United Kingdom
+                        - generic [ref=e198]: (6 items)
+                    - listitem [ref=e199]:
+                      - generic [ref=e200]:
+                        - checkbox "United States (62 items)" [ref=e201]
+                        - text: United States
+                        - generic [ref=e202]: (62 items)
+              - generic [ref=e203]:
+                - heading "City" [level=4] [ref=e204]
+                - generic [ref=e205]: Search cities
+                - textbox "Search cities" [ref=e206]:
+                  - /placeholder: Search
+                - group "City" [ref=e207]:
+                  - generic [ref=e208]: 9 filter options found
+                  - generic [ref=e209]: City
+                  - list [ref=e210]:
+                    - listitem [ref=e211]:
+                      - generic [ref=e212]:
+                        - checkbox "Amsterdam (1 items)" [ref=e213]
+                        - text: Amsterdam
+                        - generic [ref=e214]: (1 items)
+                    - listitem [ref=e215]:
+                      - generic [ref=e216]:
+                        - checkbox "Chiyoda-ku (20 items)" [ref=e217]
+                        - text: Chiyoda-ku
+                        - generic [ref=e218]: (20 items)
+                    - listitem [ref=e219]:
+                      - generic [ref=e220]:
+                        - checkbox "Cyberjaya (1 items)" [ref=e221]
+                        - text: Cyberjaya
+                        - generic [ref=e222]: (1 items)
+                    - listitem [ref=e223]:
+                      - generic [ref=e224]:
+                        - checkbox "Dublin (1 items)" [ref=e225]
+                        - text: Dublin
+                        - generic [ref=e226]: (1 items)
+                    - listitem [ref=e227]:
+                      - generic [ref=e228]:
+                        - checkbox "London (6 items)" [ref=e229]
+                        - text: London
+                        - generic [ref=e230]: (6 items)
+                    - listitem [ref=e231]:
+                      - generic [ref=e232]:
+                        - checkbox "Remote (25 items)" [ref=e233]
+                        - text: Remote
+                        - generic [ref=e234]: (25 items)
+                    - listitem [ref=e235]:
+                      - generic [ref=e236]:
+                        - checkbox "San Jose (40 items)" [ref=e237]
+                        - text: San Jose
+                        - generic [ref=e238]: (40 items)
+                    - listitem [ref=e239]:
+                      - generic [ref=e240]:
+                        - checkbox "Seattle (12 items)" [ref=e241]
+                        - text: Seattle
+                        - generic [ref=e242]: (12 items)
+                    - listitem [ref=e243]:
+                      - generic [ref=e244]:
+                        - checkbox "Singapore (3 items)" [ref=e245]
+                        - text: Singapore
+                        - generic [ref=e246]: (3 items)
+              - generic [ref=e247]:
+                - heading "Brand" [level=4] [ref=e248]
+                - generic [ref=e249]: Search
+                - textbox "Search" [ref=e250]
+                - group "Brand" [ref=e251]:
+                  - generic [ref=e252]: 1 filter options found
+                  - generic [ref=e253]: Brand
+                  - list [ref=e254]:
+                    - listitem [ref=e255]:
+                      - generic [ref=e256]:
+                        - checkbox "Zoom (102 items)" [ref=e257]
+                        - text: Zoom
+                        - generic [ref=e258]: (102 items)
+        - generic [ref=e260]:
+          - generic [ref=e263]:
+            - generic [ref=e264]: Search by job title, location, department, category, etc.
+            - generic [ref=e265]:
+              - textbox "Search by job title, location, department, category, etc." [ref=e266]
+              - button "Search" [ref=e268] [cursor=pointer]
+              - button "Jobs near me" [ref=e271] [cursor=pointer]
+          - region [ref=e272]:
+            - button "Dropdown to sort jobs by" [ref=e276] [cursor=pointer]: "Sort by: Last Updated"
+            - region "Jobs search results" [ref=e278]:
+              - generic [ref=e279]:
+                - article "Software Development Engineer" [ref=e280]:
+                  - generic [ref=e281]:
+                    - generic [ref=e282]:
+                      - heading "Software Development Engineer" [level=3] [ref=e283]:
+                        - link "Software Development Engineer" [ref=e284] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/software-development-engineer-san-jose-california-united-states-2c653784-37ee-4f68-a800-0a41d1b9a6da
+                      - generic [ref=e285]:
+                        - list [ref=e287]:
+                          - listitem [ref=e288]: R19283
+                        - list [ref=e291]:
+                          - listitem [ref=e292]: San Jose, California, United States
+                        - list [ref=e295]:
+                          - listitem [ref=e296]: Engineering
+                        - list [ref=e299]:
+                          - listitem [ref=e300]: Zoom
+                      - paragraph [ref=e302]: "Immigration sponsorship is not available for this position Responsibilities: Actively participate and contribute to technical design and architectural discussions. Contribute insights for optimizing solutions, ensuring they align with both user..."
+                    - 'link "Read more: Software Development Engineer" [ref=e304] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/software-development-engineer-san-jose-california-united-states-2c653784-37ee-4f68-a800-0a41d1b9a6da
+                      - text: Read more
+                - article "Senior Frontend Engineer" [ref=e306]:
+                  - generic [ref=e307]:
+                    - generic [ref=e308]:
+                      - heading "Senior Frontend Engineer" [level=3] [ref=e309]:
+                        - link "Senior Frontend Engineer" [ref=e310] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/senior-frontend-engineer-seattle-washington-united-states
+                      - generic [ref=e311]:
+                        - list [ref=e313]:
+                          - listitem [ref=e314]: R19281
+                        - list [ref=e317]:
+                          - listitem [ref=e318]: Seattle, Washington, United States
+                        - list [ref=e321]:
+                          - listitem [ref=e322]: Engineering
+                        - list [ref=e325]:
+                          - listitem [ref=e326]: Zoom
+                      - paragraph [ref=e328]: "Immigration sponsorship is not available for this position Responsibilities: Develop and maintain Zoom chat and meeting modules using React or Vue, integrating Zoom SDK to implement real-time messaging, participant management, and multimedia co..."
+                    - 'link "Read more: Senior Frontend Engineer" [ref=e330] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/senior-frontend-engineer-seattle-washington-united-states
+                      - text: Read more
+                - article "Head of Sales - Germany North" [ref=e332]:
+                  - generic [ref=e333]:
+                    - generic [ref=e334]:
+                      - heading "Head of Sales - Germany North" [level=3] [ref=e335]:
+                        - link "Head of Sales - Germany North" [ref=e336] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/head-of-sales-germany-north-remote-germany-dca71f15-2079-4ecc-b41c-e5c17ae78038
+                      - generic [ref=e337]:
+                        - list [ref=e339]:
+                          - listitem [ref=e340]: R19252
+                          - listitem [ref=e342]: Remote
+                        - list [ref=e345]:
+                          - listitem [ref=e346]: Remote, Germany
+                        - list [ref=e349]:
+                          - listitem [ref=e350]: Sales
+                        - list [ref=e353]:
+                          - listitem [ref=e354]: Zoom
+                      - paragraph [ref=e356]: What you can expect As a Head of Sales for Germany North, you'll grow regional revenue through strategic partnerships and customer engagement. You'll empower your team with clear goals and collaborative execution. You'll expand our market presence...
+                    - 'link "Read more: Head of Sales - Germany North" [ref=e358] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/head-of-sales-germany-north-remote-germany-dca71f15-2079-4ecc-b41c-e5c17ae78038
+                      - text: Read more
+                - article "Head of Global Revenue Accounting" [ref=e360]:
+                  - generic [ref=e361]:
+                    - generic [ref=e362]:
+                      - heading "Head of Global Revenue Accounting" [level=3] [ref=e363]:
+                        - link "Head of Global Revenue Accounting" [ref=e364] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/head-of-global-revenue-accounting-remote-united-states
+                      - generic [ref=e365]:
+                        - list [ref=e367]:
+                          - listitem [ref=e368]: R19259
+                          - listitem [ref=e370]: Remote
+                        - list [ref=e373]:
+                          - listitem [ref=e374]: Remote, United States
+                        - list [ref=e377]:
+                          - listitem [ref=e378]: Finance & Accounting
+                        - list [ref=e381]:
+                          - listitem [ref=e382]: Zoom
+                      - paragraph [ref=e384]: What you can expect You will lead global revenue accounting across evolving business models. You will shape policies, systems, and cross-functional partnerships. You will ensure Zoom's revenue integrity at scale About the TeamOur accounting team...
+                    - 'link "Read more: Head of Global Revenue Accounting" [ref=e386] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/head-of-global-revenue-accounting-remote-united-states
+                      - text: Read more
+                - article "Machine Learning Engineer" [ref=e388]:
+                  - generic [ref=e389]:
+                    - generic [ref=e390]:
+                      - heading "Machine Learning Engineer" [level=3] [ref=e391]:
+                        - link "Machine Learning Engineer" [ref=e392] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/machine-learning-engineer-seattle-washington-united-states-26d8d29f-52dd-4db0-b3d7-79450d9ffa23
+                      - generic [ref=e393]:
+                        - list [ref=e395]:
+                          - listitem [ref=e396]: R19271
+                        - list [ref=e399]:
+                          - listitem [ref=e400]: Seattle, Washington, United States
+                        - list [ref=e403]:
+                          - listitem [ref=e404]: Engineering
+                        - list [ref=e407]:
+                          - listitem [ref=e408]: Zoom
+                      - paragraph [ref=e410]: What you can expect We're seeking an experienced Machine Learning Engineer specializing in LLMs and autonomous agents and agentic AI to join our AI team. You'll be instrumental in developing and deploying intelligent agent systems that can underst...
+                    - 'link "Read more: Machine Learning Engineer" [ref=e412] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/machine-learning-engineer-seattle-washington-united-states-26d8d29f-52dd-4db0-b3d7-79450d9ffa23
+                      - text: Read more
+                - article "Enablement Manager, Zoom Customer Experience (ZCX)" [ref=e414]:
+                  - generic [ref=e415]:
+                    - generic [ref=e416]:
+                      - heading "Enablement Manager, Zoom Customer Experience (ZCX)" [level=3] [ref=e417]:
+                        - link "Enablement Manager, Zoom Customer Experience (ZCX)" [ref=e418] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/enablement-manager-zoom-customer-experience-zcx-remote-united-states
+                      - generic [ref=e419]:
+                        - list [ref=e421]:
+                          - listitem [ref=e422]: R19275
+                          - listitem [ref=e424]: Remote
+                        - list [ref=e427]:
+                          - listitem [ref=e428]: Remote, United States
+                        - list [ref=e431]:
+                          - listitem [ref=e432]: Go To Market Operations
+                        - list [ref=e435]:
+                          - listitem [ref=e436]: Zoom
+                      - paragraph [ref=e438]: What You Can Expect This Product Enablement role will support our Zoom Customer Experience (ZCX), including Zoom Virtual Agent (ZVA). You will support our Revenue team by working with our ZCX Sales and GTM team, product marketing, platform acceler...
+                    - 'link "Read more: Enablement Manager, Zoom Customer Experience (ZCX)" [ref=e440] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/enablement-manager-zoom-customer-experience-zcx-remote-united-states
+                      - text: Read more
+                - article "Machine Learning Engineer - Agentic Retrieval" [ref=e442]:
+                  - generic [ref=e443]:
+                    - generic [ref=e444]:
+                      - heading "Machine Learning Engineer - Agentic Retrieval" [level=3] [ref=e445]:
+                        - link "Machine Learning Engineer - Agentic Retrieval" [ref=e446] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/machine-learning-engineer-agentic-retrieval-seattle-washington-united-states
+                      - generic [ref=e447]:
+                        - list [ref=e449]:
+                          - listitem [ref=e450]: R19273
+                        - list [ref=e453]:
+                          - listitem [ref=e454]: Seattle, Washington, United States
+                        - list [ref=e457]:
+                          - listitem [ref=e458]: Engineering
+                        - list [ref=e461]:
+                          - listitem [ref=e462]: Zoom
+                      - paragraph [ref=e464]: What you can expect Zoom is looking for a Machine Learning Engineer to join our Agentic Retrieval team. You will design and build the core retrieval and reasoning systems that power Zoom’s AI Companion — enabling AI agents to search, reason over, ...
+                    - 'link "Read more: Machine Learning Engineer - Agentic Retrieval" [ref=e466] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/machine-learning-engineer-agentic-retrieval-seattle-washington-united-states
+                      - text: Read more
+                - article "Account Executive - Healthcare UpMarket" [ref=e468]:
+                  - generic [ref=e469]:
+                    - generic [ref=e470]:
+                      - heading "Account Executive - Healthcare UpMarket" [level=3] [ref=e471]:
+                        - link "Account Executive - Healthcare UpMarket" [ref=e472] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/account-executive-healthcare-upmarket-remote-kentucky-united-states
+                      - generic [ref=e473]:
+                        - list [ref=e475]:
+                          - listitem [ref=e476]: R19129
+                          - listitem [ref=e478]: Remote
+                        - list [ref=e481]:
+                          - listitem [ref=e482]: Remote, Kentucky, United States
+                        - list [ref=e485]:
+                          - listitem [ref=e486]: Sales
+                        - list [ref=e489]:
+                          - listitem [ref=e490]: Zoom
+                      - paragraph [ref=e492]: What you can expect Zoom is seeking Healthcare Enterprise Account Executives to sell our AI-powered communication and collaboration platform. Our Enterprise AEs engage both existing customers and new prospects to sell the full Zoom portfolio. You’...
+                    - 'link "Read more: Account Executive - Healthcare UpMarket" [ref=e494] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/account-executive-healthcare-upmarket-remote-kentucky-united-states
+                      - text: Read more
+                - article "Commercial Account Executive" [ref=e496]:
+                  - generic [ref=e497]:
+                    - generic [ref=e498]:
+                      - heading "Commercial Account Executive" [level=3] [ref=e499]:
+                        - link "Commercial Account Executive" [ref=e500] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/commercial-account-executive-singapore
+                      - generic [ref=e501]:
+                        - list [ref=e503]:
+                          - listitem [ref=e504]: R18941
+                        - list [ref=e507]:
+                          - listitem [ref=e508]: Singapore
+                        - list [ref=e511]:
+                          - listitem [ref=e512]: Sales
+                        - list [ref=e515]:
+                          - listitem [ref=e516]: Zoom
+                      - paragraph [ref=e518]: Commercial Account Executive What you can expect Zoom is looking for a hunter and prospector to create and win opportunities for our full suite of Zoom solutions. This team focuses on working with existing and new growing organizations with 500~ ...
+                    - 'link "Read more: Commercial Account Executive" [ref=e520] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/commercial-account-executive-singapore
+                      - text: Read more
+                - article "Forward Deployed Engineer (Japanese speaker)" [ref=e522]:
+                  - generic [ref=e523]:
+                    - generic [ref=e524]:
+                      - heading "Forward Deployed Engineer (Japanese speaker)" [level=3] [ref=e525]:
+                        - link "Forward Deployed Engineer (Japanese speaker)" [ref=e526] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/forward-deployed-engineer-japanese-speaker-singapore-remote-australia-chiyoda-ku-tokyo-japan
+                      - generic [ref=e527]:
+                        - list [ref=e529]:
+                          - listitem [ref=e530]: R19264
+                          - listitem [ref=e532]: Remote
+                        - list [ref=e535]:
+                          - listitem [ref=e536]: Remote, Australia
+                          - listitem [ref=e538]: Chiyoda-ku, Tokyo, Japan
+                          - listitem [ref=e540]: Singapore
+                        - list [ref=e543]:
+                          - listitem [ref=e544]: Product
+                        - list [ref=e547]:
+                          - listitem [ref=e548]: Zoom
+                      - paragraph [ref=e550]: What you can expect We are looking for a Product Engineer (Forward Deployed Engineer) focused on customer deployments for Agentic Voice AI to lead the deployment of next generation Zoom Virtual Agents. Leveraging LLMs and agentic frameworks to bui...
+                    - 'link "Read more: Forward Deployed Engineer (Japanese speaker)" [ref=e552] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/forward-deployed-engineer-japanese-speaker-singapore-remote-australia-chiyoda-ku-tokyo-japan
+                      - text: Read more
+                - article "Japan Communications Manager" [ref=e554]:
+                  - generic [ref=e555]:
+                    - generic [ref=e556]:
+                      - heading "Japan Communications Manager" [level=3] [ref=e557]:
+                        - link "Japan Communications Manager" [ref=e558] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/japan-communications-manager-chiyoda-ku-tokyo-japan-801572ac-f4a4-4f3c-b19f-2fe301593b20
+                      - generic [ref=e559]:
+                        - list [ref=e561]:
+                          - listitem [ref=e562]: R19265
+                        - list [ref=e565]:
+                          - listitem [ref=e566]: Chiyoda-ku, Tokyo, Japan
+                        - list [ref=e569]:
+                          - listitem [ref=e570]: Marketing
+                        - list [ref=e573]:
+                          - listitem [ref=e574]: Zoom
+                      - paragraph [ref=e576]: Japan Communications Manager What you can expect The Japan Communications Manager will serve as a key individual contributor, leading and elevating our public relations and external communications for Zoom in Japan. You will strengthen Zoom's corp...
+                    - 'link "Read more: Japan Communications Manager" [ref=e578] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/japan-communications-manager-chiyoda-ku-tokyo-japan-801572ac-f4a4-4f3c-b19f-2fe301593b20
+                      - text: Read more
+                - article "Majors Account Executive" [ref=e580]:
+                  - generic [ref=e581]:
+                    - generic [ref=e582]:
+                      - heading "Majors Account Executive" [level=3] [ref=e583]:
+                        - link "Majors Account Executive" [ref=e584] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/majors-account-executive-remote-illinois-united-states
+                      - generic [ref=e585]:
+                        - list [ref=e587]:
+                          - listitem [ref=e588]: R18525
+                          - listitem [ref=e590]: Remote
+                        - list [ref=e593]:
+                          - listitem [ref=e594]: Remote, Illinois, United States
+                        - list [ref=e597]:
+                          - listitem [ref=e598]: Sales
+                        - list [ref=e601]:
+                          - listitem [ref=e602]: Zoom
+                      - paragraph [ref=e604]: What you can expect Zoom is looking for Majors Account Executives who will engage with new leads and existing customers to sell our Zoom Workplace. Our Enterprise sales team focuses on working with our top strategic/global accounts in a defined ge...
+                    - 'link "Read more: Majors Account Executive" [ref=e606] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/majors-account-executive-remote-illinois-united-states
+                      - text: Read more
+                - article "Contact Centre Customer Success Manager" [ref=e608]:
+                  - generic [ref=e609]:
+                    - generic [ref=e610]:
+                      - heading "Contact Centre Customer Success Manager" [level=3] [ref=e611]:
+                        - link "Contact Centre Customer Success Manager" [ref=e612] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/contact-centre-customer-success-manager-london-united-kingdom
+                      - generic [ref=e613]:
+                        - list [ref=e615]:
+                          - listitem [ref=e616]: R19203
+                        - list [ref=e619]:
+                          - listitem [ref=e620]: London, United Kingdom
+                        - list [ref=e623]:
+                          - listitem [ref=e624]: Sales
+                        - list [ref=e627]:
+                          - listitem [ref=e628]: Zoom
+                      - paragraph [ref=e630]: What you can expect We are seeking a strategic Contact Centre Customer Success Manager to support and scale a global partner success model. This UK-based role, focuses on CCaaS and UCaas solutions. And will combine Contact Centre CSM expertise, a...
+                    - 'link "Read more: Contact Centre Customer Success Manager" [ref=e632] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/contact-centre-customer-success-manager-london-united-kingdom
+                      - text: Read more
+                - article "Fullstack Engineer" [ref=e634]:
+                  - generic [ref=e635]:
+                    - generic [ref=e636]:
+                      - heading "Fullstack Engineer" [level=3] [ref=e637]:
+                        - link "Fullstack Engineer" [ref=e638] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/fullstack-engineer-india
+                      - generic [ref=e639]:
+                        - list [ref=e641]:
+                          - listitem [ref=e642]: R18899
+                          - listitem [ref=e644]: Remote
+                        - list [ref=e647]:
+                          - listitem [ref=e648]: India
+                        - list [ref=e651]:
+                          - listitem [ref=e652]: Engineering
+                        - list [ref=e655]:
+                          - listitem [ref=e656]: Zoom
+                      - paragraph [ref=e658]: What you can expect You will design and build full-stack Quality Management solutions for Zoom’s Contact Center platform. You’ll collaborate across teams to integrate scalable, AI-powered features. Your work will improve customer experience and op...
+                    - 'link "Read more: Fullstack Engineer" [ref=e660] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/fullstack-engineer-india
+                      - text: Read more
+                - article "Channel Account Manager DT - NorthEast Germany" [ref=e662]:
+                  - generic [ref=e663]:
+                    - generic [ref=e664]:
+                      - heading "Channel Account Manager DT - NorthEast Germany" [level=3] [ref=e665]:
+                        - link "Channel Account Manager DT - NorthEast Germany" [ref=e666] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/channel-account-manager-dt-northeast-germany-remote-germany
+                      - generic [ref=e667]:
+                        - list [ref=e669]:
+                          - listitem [ref=e670]: R18802
+                          - listitem [ref=e672]: Remote
+                        - list [ref=e675]:
+                          - listitem [ref=e676]: Remote, Germany
+                        - list [ref=e679]:
+                          - listitem [ref=e680]: Sales
+                        - list [ref=e683]:
+                          - listitem [ref=e684]: Zoom
+                      - paragraph [ref=e686]: What You Can ExpectStep into a high-impact role where innovation meets scale. As a Channel Account Manager for the ZoomX partnership with Deutsche Telekom, you’ll play a key role in accelerating revenue growth and expanding market presence across ...
+                    - 'link "Read more: Channel Account Manager DT - NorthEast Germany" [ref=e688] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/channel-account-manager-dt-northeast-germany-remote-germany
+                      - text: Read more
+                - article "Channel Account Manager - Sweden" [ref=e690]:
+                  - generic [ref=e691]:
+                    - generic [ref=e692]:
+                      - heading "Channel Account Manager - Sweden" [level=3] [ref=e693]:
+                        - link "Channel Account Manager - Sweden" [ref=e694] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/channel-account-manager-sweden-remote-sweden-cbbdd843-d9eb-45a3-b803-dd488a7c95f2
+                      - generic [ref=e695]:
+                        - list [ref=e697]:
+                          - listitem [ref=e698]: R19050
+                          - listitem [ref=e700]: Remote
+                        - list [ref=e703]:
+                          - listitem [ref=e704]: Remote, Sweden
+                        - list [ref=e707]:
+                          - listitem [ref=e708]: Sales
+                        - list [ref=e711]:
+                          - listitem [ref=e712]: Zoom
+                      - paragraph [ref=e714]: What you can expect As a Channel Account Manager at Zoom, you will play a key role in accelerating platform growth through our ecosystem of reseller and strategic channel partners. You’ll be responsible for building and executing partner-led sal...
+                    - 'link "Read more: Channel Account Manager - Sweden" [ref=e716] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/channel-account-manager-sweden-remote-sweden-cbbdd843-d9eb-45a3-b803-dd488a7c95f2
+                      - text: Read more
+                - article "Account Executive Commercial - Nordics" [ref=e718]:
+                  - generic [ref=e719]:
+                    - generic [ref=e720]:
+                      - heading "Account Executive Commercial - Nordics" [level=3] [ref=e721]:
+                        - link "Account Executive Commercial - Nordics" [ref=e722] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/account-executive-commercial-nordics-remote-sweden-amsterdam-netherlands-norway
+                      - generic [ref=e723]:
+                        - list [ref=e725]:
+                          - listitem [ref=e726]: R18973
+                          - listitem [ref=e728]: Remote
+                        - list [ref=e731]:
+                          - listitem [ref=e732]: Amsterdam, Netherlands
+                          - listitem [ref=e734]: Remote, Norway
+                          - listitem [ref=e736]: Remote, Sweden
+                        - list [ref=e739]:
+                          - listitem [ref=e740]: Sales
+                        - list [ref=e743]:
+                          - listitem [ref=e744]: Zoom
+                      - paragraph [ref=e746]: What you can expect We are looking for a Commercial Account Executive Nordics based in either Stockholm, Oslo or Amsterdam. In this role, you will drive strategic sales across Zoom’s AI-first collaboration platform—helping large organizations tran...
+                    - 'link "Read more: Account Executive Commercial - Nordics" [ref=e748] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/account-executive-commercial-nordics-remote-sweden-amsterdam-netherlands-norway
+                      - text: Read more
+                - article "Commercial Account Executive (Italian Market)" [ref=e750]:
+                  - generic [ref=e751]:
+                    - generic [ref=e752]:
+                      - heading "Commercial Account Executive (Italian Market)" [level=3] [ref=e753]:
+                        - link "Commercial Account Executive (Italian Market)" [ref=e754] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/commercial-account-executive-italian-market-remote-ireland-dublin-county-dublin
+                      - generic [ref=e755]:
+                        - list [ref=e757]:
+                          - listitem [ref=e758]: R19101
+                          - listitem [ref=e760]: Remote
+                        - list [ref=e763]:
+                          - listitem [ref=e764]: Remote, Ireland
+                          - listitem [ref=e766]: Dublin, County Dublin, Ireland
+                        - list [ref=e769]:
+                          - listitem [ref=e770]: Sales
+                        - list [ref=e773]:
+                          - listitem [ref=e774]: Zoom
+                      - paragraph [ref=e776]: What you can expect We’re looking for an Italian speaking Commercial Account Executive to join our growing team in Ireland, supporting the Italian market. In this role, you’ll build long-term relationships commercial customers, acting as a trusted...
+                    - 'link "Read more: Commercial Account Executive (Italian Market)" [ref=e778] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/commercial-account-executive-italian-market-remote-ireland-dublin-county-dublin
+                      - text: Read more
+                - article "Software Engineer" [ref=e780]:
+                  - generic [ref=e781]:
+                    - generic [ref=e782]:
+                      - heading "Software Engineer" [level=3] [ref=e783]:
+                        - link "Software Engineer" [ref=e784] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/software-engineer-san-jose-california-united-states
+                      - generic [ref=e785]:
+                        - list [ref=e787]:
+                          - listitem [ref=e788]: R18807
+                        - list [ref=e791]:
+                          - listitem [ref=e792]: San Jose, California, United States
+                        - list [ref=e795]:
+                          - listitem [ref=e796]: Engineering
+                        - list [ref=e799]:
+                          - listitem [ref=e800]: Zoom
+                      - paragraph [ref=e802]: Software Development - ZP3 What you can expect Zoom seeks an experienced, enthusiastic full-stack or backend software engineer to develop and maintain cloud-native solutions for the Digital Transformation Office (DTO). This role focuses on CPQ...
+                    - 'link "Read more: Software Engineer" [ref=e804] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/software-engineer-san-jose-california-united-states
+                      - text: Read more
+                - article "Global Senior Manager, Physical Security and Safety" [ref=e806]:
+                  - generic [ref=e807]:
+                    - generic [ref=e808]:
+                      - heading "Global Senior Manager, Physical Security and Safety" [level=3] [ref=e809]:
+                        - link "Global Senior Manager, Physical Security and Safety" [ref=e810] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/global-senior-manager-physical-security-and-safety-seattle-washington-united-states
+                      - generic [ref=e811]:
+                        - list [ref=e813]:
+                          - listitem [ref=e814]: R19262
+                        - list [ref=e817]:
+                          - listitem [ref=e818]: Seattle, Washington, United States
+                        - list [ref=e821]:
+                          - listitem [ref=e822]: Corporate & Business Services
+                        - list [ref=e825]:
+                          - listitem [ref=e826]: Zoom
+                      - paragraph [ref=e828]: What You Can Expect You will lead Zoom's global physical security and safety program. You'll shape strategy across 70+ locations, partnering with cross-functional teams. You will build a culture of safety that protects people and operations worldw...
+                    - 'link "Read more: Global Senior Manager, Physical Security and Safety" [ref=e830] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/global-senior-manager-physical-security-and-safety-seattle-washington-united-states
+                      - text: Read more
+                - article "Senior Infrastructure & Hardware Engineer" [ref=e832]:
+                  - generic [ref=e833]:
+                    - generic [ref=e834]:
+                      - heading "Senior Infrastructure & Hardware Engineer" [level=3] [ref=e835]:
+                        - link "Senior Infrastructure & Hardware Engineer" [ref=e836] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/senior-infrastructure-hardware-engineer-san-jose-california-united-states
+                      - generic [ref=e837]:
+                        - list [ref=e839]:
+                          - listitem [ref=e840]: R18950
+                        - list [ref=e843]:
+                          - listitem [ref=e844]: San Jose, California, United States
+                        - list [ref=e847]:
+                          - listitem [ref=e848]: Engineering Operations
+                        - list [ref=e851]:
+                          - listitem [ref=e852]: Zoom
+                      - paragraph [ref=e854]: Immigration sponsorship is not available for this position What you can expect As a Senior Data Center Infrastructure & Hardware Engineer, you’ll take ownership of designing, deploying, and maintaining the high performance compute (HPC) and AI se...
+                    - 'link "Read more: Senior Infrastructure & Hardware Engineer" [ref=e856] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/senior-infrastructure-hardware-engineer-san-jose-california-united-states
+                      - text: Read more
+                - article "Head of Zoom Phone, AMER" [ref=e858]:
+                  - generic [ref=e859]:
+                    - generic [ref=e860]:
+                      - heading "Head of Zoom Phone, AMER" [level=3] [ref=e861]:
+                        - link "Head of Zoom Phone, AMER" [ref=e862] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/head-of-zoom-phone-amer-remote-united-states
+                      - generic [ref=e863]:
+                        - list [ref=e865]:
+                          - listitem [ref=e866]: R19258
+                          - listitem [ref=e868]: Remote
+                        - list [ref=e871]:
+                          - listitem [ref=e872]: Remote, United States
+                        - list [ref=e875]:
+                          - listitem [ref=e876]: Sales
+                        - list [ref=e879]:
+                          - listitem [ref=e880]: Zoom
+                      - paragraph [ref=e882]: What you can expect You will lead cloud telephony sales across the Americas, growing revenue and market share. You will build go-to-market strategies and develop a high-performing specialist team. You will shape how businesses adopt modern commun...
+                    - 'link "Read more: Head of Zoom Phone, AMER" [ref=e884] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/head-of-zoom-phone-amer-remote-united-states
+                      - text: Read more
+                - article "Principal Corporate Development Manager" [ref=e886]:
+                  - generic [ref=e887]:
+                    - generic [ref=e888]:
+                      - heading "Principal Corporate Development Manager" [level=3] [ref=e889]:
+                        - link "Principal Corporate Development Manager" [ref=e890] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/principal-corporate-development-manager-seattle-washington-united-states
+                      - generic [ref=e891]:
+                        - list [ref=e893]:
+                          - listitem [ref=e894]: R19260
+                        - list [ref=e897]:
+                          - listitem [ref=e898]: Seattle, Washington, United States
+                        - list [ref=e901]:
+                          - listitem [ref=e902]: Corporate & Business Services
+                        - list [ref=e905]:
+                          - listitem [ref=e906]: Zoom
+                      - paragraph [ref=e908]: What you can expect Zoom is looking for a highly strategic and experienced Principal Corporate Development Manager to drive our company’s growth initiatives through acquisitions and strategic investments. This role requires deep corporate developm...
+                    - 'link "Read more: Principal Corporate Development Manager" [ref=e910] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/principal-corporate-development-manager-seattle-washington-united-states
+                      - text: Read more
+                - article "DevOps Engineer" [ref=e912]:
+                  - generic [ref=e913]:
+                    - generic [ref=e914]:
+                      - heading "DevOps Engineer" [level=3] [ref=e915]:
+                        - link "DevOps Engineer" [ref=e916] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/devops-engineer-remote-virginia-united-states
+                      - generic [ref=e917]:
+                        - list [ref=e919]:
+                          - listitem [ref=e920]: R18865
+                          - listitem [ref=e922]: Remote
+                        - list [ref=e925]:
+                          - listitem [ref=e926]: Remote, Virginia, United States
+                        - list [ref=e929]:
+                          - listitem [ref=e930]: Engineering Operations
+                        - list [ref=e933]:
+                          - listitem [ref=e934]: Zoom
+                      - paragraph [ref=e936]: Immigration sponsorship is not available for this position What you can expect This role is part of the Zoom Phone and Zoom Contact Center DevOps team within the Engineering Operations Group. The ideal candidate should be capable of diving into a...
+                    - 'link "Read more: DevOps Engineer" [ref=e938] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/devops-engineer-remote-virginia-united-states
+                      - text: Read more
+                - article "AI Deployment Engineer" [ref=e940]:
+                  - generic [ref=e941]:
+                    - generic [ref=e942]:
+                      - heading "AI Deployment Engineer" [level=3] [ref=e943]:
+                        - link "AI Deployment Engineer" [ref=e944] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/ai-deployment-engineer-remote-united-states
+                      - generic [ref=e945]:
+                        - list [ref=e947]:
+                          - listitem [ref=e948]: R19195
+                          - listitem [ref=e950]: Remote
+                        - list [ref=e953]:
+                          - listitem [ref=e954]: Remote, United States
+                        - list [ref=e957]:
+                          - listitem [ref=e958]: Sales
+                        - list [ref=e961]:
+                          - listitem [ref=e962]: Zoom
+                      - paragraph [ref=e964]: What you can expect The AI Forward Deployment Engineer is a customer-focused role within Zoom Professional Services. This position collaborates with clients to identify business needs, workflows, challenges, and goals, translating them into AI-dri...
+                    - 'link "Read more: AI Deployment Engineer" [ref=e966] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/ai-deployment-engineer-remote-united-states
+                      - text: Read more
+                - article "Principal AI Architect - Agentic Verticals" [ref=e968]:
+                  - generic [ref=e969]:
+                    - generic [ref=e970]:
+                      - heading "Principal AI Architect - Agentic Verticals" [level=3] [ref=e971]:
+                        - link "Principal AI Architect - Agentic Verticals" [ref=e972] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/principal-ai-architect-agentic-verticals-seattle-washington-united-states-san-jose-california
+                      - generic [ref=e973]:
+                        - list [ref=e975]:
+                          - listitem [ref=e976]: R17319
+                        - list [ref=e979]:
+                          - listitem [ref=e980]: San Jose, California, United States
+                          - listitem [ref=e982]: Seattle, Washington, United States
+                        - list [ref=e985]:
+                          - listitem [ref=e986]: Engineering
+                        - list [ref=e989]:
+                          - listitem [ref=e990]: Zoom
+                      - paragraph [ref=e992]: What you can expect As a Principal AI Architect specializing in Agentic AI, you will design and oversee the development of intelligent agent systems for various industry verticals as part of Zoom AI Companion (AIC). Your architectural vision will ...
+                    - 'link "Read more: Principal AI Architect - Agentic Verticals" [ref=e994] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/principal-ai-architect-agentic-verticals-seattle-washington-united-states-san-jose-california
+                      - text: Read more
+                - article "Security Engineer" [ref=e996]:
+                  - generic [ref=e997]:
+                    - generic [ref=e998]:
+                      - heading "Security Engineer" [level=3] [ref=e999]:
+                        - link "Security Engineer" [ref=e1000] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/security-engineer-remote-united-states
+                      - generic [ref=e1001]:
+                        - list [ref=e1003]:
+                          - listitem [ref=e1004]: R18184
+                          - listitem [ref=e1006]: Remote
+                        - list [ref=e1009]:
+                          - listitem [ref=e1010]: Remote, United States
+                        - list [ref=e1013]:
+                          - listitem [ref=e1014]: Engineering
+                        - list [ref=e1017]:
+                          - listitem [ref=e1018]: Zoom
+                      - paragraph [ref=e1020]: What you can expect The Security Engineer is responsible for security design and reviews across our products and services. The ideal candidate brings broad technical expertise and hands-on experience in end-to-end product security. In this role, y...
+                    - 'link "Read more: Security Engineer" [ref=e1022] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/security-engineer-remote-united-states
+                      - text: Read more
+                - article "AI Software Engineer" [ref=e1024]:
+                  - generic [ref=e1025]:
+                    - generic [ref=e1026]:
+                      - heading "AI Software Engineer" [level=3] [ref=e1027]:
+                        - link "AI Software Engineer" [ref=e1028] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/ai-software-engineer-seattle-washington-united-states
+                      - generic [ref=e1029]:
+                        - list [ref=e1031]:
+                          - listitem [ref=e1032]: R15882
+                        - list [ref=e1035]:
+                          - listitem [ref=e1036]: Seattle, Washington, United States
+                        - list [ref=e1039]:
+                          - listitem [ref=e1040]: Engineering (EN)
+                        - list [ref=e1043]:
+                          - listitem [ref=e1044]: Zoom
+                      - paragraph [ref=e1046]: The Team You will join a dynamic AI Infrastructure team focused on enabling high-performance AI across Zoom’s products and services. The team builds the core systems that support model training, deployment, and inference at scale, driving innovati...
+                    - 'link "Read more: AI Software Engineer" [ref=e1048] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/ai-software-engineer-seattle-washington-united-states
+                      - text: Read more
+                - article "Services Growth Lead, UK - Zoom" [ref=e1050]:
+                  - generic [ref=e1051]:
+                    - generic [ref=e1052]:
+                      - heading "Services Growth Lead, UK - Zoom" [level=3] [ref=e1053]:
+                        - link "Services Growth Lead, UK - Zoom" [ref=e1054] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/services-growth-lead-uk-zoom-london-united-kingdom
+                      - generic [ref=e1055]:
+                        - list [ref=e1057]:
+                          - listitem [ref=e1058]: R19243
+                        - list [ref=e1061]:
+                          - listitem [ref=e1062]: London, United Kingdom
+                        - list [ref=e1065]:
+                          - listitem [ref=e1066]: Go To Market Operations
+                        - list [ref=e1069]:
+                          - listitem [ref=e1070]: Zoom
+                      - paragraph [ref=e1072]: What you can expect We are looking for a Services Growth Manager to drive the growth of Zoom's Technical Support and Managed Services portfolio. You will identify opportunities across existing and prospective customers. Positioning Premier Suppo...
+                    - 'link "Read more: Services Growth Lead, UK - Zoom" [ref=e1074] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/services-growth-lead-uk-zoom-london-united-kingdom
+                      - text: Read more
+                - article "Senior Product Manager" [ref=e1076]:
+                  - generic [ref=e1077]:
+                    - generic [ref=e1078]:
+                      - heading "Senior Product Manager" [level=3] [ref=e1079]:
+                        - link "Senior Product Manager" [ref=e1080] [cursor=pointer]:
+                          - /url: https://careers.zoom.us/jobs/senior-product-manager-remote-united-states
+                      - generic [ref=e1081]:
+                        - list [ref=e1083]:
+                          - listitem [ref=e1084]: R19247
+                          - listitem [ref=e1086]: Remote
+                        - list [ref=e1089]:
+                          - listitem [ref=e1090]: Remote, United States
+                        - list [ref=e1093]:
+                          - listitem [ref=e1094]: Product
+                        - list [ref=e1097]:
+                          - listitem [ref=e1098]: Zoom
+                      - paragraph [ref=e1100]: What you can expectResponsible for outlining the product roadmap, setting feature priorities, and collaborating across teams to enhance user experience, boost customer value, and grow revenue. This role emphasizes data-informed decisions and contr...
+                    - 'link "Read more: Senior Product Manager" [ref=e1102] [cursor=pointer]':
+                      - /url: https://careers.zoom.us/jobs/senior-product-manager-remote-united-states
+                      - text: Read more
+              - generic [ref=e1105]:
+                - alert [ref=e1107]:
+                  - paragraph [ref=e1108]: Displaying 1 - 30 of 102 in total
+                - navigation "Pagination" [ref=e1111]:
+                  - list [ref=e1112]:
+                    - listitem "Previous page" [ref=e1113]:
+                      - link "‹":
+                        - /url: ""
+                    - listitem "Page 1" [ref=e1114]:
+                      - link "1" [ref=e1115] [cursor=pointer]:
+                        - /url: /jobs/search?page=1
+                    - listitem "Page 2" [ref=e1116]:
+                      - link "2" [ref=e1117] [cursor=pointer]:
+                        - /url: /jobs/search?page=2
+                    - listitem "Page 3" [ref=e1118]:
+                      - link "3" [ref=e1119] [cursor=pointer]:
+                        - /url: /jobs/search?page=3
+                    - listitem "Page 4" [ref=e1120]:
+                      - link "4" [ref=e1121] [cursor=pointer]:
+                        - /url: /jobs/search?page=4
+                    - listitem "Next page" [ref=e1122]:
+                      - link "›" [ref=e1123] [cursor=pointer]:
+                        - /url: /jobs/search?page=2
+  - contentinfo [ref=e1124]:
+    - generic [ref=e1125]:
+      - generic [ref=e1126]:
+        - generic [ref=e1128]:
+          - heading "About" [level=2] [ref=e1129]:
+            - link "About" [ref=e1130] [cursor=pointer]:
+              - /url: https://explore.zoom.us/about
+          - list [ref=e1131]:
+            - listitem [ref=e1132]:
+              - link "Zoom Blog" [ref=e1133] [cursor=pointer]:
+                - /url: https://blog.zoom.us/
+            - listitem [ref=e1134]:
+              - link "Customers" [ref=e1135] [cursor=pointer]:
+                - /url: https://explore.zoom.us/customer/all
+            - listitem [ref=e1136]:
+              - link "Our Team" [ref=e1137] [cursor=pointer]:
+                - /url: https://explore.zoom.us/team
+            - listitem [ref=e1138]:
+              - link "Careers" [ref=e1139] [cursor=pointer]:
+                - /url: https://careers.zoom.us
+            - listitem [ref=e1140]:
+              - link "Integrations" [ref=e1141] [cursor=pointer]:
+                - /url: https://explore.zoom.us/integrations
+            - listitem [ref=e1142]:
+              - link "Partners" [ref=e1143] [cursor=pointer]:
+                - /url: https://partner.zoom.us/
+            - listitem [ref=e1144]:
+              - link "Investors" [ref=e1145] [cursor=pointer]:
+                - /url: https://investors.zoom.us/
+            - listitem [ref=e1146]:
+              - link "Press" [ref=e1147] [cursor=pointer]:
+                - /url: https://zoom.us/press
+            - listitem [ref=e1148]:
+              - link "Sustainability & ESG" [ref=e1149] [cursor=pointer]:
+                - /url: https://explore.zoom.us/en/zoom-esg/
+            - listitem [ref=e1150]:
+              - link "Zoom Cares" [ref=e1151] [cursor=pointer]:
+                - /url: https://zoomcares.zoom.us/
+            - listitem [ref=e1152]:
+              - link "Media Kit" [ref=e1153] [cursor=pointer]:
+                - /url: https://zoom.us/media-kit
+            - listitem [ref=e1154]:
+              - link "How to Videos" [ref=e1155] [cursor=pointer]:
+                - /url: https://explore.zoom.us/resources
+            - listitem [ref=e1156]:
+              - link "Developer Platform" [ref=e1157] [cursor=pointer]:
+                - /url: https://developers.zoom.us/
+            - listitem [ref=e1158]:
+              - link "Zoom Ventures" [ref=e1159] [cursor=pointer]:
+                - /url: https://explore.zoom.us/en/zoom-ventures/
+            - listitem [ref=e1160]:
+              - link "Zoom Merchandise Store" [ref=e1161] [cursor=pointer]:
+                - /url: https://shophappy.zoom.us/
+        - generic [ref=e1163]:
+          - heading "Download" [level=2] [ref=e1164]:
+            - link "Download" [ref=e1165] [cursor=pointer]:
+              - /url: https://zoom.us/download
+          - list [ref=e1166]:
+            - listitem [ref=e1167]:
+              - link "Meetings Client" [ref=e1168] [cursor=pointer]:
+                - /url: https://zoom.us/download#client_4meeting
+            - listitem [ref=e1169]:
+              - link "Zoom Rooms Client" [ref=e1170] [cursor=pointer]:
+                - /url: https://zoom.us/download#room_client
+            - listitem [ref=e1171]:
+              - link "Zoom Rooms Controller" [ref=e1172] [cursor=pointer]:
+                - /url: https://zoom.us/download#room_controller
+            - listitem [ref=e1173]:
+              - link "Browser Extension" [ref=e1174] [cursor=pointer]:
+                - /url: https://zoom.us/download#chrome_ext
+            - listitem [ref=e1175]:
+              - link "Outlook Plug-in" [ref=e1176] [cursor=pointer]:
+                - /url: https://zoom.us/download#outlook_plugin
+            - listitem [ref=e1177]:
+              - link "iPhone/iPad App" [ref=e1178] [cursor=pointer]:
+                - /url: https://zoom.us/download#client_iphone
+            - listitem [ref=e1179]:
+              - link "Android App" [ref=e1180] [cursor=pointer]:
+                - /url: https://zoom.us/download#mobile_app
+            - listitem [ref=e1181]:
+              - link "Zoom Virtual Backgrounds" [ref=e1182] [cursor=pointer]:
+                - /url: https://explore.zoom.us/virtual-backgrounds
+        - generic [ref=e1184]:
+          - heading "Sales" [level=2] [ref=e1185]:
+            - link "Sales" [ref=e1186] [cursor=pointer]:
+              - /url: https://explore.zoom.us/contactsales
+          - list [ref=e1187]:
+            - listitem [ref=e1188]:
+              - link "1.888.799.9666" [ref=e1189] [cursor=pointer]:
+                - /url: tel:1.888.799.9666
+            - listitem [ref=e1190]:
+              - link "Contact Sales" [ref=e1191] [cursor=pointer]:
+                - /url: https://explore.zoom.us/contactsales
+            - listitem [ref=e1192]:
+              - link "Plans & Pricing" [ref=e1193] [cursor=pointer]:
+                - /url: https://zoom.us/pricing
+            - listitem [ref=e1194]:
+              - link "Request a Demo" [ref=e1195] [cursor=pointer]:
+                - /url: https://explore.zoom.us/livedemo
+            - listitem [ref=e1196]:
+              - link "Webinars and Events" [ref=e1197] [cursor=pointer]:
+                - /url: https://zoom.us/events
+        - generic [ref=e1198]:
+          - generic [ref=e1199]:
+            - heading "Support" [level=2] [ref=e1200]:
+              - link "Support" [ref=e1201] [cursor=pointer]:
+                - /url: "\n\t\thttps://support.zoom.us/hc/en-us"
+            - list [ref=e1202]:
+              - listitem [ref=e1203]:
+                - link "Test Zoom" [ref=e1204] [cursor=pointer]:
+                  - /url: https://zoom.us/test
+              - listitem [ref=e1205]:
+                - link "Account" [ref=e1206] [cursor=pointer]:
+                  - /url: https://zoom.us/account
+              - listitem [ref=e1207]:
+                - link "Support Center" [ref=e1208] [cursor=pointer]:
+                  - /url: https://support.zoom.us/hc/en-us
+              - listitem [ref=e1209]:
+                - link "Learning Center" [ref=e1210] [cursor=pointer]:
+                  - /url: https://learning.zoom.us/learn
+              - listitem [ref=e1211]:
+                - link "Zoom Community" [ref=e1212] [cursor=pointer]:
+                  - /url: https://community.zoom.com
+              - listitem [ref=e1213]:
+                - link "Contact Us" [ref=e1214] [cursor=pointer]:
+                  - /url: https://explore.zoom.us/contact
+              - listitem [ref=e1215]:
+                - link "Accessibility" [ref=e1216] [cursor=pointer]:
+                  - /url: https://explore.zoom.us/accessibility
+              - listitem [ref=e1217]:
+                - link "Developer Support" [ref=e1218] [cursor=pointer]:
+                  - /url: https://devsupport.zoom.us/hc/en-us
+              - listitem [ref=e1219]:
+                - link "Privacy, Security, Legal Policies, and Modern Slavery Act Transparency Statement" [ref=e1220] [cursor=pointer]:
+                  - /url: https://explore.zoom.us/trust/legal-compliance
+          - generic [ref=e1221]:
+            - link "Zoom on Blog" [ref=e1222] [cursor=pointer]:
+              - /url: https://blog.zoom.us/
+              - generic [ref=e1223]: Zoom on Blog
+            - link "Zoom on LinkedIn" [ref=e1225] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/2532259
+              - generic [ref=e1226]: Zoom on LinkedIn
+            - link "Zoom on Twitter" [ref=e1228] [cursor=pointer]:
+              - /url: https://twitter.com/zoom
+              - generic [ref=e1229]: Zoom on Twitter
+            - link "Zoom on Youtube" [ref=e1231] [cursor=pointer]:
+              - /url: https://www.youtube.com/zoommeetings
+              - generic [ref=e1232]: Zoom on Youtube
+            - link "Zoom on Facebook" [ref=e1234] [cursor=pointer]:
+              - /url: https://www.facebook.com/zoomvideocommunications
+              - generic [ref=e1235]: Zoom on Facebook
+            - link "Zoom on Instagram" [ref=e1237] [cursor=pointer]:
+              - /url: https://www.instagram.com/zoom
+              - generic [ref=e1238]: Zoom on Instagram
+      - generic [ref=e1243]:
+        - text: Copyright ©2025 Zoom Communications, Inc. All rights reserved.
+        - link "Terms" [ref=e1244] [cursor=pointer]:
+          - /url: https://explore.zoom.us/terms/
+        - link "Privacy" [ref=e1245] [cursor=pointer]:
+          - /url: https://explore.zoom.us/privacy
+        - link "Trust Center" [ref=e1246] [cursor=pointer]:
+          - /url: https://explore.zoom.us/trust
+        - link "Legal & Compliance" [ref=e1247] [cursor=pointer]:
+          - /url: https://explore.zoom.us/trust/legal-compliance
+        - link "Your Privacy Choices" [ref=e1248] [cursor=pointer]:
+          - /url: "#showManageCookiesDialog"
+        - link "Cookie Preferences" [ref=e1249] [cursor=pointer]:
+          - /url: "#showManageCookiesDialog"
+  - dialog "Cookie consent" [ref=e1250]:
+    - generic [ref=e1251]:
+      - button "Close" [ref=e1252] [cursor=pointer]
+      - paragraph [ref=e1254]:
+        - text: Zoom uses cookies and similar technologies as described in our
+        - link "cookie statement" [ref=e1255] [cursor=pointer]:
+          - /url: https://explore.zoom.us/en/cookie-policy/
+        - text: . You can manage your cookie settings or exercise your rights related to cookies through our Cookies Settings.
+      - list [ref=e1257]:
+        - listitem [ref=e1258]:
+          - button "Accept essential only" [ref=e1259] [cursor=pointer]
+        - listitem [ref=e1260]:
+          - button "Accept all" [ref=e1261] [cursor=pointer]
+  - generic [ref=e1262]: Please choose the category/categories

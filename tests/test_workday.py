@@ -97,7 +97,9 @@ def test_matches_site_named_after_tenant() -> None:
 def test_matches_bare_host_without_site_is_none() -> None:
     assert WorkdayProvider.matches("https://nvidia.wd5.myworkdayjobs.com/") is None
     # cxs framing with the tenant but NO site segment is not a valid board.
-    assert WorkdayProvider.matches("https://aaon.wd108.myworkdayjobs.com/wday/cxs/aaon/jobs") is None
+    assert (
+        WorkdayProvider.matches("https://aaon.wd108.myworkdayjobs.com/wday/cxs/aaon/jobs") is None
+    )
 
 
 def test_matches_rejects_non_workday() -> None:

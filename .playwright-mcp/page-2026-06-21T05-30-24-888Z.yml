@@ -1,0 +1,437 @@
+- generic [active] [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "Skip to Main Content" [ref=e4] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - link "Progressive" [ref=e10] [cursor=pointer]:
+          - /url: https://www.progressive.com/
+          - img "Progressive" [ref=e11]
+        - generic [ref=e12]:
+          - navigation [ref=e13]:
+            - list [ref=e14]:
+              - listitem [ref=e15]:
+                - link " Our Teams" [ref=e16] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: ›  ›
+              - listitem [ref=e17]:
+                - link " Difference" [ref=e18] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: ›   ›
+              - listitem [ref=e19]:
+                - link " Students & Grads" [ref=e20] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: ›   ›
+              - listitem [ref=e21]:
+                - link " Hiring Process" [ref=e22] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: ›   ›
+              - listitem [ref=e23]:
+                - link " Life at Progressive" [ref=e24] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                - text: ›  ›
+          - text: 
+        - navigation [ref=e26]:
+          - list [ref=e27]:
+            - listitem [ref=e28]:
+              - link "Login" [ref=e29] [cursor=pointer]:
+                - /url: /careers-login/
+            - listitem [ref=e30]:
+              - link "Talent Network" [ref=e31] [cursor=pointer]:
+                - /url: https://apply.talemetry.com/init-apply/1290fb38-7088-4991-9c95-ee0041696c38/tn?parent_url=https%3A%2F%2Fcareers.progressive.com%2F%2Fsearch%2Fjobs
+    - main [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e41]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Keyword, location, job title, skills
+            - textbox "Keyword, location, job title, skills" [ref=e46]
+          - button "View Job Openings" [ref=e49] [cursor=pointer]
+        - generic [ref=e54]:
+          - link "Progressive Insurance Homepage" [ref=e55] [cursor=pointer]:
+            - /url: https://www.progressive.com/
+            - img "Progressive Insurance Homepage" [ref=e56]
+          - text: •
+          - link "Careers" [ref=e57] [cursor=pointer]:
+            - /url: https://careers.progressive.com/
+          - text: • Job Openings
+        - generic [ref=e62]:
+          - heading "Job Search Results" [level=1] [ref=e66]
+          - generic [ref=e70]: Showing 1-25 of 241 results
+          - generic [ref=e73]:
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - heading "Filter Your Results Clear All" [level=2] [ref=e78]:
+                  - text: Filter Your Results
+                  - link "Clear All" [ref=e80] [cursor=pointer]:
+                    - /url: /search/jobs/
+                - generic [ref=e82]:
+                  - generic [ref=e83]:
+                    - heading "Category +" [level=3] [ref=e85]:
+                      - button "Category +" [ref=e86] [cursor=pointer]:
+                        - text: Category
+                        - generic [ref=e87]: +
+                    - text:           
+                  - generic [ref=e88]:
+                    - heading "Remote Work +" [level=3] [ref=e90]:
+                      - button "Remote Work +" [ref=e91] [cursor=pointer]:
+                        - text: Remote Work
+                        - generic [ref=e92]: +
+                    - text:   
+                  - generic [ref=e93]:
+                    - heading "State +" [level=3] [ref=e95]:
+                      - button "State +" [ref=e96] [cursor=pointer]:
+                        - text: State
+                        - generic [ref=e97]: +
+                    - text:                              
+                  - generic [ref=e98]:
+                    - heading "City +" [level=3] [ref=e100]:
+                      - button "City +" [ref=e101] [cursor=pointer]:
+                        - text: City
+                        - generic [ref=e102]: +
+                    - text:                                                                                                   
+                  - generic [ref=e103]:
+                    - heading "Job Level +" [level=3] [ref=e105]:
+                      - button "Job Level +" [ref=e106] [cursor=pointer]:
+                        - text: Job Level
+                        - generic [ref=e107]: +
+                    - text:   
+              - paragraph [ref=e109]:
+                - button "Set Up Job Alerts" [ref=e110] [cursor=pointer]
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]: "Sort by:"
+                  - combobox "Sort by:" [ref=e118]:
+                    - option "Sort by" [selected]
+                    - option "Relevance"
+                    - option "Job Title"
+                    - option "Location"
+                    - option "Date Posted"
+                - alert "Showing 1-25 of 241 results":
+                  - generic [ref=e120]: Showing 1-25 of 241 results
+                - text:   
+                - list [ref=e121]:
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - heading "Legal Support Specialist Senior" [level=3] [ref=e125]:
+                        - link "Legal Support Specialist Senior" [ref=e126] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17890160-legal-support-specialist-senior/
+                      - generic [ref=e127]: Williamsville, NY
+                      - generic [ref=e128]:
+                        - text: "Date Posted:"
+                        - time [ref=e129]: Jun 19, 2026
+                  - listitem [ref=e130]:
+                    - generic [ref=e131]:
+                      - heading "Legal Support Specialist Senior" [level=3] [ref=e133]:
+                        - link "Legal Support Specialist Senior" [ref=e134] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17890158-legal-support-specialist-senior/
+                      - generic [ref=e135]: N New Hyde Park, NY
+                      - generic [ref=e136]:
+                        - text: "Date Posted:"
+                        - time [ref=e137]: Jun 19, 2026
+                  - listitem [ref=e138]:
+                    - generic [ref=e139]:
+                      - heading "Legal Support Specialist Senior" [level=3] [ref=e141]:
+                        - link "Legal Support Specialist Senior" [ref=e142] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17890159-legal-support-specialist-senior/
+                      - generic [ref=e143]: Tarrytown, NY
+                      - generic [ref=e144]:
+                        - text: "Date Posted:"
+                        - time [ref=e145]: Jun 19, 2026
+                  - listitem [ref=e146]:
+                    - generic [ref=e147]:
+                      - heading "Digital Media Specialist Senior or Lead" [level=3] [ref=e149]:
+                        - link "Digital Media Specialist Senior or Lead" [ref=e150] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17890363-digital-media-specialist-senior-or-lead/
+                      - generic [ref=e151]: United States
+                      - generic [ref=e152]:
+                        - text: "Date Posted:"
+                        - time [ref=e153]: Jun 19, 2026
+                  - listitem [ref=e154]:
+                    - generic [ref=e155]:
+                      - heading "Power Platform Developer" [level=3] [ref=e157]:
+                        - link "Power Platform Developer" [ref=e158] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17890412-power-platform-developer/
+                      - generic [ref=e159]: United States
+                      - generic [ref=e160]:
+                        - text: "Date Posted:"
+                        - time [ref=e161]: Jun 19, 2026
+                  - listitem [ref=e162]:
+                    - generic [ref=e163]:
+                      - heading "Copywriter" [level=3] [ref=e165]:
+                        - link "Copywriter" [ref=e166] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17845007-copywriter/
+                      - generic [ref=e167]: United States
+                      - generic [ref=e168]:
+                        - text: "Date Posted:"
+                        - time [ref=e169]: Jun 18, 2026
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - heading "Claims Administrative Support Specialist" [level=3] [ref=e173]:
+                        - link "Claims Administrative Support Specialist" [ref=e174] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17884592-claims-administrative-support-specialist/
+                      - generic [ref=e175]: Syracuse, NY
+                      - generic [ref=e176]:
+                        - text: "Date Posted:"
+                        - time [ref=e177]: Jun 18, 2026
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e181]:
+                        - link "Claims Adjuster Trainee" [ref=e182] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17888325-claims-adjuster-trainee/
+                      - generic [ref=e183]: Corpus Christi, TX
+                      - generic [ref=e184]:
+                        - text: "Date Posted:"
+                        - time [ref=e185]: Jun 18, 2026
+                  - listitem [ref=e186]:
+                    - generic [ref=e187]:
+                      - heading "Legal Support Specialist" [level=3] [ref=e189]:
+                        - link "Legal Support Specialist" [ref=e190] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17881438-legal-support-specialist/
+                      - generic [ref=e191]: Meriden, CT
+                      - generic [ref=e192]:
+                        - text: "Date Posted:"
+                        - time [ref=e193]: Jun 17, 2026
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e197]:
+                        - link "Claims Adjuster Trainee" [ref=e198] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17753587-claims-adjuster-trainee/
+                      - generic [ref=e199]: Tigard, OR
+                      - generic [ref=e200]:
+                        - text: "Date Posted:"
+                        - time [ref=e201]: Jun 17, 2026
+                  - listitem [ref=e202]:
+                    - generic [ref=e203]:
+                      - heading "Legal Support Specialist" [level=3] [ref=e205]:
+                        - link "Legal Support Specialist" [ref=e206] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17881437-legal-support-specialist/
+                      - generic [ref=e207]: Warwick, RI
+                      - generic [ref=e208]:
+                        - text: "Date Posted:"
+                        - time [ref=e209]: Jun 17, 2026
+                  - listitem [ref=e210]:
+                    - generic [ref=e211]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e213]:
+                        - link "Claims Adjuster Trainee" [ref=e214] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17883821-claims-adjuster-trainee/
+                      - generic [ref=e215]: Austin, TX
+                      - generic [ref=e216]:
+                        - text: "Date Posted:"
+                        - time [ref=e217]: Jun 17, 2026
+                  - listitem [ref=e218]:
+                    - generic [ref=e219]:
+                      - heading "Legal Support Specialist" [level=3] [ref=e221]:
+                        - link "Legal Support Specialist" [ref=e222] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17881439-legal-support-specialist/
+                      - generic [ref=e223]: Canton, MA
+                      - generic [ref=e224]:
+                        - text: "Date Posted:"
+                        - time [ref=e225]: Jun 17, 2026
+                  - listitem [ref=e226]:
+                    - generic [ref=e227]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e229]:
+                        - link "Claims Adjuster Trainee" [ref=e230] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873645-claims-adjuster-trainee/
+                      - generic [ref=e231]: Rochester, MN
+                      - generic [ref=e232]:
+                        - text: "Date Posted:"
+                        - time [ref=e233]: Jun 16, 2026
+                  - listitem [ref=e234]:
+                    - generic [ref=e235]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e237]:
+                        - link "Claims Adjuster Trainee" [ref=e238] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873646-claims-adjuster-trainee/
+                      - generic [ref=e239]: Saint Cloud, MN
+                      - generic [ref=e240]:
+                        - text: "Date Posted:"
+                        - time [ref=e241]: Jun 16, 2026
+                  - listitem [ref=e242]:
+                    - generic [ref=e243]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e245]:
+                        - link "Claims Adjuster Trainee" [ref=e246] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873716-claims-adjuster-trainee/
+                      - generic [ref=e247]: Minneapolis, MN
+                      - generic [ref=e248]:
+                        - text: "Date Posted:"
+                        - time [ref=e249]: Jun 16, 2026
+                  - listitem [ref=e250]:
+                    - generic [ref=e251]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e253]:
+                        - link "Claims Adjuster Trainee" [ref=e254] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873714-claims-adjuster-trainee/
+                      - generic [ref=e255]: Arden Hills, MN
+                      - generic [ref=e256]:
+                        - text: "Date Posted:"
+                        - time [ref=e257]: Jun 16, 2026
+                  - listitem [ref=e258]:
+                    - generic [ref=e259]:
+                      - heading "Claims Administrative Support Specialist" [level=3] [ref=e261]:
+                        - link "Claims Administrative Support Specialist" [ref=e262] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17786410-claims-administrative-support-specialist/
+                      - generic [ref=e263]: Albuquerque, NM
+                      - generic [ref=e264]:
+                        - text: "Date Posted:"
+                        - time [ref=e265]: Jun 16, 2026
+                  - listitem [ref=e266]:
+                    - generic [ref=e267]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e269]:
+                        - link "Claims Adjuster Trainee" [ref=e270] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873647-claims-adjuster-trainee/
+                      - generic [ref=e271]: Duluth, MN
+                      - generic [ref=e272]:
+                        - text: "Date Posted:"
+                        - time [ref=e273]: Jun 16, 2026
+                  - listitem [ref=e274]:
+                    - generic [ref=e275]:
+                      - heading "Claims Adjuster Trainee" [level=3] [ref=e277]:
+                        - link "Claims Adjuster Trainee" [ref=e278] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873715-claims-adjuster-trainee/
+                      - generic [ref=e279]: Eagan, MN
+                      - generic [ref=e280]:
+                        - text: "Date Posted:"
+                        - time [ref=e281]: Jun 16, 2026
+                  - listitem [ref=e282]:
+                    - generic [ref=e283]:
+                      - heading "Life Underwriting Manager" [level=3] [ref=e285]:
+                        - link "Life Underwriting Manager" [ref=e286] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17875123-life-underwriting-manager/
+                      - generic [ref=e287]: Cleveland, OH
+                      - generic [ref=e288]:
+                        - text: "Date Posted:"
+                        - time [ref=e289]: Jun 16, 2026
+                  - listitem [ref=e290]:
+                    - generic [ref=e291]:
+                      - heading "Territory Sales Representative-Commercial" [level=3] [ref=e293]:
+                        - link "Territory Sales Representative-Commercial" [ref=e294] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17872005-territory-sales-representative-commercial/
+                      - generic [ref=e295]: Greenville, SC
+                      - generic [ref=e296]:
+                        - text: "Date Posted:"
+                        - time [ref=e297]: Jun 15, 2026
+                  - listitem [ref=e298]:
+                    - generic [ref=e299]:
+                      - heading "Territory Sales Representative-Commercial" [level=3] [ref=e301]:
+                        - link "Territory Sales Representative-Commercial" [ref=e302] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17872003-territory-sales-representative-commercial/
+                      - generic [ref=e303]: Charlotte, NC
+                      - generic [ref=e304]:
+                        - text: "Date Posted:"
+                        - time [ref=e305]: Jun 15, 2026
+                  - listitem [ref=e306]:
+                    - generic [ref=e307]:
+                      - heading "Territory Sales Representative-Commercial" [level=3] [ref=e309]:
+                        - link "Territory Sales Representative-Commercial" [ref=e310] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17872004-territory-sales-representative-commercial/
+                      - generic [ref=e311]: Columbia, SC
+                      - generic [ref=e312]:
+                        - text: "Date Posted:"
+                        - time [ref=e313]: Jun 15, 2026
+                  - listitem [ref=e314]:
+                    - generic [ref=e315]:
+                      - heading "Claims Administrative Support Specialist" [level=3] [ref=e317]:
+                        - link "Claims Administrative Support Specialist" [ref=e318] [cursor=pointer]:
+                          - /url: https://careers.progressive.com/jobs/17873282-claims-administrative-support-specialist/
+                      - generic [ref=e319]: Tigard, OR
+                      - generic [ref=e320]:
+                        - text: "Date Posted:"
+                        - time [ref=e321]: Jun 15, 2026
+              - navigation "Pagination" [ref=e323]:
+                - generic [ref=e324]: previous
+                - generic [ref=e325]: "1"
+                - link "2" [ref=e326] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=2#
+                - link "3" [ref=e327] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=3#
+                - link "4" [ref=e328] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=4#
+                - link "5" [ref=e329] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=5#
+                - link "6" [ref=e330] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=6#
+                - link "7" [ref=e331] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=7#
+                - link "8" [ref=e332] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=8#
+                - link "9" [ref=e333] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=9#
+                - link "10" [ref=e334] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=10#
+                - link "next" [ref=e335] [cursor=pointer]:
+                  - /url: /search/jobs/in?page=2#
+    - contentinfo [ref=e336]:
+      - generic [ref=e341]:
+        - heading "JOIN OUR TALENT NETWORK" [level=2] [ref=e342]
+        - paragraph [ref=e343]:
+          - text: Want to join the team but don't see the right job for you? Don't worry—you can join our Talent Network and get updated as new jobs become available!
+          - link "Add your name to the list" [ref=e344] [cursor=pointer]:
+            - /url: https://apply.talemetry.com/init-apply/1290fb38-7088-4991-9c95-ee0041696c38/tn?parent_url=https%3A%2F%2Fcareers.progressive.com%2F%2Fsearch%2Fjobs
+          - text: so you can be among the first to apply.
+      - generic [ref=e351]:
+        - heading "Search careers and apply today" [level=2] [ref=e352]
+        - paragraph [ref=e353]:
+          - link "View job openings" [ref=e354] [cursor=pointer]:
+            - /url: /search/jobs/
+          - strong [ref=e355]:
+            - link "Careers login" [ref=e356] [cursor=pointer]:
+              - /url: /careers-login/
+        - paragraph [ref=e357]:
+          - link "Join our Talent Network" [ref=e358] [cursor=pointer]:
+            - /url: https://apply.talemetry.com/init-apply/1290fb38-7088-4991-9c95-ee0041696c38/tn?parent_url=https%3A%2F%2Fcareers.progressive.com%2F%2Fsearch%2Fjobs
+          - text: and get updated as new jobs become available.
+      - generic [ref=e361]:
+        - link " x" [ref=e362] [cursor=pointer]:
+          - /url: https://twitter.com/pgrcareers
+          - generic [ref=e363]:
+            - text: 
+            - generic [ref=e364]: x
+        - link " linkedin" [ref=e365] [cursor=pointer]:
+          - /url: http://www.linkedin.com/company/progressive-insurance/
+          - generic [ref=e366]:
+            - text: 
+            - generic [ref=e367]: linkedin
+        - link " youtube" [ref=e368] [cursor=pointer]:
+          - /url: http://www.youtube.com/progressivecareers
+          - generic [ref=e369]:
+            - text: 
+            - generic [ref=e370]: youtube
+        - link "glassdoor" [ref=e371] [cursor=pointer]:
+          - /url: http://www.glassdoor.com/Overview/Working-at-Progressive-Insurance-EI_IE546.11,32.htm
+          - img [ref=e372]
+          - generic [ref=e374]: glassdoor
+        - link " instagram" [ref=e375] [cursor=pointer]:
+          - /url: https://www.instagram.com/progressive/
+          - generic [ref=e376]:
+            - text: 
+            - generic [ref=e377]: instagram
+      - generic [ref=e382]:
+        - list [ref=e383]:
+          - listitem [ref=e384]:
+            - link "Contact Us" [ref=e385] [cursor=pointer]:
+              - /url: https://www.progressive.com/contact-us/
+          - listitem [ref=e386]:
+            - link "Site Map" [ref=e387] [cursor=pointer]:
+              - /url: /pages/site-map/
+          - listitem [ref=e388]:
+            - link "Privacy & Security" [ref=e389] [cursor=pointer]:
+              - /url: https://www.progressive.com/careers/privacy-jobs/
+          - listitem [ref=e390]:
+            - link "Terms of Use" [ref=e391] [cursor=pointer]:
+              - /url: https://www.progressive.com/careers/copyright-jobs/
+          - listitem [ref=e392]:
+            - link "CA Notice at Collection" [ref=e393] [cursor=pointer]:
+              - /url: https://www.progressive.com/careers/privacy-jobs/#notice-at-collection
+          - listitem [ref=e394]:
+            - link "Do Not Sell or Share My Personal Information (CA Residents Only)" [ref=e395] [cursor=pointer]:
+              - /url: https://www.progressive.com/privacy/do-not-sell-my-information/
+          - listitem [ref=e396]:
+            - link "Progressive.com" [ref=e397] [cursor=pointer]:
+              - /url: https://www.progressive.com
+        - paragraph [ref=e398]:
+          - strong [ref=e399]: "THE #1 INSURANCE WEBSITE"
+          - text: Copyright 1995 - 2026. Progressive Casualty Insurance Company. All Rights Reserved.
+  - iframe [ref=e401]:
+    
+  - img [ref=e402]
+  - img [ref=e403]

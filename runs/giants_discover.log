@@ -1,0 +1,66 @@
+discovering ATS host for 364 proxied giants ...
+  scanned 50/364 (hits: 19)
+  scanned 100/364 (hits: 42)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 150/364 (hits: 52)
+  scanned 200/364 (hits: 59)
+  scanned 250/364 (hits: 70)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 300/364 (hits: 75)
+  scanned 350/364 (hits: 79)
+detected 80 {'workday': 33, 'eightfold': 1, 'taleo': 12, 'phenom': 7, 'oracle': 13, 'icims': 11, 'avature': 3}; verifying ...
+  + at and t services            (  913) workday      att|wd1|ATTGeneral
+  + washington university        (  673) workday      wustl|wd1|External
+  + exlservice com               (  593) oracle       fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + gp technologies              (  425) workday      northmark|wd108|NMS
+  + icahn school of medicine at  (  423) oracle       ejis.fa.us6.oraclecloud.com|CX_1
+  + brookhaven national laborato (  419) workday      bnl|wd1|Externa
+  + university of washington     (  343) workday      wustl|wd1|External
+  + united services automobile a (  333) workday      usaa|wd1|USAAJOBSWD
+  + pennsylvania state universit (  325) workday      psu|wd1|PSU_Staff
+  + dell usa l p                 (  314) oracle       iawmqy.fa.ocs.oraclecloud.com|CX_1
+  + university of maryland colle (  313) workday      umd|wd1|UMCP
+  + brigham and women s hospital (  301) workday      massgeneralbrigham|wd1|MGBExternal
+  + synopsys                     (  297) avature      synopsys.avature.net
+  + akamai technologies          (  296) oracle       fa-extu-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + texas instruments            (  296) oracle       edbz.fa.us2.oraclecloud.com|CX_1
+  + university of rochester      (  296) workday      rochester|wd5|UR_Staff
+  + sapphire software solutions  (  243) workday      trimble|wd1|TrimbleCareers
+  + rockwell collins             (  240) workday      rockwellautomation|wd1|External_Rockwell_Automation
+  + merck sharp and dohme        (  216) workday      msd|wd5|SearchJobs
+  + howard hughes medical instit (  205) workday      hhmi|wd1|External
+  + united wholesale mortgage    (  193) icims        careers-uwmcareers.icims.com
+  + citigroup global markets     (  182) workday      citi|wd5|2
+  + cedars sinai medical center  (  164) oracle       hdkk.fa.us6.oraclecloud.com|CX_1
+  + w m rice university          (  144) oracle       emdz.fa.us2.oraclecloud.com|CX_1
+  + presbyterian healthcare serv (  139) workday      phsorg|wd1|Careers
+  + covidien lp                  (  136) workday      medtronic|wd1|redeploymentmedtroniccareers
+  + washington state university  (  135) workday      wsu|wd5|WSU_Jobs
+  + wolters kluwer dxg u s       (  118) workday      wk|wd3|External
+  + american general life insura (  108) workday      gaig|wd1|GAIG_External
+  + university of mississippi    (  101) workday      olemiss|wd12|External__Staff
+  + adventist health system sunb (  101) workday      adventhealth|wd12|AH_External_Career_Site
+  + simpson thacher and bartlett (   97) workday      stblaw|wd1|careers
+  + dell marketing l p           (   93) oracle       iawmqy.fa.ocs.oraclecloud.com|CX_1
+  + hertz                        (   85) oracle       fa-evlf-saasfaprod1.fa.ocs.oraclecloud.com|CX_1
+  + university of arkansas       (   83) workday      uasys|wd5|UAF_External_Career_Site
+  + meijer great lakes partnersh (   81) workday      meijer|wd5|Meijer_Stores_Hourly
+  + glaxosmithkline              (   79) workday      gsk|wd5|GSKCareers
+  + university of central florid (   74) workday      ucf|wd1|athletics
+  + ncr voyix                    (   71) workday      ncr|wd1|ext_apac
+
+wrote 39 candidates {'workday': 28, 'oracle': 9, 'avature': 1, 'icims': 1} -> candidates_giants.json

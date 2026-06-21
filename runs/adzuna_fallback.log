@@ -1,0 +1,52 @@
+Adzuna fallback over 308 residual giants ...
+  probed 50/308 (kept: 17)
+  probed 100/308 (kept: 28)
+  probed 150/308 (kept: 40)
+  probed 200/308 (kept: 50)
+  probed 250/308 (kept: 60)
+  probed 300/308 (kept: 68)
+  + tataconsultancyservices    ( 9675 filings, 14/50 adzuna) -> tata consultancy services
+  + jpmorganchaseand           ( 5360 filings, 48/50 adzuna) -> jpmorgan chase and
+  + compunnelsoftware          ( 3476 filings, 20/50 adzuna) -> compunnel software group
+  + mphasis                    ( 2452 filings, 34/50 adzuna) -> mphasis
+  + goldmansachsand            ( 1865 filings, 45/50 adzuna) -> goldman sachs and
+  + goldmansachsservices       (  972 filings, 19/50 adzuna) -> goldman sachs services
+  + bostonconsulting           (  854 filings, 18/50 adzuna) -> boston consulting group
+  + johnshopkinsuniversity     (  705 filings, 37/50 adzuna) -> johns hopkins university
+  + goldmansachsbankusa        (  539 filings, 21/50 adzuna) -> goldman sachs bank usa
+  + citiustech                 (  535 filings, 15/50 adzuna) -> citiustech
+  + americanairlines           (  528 filings, 19/50 adzuna) -> american airlines
+  + utsouthwesternmedicalcente (  518 filings, 43/50 adzuna) -> ut southwestern medical center
+  + universityofalabamaatbirmi (  490 filings, 23/50 adzuna) -> university of alabama at birmingham
+  + intellectt                 (  386 filings, 50/50 adzuna) -> intellectt
+  + intercontinentalexchange   (  357 filings, 50/50 adzuna) -> intercontinental exchange
+  + chewy                      (  329 filings, 43/50 adzuna) -> chewy
+  + indianauniversityindianapo (  312 filings, 38/50 adzuna) -> indiana university indianapolis
+  + universityofutah           (  310 filings, 24/50 adzuna) -> university of utah
+  + intraedge                  (  253 filings, 23/50 adzuna) -> intraedge
+  + californiainstituteoftechn (  209 filings, 34/50 adzuna) -> california institute of technology
+  + digipulse                  (  209 filings, 27/50 adzuna) -> digipulse technologies
+  + decisionsix                (  207 filings, 13/50 adzuna) -> decision six
+  + aruplaboratories           (  204 filings, 39/50 adzuna) -> arup laboratories
+  + universityofcoloradodenver (  203 filings, 48/50 adzuna) -> university of colorado denver
+  + blackandveatch             (  184 filings, 50/50 adzuna) -> black and veatch
+  + pricewaterhousecoopersllp  (  177 filings, 50/50 adzuna) -> pricewaterhousecoopers llp
+  + epamsystems                (  157 filings, 50/50 adzuna) -> epam systems
+  + burnsandmcdonnellengineeri (  155 filings, 23/50 adzuna) -> burns and mcdonnell engineering
+  + mountsinaihospital         (  150 filings, 49/50 adzuna) -> mount sinai hospital
+  + mitchellmartin             (  141 filings, 14/50 adzuna) -> mitchell martin
+  + coloradostateuniversity    (  139 filings, 32/50 adzuna) -> colorado state university
+  + molex                      (  136 filings, 46/50 adzuna) -> molex
+  + teconnectivity             (  133 filings, 50/50 adzuna) -> te connectivity
+  + pentangletechservices      (  127 filings, 49/50 adzuna) -> pentangle tech services
+  + greycell                   (  126 filings, 43/50 adzuna) -> greycell labs
+  + lathamandwatkinsllp        (  125 filings, 50/50 adzuna) -> latham and watkins llp
+  + siemensenergy              (  125 filings, 48/50 adzuna) -> siemens energy
+  + imrsoft                    (  121 filings, 16/50 adzuna) -> imr soft
+  + millenniumsoftware         (  119 filings, 16/50 adzuna) -> millennium software
+  + infovision                 (  118 filings, 50/50 adzuna) -> infovision
+    verify tataconsultancyservices: 14 jobs
+    verify jpmorganchaseand: 30 jobs
+    verify compunnelsoftware: 20 jobs
+
+wrote 70 adzuna fallback candidates -> candidates_adzuna.json

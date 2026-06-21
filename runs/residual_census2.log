@@ -1,0 +1,30 @@
+residual census over 198 giants (brand-normalized) ...
+  scanned 40/198 (hits: 11)
+  scanned 80/198 (hits: 15)
+  scanned 120/198 (hits: 18)
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  scanned 160/198 (hits: 22)
+detected 23 {'workday': 3, 'smartrecruiters': 3, 'oracle': 1, 'brassring': 1, 'icims': 2, 'taleo': 2, 'avature': 1, 'successfactors': 2, 'greenhouse': 3, 'breezy': 1, 'phenom': 2, 'bamboohr': 1, 'workable': 1}; verifying ...
+  + citibank n a               ( 1960) workday      citi|wd5|2
+  + leland stanford jr univers (  704) workday      stanfordmedicine|wd115|SHC_External_Care
+  + asml us lp                 (  533) smartrecruiters ASML1
+  + university of california s (  526) oracle       iazuqy.fa.ocs.oraclecloud.com|CX_1
+  + hdr engineering            (  167) taleo        hdr.taleo.net|ex|
+  + point72 l p                (  104) greenhouse   point72
+
+wrote 6 candidates {'workday': 2, 'smartrecruiters': 1, 'oracle': 1, 'taleo': 1, 'greenhouse': 1} -> candidates_residual.json

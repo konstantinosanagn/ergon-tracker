@@ -1,0 +1,50 @@
+[
+ {
+  "brand": "3i infotech",
+  "host": "www.3i-infotech.com",
+  "kind": "html-table",
+  "endpoint": "https://www.3i-infotech.com/careers",
+  "n": 24,
+  "titles": [],
+  "filings": 145
+ },
+ {
+  "kind": "provider:workday",
+  "ats": "workday",
+  "id": "stjude|wd1|stjude",
+  "page": "https://talent.stjude.org/careers",
+  "candidate": true,
+  "brand": "st jude medical cardiology division",
+  "host": "talent.stjude.org",
+  "endpoint": "workday:stjude|wd1|stjude",
+  "n": "?",
+  "titles": [],
+  "filings": 137
+ },
+ {
+  "brand": "murthy law firm",
+  "host": "www.murthy.com",
+  "kind": "rss",
+  "endpoint": "https://www.murthy.com/feed/?post_type=jobs",
+  "n": 10,
+  "titles": [
+   "July 2026 Visa Bulletin",
+   "I am applying for naturalization but hav",
+   "Court Grants Temporary Administrative St"
+  ],
+  "filings": 127
+ },
+ {
+  "brand": "datanormus",
+  "host": "www.datanormus.com",
+  "kind": "rss",
+  "endpoint": "https://www.datanormus.com/feed/?post_type=jobs",
+  "n": 5,
+  "titles": [
+   "Datanormus LLC",
+   "BUSINESS ANALYSTS",
+   "LEAD SAP CONSULTANTS"
+  ],
+  "filings": 79
+ }
+]

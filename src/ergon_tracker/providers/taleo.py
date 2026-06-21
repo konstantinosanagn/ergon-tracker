@@ -283,7 +283,11 @@ class TaleoProvider(BaseProvider):
                 title = f[i + 1].strip()
                 window = f[i + 9 : i + 20]
                 loc = next(
-                    (w for w in window if _FTL_LOC.match(w) and not _FTL_DATE.match(w) and not _FTL_CODE.match(w)),
+                    (
+                        w
+                        for w in window
+                        if _FTL_LOC.match(w) and not _FTL_DATE.match(w) and not _FTL_CODE.match(w)
+                    ),
                     None,
                 )
                 posted = next((w for w in window if _FTL_DATE.match(w)), None)
@@ -296,7 +300,12 @@ class TaleoProvider(BaseProvider):
                             company=host.split(".")[0],
                             token=f"{host}|{cs}|",
                             url=_DETAIL.format(host=host, cs=cs, jid=jid),
-                            payload={"_ftl": True, "title": title, "location": loc, "posted": posted},
+                            payload={
+                                "_ftl": True,
+                                "title": title,
+                                "location": loc,
+                                "posted": posted,
+                            },
                         )
                     )
                     if limit is not None and len(raws) >= limit:
@@ -311,7 +320,9 @@ class TaleoProvider(BaseProvider):
         if p.get("_ftl"):  # legacy jobsearch.ftl stream record
             loc_label = p.get("location")
             locations = (
-                [Location(raw=loc_label, is_remote="remote" in loc_label.lower())] if loc_label else []
+                [Location(raw=loc_label, is_remote="remote" in loc_label.lower())]
+                if loc_label
+                else []
             )
             return JobPosting.create(
                 source=self.name,
@@ -321,7 +332,9 @@ class TaleoProvider(BaseProvider):
                 fetched_at=raw.fetched_at,
                 apply_url=raw.url,
                 locations=locations,
-                remote=RemoteType.REMOTE if (locations and locations[0].is_remote) else RemoteType.UNKNOWN,
+                remote=RemoteType.REMOTE
+                if (locations and locations[0].is_remote)
+                else RemoteType.UNKNOWN,
                 department=None,
                 salary=None,
                 posted_at=_parse_date(p.get("posted")),
@@ -340,11 +353,11 @@ class TaleoProvider(BaseProvider):
         title = str(_cell(p.get("linkedColumn")) or "").strip()
 
         loc_idxs = p.get("locationsColumns")
-        loc_label: str | None = None
+        loc_label = None
         if isinstance(loc_idxs, list) and loc_idxs:
             loc_label = _decode_location(_cell(loc_idxs[0]))
 
-        locations: list[Location] = []
+        locations = []
         if loc_label:
             locations.append(Location(raw=loc_label, is_remote="remote" in loc_label.lower()))
 

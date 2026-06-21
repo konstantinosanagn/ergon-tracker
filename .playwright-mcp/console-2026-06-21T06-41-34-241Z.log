@@ -1,0 +1,8 @@
+[     356ms] [LOG] JQMIGRATE: Migrate is installed, version 3.3.0 @ https://performancemanager4.successfactors.com/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery.js:4
+[     357ms] [LOG] JQMIGRATE: Migrate plugin loaded multiple times @ https://performancemanager4.successfactors.com/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery-migrate.js:1
+[     357ms] [LOG] JQMIGRATE: Migrate is installed, version 3.3.0 @ https://performancemanager4.successfactors.com/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery-migrate.js:1
+[     372ms] [LOG] JQMIGRATE: Migrate is installed, version 1.4.1 @ https://jobs.eastman.com/platform/js/jquery/jquery-migrate-1.4.1.js:22
+[     639ms] Uncaught TypeError: Cannot read properties of undefined (reading 'on')
+    at <anonymous> (https://jobs.eastman.com/platform/js/j2w/j2w.bootstrap.dropdown.js:49:67)
+    at e (https://performancemanager4.successfactors.com/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery.js:1:30004)
+    at t (https://performancemanager4.successfactors.com/verp/vmod_v1/ui/extlib/jquery_3.5.1/jquery.js:1:30306)

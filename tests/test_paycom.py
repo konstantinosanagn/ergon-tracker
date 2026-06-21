@@ -10,9 +10,17 @@ KEY = "7C5AC05D8D2EC046AE4FAF26F5F9712E"
 
 def test_matches_jobs_and_portal_urls() -> None:
     m = PaycomProvider.matches
-    assert m(f"https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={KEY}&fromClientSide=true") == KEY
+    assert (
+        m(f"https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={KEY}&fromClientSide=true")
+        == KEY
+    )
     assert m(f"https://www.paycomonline.net/v4/ats/web.php/portal/{KEY}/career-page") == KEY
-    assert m(f"https://www.paycomonline.net/v4/ats/web.php/jobs?jobSearchSettingsId=595&clientkey={KEY}") == KEY
+    assert (
+        m(
+            f"https://www.paycomonline.net/v4/ats/web.php/jobs?jobSearchSettingsId=595&clientkey={KEY}"
+        )
+        == KEY
+    )
     # lowercase clientkey is normalised to upper
     assert m(f"https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={KEY.lower()}") == KEY
 

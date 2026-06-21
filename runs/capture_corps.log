@@ -1,0 +1,11 @@
+  ---      fujitsunorthamerica          no same-domain job API
+  ---      creditkarma                  no same-domain job API
+  ---      twosigmainvestments          no same-domain job API
+  ---      tiktokusdatasecurity         no same-domain job API
+  ---      schlumbergertechnology       no same-domain job API
+  captured slalom                       GET  https://jobs.slalom.com/13/_portalCookieUserConsent?meth
+  ---      twosigmainvestments          no same-domain job API
+  ---      depositorytrustandclearing   no same-domain job API
+  verify slalom                       -> 3 jobs
+
+wrote 1 verified corp candidates -> candidates_corps.json

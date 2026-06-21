@@ -1,0 +1,777 @@
+- generic [active] [ref=e1]:
+  - link "Go to the main content section." [ref=e2] [cursor=pointer]:
+    - /url: "#mainContent"
+  - img "Evergy" [ref=e6]
+  - heading "Careers at Evergy" [level=1] [ref=e8]
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - paragraph [ref=e12]: Want an Evergy job? See all of our current job openings for energy industry jobs.
+      - img "hiring process" [ref=e13]
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - paragraph
+          - generic [ref=e23]:
+            - paragraph
+          - generic [ref=e24]:
+            - paragraph
+          - generic [ref=e25]:
+            - paragraph
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - text: Welcome. You are not signed in.
+            - generic [ref=e28]:
+              - text: "|"
+              - link "My Account Options" [ref=e30] [cursor=pointer]:
+                - /url: "#"
+          - generic [ref=e31]:
+            - generic [ref=e33]:
+              - img "My Job Cart" [ref=e34]
+              - link "My Job Cart" [ref=e36] [cursor=pointer]:
+                - /url: "#"
+              - text: "|"
+              - link "Sign In" [ref=e39] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e40]:
+              - link "Need Help?" [ref=e44] [cursor=pointer]:
+                - /url: mailto:jobs@evergy.com?subject=Need Help - Evergy External Career Page
+              - img "Technical help" [ref=e45]
+          - generic:
+            - paragraph
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - generic [ref=e48]:
+                - paragraph
+              - generic [ref=e49]: Job Search
+            - listitem [ref=e50]:
+              - link "My Jobpage" [ref=e51] [cursor=pointer]:
+                - /url: "#"
+        - list [ref=e52]:
+          - listitem [ref=e53]: Basic Search
+          - listitem [ref=e54]: "|"
+          - listitem [ref=e55]:
+            - link "Advanced Search" [ref=e56] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e57]: "|"
+          - listitem [ref=e58]:
+            - link "All Jobs" [ref=e59] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic:
+              - paragraph
+            - generic [ref=e64]:
+              - heading "Basic Job Search" [level=1] [ref=e67]
+              - heading "Search Criteria" [level=2] [ref=e70]
+              - generic [ref=e72]:
+                - generic [ref=e73]: Specify your job search criteria, then click "Search for Jobs".
+                - generic [ref=e74]:
+                  - link "Hide Search Criteria" [expanded] [ref=e76] [cursor=pointer]:
+                    - /url: "#"
+                  - text: "|"
+                  - link "Save this Search" [ref=e78] [cursor=pointer]:
+                    - /url: "#"
+            - generic:
+              - paragraph
+          - generic [ref=e81]:
+            - generic [ref=e83]:
+              - text: Job Number
+              - textbox "Job Number" [ref=e84]
+              - generic [ref=e85]:
+                - text: Keywords
+                - textbox "Keywords" [ref=e86]
+              - generic:
+                - paragraph
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - paragraph
+                - generic [ref=e90]:
+                  - paragraph
+                - generic [ref=e91]:
+                  - paragraph
+                - generic [ref=e92]:
+                  - paragraph
+              - list [ref=e93]:
+                - listitem [ref=e94]:
+                  - 'img "This criteria can be used for RSS feed creation: Job Field" [ref=e96]'
+                  - text: Job Field
+              - generic [ref=e98]:
+                - text: Job Field
+                - combobox "Job Field" [ref=e100]:
+                  - option "All" [selected]
+                  - option "Accounting"
+                  - option "Administrative"
+                  - option "Application Systems"
+                  - option "Audit Services"
+                  - option "Billing"
+                  - option "Chemistry"
+                  - option "Construction Project Mgmt"
+                  - option "Contact & Business Center"
+                  - option "Corporate Social Impact"
+                  - option "Corp Planning & Treasurer"
+                  - option "Credit Management"
+                  - option "Customer Operations"
+                  - option "Customer Products & Solutions"
+                  - option "Cyber Security"
+                  - option "Distribution Contractor Ops"
+                  - option "Distribution Engineering"
+                  - option "Distribution Operations"
+                  - option "Distribution Scheduling/Design"
+                  - option "Distribution System Operations"
+                  - option "Energy Trading/Power Marketing"
+                  - option "Engineering"
+                  - option "Environmental/Conservation"
+                  - option "Ethics & Compliance"
+                  - option "External Affairs"
+                  - option "Facilities"
+                  - option "Fleet"
+                  - option "Generation Support Engineering"
+                  - option "Human Resources"
+                  - option "Intern"
+                  - option "Investor Relations"
+                  - option "IT Infrastructure"
+                  - option "IT Planning and Operations"
+                  - option "Legal"
+                  - option "Metering Operations"
+                  - option "Nuclear Maintenance"
+                  - option "Nuclear Operations"
+                  - option "Nuclear Plant Support"
+                  - option "Nuclear Quality"
+                  - option "Nuclear Training"
+                  - option "Nuclear Work Management/Outage"
+                  - option "Operations Support Services"
+                  - option "Operations Technology"
+                  - option "Ops Financial & Perf Mgmt"
+                  - option "Org Performance Improvement"
+                  - option "Physical Security"
+                  - option "Plant Maintenance"
+                  - option "Plant Operations"
+                  - option "Power Delivery/Distribution and System Operations"
+                  - option "Project Controls"
+                  - option "Radiation Protection"
+                  - option "Real Estate Services"
+                  - option "Records Management"
+                  - option "Regulatory"
+                  - option "Reliability & Analytics"
+                  - option "Renewable Generation"
+                  - option "Renewables Development"
+                  - option "Risk Management"
+                  - option "Safety"
+                  - option "Strategy & Long Term Planning"
+                  - option "Strategy & Support"
+                  - option "Substation Construction/Maint"
+                  - option "Supply Chain"
+                  - option "Trans & Substation Engineering"
+                  - option "Trans System Ops & Maintenance"
+                  - option "Utility Clerk"
+                - button "Add Job Field" [ref=e103] [cursor=pointer]
+              - generic [ref=e105]:
+                - generic [ref=e106]:
+                  - paragraph
+                - generic [ref=e107]:
+                  - paragraph
+                - generic [ref=e108]:
+                  - paragraph
+                - generic [ref=e109]:
+                  - paragraph
+              - generic:
+                - paragraph
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - paragraph
+                - generic [ref=e113]:
+                  - paragraph
+                - generic [ref=e114]:
+                  - paragraph
+                - generic [ref=e115]:
+                  - paragraph
+              - list [ref=e116]:
+                - listitem [ref=e117]:
+                  - 'img "This criteria can be used for RSS feed creation: Location" [ref=e119]'
+                  - text: Location
+              - generic [ref=e121]:
+                - text: Location
+                - combobox "Location" [ref=e123]:
+                  - option "All" [selected]
+                  - option "Alabama"
+                  - option "Arizona"
+                  - option "Arkansas"
+                  - option "Illinois"
+                  - option "Kansas"
+                  - option "Michigan"
+                  - option "Missouri"
+                  - option "Oklahoma"
+                  - option "Texas"
+                - button "Add Location" [ref=e126] [cursor=pointer]
+              - generic [ref=e128]:
+                - generic [ref=e129]:
+                  - paragraph
+                - generic [ref=e130]:
+                  - paragraph
+                - generic [ref=e131]:
+                  - paragraph
+                - generic [ref=e132]:
+                  - paragraph
+              - generic:
+                - paragraph
+            - generic [ref=e133]:
+              - heading "Search Tips" [level=3] [ref=e134]:
+                - generic [ref=e135]: Search Tips
+              - generic [ref=e136]: You can search jobs by selecting relevant criteria in the drop-down menus. You can also use a job number or a keyword.
+              - generic [ref=e137]:
+                - generic [ref=e138]:
+                  - heading "Saving searches" [level=3] [ref=e139]:
+                    - generic [ref=e140]: Saving searches
+                  - generic [ref=e141]: You can save the current search for reuse by clicking "Save this Search" at the top of the page. Your searches will be saved in the "My Saved Searches" section, under the "My Jobpage" tab.
+                - generic [ref=e142]:
+                  - heading "Advanced job search" [level=3] [ref=e143]:
+                    - generic [ref=e144]: Advanced job search
+                  - generic [ref=e145]: To perform a job search using advanced search criteria, click the "Advanced Search" tab and select the relevant criteria.
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - button "Search for Jobs" [ref=e150] [cursor=pointer]
+            - button "Clear" [ref=e151] [cursor=pointer]
+            - link "Create an RSS feed" [ref=e153] [cursor=pointer]:
+              - /url: "#"
+              - img "Create an RSS feed" [ref=e154]
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - paragraph
+            - generic [ref=e158]:
+              - paragraph
+            - generic [ref=e159]:
+              - paragraph
+            - generic [ref=e160]:
+              - paragraph
+        - generic [ref=e161]:
+          - link "Beginning of the main content section." [ref=e162] [cursor=pointer]:
+            - /url: "#"
+          - heading "Search Results (29 jobs found)" [level=2] [ref=e166]
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]: Results per page
+                  - combobox "Results per page" [ref=e172]:
+                    - option "5"
+                    - option "10"
+                    - option "25" [selected]
+                    - option "50"
+                    - option "100"
+                - generic [ref=e173]:
+                  - generic [ref=e174]: Sort by
+                  - combobox "Sort by" [ref=e175]:
+                    - option "Posting Date (Ascending Order)"
+                    - option "Posting Date (Descending Order)" [selected]
+                    - option "Job Title (Ascending Order)"
+                    - option "Job Title (Descending Order)"
+                    - option "Location (Ascending Order)"
+                    - option "Location (Descending Order)"
+                - generic:
+                  - paragraph
+              - generic:
+                - paragraph
+              - generic [ref=e176]:
+                - generic [ref=e177]:
+                  - generic [ref=e178]:
+                    - heading "System Engineer - Cloud" [level=3] [ref=e181]:
+                      - link "System Engineer - Cloud" [ref=e183] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e186]: "Requisition ID: INF00EO"
+                    - generic [ref=e187]:
+                      - text: "Work Locations:"
+                      - generic [ref=e188]: Kansas-Topeka, Missouri-Kansas City
+                    - generic [ref=e189]: "Job Posting: Jun 19, 2026"
+                    - generic [ref=e190]: "Unposting Date: Jun 21, 2026"
+                  - generic [ref=e191]:
+                    - link "Apply" [ref=e193] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e195] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e196]:
+                  - generic [ref=e197]:
+                    - heading "Helper" [level=3] [ref=e200]:
+                      - link "Helper" [ref=e202] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e205]: "Requisition ID: CUS00IX"
+                    - generic [ref=e206]:
+                      - text: "Work Locations:"
+                      - generic [ref=e207]: Missouri-Kansas City
+                    - generic [ref=e208]: "Job Posting: Jun 17, 2026"
+                    - generic [ref=e209]: "Unposting Date: Jun 24, 2026"
+                  - generic [ref=e210]:
+                    - link "Apply" [ref=e212] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e214] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e215]:
+                  - generic [ref=e216]:
+                    - heading "SC Digital Developer" [level=3] [ref=e219]:
+                      - link "SC Digital Developer" [ref=e221] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e224]: "Requisition ID: CFO0075"
+                    - generic [ref=e225]:
+                      - text: "Work Locations:"
+                      - generic [ref=e226]: Missouri-Kansas City, Kansas-Topeka
+                    - generic [ref=e227]: "Job Posting: Jun 15, 2026"
+                    - generic [ref=e228]: "Unposting Date: Jun 29, 2026"
+                  - generic [ref=e229]:
+                    - link "Apply" [ref=e231] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e233] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e234]:
+                  - generic [ref=e235]:
+                    - heading "Digital Product Manager" [level=3] [ref=e238]:
+                      - link "Digital Product Manager" [ref=e240] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e243]: "Requisition ID: PUB000U"
+                    - generic [ref=e244]:
+                      - text: "Work Locations:"
+                      - generic [ref=e245]: Missouri-Kansas City, United States
+                    - generic [ref=e246]: "Job Posting: Jun 10, 2026"
+                    - generic [ref=e247]: "Unposting Date: Jun 24, 2026"
+                  - generic [ref=e248]:
+                    - link "Apply" [ref=e250] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e252] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e253]:
+                  - generic [ref=e254]:
+                    - heading "Sourcing Agent" [level=3] [ref=e257]:
+                      - link "Sourcing Agent" [ref=e259] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e262]: "Requisition ID: CFO006Z"
+                    - generic [ref=e263]:
+                      - text: "Work Locations:"
+                      - generic [ref=e264]: Kansas-Topeka, Missouri-Kansas City, United States
+                    - generic [ref=e265]: "Job Posting: Jun 10, 2026"
+                    - generic [ref=e266]: "Unposting Date: Jun 24, 2026"
+                  - generic [ref=e267]:
+                    - link "Apply" [ref=e269] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e271] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e272]:
+                  - generic [ref=e273]:
+                    - heading "Supply Chain Planner" [level=3] [ref=e276]:
+                      - link "Supply Chain Planner" [ref=e278] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e281]: "Requisition ID: CFO0072"
+                    - generic [ref=e282]:
+                      - text: "Work Locations:"
+                      - generic [ref=e283]:
+                        - text: Kansas-Topeka, Missouri-Kansas City, Kansas-Wichita
+                        - 'generic "Position available in other locations: Kansas-Topeka" [ref=e284]':
+                          - link "More..." [ref=e285] [cursor=pointer]:
+                            - /url: "#"
+                    - generic [ref=e286]: "Job Posting: Jun 10, 2026"
+                    - generic [ref=e287]: "Unposting Date: Jun 24, 2026"
+                  - generic [ref=e288]:
+                    - link "Apply" [ref=e290] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e292] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e293]:
+                  - generic [ref=e294]:
+                    - heading "Supv TD Warehouse" [level=3] [ref=e297]:
+                      - link "Supv TD Warehouse" [ref=e299] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e302]: "Requisition ID: CFO0074"
+                    - generic [ref=e303]:
+                      - text: "Work Locations:"
+                      - generic [ref=e304]: Kansas-Topeka, Kansas-Topeka
+                    - generic [ref=e305]: "Job Posting: Jun 10, 2026"
+                    - generic [ref=e306]: "Unposting Date: Jun 24, 2026"
+                  - generic [ref=e307]:
+                    - link "Apply" [ref=e309] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e311] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e312]:
+                  - generic [ref=e313]:
+                    - heading "Quantitative Analyst (I, II, Sr, Lead)" [level=3] [ref=e316]:
+                      - link "Quantitative Analyst (I, II, Sr, Lead)" [ref=e318] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e321]: "Requisition ID: FOS00KN"
+                    - generic [ref=e322]:
+                      - text: "Work Locations:"
+                      - generic [ref=e323]: Kansas-Topeka, Missouri-Kansas City
+                    - generic [ref=e324]: "Job Posting: Jun 8, 2026"
+                    - generic [ref=e325]: "Unposting Date: Jun 28, 2026"
+                  - generic [ref=e326]:
+                    - link "Apply" [ref=e328] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e330] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - heading "Sr / Lead Auditor" [level=3] [ref=e335]:
+                      - link "Sr / Lead Auditor" [ref=e337] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e340]: "Requisition ID: CFO006W"
+                    - generic [ref=e341]:
+                      - text: "Work Locations:"
+                      - generic [ref=e342]: Missouri-Kansas City, Kansas-Topeka
+                    - generic [ref=e343]: "Job Posting: Jun 8, 2026"
+                    - generic [ref=e344]: "Unposting Date: Jun 22, 2026"
+                  - generic [ref=e345]:
+                    - link "Apply" [ref=e347] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e349] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e350]:
+                  - generic [ref=e351]:
+                    - heading "Communications Content Specialist" [level=3] [ref=e354]:
+                      - link "Communications Content Specialist" [ref=e356] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e359]: "Requisition ID: PUB000V"
+                    - generic [ref=e360]:
+                      - text: "Work Locations:"
+                      - generic [ref=e361]: Kansas-Burlington
+                    - generic [ref=e362]: "Job Posting: Jun 4, 2026"
+                    - generic [ref=e363]: "Unposting Date: Jun 22, 2026"
+                  - generic [ref=e364]:
+                    - link "Apply" [ref=e366] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e368] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e369]:
+                  - generic [ref=e370]:
+                    - heading "Distribution Engineer" [level=3] [ref=e373]:
+                      - link "Distribution Engineer" [ref=e375] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e378]: "Requisition ID: DIS00Y1"
+                    - generic [ref=e379]:
+                      - text: "Work Locations:"
+                      - generic [ref=e380]: Missouri-Kansas City
+                    - generic [ref=e381]: "Job Posting: Jun 1, 2026"
+                    - generic [ref=e382]: "Unposting Date: Jun 29, 2026"
+                  - generic [ref=e383]:
+                    - link "Apply" [ref=e385] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e387] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e388]:
+                  - generic [ref=e389]:
+                    - heading "Substation Civil Design Engineer" [level=3] [ref=e392]:
+                      - link "Substation Civil Design Engineer" [ref=e394] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e397]: "Requisition ID: TRA00ZL"
+                    - generic [ref=e398]:
+                      - text: "Work Locations:"
+                      - generic [ref=e399]: Kansas-Topeka
+                    - generic [ref=e400]: "Job Posting: May 27, 2026"
+                    - generic [ref=e401]: "Unposting Date: Jun 28, 2026"
+                  - generic [ref=e402]:
+                    - link "Apply" [ref=e404] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e406] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e407]:
+                  - generic [ref=e408]:
+                    - heading "Rescue Personnel" [level=3] [ref=e411]:
+                      - link "Rescue Personnel" [ref=e413] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e416]: "Requisition ID: FOS00D1"
+                    - generic [ref=e417]:
+                      - text: "Work Locations:"
+                      - generic [ref=e418]: Kansas-St. Marys
+                    - generic [ref=e419]: "Job Posting: May 22, 2026"
+                    - generic [ref=e420]: "Unposting Date: Ongoing"
+                  - generic [ref=e421]:
+                    - link "Apply" [ref=e423] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e425] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e426]:
+                  - generic [ref=e427]:
+                    - heading "Electrician Journeyman" [level=3] [ref=e430]:
+                      - link "Electrician Journeyman" [ref=e432] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e435]: "Requisition ID: FOS00IY"
+                    - generic [ref=e436]:
+                      - text: "Work Locations:"
+                      - generic [ref=e437]: Missouri-Weston
+                    - generic [ref=e438]: "Job Posting: May 18, 2026"
+                    - generic [ref=e439]: "Unposting Date: Ongoing"
+                  - generic [ref=e440]:
+                    - link "Apply" [ref=e442] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e444] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e445]:
+                  - generic [ref=e446]:
+                    - heading "Operations Apprentice II" [level=3] [ref=e449]:
+                      - link "Operations Apprentice II" [ref=e451] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e454]: "Requisition ID: NUC00E5"
+                    - generic [ref=e455]:
+                      - text: "Work Locations:"
+                      - generic [ref=e456]: Kansas-Burlington
+                    - generic [ref=e457]: "Job Posting: May 15, 2026"
+                    - generic [ref=e458]: "Unposting Date: Ongoing"
+                  - generic [ref=e459]:
+                    - link "Apply" [ref=e461] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e463] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e464]:
+                  - generic [ref=e465]:
+                    - heading "Mechanic Journeyman" [level=3] [ref=e468]:
+                      - link "Mechanic Journeyman" [ref=e470] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e473]: "Requisition ID: FOS00JH"
+                    - generic [ref=e474]:
+                      - text: "Work Locations:"
+                      - generic [ref=e475]: Kansas-Lacygne
+                    - generic [ref=e476]: "Job Posting: May 7, 2026"
+                    - generic [ref=e477]: "Unposting Date: Ongoing"
+                  - generic [ref=e478]:
+                    - link "Apply" [ref=e480] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e482] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e483]:
+                  - generic [ref=e484]:
+                    - heading "I&C Technician" [level=3] [ref=e487]:
+                      - link "I&C Technician" [ref=e489] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e492]: "Requisition ID: FOS00JG"
+                    - generic [ref=e493]:
+                      - text: "Work Locations:"
+                      - generic [ref=e494]: Kansas-Lacygne
+                    - generic [ref=e495]: "Job Posting: Apr 1, 2026"
+                    - generic [ref=e496]: "Unposting Date: Ongoing"
+                  - generic [ref=e497]:
+                    - link "Apply" [ref=e499] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e501] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e502]:
+                  - generic [ref=e503]:
+                    - heading "Troubleshooter (Lineman Journeyman)" [level=3] [ref=e506]:
+                      - link "Troubleshooter (Lineman Journeyman)" [ref=e508] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e511]: "Requisition ID: DIS00XM"
+                    - generic [ref=e512]:
+                      - text: "Work Locations:"
+                      - generic [ref=e513]: Kansas-Wichita
+                    - generic [ref=e514]: "Job Posting: Mar 23, 2026"
+                    - generic [ref=e515]: "Unposting Date: Ongoing"
+                  - generic [ref=e516]:
+                    - link "Apply" [ref=e518] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e520] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e521]:
+                  - generic [ref=e522]:
+                    - heading "Lineman - Journeyman" [level=3] [ref=e525]:
+                      - link "Lineman - Journeyman" [ref=e527] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e530]: "Requisition ID: DIS00XP"
+                    - generic [ref=e531]:
+                      - text: "Work Locations:"
+                      - generic [ref=e532]: Missouri-Kansas City
+                    - generic [ref=e533]: "Job Posting: Mar 11, 2026"
+                    - generic [ref=e534]: "Unposting Date: Ongoing"
+                  - generic [ref=e535]:
+                    - link "Apply" [ref=e537] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e539] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e540]:
+                  - generic [ref=e541]:
+                    - heading "Lineman -Journeyman" [level=3] [ref=e544]:
+                      - link "Lineman -Journeyman" [ref=e546] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e549]: "Requisition ID: DIS00XF"
+                    - generic [ref=e550]:
+                      - text: "Work Locations:"
+                      - generic [ref=e551]: Kansas-Leavenworth
+                    - generic [ref=e552]: "Job Posting: Mar 10, 2026"
+                    - generic [ref=e553]: "Unposting Date: Ongoing"
+                  - generic [ref=e554]:
+                    - link "Apply" [ref=e556] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e558] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e559]:
+                  - generic [ref=e560]:
+                    - heading "Mechanical Engineer - Generation Development & Construction" [level=3] [ref=e563]:
+                      - link "Mechanical Engineer - Generation Development & Construction" [ref=e565] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e568]: "Requisition ID: DEV0002"
+                    - generic [ref=e569]:
+                      - text: "Work Locations:"
+                      - generic [ref=e570]: Missouri-Kansas City, Kansas-Topeka, Kansas-Wichita
+                    - generic [ref=e571]: "Job Posting: Feb 23, 2026"
+                    - generic [ref=e572]: "Unposting Date: Ongoing"
+                  - generic [ref=e573]:
+                    - link "Apply" [ref=e575] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e577] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e578]:
+                  - generic [ref=e579]:
+                    - heading "Lineman -Journeyman" [level=3] [ref=e582]:
+                      - link "Lineman -Journeyman" [ref=e584] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e587]: "Requisition ID: DIS00WS"
+                    - generic [ref=e588]:
+                      - text: "Work Locations:"
+                      - generic [ref=e589]: Kansas-Topeka
+                    - generic [ref=e590]: "Job Posting: Feb 3, 2026"
+                    - generic [ref=e591]: "Unposting Date: Ongoing"
+                  - generic [ref=e592]:
+                    - link "Apply" [ref=e594] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e596] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e597]:
+                  - generic [ref=e598]:
+                    - heading "Electrician Journeyman" [level=3] [ref=e601]:
+                      - link "Electrician Journeyman" [ref=e603] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e606]: "Requisition ID: FOS00IH"
+                    - generic [ref=e607]:
+                      - text: "Work Locations:"
+                      - generic [ref=e608]: Kansas-Lacygne
+                    - generic [ref=e609]: "Job Posting: Jan 21, 2026"
+                    - generic [ref=e610]: "Unposting Date: Ongoing"
+                  - generic [ref=e611]:
+                    - link "Apply" [ref=e613] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e615] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e616]:
+                  - generic [ref=e617]:
+                    - heading "Power Plant Controls Engineer - Generation Development & Construction" [level=3] [ref=e620]:
+                      - link "Power Plant Controls Engineer - Generation Development & Construction" [ref=e622] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e625]: "Requisition ID: DEV0005"
+                    - generic [ref=e626]:
+                      - text: "Work Locations:"
+                      - generic [ref=e627]: Missouri-Kansas City, Kansas-Topeka, Kansas-Wichita
+                    - generic [ref=e628]: "Job Posting: Jan 15, 2026"
+                    - generic [ref=e629]: "Unposting Date: Ongoing"
+                  - generic [ref=e630]:
+                    - link "Apply" [ref=e632] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e634] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e635]:
+                  - generic [ref=e636]:
+                    - heading "Electrical Engineer - Generation Development & Construction" [level=3] [ref=e639]:
+                      - link "Electrical Engineer - Generation Development & Construction" [ref=e641] [cursor=pointer]:
+                        - /url: "#"
+                    - generic [ref=e644]: "Requisition ID: TRE001N"
+                    - generic [ref=e645]:
+                      - text: "Work Locations:"
+                      - generic [ref=e646]: Missouri-Kansas City, Kansas-Topeka
+                    - generic [ref=e647]: "Job Posting: Dec 2, 2025"
+                    - generic [ref=e648]: "Unposting Date: Ongoing"
+                  - generic [ref=e649]:
+                    - link "Apply" [ref=e651] [cursor=pointer]:
+                      - /url: "#"
+                    - text: "|"
+                    - link "Add to My Job Cart" [ref=e653] [cursor=pointer]:
+                      - /url: "#"
+              - generic [ref=e654]:
+                - generic [ref=e655]:
+                  - generic [ref=e656]: Jobs - Page 1 out of 2
+                  - link "Previous" [disabled] [ref=e659]:
+                    - /url: "#"
+                    - text: Previous
+                  - generic [ref=e662]: "|"
+                  - link "1" [disabled] [ref=e665]:
+                    - /url: "#"
+                    - text: "1"
+                  - link "2" [ref=e670] [cursor=pointer]:
+                    - /url: "#"
+                    - text: "2"
+                  - generic [ref=e673]: "|"
+                  - link "Next" [ref=e676] [cursor=pointer]:
+                    - /url: "#"
+                    - text: Next
+                - alert [ref=e679]
+            - generic [ref=e680]:
+              - generic [ref=e681]:
+                - heading "Candidate Profile" [level=3] [ref=e683]:
+                  - generic [ref=e684]: Candidate Profile
+                - generic [ref=e686]: Take a few minutes to create or modify your employment profile and to specify your preferred working criteria for future openings matching your interests.
+                - link "Access my profile" [ref=e688] [cursor=pointer]:
+                  - /url: "#"
+              - generic [ref=e693]:
+                - heading "Icon legend" [level=3] [ref=e695]:
+                  - generic [ref=e696]: Icon legend
+                - img "More information"
+                - generic [ref=e698]: More information
+                - img "Added to the job cart"
+                - generic [ref=e700]: Added to the job cart
+                - generic:
+                  - generic:
+                    - img "Draft submission"
+                - generic [ref=e703]: Draft submission
+                - generic:
+                  - generic:
+                    - img "Completed submission"
+                - generic [ref=e706]: Completed submission
+      - generic [ref=e710]:
+        - generic [ref=e712]:
+          - link "Need Help?" [ref=e716] [cursor=pointer]:
+            - /url: mailto:jobs@evergy.com?subject=Need Help - Evergy External Career Page
+          - img "Technical help" [ref=e717]
+        - generic:
+          - paragraph
+  - generic [ref=e721]:
+    - paragraph [ref=e722]:
+      - text: Copyright 2019 Evergy. All rights reserved.
+      - link "Privacy Statement" [ref=e723] [cursor=pointer]:
+        - /url: https://www.evergy.com/%7E/link.aspx?_id=5CB8371B4B024F3CACF6BBEEC41AA249&_z=z
+      - text: "|"
+      - link "Terms and Conditions" [ref=e724] [cursor=pointer]:
+        - /url: https://www.evergy.com/%7E/link.aspx?_id=B22284E511C742A4AB581E8190E8FD82&_z=z
+    - list [ref=e725]:
+      - listitem [ref=e726]:
+        - link "facebook" [ref=e727] [cursor=pointer]:
+          - /url: "#"
+          - img "facebook" [ref=e728]
+      - listitem [ref=e729]:
+        - link "twitter" [ref=e730] [cursor=pointer]:
+          - /url: "#"
+          - img "twitter" [ref=e731]
+      - listitem [ref=e732]:
+        - link "youtube" [ref=e733] [cursor=pointer]:
+          - /url: "#"
+          - img "youtube" [ref=e734]
+      - listitem [ref=e735]:
+        - link "linkedIn" [ref=e736] [cursor=pointer]:
+          - /url: "#"
+          - img "linkedIn" [ref=e737]

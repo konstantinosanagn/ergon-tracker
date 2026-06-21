@@ -1,0 +1,203 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#main"
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /en/
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Careers
+            - generic [ref=e15]:
+              - list [ref=e16]:
+                - listitem [ref=e17]:
+                  - link "Contact Us" [ref=e18] [cursor=pointer]:
+                    - /url: /en/contact
+                    - generic [ref=e19]: Contact Us
+                - listitem [ref=e20]:
+                  - link "Linde Corporate" [ref=e21] [cursor=pointer]:
+                    - /url: https://www.linde.com/
+                    - generic [ref=e22]: Linde Corporate
+                - listitem [ref=e23]:
+                  - link "Global Locations" [ref=e24] [cursor=pointer]:
+                    - /url: https://www.linde.com/global-locations
+                    - generic [ref=e25]: Global Locations
+              - tab " Global" [ref=e27] [cursor=pointer]:
+                - generic [ref=e28]: 
+                - text: Global
+          - generic [ref=e29]:
+            - text:  
+            - generic [ref=e30]:
+              - menubar [ref=e34]:
+                - menuitem "Search Jobs" [ref=e35]:
+                  - menuitem "Search Jobs" [ref=e36] [cursor=pointer]
+                - menuitem "Why Linde?" [ref=e37]:
+                  - menuitem "Why Linde?" [ref=e38] [cursor=pointer]
+                - menuitem "Our Roles" [ref=e39]:
+                  - menuitem "Our Roles" [ref=e40] [cursor=pointer]
+                - menuitem "Our Programs" [ref=e41]:
+                  - menuitem "Our Programs" [ref=e42] [cursor=pointer]
+                - menuitem "Our Commitments" [ref=e43]:
+                  - menuitem "Our Commitments" [ref=e44] [cursor=pointer]
+                - menuitem "Inclusion" [ref=e45]:
+                  - menuitem "Inclusion" [ref=e46] [cursor=pointer]
+              - text:  
+            - generic [ref=e48]:
+              - text:  
+              - tab "" [ref=e49]:
+                - generic [ref=e50] [cursor=pointer]:
+                  - generic [ref=e51]: 
+                  - text: 
+              - text: 
+      - generic:   
+  - main [ref=e52]:
+    - navigation "breadcumb" [ref=e55]:
+      - list [ref=e56]:
+        - listitem [ref=e57]:
+          - link "Home" [ref=e58] [cursor=pointer]:
+            - /url: /en/
+        - listitem [ref=e59]:
+          - text: 
+          - generic [ref=e60]: Search Jobs
+    - generic [ref=e64]:
+      - heading "Search Jobs" [level=1] [ref=e65]: Search Jobs
+      - heading "Discover Exciting Career Opportunities at Linde" [level=2] [ref=e66]: Discover Exciting Career Opportunities at Linde
+      - generic [ref=e67]:
+        - text: Linde is a diverse global community of trailblazers working together to
+        - emphasis [ref=e68]: make our world more productive
+        - text: . Join us on our mission and redefine what’s possible in your career.
+    - generic [ref=e69]:
+      - heading "Find a job" [level=4] [ref=e72]:
+        - link "Find a job" [ref=e73] [cursor=pointer]:
+          - /url: /en/job-locations
+      - generic [ref=e75]:
+        - heading "Our Global Presence" [level=4] [ref=e76]
+        - paragraph [ref=e77]: At Linde, our employees work in more than 80 countries worldwide. We celebrate our global presence and reputation and are deeply committed to our local communities. Just so you know, depending on where you work in the world and in which sector of our business, Linde might operate under a different brand name. Discover them below.
+      - img "Image showing Linde company logos" [ref=e81]
+      - generic [ref=e83]:
+        - heading "Our Application Process" [level=4] [ref=e84]
+        - paragraph [ref=e85]: We endeavor to be as transparent as we can throughout our recruitment process. While not every job will have the same application flow, here’s what you can generally expect when you apply at Linde.
+      - generic [ref=e86]:
+        - heading "Your Candidate Journey" [level=3] [ref=e88]: Your Candidate Journey
+        - group [ref=e89]:
+          - 'generic "Step 1: Explore Our Job Vacancies " [ref=e90] [cursor=pointer]':
+            - 'heading "Step 1: Explore Our Job Vacancies" [level=5] [ref=e91]': "Step 1: Explore Our Job Vacancies"
+            - text: 
+        - group [ref=e92]:
+          - 'generic "Step 2: Complete Your Online Application " [ref=e93] [cursor=pointer]':
+            - 'heading "Step 2: Complete Your Online Application" [level=5] [ref=e94]': "Step 2: Complete Your Online Application"
+            - text: 
+        - group [ref=e95]:
+          - 'generic "Step 3: Screening and Meeting " [ref=e96] [cursor=pointer]':
+            - 'heading "Step 3: Screening and Meeting" [level=5] [ref=e97]': "Step 3: Screening and Meeting"
+            - text: 
+        - group [ref=e98]:
+          - 'generic "Step 4: Our Offer and Pre-boarding " [ref=e99] [cursor=pointer]':
+            - 'heading "Step 4: Our Offer and Pre-boarding" [level=5] [ref=e100]': "Step 4: Our Offer and Pre-boarding"
+            - text: 
+        - group [ref=e101]:
+          - 'generic "Step 5: Welcome! Onboarding Time " [ref=e102] [cursor=pointer]':
+            - 'heading "Step 5: Welcome! Onboarding Time" [level=5] [ref=e103]'
+            - text: 
+      - generic [ref=e106]:
+        - article [ref=e107]:
+          - link "Three Linde employees in hard hats talking beside a Linde branded bulk gas delivery vehicle. Why Linde? A career at Linde provides limitless ways to achieve your potential, while making a positive impact in the world. Work with purpose. Work with Linde. " [ref=e108] [cursor=pointer]:
+            - /url: /en/why-linde
+            - img "Three Linde employees in hard hats talking beside a Linde branded bulk gas delivery vehicle." [ref=e110]
+            - generic [ref=e111]:
+              - generic [ref=e112]: Why Linde?
+              - paragraph [ref=e113]: A career at Linde provides limitless ways to achieve your potential, while making a positive impact in the world. Work with purpose. Work with Linde.
+              - generic [ref=e114]: 
+        - article [ref=e115]:
+          - link "\"Four Linde engineers in hard hats talking to each other while walking through an industrial plant.\" Our Roles Discover the diverse range of roles at Linde. From engineers in Shanghai to drivers in Delaware and marketers in Munich, together, we redefine what's possible. " [ref=e116] [cursor=pointer]:
+            - /url: /en/our-roles
+            - img "\"Four Linde engineers in hard hats talking to each other while walking through an industrial plant.\"" [ref=e118]
+            - generic [ref=e119]:
+              - generic [ref=e120]: Our Roles
+              - paragraph [ref=e121]: Discover the diverse range of roles at Linde. From engineers in Shanghai to drivers in Delaware and marketers in Munich, together, we redefine what's possible.
+              - generic [ref=e122]: 
+        - article [ref=e123]:
+          - link "Diverse group of four graduates in a casual business setting looking at a laptop on a coffee table. Our Programs Limitless opportunities lie ahead at Linde. Launch your career through one of our student and graduate programs and grow with us. " [ref=e124] [cursor=pointer]:
+            - /url: /en/our-programs
+            - img "Diverse group of four graduates in a casual business setting looking at a laptop on a coffee table." [ref=e126]
+            - generic [ref=e127]:
+              - generic [ref=e128]: Our Programs
+              - paragraph [ref=e129]: Limitless opportunities lie ahead at Linde. Launch your career through one of our student and graduate programs and grow with us.
+              - generic [ref=e130]: 
+      - generic [ref=e131]:
+        - heading "FAQs" [level=3] [ref=e133]: FAQs
+        - group [ref=e134]:
+          - generic "Application " [ref=e135] [cursor=pointer]:
+            - heading "Application" [level=5] [ref=e136]
+            - text: 
+        - group [ref=e137]:
+          - generic "Jobs " [ref=e138] [cursor=pointer]:
+            - heading "Jobs" [level=5] [ref=e139]
+            - text: 
+        - group [ref=e140]:
+          - generic "Benefits " [ref=e141] [cursor=pointer]:
+            - heading "Benefits" [level=5] [ref=e142]
+            - text: 
+      - generic [ref=e144]:
+        - article [ref=e146]:
+          - heading "Get in touch with our Team" [level=5] [ref=e147]
+          - link "Contact Us " [ref=e148] [cursor=pointer]:
+            - /url: /en/contact
+        - heading "Any Questions?" [level=4] [ref=e149]
+        - paragraph [ref=e150]: Feel free to reach out to our Global Talent, Inclusion & Engagement Team. We want to make your application journey as smooth as possible and will always be willing to help.
+  - contentinfo [ref=e151]:
+    - generic [ref=e155]:
+      - generic [ref=e156]:
+        - heading "Welcome to our world" [level=4] [ref=e157]
+        - paragraph [ref=e158]: We are a global company, with operations spanning more than 80 countries.
+        - link "Explore the world of Linde" [ref=e159] [cursor=pointer]:
+          - /url: https://www.linde.com/global-locations
+      - img [ref=e161]
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - generic [ref=e248]: Making our world more productive
+        - list [ref=e249]:
+          - listitem [ref=e250]:
+            - link "Cookie Settings" [ref=e251] [cursor=pointer]:
+              - /url: javascript:Optanon.ToggleInfoDisplay();
+          - listitem [ref=e252]:
+            - link "Imprint" [ref=e253] [cursor=pointer]:
+              - /url: /en/imprint
+          - listitem [ref=e254]:
+            - link "Privacy Notice" [ref=e255] [cursor=pointer]:
+              - /url: /en/privacy-notice
+          - listitem [ref=e256]:
+            - link "Terms of Use" [ref=e257] [cursor=pointer]:
+              - /url: /en/terms-of-use
+      - generic [ref=e258]:
+        - generic [ref=e259]: © Linde PLC 2018 - 2026
+        - list [ref=e260]:
+          - listitem [ref=e261]:
+            - link "LinkedIn" [ref=e262] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/linde/
+              - generic [ref=e263]: 
+          - listitem [ref=e264]:
+            - link "Facebook" [ref=e265] [cursor=pointer]:
+              - /url: https://www.facebook.com/lindeplc
+              - generic [ref=e266]: 
+          - listitem [ref=e267]:
+            - link "YouTube" [ref=e268] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/linde
+              - generic [ref=e269]: 
+          - listitem [ref=e270]:
+            - link "Instagram" [ref=e271] [cursor=pointer]:
+              - /url: https://www.instagram.com/lindeplc/
+              - generic [ref=e272]: 
+  - region "Cookie banner" [active] [ref=e273]:
+    - dialog "Cookie Preferences" [ref=e274]:
+      - generic [ref=e275]:
+        - generic [ref=e277]:
+          - heading "Cookie Preferences" [level=2] [ref=e278]
+          - generic [ref=e279]: By clicking “Accept All Cookies”, you agree to the storing of cookies and similar technologies on your device to enhance site navigation, analyze site usage, offer certain functionalities and assist in our marketing efforts. Strictly necessary cookies are always active. You can also manage your cookie choices individually by clicking on "Cookies Settings". Various cookies may be set by third party providers located in the US. By agreeing to such cookies, you also consent to the transfer of your data to the US acc. to Art. 49 (1) a EU GDPR. Please note that although Linde takes measures to protect your data in case of such a transfer, the US recipient may not be able to provide protection which is essentially equivalent to the level of protection in the EU/EEA/Switzerland due to peculiarities of US law. In particular, access to data by US authorities may be possible and more extensive than in the EU and non-US nationals may not have effective legal remedies against such access.
+        - generic [ref=e281]:
+          - button "Cookies Settings, Opens the preference center dialog" [ref=e282] [cursor=pointer]: Cookies Settings
+          - generic [ref=e283]:
+            - button "Reject" [ref=e284] [cursor=pointer]
+            - button "Accept All Cookies" [ref=e285] [cursor=pointer]

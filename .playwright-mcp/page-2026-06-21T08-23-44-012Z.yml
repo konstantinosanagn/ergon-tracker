@@ -1,0 +1,265 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e2]: Press Option+1 for screen-reader mode, Option+0 to cancel
+  - button "Use Website In a Screen-Reader Mode" [ref=e3]
+  - link "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window" [ref=e4] [cursor=pointer]:
+    - /url: https://accessibe.com/blog/knowledgebase/screen-reader-guide
+  - generic:
+    - generic:
+      - region "Skip Links":
+        - generic:
+          - link "Skip to Content":
+            - /url: "#acsbContent"
+            - text: Skip to Content
+            - generic:
+              - generic: ↵
+              - text: ENTER
+  - dialog [ref=e5]:
+    - generic [ref=e6]:
+      - img [ref=e7]
+      - text: Simplify Text
+    - button [ref=e9] [cursor=pointer]:
+      - img [ref=e10]
+  - 'button "Open accessiBe: accessibility options, statement and help" [ref=e13] [cursor=pointer]':
+    - generic:
+      - img [ref=e14]
+      - img
+      - img
+  - link "Skip to content" [ref=e17] [cursor=pointer]:
+    - /url: "#content"
+  - banner:
+    - generic [ref=e18]:
+      - paragraph [ref=e22]:
+        - text: Download the New
+        - strong [ref=e23]:
+          - link "State of Biometric Security in Age of AI Fraud Report" [ref=e24] [cursor=pointer]:
+            - /url: https://www.aware.com/resource/biometric-security-in-the-age-of-ai-fraud-report/
+      - generic [ref=e27]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://www.aware.com
+        - generic [ref=e31]:
+          - navigation "Menu" [ref=e33]:
+            - generic "Menu Toggle" [ref=e34]:
+              - list [ref=e35]:
+                - listitem [ref=e36]:
+                  - generic [ref=e37] [cursor=pointer]:
+                    - generic [ref=e39]: Platform
+                    - button "Open Platform" [ref=e40]:
+                      - generic [ref=e41]:
+                        - img [ref=e42]
+                        - generic [ref=e44]: Open Platform
+                  - generic: 諒 諒 諒 諒 諒 諒 諒 諒 諒 諒 諒 諒
+                - listitem [ref=e45]:
+                  - generic [ref=e46] [cursor=pointer]:
+                    - generic [ref=e48]: Solutions
+                    - button "Open Solutions" [ref=e49]:
+                      - generic [ref=e50]:
+                        - img [ref=e51]
+                        - generic [ref=e53]: Open Solutions
+                  - generic: 諒 諒 諒 諒 諒 諒 諒 諒
+                - listitem [ref=e54]:
+                  - generic [ref=e55] [cursor=pointer]:
+                    - generic [ref=e57]: Learn
+                    - button "Open Learn" [ref=e58]:
+                      - generic [ref=e59]:
+                        - img [ref=e60]
+                        - generic [ref=e62]: Open Learn
+                  - generic: 諒 諒 諒 諒 諒 諒 諒 諒 諒 諒 諒
+          - link [ref=e65] [cursor=pointer]:
+            - /url: "#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjI3MjkzIiwidG9nZ2xlIjpmYWxzZX0%3D"
+            - img [ref=e66]
+          - link "BOOK A DEMO" [ref=e71] [cursor=pointer]:
+            - /url: /request-demo/
+            - generic [ref=e73]: BOOK A DEMO
+  - main [ref=e74]:
+    - generic [ref=e76]:
+      - generic [ref=e80]:
+        - heading "Being Aware™" [level=1] [ref=e82]:
+          - emphasis [ref=e83]: Being
+          - text: Aware™
+        - generic [ref=e84]: Rise with wisdom, move with purpose, and grow without limits. At Aware, our people—driven by science and guided by curiosity— empower customers to make confident, informed decisions while protecting trust at every step.
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - img "intentional" [ref=e92]
+            - heading "Intentional" [level=2] [ref=e94]
+            - generic [ref=e95]: We move with focus and courage. We act boldly on what matters most, always considering the impact of every decision.
+          - generic [ref=e96]:
+            - img "tenacious" [ref=e98]
+            - heading "Tenacious" [level=2] [ref=e100]
+            - generic [ref=e101]: We are relentless about the success of our customers and teammates. With urgency, resilience, and creativity, we anticipate needs, surpass expectations, and persist until solutions are found.
+          - generic [ref=e102]:
+            - img "empathetic" [ref=e104]
+            - heading "Empathetic" [level=2] [ref=e106]
+            - generic [ref=e107]: We lead by listening, valuing diverse perspectives, and building trust. Empathy guides how we collaborate internally and how we serve the world externally.
+          - generic [ref=e108]:
+            - img "groundbreaking" [ref=e110]
+            - heading "Groundbreaking" [level=2] [ref=e112]
+            - generic [ref=e113]: We embrace curiosity and data-driven creativity. We pursue bold ideas that break new ground, while staying grounded in responsibility and impact.
+          - generic [ref=e114]:
+            - img "trustworthy" [ref=e116]
+            - heading "Trustworthy" [level=2] [ref=e118]
+            - generic [ref=e119]: We do what is right—always. By upholding the highest standards, we earn trust and ensure accountability in everything we do.
+        - generic [ref=e120]:
+          - heading "Why Aware?" [level=2] [ref=e122]
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - generic [ref=e127]: 墳
+              - generic [ref=e128]: Be at the forefront of biometrics innovation in a collaborative, fast-paced environment.
+            - listitem [ref=e129]:
+              - generic [ref=e131]: 墳
+              - generic [ref=e132]: Work with world-class scientists and engineers who are passionate about cutting-edge technologies.
+            - listitem [ref=e133]:
+              - generic [ref=e135]: 墳
+              - generic [ref=e136]: Opportunity to develop products that have a meaningful impact on global security and identity verification.
+            - listitem [ref=e137]:
+              - generic [ref=e139]: 墳
+              - generic [ref=e140]: Competitive salary and benefits, with a focus on personal and professional growth.
+          - generic [ref=e141]:
+            - paragraph [ref=e142]
+            - paragraph [ref=e143]
+            - paragraph [ref=e144]:
+              - generic [ref=e145]:
+                - text: Aware is an
+                - link "Equal Opportunity Employer" [ref=e147] [cursor=pointer]:
+                  - /url: https://www.aware.com/wp-content/uploads/2022/10/EEOC_KnowYourRights.pdf
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - heading "Want to learn more? Schedule a demo today." [level=2] [ref=e153]:
+            - text: Want to learn more?
+            - text: Schedule a demo today.
+          - link "BOOK A DEMO" [ref=e155] [cursor=pointer]:
+            - /url: /request-demo/
+            - generic [ref=e157]: BOOK A DEMO
+        - generic [ref=e158]:
+          - generic [ref=e159]: About Aware
+          - generic [ref=e162]: "Aware, Inc. (NASDAQ: AWRE) is a proven global leader in biometric identity and authentication solutions. Its Awareness Platform transforms biometric data into actionable intelligence, empowering organizations to verify identities and prevent fraud with speed, accuracy, and confidence. Designed for mission-critical enterprise environments, the platform delivers intelligent, scalable architecture, real-time insights, and reliable security—ensuring precise identification when every millisecond matters. Aware is headquartered in Burlington, Massachusetts."
+  - contentinfo [ref=e163]:
+    - generic [ref=e166]:
+      - generic [ref=e167]:
+        - heading "Platform" [level=6] [ref=e169]
+        - navigation "Menu" [ref=e171]:
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - link "Awareness Platform™" [ref=e174] [cursor=pointer]:
+                - /url: https://www.aware.com/awareness-platform/
+            - listitem [ref=e175]:
+              - link "Workflow Orchestration" [ref=e176] [cursor=pointer]:
+                - /url: https://www.aware.com/workflow-orchestration/
+            - listitem [ref=e177]:
+              - link "Decision Orchestration" [ref=e178] [cursor=pointer]:
+                - /url: https://www.aware.com/decision-orchestration/
+            - listitem [ref=e179]:
+              - link "Intelligent Liveness" [ref=e180] [cursor=pointer]:
+                - /url: https://www.aware.com/intelligent-liveness/
+            - listitem [ref=e181]:
+              - link "Intelligent Capture" [ref=e182] [cursor=pointer]:
+                - /url: https://www.aware.com/intelligent-capture/
+            - listitem [ref=e183]:
+              - link "Intelligent Matching" [ref=e184] [cursor=pointer]:
+                - /url: https://www.aware.com/intelligent-matching/
+      - generic [ref=e185]:
+        - heading "Wisdom" [level=6] [ref=e187]
+        - navigation "Menu" [ref=e189]:
+          - list [ref=e190]:
+            - listitem [ref=e191]:
+              - link "Government and Public Sector" [ref=e192] [cursor=pointer]:
+                - /url: https://www.aware.com/federal-government/
+            - listitem [ref=e193]:
+              - link "Law Enforcement" [ref=e194] [cursor=pointer]:
+                - /url: https://www.aware.com/law-enforcement/
+            - listitem [ref=e195]:
+              - link "Commercial Enterprise" [ref=e196] [cursor=pointer]:
+                - /url: https://www.aware.com/commercial-enterprise/
+            - listitem [ref=e197]:
+              - link "Industry Resources" [ref=e198] [cursor=pointer]:
+                - /url: https://www.aware.com/resources/
+            - listitem [ref=e199]:
+              - link "Thought Leadership Blog" [ref=e200] [cursor=pointer]:
+                - /url: https://www.aware.com/blog/
+      - generic [ref=e201]:
+        - heading "Learn" [level=6] [ref=e203]
+        - navigation "Menu" [ref=e205]:
+          - list [ref=e206]:
+            - listitem [ref=e207]:
+              - link "About Us" [ref=e208] [cursor=pointer]:
+                - /url: https://www.aware.com/company/
+            - listitem [ref=e209]:
+              - link "Leadership Team" [ref=e210] [cursor=pointer]:
+                - /url: https://www.aware.com/company/leadership-team/
+            - listitem [ref=e211]:
+              - link "Careers" [ref=e212] [cursor=pointer]:
+                - /url: https://www.aware.com/careers/
+            - listitem [ref=e213]:
+              - link "Press Releases" [ref=e214] [cursor=pointer]:
+                - /url: https://www.aware.com/press-releases/
+            - listitem [ref=e215]:
+              - link "Events" [ref=e216] [cursor=pointer]:
+                - /url: https://www.aware.com/events/
+            - listitem [ref=e217]:
+              - link "Partners" [ref=e218] [cursor=pointer]:
+                - /url: https://www.aware.com/partners/
+            - listitem [ref=e219]:
+              - link "Support Statement" [ref=e220] [cursor=pointer]:
+                - /url: https://www.aware.com/support-statement/
+            - listitem [ref=e221]:
+              - link "Investor Relations" [ref=e222] [cursor=pointer]:
+                - /url: https://www.aware.com/investor-relations/
+            - listitem [ref=e223]:
+              - link "Trust Center" [ref=e224] [cursor=pointer]:
+                - /url: https://trust.aware.com/
+            - listitem [ref=e225]:
+              - link "Contact" [ref=e226] [cursor=pointer]:
+                - /url: https://www.aware.com/contact/
+      - generic [ref=e228]:
+        - heading "Get the latest news and updates:" [level=6] [ref=e230]
+        - link "Subscribe" [ref=e232] [cursor=pointer]:
+          - /url: /subscribe/
+          - generic [ref=e234]: Subscribe
+        - list [ref=e236]:
+          - listitem [ref=e237]:
+            - link "Linkedin-in" [ref=e238] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/11288
+              - generic [ref=e239]: Linkedin-in
+              - img [ref=e240]
+          - listitem [ref=e242]:
+            - link "X-twitter" [ref=e243] [cursor=pointer]:
+              - /url: https://twitter.com/AwareBiometrics
+              - generic [ref=e244]: X-twitter
+              - img [ref=e245]
+          - listitem [ref=e247]:
+            - link "Youtube" [ref=e248] [cursor=pointer]:
+              - /url: https://www.youtube.com/@AwareBiometrics
+              - generic [ref=e249]: Youtube
+              - img [ref=e250]
+      - generic [ref=e252]:
+        - paragraph [ref=e254]: © 2026 Aware, Inc. All rights reserved.
+        - navigation "Menu" [ref=e256]:
+          - list [ref=e257]:
+            - listitem [ref=e258]:
+              - link "Terms and Conditions" [ref=e259] [cursor=pointer]:
+                - /url: https://www.aware.com/terms-and-conditions/
+            - listitem [ref=e260]:
+              - link "Data Security & Privacy Policy" [ref=e261] [cursor=pointer]:
+                - /url: https://www.aware.com/dataprivacy/
+      - paragraph [ref=e264]:
+        - link "Website Design" [ref=e265] [cursor=pointer]:
+          - /url: https://www.interthrive.com
+        - text: by Interthrive
+  - generic [ref=e266]: laptop
+  - 'complementary "Language selected: English" [ref=e267]':
+    - generic [ref=e269]: English
+  - generic:
+    - dialog "Privacy" [ref=e271]:
+      - generic [ref=e272]:
+        - generic [ref=e275]:
+          - text: By clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+          - link "More information about your privacy, opens in a new tab" [ref=e276] [cursor=pointer]:
+            - /url: https://www.aware.com/cookie-policy/
+            - text: Cookie Policy
+        - generic [ref=e278]:
+          - button "Cookies Settings, Opens the preference center dialog" [ref=e279] [cursor=pointer]: Cookies Settings
+          - generic [ref=e280]:
+            - button "Reject All" [ref=e281] [cursor=pointer]
+            - button "Accept All Cookies" [ref=e282] [cursor=pointer]
+        - button "Close" [ref=e284] [cursor=pointer]
+    - text: Cookies Settings

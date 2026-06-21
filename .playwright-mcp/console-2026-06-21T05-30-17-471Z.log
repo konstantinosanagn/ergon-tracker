@@ -1,0 +1,28 @@
+[     810ms] missing ) after argument list
+[     940ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://jobs.bestbuy.com/search/jobs.json?page=1:0
+[    1175ms] [LOG] amb.MessageClient [INFO] >>> connection exists, request satisfied @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:14
+[    1181ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://jobs.bestbuy.com/bby/jobs:0
+[    1269ms] missing ) after argument list
+[    1303ms] [ERROR] WebSocket connection to 'wss://jobs.bestbuy.com/amb' failed: Error during WebSocket handshake: Unexpected response code: 400 @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:14
+[    1340ms] [LOG] amb.ServerConnection [INFO] _initializeSubscriptionCommandSender: SubscriptionCommandSender is enabled @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:14
+[    1381ms] [LOG] amb.TransportManagement [INFO] Connected using transport long-polling @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:14
+[    1381ms] [LOG] amb.TransportManagement [INFO] Removed failed registry transports after connect: {websocket} @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:14
+[    1831ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    1845ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    1845ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4452ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4454ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4454ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4454ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4645ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    4911ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    5176ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    5442ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    5708ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    5973ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66
+[    6239ms] [WARNING] Incoming message ignored due to origin mismatch. @ https://jobs.bestbuy.com/scripts/dist/sp_min.jsx?v=04-29-2026_0346:66

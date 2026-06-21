@@ -1,0 +1,16 @@
+cgitechnologiesandsoluti tok=CGI                   60j clean=100% KEEP
+hcamanagementserviceslp  tok=HCA Healthcare        60j clean=100% KEEP
+fujitsunorthamerica      tok=Fujitsu               25j clean=100% KEEP
+hdrengineering           tok=HDR                   33j clean=100% KEEP
+dprconstructionageneralp tok=DPR Construction      60j clean=100% KEEP
+terraconconsultants      tok=Terracon              60j clean=100% KEEP
+cnhindustrialamerica     tok=CNH Industrial        11j clean=100% KEEP
+itcinfotechusa           tok=ITC Infotech           5j clean=100% KEEP
+curatorsofuniversityofmi tok=University of Missou  60j clean=100% KEEP
+boardofregentsofuniversi tok=University of Nebras  60j clean=100% KEEP
+trusteesofdartmouthcolle tok=Dartmouth             60j clean=100% KEEP
+battelleenergyalliance   tok=Battelle              60j clean=100% KEEP
+maimonidesmedicalcenter  tok=Maimonides            23j clean=100% KEEP
+rutgersstateuniversityof tok=Rutgers University    60j clean=100% KEEP
+michiganstateuniversity  tok=michigan state unive  29j clean=72% DROP-NOISY
+massachusettsinstituteof tok=massachusetts instit  10j clean=80% DROP-NOISY

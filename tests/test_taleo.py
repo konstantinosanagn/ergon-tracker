@@ -163,8 +163,24 @@ def test_legacy_ftl_stream_parser() -> None:
 
     fields = (
         ["<!DOCTYPE html>", "junk", "listRequisition"]
-        + job("464078", "HR Director - Panels", "USA-WA-Seattle", "false", "", "Jun 19, 2026", "01024482", "Apply")
-        + job("149092", "System Engineer", "INF00EO", "Kansas-Topeka, Missouri", "false", "Jun 21, 2026")  # contestNo-first tenant order
+        + job(
+            "464078",
+            "HR Director - Panels",
+            "USA-WA-Seattle",
+            "false",
+            "",
+            "Jun 19, 2026",
+            "01024482",
+            "Apply",
+        )
+        + job(
+            "149092",
+            "System Engineer",
+            "INF00EO",
+            "Kansas-Topeka, Missouri",
+            "false",
+            "Jun 21, 2026",
+        )  # contestNo-first tenant order
         + job("464078", "dup id dropped", "USA-WA-Tacoma")
     )
     html_text = "!|!".join(fields)

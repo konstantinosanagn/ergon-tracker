@@ -1,0 +1,633 @@
+[
+[
+{
+"name": "grandison management",
+"key": "grandisonmanagement",
+"filings": 1855
+},
+{
+"name": "michigan state university",
+"key": "michiganstateuniversity",
+"filings": 297
+},
+{
+"name": "vastek",
+"key": "vastek",
+"filings": 207
+},
+{
+"name": "latentview analytics",
+"key": "latentviewanalytics",
+"filings": 146
+},
+{
+"name": "ventois",
+"key": "ventois",
+"filings": 134
+},
+{
+"name": "indiana university health care associates",
+"key": "indianauniversityhealthcareassociates",
+"filings": 118
+},
+{
+"name": "applab systems",
+"key": "applabsystems",
+"filings": 112
+},
+{
+"name": "conexus medstaff",
+"key": "conexusmedstaff",
+"filings": 101
+},
+{
+"name": "bnp paribas securities",
+"key": "bnpparibassecurities",
+"filings": 96
+},
+{
+"name": "cirrus logic international semiconductor",
+"key": "cirruslogicinternationalsemiconductor",
+"filings": 87
+},
+{
+"name": "tek ninjas solutions",
+"key": "tekninjassolutions",
+"filings": 85
+},
+{
+"name": "shopify usa",
+"key": "shopifyusa",
+"filings": 83
+},
+{
+"name": "scotia capital usa",
+"key": "scotiacapitalusa",
+"filings": 80
+},
+{
+"name": "bnp paribas rcc",
+"key": "bnpparibasrcc",
+"filings": 77
+},
+{
+"name": "langan engineering and environmental services",
+"key": "langanengineeringandenvironmentalservices",
+"filings": 74
+},
+{
+"name": "mahaugha",
+"key": "mahaugha",
+"filings": 71
+}
+],
+[
+{
+"name": "skilltune technologies",
+"key": "skilltune",
+"filings": 701
+},
+{
+"name": "quadrant technologies",
+"key": "quadrant",
+"filings": 297
+},
+{
+"name": "valuemomentum",
+"key": "valuemomentum",
+"filings": 201
+},
+{
+"name": "3i infotech",
+"key": "3iinfotech",
+"filings": 145
+},
+{
+"name": "decofrut",
+"key": "decofrut",
+"filings": 133
+},
+{
+"name": "kingston technologies",
+"key": "kingston",
+"filings": 117
+},
+{
+"name": "shoolin",
+"key": "shoolin",
+"filings": 112
+},
+{
+"name": "osf multi specialty group",
+"key": "osfmultispecialty",
+"filings": 101
+},
+{
+"name": "camelot integrated solutions",
+"key": "camelotintegratedsolutions",
+"filings": 95
+},
+{
+"name": "dataeconomy",
+"key": "dataeconomy",
+"filings": 87
+},
+{
+"name": "dataedge",
+"key": "dataedge",
+"filings": 84
+},
+{
+"name": "meghaz",
+"key": "meghaz",
+"filings": 82
+},
+{
+"name": "bering strait school district",
+"key": "beringstraitschooldistrict",
+"filings": 79
+},
+{
+"name": "comtrix solutions",
+"key": "comtrixsolutions",
+"filings": 77
+},
+{
+"name": "nic info tek",
+"key": "nicinfotek",
+"filings": 74
+},
+{
+"name": "sagarsoft",
+"key": "sagarsoft",
+"filings": 71
+}
+],
+[
+{
+"name": "mathworks",
+"key": "mathworks",
+"filings": 581
+},
+{
+"name": "slalom",
+"key": "slalom",
+"filings": 264
+},
+{
+"name": "florida state university",
+"key": "floridastateuniversity",
+"filings": 195
+},
+{
+"name": "forthright soft",
+"key": "forthrightsoft",
+"filings": 144
+},
+{
+"name": "sophlogic global",
+"key": "sophlogicglobal",
+"filings": 130
+},
+{
+"name": "sysintelli",
+"key": "sysintelli",
+"filings": 116
+},
+{
+"name": "schrill technologies",
+"key": "schrill",
+"filings": 111
+},
+{
+"name": "savannah college of art and design",
+"key": "savannahcollegeofartanddesign",
+"filings": 101
+},
+{
+"name": "neo prism solutions",
+"key": "neoprismsolutions",
+"filings": 94
+},
+{
+"name": "artifint technologies",
+"key": "artifint",
+"filings": 86
+},
+{
+"name": "jkv international",
+"key": "jkvinternational",
+"filings": 84
+},
+{
+"name": "astir technologies",
+"key": "astir",
+"filings": 81
+},
+{
+"name": "datanormus",
+"key": "datanormus",
+"filings": 79
+},
+{
+"name": "kelith group",
+"key": "kelith",
+"filings": 77
+},
+{
+"name": "trenmor",
+"key": "trenmor",
+"filings": 74
+},
+{
+"name": "florida international university",
+"key": "floridainternationaluniversity",
+"filings": 70
+}
+],
+[
+{
+"name": "dfs corporate services",
+"key": "dfscorporateservices",
+"filings": 485
+},
+{
+"name": "diaspark",
+"key": "diaspark",
+"filings": 260
+},
+{
+"name": "tek leaders",
+"key": "tekleaders",
+"filings": 194
+},
+{
+"name": "astir it solutions",
+"key": "astiritsolutions",
+"filings": 142
+},
+{
+"name": "murthy law firm",
+"key": "murthylawfirm",
+"filings": 127
+},
+{
+"name": "inteli platforms",
+"key": "inteliplatforms",
+"filings": 115
+},
+{
+"name": "saipsit",
+"key": "saipsit",
+"filings": 109
+},
+{
+"name": "advithri technologies",
+"key": "advithri",
+"filings": 100
+},
+{
+"name": "sonata software north america",
+"key": "sonatasoftwarenorthamerica",
+"filings": 92
+},
+{
+"name": "citadel enterprise americas services",
+"key": "citadelenterpriseamericasservices",
+"filings": 86
+},
+{
+"name": "kanap systems",
+"key": "kanapsystems",
+"filings": 84
+},
+{
+"name": "celoris tech",
+"key": "celoristech",
+"filings": 81
+},
+{
+"name": "ardor it systems",
+"key": "ardoritsystems",
+"filings": 78
+},
+{
+"name": "adaequare",
+"key": "adaequare",
+"filings": 76
+},
+{
+"name": "verton solutions",
+"key": "vertonsolutions",
+"filings": 74
+}
+],
+[
+{
+"name": "populus group",
+"key": "populus",
+"filings": 437
+},
+{
+"name": "avco consulting",
+"key": "avcoconsulting",
+"filings": 248
+},
+{
+"name": "credit karma",
+"key": "creditkarma",
+"filings": 172
+},
+{
+"name": "palayekar companies",
+"key": "palayekarcompanies",
+"filings": 139
+},
+{
+"name": "susquehanna international group llp",
+"key": "susquehannainternationalgroupllp",
+"filings": 125
+},
+{
+"name": "smartdw",
+"key": "smartdw",
+"filings": 115
+},
+{
+"name": "rensselaer polytechnic institute",
+"key": "rensselaerpolytechnicinstitute",
+"filings": 108
+},
+{
+"name": "altimetrik",
+"key": "altimetrik",
+"filings": 98
+},
+{
+"name": "trustees of dartmouth college",
+"key": "trusteesofdartmouthcollege",
+"filings": 92
+},
+{
+"name": "headstrong services",
+"key": "headstrongservices",
+"filings": 86
+},
+{
+"name": "novitium pharma",
+"key": "novitiumpharma",
+"filings": 84
+},
+{
+"name": "inrika",
+"key": "inrika",
+"filings": 81
+},
+{
+"name": "dvg tech solutions",
+"key": "dvgtechsolutions",
+"filings": 78
+},
+{
+"name": "financial industry regulatory authority",
+"key": "financialindustryregulatoryauthority",
+"filings": 75
+},
+{
+"name": "bean infosystems",
+"key": "beaninfosystems",
+"filings": 73
+}
+],
+[
+{
+"name": "infocons",
+"key": "infocons",
+"filings": 400
+},
+{
+"name": "satin solutions",
+"key": "satinsolutions",
+"filings": 239
+},
+{
+"name": "tavant technologies",
+"key": "tavant",
+"filings": 166
+},
+{
+"name": "st jude medical cardiology division",
+"key": "stjudemedicalcardiologydivision",
+"filings": 137
+},
+{
+"name": "ler techforce",
+"key": "lertechforce",
+"filings": 121
+},
+{
+"name": "ancile",
+"key": "ancile",
+"filings": 114
+},
+{
+"name": "sg americas operational services",
+"key": "sgamericasoperationalservices",
+"filings": 107
+},
+{
+"name": "viacore technologies",
+"key": "viacore",
+"filings": 98
+},
+{
+"name": "vejars technologies",
+"key": "vejars",
+"filings": 92
+},
+{
+"name": "mythri consulting",
+"key": "mythriconsulting",
+"filings": 86
+},
+{
+"name": "ust healthproof",
+"key": "usthealthproof",
+"filings": 84
+},
+{
+"name": "north dakota state university",
+"key": "northdakotastateuniversity",
+"filings": 81
+},
+{
+"name": "sphere institute",
+"key": "sphereinstitute",
+"filings": 78
+},
+{
+"name": "varian medical systems",
+"key": "varianmedicalsystems",
+"filings": 75
+},
+{
+"name": "thinklusive",
+"key": "thinklusive",
+"filings": 73
+}
+],
+[
+{
+"name": "natsoft",
+"key": "natsoft",
+"filings": 319
+},
+{
+"name": "experis us",
+"key": "experisus",
+"filings": 219
+},
+{
+"name": "regents of university of california at riverside",
+"key": "regentsofuniversityofcaliforniaatriverside",
+"filings": 155
+},
+{
+"name": "university of pittsburgh physicians",
+"key": "universityofpittsburghphysicians",
+"filings": 135
+},
+{
+"name": "amalgam technologies",
+"key": "amalgam",
+"filings": 119
+},
+{
+"name": "lex nimble solutions",
+"key": "lexnimblesolutions",
+"filings": 114
+},
+{
+"name": "h lee moffitt cancer center and research institute",
+"key": "hleemoffittcancercenterandresearchinstitute",
+"filings": 102
+},
+{
+"name": "mican technologies",
+"key": "mican",
+"filings": 97
+},
+{
+"name": "appridat solutions",
+"key": "appridatsolutions",
+"filings": 91
+},
+{
+"name": "sdvs technologies",
+"key": "sdvs",
+"filings": 86
+},
+{
+"name": "vistaltech",
+"key": "vistaltech",
+"filings": 84
+},
+{
+"name": "sullivan and cromwell llp",
+"key": "sullivanandcromwellllp",
+"filings": 81
+},
+{
+"name": "tabner",
+"key": "tabner",
+"filings": 78
+},
+{
+"name": "bct consulting",
+"key": "bctconsulting",
+"filings": 74
+},
+{
+"name": "university of connecticut health center",
+"key": "universityofconnecticuthealthcenter",
+"filings": 72
+}
+],
+[
+{
+"name": "eficens systems",
+"key": "eficenssystems",
+"filings": 304
+},
+{
+"name": "kpit technologies",
+"key": "kpit",
+"filings": 215
+},
+{
+"name": "veenus infotechs",
+"key": "veenusinfotechs",
+"filings": 152
+},
+{
+"name": "beaconfire staffing solutions",
+"key": "beaconfirestaffingsolutions",
+"filings": 134
+},
+{
+"name": "kastech solutions",
+"key": "kastechsolutions",
+"filings": 119
+},
+{
+"name": "namitus technologies",
+"key": "namitus",
+"filings": 113
+},
+{
+"name": "mankind america",
+"key": "mankindamerica",
+"filings": 102
+},
+{
+"name": "physician affiliate group of ny pc",
+"key": "physicianaffiliategroupofnypc",
+"filings": 97
+},
+{
+"name": "rj systems",
+"key": "rjsystems",
+"filings": 89
+},
+{
+"name": "national railroad passenger",
+"key": "nationalrailroadpassenger",
+"filings": 85
+},
+{
+"name": "caresoft global technologies",
+"key": "caresoftglobal",
+"filings": 83
+},
+{
+"name": "food and drug administration",
+"key": "foodanddrugadministration",
+"filings": 80
+},
+{
+"name": "apptrics",
+"key": "apptrics",
+"filings": 77
+},
+{
+"name": "dataflake",
+"key": "dataflake",
+"filings": 74
+},
+{
+"name": "d e shaw and l p",
+"key": "deshawandlp",
+"filings": 71
+}
+]
+]

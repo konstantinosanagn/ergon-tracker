@@ -1,0 +1,272 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#main"
+    - generic [ref=e6]:
+      - link "Home IBM" [ref=e8] [cursor=pointer]:
+        - /url: https://careers.ibm.com/en_US/careers
+        - img "Home" [ref=e9]
+        - heading "IBM" [level=1] [ref=e10]
+      - navigation "Main menu" [ref=e12]:
+        - generic [ref=e13]:
+          - list [ref=e15]:
+            - link "Visit IBM careers page in a new tab" [ref=e16] [cursor=pointer]:
+              - /url: https://www.ibm.com/careers
+              - generic [ref=e17]: IBM Careers
+          - list [ref=e18]:
+            - menuitem "Login" [ref=e19] [cursor=pointer]:
+              - generic [ref=e20]: Login
+  - region "Banner Section" [ref=e21]:
+    - generic [ref=e23]:
+      - heading "Let's find you the right job" [level=2] [ref=e24]
+      - generic [ref=e25]:
+        - heading "Join our Talent Network and get notified about the latest opportunities." [level=4] [ref=e26]
+        - link "Join Talent Network" [ref=e28] [cursor=pointer]:
+          - /url: https://ibmglobal.avature.net/globalform
+  - main [ref=e29]:
+    - generic [ref=e33]:
+      - search "Search form" [ref=e39]:
+        - group "Filter by" [ref=e40]:
+          - generic [ref=e41]: Filter by
+          - generic [ref=e42]:
+            - alert [ref=e43]
+            - group [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: Search jobs by keyword
+                - textbox "Search jobs by keyword" [ref=e47]:
+                  - /placeholder: Type in to search jobs
+              - generic [ref=e48]:
+                - generic [ref=e49]: Location
+                - generic [ref=e50]:
+                  - listbox [ref=e51]
+                  - combobox "Location" [ref=e54]:
+                    - group [ref=e55]:
+                      - searchbox "Location" [ref=e56]
+              - generic [ref=e57]:
+                - generic [ref=e58]: Team
+                - generic [ref=e59]:
+                  - listbox [ref=e60]
+                  - combobox "Team" [ref=e63]:
+                    - group [ref=e64]:
+                      - searchbox "Team" [ref=e65]
+              - generic [ref=e66]:
+                - generic [ref=e67]: Experience level
+                - generic [ref=e68]:
+                  - listbox [ref=e69]
+                  - combobox "Experience level" [ref=e72]:
+                    - group [ref=e73]:
+                      - searchbox "Experience level" [ref=e74]
+              - generic [ref=e75]:
+                - generic [ref=e76]: Hybrid and remote jobs
+                - generic [ref=e77]:
+                  - listbox [ref=e78]
+                  - combobox "Hybrid and remote jobs" [ref=e81]:
+                    - group [ref=e82]:
+                      - searchbox "Hybrid and remote jobs" [ref=e83]
+              - group [ref=e85]:
+                - button "Search" [ref=e87] [cursor=pointer]
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - status "10+ results" [ref=e92]: 1-9 of 10+ results
+            - generic [ref=e93]:
+              - text: Filters applied (
+              - link "Clear filters" [ref=e94] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/OpenJobs
+                - text: Clear
+              - text: )
+          - button "Items per page" [ref=e97] [cursor=pointer]
+          - status "Sort by" [ref=e99]:
+            - button "Sort by" [ref=e100] [cursor=pointer]
+          - navigation "Top Pagination Navigation" [ref=e102]:
+            - link "Go to Next Page, Number 2" [ref=e103] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/SearchJobs/?listFilterMode=1&jobRecordsPerPage=9&jobOffset=9
+              - text: Next >>
+        - generic [ref=e105]:
+          - article [ref=e106]:
+            - generic [ref=e108]:
+              - link "Consulting" [ref=e110] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=74719
+              - heading "(2026 Campus Hire) Associate Application Consultant" [level=3] [ref=e111]:
+                - link "(2026 Campus Hire) Associate Application Consultant" [ref=e112] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=74719
+              - link "Entry Level Taipei, Taipei City, Taiwan" [ref=e114] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=74719
+                - generic [ref=e115]: Entry Level
+                - generic [ref=e116]: Taipei, Taipei City, Taiwan
+            - link "Apply" [ref=e118] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=74719
+              - img "Apply" [ref=e119]
+          - article [ref=e120]:
+            - generic [ref=e122]:
+              - link "Software Engineering" [ref=e124] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85032
+              - heading "(IJDS DXセンター) Application Engineer" [level=3] [ref=e125]:
+                - link "(IJDS DXセンター) Application Engineer" [ref=e126] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85032
+              - link "Administration & Technician Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan" [ref=e128] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85032
+                - generic [ref=e129]: Administration & Technician
+                - generic [ref=e130]: Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan
+            - link "Apply" [ref=e132] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85032
+              - img "Apply" [ref=e133]
+          - article [ref=e134]:
+            - generic [ref=e136]:
+              - link "Software Engineering" [ref=e138] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85033
+              - heading "(IJDS DXセンター) Application Engineer" [level=3] [ref=e139]:
+                - link "(IJDS DXセンター) Application Engineer" [ref=e140] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85033
+              - link "Administration & Technician Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan" [ref=e142] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85033
+                - generic [ref=e143]: Administration & Technician
+                - generic [ref=e144]: Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan
+            - link "Apply" [ref=e146] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85033
+              - img "Apply" [ref=e147]
+          - article [ref=e148]:
+            - generic [ref=e150]:
+              - link "Software Engineering" [ref=e152] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120752
+              - heading "(IJDS DXセンター) Application Engineer" [level=3] [ref=e153]:
+                - link "(IJDS DXセンター) Application Engineer" [ref=e154] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120752
+              - link "Professional Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan" [ref=e156] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120752
+                - generic [ref=e157]: Professional
+                - generic [ref=e158]: Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan
+            - link "Apply" [ref=e160] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120752
+              - img "Apply" [ref=e161]
+          - article [ref=e162]:
+            - generic [ref=e164]:
+              - link "Software Engineering" [ref=e166] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120753
+              - heading "(IJDS DXセンター) Application Engineer" [level=3] [ref=e167]:
+                - link "(IJDS DXセンター) Application Engineer" [ref=e168] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120753
+              - link "Professional Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan" [ref=e170] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120753
+                - generic [ref=e171]: Professional
+                - generic [ref=e172]: Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan
+            - link "Apply" [ref=e174] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=120753
+              - img "Apply" [ref=e175]
+          - article [ref=e176]:
+            - generic [ref=e178]:
+              - link "Software Engineering" [ref=e180] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106918
+              - heading "(IJDS DXセンター)Application Engineer" [level=3] [ref=e181]:
+                - link "(IJDS DXセンター)Application Engineer" [ref=e182] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106918
+              - link "Professional Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan" [ref=e184] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106918
+                - generic [ref=e185]: Professional
+                - generic [ref=e186]: Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan
+            - link "Apply" [ref=e188] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106918
+              - img "Apply" [ref=e189]
+          - article [ref=e190]:
+            - generic [ref=e192]:
+              - link "Software Engineering" [ref=e194] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106930
+              - heading "(IJDS DXセンター)Application Engineer" [level=3] [ref=e195]:
+                - link "(IJDS DXセンター)Application Engineer" [ref=e196] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106930
+              - link "Professional Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan" [ref=e198] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106930
+                - generic [ref=e199]: Professional
+                - generic [ref=e200]: Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan
+            - link "Apply" [ref=e202] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106930
+              - img "Apply" [ref=e203]
+          - article [ref=e204]:
+            - generic [ref=e206]:
+              - link "Software Engineering" [ref=e208] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106954
+              - heading "(IJDS DXセンター)Application Engineer" [level=3] [ref=e209]:
+                - link "(IJDS DXセンター)Application Engineer" [ref=e210] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106954
+              - link "Administration & Technician Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan" [ref=e212] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106954
+                - generic [ref=e213]: Administration & Technician
+                - generic [ref=e214]: Hiroshima, CHIBA, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Hokkaido, Hiroshima, Miyagi, Chiba, Nagano, Okinawa, Fukuoka, Japan
+            - link "Apply" [ref=e216] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=106954
+              - img "Apply" [ref=e217]
+          - article [ref=e218]:
+            - generic [ref=e220]:
+              - link "Software Engineering" [ref=e222] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85035
+              - heading "(IJDS DXセンター)Application Engineer" [level=3] [ref=e223]:
+                - link "(IJDS DXセンター)Application Engineer" [ref=e224] [cursor=pointer]:
+                  - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85035
+              - link "Administration & Technician Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan" [ref=e226] [cursor=pointer]:
+                - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85035
+                - generic [ref=e227]: Administration & Technician
+                - generic [ref=e228]: Hiroshima, Nagano, Naha, SENDAI, Sapporo, Kitakyushu, Takamatsu, Hokkaido, Hiroshima, Miyagi, Nagano, Okinawa, Fukuoka, Kagawa, Japan
+            - link "Apply" [ref=e230] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/JobDetail?jobId=85035
+              - img "Apply" [ref=e231]
+        - generic [ref=e232]:
+          - status "10+ results" [ref=e234]: 1-9 of 10+ results
+          - navigation "Bottom Pagination Navigation" [ref=e236]:
+            - link "Go to Next Page, Number 2" [ref=e237] [cursor=pointer]:
+              - /url: https://careers.ibm.com/en_US/careers/SearchJobs/?listFilterMode=1&jobRecordsPerPage=9&jobOffset=9
+              - text: Next >>
+  - contentinfo "Footer" [ref=e238]:
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - img "IBM Logo" [ref=e244]
+          - list [ref=e245]:
+            - listitem [ref=e246]:
+              - link "Application Info" [ref=e247] [cursor=pointer]:
+                - /url: http://ibm.com/careers/application-process
+            - listitem [ref=e248]:
+              - 'link "Be aware: Recruitment Scams" [ref=e249] [cursor=pointer]':
+                - /url: https://www.ibm.com/careers/phishing-scams
+            - listitem [ref=e250]:
+              - link "Privacy statement" [ref=e251] [cursor=pointer]:
+                - /url: https://www.ibm.com/careers/applicant-data-privacy
+        - generic [ref=e252]:
+          - generic [ref=e253]: Learn more about IBM
+          - generic [ref=e254]:
+            - link "Open our LinkedIn profile in a new tab" [ref=e255] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/ibm/
+              - img "Linkedin Logo" [ref=e256]
+            - link "Open our X profile in a new tab" [ref=e257] [cursor=pointer]:
+              - /url: https://twitter.com/lifeatibm
+              - img "Twitter Logo" [ref=e258]
+            - link "Open our YouTube channel in a new tab" [ref=e259] [cursor=pointer]:
+              - /url: https://www.youtube.com/watch?v=jXeALp4fNF4&list=PLaFe0BJiho2pltHkAktlWX3zEwMDXtZnc
+              - img "Youtube Logo" [ref=e260]
+            - link "Open our Glassdoor profile in a new tab" [ref=e261] [cursor=pointer]:
+              - /url: https://www.glassdoor.com/Overview/Working-at-IBM-EI_IE354.11,14.htm
+              - img "Glassdoor Logo" [ref=e262]
+            - link "Open our Instagram profile in a new tab" [ref=e263] [cursor=pointer]:
+              - /url: https://www.instagram.com/lifeatibm/
+              - img "Instagram Logo" [ref=e264]
+            - link "Open our blog in a new tab" [ref=e265] [cursor=pointer]:
+              - /url: https://www.ibm.com/blogs/jobs/
+              - img "Blog Logo" [ref=e266]
+        - navigation "Language Selector" [ref=e267]:
+          - list [ref=e268]:
+            - listitem [ref=e269]:
+              - link "English" [ref=e270]:
+                - /url: "#"
+                - generic [ref=e271]: English
+      - list [ref=e272]:
+        - listitem [ref=e273]:
+          - link "Contact IBM" [ref=e274] [cursor=pointer]:
+            - /url: https://www.ibm.com/contact/
+        - listitem [ref=e275]:
+          - link "Privacy" [ref=e276] [cursor=pointer]:
+            - /url: https://www.ibm.com/privacy
+        - listitem [ref=e277]:
+          - link "Terms of use" [ref=e278] [cursor=pointer]:
+            - /url: https://www.ibm.com/us-en/legal
+        - listitem [ref=e279]:
+          - link "Accessibility" [ref=e280] [cursor=pointer]:
+            - /url: https://www.ibm.com/able

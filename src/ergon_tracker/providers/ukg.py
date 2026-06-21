@@ -92,12 +92,19 @@ class UKGProvider(BaseProvider):
         for _ in range(self.MAX_PAGES):
             body = {
                 "opportunitySearch": {
-                    "Top": _PAGE, "Skip": skip,
-                    "QueryString": "", "OrderBy": [], "Filters": [],
+                    "Top": _PAGE,
+                    "Skip": skip,
+                    "QueryString": "",
+                    "OrderBy": [],
+                    "Filters": [],
                 },
                 "matchCriteria": {
-                    "PreferredJobs": [], "Educations": [], "LicenseAndCertifications": [],
-                    "Skills": [], "hasNoLicenses": False, "SkippedSkills": [],
+                    "PreferredJobs": [],
+                    "Educations": [],
+                    "LicenseAndCertifications": [],
+                    "Skills": [],
+                    "hasNoLicenses": False,
+                    "SkippedSkills": [],
                 },
             }
             try:
@@ -126,8 +133,9 @@ class UKGProvider(BaseProvider):
                 break
         return raws
 
-    def _to_raw(self, rec: dict[str, Any], host: str, code: str, guid: str,
-                company: str | None, jid: str) -> RawJob:
+    def _to_raw(
+        self, rec: dict[str, Any], host: str, code: str, guid: str, company: str | None, jid: str
+    ) -> RawJob:
         return RawJob(
             source=self.name,
             source_job_id=jid,
@@ -156,7 +164,9 @@ class UKGProvider(BaseProvider):
         if not label:
             return None
         return Location(
-            city=city or None, region=state or None, raw=label,
+            city=city or None,
+            region=state or None,
+            raw=label,
             is_remote="remote" in label.lower(),
         )
 
@@ -176,7 +186,9 @@ class UKGProvider(BaseProvider):
         p = raw.payload
         loc = self._location(p)
         remote = RemoteType.REMOTE if (loc and loc.is_remote) else RemoteType.UNKNOWN
-        employment = EmploymentType.FULL_TIME if p.get("FullTime") is True else EmploymentType.UNKNOWN
+        employment = (
+            EmploymentType.FULL_TIME if p.get("FullTime") is True else EmploymentType.UNKNOWN
+        )
         desc = p.get("BriefDescription")
         return JobPosting.create(
             source=self.name,

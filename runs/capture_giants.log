@@ -1,0 +1,32 @@
+capture pass over 308 residual giants ...
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+stamina.retry_scheduled
+  captured 25/308 (hits: 0)
+  captured 50/308 (hits: 1)
+  captured 75/308 (hits: 1)
+  captured 100/308 (hits: 1)
+  captured 125/308 (hits: 1)
+  captured 150/308 (hits: 1)
+  captured 175/308 (hits: 2)
+  captured 200/308 (hits: 2)
+  captured 225/308 (hits: 2)
+  captured 250/308 (hits: 3)
+  captured 275/308 (hits: 4)
+  captured 300/308 (hits: 4)
+detected 4 {'bamboohr': 1, 'successfactors': 2, 'rippling': 1}; verifying ...
+
+wrote 0 candidates {} -> candidates_giants.json

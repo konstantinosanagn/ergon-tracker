@@ -1,0 +1,358 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Amphenol Logo" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Amphenol Logo" [ref=e6]
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - generic:
+              - textbox "SEARCH" [ref=e9]
+              - button "Submit" [ref=e10] [cursor=pointer]
+              - generic [ref=e12] [cursor=pointer]: 
+          - list [ref=e13]:
+            - listitem [ref=e14]:
+              - link "Products" [ref=e15] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e16]:
+              - link "Markets" [ref=e17] [cursor=pointer]:
+                - /url: /markets
+            - listitem [ref=e18]:
+              - link "Businesses" [ref=e19] [cursor=pointer]:
+                - /url: /businesses
+            - listitem [ref=e20]:
+              - link "Sustainability" [ref=e21] [cursor=pointer]:
+                - /url: /sustainability
+            - listitem [ref=e22]:
+              - link "Investors" [ref=e23] [cursor=pointer]:
+                - /url: https://investors.amphenol.com/investors/overview/default.aspx
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - heading "Join Our Team" [level=1] [ref=e28]
+        - link "FIND OPPORTUNITIES" [ref=e29] [cursor=pointer]:
+          - /url: "#opportunities"
+      - paragraph [ref=e33]: Amphenol is one of the world’s most innovative and advanced interconnect technology manufacturers. More than 95,000 “Amphenolians” connect our world throughout the 100+ Amphenol businesses across the globe. Each of our businesses embraces Amphenol’s entrepreneurial culture in driving leading performance through personal accountability – and our people are our most important asset. Explore global opportunities in our businesses through their websites below.
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: 100+
+          - generic [ref=e40]: Global Businesses
+        - generic [ref=e42]:
+          - generic [ref=e43]: 95,000
+          - generic [ref=e44]: Employees Connecting the World
+        - generic [ref=e46]:
+          - generic [ref=e47]: Innovating
+          - generic [ref=e48]: In Every Market
+      - generic [ref=e50]:
+        - img "Career Slide 1" [ref=e52]
+        - paragraph [ref=e53]: “For anyone interested in a position to chart their own success, Amphenol provides the ideal work environment.”
+      - generic [ref=e57]:
+        - generic [ref=e58]: Search Our Global Businesses for Opportunities
+        - generic [ref=e59]: Search for Amphenol jobs by country by choosing from the dropdown below. Click on the business unit corresponding to your selection(s) to be redirected to the careers website of that business and explore open opportunities.
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: Geographical Region
+            - combobox [ref=e64]:
+              - option "Geography" [selected]
+              - option "Global"
+              - option "Americas"
+              - option "Asia"
+              - option "EMEA"
+          - generic [ref=e65]:
+            - generic [ref=e66]: Country
+            - combobox [ref=e67]:
+              - option "All Countries" [selected]
+              - option "Australia"
+              - option "Brazil"
+              - option "Canada"
+              - option "China"
+              - option "Denmark"
+              - option "France"
+              - option "Germany"
+              - option "Hungary"
+              - option "India"
+              - option "Ireland"
+              - option "Israel"
+              - option "Japan"
+              - option "Korea"
+              - option "Mexico"
+              - option "Poland"
+              - option "Slovak Republic"
+              - option "Spain"
+              - option "Sweden"
+              - option "Switzerland"
+              - option "Taiwan"
+              - option "United Kingdom"
+              - option "United States"
+  - contentinfo [ref=e69]:
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e73]: ABOUT AMPHENOL
+          - list [ref=e74]:
+            - listitem [ref=e75]:
+              - link "Our Company" [ref=e76] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e77]:
+              - link "Product News" [ref=e78] [cursor=pointer]:
+                - /url: /product-news
+            - listitem [ref=e79]:
+              - link "Investor Relations" [ref=e80] [cursor=pointer]:
+                - /url: https://investors.amphenol.com/
+            - listitem [ref=e81]:
+              - link "Sustainability" [ref=e82] [cursor=pointer]:
+                - /url: /sustainability
+        - generic [ref=e83]:
+          - generic [ref=e84]: Resources
+          - list [ref=e85]:
+            - listitem [ref=e86]:
+              - link "Supplier Responsibility" [ref=e87] [cursor=pointer]:
+                - /url: /sustainability/supply-chain
+            - listitem [ref=e88]:
+              - link "Anti-Human Trafficking & Slavery Statement" [ref=e89] [cursor=pointer]:
+                - /url: /docs/anti-human-trafficking-and-slavery-statement
+            - listitem [ref=e90]:
+              - link "Transparency in Coverage Files" [ref=e91] [cursor=pointer]:
+                - /url: https://anthem.com/machine-readable-file/search
+            - listitem [ref=e92]:
+              - link "Careers" [ref=e93] [cursor=pointer]:
+                - /url: /careers
+        - generic [ref=e94]:
+          - generic [ref=e95]: CUSTOMER SUPPORT
+          - list [ref=e96]:
+            - listitem [ref=e97]:
+              - link "Product Locator" [ref=e98] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e99]:
+              - link "Locations" [ref=e100] [cursor=pointer]:
+                - /url: /businesses
+            - listitem [ref=e101]:
+              - link "Contact Us" [ref=e102] [cursor=pointer]:
+                - /url: /contact
+      - generic [ref=e103]:
+        - generic [ref=e104]: Copyright 2026 Amphenol Corporation. All rights reserved.
+        - generic [ref=e105]:
+          - link "Privacy Policy" [ref=e106] [cursor=pointer]:
+            - /url: /privacy-policy
+          - text: "|"
+          - link "Your Privacy Choices" [ref=e107] [cursor=pointer]:
+            - /url: /your-privacy-choices
+            - img [ref=e108]
+            - text: Your Privacy Choices
+          - text: "|"
+          - link "Terms of Use" [ref=e109] [cursor=pointer]:
+            - /url: /terms-of-use
+          - text: "|"
+          - link "Sitemap" [ref=e110] [cursor=pointer]:
+            - /url: /home/sitemap
+        - list [ref=e112]:
+          - listitem [ref=e113]:
+            - link "LinkedIn" [ref=e114] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/162444/
+              - generic [ref=e115]: 
+              - generic [ref=e116]: LinkedIn
+          - listitem [ref=e117]:
+            - link "YouTube" [ref=e118] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCCmIGA9VhjnH8idLnDBgX4w
+              - generic [ref=e119]: 
+              - generic [ref=e120]: YouTube
+          - listitem [ref=e121]:
+            - link "Facebook" [ref=e122] [cursor=pointer]:
+              - /url: https://www.facebook.com/AmphenolCorporation
+              - generic [ref=e123]: 
+              - generic [ref=e124]: Facebook
+  - dialog "Cookie consent dialog" [ref=e125]:
+    - button "Close" [ref=e128] [cursor=pointer]: ×
+    - generic [ref=e129]: This website uses cookies
+    - generic [ref=e130]:
+      - generic [ref=e131]:
+        - text: We use cookies for statistics and audience measurement purposes, to personalize content and ads, and to analyze our traffic. For more information, please visit our
+        - link "Privacy Policy" [ref=e132] [cursor=pointer]:
+          - /url: /privacy-policy
+        - text: .
+      - link ", opens a new window":
+        - /url: ""
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135] [cursor=pointer]:
+          - checkbox "Strictly necessary" [checked] [disabled]
+        - generic [ref=e137] [cursor=pointer]: Strictly necessary
+      - generic [ref=e138]:
+        - checkbox "Performance" [ref=e140] [cursor=pointer]
+        - generic [ref=e142] [cursor=pointer]: Performance
+      - generic [ref=e143]:
+        - checkbox "Targeting" [ref=e145] [cursor=pointer]
+        - generic [ref=e147] [cursor=pointer]: Targeting
+      - generic [ref=e148]:
+        - checkbox "Functionality" [ref=e150] [cursor=pointer]
+        - generic [ref=e152] [cursor=pointer]: Functionality
+      - generic [ref=e153]:
+        - checkbox "Unclassified" [ref=e155] [cursor=pointer]
+        - generic [ref=e157] [cursor=pointer]: Unclassified
+    - generic [ref=e158]:
+      - button "Accept all" [ref=e159] [cursor=pointer]
+      - button "Decline Non-Essential" [ref=e160] [cursor=pointer]
+    - button "Show details" [ref=e161]:
+      - generic [ref=e162] [cursor=pointer]: Show details
+    - generic:
+      - tablist [ref=e166]:
+        - tab "Cookie declaration" [selected] [ref=e167] [cursor=pointer]
+        - tab "About cookies" [ref=e168] [cursor=pointer]
+      - generic:
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - button "Strictly necessary" [ref=e171] [cursor=pointer]
+            - button "Performance" [ref=e172] [cursor=pointer]
+            - button "Targeting" [ref=e173] [cursor=pointer]
+            - button "Functionality" [ref=e174] [cursor=pointer]
+            - button "Unclassified" [ref=e175] [cursor=pointer]
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]: Strictly necessary cookies allow core website functionality such as user login and account management. The website cannot be used properly without strictly necessary cookies.
+              - table "Cookie report" [ref=e180]:
+                - rowgroup [ref=e181]:
+                  - row "Name Provider / Domain Expiration Description" [ref=e182]:
+                    - columnheader "Name" [ref=e183]
+                    - columnheader "Provider / Domain" [ref=e184]
+                    - columnheader "Expiration" [ref=e185]
+                    - columnheader "Description" [ref=e186]
+                - rowgroup [ref=e187]:
+                  - row "_GRECAPTCHA Google LLC www.google.com 5 months 4 weeks Google reCAPTCHA sets a necessary cookie (_GRECAPTCHA) when executed for the purpose of providing its risk analysis." [ref=e188]:
+                    - cell "_GRECAPTCHA" [ref=e189]
+                    - cell "Google LLC www.google.com" [ref=e190]:
+                      - link "Google LLC" [ref=e192] [cursor=pointer]:
+                        - /url: https://policies.google.com/privacy
+                      - text: www.google.com
+                    - cell "5 months 4 weeks" [ref=e193]
+                    - cell "Google reCAPTCHA sets a necessary cookie (_GRECAPTCHA) when executed for the purpose of providing its risk analysis." [ref=e194]
+                  - row "__cf_bm Cloudflare Inc. .investors.amphenol.com 29 minutes 58 seconds This cookie is used to distinguish between humans and bots. This is beneficial for the website, in order to make valid reports on the use of their website." [ref=e195]:
+                    - cell "__cf_bm" [ref=e196]
+                    - cell "Cloudflare Inc. .investors.amphenol.com" [ref=e197]:
+                      - link "Cloudflare Inc." [ref=e199] [cursor=pointer]:
+                        - /url: https://www.cloudflare.com/privacypolicy
+                      - text: .investors.amphenol.com
+                    - cell "29 minutes 58 seconds" [ref=e200]
+                    - cell "This cookie is used to distinguish between humans and bots. This is beneficial for the website, in order to make valid reports on the use of their website." [ref=e201]
+                  - row "__cf_bm Cloudflare Inc. .vimeo.com 29 minutes 54 seconds This cookie is used to distinguish between humans and bots. This is beneficial for the website, in order to make valid reports on the use of their website." [ref=e202]:
+                    - cell "__cf_bm" [ref=e203]
+                    - cell "Cloudflare Inc. .vimeo.com" [ref=e204]:
+                      - link "Cloudflare Inc." [ref=e206] [cursor=pointer]:
+                        - /url: https://www.cloudflare.com/privacypolicy
+                      - text: .vimeo.com
+                    - cell "29 minutes 54 seconds" [ref=e207]
+                    - cell "This cookie is used to distinguish between humans and bots. This is beneficial for the website, in order to make valid reports on the use of their website." [ref=e208]
+            - generic:
+              - generic [ref=e209]: Performance cookies are used to see how visitors use the website, eg. analytics cookies. Those cookies cannot be used to directly identify a certain visitor.
+              - table "Cookie report" [ref=e211]:
+                - rowgroup [ref=e212]:
+                  - row "Name Provider / Domain Expiration Description" [ref=e213]:
+                    - columnheader "Name" [ref=e214]
+                    - columnheader "Provider / Domain" [ref=e215]
+                    - columnheader "Expiration" [ref=e216]
+                    - columnheader "Description" [ref=e217]
+                - rowgroup [ref=e218]:
+                  - row "_gat Google LLC .amphenol.com 59 seconds This cookie name is associated with Google Universal Analytics, according to documentation it is used to throttle the request rate - limiting the collection of data on high traffic sites." [ref=e219]:
+                    - cell "_gat" [ref=e220]
+                    - cell "Google LLC .amphenol.com" [ref=e221]:
+                      - link "Google LLC" [ref=e223] [cursor=pointer]:
+                        - /url: https://policies.google.com/privacy
+                      - text: .amphenol.com
+                    - cell "59 seconds" [ref=e224]
+                    - cell "This cookie name is associated with Google Universal Analytics, according to documentation it is used to throttle the request rate - limiting the collection of data on high traffic sites." [ref=e225]
+                  - row "_gid Google LLC .amphenol.com 1 day This cookie is set by Google Analytics. It stores and update a unique value for each page visited and is used to count and track pageviews." [ref=e226]:
+                    - cell "_gid" [ref=e227]
+                    - cell "Google LLC .amphenol.com" [ref=e228]:
+                      - link "Google LLC" [ref=e230] [cursor=pointer]:
+                        - /url: https://policies.google.com/privacy
+                      - text: .amphenol.com
+                    - cell "1 day" [ref=e231]
+                    - cell "This cookie is set by Google Analytics. It stores and update a unique value for each page visited and is used to count and track pageviews." [ref=e232]
+                  - row "_gat_Client .amphenol.com 59 seconds" [ref=e233]:
+                    - cell "_gat_Client" [ref=e234]
+                    - cell ".amphenol.com" [ref=e235]
+                    - cell "59 seconds" [ref=e236]
+                    - cell [ref=e237]
+                  - row "_ga_YVT6JXS2N6 .amphenol.com 2 years" [ref=e238]:
+                    - cell "_ga_YVT6JXS2N6" [ref=e239]
+                    - cell ".amphenol.com" [ref=e240]
+                    - cell "2 years" [ref=e241]
+                    - cell [ref=e242]
+                  - row "_ga Google LLC .amphenol.com 2 years This cookie name is associated with Google Universal Analytics - which is a significant update to Google's more commonly used analytics service. This cookie is used to distinguish unique users by assigning a randomly generated number as a client identifier. It is included in each page request in a site and used to calculate visitor, session and campaign data for the sites analytics reports." [ref=e243]:
+                    - cell "_ga" [ref=e244]
+                    - cell "Google LLC .amphenol.com" [ref=e245]:
+                      - link "Google LLC" [ref=e247] [cursor=pointer]:
+                        - /url: https://policies.google.com/privacy
+                      - text: .amphenol.com
+                    - cell "2 years" [ref=e248]
+                    - cell "This cookie name is associated with Google Universal Analytics - which is a significant update to Google's more commonly used analytics service. This cookie is used to distinguish unique users by assigning a randomly generated number as a client identifier. It is included in each page request in a site and used to calculate visitor, session and campaign data for the sites analytics reports." [ref=e249]
+            - generic:
+              - generic [ref=e250]: Targeting cookies are used to identify visitors between different websites, eg. content partners, banner networks. Those cookies may be used by companies to build a profile of visitor interests or show relevant ads on other websites.
+              - table "Cookie report" [ref=e252]:
+                - rowgroup [ref=e253]:
+                  - row "Name Provider / Domain Expiration Description" [ref=e254]:
+                    - columnheader "Name" [ref=e255]
+                    - columnheader "Provider / Domain" [ref=e256]
+                    - columnheader "Expiration" [ref=e257]
+                    - columnheader "Description" [ref=e258]
+                - rowgroup [ref=e259]:
+                  - row "sp Eventbrite Inc. investors.amphenol.com 1 year This cookie is associated with Eventbrite and is used to deliver content tailored to the end user's interests and improve content creation. This cookie is also used for event-booking purposes." [ref=e260]:
+                    - cell "sp" [ref=e261]
+                    - cell "Eventbrite Inc. investors.amphenol.com" [ref=e262]:
+                      - link "Eventbrite Inc." [ref=e264] [cursor=pointer]:
+                        - /url: https://www.eventbrite.com/privacypolicy
+                      - text: investors.amphenol.com
+                    - cell "1 year" [ref=e265]
+                    - cell "This cookie is associated with Eventbrite and is used to deliver content tailored to the end user's interests and improve content creation. This cookie is also used for event-booking purposes." [ref=e266]
+            - generic:
+              - generic [ref=e267]: Functionality cookies are used to remember visitor information on the website, eg. language, timezone, enhanced content.
+              - table "Cookie report" [ref=e269]:
+                - rowgroup [ref=e270]:
+                  - row "Name Provider / Domain Expiration Description" [ref=e271]:
+                    - columnheader "Name" [ref=e272]
+                    - columnheader "Provider / Domain" [ref=e273]
+                    - columnheader "Expiration" [ref=e274]
+                    - columnheader "Description" [ref=e275]
+                - rowgroup [ref=e276]:
+                  - row ".AspNetCore.Antiforgery.nixphHDAMN4 amphenol.com Session" [ref=e277]:
+                    - cell ".AspNetCore.Antiforgery.nixphHDAMN4" [ref=e278]
+                    - cell "amphenol.com" [ref=e279]
+                    - cell "Session" [ref=e280]
+                    - cell [ref=e281]
+            - generic:
+              - generic [ref=e282]: Unclassified cookies are cookies that do not belong to any other category or are in the process of categorization.
+              - table "Cookie report" [ref=e284]:
+                - rowgroup [ref=e285]:
+                  - row "Name Provider / Domain Expiration Description" [ref=e286]:
+                    - columnheader "Name" [ref=e287]
+                    - columnheader "Provider / Domain" [ref=e288]
+                    - columnheader "Expiration" [ref=e289]
+                    - columnheader "Description" [ref=e290]
+                - rowgroup [ref=e291]:
+                  - row "__uxq412__ses.f65c investors.amphenol.com 29 minutes 59 seconds" [ref=e292]:
+                    - cell "__uxq412__ses.f65c" [ref=e293]
+                    - cell "investors.amphenol.com" [ref=e294]
+                    - cell "29 minutes 59 seconds" [ref=e295]
+                    - cell [ref=e296]
+                  - row "contrast investors.amphenol.com Session" [ref=e297]:
+                    - cell "contrast" [ref=e298]
+                    - cell "investors.amphenol.com" [ref=e299]
+                    - cell "Session" [ref=e300]
+                    - cell [ref=e301]
+                  - row "__uxq412__id.f65c investors.amphenol.com 2 years" [ref=e302]:
+                    - cell "__uxq412__id.f65c" [ref=e303]
+                    - cell "investors.amphenol.com" [ref=e304]
+                    - cell "2 years" [ref=e305]
+                    - cell [ref=e306]
+        - generic [ref=e307]:
+          - text: Cookies are small text files that are placed on your computer by websites that you visit. Websites use cookies to help users navigate efficiently and perform certain functions. Cookies that are required for the website to operate properly are allowed to be set without your permission. All other cookies need to be approved before they can be set in the browser.
+          - text: You can change your consent to cookie usage at any time on our Privacy Policy page.
+      - contentinfo [ref=e308]:
+        - text: Cookie
+        - link "report, opens a new window" [ref=e309] [cursor=pointer]:
+          - /url: https://cookie-script.com/cookie-report?identifier=caee711a0b1fe573c46da374ef7ff1e6
+          - text: report
+        - text: created by
+        - link "CookieScript Consent Management Platform, opens a new window" [ref=e310] [cursor=pointer]:
+          - /url: https://cookie-script.com
+          - text: CookieScript

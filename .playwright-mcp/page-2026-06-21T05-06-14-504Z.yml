@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - banner [ref=e4]:
+      - heading "Tesla Logo Skip to main content" [level=1] [ref=e6]:
+        - link "Tesla Logo" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: Tesla
+        - link "Skip to main content" [ref=e11] [cursor=pointer]:
+          - /url: "#main-content"
+  - generic [ref=e12]:
+    - heading "Build your Career at Tesla" [level=1] [ref=e13]
+    - img "Tesla Careers Hero" [ref=e14]
+  - progressbar "Loading" [ref=e15]:
+    - img [ref=e16]
+    - img [ref=e18]
+  - contentinfo [ref=e22]:
+    - navigation [ref=e23]:
+      - list [ref=e24]:
+        - listitem [ref=e25]:
+          - link "Tesla © 2026" [ref=e26] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e27]:
+          - link "Privacy & Legal" [ref=e28] [cursor=pointer]:
+            - /url: /about/legal
+        - listitem [ref=e29]:
+          - link "Tesla Connect" [ref=e30] [cursor=pointer]:
+            - /url: https://inside.tesla.com
+  - generic [ref=e31]:
+    - generic [ref=e32]:
+      - strong [ref=e33]: Help Us Improve Our Website with Cookies
+      - paragraph [ref=e34]:
+        - text: We use cookies and process data from your device to analyze website performance, personalize ad content, and improve your experience. Your consent includes data transfers outside of the country you’re located. View
+        - link "Cookie Settings" [ref=e35] [cursor=pointer]:
+          - /url: https://www.tesla.com/legal/cookies
+        - text: for more information.
+    - generic [ref=e36]:
+      - button "Accept" [ref=e37]
+      - button "Reject" [ref=e38]

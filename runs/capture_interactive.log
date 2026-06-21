@@ -1,0 +1,12 @@
+  fujitsunorthamerica          hosts=[] api=[]
+  tiktokusdatasecurity         hosts=[] api=[]
+  twosigmainvestments          hosts=[] api=[]
+  cgitechnologiesandsolutions  hosts=[] api=[]
+  groupmworldwide              hosts=[] api=[]
+  creditkarma                  hosts=[] api=[]
+  landttechnologyservices      hosts=[] api=[]
+  valuemomentum                hosts=[] api=['https://forms.hsforms.com/embed/v3/form/1747186/39']
+  kpittechnologies             hosts=[] api=[]
+  depositorytrustandclearing   hosts=[] api=[]
+
+wrote 0 candidates -> candidates_interactive.json
