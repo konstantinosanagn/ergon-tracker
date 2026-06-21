@@ -65,7 +65,7 @@ _DEFAULT_PAGE = "SearchJobs"
 _DEFAULT_PORTALS = ("careers", "main")
 # Stable Avature job link: .../JobDetail/{slug}/{numericId} (slug may be absent on some
 # themes, hence the non-greedy middle). The trailing numeric id is the decisive signal.
-_JOB_RE = re.compile(r"/JobDetail/.*?/(\d+)")
+_JOB_RE = re.compile(r"/JobDetail\w*/.*?/(\d+)")  # JobDetail / JobDetailRetail / JobDetailCorporate…
 # The page names that pin the portalPath in a URL path (segment immediately before them).
 _PAGES = ("SearchJobs", "JobDetail")
 
@@ -104,13 +104,13 @@ class AvatureProvider(BaseProvider):
             raws = await self._fetch_portal(host, portal, page_name, query, fetcher)
             # JS-widget themes (e.g. Slalom) render no JobDetail anchors in static HTML, so the
             # HTML parse yields 0; the 20-item RSS feed is then the only reachable source.
-            return raws or await self._fetch_rss(host, portal, query.limit, fetcher)
+            return raws or await self._fetch_rss(host, portal, query.limit, fetcher, page_name)
         # Bare host: try the default portalPaths and use the first that yields jobs.
         for cand in _DEFAULT_PORTALS:
             raws = await self._fetch_portal(host, cand, page_name, query, fetcher)
             if raws:
                 return raws
-            rss = await self._fetch_rss(host, cand, query.limit, fetcher)
+            rss = await self._fetch_rss(host, cand, query.limit, fetcher, page_name)
             if rss:
                 return rss
         return []
@@ -129,10 +129,18 @@ class AvatureProvider(BaseProvider):
         return first
 
     async def _fetch_rss(
-        self, host: str, portal: str, limit: int | None, fetcher: AsyncFetcher
+        self,
+        host: str,
+        portal: str,
+        limit: int | None,
+        fetcher: AsyncFetcher,
+        page: str = _DEFAULT_PAGE,
     ) -> list[RawJob]:
-        """Fallback for JS-widget themes: the Avature RSS feed (hard-capped at 20 items)."""
-        url = f"https://{host}/{portal}/SearchJobs/feed/?jobRecordsPerPage=20"
+        """Fallback for JS-widget themes: the Avature RSS feed (hard-capped at 20 items).
+
+        ``page`` mirrors the search page name (default ``SearchJobs``); tenants that customize it
+        (e.g. Ralph Lauren ``CareersCorporate/SearchJobsCorporate``) expose the feed at that path."""
+        url = f"https://{host}/{portal}/{page}/feed/?jobRecordsPerPage=20"
         try:
             text = await fetcher.get_text(url)
         except Exception:

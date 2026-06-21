@@ -168,3 +168,39 @@ async def test_blocked_tenant_degrades_to_empty() -> None:
         async with AsyncFetcher(per_host_rate=100) as f:
             raws = await AvatureProvider().fetch("koch.avature.net", SearchQuery(), f)
     assert raws == []
+
+
+def test_job_re_matches_custom_jobdetail_suffix() -> None:
+    """Some tenants (Ralph Lauren) use /JobDetailRetail/ etc. — the id regex must still match."""
+    from ergon_tracker.providers.avature import _JOB_RE
+
+    assert _JOB_RE.search("/CareersCorporate/JobDetailRetail/Cloud-Architect/46386").group(1) == "46386"
+    assert _JOB_RE.search("/main/JobDetail/Some-Role/12345").group(1) == "12345"
+
+
+async def test_rss_uses_custom_page_name() -> None:
+    """RSS fallback must build the feed at the tenant's custom search page (SearchJobsCorporate),
+    not the hardcoded SearchJobs."""
+    import httpx
+    import respx
+    from ergon_tracker.http import AsyncFetcher
+    from ergon_tracker.models import SearchQuery
+    from ergon_tracker.providers.avature import AvatureProvider
+
+    feed = (
+        "<rss><channel><item><title><![CDATA[Analyst]]></title>"
+        "<link>https://careers.ralphlauren.com/CareersCorporate/JobDetailRetail/Analyst/46386</link>"
+        "</item></channel></rss>"
+    )
+    url = "https://careers.ralphlauren.com/careerscorporate/SearchJobsCorporate/feed/?jobRecordsPerPage=20"
+    with respx.mock as m:
+        # portal HTML yields nothing -> RSS fallback at the custom page
+        m.get(url__startswith="https://careers.ralphlauren.com/careerscorporate/SearchJobsCorporate?").mock(
+            return_value=httpx.Response(200, text="<html></html>")
+        )
+        m.get(url).mock(return_value=httpx.Response(200, text=feed))
+        async with AsyncFetcher(per_host_rate=100) as f:
+            raws = await AvatureProvider().fetch(
+                "careers.ralphlauren.com|CareersCorporate|SearchJobsCorporate", SearchQuery(), f
+            )
+    assert [r.source_job_id for r in raws] == ["46386"]
