@@ -6974,5 +6974,391 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://job-boards.greenhouse.io/definiumtherapeutics"
+ },
+ "Delek Logistics Partners, LP": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.delekus.com/"
+ },
+ "Delek US Holdings, Inc.": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.delekus.com/"
+ },
+ "Denali Therapeutics Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://dnli.wd1.myworkdayjobs.com/Discovery"
+ },
+ "Dermata Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small clinical-stage biotech (Nasdaq: DRMA, San Diego). Official site dermatarx.",
+  "status": "no-board"
+ },
+ "Design Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page designtx.com/careers/ does not host jobs on a standard ATS; it dire",
+  "status": "no-board"
+ },
+ "Designer Brands Inc.": {
+  "attempts": 1,
+  "host": "myjobs.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://myjobs.adp.com/designerbrands/cx"
+ },
+ "Destiny Tech100 Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Destiny (manager of Destiny Tech100, NYSE: DXYZ) uses a Dover-hosted careers pag",
+  "status": "no-board"
+ },
+ "DevvStream Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Carbon-credit company; official site devvstream.com has no careers/jobs page and",
+  "status": "no-board"
+ },
+ "DiDi Global Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-didiglobal.icims.com/"
+ },
+ "DiaMedica Therapeutics Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page diamedica.com/company/careers contains only an invitation to 'get i",
+  "status": "no-board"
+ },
+ "DiamondRock Hospitality Co": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small lodging REIT (~29 corporate employees, Bethesda MD). Only aggregator listi",
+  "status": "no-board"
+ },
+ "Digerati Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC (DTGI) telecom/data-center holding co. Affiliated Digerati Systems care",
+  "status": "no-board"
+ },
+ "Digital Brand Media & Marketing Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap OTC entity; no official careers page or ATS board found. Searches surf",
+  "status": "no-board"
+ },
+ "Digital Brands Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Confirmed correct company (digitalbrandsgroup.co; owns DSTLD, Bailey 44, Sundry,",
+  "status": "no-board"
+ },
+ "Digital Currency X Technology Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Cayman-based crypto digital-asset-treasury shell (Nasdaq DCX, formerly Chijet Mo",
+  "status": "no-board"
+ },
+ "DigitalOcean Holdings, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/digitalocean98"
+ },
+ "Dine Brands Global, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday found, failed verify",
+  "status": "no-board",
+  "url": "https://dinebrands.wd1.myworkdayjobs.com/DineCareers"
+ },
+ "Direct Digital Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Adtech holding co (Nasdaq DRCT; Colossus SSP, Orange 142). Careers hosted on own",
+  "status": "no-board"
+ },
+ "Disc Medicine, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/discmedicine"
+ },
+ "Distribution Solutions Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Holding company (Nasdaq DSGR; Lawson Products, Gexpro Services, TestEquity, Cana",
+  "status": "no-board"
+ },
+ "District Metals Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny Vancouver-based mineral exploration company (1-10 employees, ticker DMX.V/D",
+  "status": "no-board"
+ },
+ "Diversified Energy Co": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers portal is careers.div.energy (a custom Jibe-CDN-powered career ",
+  "status": "no-board"
+ },
+ "DocGo Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://docgo.wd1.myworkdayjobs.com/DocGo"
+ },
+ "Dogecoin Cash, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No legitimate operating company website or careers page found; name corresponds ",
+  "status": "no-board"
+ },
+ "Dogness (International) Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based (Dongguan) pet-products manufacturer, NASDAQ: DOGZ. Only dogness.com",
+  "status": "no-board"
+ },
+ "Dogwood Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small clinical-stage biotech (Alpharetta GA, ticker DWTX, site dwtx.com). No car",
+  "status": "no-board"
+ },
+ "Dolphin Entertainment, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers hosted on its own site dolphinentertainment.com/careers with an 'Easy Ap",
+  "status": "no-board"
+ },
+ "Dominari Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Applications handled via a form on the subsidiary site dominarisecurities.com/ca",
+  "status": "no-board"
+ },
+ "Donnelley Financial Solutions, Inc.": {
+  "attempts": 1,
+  "host": "career8.successfactors.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career8.successfactors.com/career?career_company=donnelleyf"
+ },
+ "Dorman Products, Inc.": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.dormanproducts.com/"
+ },
+ "Douglas Elliman Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=f4ac016f-7f6a-4bce-8988-0f61de0efa8a&ccId=19000101_000001&lang=en_US"
+ },
+ "Douglas Emmett Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page douglasemmett.com/careers lists roles with APPLY buttons a",
+  "status": "no-board"
+ },
+ "DraftKings Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://draftkings.wd1.myworkdayjobs.com/en-US/DraftKings"
+ },
+ "Draganfly Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Verified company job board exists at draganfly.applytojobs.ca (titled 'Draganfly",
+  "status": "no-board"
+ },
+ "Dragonfly Energy Holdings Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "A Workable board apply.workable.com/askdragonfly exists under name 'Dragonfly' b",
+  "status": "no-board"
+ },
+ "Dream Finders Homes, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers site careers.dreamfindershomes.com is powered by VidCruiter (fo",
+  "status": "no-board"
+ },
+ "Drilling Tools International Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers handled via drillingtools.com/employment using regional offices, downloa",
+  "status": "no-board"
+ },
+ "Driveitaway Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap company (driveitawayholdings.com); site shows only investor/SEC conten",
+  "status": "no-board"
+ },
+ "Driven Brands Holdings Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://drivenbrands.wd1.myworkdayjobs.com/DrivenBrandsCareerSite"
+ },
+ "Dror Ortho-Design, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small dental-aligner startup (~12-person team per Crunchbase); no careers page o",
+  "status": "no-board"
+ },
+ "Dryden Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Junior TSX-V gold exploration company (Vancouver, 11-50 employees). Official sit",
+  "status": "no-board"
+ },
+ "DuPont de Nemours, Inc.": {
+  "attempts": 1,
+  "host": "dupont.wd5.myworkdayjobs.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://dupont.wd5.myworkdayjobs.com/Jobs"
+ },
+ "Dynagas LNG Partners LP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Athens, Greece-based LNG shipping MLP. Recruiting is for seafarers only, handled",
+  "status": "no-board"
+ },
+ "Dynatrace, Inc.": {
+  "ats": "smartrecruiters",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.smartrecruiters.com/Dynatrace1"
+ },
+ "E-Power Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Ambiguous name; closest match 'e Power Inc' (Carson City, NV) is a small SAP sta",
+  "status": "no-board"
+ },
+ "E-Smart Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Ambiguous name matching many unrelated 'eSmart'/'E-SMART' entities (fleet-safety",
+  "status": "no-board"
+ },
+ "E.W. SCRIPPS Co": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday found, failed verify",
+  "status": "no-board",
+  "url": "https://scripps.wd5.myworkdayjobs.com/Scripps_Careers"
+ },
+ "E2Gold Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Junior TSX-V gold explorer (Ontario, TSX-V:ETU). Official site e2gold.ca and Lin",
+  "status": "no-board"
+ },
+ "EACO CORP": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.jobvite.com/biscoindustries"
+ },
+ "EAGLE MATERIALS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Eaglematerials.com/careers does not link to a centralized ATS; it directs applic",
+  "status": "no-board"
+ },
+ "EASTGROUP PROPERTIES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (eastgroup.net/about/careers) links to eastgroupproperties",
+  "status": "no-board"
+ },
+ "EASTMAN KODAK CO": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.kodak.com/"
+ },
+ "EBR Systems, Inc.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/66201f3b-e03a-4e33-bd83-44cec209a817/EBR-Systems-Inc"
+ },
+ "ECARX Holdings Inc.": {
+  "ats": "ashby",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ashby found, failed verify",
+  "status": "no-board",
+  "url": "https://jobs.ashbyhq.com/ecarxgroup"
+ },
+ "ECO SCIENCE SOLUTIONS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "OTC microcap shell (ticker ESSI), subject of an SEC trading suspension; no opera",
+  "status": "no-board"
+ },
+ "ECOMINAS CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No findable official website or careers page; search returned only unrelated com",
+  "status": "no-board"
+ },
+ "ECOPLUS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "OTC microcap (ticker ECPL) with no findable operating careers page. All 'Ecoplus",
+  "status": "no-board"
+ },
+ "EDENOR": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Empresa Distribuidora y Comercializadora Norte (Argentine electricity distributo",
+  "status": "no-board"
+ },
+ "EDGE COPPER Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Canadian junior copper explorer (edgecopper.com, TSXV/Bloomberg EDCU:CN). Corpor",
+  "status": "no-board"
+ },
+ "EDGEWELL PERSONAL CARE Co": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.edgewell.com/"
  }
 }
