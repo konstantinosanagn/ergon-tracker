@@ -66,6 +66,7 @@ _DOMAIN_RATE_OVERRIDES: dict[str, tuple[float, float]] = {
     "workable.com": (3.0, 1.0),
     "bamboohr.com": (3.0, 1.0),
     "smartrecruiters.com": (3.0, 1.0),
+    "adp.com": (2.0, 1.0),  # ADP WFN throttles aggressively when many cids hit the host at once
 }
 # Two-level public suffixes, so the registrable domain is computed correctly.
 _TWO_LEVEL_TLDS = {

@@ -89,12 +89,18 @@ class ADPProvider(BaseProvider):
         seen: set[str] = set()
         skip = 0  # advance by the ACTUAL returned count (never a fixed stride): $skip overlaps by
         # one row and a server Top cap would otherwise create silent gaps.
-        for _ in range(self.MAX_PAGES):
+        for page in range(self.MAX_PAGES):
             url = f"{base}?cid={cid}&$top={_PAGE}&$skip={skip}"
-            try:
+            if page == 0:
+                # Let the first page's error PROPAGATE: build_registry's verifier turns a 429/
+                # timeout into a 'transient' (gentle re-verify) instead of mistaking a throttle
+                # for a genuinely empty board. Only later pages swallow (keep partial results).
                 data = await fetcher.get_json(url, headers={"Accept": "application/json"})
-            except Exception:  # noqa: BLE001 - a dead/blocked board just yields nothing
-                break
+            else:
+                try:
+                    data = await fetcher.get_json(url, headers={"Accept": "application/json"})
+                except Exception:  # noqa: BLE001 - keep the pages already collected
+                    break
             reqs = data.get("jobRequisitions") if isinstance(data, dict) else None
             if not isinstance(reqs, list) or not reqs:
                 break
