@@ -10773,5 +10773,392 @@
   "last": "2026-06-21",
   "reason": "No identifiable company by this exact name with an official website or ATS board",
   "status": "no-board"
+ },
+ "HORTON D R INC /DE/": {
+  "ats": "taleo",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://drhorton.taleo.net/careersection/2/jobsearch.ftl"
+ },
+ "HOULIHAN LOKEY, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hl.wd1.myworkdayjobs.com/External"
+ },
+ "HOVNANIAN ENTERPRISES INC": {
+  "ats": "taleo",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo found, failed verify",
+  "status": "no-board",
+  "url": "https://phh.tbe.taleo.net/phh04/ats/careers/v2/jobSearch?act=redirectCwsV2&cws=46&org=KHOV"
+ },
+ "HST Global, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap SEC filer (ticker HSTC) at hstglobal.com (Virginia Beach, VA) \u2014 a smal",
+  "status": "no-board"
+ },
+ "HUDSON TECHNOLOGIES INC /NY": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=4418796f-aa69-41b0-88c2-ffbb5ff8949a&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "HUHUTECH International Group Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Nasdaq-listed (via SEC, CIK 1945415) holding company operating through China/Jap",
+  "status": "no-board"
+ },
+ "HUNT J B TRANSPORT SERVICES INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jbhunt.wd501.myworkdayjobs.com/Careers"
+ },
+ "HURCO COMPANIES INC": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "adp found, failed verify",
+  "status": "no-board",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e9311e7a-3998-4669-af66-1616e7b7f2fe&ccId=22330316_1091&lang=en_US&selectedMenuKey=CurrentOpenings"
+ },
+ "HUYA Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "NYSE-listed Chinese game live-streaming company (Guangzhou). Hiring is conducted",
+  "status": "no-board"
+ },
+ "HWH International Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny Nasdaq-listed (ticker HWH) lifestyle/F&B holding company based in Bethesda,",
+  "status": "no-board"
+ },
+ "HYCROFT MINING HOLDING CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (hycroftmining.com/contact/careers/) posts roles as PDFs a",
+  "status": "no-board"
+ },
+ "HYDROFARM HOLDINGS GROUP, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official branded careers portal is hydrofarm.easyapply.co, powered by GetHired.c",
+  "status": "no-board"
+ },
+ "HYPERION DEFI, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Nasdaq holding company (HYPD, formerly Eyenovia) in ophthalmic tech + digi",
+  "status": "no-board"
+ },
+ "HYSTER-YALE, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hysteryale.wd1.myworkdayjobs.com/Hyster-YaleCareers"
+ },
+ "Hacker Interstellar Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China/Hong Kong-based online chat app company (subsidiary of Beijing Tomorrow Wo",
+  "status": "no-board"
+ },
+ "Hadron Energy, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page (hadron-energy.com/careers/) uses a proprietary on-site 'Apply Now'",
+  "status": "no-board"
+ },
+ "Hagerty, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hagerty.wd5.myworkdayjobs.com/hagerty"
+ },
+ "Hamilton Beach Brands Holding Co": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6ee736fd-f0e0-462c-8f85-27e6db63d24b&ccId=19000101_000001&source=CC2&lang=en_US&selectedMenuKey=CurrentOpenings"
+ },
+ "Harmony Biosciences Holdings, Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=dbdf504d-e954-4c5d-9615-0f4e2fd0da14&source=CC2&lang=en_US&selectedMenuKey=CurrentOpenings"
+ },
+ "Hartford Creative Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based social-media advertising micro-cap (OTC: HFUS, formerly Hartford Gre",
+  "status": "no-board"
+ },
+ "Harvard Apparatus Regenerative Technology, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clinical-stage biotech (HRGN, formerly Biostage). Careers page is hregen.com/car",
+  "status": "no-board"
+ },
+ "Havana Roasters Coffee Companies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC company (THRC) at thehrccompanies.com. No careers/ATS board found; only",
+  "status": "no-board"
+ },
+ "HawkEye 360, Inc.": {
+  "attempts": 1,
+  "host": "hawkeye360.applicantstack.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://hawkeye360.applicantstack.com/x/openings"
+ },
+ "Hayward Holdings, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hayward.wd1.myworkdayjobs.com/External"
+ },
+ "Headwater Gold Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Junior mineral-exploration company (HWG.CN) in Vancouver. No dedicated careers/A",
+  "status": "no-board"
+ },
+ "Health Catalyst, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers"
+ },
+ "Health In Tech, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at healthintech.com/careers links only to internal job-description ",
+  "status": "no-board"
+ },
+ "HealthLynked Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page healthlynked.com/careers returned HTTP 404 on fetch. No external AT",
+  "status": "no-board"
+ },
+ "Healthcare Triangle, Inc.": {
+  "attempts": 1,
+  "host": "healthcaretriangle.catsone.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://healthcaretriangle.catsone.com/careers/68581-Healthcare-Triangle-Inc"
+ },
+ "Healthier Choices Management Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Holding company (HCMC) for natural-grocery subsidiaries (Ada's, Greens Natural F",
+  "status": "no-board"
+ },
+ "Healwell AI Inc.": {
+  "ats": "workable",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://apply.workable.com/healwell-ai/"
+ },
+ "HeartBeam, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page at heartbeam.com/careers lists openings directly on its ow",
+  "status": "no-board"
+ },
+ "HeartCore Enterprises, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "US-listed HTCR is the holding entity; jobs are posted by the Japanese operating ",
+  "status": "no-board"
+ },
+ "HeartSciences Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at heartsciences.com/careers shows a 'Job Openings' section but lis",
+  "status": "no-board"
+ },
+ "Heidmar Maritime Holdings Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at heidmar.com/careers has a 'Current Openings' heading with no pos",
+  "status": "no-board"
+ },
+ "Helio Corp /FL/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "FL-incorporated aerospace holding (operates via Heliospace, helio.space). No car",
+  "status": "no-board"
+ },
+ "Helmerich & Payne, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hpinc.wd5.myworkdayjobs.com/HPINC"
+ },
+ "Hemab Therapeutics Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Hemab hosts its careers on HiTalento (career.hitalento.com/hemab), a Danish recr",
+  "status": "no-board"
+ },
+ "Hennessy Capital Investment Corp. VII": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Blank-check SPAC (NASDAQ: HVII) with no operating employees or careers page; no ",
+  "status": "no-board"
+ },
+ "Hepion Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at hepionpharma.com/about/careers uses an inline application form o",
+  "status": "no-board"
+ },
+ "Hercules Capital, Inc.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/4fb60d14-7acf-4136-969e-21722e20111d/HERCULES-CAPITAL-INC"
+ },
+ "Heritage Insurance Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clearwater FL P&C insurer (NYSE: HRTG) posts via heritagepci.jobs.net (CareerBui",
+  "status": "no-board"
+ },
+ "Hesai Group": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "hesaitech.com/careers hosts job postings directly on its own domain with no exte",
+  "status": "no-board"
+ },
+ "Hess Midstream LP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Operated by Hess Corporation; careers route to jobs.hess.com, a proprietary port",
+  "status": "no-board"
+ },
+ "Hestia Insight Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Las Vegas principal-investment/advisory firm (OTC: HSTA); no careers page ",
+  "status": "no-board"
+ },
+ "Hi-Great Group Holding Co": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap LA nutritional-supplement/agritourism shell (OTC: HIGR, higrgroup.com)",
+  "status": "no-board"
+ },
+ "HiTek Global Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Xiamen, China micro-cap IT/tax-device company (NASDAQ: HKIT); no careers page or",
+  "status": "no-board"
+ },
+ "High Roller Technologies, Inc.": {
+  "ats": "recruitee",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://highrollertechnologies.recruitee.com/"
+ },
+ "High Tide Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-hightideinc.icims.com/jobs"
+ },
+ "High-Trend International Group": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Foreign shipping-decarbonization company (htcointl.com); no careers page or exte",
+  "status": "no-board"
+ },
+ "HighPeak Energy, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Fort Worth oil/gas co at highpeakenergy.com; no standard ATS board found. The gr",
+  "status": "no-board"
+ },
+ "Highlander Silver Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Toronto-based silver exploration company (highlandersilver.com); no standa",
+  "status": "no-board"
+ },
+ "Hillman Solutions Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Operates as The Hillman Group (hillmangroup.com/pages/careers); no standard ATS ",
+  "status": "no-board"
+ },
+ "Hilltop Holdings Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://careers-hilltop-holdings.icims.com/jobs/intro"
+ },
+ "Hilton Grand Vacations Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://efuq.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/HiltonGrandVacations/jobs"
+ },
+ "Himax Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Taiwan-based fabless semiconductor co (himax.com.tw); jobs posted via Taiwan's 1",
+  "status": "no-board"
+ },
+ "Hippo Holdings Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://boards.greenhouse.io/hippo70"
+ },
+ "HireQuest, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Staffing franchisor; jobs run through its own portal jobs.hirequest.com (franchi",
+  "status": "no-board"
+ },
+ "Holley Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Performance automotive co; careers at holley.com/employment (403 to fetch). No s",
+  "status": "no-board"
+ },
+ "Honeywell Aerospace Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Aerospace/jobs"
  }
 }
