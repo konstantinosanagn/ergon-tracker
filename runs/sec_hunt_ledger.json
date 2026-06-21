@@ -5043,5 +5043,392 @@
   "last": "2026-06-21",
   "status": "found-no-provider",
   "url": "https://careers.coty.com/"
+ },
+ "COUSINS PROPERTIES INC": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ukg found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.ultipro.com/COU1003COUPR/JobBoard/77ad08eb-012c-47e8-869c-50bc8a688c3f"
+ },
+ "COVENANT LOGISTICS GROUP, INC.": {
+  "attempts": 1,
+  "host": "covenantlogistics.elevate-ats.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://covenantlogistics.elevate-ats.com/"
+ },
+ "CPI AEROSTRUCTURES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page cpiaero.com/careers lists jobs on internal proprietary pag",
+  "status": "no-board"
+ },
+ "CPI Card Group Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-cpicardgroup.icims.com/"
+ },
+ "CREATIVE MEDICAL TECHNOLOGY HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site creativemedicaltechnology.com has no careers/jobs page or ATS link",
+  "status": "no-board"
+ },
+ "CREATIVE REALITIES, INC.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d85ad31e-8369-4536-a491-d0acf1c5972f&ccId=19000101_000001&lang=en_US"
+ },
+ "CREDIT AGRICOLE S A": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Large French banking group; careers spread across proprietary group sites (group",
+  "status": "no-board"
+ },
+ "CREDITRISKMONITOR COM INC": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "adp found, failed verify",
+  "status": "no-board",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=5cf6d236-0e95-4c46-9ba2-7efa3660bc67&ccId=19000101_000001&lang=en_US"
+ },
+ "CRESUD INC": {
+  "attempts": 1,
+  "host": "irsa.hiringroom.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://irsa.hiringroom.com/jobs/microsite/cresud"
+ },
+ "CROSS COUNTRY HEALTHCARE INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers run on a proprietary platform (app.crosscountry.com / crosscountry.com j",
+  "status": "no-board"
+ },
+ "CROWN CRAFTS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Crown Crafts (CRWS, infant products, Gonzales LA) official site crowncrafts.com;",
+  "status": "no-board"
+ },
+ "CROWN HOLDINGS, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://crownholdings.wd501.myworkdayjobs.com/CrownHoldings"
+ },
+ "CRYO CELL INTERNATIONAL INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Cryo-Cell International (cord blood bank, Oldsmar FL) careers page at cryo-cell.",
+  "status": "no-board"
+ },
+ "CS DIAGNOSTICS CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CS Diagnostics Corp (csdcorp.us) is the US arm of the Germany-based CS Diagnosti",
+  "status": "no-board"
+ },
+ "CS Disco, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/disco"
+ },
+ "CSP INC /MA/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CSP Inc / CSPi (CSPI, Lowell MA; IT solutions and defense multicomputer products",
+  "status": "no-board"
+ },
+ "CSW INDUSTRIALS, INC.": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/CSW1002CSWI/JobBoard/45220d28-f191-42b7-878c-f4d4a4987652"
+ },
+ "CTO Realty Growth, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CTO Realty Growth (REIT, ctoreit.com) posts roles via LinkedIn (e.g., linkedin.c",
+  "status": "no-board"
+ },
+ "CTS CORP": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.ctscorp.com/"
+ },
+ "CTT PHARMACEUTICAL HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CTT Pharmaceutical Holdings (CTTH, drug-delivery for pain management; cttpharmac",
+  "status": "no-board"
+ },
+ "CTW Cayman": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Nasdaq-listed gaming company (G123 platform, Tokyo). Careers at jobs.ctw.inc red",
+  "status": "no-board"
+ },
+ "CULLEN/FROST BANKERS, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://frostbank.wd5.myworkdayjobs.com/External"
+ },
+ "CULP INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page at culp.com/careers does not surface a standard ATS host; ",
+  "status": "no-board"
+ },
+ "CUMBERLAND PHARMACEUTICALS INC": {
+  "ats": "workable",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://apply.workable.com/cumberland-pharmaceuticals/"
+ },
+ "CUMULUS MEDIA INC": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://jobs-cumulusmedia.icims.com"
+ },
+ "CURIS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Oncology company; careers at curis.com/careers/open-positions does not expose a ",
+  "status": "no-board"
+ },
+ "CV Sciences, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CBD/supplement maker (PlusCBD). No standard ATS board found; openings appear onl",
+  "status": "no-board"
+ },
+ "CVB FINANCIAL CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Operating subsidiary Citizens Business Bank careers (cbbank.com) applies via ADP",
+  "status": "no-board"
+ },
+ "CVD EQUIPMENT CORP": {
+  "attempts": 1,
+  "host": "cvdequipment.zohorecruit.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://cvdequipment.zohorecruit.com/jobs/Careers"
+ },
+ "CVR ENERGY INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page applies via legacy ADP Recruiting Management (recruiting.adp.com/sr",
+  "status": "no-board"
+ },
+ "CVR PARTNERS, LP": {
+  "attempts": 1,
+  "host": "recruiting.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.adp.com/srccar/public/RTI.home?c=1202301&d=ExternalCareerSite"
+ },
+ "CW Petroleum Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTCQB company (~2 full-time employees) in Katy, TX. Official site cwpetrole",
+  "status": "no-board"
+ },
+ "CXApp Inc.": {
+  "ats": "bamboohr",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://cxapp.bamboohr.com/careers"
+ },
+ "CYABRA, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Cyabra historically used a Comeet board (token 'cyabra'), but that board has mig",
+  "status": "no-board"
+ },
+ "CYANOTECH CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official jobs page cyanotech.com/jobs lists openings via an embedded widget with",
+  "status": "no-board"
+ },
+ "CYBERLOQ TECHNOLOGIES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Development-stage micro-cap (Sarasota, FL). Site cyberloq.com has no careers pag",
+  "status": "no-board"
+ },
+ "CYBIN INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Toronto biopharma. Careers page cybin.com/join-us directs applicants to LinkedIn",
+  "status": "no-board"
+ },
+ "CYPHERPUNK TECHNOLOGIES INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Formerly Leap Therapeutics; wound down its drug program (laid off ~75% of staff)",
+  "status": "no-board"
+ },
+ "Cabaletta Bio, Inc.": {
+  "attempts": 1,
+  "host": "app.trinethire.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://app.trinethire.com/companies/22943-cabaletta-bio-inc/jobs"
+ },
+ "Cadeler A/S": {
+  "ats": "teamtailor",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://cadeler.teamtailor.com/"
+ },
+ "Cadrenal Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Late-stage biopharma in Ponte Vedra FL with a deliberately lean/agile model (~ha",
+  "status": "no-board"
+ },
+ "Caesars Entertainment, Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://edmn.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1"
+ },
+ "CalEthos, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap data-center/infrastructure developer (TerraVolt). calethos.com/careers",
+  "status": "no-board"
+ },
+ "CalciMedica, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clinical-stage biotech in La Jolla CA with ~17 employees. Official site calcimed",
+  "status": "no-board"
+ },
+ "CaliberCos Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Real estate asset-management firm (Scottsdale AZ, ticker CWD); distinct from Cal",
+  "status": "no-board"
+ },
+ "Calidi Biotherapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clinical-stage biotech in San Diego. Careers handled on its Q4/IR-hosted page (i",
+  "status": "no-board"
+ },
+ "California Resources Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "crc.com/careers is the official portal but is JS-driven and returns HTTP 403 to ",
+  "status": "no-board"
+ },
+ "Callaway Golf Co": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://tcbrands.wd1.myworkdayjobs.com/callaway-careers"
+ },
+ "Calumet, Inc. /DE": {
+  "ats": "dayforce",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://us59.dayforcehcm.com/CandidatePortal/en-US/calumet"
+ },
+ "Cambria Gold Mines Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small TSXV-listed gold exploration/development company (formerly Ascot Resources",
+  "status": "no-board"
+ },
+ "Camp4 Therapeutics Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (camp4tx.com/about/join-camp4) directs applicants to email",
+  "status": "no-board"
+ },
+ "Camping World Holdings, Inc.": {
+  "attempts": 1,
+  "host": "campingworld.wd5.myworkdayjobs.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://campingworld.wd5.myworkdayjobs.com/Jobs"
+ },
+ "Can B Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap CBD company (OTC: CANB) in Hicksville NY; no dedicated careers page or",
+  "status": "no-board"
+ },
+ "CanCambria Energy Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Canadian junior gas E&P (CCEC.V); official site cancambria.com has no care",
+  "status": "no-board"
+ },
+ "Canadian Solar Inc.": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.jobvite.com/careers/canadian-solar"
+ },
+ "Cannabis Bioscience International Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap (OTC: CBIH) clinical-research/education firm in Houston; official site",
+  "status": "no-board"
+ },
+ "Cannae Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Diversified holding company (NYSE: CNNE), very small HQ staff; official site can",
+  "status": "no-board"
+ },
+ "Cannaisseur Group Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC company (TCRG) with ~3 employees; no careers page or ATS board found. T",
+  "status": "no-board"
+ },
+ "Canopy Growth Corp": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://canopygrowth.wd3.myworkdayjobs.com/Canopy_Growth_External_Career_Site"
+ },
+ "Canter Resources Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Canadian junior mineral exploration company (CSE: CRC); official site canterreso",
+  "status": "no-board"
  }
 }
