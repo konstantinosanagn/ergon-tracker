@@ -45,8 +45,19 @@ DEFAULT_OUT = ROOT / "scripts" / "candidates_careers.json"
 CLEARBIT = "https://autocomplete.clearbit.com/v1/companies/suggest"
 _URL_RE = re.compile(r"https?://[^\s\"'<>)]+", re.I)
 _SCRIPT_SRC_RE = re.compile(r"<script[^>]+src=[\"']([^\"']+)[\"']", re.I)
-# Shared CDN/asset hosts a provider greedily claims (e.g. cdn.phenompeople.com) — not a board.
-_JUNK_TOKEN_MARKERS = ("cdn.", "static.", "assets.", "media.", "-cdn.", "scripts.")
+# Shared CDN/asset hosts a provider greedily claims (e.g. cdn.phenompeople.com,
+# content-us.phenompeople.com) — vendor infra, not a company's board.
+_JUNK_TOKEN_MARKERS = (
+    "cdn.",
+    "static.",
+    "assets.",
+    "media.",
+    "-cdn.",
+    "scripts.",
+    "content-us.",
+    "content.",
+    "img.",
+)
 
 
 def _is_junk(token: str) -> bool:
@@ -95,15 +106,18 @@ def careers_urls(domain: str) -> list[str]:
     ]
 
 
-def _plausible(name: str, domain: str, token: str) -> bool:
-    """True if the resolved domain/token plausibly belongs to ``name`` — guards against a
-    wrong-company domain (e.g. AMD -> mdimembrane.com) producing a mis-attributed board."""
-    cores = [c for c in core_tokens(name) if len(c) >= 3]
+def _plausible(name: str, domain: str, token: str = "") -> bool:
+    """True if ``domain`` is plausibly the company's own — guards against attributing some other
+    company's board to ``name``. Match is token-EXACT (the domain label must equal a name-derived
+    stem), NOT substring: "Stripe" must reject ``stripersonline.com`` even though "stripe" is a
+    substring of it, while "Exxon Mobil" still accepts ``exxonmobil.com``. (``token`` is accepted
+    for signature stability but attribution hinges on the domain, not the board token.)"""
+    cores = core_tokens(name)
     if not cores:
-        cores = core_tokens(name)
-    label = domain.split(".")[0].lower()
-    hay = f"{label} {token}".lower()
-    return any(c in hay for c in cores) or any((label in c or c in label) for c in cores)
+        return False
+    label = re.sub(r"[^a-z0-9]", "", domain.split(".")[0].lower())
+    stems = {cores[0], "".join(cores), "".join(cores[:2])}
+    return label in stems
 
 
 async def company_domains(

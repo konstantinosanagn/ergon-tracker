@@ -74,10 +74,11 @@ def test_careers_urls_shape():
 
 
 def test_plausibility_guard_rejects_wrong_company_domain():
-    # Clearbit returns mdimembrane.com for "Advanced Micro Devices" — its board must NOT be
-    # attributed to AMD (no shared token).
+    # Clearbit returns mdimembrane.com for "Advanced Micro Devices" — must NOT attribute to AMD.
     assert not rc._plausible("Advanced Micro Devices", "mdimembrane.com", "mdimembrane")
-    # Correct domains/tokens are accepted.
+    # Token-EXACT, not substring: "stripe" is a substring of "stripersonline" but must be rejected.
+    assert not rc._plausible("Stripe", "stripersonline.com", "x")
+    # Correct domains are accepted (including multi-token joins).
     assert rc._plausible("Salesforce", "salesforce.com", "salesforce|wd12|External_Career_Site")
     assert rc._plausible("Exxon Mobil", "exxonmobil.com", "exxonmobil")
     assert rc._plausible("Airbnb", "airbnb.com", "airbnb")
