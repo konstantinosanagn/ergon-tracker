@@ -17,6 +17,7 @@ Rules:
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -24,6 +25,18 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from ergon_tracker.dedup import normalize_company  # noqa: E402
+
+# SEC names carry share-class/state-of-incorp/parenthetical noise that breaks matching:
+# "Alphabet Inc. (Class A)", "Bancorp /MD/", "Foo Corp - Class B". Strip it before normalizing so
+# "Alphabet Inc. (Class A)" -> "alphabet" (then the alias maps it to google).
+_DESIGNATION_RE = re.compile(
+    r"\([^)]*\)|/[a-z]{2}/|\b(?:class|cl|series|ser)\s+[a-z0-9]+\b|\bclass\s*[a-z]\b",
+    re.IGNORECASE,
+)
+
+
+def _canon(name: str) -> str:
+    return _DESIGNATION_RE.sub(" ", name)
 
 # Tokens that describe a company form/industry but don't identify it — dropped before keying.
 _GENERIC = frozenset(
@@ -69,14 +82,14 @@ ALIASES = {
 
 
 def core_tokens(name: str) -> list[str]:
-    toks = normalize_company(name).split()
+    toks = normalize_company(_canon(name)).split()
     core = [t for t in toks if t not in _GENERIC]
     return core or toks
 
 
 def match_keys(name: str) -> set[str]:
     """Normalized keys a name can be matched on (intersection with another name's keys == match)."""
-    norm = normalize_company(name)
+    norm = normalize_company(_canon(name))
     core = core_tokens(name)
     keys: set[str] = {norm}  # full normalized (with descriptors) for exact hits
     # Aliases can key off the full normalized name OR the descriptor-stripped core, since

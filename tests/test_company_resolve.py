@@ -32,6 +32,14 @@ def test_brand_rename_via_alias():
     assert _covered("INTERNATIONAL BUSINESS MACHINES CORP", ["ibm"])
 
 
+def test_share_class_and_state_suffixes_stripped():
+    # SEC names carry share-class/state-of-incorp noise that must not block a match.
+    assert _covered("Alphabet Inc. (Class A)", ["google"])  # via alias after stripping (Class A)
+    assert _covered("Alphabet Inc. (Class C)", ["google"])
+    assert _covered("Berkshire Hathaway Inc. (Class B)", ["berkshire hathaway"])
+    assert _covered("1895 Bancorp of Wisconsin, Inc. /MD/", ["1895 bancorp of wisconsin"])
+
+
 def test_no_false_positive_on_shared_first_word():
     # The classic trap: same first token, different companies must NOT match.
     idx = cr.build_key_index(["american express"])
