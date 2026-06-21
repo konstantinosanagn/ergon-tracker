@@ -1,0 +1,771 @@
+{
+ "A10 Networks, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday board found but failed live-verify",
+  "status": "no-board"
+ },
+ "A2 Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny TSXV/OTCQX gold exploration company (a2gold.com) with no careers page or st",
+  "status": "no-board"
+ },
+ "A2Z CUST2MATE SOLUTIONS CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers section on cust2mate.com shows only placeholder 'Lorem ipsum' job listin",
+  "status": "no-board"
+ },
+ "AAON, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://aaon.wd108.myworkdayjobs.com/AAON"
+ },
+ "ABACUS MINING & EXPLORATION CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Vancouver mineral explorer (amemining.com) with ~8 employees and no careers page",
+  "status": "no-board"
+ },
+ "ABEONA THERAPEUTICS INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "jazzhr board found but failed live-verify",
+  "status": "no-board"
+ },
+ "ABUNDIA GLOBAL IMPACT GROUP, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Recently renamed from Houston American Energy (NYSE American: AGIG), early-stage",
+  "status": "no-board"
+ },
+ "ABVC BIOPHARMA, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small clinical-stage biopharma (abvcpharma.com); no careers page or ATS link fou",
+  "status": "no-board"
+ },
+ "ACACIA RESEARCH CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Holding company (Nasdaq: ACTG, acaciaresearch.com) acquiring/operating businesse",
+  "status": "no-board"
+ },
+ "ACCENDRA HEALTH INC/VA/": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://accendra.wd504.myworkdayjobs.com/AccendraCareers"
+ },
+ "ACCESS Newswire Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (accessnewswire.com/careers; old issuerdirect.com/company/",
+  "status": "no-board"
+ },
+ "ACCO BRANDS Corp": {
+  "attempts": 1,
+  "host": "accocareers.jobs.hr.cloud.sap",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://accocareers.jobs.hr.cloud.sap/"
+ },
+ "ACHIEVE LIFE SCIENCES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (achievelifesciences.com/about/careers/) has no ATS link; ",
+  "status": "no-board"
+ },
+ "ACM Research, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (acmr.com/careers/) lists roles but 'Apply Now' links to a",
+  "status": "no-board"
+ },
+ "ACME UNITED CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (acmeunited.com/company/employment-opportunities/) uses lo",
+  "status": "no-board"
+ },
+ "ACNB CORP": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3993975e-194c-4504-9c5e-9e6017ca5023"
+ },
+ "ACORN ENERGY, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Acorn Energy is a holding company; hiring runs through subsidiary OmniMetrix (om",
+  "status": "no-board"
+ },
+ "ACRES Commercial Realty Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Externally managed by ACRES Capital; careers page (acrescap.com/careers/) lists ",
+  "status": "no-board"
+ },
+ "ACTELIS NETWORKS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (actelis.com/careers/) uses an inline form routing to emai",
+  "status": "no-board"
+ },
+ "ACTUATE THERAPEUTICS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (actuatetherapeutics.com/careers/) currently lists no open",
+  "status": "no-board"
+ },
+ "ACUITY INC. (DE)": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-myacuity.icims.com/jobs"
+ },
+ "ACV Auctions Inc.": {
+  "attempts": 1,
+  "host": "jobs.dayforcehcm.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.dayforcehcm.com/en-US/acv/CANDIDATEPORTAL/jobs"
+ },
+ "ADAMANT DRI PROCESSING & MINERALS GROUP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based iron-ore beneficiation shell company with no findable official caree",
+  "status": "no-board"
+ },
+ "ADAPTIN BIO, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Early-stage biotech (adaptinbio.com) shows only a management page; no careers/jo",
+  "status": "no-board"
+ },
+ "ADDENTAX GROUP CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Shenzhen, China garment manufacturing/logistics company; jobs (if any) are on pr",
+  "status": "no-board"
+ },
+ "ADI GLOBAL DISTRIBUTION INC.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ehtl.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs"
+ },
+ "ADIAL PHARMACEUTICALS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny clinical-stage biopharma (adial.com, Charlottesville VA, ~handful of employ",
+  "status": "no-board"
+ },
+ "ADM ENDEAVORS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Texas holding company (screen-printing/Just Right Products); no dedicated ",
+  "status": "no-board"
+ },
+ "ADM TRONICS UNLIMITED, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Northvale NJ electronics/medical-device firm (admtronics.com); no careers ",
+  "status": "no-board"
+ },
+ "ADMA BIOLOGICS, INC.": {
+  "attempts": 1,
+  "host": "careers.admabiologics.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.admabiologics.com/"
+ },
+ "ADT Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo board found but failed live-verify",
+  "status": "no-board"
+ },
+ "ADTRAN Holdings, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://adtran.wd3.myworkdayjobs.com/ADTRAN"
+ },
+ "ADURO CLEAN TECHNOLOGIES INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (adurocleantech.com/careers) has no ATS link; it only invi",
+  "status": "no-board"
+ },
+ "ADVANCED DRAINAGE SYSTEMS, INC.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-adspipe.icims.com/"
+ },
+ "ADVANCED OXYGEN TECHNOLOGIES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AOXY is a small real-estate-holding shell company (Randolph, VT) with no careers",
+  "status": "no-board"
+ },
+ "ADVANTEST CORP": {
+  "attempts": 1,
+  "host": "myjobs.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://myjobs.adp.com/advantestcareers"
+ },
+ "ADVENT TECHNOLOGIES HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Fuel-cell company (NASDAQ: ADN). Careers page (advent.energy/careers) lists no c",
+  "status": "no-board"
+ },
+ "AE Fuels Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AE Fuels Corporation (aefuels.com) is a newly-public critical-minerals company (",
+  "status": "no-board"
+ },
+ "AEHR TEST SYSTEMS": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Aehr posts openings as individual WordPress blog-style pages on aehr.com (e.g., ",
+  "status": "no-board"
+ },
+ "AEMETIS, INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Aemetis lists jobs on its own page (aemetis.com/company/aemetis-jobs/) and gener",
+  "status": "no-board"
+ },
+ "AEON Biopharma, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site aeonbiopharma.com has a /careers/ page, but it is only a general c",
+  "status": "no-board"
+ },
+ "AETERNUM HEALTH, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Recently-listed micro-cap (Aeternum Health Inc.) appears in stock databases (Mar",
+  "status": "no-board"
+ },
+ "AETHLON MEDICAL INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page aethlonmedical.com/careers is a static contact form (resum",
+  "status": "no-board"
+ },
+ "AEye, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://boards.greenhouse.io/aeyeinc"
+ },
+ "AFFILIATED MANAGERS GROUP, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "amg.com has a Careers page under About AMG, but it does not surface a standard A",
+  "status": "no-board"
+ },
+ "AGCO CORP /DE": {
+  "attempts": 1,
+  "host": "career4.successfactors.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career4.successfactors.com/career?career_company=Agco"
+ },
+ "AGENUS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo board found but failed live-verify",
+  "status": "no-board"
+ },
+ "AGIOS PHARMACEUTICALS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo board found but failed live-verify",
+  "status": "no-board"
+ },
+ "AGM GROUP HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Beijing-headquartered fintech/crypto-mining company (NASDAQ: AGMH). Careers info",
+  "status": "no-board"
+ },
+ "AGNC Investment Corp.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-agnc.icims.com/"
+ },
+ "AGNT, Inc.": {
+  "ats": "rippling",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ats.rippling.com/exp-jobs/jobs"
+ },
+ "AGREE REALTY CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (agreerealty.com/careers) lists openings as individual PDF",
+  "status": "no-board"
+ },
+ "AI Era Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AI Era Corp (OTC PINK: AERA, formerly AB International Group), a tiny Mount Kisc",
+  "status": "no-board"
+ },
+ "AIBOTICS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Aibotics Inc (OTC: AIBT, formerly Mycotopia Therapies), a micro-cap Miami compan",
+  "status": "no-board"
+ },
+ "AIFU Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AIFU Inc (Nasdaq: AIFU) is a China-based AI-driven financial/insurance services ",
+  "status": "no-board"
+ },
+ "AIM ImmunoTech Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny Ocala FL immuno-pharma (NYSE American: AIM). Corporate site aimimmuno.com h",
+  "status": "no-board"
+ },
+ "AIOS Tech Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AIOS Tech Inc (Nasdaq: AIOS, formerly Nisun International / NISN) is a Shanghai/",
+  "status": "no-board"
+ },
+ "AIR T INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Air T, Inc. (Nasdaq: AIRT) holding company. Careers page (airt.com/company/caree",
+  "status": "no-board"
+ },
+ "AIRGAIN INC": {
+  "attempts": 1,
+  "host": "workforcenow.cloud.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.cloud.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a5bb880d-c347-4e46-9d87-7fa641c11036&ccId=19000101_000001&type=JS&lang=en_US"
+ },
+ "AIRO Group Holdings, Inc.": {
+  "ats": "rippling",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ats.rippling.com/theairogroup/jobs"
+ },
+ "AIRWA INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap (Nasdaq YYAI, formerly Connexa Sports Technologies; AI matchmaking, HK",
+  "status": "no-board"
+ },
+ "AKANDA CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small cannabis company (Nasdaq AKAN; Toronto HQ with Portugal/UK subsidiaries). ",
+  "status": "no-board"
+ },
+ "ALAMOS GOLD INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Jobs are hosted on its own proprietary site (alamosgold.com/careers) with no rec",
+  "status": "no-board"
+ },
+ "ALASKA AIR GROUP, INC.": {
+  "attempts": 1,
+  "host": "careers.alaskaair.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.alaskaair.com/jobs/"
+ },
+ "ALBANY INTERNATIONAL CORP /DE/": {
+  "attempts": 1,
+  "host": "myjobs.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://myjobs.adp.com/albanyjobs/cx"
+ },
+ "ALERUS FINANCIAL CORP": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/ALE1000ALFN/JobBoard/8c322eba-32b7-4c85-b4d2-e5a6c6cffb87/"
+ },
+ "ALGONQUIN POWER & UTILITIES CORP.": {
+  "attempts": 1,
+  "host": "jobs.libertyenergyandwater.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.libertyenergyandwater.com/"
+ },
+ "ALICO, INC.": {
+  "attempts": 1,
+  "host": "www.paycomonline.net",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=584755F650CB2DD38F75B79D42B239E6"
+ },
+ "ALKALINE WATER Co INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap (Scottsdale, AZ; ~12 employees). No official careers page with a recog",
+  "status": "no-board"
+ },
+ "ALKAMI TECHNOLOGY, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://alkami.wd12.myworkdayjobs.com/Alkami"
+ },
+ "ALLEGRO MICROSYSTEMS, INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://allegromicro.wd5.myworkdayjobs.com/AllegroCareers"
+ },
+ "ALLIANCE ENTERTAINMENT HOLDING CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page allianceentertainment.org/careers uses email applications ",
+  "status": "no-board"
+ },
+ "ALLIANCE RESOURCE PARTNERS LP": {
+  "ats": "breezy",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://alliance-resource-partners-lp.breezy.hr/"
+ },
+ "ALLIANCEBERNSTEIN HOLDING L.P.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://abglobal.wd1.myworkdayjobs.com/alliancebernsteincareers"
+ },
+ "ALLIENT INC": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e4f6ff38-1bcd-40e3-b778-ec98a30f2192&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "ALLURION TECHNOLOGIES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "jobvite board found but failed live-verify",
+  "status": "no-board"
+ },
+ "ALNYLAM PHARMACEUTICALS, INC.": {
+  "attempts": 1,
+  "host": "opportunities.alnylam.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://opportunities.alnylam.com/"
+ },
+ "ALPHA MODUS HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "~6-employee SPAC-merged holding company (alphamodus.com); no careers page or ATS",
+  "status": "no-board"
+ },
+ "ALPINE BANKS OF COLORADO": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting.ultipro.com/ALP1008ALBK/JobBoard/64996357-9c1f-4eef-9347-6c4d56f64253/"
+ },
+ "ALTA EQUIPMENT GROUP INC.": {
+  "attempts": 1,
+  "host": "jobs.dayforcehcm.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.dayforcehcm.com/en-US/altg/CANDIDATEPORTAL"
+ },
+ "ALTEX INDUSTRIES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ALTX is a tiny Denver-based oil & gas holding shell (subsidiary Altex Oil Corp) ",
+  "status": "no-board"
+ },
+ "ALUMIS INC.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/alumis"
+ },
+ "ALX ONCOLOGY HOLDINGS INC": {
+  "attempts": 1,
+  "host": "app.trinethire.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://app.trinethire.com/companies/50741-alx-oncology-inc/jobs"
+ },
+ "AMARIN CORP PLCUK": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday board found but failed live-verify",
+  "status": "no-board"
+ },
+ "AMASS BRANDS": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AMASS is a private botanical beverage/body-care brand (amass.com on Shopify). It",
+  "status": "no-board"
+ },
+ "AMATUHI HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Japan-based operator of group homes for individuals with disabilities (recent sm",
+  "status": "no-board"
+ },
+ "AMAZE HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "lever board found but failed live-verify",
+  "status": "no-board"
+ },
+ "AMBARELLA INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ambarella.wd108.myworkdayjobs.com/Ambarella"
+ },
+ "AMBITIONS ENTERPRISE MANAGEMENT CO. L.L.C": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "UAE-based MICE/events company (Nasdaq AHMA). No standard third-party ATS board f",
+  "status": "no-board"
+ },
+ "AMC ENTERTAINMENT HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AMC Theatres lists jobs on its own proprietary portal (careers.amctheatres.com),",
+  "status": "no-board"
+ },
+ "AMC Global Media Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://amcn.wd5.myworkdayjobs.com/amcnetworks"
+ },
+ "AMC Robotics Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AMC Robotics Corp (NASDAQ: AMCI), official site amcx.ai (recent SPAC merger with",
+  "status": "no-board"
+ },
+ "AMCON DISTRIBUTING CO": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page is amcon.com/careers, but it does not expose or link to an",
+  "status": "no-board"
+ },
+ "AMERICA MOVIL SAB DE CV/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Mexican telecom conglomerate (operates as Telcel/Telmex/Claro). Recruiting is ha",
+  "status": "no-board"
+ },
+ "AMERICAN BATTERY MATERIALS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small exploration company (americanbatterymaterials.com). Site has no careers/jo",
+  "status": "no-board"
+ },
+ "AMERICAN BATTERY TECHNOLOGY Co": {
+  "ats": "workable",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://apply.workable.com/americanbatterytechnologycompany/"
+ },
+ "AMERICAN COASTAL INSURANCE Corp": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/94bdb6c4-108e-4dea-92b2-2325a76d5818/American-Coastal-Insurance-Corp"
+ },
+ "AMERICAN EAGLE OUTFITTERS INC": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://hcml.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/AEO-Careers/"
+ },
+ "AMERICAN LITHIUM MINERALS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny/dormant OTC shell (AMLM, formerly Nugget Resources), Las Vegas. No careers ",
+  "status": "no-board"
+ },
+ "AMERICAN PACIFIC MINING CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page exists (americanpacificmining.com/careers) but states 'No roles cur",
+  "status": "no-board"
+ },
+ "AMERICAN PUBLIC EDUCATION INC": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting.ultipro.com/ame1070/JobBoard/b66d4325-6be5-4691-ab44-c96532dee1ff"
+ },
+ "AMERICAN REALTY INVESTORS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page aricommunities.com/employment uses a proprietary on-site a",
+  "status": "no-board"
+ },
+ "AMERICAN REBEL HOLDINGS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Brentwood, TN safes/beer company (AREB). No ATS board found on americanrebelhold",
+  "status": "no-board"
+ },
+ "AMERICAN SHARED HOSPITAL SERVICES": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small SF-based radiosurgery equipment leasing company (NYSE American: AMS, ~81 e",
+  "status": "no-board"
+ },
+ "AMERICAN STATES WATER CO": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo board found but failed live-verify",
+  "status": "no-board"
+ },
+ "AMERICAN SUPERCONDUCTOR CORP /DE/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page amsc.com/about-us/careers lists jobs hosted on its own domain (amsc",
+  "status": "no-board"
+ },
+ "AMERICAN VANGUARD CORP": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2b489b1b-869f-44b7-b7d0-77a911ff8f69&ccId=19000101_000001&lang=en_US"
+ },
+ "AMERICAS CARMART INC": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/AME1031ACM/JobBoard/9a085139-ceb8-4e6a-a651-272c1c59be0c/"
+ },
+ "AMERIGUARD SECURITY SERVICES, INC.": {
+  "ats": "bamboohr",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ameriguardsecurity.bamboohr.com/careers"
+ },
+ "AMERISAFE INC": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=720a9f55-4306-4ee6-93f6-5c5018a31eaf&ccId=19000101_000001&type=JS&lang=en_US&selectedMenuKey=CareerCenter"
+ },
+ "AMERISERV FINANCIAL INC /PA/": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting.ultipro.com/AME1040AMER/JobBoard/9f11bf9f-0141-43d4-8b6b-7795635662ab/"
+ },
+ "AMES NATIONAL CORP": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=ceaa6d9b-7b05-4e9f-8378-0ae24bda1e0a"
+ },
+ "AMKOR TECHNOLOGY, INC.": {
+  "attempts": 1,
+  "host": "career8.successfactors.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career8.successfactors.com/career?company=amkor"
+ },
+ "AMN HEALTHCARE SERVICES INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://amn.wd1.myworkdayjobs.com/AMN_Careers"
+ },
+ "AMPCO PITTSBURGH CORP": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/527e3b88-3b65-4508-8ead-fd6fcc071b38/Ampco-Pittsburgh-Corporation"
+ },
+ "AMREP CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AMREP Corp (the public real-estate/media-services holding company, NM/NJ) has no",
+  "status": "no-board"
+ },
+ "AMTECH SYSTEMS INC": {
+  "attempts": 1,
+  "host": "amtechsystems.hire.trakstar.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://amtechsystems.hire.trakstar.com/"
+ },
+ "AN2 Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (an2therapeutics.com/careers) instructs applicants to emai",
+  "status": "no-board"
+ },
+ "ANAPTYSBIO, INC": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/d1d20c2d-0e1d-4869-820d-a5b454cfba0b/ANAPTYSBIO-INC"
+ },
+ "ANAVEX LIFE SCIENCES CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Anavex lists role-specific 'opportunities' pages on its own site (anavex.com) an",
+  "status": "no-board"
+ }
+}
