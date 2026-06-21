@@ -187,9 +187,12 @@ async def resolve_careers(
     """Resolve a company to a candidate ``(ats, token)`` by reading its careers page (tiered:
     HTML -> same-origin JS -> optional Playwright render). Returns a build_registry candidate or
     None. ``render`` enables Tier 3 (requires Playwright)."""
+    # Cap fan-out: the top 2 candidate domains (Clearbit's first is usually right) x the 3
+    # highest-yield careers entry points. Keeps per-company fetches ~6 (not ~18) for throughput;
+    # Workday redirects live at /careers + careers.{domain}, so capture is preserved.
     domains = domains or await company_domains(name, fetcher)
-    for domain in domains:
-        for url in careers_urls(domain):
+    for domain in domains[:2]:
+        for url in careers_urls(domain)[:3]:
             try:
                 resp = await fetcher.request("GET", url)
             except Exception:  # noqa: BLE001 - dead host/blocked/timeout: next URL
