@@ -3458,5 +3458,385 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://job-boards.greenhouse.io/beamtherapeutics"
+ },
+ "Beeline Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Beeline Holdings (digital mortgage/title, ticker BLNE) careers page at makeabeel",
+  "status": "no-board"
+ },
+ "Bell Copper Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Exploration-stage copper miner (bellcopper.net). No careers section or ATS on th",
+  "status": "no-board"
+ },
+ "Belpointe PREP, LLC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "NYSE American-listed opportunity-zone real estate fund (investors.belpointeoz.co",
+  "status": "no-board"
+ },
+ "Bending Spoons S.p.A.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Italian app company; jobs hosted on its own proprietary portal at jobs.bendingsp",
+  "status": "no-board"
+ },
+ "Benitec Biopharma Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small gene-therapy biotech (benitec.com). Applications go to careers@benitec.com",
+  "status": "no-board"
+ },
+ "Bespoke Extracts, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap OTC hemp/CBD company (bespokeextracts.com). No careers page or ATS boa",
+  "status": "no-board"
+ },
+ "BestGofer Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Pre-revenue micro-stage shell (one employee) per its 10-K; states it will recrui",
+  "status": "no-board"
+ },
+ "Beta Bionics, Inc.": {
+  "ats": "breezy",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://beta-bionics-inc.breezy.hr/"
+ },
+ "Better Home & Finance Holding Co": {
+  "ats": "ashby",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.ashbyhq.com/better-mortgage"
+ },
+ "Beyond Air, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Beyond Air (XAIR) careers page at beyondair.net/careers posts openings (e.g., Sa",
+  "status": "no-board"
+ },
+ "BeyondSpring Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (beyondspringpharma.com/careers) uses no ATS; it only says",
+  "status": "no-board"
+ },
+ "Bicara Therapeutics Inc.": {
+  "ats": "ashby",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.ashbyhq.com/bicara-therapeutics"
+ },
+ "BigBear.ai Holdings, Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims; empty/failed verify",
+  "status": "no-board",
+  "url": "https://careers-bigbearai.icims.com/jobs/login"
+ },
+ "Biglari Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Biglari Holdings is a holding company with no standard corporate ATS board; open",
+  "status": "no-board"
+ },
+ "Bilibili Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Bilibili (Chinese company) hosts roles on its own proprietary site jobs.bilibili",
+  "status": "no-board"
+ },
+ "Bimergen Energy Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small-cap NYSE American battery-storage company (bimergen.com); no findable stan",
+  "status": "no-board"
+ },
+ "Bio Essence Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Herbal/supplements company (bioessence.com); no standard ATS board found. Listin",
+  "status": "no-board"
+ },
+ "Bio Green Med Solution, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Malaysia-based company (formerly Cyclacel; bgmsglobal.com/careers) states it is ",
+  "status": "no-board"
+ },
+ "BioAge Labs, Inc.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity; empty/failed verify",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/all/dc7cbe92-b979-495d-a649-6a5dd4ef211c"
+ },
+ "BioAtla, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "bioatla.com careers section explicitly directs candidates to its LinkedIn compan",
+  "status": "no-board"
+ },
+ "BioCardia, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (biocardia.com/about-us/careers) instructs candidates to a",
+  "status": "no-board"
+ },
+ "BioCorRx Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site biocorrx.com has no careers/jobs section in any indexed pages (onl",
+  "status": "no-board"
+ },
+ "BioNTech SE": {
+  "attempts": 1,
+  "host": "career5.successfactors.eu",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career5.successfactors.eu/careers?company=biontechse"
+ },
+ "BioNexus Gene Lab Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Kuala Lumpur, Malaysia-based company (bionexusgenelab.com); foreign/proprietary ",
+  "status": "no-board"
+ },
+ "BioRestorative Therapies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (biorestorative.com/careers) instructs candidates to apply",
+  "status": "no-board"
+ },
+ "BioScience Health Innovations, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Salt Lake City consumer-health OTC company (formerly Nowtransit Inc). No c",
+  "status": "no-board"
+ },
+ "BioStem Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Has a careers page at biostemtechnologies.com/careers and active job listings (G",
+  "status": "no-board"
+ },
+ "BioVaxys Technology Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Very small (~6 employees) BC-registered clinical-stage biotech (biovaxys.com). N",
+  "status": "no-board"
+ },
+ "BioXcel Therapeutics, Inc.": {
+  "ats": "lever",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "lever; empty/failed verify",
+  "status": "no-board",
+  "url": "https://jobs.lever.co/bioxceltherapeutics"
+ },
+ "Bioceres Crop Solutions Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Argentina-based ag-biotech (biocerescrops.com / bioceres.com.ar). Careers handle",
+  "status": "no-board"
+ },
+ "Biofrontera Inc.": {
+  "attempts": 1,
+  "host": "app.trinethire.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://app.trinethire.com/companies/34152-biofrontera-inc/jobs"
+ },
+ "BiomX Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page is biomx.com/careers, which is served on their own site (r",
+  "status": "no-board"
+ },
+ "Biomea Fusion, Inc.": {
+  "ats": "lever",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "lever; empty/failed verify",
+  "status": "no-board",
+  "url": "https://jobs.lever.co/biomeafusion"
+ },
+ "Bionano Genomics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site bionanogenomics.com/careers now redirects to bionano.com; careers ",
+  "status": "no-board"
+ },
+ "Bioquest Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Ambiguous name maps to several unrelated entities (AAT Bioquest, BioQuest Soluti",
+  "status": "no-board"
+ },
+ "Bioventus Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday; empty/failed verify",
+  "status": "no-board",
+  "url": "https://osv-bioventus.wd5.myworkdayjobs.com/External"
+ },
+ "Birchtech Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers handled on their own site (birchtech.com/careers and ir.birchtech.com/te",
+  "status": "no-board"
+ },
+ "Birdie Win Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny Hong Kong OTC shell (BRWC) providing financial-literacy seminars in Malaysi",
+  "status": "no-board"
+ },
+ "Bitzero Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small private Bitcoin-mining/data-center infrastructure company (Vancouver); rec",
+  "status": "no-board"
+ },
+ "Black Titan Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Malaysia-based holding company (BTTC) with no findable dedicated careers page; s",
+  "status": "no-board"
+ },
+ "Blaize Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (blaize.com/careers) embeds a Greenhouse job board (job li",
+  "status": "no-board"
+ },
+ "Blink Charging Co.": {
+  "ats": "rippling",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ats.rippling.com/blink-charging-inc/jobs"
+ },
+ "BlockchAIn Digital Infrastructure, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small NYSE-American listed data-center/AI-hosting company (ticker AIB), HQ New Y",
+  "status": "no-board"
+ },
+ "Blockfusion Data Centers, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Bitcoin-mining/data-center operator (blockfusion.com), HQ New York / Niagara Fal",
+  "status": "no-board"
+ },
+ "Bloomin' Brands, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers hosted on company-owned portal jobs.bloominbrands.com (Outback/Carrabba'",
+  "status": "no-board"
+ },
+ "Blue Hat Interactive Entertainment Technology": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based (Xiamen) AR games/toys company (NASDAQ: BHAT), reportedly pivoting/l",
+  "status": "no-board"
+ },
+ "Blue Jay Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Canadian junior gold explorer (bluejaygoldcorp.com, Steller Gold Project, Yukon/",
+  "status": "no-board"
+ },
+ "Blue Line Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Could not identify a single unambiguous company matching 'Blue Line Holdings, In",
+  "status": "no-board"
+ },
+ "Blue Line Protection Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Cannabis-industry security/cash-logistics provider (bluelineprotectiongroup.com/",
+  "status": "no-board"
+ },
+ "Blue Owl Technology Finance Corp.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://blueowl.wd1.myworkdayjobs.com/blueowl"
+ },
+ "BlueLinx Holdings Inc.": {
+  "ats": "smartrecruiters",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.smartrecruiters.com/BlueLinx"
+ },
+ "BlueOne Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Could not identify a single official BlueOne Technologies, Inc. website. Multipl",
+  "status": "no-board"
+ },
+ "Bluejay Diagnostics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site bluejaydx.com/careers hosts job listings directly on its own WordP",
+  "status": "no-board"
+ },
+ "Bodhi Tree Biotechnology Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No official website or careers/ATS page found for this specific entity; searches",
+  "status": "no-board"
+ },
+ "Bogota Financial Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small NJ savings-bank holding company (Bogota Savings Bank). No standard ATS boa",
+  "status": "no-board"
+ },
+ "Bolt Biotherapeutics, Inc.": {
+  "ats": "lever",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.lever.co/boltbio"
+ },
+ "Bolt Projects Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Bolt Projects Holdings (formerly Bolt Threads, Nasdaq: BSLK) careers/join-us pag",
+  "status": "no-board"
+ },
+ "Bone Biologics Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap regenerative-medicine company (Nasdaq: BBLG). Official site bonebiolog",
+  "status": "no-board"
+ },
+ "Boost Run Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site boostrun.com/careers states applications go via email (careers@boo",
+  "status": "no-board"
+ },
+ "Boot Barn Holdings, Inc.": {
+  "attempts": 1,
+  "host": "myjobs.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://myjobs.adp.com/boottbarnext/cx/job-listing"
  }
 }
