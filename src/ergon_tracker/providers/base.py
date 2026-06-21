@@ -63,6 +63,7 @@ _BUILTIN_MODULES = (
     "brassring",
     "schemaorg",
     "apicapture",
+    "tesla",
     "coveo",
     "peopleadmin",
     "peopleclick",

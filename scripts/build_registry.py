@@ -69,6 +69,7 @@ ATS_PRIORITY = {
     "lever": 1,
     "ashby": 2,
     "workday": 3,
+    "tesla": 3.5,  # authoritative bespoke Tesla careers API (cua-api/state); preferred over namesakes
     "smartrecruiters": 4,
     "workable": 5,
     "recruitee": 6,

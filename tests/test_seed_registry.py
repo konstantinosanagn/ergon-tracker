@@ -45,6 +45,8 @@ SUPPORTED_ATS = {
     "pageup",
     "peoplesoft",
     "ukg",
+    "adp",
+    "tesla",
     "usajobs",
     "dejobs",
     "themuse",
