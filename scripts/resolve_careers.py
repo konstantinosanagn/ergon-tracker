@@ -260,8 +260,11 @@ async def main() -> None:
             pct = 100 * d // total if total else 100
             print(f"  progress {d}/{total} ({pct}%)  resolved={prog['hit']}", flush=True)
 
+    # High global concurrency is safe here: each company is a DISTINCT host, so per-host limiting
+    # still protects every site; the only shared host (Clearbit) stays capped by per_host_rate.
+    # Short timeout fast-fails the many guessed/dead careers URLs that would otherwise dominate.
     async with (
-        AsyncFetcher(concurrency=10, per_host_rate=4, timeout=15.0, retries=1) as fetcher,
+        AsyncFetcher(concurrency=40, per_host_rate=4, timeout=8.0, retries=1) as fetcher,
         anyio.create_task_group() as tg,
     ):
         for i, (nm, dom) in enumerate(names):
