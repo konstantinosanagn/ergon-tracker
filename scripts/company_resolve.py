@@ -78,6 +78,7 @@ _GENERIC = frozenset(
         "services",
         "brands",
         "resources",
+        "com",  # SEC writes "AMAZON COM INC" / "PRICELINE COM" — the .com artifact blocks the brand match
     }
 )
 
