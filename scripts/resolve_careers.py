@@ -1,20 +1,22 @@
-"""Career-page ATS resolver: start from the COMPANY and find its real ATS — the company-first
-discovery we should have had all along.
+"""Career-page ATS resolver: start from the COMPANY and find its real ATS — company-first
+discovery (vs the old indirect slug-guessing / inherited lists / web mining).
 
-Everything before this found boards *indirectly*: inherited jobhive tenant lists, brute-force slug
-guessing (``harvest_tokens``), and web/apply-URL mining. None of it asked "what ATS does *this*
-company actually use?" — so it structurally missed Workday/SuccessFactors/iCIMS (the enterprise
-backends most large-caps run). This resolver flips it: fetch a company's careers page, read the
-ATS board link it points to (``{tenant}.wdN.myworkdayjobs.com``, ``boards.greenhouse.io/{token}``,
-…), and recover ``(ats, token)`` via the providers' own ``matches()``. Critically, Workday URLs
-resolve cleanly, so this is the path that lands the Fortune-500 crowd.
+Pipeline per company:
+1. name -> domain(s): Clearbit autocomplete (keyless), with a name-guess fallback. A
+   name-plausibility guard rejects wrong-company domains (Clearbit returns mdimembrane.com for
+   "Advanced Micro Devices", so we only accept a resolution whose domain/token shares a token
+   with the company name).
+2. domain -> careers page -> ATS board link, resolved to (ats, token) via providers' matches().
+   Workday URLs resolve, so this lands the Fortune-500 crowd.
 
-Output is a candidates.json for ``build_registry`` (which verifies live before merging).
+SPA handling (thorough, tiered — careers pages increasingly load the ATS link client-side):
+- Tier 1: scan the fetched HTML (inline scripts/JSON included) + the final URL after redirects.
+- Tier 2: if empty, fetch the page's same-origin JS bundles and scan those (tokens are often
+  hardcoded in the bundle/config) — no browser.
+- Tier 3: if still empty and Playwright is installed, render the page and scan the live DOM
+  (catches links injected purely at runtime). Optional + lazily imported — never a hard dep.
 
-Usage::
-
-    .venv/bin/python scripts/resolve_careers.py names.txt [--limit N] [--out PATH]
-    # names.txt: one company per line, optional ",domain" (domain skips the guess step)
+Output is a candidates.json for ``build_registry`` (verifies live before merging).
 """
 
 from __future__ import annotations
@@ -23,6 +25,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import anyio
 
@@ -39,9 +42,10 @@ from ergon_tracker.http import AsyncFetcher  # noqa: E402
 from ergon_tracker.providers.base import load_builtins  # noqa: E402
 
 DEFAULT_OUT = ROOT / "scripts" / "candidates_careers.json"
+CLEARBIT = "https://autocomplete.clearbit.com/v1/companies/suggest"
 _URL_RE = re.compile(r"https?://[^\s\"'<>)]+", re.I)
-# Tokens that are shared CDN/asset infrastructure, not a company's board — a careers page embeds
-# the vendor's CDN (e.g. cdn.phenompeople.com) which matches() greedily claims. Reject them.
+_SCRIPT_SRC_RE = re.compile(r"<script[^>]+src=[\"']([^\"']+)[\"']", re.I)
+# Shared CDN/asset hosts a provider greedily claims (e.g. cdn.phenompeople.com) — not a board.
 _JUNK_TOKEN_MARKERS = ("cdn.", "static.", "assets.", "media.", "-cdn.", "scripts.")
 
 
@@ -51,41 +55,31 @@ def _is_junk(token: str) -> bool:
 
 
 def extract_ats_links(text: str, final_url: str | None = None) -> list[tuple[str, str]]:
-    """Recover every ``(ats, token)`` an ATS provider claims from a page's final URL + the URLs in
-    its HTML, best-ATS first, deduped. ``final_url`` (after redirects) catches careers pages that
-    302 straight to the ATS; the HTML scan catches embedded board links/iframes. Shared CDN/asset
-    hosts a provider greedily claims (e.g. cdn.phenompeople.com) are filtered out."""
+    """Recover every ``(ats, token)`` a provider claims from a page's final URL + the URLs in its
+    content, best-ATS first, deduped, shared-CDN tokens filtered."""
     seen: set[tuple[str, str]] = set()
     out: list[tuple[str, str]] = []
-    candidates = ([final_url] if final_url else []) + _URL_RE.findall(text or "")
-    for url in candidates:
+    for url in ([final_url] if final_url else []) + _URL_RE.findall(text or ""):
         res = resolve_ats_url(url.rstrip("\"'<>),."))
         if res and res not in seen and not _is_junk(res[1]):
             seen.add(res)
             out.append(res)
-    out.sort(key=lambda r: ATS_PRIORITY.get(r[0], 99))  # prefer a real ATS over a fallback
+    out.sort(key=lambda r: ATS_PRIORITY.get(r[0], 99))
     return out
 
 
 def guess_domains(name: str) -> list[str]:
-    """Candidate domains for a company name (brand tokens joined + first token), .com first.
-
-    Imperfect by design — works for the many companies whose domain is their name
-    ("nvidia"->nvidia.com); acronym-brand cases (Advanced Micro Devices->amd.com) need a real
-    name->domain source (Wikidata/search), a documented follow-up.
-    """
+    """Name-based candidate domains (brand tokens joined + first token), .com first. Imperfect;
+    the Clearbit lookup is primary, this is the offline fallback."""
     core = core_tokens(name)
     if not core:
         return []
-    joined = "".join(core)
-    first = core[0]
-    stems = [joined] + ([first] if first != joined else [])
+    stems = ["".join(core)] + ([core[0]] if core[0] != "".join(core) else [])
     out: list[str] = []
     for stem in stems:
         for tld in (".com", ".io", ".co"):
-            d = stem + tld
-            if d not in out:
-                out.append(d)
+            if stem + tld not in out:
+                out.append(stem + tld)
     return out
 
 
@@ -101,28 +95,115 @@ def careers_urls(domain: str) -> list[str]:
     ]
 
 
+def _plausible(name: str, domain: str, token: str) -> bool:
+    """True if the resolved domain/token plausibly belongs to ``name`` — guards against a
+    wrong-company domain (e.g. AMD -> mdimembrane.com) producing a mis-attributed board."""
+    cores = [c for c in core_tokens(name) if len(c) >= 3]
+    if not cores:
+        cores = core_tokens(name)
+    label = domain.split(".")[0].lower()
+    hay = f"{label} {token}".lower()
+    return any(c in hay for c in cores) or any((label in c or c in label) for c in cores)
+
+
+async def company_domains(
+    name: str, fetcher: AsyncFetcher, override: str | None = None
+) -> list[str]:
+    """Resolve a company name to candidate domains: explicit override, else Clearbit autocomplete
+    (keyless, top results) followed by the offline name-guess as fallback."""
+    if override:
+        return [override]
+    domains: list[str] = []
+    try:
+        data = await fetcher.get_json(CLEARBIT, params={"query": name})
+        for row in (data or [])[:3]:
+            d = str(row.get("domain") or "").lower()
+            if d and d not in domains:
+                domains.append(d)
+    except Exception:  # noqa: BLE001 - autocomplete down/blocked: fall back to guessing
+        pass
+    for g in guess_domains(name):
+        if g not in domains:
+            domains.append(g)
+    return domains
+
+
+def _same_origin_js(html: str, base_url: str) -> list[str]:
+    """Absolute URLs of same-origin <script src> bundles on the page (Tier-2 SPA scan targets)."""
+    split = urlsplit(base_url)
+    origin = f"{split.scheme}://{split.netloc}"
+    out: list[str] = []
+    for src in _SCRIPT_SRC_RE.findall(html or ""):
+        if src.startswith("//"):
+            url = f"{split.scheme}:{src}"
+        elif src.startswith("http"):
+            url = src
+        elif src.startswith("/"):
+            url = origin + src
+        else:
+            url = f"{origin}/{src}"
+        if urlsplit(url).netloc == split.netloc and url not in out:
+            out.append(url)
+    return out
+
+
+async def _render(url: str) -> str | None:
+    """Tier 3: render ``url`` with Playwright and return the live DOM HTML, or None if Playwright
+    isn't installed / rendering fails. Lazily imported so it's never a hard dependency."""
+    try:
+        from playwright.async_api import async_playwright
+    except Exception:  # noqa: BLE001 - optional extra; absent in the default install
+        return None
+    try:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            try:
+                page = await browser.new_page()
+                await page.goto(url, wait_until="networkidle", timeout=20000)
+                return await page.content()
+            finally:
+                await browser.close()
+    except Exception:  # noqa: BLE001 - render failure never sinks the resolver
+        return None
+
+
 async def resolve_careers(
-    name: str, fetcher: AsyncFetcher, domains: list[str] | None = None
+    name: str, fetcher: AsyncFetcher, domains: list[str] | None = None, *, render: bool = False
 ) -> dict[str, object] | None:
-    """Resolve a company to a candidate ``(ats, token)`` by reading its careers page. Returns a
-    build_registry candidate dict, or None if no ATS board could be found."""
-    for domain in domains or guess_domains(name):
+    """Resolve a company to a candidate ``(ats, token)`` by reading its careers page (tiered:
+    HTML -> same-origin JS -> optional Playwright render). Returns a build_registry candidate or
+    None. ``render`` enables Tier 3 (requires Playwright)."""
+    domains = domains or await company_domains(name, fetcher)
+    for domain in domains:
         for url in careers_urls(domain):
             try:
                 resp = await fetcher.request("GET", url)
-            except Exception:  # noqa: BLE001 - dead host / blocked / timeout: try the next URL
+            except Exception:  # noqa: BLE001 - dead host/blocked/timeout: next URL
                 continue
             if resp.status_code >= 400:
                 continue
             links = extract_ats_links(resp.text, final_url=str(resp.url))
-            if links:
-                ats, token = links[0]
-                return {
-                    "company": company_key(name),
-                    "ats": ats,
-                    "token": token,
-                    "domain": domain,
-                }
+            if not links:  # Tier 2: scan same-origin JS bundles
+                for js in _same_origin_js(resp.text, str(resp.url))[:6]:
+                    try:
+                        jr = await fetcher.request("GET", js)
+                    except Exception:  # noqa: BLE001
+                        continue
+                    links = extract_ats_links(jr.text)
+                    if links:
+                        break
+            if not links and render:  # Tier 3: render the live DOM
+                rendered = await _render(url)
+                if rendered:
+                    links = extract_ats_links(rendered)
+            for ats, token in links:
+                if _plausible(name, domain, token):
+                    return {
+                        "company": company_key(name),
+                        "ats": ats,
+                        "token": token,
+                        "domain": domain,
+                    }
     return None
 
 
@@ -132,9 +213,9 @@ def parse_names(text: str) -> list[tuple[str, str | None]]:
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
-        name, _, dom = line.partition(",")
-        if name.strip():
-            out.append((name.strip(), dom.strip() or None))
+        nm, _, dom = line.partition(",")
+        if nm.strip():
+            out.append((nm.strip(), dom.strip() or None))
     return out
 
 
@@ -142,26 +223,27 @@ async def main() -> None:
     args = sys.argv[1:]
     paths = [a for a in args if not a.startswith("--")]
     if not paths:
-        print("usage: resolve_careers.py names.txt [--limit N] [--out PATH]")
+        print("usage: resolve_careers.py names.txt [--limit N] [--out PATH] [--render]")
         return
     names = parse_names(Path(paths[0]).read_text())
-    out_path = DEFAULT_OUT
-    if "--out" in args:
-        out_path = Path(args[args.index("--out") + 1])
+    out_path = Path(args[args.index("--out") + 1]) if "--out" in args else DEFAULT_OUT
     if "--limit" in args:
         names = names[: int(args[args.index("--limit") + 1])]
+    render = "--render" in args
 
     load_builtins()
     results: dict[int, dict | None] = {}
-    print(f"resolving careers pages for {len(names)} companies ...", flush=True)
+    print(f"resolving careers for {len(names)} companies (render={render}) ...", flush=True)
     async with (
         AsyncFetcher(concurrency=10, per_host_rate=4, timeout=15.0, retries=1) as fetcher,
         anyio.create_task_group() as tg,
     ):
-        for i, (name, dom) in enumerate(names):
+        for i, (nm, dom) in enumerate(names):
 
-            async def run(i: int = i, name: str = name, dom: str | None = dom) -> None:
-                results[i] = await resolve_careers(name, fetcher, [dom] if dom else None)
+            async def run(i: int = i, nm: str = nm, dom: str | None = dom) -> None:
+                results[i] = await resolve_careers(
+                    nm, fetcher, [dom] if dom else None, render=render
+                )
 
             tg.start_soon(run)
 

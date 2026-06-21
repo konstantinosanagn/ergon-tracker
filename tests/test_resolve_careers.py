@@ -5,6 +5,10 @@ from __future__ import annotations
 import importlib.util
 import pathlib
 
+import pytest
+
+pytestmark = pytest.mark.anyio
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 _SPEC = importlib.util.spec_from_file_location(
     "_resolve_careers", ROOT / "scripts" / "resolve_careers.py"
@@ -67,3 +71,49 @@ def test_careers_urls_shape():
     urls = rc.careers_urls("nvidia.com")
     assert "https://nvidia.com/careers" in urls
     assert "https://careers.nvidia.com" in urls
+
+
+def test_plausibility_guard_rejects_wrong_company_domain():
+    # Clearbit returns mdimembrane.com for "Advanced Micro Devices" — its board must NOT be
+    # attributed to AMD (no shared token).
+    assert not rc._plausible("Advanced Micro Devices", "mdimembrane.com", "mdimembrane")
+    # Correct domains/tokens are accepted.
+    assert rc._plausible("Salesforce", "salesforce.com", "salesforce|wd12|External_Career_Site")
+    assert rc._plausible("Exxon Mobil", "exxonmobil.com", "exxonmobil")
+    assert rc._plausible("Airbnb", "airbnb.com", "airbnb")
+
+
+def test_same_origin_js_only_returns_same_host_bundles():
+    html = """
+    <script src="/static/main.abc.js"></script>
+    <script src="https://careers.acme.com/app.js"></script>
+    <script src="https://cdn.thirdparty.com/vendor.js"></script>
+    """
+    js = rc._same_origin_js(html, "https://careers.acme.com/careers")
+    assert "https://careers.acme.com/static/main.abc.js" in js
+    assert "https://careers.acme.com/app.js" in js
+    assert all("cdn.thirdparty.com" not in u for u in js)  # cross-origin excluded
+
+
+async def test_company_domains_uses_clearbit_then_guess():
+    import httpx
+    import respx
+
+    from ergon_tracker.http import AsyncFetcher
+
+    payload = [{"name": "Salesforce", "domain": "salesforce.com"}]
+    with respx.mock:
+        respx.get("https://autocomplete.clearbit.com/v1/companies/suggest").mock(
+            return_value=httpx.Response(200, json=payload)
+        )
+        async with AsyncFetcher(per_host_rate=100) as f:
+            doms = await rc.company_domains("Salesforce", f)
+    assert doms[0] == "salesforce.com"  # Clearbit first
+    assert "salesforce.com" in doms
+
+
+async def test_company_domains_override_short_circuits():
+    from ergon_tracker.http import AsyncFetcher
+
+    async with AsyncFetcher() as f:
+        assert await rc.company_domains("Anything", f, override="given.com") == ["given.com"]
