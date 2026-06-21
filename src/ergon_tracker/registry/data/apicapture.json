@@ -1,4 +1,69 @@
 {
+ "amazon": {
+  "url": "https://www.amazon.jobs/en/search.json?radius=24km&result_limit=100&sort=recent&offset=0",
+  "method": "GET",
+  "page_param": "offset",
+  "page_start": 0,
+  "page_step": 100,
+  "records_path": [
+   "jobs"
+  ],
+  "total_path": [
+   "hits"
+  ],
+  "company": "Amazon",
+  "fields": {
+   "id": "id",
+   "title": "title",
+   "location": "normalized_location",
+   "url": "job_path",
+   "department": "business_category",
+   "posted_at": "posted_date",
+   "description": "description_short"
+  }
+ },
+ "apple": {
+  "url": "https://jobs.apple.com/api/v1/search",
+  "method": "POST",
+  "tls_impersonate": true,
+  "headers": {
+   "Content-Type": "application/json",
+   "Referer": "https://jobs.apple.com/en-us/search"
+  },
+  "body": {
+   "query": "",
+   "filters": {},
+   "page": 1,
+   "locale": "en-us",
+   "sort": "newest",
+   "format": {
+    "longDate": "MMMM D, YYYY",
+    "mediumDate": "MMM D, YYYY"
+   }
+  },
+  "page_path": [
+   "page"
+  ],
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "res",
+   "searchResults"
+  ],
+  "total_path": [
+   "res",
+   "totalRecords"
+  ],
+  "company": "Apple",
+  "fields": {
+   "id": "positionId",
+   "title": "postingTitle",
+   "location": "locations",
+   "department": "team.teamName",
+   "posted_at": "postingDate",
+   "description": "jobSummary"
+  }
+ },
  "dataquad": {
   "url": "https://dataqinc.com/wp-json/wp/v2/jobpost?per_page=100",
   "method": "GET",
