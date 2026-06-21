@@ -132,10 +132,11 @@
   "url": "https://careers-myacuity.icims.com/jobs"
  },
  "ACV Auctions Inc.": {
+  "ats": "dayforce",
   "attempts": 1,
   "host": "jobs.dayforcehcm.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "covered",
   "url": "https://jobs.dayforcehcm.com/en-US/acv/CANDIDATEPORTAL/jobs"
  },
  "ADAMANT DRI PROCESSING & MINERALS GROUP": {
@@ -506,10 +507,11 @@
   "url": "https://recruiting.ultipro.com/ALP1008ALBK/JobBoard/64996357-9c1f-4eef-9347-6c4d56f64253/"
  },
  "ALTA EQUIPMENT GROUP INC.": {
+  "ats": "dayforce",
   "attempts": 1,
   "host": "jobs.dayforcehcm.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "covered",
   "url": "https://jobs.dayforcehcm.com/en-US/altg/CANDIDATEPORTAL"
  },
  "ALTEX INDUSTRIES INC": {
@@ -787,10 +789,11 @@
   "status": "no-board"
  },
  "ANGIODYNAMICS INC": {
+  "ats": "dayforce",
   "attempts": 1,
   "host": "www.dayforcehcm.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "covered",
   "url": "https://www.dayforcehcm.com/CandidatePortal/en-US/angio/Site/AngioCareers"
  },
  "ANI PHARMACEUTICALS INC": {
@@ -1463,10 +1466,11 @@
   "status": "no-board"
  },
  "AdvanSix Inc.": {
+  "ats": "dayforce",
   "attempts": 1,
   "host": "us242.dayforcehcm.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "covered",
   "url": "https://us242.dayforcehcm.com/CandidatePortal/en-US/advansix"
  },
  "Advanced Biomed Inc.": {
@@ -2830,10 +2834,11 @@
   "status": "no-board"
  },
  "BASSETT FURNITURE INDUSTRIES INC": {
+  "ats": "dayforce",
   "attempts": 1,
   "host": "us251.dayforcehcm.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "covered",
   "url": "https://us251.dayforcehcm.com/CandidatePortal/en-US/bassett"
  },
  "BATTALION OIL CORP": {
