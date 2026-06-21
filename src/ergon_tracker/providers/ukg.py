@@ -58,7 +58,9 @@ class UKGProvider(BaseProvider):
         candidate = url_or_host if "//" in url_or_host else "//" + url_or_host
         parts = urlsplit(candidate)
         host = parts.netloc.split("@")[-1].split(":")[0].lower()
-        if not host.endswith("ultipro.com"):
+        # UKG Pro serves boards on the legacy *.ultipro.com hosts and the newer
+        # *.rec.pro.ukg.net hosts (same /{code}/JobBoard/{guid} API). Accept both.
+        if not (host.endswith("ultipro.com") or host.endswith("rec.pro.ukg.net")):
             return None
         m = _BOARD_RE.search(parts.path)
         if not m:

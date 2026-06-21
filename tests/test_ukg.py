@@ -51,6 +51,10 @@ def test_matches_board_url() -> None:
     assert UKGProvider.matches(
         "https://recruiting2.ultipro.com/UNI1027UDRT/JobBoard/6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1/"
     ) == "recruiting2.ultipro.com|UNI1027UDRT|6ccb8fd4-4950-43e4-9978-4bcc85c6f5e1"
+    # UKG's newer rec.pro.ukg.net host (same JobBoard API)
+    assert UKGProvider.matches(
+        "https://biolifesolution.rec.pro.ukg.net/BIO1501BLSI/JobBoard/4d900524-48eb-4343-a232-4c2b27be9029/"
+    ) == "biolifesolution.rec.pro.ukg.net|BIO1501BLSI|4d900524-48eb-4343-a232-4c2b27be9029"
     assert UKGProvider.matches("https://careers.example.com/jobs") is None  # not ultipro
 
 
