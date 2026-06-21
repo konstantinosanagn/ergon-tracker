@@ -4228,5 +4228,400 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://camdennational.wd12.myworkdayjobs.com/CNB-Careers"
+ },
+ "CAMECO CORP": {
+  "attempts": 1,
+  "host": "career17.sapsf.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career17.sapsf.com/career?company=Cameco"
+ },
+ "CAMPBELL'S Co": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://campbellsoup.wd5.myworkdayjobs.com/ExternalCareers_GlobalSite"
+ },
+ "CANNABIS SUISSE CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC shell (CSUI, Jacksonville FL). Official site cannabissuisse.com has no ",
+  "status": "no-board"
+ },
+ "CANNAPHARMARX, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official cannapharmarx.com/careers page only has a basic CV-upload contact form,",
+  "status": "no-board"
+ },
+ "CANON INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CANON INC is the Japanese parent (EDGAR filer). It recruits via its own Japanese",
+  "status": "no-board"
+ },
+ "CAPITAL PROPERTIES INC /RI/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Providence RI real-estate/ground-lease company (CPTP). Site capitalpropert",
+  "status": "no-board"
+ },
+ "CAPITAL SOUTHWEST CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "BDC (CSWC, Dallas). Homepage capitalsouthwest.com lists only a 'Career Inquiries",
+  "status": "no-board"
+ },
+ "CAPSTONE 72, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Pre-IPO Hong Kong-based US real-estate investment platform (CAPI). Site capstone",
+  "status": "no-board"
+ },
+ "CAPSTONE COMPANIES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap (CAPC, capstonecompaniesinc.com). Site has only About/Products/IR/Cont",
+  "status": "no-board"
+ },
+ "CAPTIVA VERDE WELLNESS CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Canadian sustainable-real-estate/wellness company (CSE: PWR / OTC: CPIVF, ",
+  "status": "no-board"
+ },
+ "CARLISLE COMPANIES INC": {
+  "attempts": 1,
+  "host": "recruiting.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.adp.com/srccar/public/RTI.home?c=1218401&d=ExternalCareerSite-Corp"
+ },
+ "CARPENTER TECHNOLOGY CORP": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://cartech.wd5.myworkdayjobs.com/CTCExternal"
+ },
+ "CARRIAGE SERVICES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Carriage Services uses a proprietary careers site (carriagecareers.com / carriag",
+  "status": "no-board"
+ },
+ "CASELLA WASTE SYSTEMS INC": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-casella.icims.com/"
+ },
+ "CASEYS GENERAL STORES INC": {
+  "attempts": 1,
+  "host": "myjobs.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://myjobs.adp.com/caseysstore/cx/job-listing"
+ },
+ "CASI Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (casipharmaceuticals.com/career.html) is a static page wit",
+  "status": "no-board"
+ },
+ "CASS INFORMATION SYSTEMS INC": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/CAS1016CAIS/JobBoard/d0c782d5-c188-485a-b21d-72090cb86410/"
+ },
+ "CASTLE BIOSCIENCES INC": {
+  "attempts": 1,
+  "host": "castlebiosciences.applicantpro.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://castlebiosciences.applicantpro.com/jobs/"
+ },
+ "CATALYST PHARMACEUTICALS, INC.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/95b9352f-1e0f-41f0-bafa-7c9735c11318/Catalyst-Pharmaceuticals-Inc"
+ },
+ "CAVA GROUP, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "CAVA careers (cava.com/careers) corporate/support-center jobs are hosted on Harr",
+  "status": "no-board"
+ },
+ "CAVCO INDUSTRIES, INC.": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/CAV1001PALM/JobBoard/fecaa5c2-1907-4b5b-9c87-7e1136b98e9b/"
+ },
+ "CB Financial Services, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Operates as Community Bank (cb.bank). Careers page at cb.bank/about/join-our-tea",
+  "status": "no-board"
+ },
+ "CBAK Energy Technology, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Dalian, China-based battery maker (Nasdaq: CBAT). Careers handled via Chinese-la",
+  "status": "no-board"
+ },
+ "CBD Life Sciences Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC (CBDL) microcap; no dedicated careers page or any standard ATS board fo",
+  "status": "no-board"
+ },
+ "CBIZ, Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ebez.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1"
+ },
+ "CBL & ASSOCIATES PROPERTIES INC": {
+  "attempts": 1,
+  "host": "www2.appone.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www2.appone.com/Search/Search.aspx?ServerVar=cblassociatesmanagementinc.appone.com"
+ },
+ "CCC Intelligent Solutions Holdings Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://cccis.wd1.myworkdayjobs.com/broadbean_external"
+ },
+ "CDT Equity Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny Nasdaq biopharma (CDT), formerly Conduit Pharmaceuticals. No careers page o",
+  "status": "no-board"
+ },
+ "CEA Industries Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Operating subsidiary is Surna (surna.com/careers). Careers page states no curren",
+  "status": "no-board"
+ },
+ "CECO ENVIRONMENTAL CORP": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers-usa-cecoenviro.icims.com/"
+ },
+ "CEL SCI CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page cel-sci.com/careers lists openings on its own site and dir",
+  "status": "no-board"
+ },
+ "CELESTICA INC": {
+  "attempts": 1,
+  "host": "careers.celestica.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.celestica.com/viewalljobs/"
+ },
+ "CEMENTOS PACASMAYO SAA": {
+  "attempts": 1,
+  "host": "cementospacasmayo.hiringroom.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://cementospacasmayo.hiringroom.com/jobs"
+ },
+ "CEMEX SAB DE CV": {
+  "attempts": 1,
+  "host": "jobs.cemex.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.cemex.com/"
+ },
+ "CEMTREX INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page cemtrex.com/careers lists openings on its own site (cemtre",
+  "status": "no-board"
+ },
+ "CENOVUS ENERGY INC.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://cenovus.wd3.myworkdayjobs.com/careers"
+ },
+ "CENTERSPACE": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page centerspacehomes.com/careers hosts jobs on its own site (r",
+  "status": "no-board"
+ },
+ "CENTRAL GARDEN & PET CO": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page central.com links jobs to centralgardenandpet.ttcportals.com (Talen",
+  "status": "no-board"
+ },
+ "CENTRAL PACIFIC FINANCIAL CORP": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=00790905-64d0-4a6c-a64d-2cba88c918c3&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "CENTRAL SECURITIES CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Closed-end investment fund (NYSE American: CET) operating since 1929 with ~2-10 ",
+  "status": "no-board"
+ },
+ "CENTRUS ENERGY CORP": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://eese.fa.us8.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CentrusEnergyCareers/jobs"
+ },
+ "CENTURY ALUMINUM CO": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7db78c90-cb30-4b9b-b815-99dcb1c6a852&ccId=19000101_000001&lang=en_US"
+ },
+ "CENTURY CASINOS INC /CO/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers are hosted on Century Casinos' own per-property pages under cnty.com (e.",
+  "status": "no-board"
+ },
+ "CERO THERAPEUTICS HOLDINGS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers at cero.bio/careers/job-openings lists roles on their own site ",
+  "status": "no-board"
+ },
+ "CERUS CORP": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/cerus"
+ },
+ "CEVA INC": {
+  "attempts": 1,
+  "host": "www.comeet.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www.comeet.com/jobs/ceva"
+ },
+ "CF BANKSHARES INC.": {
+  "attempts": 1,
+  "host": "www.paycomonline.net",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=7C5AC05D8D2EC046AE4FAF26F5F9712E"
+ },
+ "CFN Enterprises Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap sponsored-content/cannabis-marketing company (CNFN, Whitefish MT). No ",
+  "status": "no-board"
+ },
+ "CG Oncology, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "cgoncology.com/careers instructs applicants to email careers@cgoncology.com and ",
+  "status": "no-board"
+ },
+ "CGI INC": {
+  "attempts": 1,
+  "host": "cgi.njoyn.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://cgi.njoyn.com/corp/xweb/xweb.asp?NTKN=c&clid=21001&Page=joblisting"
+ },
+ "CHAMPIONS ONCOLOGY, INC.": {
+  "ats": "smartrecruiters",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.smartrecruiters.com/ChampionsOncologyInc"
+ },
+ "CHART INDUSTRIES INC": {
+  "attempts": 1,
+  "host": "jobs.chartindustries.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.chartindustries.com/"
+ },
+ "CHASE PACKAGING CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Shell company (OTC:CPKA), ~2 employees in Fair Haven, NJ, seeking a merger partn",
+  "status": "no-board"
+ },
+ "CHEESECAKE FACTORY INC": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://hourlyjobs-cakecareers.icims.com/"
+ },
+ "CHEETAH NET SUPPLY CHAIN SERVICE INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official career page at cheetah-net.com/career only offers a generic resume-subm",
+  "status": "no-board"
+ },
+ "CHEGG, INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday found, failed verify",
+  "status": "no-board",
+  "url": "https://osv-chegg.wd5.myworkdayjobs.com/Chegg"
+ },
+ "CHEMED CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Holding company (NYSE:CHE) operating two distinct subsidiaries (VITAS Healthcare",
+  "status": "no-board"
+ },
+ "CHEMICAL & MINING CO OF CHILE INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "This is SQM (Sociedad Quimica y Minera de Chile). Hiring runs through proprietar",
+  "status": "no-board"
+ },
+ "CHEMUNG FINANCIAL CORP": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=eccd4365-bff4-4478-86c8-56e755ceb775&ccId=56100246_3294&type=MP&lang=en_US"
+ },
+ "CHESAPEAKE FINANCIAL SHARES INC": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://careers-chesbank.icims.com/jobs/intro"
  }
 }
