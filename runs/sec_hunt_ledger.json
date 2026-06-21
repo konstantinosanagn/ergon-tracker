@@ -93,10 +93,11 @@
   "status": "no-board"
  },
  "ACNB CORP": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3993975e-194c-4504-9c5e-9e6017ca5023"
  },
  "ACORN ENERGY, INC.": {
@@ -363,10 +364,11 @@
   "status": "no-board"
  },
  "AIRGAIN INC": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.cloud.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.cloud.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a5bb880d-c347-4e46-9d87-7fa641c11036&ccId=19000101_000001&type=JS&lang=en_US"
  },
  "AIRO Group Holdings, Inc.": {
@@ -470,10 +472,11 @@
   "url": "https://abglobal.wd1.myworkdayjobs.com/alliancebernsteincareers"
  },
  "ALLIENT INC": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e4f6ff38-1bcd-40e3-b778-ec98a30f2192&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "ALLURION TECHNOLOGIES, INC.": {
@@ -674,10 +677,11 @@
   "status": "no-board"
  },
  "AMERICAN VANGUARD CORP": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2b489b1b-869f-44b7-b7d0-77a911ff8f69&ccId=19000101_000001&lang=en_US"
  },
  "AMERICAS CARMART INC": {
@@ -695,10 +699,11 @@
   "url": "https://ameriguardsecurity.bamboohr.com/careers"
  },
  "AMERISAFE INC": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=720a9f55-4306-4ee6-93f6-5c5018a31eaf&ccId=19000101_000001&type=JS&lang=en_US&selectedMenuKey=CareerCenter"
  },
  "AMERISERV FINANCIAL INC /PA/": {
@@ -709,10 +714,11 @@
   "url": "https://recruiting.ultipro.com/AME1040AMER/JobBoard/9f11bf9f-0141-43d4-8b6b-7795635662ab/"
  },
  "AMES NATIONAL CORP": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=ceaa6d9b-7b05-4e9f-8378-0ae24bda1e0a"
  },
  "AMKOR TECHNOLOGY, INC.": {
@@ -801,10 +807,11 @@
   "url": "https://recruiting.ultipro.com/ANN1002/JobBoard/f76ffcd0-de2d-d6bf-5892-ef0ba64abdba/"
  },
  "ANTERO RESOURCES Corp": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=be841b2c-7fe9-4b77-bda5-63263ad0f62b&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "ANVI GLOBAL HOLDINGS, INC.": {
@@ -1118,10 +1125,11 @@
   "status": "no-board"
  },
  "ATN International, Inc.": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=96b26409-4548-460a-bd89-ae9a8c54bc60&ccId=19000101_000001&lang=en_US"
  },
  "ATOSSA THERAPEUTICS, INC.": {
@@ -1261,10 +1269,11 @@
   "status": "no-board"
  },
  "AYTU BIOPHARMA, INC": {
+  "ats": "adp",
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "found-no-provider",
+  "status": "provider-ready",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=96e76ab8-2c7c-4b6f-86cb-cb03bcc9eeae&ccId=19000101_000003&lang=en_US"
  },
  "AZZ INC": {
@@ -1540,6 +1549,773 @@
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "Agentix Corp (Bloomberg AGTX) is a biopharmaceutical/cannabinoid therapeutics co",
+  "status": "no-board"
+ },
+ "Agroz Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Malaysian vertical-farming agtech (IPO ticker AGRZ). Official careers page at ag",
+  "status": "no-board"
+ },
+ "AiXin Life International, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based health/nutrition direct-sales company (OTC: AIXN). No careers page f",
+  "status": "no-board"
+ },
+ "Ainnova Tech": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Health-tech startup (Costa Rica/Houston). Official careers page ainnovatech.com/",
+  "status": "no-board"
+ },
+ "Ainos, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AI/biotech (NASDAQ: AIMD), San Diego. No careers/jobs section on ainos.com or ir",
+  "status": "no-board"
+ },
+ "AirJoule Technologies Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Cleantech (NASDAQ: AIRJ), Newark DE. Official careers page airjouletech.com/care",
+  "status": "no-board"
+ },
+ "Airship AI Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AI surveillance company (NASDAQ: AISP), Redmond WA, airship.ai. Its site has no ",
+  "status": "no-board"
+ },
+ "Akebia Therapeutics, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/akebiatherapeutics"
+ },
+ "Akso Health Group": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Chinese social e-commerce/health company (NASDAQ: AHG), Qingdao, ~27 employees, ",
+  "status": "no-board"
+ },
+ "Aktis Oncology, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Radiopharma biotech. Careers page aktisoncology.com/join-us hosts roles on a gen",
+  "status": "no-board"
+ },
+ "AlTi Global, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Global wealth manager (NASDAQ: ALTI). Own careers page (alti-global.com/culture)",
+  "status": "no-board"
+ },
+ "Alaska Silver Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (alaskasilver.com/careers) lists openings but applications",
+  "status": "no-board"
+ },
+ "Alaunos Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Site references a Careers tab but alaunos.com/careers returns 404; no greenhouse",
+  "status": "no-board"
+ },
+ "Aldeyra Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (aldeyra.com/about/careers) states 'no current openings' a",
+  "status": "no-board"
+ },
+ "AleAnna, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site (aleannainc.com) has no careers/jobs page and no ATS link in navig",
+  "status": "no-board"
+ },
+ "Algernon Health Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small clinical-stage company (algernonhealth.com) rebranding to Grey Matters Hea",
+  "status": "no-board"
+ },
+ "Algoma Steel Group Inc.": {
+  "attempts": 1,
+  "host": "career17.sapsf.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://career17.sapsf.com/career?career_company=algomasteelT"
+ },
+ "Algorhythm Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny (~25 employee) AI/freight holding company (RIME, algoholdings.com); no care",
+  "status": "no-board"
+ },
+ "Alight, Inc. / Delaware": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://alight.wd5.myworkdayjobs.com/Careers"
+ },
+ "Alignment Healthcare, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://alignmenthealthcare.wd12.myworkdayjobs.com/ahc_external"
+ },
+ "Aligos Therapeutics, Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d52153b8-f6ce-43b5-a2e0-27ce932124f7&ccId=9200230392489_2&lang=en_US"
+ },
+ "Alithya Group inc": {
+  "attempts": 1,
+  "host": "careers.alithya.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.alithya.com/hcmUI/CandidateExperience/en/sites/AlithyaCareersCarrieres/jobs"
+ },
+ "Allarity Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page (allarity.com/careers/) only invites resume submission for future o",
+  "status": "no-board"
+ },
+ "Allegiant Travel CO": {
+  "ats": "lever",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.lever.co/allegiantair"
+ },
+ "Alliance Laundry Holdings Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://uscareeropenings-alliancelaundry.icims.com/jobs/intro"
+ },
+ "Allied Critical Metals Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small tungsten-mining explorer (Portugal projects); website alliedcritical.com h",
+  "status": "no-board"
+ },
+ "Allied Gold Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers hosted on proprietary corporate site (alliedgold.com/careers/opportuniti",
+  "status": "no-board"
+ },
+ "Allison Transmission Holdings Inc": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://allisontransmission.wd1.myworkdayjobs.com/ATI-External"
+ },
+ "Allogene Therapeutics, Inc.": {
+  "attempts": 1,
+  "host": "careers.jobscore.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.jobscore.com/careers/allogene"
+ },
+ "Almco Plumbing Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small San Diego plumbing company; applications via phone/email (yana@almcoplumbi",
+  "status": "no-board"
+ },
+ "Almonty Industries Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Toronto-based tungsten miner (Spain/Portugal/Korea); no ATS job board found on a",
+  "status": "no-board"
+ },
+ "Alpha Cognition Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (alphacognition.com/careers) uses an embedded apply-by-for",
+  "status": "no-board"
+ },
+ "Alpha Investment Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "OTC Pink (ALPC) micro-cap real-estate/crypto-mining finance shell with extremely",
+  "status": "no-board"
+ },
+ "Alpha Metallurgical Resources, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Hiring handled on its own site (alphametresources.com/jobs.html and per-location",
+  "status": "no-board"
+ },
+ "Alpha One Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "AOAO is a Shenzhen, China-based telecom-infrastructure company (formerly World M",
+  "status": "no-board"
+ },
+ "Alpha Teknova, Inc.": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/4f139777-12cd-406c-afd1-26fce351ce39/teknova"
+ },
+ "Alphatec Holdings, Inc.": {
+  "ats": "workable",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://apply.workable.com/atec-spine/"
+ },
+ "Alpine Auto Brokers Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small NY-based used-car retailer (ALTB); only aggregator/profile listings (AUTOj",
+  "status": "no-board"
+ },
+ "Alps Group Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Kuala Lumpur, Malaysia biotech (ALPS, parent of Alps Life Sciences, ~93 employee",
+  "status": "no-board"
+ },
+ "Alset Capital Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Blank-check/SPAC entity (Alset Capital Acquisition Corp) with no operating staff",
+  "status": "no-board"
+ },
+ "Alset Inc.": {
+  "attempts": 1,
+  "host": "alset.zohorecruit.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://alset.zohorecruit.com/jobs/Careers"
+ },
+ "Altamira Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Junior gold exploration company in Brazil (TSXV-listed). No careers/ATS page fou",
+  "status": "no-board"
+ },
+ "Alternative Ballistics Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny less-lethal munitions company; only a LinkedIn presence (57 followers) foun",
+  "status": "no-board"
+ },
+ "Altimmune, Inc.": {
+  "attempts": 1,
+  "host": "altimmune.applicantpro.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://altimmune.applicantpro.com/jobs/"
+ },
+ "Alto Ingredients, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at altoingredients.com/careers lists open positions as internal pag",
+  "status": "no-board"
+ },
+ "Alto Neuroscience, Inc.": {
+  "attempts": 1,
+  "host": "altoneuroscience.hrmdirect.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://altoneuroscience.hrmdirect.com/"
+ },
+ "Altura Energy Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No careers/ATS board matching this specific company. Search returns unrelated 'A",
+  "status": "no-board"
+ },
+ "Alvotech": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://alvotech.wd103.myworkdayjobs.com/Alvotech_Careers"
+ },
+ "Alzamend Neuro, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page (alzamend.com/careers) directs applicants to email JoinUs@Alzamend.",
+  "status": "no-board"
+ },
+ "AmBase Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Shell company with no significant operations (HQ Coral Springs, FL). No careers ",
+  "status": "no-board"
+ },
+ "Amalgamated Financial Corp.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1b4164c0-a7ce-4c7b-8525-41e0f23310d4&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "Ambipar Emergency Response": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers at ambipar.com/usa/careers/ but vacancies load on Ambipar's own",
+  "status": "no-board"
+ },
+ "Ambiq Micro, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/ambiqmicroinc"
+ },
+ "Amentum Holdings, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://pae.wd1.myworkdayjobs.com/Amentum_Careers"
+ },
+ "Ameren Illinois Co": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ameren.wd1.myworkdayjobs.com/External"
+ },
+ "Ameresco, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ameresco.wd5.myworkdayjobs.com/Ameresco"
+ },
+ "American Clean Resources Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC company (ACRG, ~3 employees, Lakewood CO). Website acrgincorp.com has n",
+  "status": "no-board"
+ },
+ "American Eagle Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small mineral-exploration company (TSXV AE.V / AMEGF, Toronto). No careers page ",
+  "status": "no-board"
+ },
+ "American Fusion, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small OTC company (AMFN, formerly Renewal Fuels RNWF, Southlake TX). No careers ",
+  "status": "no-board"
+ },
+ "American Healthcare REIT, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers pages exist (americanhealthcarereit.com/careers and IR opportunities pag",
+  "status": "no-board"
+ },
+ "American Heritage International Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "OTC shell-type company (AHII, Las Vegas NV; former e-cig maker pivoting to trans",
+  "status": "no-board"
+ },
+ "American Homes 4 Rent": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "oracle found, failed verify",
+  "status": "no-board"
+ },
+ "American Integrity Insurance Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board"
+ },
+ "American Lithium Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "americanlithiumcorp.com (Vancouver mining/exploration co, ~11 employees, NASDAQ ",
+  "status": "no-board"
+ },
+ "American National Group Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "jobvite found, failed verify",
+  "status": "no-board"
+ },
+ "American Outdoor Brands, Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e98e730c-9483-432e-b0e1-12ff22bc0ba1&ccId=19000101_000001&lang=en_US"
+ },
+ "American Picture House Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Single-employee OTC film-financing company (americanpicturehouse.com, ticker APH",
+  "status": "no-board"
+ },
+ "American Strategic Investment Co.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Externally managed NYC commercial-real-estate REIT (NYSE: NYC), run by AR Global",
+  "status": "no-board"
+ },
+ "American Tungsten Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Vancouver-based mineral exploration company (CSE: TUNG, IMA Mine project I",
+  "status": "no-board"
+ },
+ "American Well Corp": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/amwell"
+ },
+ "Americas Gold & Silver Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "americas-gold.com/careers explicitly directs applicants to its LinkedIn jobs pag",
+  "status": "no-board"
+ },
+ "Ameriwest Critical Metals Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Vancouver-based junior mineral exploration company (CSE:AWCM/OTC:AWLIF). Officia",
+  "status": "no-board"
+ },
+ "Amesite Inc.": {
+  "attempts": 1,
+  "host": "app.trinethire.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://app.trinethire.com/companies/18346-amesite-inc/jobs"
+ },
+ "Amneal Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "oracle found, failed verify",
+  "status": "no-board"
+ },
+ "Amphastar Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "amphastar.com/job-openings lists roles by directing applicants to Indeed company",
+  "status": "no-board"
+ },
+ "AmpliTech Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at amplitechgroup.com/careers exists but does not link to any recog",
+  "status": "no-board"
+ },
+ "Amplify Energy Corp.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d13ddc52-e841-41da-bdcc-72bb91d4563e&ccId=19000101_000001"
+ },
+ "Anbio Biotechnology": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Frankfurt, Germany-based IVD/medical device company (anbio.com). No careers page",
+  "status": "no-board"
+ },
+ "Anebulo Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny clinical-stage pharma (ANEB, Lakeway TX). anebulo.com has no careers page a",
+  "status": "no-board"
+ },
+ "Angel Oak Mortgage REIT, Inc.": {
+  "attempts": 1,
+  "host": "www.paycomonline.net",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www.paycomonline.net/v4/ats/web.php/jobs?jobSearchSettingsId=595&clientkey=9FD670687B0D23E82C1272BF75BA93B0"
+ },
+ "Angel Studios, Inc.": {
+  "attempts": 1,
+  "host": "www.paycomonline.net",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www.paycomonline.net/v4/ats/web.php/portal/BEF408F3E3A024CFE0BF00677696DEA1/career-page"
+ },
+ "Anika Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers at anika.com/join-anika/job-listings/ are served by a custom WordPress c",
+  "status": "no-board"
+ },
+ "Anixa Biosciences Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Anixa.com has a /careers menu item but the site contains no embedded standard AT",
+  "status": "no-board"
+ },
+ "Ankam, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ANKAM INC. (ticker ANKM) is a small Taipei, Taiwan mobile-app developer. No offi",
+  "status": "no-board"
+ },
+ "Annexon, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/annexonbioscience"
+ },
+ "Annovis Bio, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "annovisbio.com careers/about pages contain no embedded standard ATS host (no gre",
+  "status": "no-board"
+ },
+ "Antalpha Platform Holding Co": {
+  "ats": "workable",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://apply.workable.com/antalpha/"
+ },
+ "Anterix Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/anterix"
+ },
+ "Antero Midstream Corp": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=be841b2c-7fe9-4b77-bda5-63263ad0f62b&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "Antharas Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Antharas Inc (ticker AAS) is a Kuala Lumpur, Malaysia real-estate developer (ant",
+  "status": "no-board"
+ },
+ "Antiaging Quantum Living Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Antiaging Quantum Living Inc. (OTC: AAQL) is a small Flushing, NY investment hol",
+  "status": "no-board"
+ },
+ "Apimeds Pharmaceuticals US, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (apimedsus.com / ir.apimedsus.com 'Join Our Team') exists ",
+  "status": "no-board"
+ },
+ "Apollo Commercial Real Estate Finance, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ARI (NYSE: ARI) is an externally managed mortgage REIT with no employees of its ",
+  "status": "no-board"
+ },
+ "Apollo Silver Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Vancouver-based silver exploration company; no careers page or ATS board f",
+  "status": "no-board"
+ },
+ "Apollomics Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page apollomicsinc.com/join-our-team/job-opportunities/ verifie",
+  "status": "no-board"
+ },
+ "AppTech Payments Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page apptechcorp.com/careers-at-apptech/ verified: 'No current ",
+  "status": "no-board"
+ },
+ "Appia Rare Earths & Uranium Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Very small (~5 employees) critical-minerals exploration company; no careers page",
+  "status": "no-board"
+ },
+ "Apple Hospitality REIT, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Corporate REIT (NYSE: APLE, ~43 corporate employees) site applehospitalityreit.c",
+  "status": "no-board"
+ },
+ "Apple iSports Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Corporate site (corporate.appleisports.com -> appleisports.com) has no careers/j",
+  "status": "no-board"
+ },
+ "Applied Aerospace & Defense, Inc.": {
+  "attempts": 1,
+  "host": "www2.appone.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://www2.appone.com/Search/Search.aspx?Type=REQ&servervar=PCXAerostructuresLLC.appone.com&FromID=1&ClientID=2673&B_ID=91"
+ },
+ "Applied Digital Corp.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=4e1f673a-e23b-4f79-98bf-9967bc802aac&ccId=19000101_000001&lang=en_US"
+ },
+ "Appsoft Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap mobile-app company (ASFT, Garden City NY) with essentially no employee",
+  "status": "no-board"
+ },
+ "Aprea Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page is aprea.com/join-our-team/ (WordPress/Elementor). It uses",
+  "status": "no-board"
+ },
+ "Aptevo Therapeutics Inc.": {
+  "attempts": 1,
+  "host": "workforcenow.adp.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://workforcenow.adp.com/jobs/apply/posting.html?client=APBT&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ "Aptose Biosciences Inc.": {
+  "ats": "bamboohr",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://aptose.bamboohr.com/careers"
+ },
+ "Apyx Medical Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page (apyxmedical.com/careers/) is Cloudflare-protected and applications",
+  "status": "no-board"
+ },
+ "Aqua Metals, Inc.": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/2c1f88a9-eada-4c3b-af14-b52c3f17fdab/Aqua-Metals-Inc"
+ },
+ "Aquestive Therapeutics, Inc.": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting.ultipro.com/AQU1000AQUE/JobBoard/8a380b89-3c6f-4511-8697-2fe5c64de6ac"
+ },
+ "Arbutus Biopharma Corp": {
+  "attempts": 1,
+  "host": "recruiting.paylocity.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/f2fda2c7-bfc6-4840-90d0-83d242cada87/Arbutus-Biopharma-Inc"
+ },
+ "Arcadia Biosciences, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (arcadiabio.com/about/careers/) states 'There are currentl",
+  "status": "no-board"
+ },
+ "Archer Aviation Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/archer56"
+ },
+ "Archrock, Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://edva.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1"
+ },
+ "Arcos Dorados Holdings Inc.": {
+  "attempts": 1,
+  "host": "arcosdorados.hiringroom.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://arcosdorados.hiringroom.com/jobs"
+ },
+ "Arcosa, Inc.": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197"
+ },
+ "Arcturus Therapeutics Holdings Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=13467e50-14e0-4ae3-b7af-fa2196c7c382&ccId=273966895617_8123&type=JS&lang=en_US"
+ },
+ "Arcus Biosciences, Inc.": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.jobvite.com/arcusbiosciencescareers/jobs"
+ },
+ "Arcutis Biotherapeutics, Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "provider-ready",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=5478ada3-7f50-4778-91cf-21507e4e8cea&ccId=19000101_000001&lang=en_US&selectedMenuKey=CareerCenter"
+ },
+ "Ardent Health, Inc.": {
+  "attempts": 1,
+  "host": "jobs.ardenthealth.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.ardenthealth.com/careers/"
+ },
+ "Ardmore Shipping Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No standard ATS board found. The recruiting.ultipro.com/ard1000admo UltiPro boar",
+  "status": "no-board"
+ },
+ "Ares Commercial Real Estate Corp": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://aresmgmt.wd1.myworkdayjobs.com/External"
+ },
+ "Argentina Lithium & Energy Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Junior mineral-exploration company based in Vancouver (TSXV:LIT / OTC:LILIF). No",
   "status": "no-board"
  }
 }
