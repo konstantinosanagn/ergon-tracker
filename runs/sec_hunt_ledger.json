@@ -97,7 +97,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3993975e-194c-4504-9c5e-9e6017ca5023"
  },
  "ACORN ENERGY, INC.": {
@@ -368,7 +368,7 @@
   "attempts": 1,
   "host": "workforcenow.cloud.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.cloud.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a5bb880d-c347-4e46-9d87-7fa641c11036&ccId=19000101_000001&type=JS&lang=en_US"
  },
  "AIRO Group Holdings, Inc.": {
@@ -476,7 +476,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e4f6ff38-1bcd-40e3-b778-ec98a30f2192&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "ALLURION TECHNOLOGIES, INC.": {
@@ -681,7 +681,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2b489b1b-869f-44b7-b7d0-77a911ff8f69&ccId=19000101_000001&lang=en_US"
  },
  "AMERICAS CARMART INC": {
@@ -703,7 +703,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=720a9f55-4306-4ee6-93f6-5c5018a31eaf&ccId=19000101_000001&type=JS&lang=en_US&selectedMenuKey=CareerCenter"
  },
  "AMERISERV FINANCIAL INC /PA/": {
@@ -811,7 +811,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=be841b2c-7fe9-4b77-bda5-63263ad0f62b&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "ANVI GLOBAL HOLDINGS, INC.": {
@@ -1129,7 +1129,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=96b26409-4548-460a-bd89-ae9a8c54bc60&ccId=19000101_000001&lang=en_US"
  },
  "ATOSSA THERAPEUTICS, INC.": {
@@ -1273,7 +1273,7 @@
   "attempts": 1,
   "host": "workforcenow.adp.com",
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=96e76ab8-2c7c-4b6f-86cb-cb03bcc9eeae&ccId=19000101_000003&lang=en_US"
  },
  "AZZ INC": {
@@ -1865,7 +1865,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1b4164c0-a7ce-4c7b-8525-41e0f23310d4&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "Ambipar Emergency Response": {
@@ -1960,7 +1960,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e98e730c-9483-432e-b0e1-12ff22bc0ba1&ccId=19000101_000001&lang=en_US"
  },
  "American Picture House Corp": {
@@ -2029,7 +2029,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d13ddc52-e841-41da-bdcc-72bb91d4563e&ccId=19000101_000001"
  },
  "Anbio Biotechnology": {
@@ -2107,7 +2107,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=be841b2c-7fe9-4b77-bda5-63263ad0f62b&ccId=19000101_000001&type=MP&lang=en_US"
  },
  "Antharas Inc": {
@@ -2181,7 +2181,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=4e1f673a-e23b-4f79-98bf-9967bc802aac&ccId=19000101_000001&lang=en_US"
  },
  "Appsoft Technologies, Inc.": {
@@ -2289,7 +2289,7 @@
   "ats": "adp",
   "attempts": 1,
   "last": "2026-06-21",
-  "status": "provider-ready",
+  "status": "covered",
   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=5478ada3-7f50-4778-91cf-21507e4e8cea&ccId=19000101_000001&lang=en_US&selectedMenuKey=CareerCenter"
  },
  "Ardent Health, Inc.": {
