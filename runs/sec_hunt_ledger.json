@@ -8142,5 +8142,391 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://enovix.wd12.myworkdayjobs.com/External"
+ },
+ "Enphase Energy, Inc.": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.jobvite.com/enphase-energy/jobs"
+ },
+ "Enpro Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official board at careers.enpro.com is hosted on Clinch Talent (clinchtalent.com",
+  "status": "no-board"
+ },
+ "Ensysce Biosciences, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clinical-stage biotech (ENSC); official site ensysce.com has no careers/jobs pag",
+  "status": "no-board"
+ },
+ "Entrada Therapeutics, Inc.": {
+  "ats": "greenhouse",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://job-boards.greenhouse.io/entradatherapeutics"
+ },
+ "Entrex Carbon Market, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Very small company (~20 employees, OTC:NTRX); no dedicated careers page or ATS b",
+  "status": "no-board"
+ },
+ "Envela Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site envela.com/our-workplace has no job application link and reference",
+  "status": "no-board"
+ },
+ "Enveric Biosciences, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site enveric.com has no careers/jobs page and no ATS integration refere",
+  "status": "no-board"
+ },
+ "Enviri Corp": {
+  "ats": "smartrecruiters",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://careers.smartrecruiters.com/EnviriCorporation"
+ },
+ "Envirotech Vehicles, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers hosted on Gusto (jobs.gusto.com/boards/envirotech-vehicles-inc-b5cf7596-",
+  "status": "no-board"
+ },
+ "Envista Holdings Corp": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://envista.wd1.myworkdayjobs.com/envistacareers"
+ },
+ "Envoy Medical, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers/jobs pages are hosted on their own HubSpot-based site (envoymed",
+  "status": "no-board"
+ },
+ "Eos Energy Enterprises, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://eosenergystorage.wd1.myworkdayjobs.com/EoS"
+ },
+ "Equillium, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Jobs are hosted on their own investor-relations/aspx careers site (equilliumbio.",
+  "status": "no-board"
+ },
+ "Equinox Gold Corp.": {
+  "attempts": 1,
+  "host": "careers.equinoxgold.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://careers.equinoxgold.com/"
+ },
+ "Equitable Holdings, Inc.": {
+  "ats": "taleo",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://equitable.taleo.net/careersection/eqh_1/jobsearch.ftl"
+ },
+ "Erayak Power Solution Group Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "China-based (Wenzhou) manufacturer; corporate site (erayakpower.com) and LinkedI",
+  "status": "no-board"
+ },
+ "Ernexa Therapeutics Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "~11-employee preclinical biotech; careers page (ernexatx.com/careers) is on thei",
+  "status": "no-board"
+ },
+ "Ero Copper Corp.": {
+  "attempts": 1,
+  "host": "vempraerobrasil.gupy.io",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://vempraerobrasil.gupy.io/"
+ },
+ "Esperion Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page (esperion.com/careers) repeatedly timed out and could not be resolv",
+  "status": "no-board"
+ },
+ "Esquire Financial Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers/opportunities are hosted on their investor-relations aspx site (investor",
+  "status": "no-board"
+ },
+ "Estrella Immunopharma, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site estrellabio.com careers directs applicants to email resumes to car",
+  "status": "no-board"
+ },
+ "Eton Pharmaceuticals, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page etonpharma.com/careers has only an 'introduce yourself / C",
+  "status": "no-board"
+ },
+ "European Energy Metals Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Canadian junior mining exploration shell (renamed Grit Metals Corp. effective Oc",
+  "status": "no-board"
+ },
+ "Eva Live Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap adtech company (ticker GOAI, evaxai.com); no careers page or any third",
+  "status": "no-board"
+ },
+ "Evaxion A/S": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Jobs are self-hosted on evaxion.ai/careers (open-application/positions pages on ",
+  "status": "no-board"
+ },
+ "Evercore Inc.": {
+  "attempts": 1,
+  "host": "evercore.tal.net",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://evercore.tal.net/vx/lang-en-GB/mobile-0/channel-1/appcentre-ext/brand-5/candidate/jobboard/vacancy/3/adv/"
+ },
+ "Everforth Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Formerly ASGN Inc., rebranded Everforth April 2026; recruiting is split across b",
+  "status": "no-board"
+ },
+ "Everus Construction Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Newly spun-off (from MDU Resources) public company; everus.com/careers is bot-bl",
+  "status": "no-board"
+ },
+ "Everything Blockchain, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Micro-cap (OTC: EBZT) in Jacksonville FL; site everythingblockchain.io returned ",
+  "status": "no-board"
+ },
+ "EvoAir Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Malaysia-based micro-cap HVAC maker (OTC: EVOH, formerly Unex Holdings); operati",
+  "status": "no-board"
+ },
+ "Evofem Biosciences, Inc.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/820aea30-f136-438f-b364-05da98576c72"
+ },
+ "Evolent Health, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://evolent.wd1.myworkdayjobs.com/External"
+ },
+ "Evolus, Inc.": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.jobvite.com/evolus/jobs"
+ },
+ "Evolution Metals & Technologies Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small 2020-founded West Palm Beach company (OTC: EMAT) with site evolution-metal",
+  "status": "no-board"
+ },
+ "Evotec SE": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://evotecgroup.wd3.myworkdayjobs.com/Evotec_Career_Site"
+ },
+ "Excalibur Metals Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No company clearly matching 'Excalibur Metals Corp' found. Search returns unrela",
+  "status": "no-board"
+ },
+ "Excelerate Energy, Inc.": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://excelerateenergy.wd503.myworkdayjobs.com/en-US/ExcelerateEnergy"
+ },
+ "ExlService Holdings, Inc.": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/"
+ },
+ "Exousia Bio, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "No findable company/site for 'Exousia Bio'. Search returns unrelated entities (E",
+  "status": "no-board"
+ },
+ "Expion360 Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers page at expion360.com/pages/careers uses a proprietary on-site applicati",
+  "status": "no-board"
+ },
+ "Exxsun Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Exxsun Corp (OTC: MNZO, formerly Manzo Pharmaceuticals/Fortune Oil & Gas) is a d",
+  "status": "no-board"
+ },
+ "Exyn Technologies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page at exyn.com/about/jobs lists roles with 'Apply Now' button",
+  "status": "no-board"
+ },
+ "Exzeo Group, Inc.": {
+  "ats": "paycom",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=F33A33DD3861769D455F3C07D62EE2D7"
+ },
+ "EyePoint, Inc.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://careers-eyepointpharma.icims.com/jobs/search"
+ },
+ "F&G Annuities & Life, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers/apply pages (fglife.com/about/careers/opportunities and /apply)",
+  "status": "no-board"
+ },
+ "F3 Uranium Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Canadian (Kelowna, BC) uranium exploration company with no dedicated caree",
+  "status": "no-board"
+ },
+ "FACTSET RESEARCH SYSTEMS INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday found, failed verify",
+  "status": "no-board",
+  "url": "https://factset.wd1.myworkdayjobs.com/FactSetCareers"
+ },
+ "FARLONG HOLDING Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Farlong Holding Corp (OTC: AFA) is a small Nevada holding company for a nutraceu",
+  "status": "no-board"
+ },
+ "FARMERS NATIONAL BANC CORP /OH/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Farmers National Bank (Canfield, OH) uses a proprietary ASP.NET careers portal (",
+  "status": "no-board"
+ },
+ "FAST CASUAL CONCEPTS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Fast Casual Concepts, Inc. (OTC: FCCI) is a micro-cap PA restaurant company (Hol",
+  "status": "no-board"
+ },
+ "FB Financial Corp": {
+  "ats": "jobvite",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "jobvite found, failed verify",
+  "status": "no-board",
+  "url": "https://jobs.jobvite.com/firstbank"
+ },
+ "FDCTECH, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site fdctech.com uses a static careers.html page (Irvine, CA fintech) w",
+  "status": "no-board"
+ },
+ "FEC Resources Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small oil/gas exploration shell company (subsidiary of PXP Energy, Philippines/V",
+  "status": "no-board"
+ },
+ "FEDERAL AGRICULTURAL MORTGAGE CORP": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=324a4031-59fe-4b64-b9a3-ec4705312baf&ccId=19000101_000001&type=JS&lang=en_US"
+ },
+ "FEDERAL HOME LOAN MORTGAGE CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Freddie Mac's official careers site is careers.freddiemac.com, built on Phenom P",
+  "status": "no-board"
+ },
+ "FEDERAL NATIONAL MORTGAGE ASSOCIATION FANNIE MAE": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://fanniemae.wd1.myworkdayjobs.com/FannieMaeCareers"
+ },
+ "FEDERAL SIGNAL CORP /DE/": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308"
+ },
+ "FEDERATED HERMES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Federated Hermes hosts jobs through its own portal (federatedhermes.com/us/corpo",
+  "status": "no-board"
+ },
+ "FEMASYS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Femasys (Suwanee, GA medical device, ~28 employees) careers page femasys.com/joi",
+  "status": "no-board"
+ },
+ "FENDX TECHNOLOGIES INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "FendX Technologies (Oakville, ON nanotech micro-cap, 1-10 employees) has only a ",
+  "status": "no-board"
  }
 }
