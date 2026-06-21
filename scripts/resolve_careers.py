@@ -247,7 +247,19 @@ async def main() -> None:
 
     load_builtins()
     results: dict[int, dict | None] = {}
-    print(f"resolving careers for {len(names)} companies (render={render}) ...", flush=True)
+    total = len(names)
+    prog = {"done": 0, "hit": 0}
+    print(f"resolving careers for {total} companies (render={render}) ...", flush=True)
+
+    def tick(found: bool) -> None:
+        prog["done"] += 1
+        prog["hit"] += int(found)
+        d = prog["done"]
+        step = max(100, total // 40)  # stream ~every 2.5% so progress is visible mid-run
+        if d % step == 0 or d == total:
+            pct = 100 * d // total if total else 100
+            print(f"  progress {d}/{total} ({pct}%)  resolved={prog['hit']}", flush=True)
+
     async with (
         AsyncFetcher(concurrency=10, per_host_rate=4, timeout=15.0, retries=1) as fetcher,
         anyio.create_task_group() as tg,
@@ -255,9 +267,9 @@ async def main() -> None:
         for i, (nm, dom) in enumerate(names):
 
             async def run(i: int = i, nm: str = nm, dom: str | None = dom) -> None:
-                results[i] = await resolve_careers(
-                    nm, fetcher, [dom] if dom else None, render=render
-                )
+                r = await resolve_careers(nm, fetcher, [dom] if dom else None, render=render)
+                results[i] = r
+                tick(r is not None)
 
             tg.start_soon(run)
 
