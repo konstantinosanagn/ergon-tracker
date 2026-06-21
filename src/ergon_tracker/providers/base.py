@@ -50,6 +50,7 @@ _BUILTIN_MODULES = (
     "join",
     "rippling",
     "pinpoint",
+    "paylocity",
     "eightfold",
     "successfactors",
     "oracle",

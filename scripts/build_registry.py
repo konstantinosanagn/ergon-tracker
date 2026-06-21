@@ -80,6 +80,7 @@ ATS_PRIORITY = {
     "join": 11,
     "rippling": 12,
     "pinpoint": 13,
+    "paylocity": 13.5,  # Paylocity Recruiting public JSON feed (v2/api/feed/jobs/{guid}): mid-market employers
     "eightfold": 14,
     "successfactors": 15,
     "oracle": 16,
