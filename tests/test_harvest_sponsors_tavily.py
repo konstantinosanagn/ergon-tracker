@@ -61,6 +61,8 @@ def test_board_of_maps_enterprise_atses() -> None:
     assert board_of("https://acme.teamtailor.com/jobs") == ("teamtailor", "acme")
     assert board_of("https://acme.jobs.personio.de/job/1") == ("personio", "acme")
     assert board_of("https://careers-pfizer.icims.com/jobs")[0] == "icims"
+    # greedy-matcher guard: a non-iCIMS careers path must NOT be claimed as iCIMS.
+    assert board_of("https://www.nestleusa.com/jobs/search-jobs/career-areas") is None
 
 
 def test_to_candidate_splits_workday() -> None:

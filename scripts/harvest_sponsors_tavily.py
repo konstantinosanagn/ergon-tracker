@@ -66,9 +66,14 @@ _EIGHTFOLD_RE = re.compile(r"([a-z0-9][a-z0-9-]*)\.eightfold\.ai", re.IGNORECASE
 # company slug — adjudication works on these even without a display name.
 _EXTRACT_ATSES = ("greenhouse", "lever", "ashby", "workable", "smartrecruiters", "rippling",
                   "pinpoint", "bamboohr", "recruitee", "teamtailor")
-# ATSes resolved via the provider's own matches() (no CC extractor): the token is a host (icims)
-# or tenant (personio); these lean on the live display-name check in adjudicate().
-_MATCH_PROVIDERS = (("icims", ICIMSProvider), ("personio", PersonioProvider))
+# ATSes resolved via the provider's own matches() (no CC extractor). Each carries a required
+# token marker because some matchers are greedy: ICIMSProvider.matches() claims non-iCIMS career
+# paths (e.g. www.nestleusa.com), so we only accept tokens on a real .icims.com host. (personio's
+# matcher already requires a personio host, so it needs no extra guard.)
+_MATCH_PROVIDERS = (
+    ("icims", ICIMSProvider, ".icims.com"),
+    ("personio", PersonioProvider, ""),
+)
 
 
 def _collapse(s: str) -> str:
@@ -92,9 +97,9 @@ def board_of(url: str) -> tuple[str, str] | None:
     m = _EIGHTFOLD_RE.search(url)
     if m and m.group(1).lower() not in ("www", "app"):
         return "eightfold", m.group(1).lower()
-    for ats, provider_cls in _MATCH_PROVIDERS:
+    for ats, provider_cls, marker in _MATCH_PROVIDERS:
         tok = provider_cls.matches(url)
-        if tok:
+        if tok and (not marker or marker in tok.lower()):
             return ats, tok
     return None
 
