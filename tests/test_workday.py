@@ -79,8 +79,25 @@ def test_matches_tenant_appears_twice() -> None:
     assert WorkdayProvider.matches(url) == "salesforce|wd12|External_Career_Site"
 
 
+def test_matches_site_named_after_tenant() -> None:
+    # Regression: Workday sites are very often named after the tenant (``/AAON`` for tenant
+    # ``aaon``). The site-picker must NOT mistake that for redundant tenant framing and drop it.
+    assert WorkdayProvider.matches("https://aaon.wd108.myworkdayjobs.com/AAON") == "aaon|wd108|AAON"
+    assert (
+        WorkdayProvider.matches("https://adtran.wd3.myworkdayjobs.com/en-US/ADTRAN")
+        == "adtran|wd3|ADTRAN"
+    )
+    # cxs form where the site also equals the tenant must still resolve.
+    assert (
+        WorkdayProvider.matches("https://aaon.wd108.myworkdayjobs.com/wday/cxs/aaon/AAON/jobs")
+        == "aaon|wd108|AAON"
+    )
+
+
 def test_matches_bare_host_without_site_is_none() -> None:
     assert WorkdayProvider.matches("https://nvidia.wd5.myworkdayjobs.com/") is None
+    # cxs framing with the tenant but NO site segment is not a valid board.
+    assert WorkdayProvider.matches("https://aaon.wd108.myworkdayjobs.com/wday/cxs/aaon/jobs") is None
 
 
 def test_matches_rejects_non_workday() -> None:

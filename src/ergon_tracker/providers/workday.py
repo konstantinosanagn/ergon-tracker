@@ -122,14 +122,40 @@ class WorkdayProvider(BaseProvider):
 
     @staticmethod
     def _site_from_segments(segments: list[str], tenant: str) -> str | None:
-        """Pick the site segment, skipping framing/locale/tenant noise."""
-        skip = {"wday", "cxs", "jobs", "job", tenant.lower()}
-        for seg in segments:
-            low = seg.lower()
-            if low in skip or _LOCALE_RE.match(low):
-                continue
-            return seg
-        return None
+        """Pick the site segment, skipping framing/locale noise.
+
+        Two URL shapes carry the site differently:
+        - cxs API ``/wday/cxs/{tenant}/{site}/jobs`` — the tenant appears as a path segment
+          *before* the site, so it must be skipped there.
+        - public ``/{site}`` or ``/en-US/{site}`` — the tenant is only in the host, NOT the path,
+          and the site is VERY OFTEN named after the tenant (``/AAON`` for tenant ``aaon``). So we
+          must NOT blanket-skip a segment equal to the tenant, or those boards resolve to None.
+        """
+        frame = {"wday", "cxs", "jobs", "job"}
+        low_segs = [s.lower() for s in segments]
+        if "cxs" in low_segs:
+            # cxs API ``/wday/cxs/{tenant}/{site}/jobs``: the tenant right after ``cxs`` is always
+            # framing, so drop it; the site must follow. No site -> None (don't mistake a lone
+            # framing tenant for a site).
+            rest = segments[low_segs.index("cxs") + 1 :]
+            if rest and rest[0].lower() == tenant.lower():
+                rest = rest[1:]
+            for seg in rest:
+                if seg.lower() in frame or _LOCALE_RE.match(seg.lower()):
+                    continue
+                return seg
+            return None
+        # Public ``/{site}`` or ``/en-US/{site}``: the tenant lives in the host, not the path, and
+        # the site is OFTEN named after the tenant (``/AAON`` for tenant ``aaon``) -> keep it. Only
+        # a leading tenant *followed by* a real site (``/{tenant}/{site}``) is a redundant prefix.
+        meaningful = [
+            seg for seg in segments if seg.lower() not in frame and not _LOCALE_RE.match(seg.lower())
+        ]
+        if not meaningful:
+            return None
+        if len(meaningful) > 1 and meaningful[0].lower() == tenant.lower():
+            meaningful = meaningful[1:]
+        return meaningful[0]
 
     # --- fetch --------------------------------------------------------------
 
