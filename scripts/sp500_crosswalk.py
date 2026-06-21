@@ -38,8 +38,9 @@ ALIAS = {
 NAMESAKE_EXCLUDE = {
     "brown", "monster", "international", "royal", "steel", "universal", "vulcan", "cooper",
     "genuine", "ralph", "snap", "cms", "vici", "fidelity", "apollo", "bio",
-    # verified-wrong matches (subsidiary / unrelated namesake — confirmed via user-supplied URLs):
+    # verified-wrong matches (subsidiary / unrelated namesake — confirmed via live entity-check):
     "berkshire-hathaway-homestate-companies",  # workers-comp subsidiary, not the holding co (no central board)
+    "berkshire-hathaway-homeservices-costa-blanca",  # Spanish real-estate FRANCHISE (Dénia/Altea), not BRK
     "electronica-teliar",  # a join.com board, NOT Electronic Arts (EA = gr8people, blocked)
 }
 GENERIC_FIRST = {"american", "united", "general", "national", "first", "new", "international", "global"}
