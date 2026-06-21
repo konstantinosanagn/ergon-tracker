@@ -12601,11 +12601,371 @@
   "reason": "agent session-limited; re-hunt after reset",
   "status": "tavily-miss"
  },
+ "Kaixin Holdings": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kalaris Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kalo Gold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
  "KalturaInc": {
   "ats": "smartrecruiters",
   "attempts": 1,
   "last": "2026-06-21",
   "status": "covered"
+ },
+ "Kandi Technologies Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Karat Packaging Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Karbon-X Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Karman Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kartoon Studios, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Karyopharm Therapeutics Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kearny Financial Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kelyniam Global, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kennedy-Wilson Holdings, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kering": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Keros Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kimbell Royalty Partners, LP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kindcard, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "KinderCare Learning Companies, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "King Copper Discovery Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "King Resources, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kingfisher Metals Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kinsale Capital Group, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kisses From Italy Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Knife River Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Knight-Swift Transportation Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Knowles Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kodiak AI, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kodiak Gas Services, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kodiak Sciences Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Koil Energy Solutions, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kolibri Global Energy Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "KonaTel, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kontoor Brands, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Koppers Holdings Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kraig Biocraft Laboratories, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Krispy Kreme, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kuber Resources Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "Kutcho Copper Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "KwikClick, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LA-Z-BOY INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LAMAR ADVERTISING CO/NEW": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LANDS' END, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LANDSTAR SYSTEM INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LANTRONIX INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LATTICE SEMICONDUCTOR CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LAUREATE EDUCATION, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LB PHARMACEUTICALS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LCI INDUSTRIES": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LCNB CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEE ENTERPRISES, Inc": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEGALZOOM.COM, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEGEND POWER SYSTEMS INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEGGETT & PLATT INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LELANTOS HOLDINGS INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEMAITRE VASCULAR INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LENNAR CORP /NEW/": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LENSAR, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LENZ Therapeutics, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LESAKA TECHNOLOGIES INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LEXICON PHARMACEUTICALS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
+ },
+ "LFTD PARTNERS INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "agent session-limited; re-hunt after reset",
+  "status": "tavily-miss"
  },
  "careers-janusintl.icims.com": {
   "ats": "icims",
@@ -12620,6 +12980,12 @@
   "status": "covered"
  },
  "careers-kbhome.icims.com": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "careers-latticesemi.icims.com": {
   "ats": "icims",
   "attempts": 1,
   "last": "2026-06-21",
@@ -12662,6 +13028,24 @@
   "status": "covered"
  },
  "kemper": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "kodiakgas": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "koppers": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "lazboy": {
   "ats": "workday",
   "attempts": 1,
   "last": "2026-06-21",
