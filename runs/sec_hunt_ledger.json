@@ -11160,5 +11160,23 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Aerospace/jobs"
+ },
+ "ideayabio": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "imax": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
+ },
+ "insight": {
+  "ats": "eightfold",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered"
  }
 }
