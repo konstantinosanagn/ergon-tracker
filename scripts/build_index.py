@@ -382,18 +382,50 @@ def _new_boards(registry_items, states: dict, cap: int = 2000) -> list:
     return out
 
 
-def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
-    """Return (window, next_cursor): a rotating slice of crawlable registry boards.
+def _interleave_by_ats(items: list) -> list:
+    """Reorder registry boards round-robin across their ATS so any contiguous window is balanced
+    across backends.
 
-    Instead of always crawling registry[:limit] (which never reaches the tail and, on a cold
-    start, makes ALL ~46.8k boards due at once -> a build that can't fit one CI run), each run
-    takes `limit` boards starting at `cursor` (wrapping), then advances the cursor. Over
-    ceil(total/limit) runs the whole registry is covered + seeded into board_state; tiering then
-    keeps steady-state crawls small.
+    The registry is in insertion order, which CLUSTERS same-ATS boards (we append by ATS during
+    ingest). A contiguous slice of that order can therefore be dominated by one backend — e.g. a
+    window that landed on ~8k freshly-added Workable boards hammered apply.workable.com into a
+    2,181x-429 storm (build-2026-06-21-18). Round-robin interleaving caps any window's share of a
+    backend at roughly that backend's share of the whole registry, so no single ATS gets a
+    sustained burst. Deterministic (stable buckets in first-seen order) so the rotating cursor
+    stays meaningful build-to-build; minor drift when the registry grows is absorbed by the
+    rotation + ``_new_boards``.
+    """
+    from collections import OrderedDict
+
+    buckets: OrderedDict[str, list] = OrderedDict()
+    for k, e in items:
+        buckets.setdefault(e["ats"], []).append((k, e))
+    # Stratified placement: give each board a fractional position (rank+0.5)/bucket_size in [0,1)
+    # and sort by it, so every backend is spread EVENLY across the whole order. (A naive
+    # round-robin balances the head but lets the largest bucket's overflow cluster in the tail —
+    # so a tail window would still be one-backend-dominated.) Now any contiguous window holds
+    # roughly each backend's share of the registry.
+    keyed: list[tuple[float, int, tuple]] = []
+    for order, blist in enumerate(buckets.values()):
+        m = len(blist)
+        for i, item in enumerate(blist):
+            keyed.append(((i + 0.5) / m, order, item))
+    keyed.sort(key=lambda t: (t[0], t[1]))  # order as deterministic tiebreaker
+    return [item for _, _, item in keyed]
+
+
+def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
+    """Return (window, next_cursor): a rotating, backend-INTERLEAVED slice of crawlable boards.
+
+    Each run takes `limit` boards starting at `cursor` (wrapping) from an ATS-interleaved ordering
+    (see ``_interleave_by_ats``), then advances the cursor. Over ceil(total/limit) runs the whole
+    registry is covered + seeded into board_state; interleaving keeps every window balanced across
+    backends so no single ATS is throttled by a clustered burst.
     """
     from ergon_tracker.registry.store import SeedRegistry
 
     items = [(k, e) for k, e in SeedRegistry().all().items() if e.get("ats") and e.get("token")]
+    items = _interleave_by_ats(items)
     total = len(items)
     if total == 0:
         return [], 0

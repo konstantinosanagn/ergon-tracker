@@ -55,10 +55,17 @@ _RETRYABLE_STATUS = {500, 502, 503, 504}
 # searches.)
 _PER_TENANT_HOSTS = ("myworkdayjobs.com",)
 # Shared backends with stricter limits than the default — (max_rate, period_seconds).
-# These always win over the constructor's per_host_rate.
+# These always win over the constructor's per_host_rate. The workable/bamboohr/smartrecruiters
+# caps were added after a clustered crawl window threw a 2,181x-429 storm against them
+# (build-2026-06-21-18); they are high-tenant shared backends that don't tolerate a sustained
+# default rate. Interleaving (build_index._interleave_by_ats) spreads the load; these are the
+# belt-and-suspenders per-backend ceilings.
 _DOMAIN_RATE_OVERRIDES: dict[str, tuple[float, float]] = {
     "recruitee.com": (2.0, 1.0),
     "personio.de": (3.0, 1.0),
+    "workable.com": (3.0, 1.0),
+    "bamboohr.com": (3.0, 1.0),
+    "smartrecruiters.com": (3.0, 1.0),
 }
 # Two-level public suffixes, so the registrable domain is computed correctly.
 _TWO_LEVEL_TLDS = {

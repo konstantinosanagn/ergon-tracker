@@ -25,3 +25,23 @@ def test_single_host_providers_unchanged() -> None:
 def test_two_level_tld() -> None:
     assert _rate_key("acme.co.uk") == "acme.co.uk"
     assert _rate_key("jobs.acme.co.uk") == "acme.co.uk"
+
+
+def test_throttle_prone_backends_have_stricter_rate_caps() -> None:
+    # Workable/BambooHR/SmartRecruiters threw a 429 storm under the default rate; their per-domain
+    # caps must be present and below the AsyncFetcher default (5/s) so a dense window can't burst.
+    from ergon_tracker.http import _DOMAIN_RATE_OVERRIDES
+
+    for dom in ("workable.com", "bamboohr.com", "smartrecruiters.com"):
+        assert dom in _DOMAIN_RATE_OVERRIDES, f"{dom} missing a per-domain rate cap"
+        rate, period = _DOMAIN_RATE_OVERRIDES[dom]
+        assert rate / period < 5.0  # stricter than the constructor default
+
+
+def test_host_limiter_uses_domain_override() -> None:
+    # The limiter for a capped backend must reflect the override, not the constructor default.
+    from ergon_tracker.http import _DOMAIN_RATE_OVERRIDES, AsyncFetcher
+
+    f = AsyncFetcher(per_host_rate=5)
+    lim = f._host_limiter("workable.com")
+    assert lim.max_rate == _DOMAIN_RATE_OVERRIDES["workable.com"][0]

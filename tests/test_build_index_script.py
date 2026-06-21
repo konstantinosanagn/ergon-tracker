@@ -10,11 +10,41 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from build_index import (  # noqa: E402
     _crawl_network,
     _fold_network_into_fresh,
+    _interleave_by_ats,
     publish_artifacts,
 )
 
 from ergon_tracker.index.build import build_index  # noqa: E402
 from ergon_tracker.models import JobPosting  # noqa: E402
+
+
+def test_interleave_by_ats_balances_clustered_registry():
+    from collections import Counter
+
+    # Insertion order clusters one backend (1000 workable, then 50 gh, 50 lever) — the exact shape
+    # that caused the 429 storm. Interleaving must spread them so an early window isn't all workable.
+    items = [(f"wk{i}", {"ats": "workable", "token": f"wk{i}"}) for i in range(1000)]
+    items += [(f"gh{i}", {"ats": "greenhouse", "token": f"gh{i}"}) for i in range(50)]
+    items += [(f"lv{i}", {"ats": "lever", "token": f"lv{i}"}) for i in range(50)]
+
+    out = _interleave_by_ats(items)
+    assert len(out) == len(items)
+    assert {k for k, _ in out} == {k for k, _ in items}  # permutation: nothing lost/duplicated
+
+    # workable is ~91% of the registry; EVERY 100-wide window (head, middle, AND tail) must stay
+    # near that share — never a 100%-one-backend burst, at any offset. (A round-robin interleave
+    # passes the head but fails the tail; stratified placement passes everywhere.)
+    for start in (0, 500, 900, 1000):  # 1000 = the tail, where naive interleave clustered
+        w = Counter(e["ats"] for _, e in out[start : start + 100])
+        assert w["workable"] <= 96, f"window@{start} workable-dominated: {dict(w)}"
+        # minority backends keep appearing throughout, not just at the front
+        assert (w["greenhouse"] + w["lever"]) >= 1, f"window@{start} has no minority ATS: {dict(w)}"
+
+
+def test_interleave_single_ats_is_identity_set():
+    items = [(f"a{i}", {"ats": "greenhouse", "token": f"a{i}"}) for i in range(5)]
+    out = _interleave_by_ats(items)
+    assert [k for k, _ in out] == [k for k, _ in items]
 
 
 def test_crawl_network_disabled_returns_empty():
