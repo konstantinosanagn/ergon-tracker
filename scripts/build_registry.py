@@ -92,6 +92,7 @@ ATS_PRIORITY = {
     "peoplesoft": 16.97,  # PeopleSoft Candidate Gateway (ICAction postback grid): universities
     "ukg": 16.98,  # UKG Pro / UltiPro Recruiting (LoadSearchResults JSON): UDR, Welltower, …
     "adp": 16.99,  # ADP Workforce Now Recruitment (cid job-requisitions JSON): Antero, ACNB, …
+    "dayforce": 16.995,  # Dayforce HCM candidate portal (browser-backed; Cloudflare): Bassett, ACV
     "taleo": 17,
     "taleobe": 17.5,  # Taleo Business Edition (CwsV2 HTML)
     "icims": 18,
