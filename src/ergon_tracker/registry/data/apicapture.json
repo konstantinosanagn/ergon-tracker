@@ -1,114 +1,44 @@
 {
- "google": {
-  "url": "https://www.google.com/about/careers/applications/jobs/results/?page=1",
-  "method": "GET",
-  "tls_impersonate": true,
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "html_table": {
-   "row_css": "li.lLd3Je",
-   "skip_rows": 0
-  },
-  "columns": {
-   "id": {
-    "re": "jobs/results/(\\d+)"
-   },
-   "title": {
-    "re": "<h3 class=\"QJPWVe\">([\\s\\S]*?)</h3>"
-   },
-   "location": {
-    "re": "<span class=\"r0wTof[^\"]*\">([\\s\\S]*?)</span>"
-   },
-   "url": {
-    "re": "href=\"(jobs/results/[^\"?]+)"
-   }
-  },
-  "company": "Google",
-  "headers": {
-   "Accept-Language": "en-US,en;q=0.9"
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "url": "url"
-  }
- },
- "meta": {
-  "url": "https://www.metacareers.com/graphql",
-  "method": "POST",
-  "form_encoded": true,
-  "tls_impersonate": true,
-  "headers": {
-   "X-FB-LSD": "AdQU4lAzXXXyOqC185LIW04DJJQ",
-   "X-FB-Friendly-Name": "CareersJobSearchResultsV2DataQuery",
-   "Referer": "https://www.metacareers.com/jobs"
-  },
+ "akkodis": {
   "body": {
-   "lsd": "AdQU4lAzXXXyOqC185LIW04DJJQ",
-   "__a": "1",
-   "fb_api_caller_class": "RelayModern",
-   "fb_api_req_friendly_name": "CareersJobSearchResultsV2DataQuery",
-   "variables": "{\"search_input\":{\"q\":null,\"divisions\":[],\"offices\":[],\"roles\":[],\"leadership_levels\":[],\"saved_jobs\":[],\"saved_searches\":[],\"sub_teams\":[],\"teams\":[],\"is_leadership\":false,\"is_remote_only\":false,\"sort_by_new\":false,\"results_per_page\":null},\"viewasUserID\":null,\"isLoggedIn\":false}",
-   "server_timestamps": "true",
-   "doc_id": "27129360303422352"
+   "baseSearchQuery": "&facet.range=WorkHour_Facet_Weekly&f.WorkHour_Facet_Weekly.facet.range.start=8&f.WorkHour_Facet_Weekly.facet.range.end=80&f.WorkHour_Facet_Weekly.facet.range.gap=1&facet.range=Salary_Facet_Weekly&f.Salary_Facet_Weekly.facet.range.start=0&f.Salary_Facet_Weekly.facet.range.end=5000&f.Salary_Facet_Weekly.facet.range.gap=500&facet.range=PostedDate&f.PostedDate.facet.range.start=NOW-30DAYS/DAY&f.PostedDate.facet.range.end=NOW&f.PostedDate.facet.range.gap=%2B1DAY/DAY",
+   "brand": "modis",
+   "brandFromDictionary": "akkodis",
+   "countryCookie": "US",
+   "filtersToDisplay": "{2C88203F-D38C-4ED9-A00B-C318A9180D24}|{3179B0D5-86CE-4066-B3B0-500C724CA2C4}|{831FB33D-594C-440B-92D3-7A81DF833E9B}|{656BFEDA-0C7E-4A89-884D-8AD09CC86627}|{9664A49E-FC07-4560-8141-9A4DDFD799F2}|{300E54A7-721B-41EC-8C2C-CFC7BF236877}|{ACB777DD-3F92-4EE5-BD62-D58C8A3FE9FE}|{986D5561-7FE4-4921-8D3D-F75A26DEE3AA}|{5DF0F076-A387-4A29-9F01-7DA6B2316269}",
+   "langCookie": "en",
+   "queryString": "&sort=PostedDate desc&facet.pivot=IsRemote",
+   "range": 0,
+   "siteName": "akkodis"
   },
-  "records_path": [
-   "data",
-   "job_search_with_featured_jobs_v2",
-   "all_jobs"
-  ],
-  "company": "Meta",
+  "company": "akkodis",
   "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "locations",
-   "department": "teams"
-  }
- },
- "uber": {
-  "url": "https://www.uber.com/api/loadSearchJobsResults?localeCode=en",
+   "department": "",
+   "id": "jobId",
+   "location": "jobLocation",
+   "title": "jobTitle"
+  },
   "method": "POST",
-  "tls_impersonate": true,
-  "headers": {
-   "x-csrf-token": "x",
-   "content-type": "application/json",
-   "accept": "application/json"
-  },
-  "body": {
-   "params": {
-    "location": []
-   },
-   "limit": 100,
-   "page": 0
-  },
-  "page_path": [
-   "page"
-  ],
-  "page_start": 0,
-  "page_step": 1,
-  "size_path": [
-   "limit"
-  ],
-  "size": 100,
   "records_path": [
-   "data",
-   "results"
+   "jobs"
   ],
-  "company": "Uber",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "department": "department",
-   "location": "location",
-   "employment_type": "timeType",
-   "description": "description",
-   "posted_at": "creationDate"
-  }
+  "total_path": [
+   "facets",
+   "count"
+  ],
+  "url": "https://www.akkodis.com/api/data/jobs/summarized"
  },
  "amazon": {
-  "url": "https://www.amazon.jobs/en/search.json?radius=24km&result_limit=100&sort=recent&offset=0",
+  "company": "Amazon",
+  "fields": {
+   "department": "business_category",
+   "description": "description_short",
+   "id": "id",
+   "location": "normalized_location",
+   "posted_at": "posted_date",
+   "title": "title",
+   "url": "job_path"
+  },
   "method": "GET",
   "page_param": "offset",
   "page_start": 0,
@@ -119,36 +49,86 @@
   "total_path": [
    "hits"
   ],
-  "company": "Amazon",
+  "url": "https://www.amazon.jobs/en/search.json?radius=24km&result_limit=100&sort=recent&offset=0"
+ },
+ "ancile": {
+  "company": "ANCILE Solutions",
   "fields": {
+   "description": "content.rendered",
    "id": "id",
-   "title": "title",
-   "location": "normalized_location",
-   "url": "job_path",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://ancile.com/wp-json/wp/v2/job-listings?per_page=100"
+ },
+ "annapurnalabs": {
+  "company": "Annapurna Labs (Amazon)",
+  "fields": {
    "department": "business_category",
-   "posted_at": "posted_date",
-   "description": "description_short"
-  }
+   "id": "id",
+   "location": "normalized_location",
+   "title": "title",
+   "url": "job_path"
+  },
+  "method": "GET",
+  "page_param": "offset",
+  "page_start": 0,
+  "page_step": 100,
+  "records_path": [
+   "jobs"
+  ],
+  "total_path": [
+   "hits"
+  ],
+  "url": "https://www.amazon.jobs/en/search.json?base_query=annapurna&result_limit=100&offset=0"
+ },
+ "applabsystems": {
+  "company": "applab systems",
+  "fields": {
+   "department": "job_category",
+   "description": "job_descplace",
+   "id": "job_id",
+   "location": "",
+   "posted_at": "post_date",
+   "title": "job_title",
+   "url": ""
+  },
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://www.applabsystems.com/api/jobs/active"
  },
  "apple": {
-  "url": "https://jobs.apple.com/api/v1/search",
-  "method": "POST",
-  "tls_impersonate": true,
+  "body": {
+   "filters": {},
+   "format": {
+    "longDate": "MMMM D, YYYY",
+    "mediumDate": "MMM D, YYYY"
+   },
+   "locale": "en-us",
+   "page": 1,
+   "query": "",
+   "sort": "newest"
+  },
+  "company": "Apple",
+  "fields": {
+   "department": "team.teamName",
+   "description": "jobSummary",
+   "id": "positionId",
+   "location": "locations",
+   "posted_at": "postingDate",
+   "title": "postingTitle"
+  },
   "headers": {
    "Content-Type": "application/json",
    "Referer": "https://jobs.apple.com/en-us/search"
   },
-  "body": {
-   "query": "",
-   "filters": {},
-   "page": 1,
-   "locale": "en-us",
-   "sort": "newest",
-   "format": {
-    "longDate": "MMMM D, YYYY",
-    "mediumDate": "MMM D, YYYY"
-   }
-  },
+  "method": "POST",
   "page_path": [
    "page"
   ],
@@ -158,58 +138,637 @@
    "res",
    "searchResults"
   ],
+  "tls_impersonate": true,
   "total_path": [
    "res",
    "totalRecords"
   ],
-  "company": "Apple",
-  "fields": {
-   "id": "positionId",
-   "title": "postingTitle",
-   "location": "locations",
-   "department": "team.teamName",
-   "posted_at": "postingDate",
-   "description": "jobSummary"
-  }
+  "url": "https://jobs.apple.com/api/v1/search"
  },
- "dataquad": {
-  "url": "https://dataqinc.com/wp-json/wp/v2/jobpost?per_page=100",
+ "artifinttechnologies": {
+  "columns": {
+   "id": {
+    "re": "[&;?]id=(\\d+)"
+   },
+   "location": {
+    "col": 3
+   },
+   "posted_at": {
+    "col": 1
+   },
+   "title": {
+    "col": 2
+   },
+   "url": {
+    "re": "(https://artifint.com/view_job[^\"]+)"
+   }
+  },
+  "company": "Artifint Technologies",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "posted_at": "posted_at",
+   "title": "title",
+   "url": "url"
+  },
+  "html_table": {
+   "row_css": "tr",
+   "skip_rows": 1
+  },
   "method": "GET",
   "records_path": [],
+  "total_path": [],
+  "url": "https://artifint.com/w2-jobs"
+ },
+ "aruplaboratories": {
+  "body": {
+   "matchCriteria": {
+    "Categories": [],
+    "Educations": [],
+    "FilterFields": [],
+    "JobTypes": [],
+    "Languages": [],
+    "LicenseAndCertifications": [],
+    "Locations": [],
+    "PreferredJobs": [],
+    "Skills": [],
+    "ValueFilters": [],
+    "WorkExperiences": []
+   },
+   "opportunitySearch": {
+    "Filters": [],
+    "OrderBy": [
+     {
+      "Ascending": false,
+      "PropertyName": "PostedDate",
+      "Value": "postedDateDesc"
+     }
+    ],
+    "QueryString": "",
+    "Skip": 0,
+    "Top": 100
+   }
+  },
+  "company": "ARUP Laboratories",
+  "fields": {
+   "department": "JobCategoryName",
+   "description": "BriefDescription",
+   "id": "Id",
+   "location": "Locations.0.Address",
+   "title": "Title"
+  },
+  "method": "POST",
+  "page_path": [
+   "opportunitySearch",
+   "Skip"
+  ],
+  "page_start": 0,
+  "page_step": 100,
+  "records_path": [
+   "opportunities"
+  ],
+  "size": 100,
+  "size_path": [
+   "opportunitySearch",
+   "Top"
+  ],
+  "total_path": [
+   "totalCount"
+  ],
+  "url": "https://recruiting2.ultipro.com/ARU1000ARUP/JobBoard/62cc791d-612e-42e6-909f-0de27efe2038/JobBoardView/LoadSearchResults"
+ },
+ "baincompany": {
+  "columns": {
+   "id": {
+    "re": "FolderDetail/[^\"]+/(\\d+)"
+   },
+   "location": {
+    "re": "subtitle\">\\s*<span>\\s*([\\s\\S]*?)\\s*</span>"
+   },
+   "title": {
+    "re": "FolderDetail/[^\"]+\">\\s*([\\s\\S]*?)\\s*</a>"
+   },
+   "url": {
+    "re": "href=\"(https://careers\\.bain\\.com/jobs/FolderDetail/[^\"]+)\""
+   }
+  },
+  "company": "Bain & Company",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "title": "title",
+   "url": "url"
+  },
+  "html_table": {
+   "row_css": "article.article--result",
+   "skip_rows": 0
+  },
+  "method": "GET",
+  "page_param": "folderOffset",
+  "page_start": 0,
+  "page_step": 10,
+  "records_path": [],
+  "tls_impersonate": true,
+  "total_path": [],
+  "url": "https://careers.bain.com/jobs/SearchJobs/"
+ },
+ "balyasny": {
+  "aura_refresh": "https://bambusdev.my.site.com/s/",
+  "body": {
+   "aura.context": "{\"mode\": \"PROD\", \"fwuid\": \"PLACEHOLDER\", \"app\": \"siteforce:communityApp\", \"loaded\": {\"APPLICATION@markup://siteforce:communityApp\": \"PLACEHOLDER\"}, \"dn\": [], \"globals\": {}, \"uad\": true}",
+   "aura.pageURI": "/s/",
+   "aura.token": "null",
+   "message": "{\"actions\": [{\"id\": \"124;a\", \"descriptor\": \"aura://ApexActionController/ACTION$execute\", \"callingDescriptor\": \"UNKNOWN\", \"params\": {\"namespace\": \"\", \"classname\": \"BamJobRequisitionInfoDataService\", \"method\": \"searchJobRequisitions\", \"params\": {\"isVendorPortal\": false, \"site\": \"BAM Website\", \"searchKey\": \"\", \"locationFilters\": [], \"departmentFilter\": [], \"availableLocations\": [], \"experienceLevelFilter\": []}, \"cacheable\": true, \"isContinuation\": false}}]}"
+  },
+  "company": "Balyasny Asset Management",
+  "fields": {
+   "department": "Department__c",
+   "id": "Id",
+   "location": "Job_Requisition_Positions__r.0.Location__r.External_Name__c",
+   "title": "Publish_Title__c"
+  },
+  "form_encoded": true,
+  "headers": {
+   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+  },
+  "method": "POST",
+  "records_path": [
+   "actions",
+   0,
+   "returnValue",
+   "returnValue"
+  ],
+  "tls_impersonate": true,
+  "url": "https://bambusdev.my.site.com/s/sfsites/aura?r=2&aura.ApexAction.execute=1"
+ },
+ "bnpparibassecurities": {
+  "company": "BNP Paribas USA",
+  "fields": {
+   "description": "content.rendered",
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
   "page_param": "page",
   "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://usa.bnpparibas/wp-json/wp/v2/jobs?per_page=100"
+ },
+ "bostonuniversity": {
+  "columns": {
+   "id": {
+    "re": "/External/jobs/(\\d+)"
+   },
+   "location": {
+    "re": "sr-panel__meta[^>]*>([\\s\\S]*?)</span>"
+   },
+   "title": {
+    "re": "sr-panel__title[^>]*>([\\s\\S]*?)</div>"
+   }
+  },
+  "company": "Boston University",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "title": "title"
+  },
+  "html_table": {
+   "row_css": "a.sr-panel",
+   "skip_rows": 0
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "url": "https://jobs.silkroad.com/BU/External"
+ },
+ "camelotintegratedsolutions": {
+  "company": "Camelot Integrated Solutions",
+  "fields": {
+   "description": "description",
+   "id": "link",
+   "posted_at": "pubDate",
+   "title": "title",
+   "url": "link"
+  },
+  "method": "GET",
+  "records_path": [],
+  "rss": true,
+  "total_path": [],
+  "url": "https://camelotis.com/feed/?post_type=jobs"
+ },
+ "caresoftglobal": {
+  "company": "Caresoft Global Technologies",
+  "fields": {
+   "department": "",
+   "description": "description",
+   "id": "id",
+   "location": "",
+   "title": "title",
+   "url": "url"
+  },
+  "method": "GET",
+  "records_path": [
+   "jobs"
+  ],
+  "total_path": [],
+  "url": "https://caresoftglobal.freshteam.com/hire/widgets/jobs.json"
+ },
+ "compunnelsoftwaregroup": {
+  "body": {
+   "CityId": "-1",
+   "CountryId": "",
+   "PageIndex": 1,
+   "PageSize": 100,
+   "PortalId": 5007,
+   "SearchKey": "",
+   "StateId": "-1"
+  },
+  "company": "Compunnel",
+  "fields": {
+   "department": "Category_Name",
+   "description": "Job_Summary",
+   "id": "Job_Id",
+   "location": "Location",
+   "title": "Job_Title"
+  },
+  "method": "POST",
+  "page_path": [
+   "PageIndex"
+  ],
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "data"
+  ],
+  "size": 100,
+  "size_path": [
+   "PageSize"
+  ],
+  "total_path": [
+   "totalrecord"
+  ],
+  "url": "https://stafflineapi.compunnel.com/job/jobsList"
+ },
+ "dataedgeusa": {
+  "company": "DataEdge USA",
+  "fields": {
+   "description": "description",
+   "id": "link",
+   "posted_at": "pubDate",
+   "title": "title",
+   "url": "link"
+  },
+  "method": "GET",
+  "records_path": [],
+  "rss": true,
+  "total_path": [],
+  "url": "https://www.dataedgeusa.com/?feed=job_feed"
+ },
+ "dataquad": {
   "company": "Dataquad",
   "fields": {
    "id": "id",
    "title": "title.rendered",
    "url": "link"
-  }
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "url": "https://dataqinc.com/wp-json/wp/v2/jobpost?per_page=100"
+ },
+ "decisionsix": {
+  "company": "Decision Six",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [],
+  "url": "https://decisionsix.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "deshaw": {
+  "company": "D. E. Shaw",
+  "embed_script": "__NEXT_DATA__",
+  "fields": {
+   "id": "id",
+   "location": "office",
+   "title": "displayName"
+  },
+  "method": "GET",
+  "records_path": [
+   "props",
+   "pageProps",
+   "regularJobs"
+  ],
+  "total_path": [],
+  "url": "https://www.deshaw.com/careers"
+ },
+ "dvgtechsolutions": {
+  "company": "DVG Tech Solutions",
+  "fields": {
+   "description": "content.rendered",
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://dvgts.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "eficenssystems": {
+  "columns": {
+   "employment_type": {
+    "col": 3
+   },
+   "id": {
+    "col": 0
+   },
+   "location": {
+    "col": 2
+   },
+   "title": {
+    "col": 1
+   }
+  },
+  "company": "Eficens Systems",
+  "fields": {
+   "employment_type": "employment_type",
+   "id": "id",
+   "location": "location",
+   "title": "title"
+  },
+  "html_table": {
+   "row_css": "tr",
+   "skip_rows": 1
+  },
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://eficens.ai/careers"
+ },
+ "emonics": {
+  "company": "emonics",
+  "fields": {
+   "department": "",
+   "id": "id",
+   "location": "",
+   "title": "name"
+  },
+  "method": "GET",
+  "records_path": [
+   "locations"
+  ],
+  "total_path": [],
+  "url": "https://careers.ontologize.com/api/jobalerts-options"
+ },
+ "eogresources": {
+  "columns": {
+   "id": {
+    "re": "jo_num=(\\d+)"
+   },
+   "location": {
+    "re": "thinrow\\s*\"?>\\s*([^<]*?,\\s*[A-Z]{2})\\s*<"
+   },
+   "title": {
+    "re": "coloredlink bold\"[^>]*>([\\s\\S]*?)</a>"
+   },
+   "url": {
+    "re": "(jobdetails\\.asp\\?jo_num=\\d+)"
+   }
+  },
+  "company": "EOG Resources",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "title": "title",
+   "url": "url"
+  },
+  "html_table": {
+   "row_css": "div.list-group-item",
+   "skip_rows": 0
+  },
+  "method": "GET",
+  "tls_impersonate": true,
+  "url": "https://careers.eogresources.com/"
+ },
+ "epamsystems": {
+  "company": "EPAM Systems",
+  "fields": {
+   "department": "primary_skill",
+   "description": "description",
+   "id": "uid",
+   "location": "city",
+   "title": "name"
+  },
+  "method": "GET",
+  "page_param": "from",
+  "page_start": 0,
+  "page_step": 50,
+  "records_path": [
+   "data",
+   "jobs"
+  ],
+  "size": 50,
+  "total_path": [
+   "data",
+   "total"
+  ],
+  "url": "https://careers.epam.com/api/jobs/v2/search/careers-i18n?lang=en&size=50&sortBy=relevance"
+ },
+ "experisus": {
+  "body": {
+   "filter": {
+    "haslocation": false,
+    "language": "en",
+    "limit": 50,
+    "offset": 0,
+    "page": "1",
+    "searchkeyword": null,
+    "totalCount": 0
+   }
+  },
+  "company": "Experis",
+  "fields": {
+   "description": "jobAdvertisementTeaser",
+   "id": "jobID",
+   "location": "jobLocation",
+   "title": "jobTitle",
+   "url": "jobURL"
+  },
+  "method": "POST",
+  "page_path": [
+   "filter",
+   "offset"
+  ],
+  "page_start": 0,
+  "page_step": 50,
+  "records_path": [
+   "jobsItems"
+  ],
+  "size": 50,
+  "size_path": [
+   "filter",
+   "limit"
+  ],
+  "total_path": [],
+  "url": "https://www.experis.com/api/services/Jobs/searchjobs"
+ },
+ "federalsoftsystems": {
+  "company": "Federal Soft Systems",
+  "fields": {
+   "department": "",
+   "description": "",
+   "employment_type": "job_mode",
+   "id": "_id",
+   "location": "job_location",
+   "title": "job_title",
+   "url": ""
+  },
+  "method": "GET",
+  "records_path": [
+   "data"
+  ],
+  "total_path": [],
+  "url": "https://api.federalsoftsystems.com/career/getJobs?country=USA"
+ },
+ "floridainternationaluniversity": {
+  "company": "Florida International University",
+  "fields": {
+   "department": "DEPARTMENT",
+   "description": "DESCRIPTION",
+   "id": "JOB_OPENING_ID",
+   "location": "LOCATION",
+   "posted_at": "OPEN_DT",
+   "title": "POSTING_TITLE",
+   "url": "URL"
+  },
+  "method": "GET",
+  "records_path": [
+   "JOB_POSTINGS"
+  ],
+  "total_path": [],
+  "url": "https://us-east1-fiu-careers.cloudfunctions.net/jobs"
+ },
+ "fuyaoglassamerica": {
+  "company": "Fuyao Glass America",
+  "fields": {
+   "id": "itemID",
+   "location": "requisitionLocations.0.address.cityName",
+   "title": "requisitionTitle"
+  },
+  "method": "GET",
+  "page_param": "$skip",
+  "page_start": 0,
+  "page_step": 20,
+  "records_path": [
+   "jobRequisitions"
+  ],
+  "total_path": [
+   "meta",
+   "totalNumber"
+  ],
+  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=25319558-d6a9-48ab-93d2-99e4878a8ffc&timeZoneId=America/New_York"
+ },
+ "gandaramentalhealthcenter": {
+  "body": {
+   "matchCriteria": {
+    "Categories": [],
+    "Educations": [],
+    "FilterFields": [],
+    "JobTypes": [],
+    "Languages": [],
+    "LicenseAndCertifications": [],
+    "Locations": [],
+    "PreferredJobs": [],
+    "Skills": [],
+    "ValueFilters": [],
+    "WorkExperiences": []
+   },
+   "opportunitySearch": {
+    "Filters": [],
+    "OrderBy": [
+     {
+      "Ascending": false,
+      "PropertyName": "PostedDate",
+      "Value": "postedDateDesc"
+     }
+    ],
+    "QueryString": "",
+    "Skip": 0,
+    "Top": 100
+   }
+  },
+  "company": "Gandara Mental Health Center",
+  "fields": {
+   "department": "JobCategoryName",
+   "description": "BriefDescription",
+   "id": "Id",
+   "location": "Locations.0.Address",
+   "title": "Title"
+  },
+  "method": "POST",
+  "page_path": [
+   "opportunitySearch",
+   "Skip"
+  ],
+  "page_start": 0,
+  "page_step": 100,
+  "records_path": [
+   "opportunities"
+  ],
+  "size": 100,
+  "size_path": [
+   "opportunitySearch",
+   "Top"
+  ],
+  "total_path": [
+   "totalCount"
+  ],
+  "url": "https://recruiting.ultipro.com/GAN1000GAND/JobBoard/664a7a5f-4694-403c-bef4-591624415ede/JobBoardView/LoadSearchResults"
  },
  "goldmansachs": {
-  "url": "https://api-higher.gs.com/gateway/api/v1/graphql",
-  "method": "POST",
   "body": {
    "operationName": "GetRoles",
+   "query": "query GetRoles($searchQueryInput: RoleSearchQueryInput!) {\n  roleSearch(searchQueryInput: $searchQueryInput) {\n    totalCount\n    items {\n      roleId\n      corporateTitle\n      jobTitle\n      jobFunction\n      locations {\n        primary\n        state\n        country\n        city\n        __typename\n      }\n      status\n      division\n      skills\n      jobType {\n        code\n        description\n        __typename\n      }\n      externalSource {\n        sourceId\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}",
    "variables": {
     "searchQueryInput": {
-     "page": {
-      "pageSize": 20,
-      "pageNumber": 0
-     },
-     "sort": {
-      "sortStrategy": "RELEVANCE",
-      "sortOrder": "DESC"
-     },
-     "filters": [],
      "experiences": [
       "EARLY_CAREER",
       "PROFESSIONAL"
      ],
-     "searchTerm": ""
+     "filters": [],
+     "page": {
+      "pageNumber": 0,
+      "pageSize": 20
+     },
+     "searchTerm": "",
+     "sort": {
+      "sortOrder": "DESC",
+      "sortStrategy": "RELEVANCE"
+     }
     }
-   },
-   "query": "query GetRoles($searchQueryInput: RoleSearchQueryInput!) {\n  roleSearch(searchQueryInput: $searchQueryInput) {\n    totalCount\n    items {\n      roleId\n      corporateTitle\n      jobTitle\n      jobFunction\n      locations {\n        primary\n        state\n        country\n        city\n        __typename\n      }\n      status\n      division\n      skills\n      jobType {\n        code\n        description\n        __typename\n      }\n      externalSource {\n        sourceId\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}"
+   }
   },
+  "company": "Goldman Sachs",
+  "fields": {
+   "department": "division",
+   "employment_type": "jobType",
+   "id": "roleId",
+   "location": "locations",
+   "title": "jobTitle"
+  },
+  "method": "POST",
   "page_path": [
    "variables",
    "searchQueryInput",
@@ -217,194 +776,630 @@
    "pageNumber"
   ],
   "page_start": 0,
+  "records_path": [
+   "data",
+   "roleSearch",
+   "items"
+  ],
+  "size": 50,
   "size_path": [
    "variables",
    "searchQueryInput",
    "page",
    "pageSize"
   ],
-  "size": 50,
-  "records_path": [
-   "data",
-   "roleSearch",
-   "items"
-  ],
   "total_path": [
    "data",
    "roleSearch",
    "totalCount"
   ],
-  "company": "Goldman Sachs",
-  "fields": {
-   "id": "roleId",
-   "title": "jobTitle",
-   "department": "division",
-   "location": "locations",
-   "employment_type": "jobType"
-  }
+  "url": "https://api-higher.gs.com/gateway/api/v1/graphql"
  },
- "universityofvirginia": {
-  "url": "https://jobs.virginia.edu/widgets",
-  "method": "POST",
-  "records_path": [
-   "leastAppliedJobs",
-   "jobs"
-  ],
-  "total_path": [],
-  "company": "university of virginia",
-  "fields": {
-   "id": "jobId",
-   "title": "title",
-   "location": "location",
-   "department": "category"
+ "google": {
+  "columns": {
+   "id": {
+    "re": "jobs/results/(\\d+)"
+   },
+   "location": {
+    "re": "<span class=\"r0wTof[^\"]*\">([\\s\\S]*?)</span>"
+   },
+   "title": {
+    "re": "<h3 class=\"QJPWVe\">([\\s\\S]*?)</h3>"
+   },
+   "url": {
+    "re": "href=\"(jobs/results/[^\"?]+)"
+   }
   },
-  "body": {
-   "isEagerLoad": true,
-   "lang": "en_us",
-   "deviceType": "desktop",
-   "country": "us",
-   "pageName": "home",
-   "refNum": "UOVUOVUS",
-   "siteType": "external",
-   "pageId": "page10-ds",
-   "pageStateData": {},
-   "ddoKey": "leastAppliedJobs"
-  }
- },
- "akkodis": {
-  "url": "https://www.akkodis.com/api/data/jobs/summarized",
-  "method": "POST",
-  "records_path": [
-   "jobs"
-  ],
-  "total_path": [
-   "facets",
-   "count"
-  ],
-  "company": "akkodis",
-  "fields": {
-   "id": "jobId",
-   "title": "jobTitle",
-   "location": "jobLocation",
-   "department": ""
-  },
-  "body": {
-   "queryString": "&sort=PostedDate desc&facet.pivot=IsRemote",
-   "baseSearchQuery": "&facet.range=WorkHour_Facet_Weekly&f.WorkHour_Facet_Weekly.facet.range.start=8&f.WorkHour_Facet_Weekly.facet.range.end=80&f.WorkHour_Facet_Weekly.facet.range.gap=1&facet.range=Salary_Facet_Weekly&f.Salary_Facet_Weekly.facet.range.start=0&f.Salary_Facet_Weekly.facet.range.end=5000&f.Salary_Facet_Weekly.facet.range.gap=500&facet.range=PostedDate&f.PostedDate.facet.range.start=NOW-30DAYS/DAY&f.PostedDate.facet.range.end=NOW&f.PostedDate.facet.range.gap=%2B1DAY/DAY",
-   "filtersToDisplay": "{2C88203F-D38C-4ED9-A00B-C318A9180D24}|{3179B0D5-86CE-4066-B3B0-500C724CA2C4}|{831FB33D-594C-440B-92D3-7A81DF833E9B}|{656BFEDA-0C7E-4A89-884D-8AD09CC86627}|{9664A49E-FC07-4560-8141-9A4DDFD799F2}|{300E54A7-721B-41EC-8C2C-CFC7BF236877}|{ACB777DD-3F92-4EE5-BD62-D58C8A3FE9FE}|{986D5561-7FE4-4921-8D3D-F75A26DEE3AA}|{5DF0F076-A387-4A29-9F01-7DA6B2316269}",
-   "range": 0,
-   "siteName": "akkodis",
-   "brand": "modis",
-   "countryCookie": "US",
-   "langCookie": "en",
-   "brandFromDictionary": "akkodis"
-  }
- },
- "emonics": {
-  "url": "https://careers.ontologize.com/api/jobalerts-options",
-  "method": "GET",
-  "records_path": [
-   "locations"
-  ],
-  "total_path": [],
-  "company": "emonics",
+  "company": "Google",
   "fields": {
    "id": "id",
-   "title": "name",
-   "location": "",
-   "department": ""
-  }
+   "location": "location",
+   "title": "title",
+   "url": "url"
+  },
+  "headers": {
+   "Accept-Language": "en-US,en;q=0.9"
+  },
+  "html_table": {
+   "row_css": "li.lLd3Je",
+   "skip_rows": 0
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "tls_impersonate": true,
+  "url": "https://www.google.com/about/careers/applications/jobs/results/?page=1"
  },
- "upstartnetwork": {
-  "url": "https://jobs.gaingels.com/api-boards/search-jobs",
-  "method": "POST",
+ "gspanntechnologies": {
+  "company": "GSPANN Technologies",
+  "fields": {
+   "id": "uid",
+   "title": "data.page_display_name.text"
+  },
+  "method": "GET",
+  "record_unwrap": [
+   "node"
+  ],
+  "records_path": [
+   "result",
+   "data",
+   "allPrismicJobDescriptionPage",
+   "edges"
+  ],
+  "url": "https://careers.gspann.com/page-data/jobs/find-a-position/page-data.json"
+ },
+ "hlmandoamerica": {
+  "company": "HL Mando America",
+  "fields": {
+   "id": "itemID",
+   "location": "requisitionLocations.0.address.cityName",
+   "title": "requisitionTitle"
+  },
+  "method": "GET",
+  "page_param": "$skip",
+  "page_start": 0,
+  "page_step": 20,
+  "records_path": [
+   "jobRequisitions"
+  ],
+  "total_path": [
+   "meta",
+   "totalNumber"
+  ],
+  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=3a3b6287-34e0-4496-a0d1-5645f474744b&timeZoneId=America/New_York"
+ },
+ "infocons": {
+  "company": "Infocons",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://infoconsinc.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "inrika": {
+  "company": "Inrika",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://inrika.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "kastechsolutions": {
+  "company": "Kastech Solutions",
+  "fields": {
+   "department": "",
+   "description": "content.rendered",
+   "id": "id",
+   "location": "",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://www.kastechssg.com/wp-json/wp/v2/career?per_page=100"
+ },
+ "kirklandandellis": {
+  "company": "Kirkland & Ellis",
+  "fields": {
+   "id": "id",
+   "location": "location.locality",
+   "title": "title"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "entries"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "total_entries"
+  ],
+  "url": "https://staffjobsus.kirkland.com/search/jobs.json"
+ },
+ "kpit": {
+  "company": "KPIT Technologies",
+  "fields": {
+   "department": "job_role",
+   "id": "id",
+   "location": "location",
+   "title": "title"
+  },
+  "method": "GET",
+  "page_param": "offset",
+  "page_start": 0,
+  "page_step": 24,
   "records_path": [
    "jobs"
   ],
   "total_path": [
-   "total"
+   "total_count"
   ],
-  "company": "upstart network",
-  "fields": {
-   "id": "jobId",
-   "title": "title",
-   "location": "locations",
-   "department": ""
-  },
-  "body": {
-   "meta": {
-    "size": 15
-   },
-   "board": {
-    "id": "upstart",
-    "isParent": false
-   },
-   "query": {
-    "promoteFeatured": true
-   },
-   "parentSlug": "gaingels"
-  }
+  "url": "https://talentojo.kpit.com/service/get_career_portal_jobs?limit=24&offset=0&organization_id=133&search=%7B%7D"
  },
- "trinetusa": {
-  "url": "https://jobs.trinet.com/api/pcsx/search?domain=trinet.com&query=&location=&start=0&",
+ "lertechforce": {
+  "company": "LER TechForce",
+  "fields": {
+   "id": "reference",
+   "location": "location",
+   "title": "title"
+  },
   "method": "GET",
+  "records_path": [
+   "Jobs",
+   "Job"
+  ],
+  "total_path": [],
+  "url": "https://evoportalus.tracker-rms.com/Opportunity/Publish/?db=LERTechForce&fields=reference,title,location,state,city,worktype&sorts=creationdate%20DESC&output=json"
+ },
+ "lululemon": {
+  "columns": {
+   "id": {
+    "re": "JobDetail/[^\"]+/(\\d+)"
+   },
+   "location": {
+    "re": "subtitle\">\\s*<span>\\s*([\\s\\S]*?)\\s*</span>"
+   },
+   "title": {
+    "re": "JobDetail/[^\"]+\">\\s*([\\s\\S]*?)\\s*</a>"
+   },
+   "url": {
+    "re": "href=\"(https://careers\\.lululemon\\.com/[^\"]*JobDetail/[^\"]+)\""
+   }
+  },
+  "company": "lululemon",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "title": "title",
+   "url": "url"
+  },
+  "html_table": {
+   "row_css": "article.article--result",
+   "skip_rows": 0
+  },
+  "method": "GET",
+  "page_param": "jobOffset",
+  "page_start": 0,
+  "page_step": 10,
+  "records_path": [],
+  "tls_impersonate": true,
+  "total_path": [],
+  "url": "https://careers.lululemon.com/careers/SearchJobs/"
+ },
+ "mckinsey": {
+  "company": "McKinsey & Company",
+  "fields": {
+   "department": "interest",
+   "description": "whatYouWillDo",
+   "id": "jobID",
+   "location": "cities",
+   "title": "title",
+   "url": "jobApplyURL"
+  },
+  "headers": {
+   "Referer": "https://www.mckinsey.com/careers/search-jobs",
+   "accept": "application/json"
+  },
+  "method": "GET",
+  "page_param": "start",
+  "page_start": 0,
+  "page_step": 20,
+  "records_path": [
+   "docs"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "numFound"
+  ],
+  "url": "https://gateway.mckinsey.com/apigw-x0cceuow60/v1/api/jobs/search?pageSize=20&start=0&lang=en"
+ },
+ "meghaz": {
+  "body": {
+   "getDefaultData": true,
+   "limit": 100,
+   "list_type": 1,
+   "order": "desc",
+   "page": 1,
+   "sub_domain": "meghaz"
+  },
+  "company": "Meghaz",
+  "fields": {
+   "department": "",
+   "id": "id",
+   "location": "city",
+   "posted_at": "cp_published_on",
+   "title": "title",
+   "url": ""
+  },
+  "method": "POST",
+  "records_path": [
+   "data",
+   "list_details",
+   "data"
+  ],
+  "total_path": [],
+  "url": "https://api.oorwin.ai/api/v2/careers/getJobList"
+ },
+ "meta": {
+  "body": {
+   "__a": "1",
+   "doc_id": "27129360303422352",
+   "fb_api_caller_class": "RelayModern",
+   "fb_api_req_friendly_name": "CareersJobSearchResultsV2DataQuery",
+   "lsd": "AdQU4lAzXXXyOqC185LIW04DJJQ",
+   "server_timestamps": "true",
+   "variables": "{\"search_input\":{\"q\":null,\"divisions\":[],\"offices\":[],\"roles\":[],\"leadership_levels\":[],\"saved_jobs\":[],\"saved_searches\":[],\"sub_teams\":[],\"teams\":[],\"is_leadership\":false,\"is_remote_only\":false,\"sort_by_new\":false,\"results_per_page\":null},\"viewasUserID\":null,\"isLoggedIn\":false}"
+  },
+  "company": "Meta",
+  "fields": {
+   "department": "teams",
+   "id": "id",
+   "location": "locations",
+   "title": "title"
+  },
+  "form_encoded": true,
+  "headers": {
+   "Referer": "https://www.metacareers.com/jobs",
+   "X-FB-Friendly-Name": "CareersJobSearchResultsV2DataQuery",
+   "X-FB-LSD": "AdQU4lAzXXXyOqC185LIW04DJJQ"
+  },
+  "method": "POST",
+  "records_path": [
+   "data",
+   "job_search_with_featured_jobs_v2",
+   "all_jobs"
+  ],
+  "tls_impersonate": true,
+  "url": "https://www.metacareers.com/graphql",
+  "url_template": "https://www.metacareers.com/jobs/{id}/"
+ },
+ "microsoft": {
+  "company": "Microsoft",
+  "fields": {
+   "department": "department",
+   "id": "id",
+   "location": "locations",
+   "posted_at": "postedTs",
+   "title": "name",
+   "url": "positionUrl"
+  },
+  "headers": {
+   "Referer": "https://apply.careers.microsoft.com/careers",
+   "accept": "application/json"
+  },
+  "method": "GET",
+  "page_param": "start",
+  "page_start": 0,
+  "page_step": 10,
   "records_path": [
    "data",
    "positions"
   ],
+  "tls_impersonate": true,
   "total_path": [
    "data",
    "count"
   ],
-  "company": "trinet usa",
+  "url": "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&query=&location=&start=0&"
+ },
+ "mountsinaihospital": {
+  "company": "Mount Sinai",
   "fields": {
-   "id": "displayJobId",
-   "title": "name",
-   "location": "locations",
-   "department": "department"
+   "department": "department",
+   "description": "description",
+   "id": "slug",
+   "location": "full_location",
+   "title": "title"
   },
-  "page_param": "start",
-  "page_start": 0
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "record_unwrap": [
+   "data"
+  ],
+  "records_path": [
+   "jobs"
+  ],
+  "total_path": [
+   "totalCount"
+  ],
+  "url": "https://careers.mountsinai.org/api/jobs?limit=100&internal=false&sortBy=relevance&descending=false"
+ },
+ "namitus": {
+  "company": "Namitus Technologies",
+  "fields": {
+   "department": "",
+   "description": "content.rendered",
+   "id": "id",
+   "location": "",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://namitus.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "neoprism": {
+  "company": "Neo Prism Solutions",
+  "fields": {
+   "department": "",
+   "description": "content.rendered",
+   "id": "id",
+   "location": "",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://neoprisminc.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
+ },
+ "parkerhannifin": {
+  "company": "Parker Hannifin",
+  "fields": {
+   "id": "id",
+   "location": "location.name",
+   "title": "title",
+   "url": "permalink"
+  },
+  "headers": {
+   "Accept": "application/json",
+   "Referer": "https://parkercareers.ttcportals.com/jobs/search"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "entries"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "total_entries"
+  ],
+  "url": "https://parkercareers.ttcportals.com/jobs/search.json"
+ },
+ "progressive": {
+  "company": "Progressive",
+  "fields": {
+   "id": "id",
+   "location": "location",
+   "title": "title",
+   "url": "permalink"
+  },
+  "headers": {
+   "Accept": "application/json",
+   "Referer": "https://careers.progressive.com/search/jobs/",
+   "X-Requested-With": "XMLHttpRequest"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "entries"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "total_entries"
+  ],
+  "url": "https://careers.progressive.com/search/jobs.json?per_page=100"
+ },
+ "quadranttechnologies": {
+  "company": "Quadrant Technologies",
+  "fields": {
+   "description": "description",
+   "id": "link",
+   "posted_at": "pubDate",
+   "title": "title",
+   "url": "link"
+  },
+  "method": "GET",
+  "records_path": [],
+  "rss": true,
+  "total_path": [],
+  "url": "https://www.quadranttechnologies.com/careers/feed/"
+ },
+ "regentsofuniversityofcaliforniaatriverside": {
+  "company": "Regents of University of California at Riverside",
+  "fields": {
+   "department": "",
+   "description": "positionInformation",
+   "id": "id",
+   "location": "",
+   "posted_at": "postingDate",
+   "title": "jobTitle"
+  },
+  "method": "GET",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://jobsportal.ucr.edu/api/jobs"
+ },
+ "saic": {
+  "company": "SAIC",
+  "fields": {
+   "id": "id",
+   "location": "location.name",
+   "title": "title",
+   "url": "permalink"
+  },
+  "headers": {
+   "Accept": "application/json",
+   "Referer": "https://jobs.saic.com/jobs/search"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "entries"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "total_entries"
+  ],
+  "url": "https://jobs.saic.com/jobs/search.json"
+ },
+ "sdhsystems": {
+  "company": "SDH Systems",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "json_text_recover": true,
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [],
+  "url": "https://sdhsystems.com/wp-json/wp/v2/jobpost?per_page=100"
+ },
+ "tatacs": {
+  "body": {
+   "applyByOrder": null,
+   "jobCity": null,
+   "jobCityOrder": null,
+   "jobExperience": null,
+   "jobExperienceOrder": null,
+   "jobFunction": null,
+   "jobFunctionOrder": null,
+   "jobSkill": null,
+   "jobTitle": null,
+   "jobTitleOrder": null,
+   "pageNumber": 1,
+   "regular": true,
+   "userText": "",
+   "walkin": false
+  },
+  "company": "tata consultancy services",
+  "fields": {
+   "department": "functionName",
+   "experience": "experience",
+   "id": "id",
+   "location": "location",
+   "title": "jobTitle"
+  },
+  "method": "POST",
+  "page_path": [
+   "pageNumber"
+  ],
+  "page_start": 1,
+  "page_step": 1,
+  "records_path": [
+   "data",
+   "jobs"
+  ],
+  "tls_impersonate": true,
+  "total_path": [
+   "data",
+   "totalJobs"
+  ],
+  "url": "https://ibegin.tcsapps.com/candidate/api/v1/jobs/searchJ"
  },
  "tekinvaderz": {
-  "url": "https://www.tekinvaderz.com/_api/tag-manager/api/v1/tags/sites/85cb8d32-9d48-46a5-9e5c-8062295bd2ed?wixSite=false&htmlsiteId=c8331d84-ff6b-4500-822d-3e023cc6ee9b&language=en",
+  "company": "tekinvaderz",
+  "fields": {
+   "department": "category",
+   "id": "id",
+   "location": "",
+   "title": "name"
+  },
   "method": "GET",
   "records_path": [
    "tags"
   ],
   "total_path": [],
-  "company": "tekinvaderz",
+  "url": "https://www.tekinvaderz.com/_api/tag-manager/api/v1/tags/sites/85cb8d32-9d48-46a5-9e5c-8062295bd2ed?wixSite=false&htmlsiteId=c8331d84-ff6b-4500-822d-3e023cc6ee9b&language=en"
+ },
+ "tekninjas": {
+  "company": "Tek Ninjas",
   "fields": {
+   "department": "",
+   "description": "content.rendered",
    "id": "id",
-   "title": "name",
    "location": "",
-   "department": "category"
-  }
+   "posted_at": "date",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://tekninjasjobs.kinsta.cloud/wp-json/wp/v2/matador-job-listings?per_page=100"
  },
  "tiktokusds": {
-  "url": "https://careers.tiktokusds.com/api/v1/search/job/posts",
-  "method": "POST",
-  "browser_http1": true,
-  "warm_url": "https://careers.tiktokusds.com/position",
-  "headers": {
-   "website-path": "usds",
-   "portal-channel": "tiktok",
-   "content-type": "application/json",
-   "Referer": "https://careers.tiktokusds.com/position"
-  },
   "body": {
+   "job_category_id_list": [],
+   "job_function_id_list": [],
    "keyword": "",
    "limit": 100,
-   "offset": 0,
-   "job_category_id_list": [],
-   "tag_id_list": [],
    "location_code_list": [],
-   "subject_id_list": [],
-   "recruitment_id_list": [],
+   "offset": 0,
    "portal_type": 10,
-   "job_function_id_list": [],
-   "storefront_id_list": []
+   "recruitment_id_list": [],
+   "storefront_id_list": [],
+   "subject_id_list": [],
+   "tag_id_list": []
   },
+  "browser_http1": true,
+  "company": "TikTok USDS",
+  "fields": {
+   "department": "job_category",
+   "description": "description",
+   "id": "id",
+   "location": "city_info",
+   "title": "title"
+  },
+  "headers": {
+   "Referer": "https://careers.tiktokusds.com/position",
+   "content-type": "application/json",
+   "portal-channel": "tiktok",
+   "website-path": "usds"
+  },
+  "method": "POST",
   "page_path": [
    "offset"
   ],
@@ -417,968 +1412,20 @@
    "data",
    "count"
   ],
-  "company": "TikTok USDS",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "city_info",
-   "department": "job_category",
-   "description": "description"
-  }
+  "url": "https://careers.tiktokusds.com/api/v1/search/job/posts",
+  "warm_url": "https://careers.tiktokusds.com/position"
  },
- "annapurnalabs": {
-  "url": "https://www.amazon.jobs/en/search.json?base_query=annapurna&result_limit=100&offset=0",
-  "method": "GET",
-  "page_param": "offset",
-  "page_step": 100,
-  "page_start": 0,
-  "records_path": [
-   "jobs"
-  ],
-  "total_path": [
-   "hits"
-  ],
-  "company": "Annapurna Labs (Amazon)",
+ "trinetusa": {
+  "company": "trinet usa",
   "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "normalized_location",
-   "url": "job_path",
-   "department": "business_category"
-  }
- },
- "epamsystems": {
-  "url": "https://careers.epam.com/api/jobs/v2/search/careers-i18n?lang=en&size=50&sortBy=relevance",
-  "method": "GET",
-  "page_param": "from",
-  "page_start": 0,
-  "page_step": 50,
-  "size": 50,
-  "records_path": [
-   "data",
-   "jobs"
-  ],
-  "total_path": [
-   "data",
-   "total"
-  ],
-  "company": "EPAM Systems",
-  "fields": {
-   "id": "uid",
-   "title": "name",
-   "location": "city",
-   "department": "primary_skill",
-   "description": "description"
-  }
- },
- "mountsinaihospital": {
-  "url": "https://careers.mountsinai.org/api/jobs?limit=100&internal=false&sortBy=relevance&descending=false",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "records_path": [
-   "jobs"
-  ],
-  "record_unwrap": [
-   "data"
-  ],
-  "total_path": [
-   "totalCount"
-  ],
-  "company": "Mount Sinai",
-  "fields": {
-   "id": "slug",
-   "title": "title",
-   "location": "full_location",
    "department": "department",
-   "description": "description"
-  }
- },
- "compunnelsoftwaregroup": {
-  "url": "https://stafflineapi.compunnel.com/job/jobsList",
-  "method": "POST",
-  "body": {
-   "PageIndex": 1,
-   "PageSize": 100,
-   "PortalId": 5007,
-   "SearchKey": "",
-   "CountryId": "",
-   "StateId": "-1",
-   "CityId": "-1"
+   "id": "displayJobId",
+   "location": "locations",
+   "title": "name"
   },
-  "page_path": [
-   "PageIndex"
-  ],
-  "page_start": 1,
-  "page_step": 1,
-  "size_path": [
-   "PageSize"
-  ],
-  "size": 100,
-  "records_path": [
-   "data"
-  ],
-  "total_path": [
-   "totalrecord"
-  ],
-  "company": "Compunnel",
-  "fields": {
-   "id": "Job_Id",
-   "title": "Job_Title",
-   "location": "Location",
-   "department": "Category_Name",
-   "description": "Job_Summary"
-  }
- },
- "aruplaboratories": {
-  "url": "https://recruiting2.ultipro.com/ARU1000ARUP/JobBoard/62cc791d-612e-42e6-909f-0de27efe2038/JobBoardView/LoadSearchResults",
-  "method": "POST",
-  "body": {
-   "opportunitySearch": {
-    "Top": 100,
-    "Skip": 0,
-    "QueryString": "",
-    "OrderBy": [
-     {
-      "Value": "postedDateDesc",
-      "PropertyName": "PostedDate",
-      "Ascending": false
-     }
-    ],
-    "Filters": []
-   },
-   "matchCriteria": {
-    "PreferredJobs": [],
-    "Educations": [],
-    "LicenseAndCertifications": [],
-    "Skills": [],
-    "WorkExperiences": [],
-    "Languages": [],
-    "Categories": [],
-    "Locations": [],
-    "JobTypes": [],
-    "ValueFilters": [],
-    "FilterFields": []
-   }
-  },
-  "page_path": [
-   "opportunitySearch",
-   "Skip"
-  ],
-  "page_start": 0,
-  "page_step": 100,
-  "size_path": [
-   "opportunitySearch",
-   "Top"
-  ],
-  "size": 100,
-  "records_path": [
-   "opportunities"
-  ],
-  "total_path": [
-   "totalCount"
-  ],
-  "company": "ARUP Laboratories",
-  "fields": {
-   "id": "Id",
-   "title": "Title",
-   "location": "Locations.0.Address",
-   "department": "JobCategoryName",
-   "description": "BriefDescription"
-  }
- },
- "gandaramentalhealthcenter": {
-  "url": "https://recruiting.ultipro.com/GAN1000GAND/JobBoard/664a7a5f-4694-403c-bef4-591624415ede/JobBoardView/LoadSearchResults",
-  "method": "POST",
-  "body": {
-   "opportunitySearch": {
-    "Top": 100,
-    "Skip": 0,
-    "QueryString": "",
-    "OrderBy": [
-     {
-      "Value": "postedDateDesc",
-      "PropertyName": "PostedDate",
-      "Ascending": false
-     }
-    ],
-    "Filters": []
-   },
-   "matchCriteria": {
-    "PreferredJobs": [],
-    "Educations": [],
-    "LicenseAndCertifications": [],
-    "Skills": [],
-    "WorkExperiences": [],
-    "Languages": [],
-    "Categories": [],
-    "Locations": [],
-    "JobTypes": [],
-    "ValueFilters": [],
-    "FilterFields": []
-   }
-  },
-  "page_path": [
-   "opportunitySearch",
-   "Skip"
-  ],
-  "page_start": 0,
-  "page_step": 100,
-  "size_path": [
-   "opportunitySearch",
-   "Top"
-  ],
-  "size": 100,
-  "records_path": [
-   "opportunities"
-  ],
-  "total_path": [
-   "totalCount"
-  ],
-  "company": "Gandara Mental Health Center",
-  "fields": {
-   "id": "Id",
-   "title": "Title",
-   "location": "Locations.0.Address",
-   "department": "JobCategoryName",
-   "description": "BriefDescription"
-  }
- },
- "regentsofuniversityofcaliforniaatriverside": {
-  "url": "https://jobsportal.ucr.edu/api/jobs",
   "method": "GET",
-  "records_path": [],
-  "total_path": [],
-  "company": "Regents of University of California at Riverside",
-  "fields": {
-   "id": "id",
-   "title": "jobTitle",
-   "location": "",
-   "department": "",
-   "posted_at": "postingDate",
-   "description": "positionInformation"
-  }
- },
- "kpit": {
-  "url": "https://talentojo.kpit.com/service/get_career_portal_jobs?limit=24&offset=0&organization_id=133&search=%7B%7D",
-  "method": "GET",
-  "page_param": "offset",
-  "page_start": 0,
-  "page_step": 24,
-  "records_path": [
-   "jobs"
-  ],
-  "total_path": [
-   "total_count"
-  ],
-  "company": "KPIT Technologies",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "department": "job_role"
-  }
- },
- "caresoftglobal": {
-  "url": "https://caresoftglobal.freshteam.com/hire/widgets/jobs.json",
-  "method": "GET",
-  "records_path": [
-   "jobs"
-  ],
-  "total_path": [],
-  "company": "Caresoft Global Technologies",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "",
-   "department": "",
-   "url": "url",
-   "description": "description"
-  }
- },
- "namitus": {
-  "url": "https://namitus.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "records_path": [],
-  "total_path": [],
-  "company": "Namitus Technologies",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "location": "",
-   "department": "",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "kastechsolutions": {
-  "url": "https://www.kastechssg.com/wp-json/wp/v2/career?per_page=100",
-  "method": "GET",
-  "records_path": [],
-  "total_path": [],
-  "company": "Kastech Solutions",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "location": "",
-   "department": "",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "lertechforce": {
-  "url": "https://evoportalus.tracker-rms.com/Opportunity/Publish/?db=LERTechForce&fields=reference,title,location,state,city,worktype&sorts=creationdate%20DESC&output=json",
-  "method": "GET",
-  "records_path": [
-   "Jobs",
-   "Job"
-  ],
-  "total_path": [],
-  "company": "LER TechForce",
-  "fields": {
-   "id": "reference",
-   "title": "title",
-   "location": "location"
-  }
- },
- "deshaw": {
-  "url": "https://www.deshaw.com/careers",
-  "method": "GET",
-  "embed_script": "__NEXT_DATA__",
-  "records_path": [
-   "props",
-   "pageProps",
-   "regularJobs"
-  ],
-  "total_path": [],
-  "company": "D. E. Shaw",
-  "fields": {
-   "id": "id",
-   "title": "displayName",
-   "location": "office"
-  }
- },
- "infocons": {
-  "url": "https://infoconsinc.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "Infocons",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link"
-  }
- },
- "inrika": {
-  "url": "https://inrika.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "Inrika",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link"
-  }
- },
- "vertonsolutions": {
-  "url": "https://vertonsolutions.com/wp-json/wp/v2/job?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "Verton Solutions",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link"
-  }
- },
- "experisus": {
-  "url": "https://www.experis.com/api/services/Jobs/searchjobs",
-  "method": "POST",
-  "body": {
-   "filter": {
-    "page": "1",
-    "offset": 0,
-    "totalCount": 0,
-    "limit": 50,
-    "searchkeyword": null,
-    "haslocation": false,
-    "language": "en"
-   }
-  },
-  "page_path": [
-   "filter",
-   "offset"
-  ],
-  "page_start": 0,
-  "page_step": 50,
-  "size_path": [
-   "filter",
-   "limit"
-  ],
-  "size": 50,
-  "records_path": [
-   "jobsItems"
-  ],
-  "total_path": [],
-  "company": "Experis",
-  "fields": {
-   "id": "jobID",
-   "title": "jobTitle",
-   "location": "jobLocation",
-   "url": "jobURL",
-   "description": "jobAdvertisementTeaser"
-  }
- },
- "applabsystems": {
-  "url": "https://www.applabsystems.com/api/jobs/active",
-  "method": "GET",
-  "records_path": [],
-  "total_path": [],
-  "company": "applab systems",
-  "fields": {
-   "id": "job_id",
-   "title": "job_title",
-   "location": "",
-   "department": "job_category",
-   "url": "",
-   "description": "job_descplace",
-   "posted_at": "post_date"
-  }
- },
- "ventois": {
-  "url": "https://api-us-west-2.hygraph.com/v2/cld0a097x09rl01tg3sjk91o0/master",
-  "method": "POST",
-  "body": {
-   "query": "{jobListings(first:200,where:{isActive:true}){id jobTitle slug projectLocations description{html} createdAt}}"
-  },
-  "records_path": [
-   "data",
-   "jobListings"
-  ],
-  "total_path": [],
-  "company": "ventois",
-  "fields": {
-   "id": "id",
-   "title": "jobTitle",
-   "location": "projectLocations",
-   "url": "",
-   "description": "description.html",
-   "posted_at": "createdAt"
-  }
- },
- "valuemomentum": {
-  "url": "https://www.valuemomentum.com/wp-json/jobs/list",
-  "method": "POST",
-  "body": {
-   "title": "",
-   "location": ""
-  },
-  "records_path": [],
-  "total_path": [],
-  "company": "valuemomentum",
-  "fields": {
-   "id": "dcrs_jobid",
-   "title": "dcrs_jobtitle",
-   "location": "dcrs_location",
-   "department": "aavm_departmentname"
-  }
- },
- "neoprism": {
-  "url": "https://neoprisminc.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "Neo Prism Solutions",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "location": "",
-   "department": "",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "vistaltech": {
-  "url": "https://www.vistaltech.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "VistalTech",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "location": "",
-   "department": "",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "meghaz": {
-  "url": "https://api.oorwin.ai/api/v2/careers/getJobList",
-  "method": "POST",
-  "body": {
-   "limit": 100,
-   "page": 1,
-   "order": "desc",
-   "list_type": 1,
-   "sub_domain": "meghaz",
-   "getDefaultData": true
-  },
-  "records_path": [
-   "data",
-   "list_details",
-   "data"
-  ],
-  "total_path": [],
-  "company": "Meghaz",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "city",
-   "department": "",
-   "url": "",
-   "posted_at": "cp_published_on"
-  }
- },
- "floridainternationaluniversity": {
-  "url": "https://us-east1-fiu-careers.cloudfunctions.net/jobs",
-  "method": "GET",
-  "records_path": [
-   "JOB_POSTINGS"
-  ],
-  "total_path": [],
-  "company": "Florida International University",
-  "fields": {
-   "id": "JOB_OPENING_ID",
-   "title": "POSTING_TITLE",
-   "location": "LOCATION",
-   "department": "DEPARTMENT",
-   "url": "URL",
-   "description": "DESCRIPTION",
-   "posted_at": "OPEN_DT"
-  }
- },
- "universityofpittsburghphysicians": {
-  "url": "https://jobsapi-google.m-cloud.io/api/job/search?pageSize=100&companyName=companies/4c0b87d3-a9b3-4243-b9c7-2ad12c533ab3&orderBy=posting_publish_time desc",
-  "method": "GET",
-  "page_param": "offset",
-  "page_start": 0,
-  "page_step": 100,
-  "records_path": [
-   "searchResults"
-  ],
-  "record_unwrap": [
-   "job"
-  ],
-  "total_path": [
-   "totalHits"
-  ],
-  "company": "UPMC",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "primary_city",
-   "department": "department",
-   "url": "url",
-   "description": "description",
-   "posted_at": "open_date"
-  }
- },
- "artifinttechnologies": {
-  "url": "https://artifint.com/w2-jobs",
-  "method": "GET",
-  "html_table": {
-   "row_css": "tr",
-   "skip_rows": 1
-  },
-  "columns": {
-   "id": {
-    "re": "[&;?]id=(\\d+)"
-   },
-   "title": {
-    "col": 2
-   },
-   "location": {
-    "col": 3
-   },
-   "posted_at": {
-    "col": 1
-   },
-   "url": {
-    "re": "(https://artifint.com/view_job[^\"]+)"
-   }
-  },
-  "records_path": [],
-  "total_path": [],
-  "company": "Artifint Technologies",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "posted_at": "posted_at",
-   "url": "url"
-  }
- },
- "quadranttechnologies": {
-  "url": "https://www.quadranttechnologies.com/careers/feed/",
-  "method": "GET",
-  "rss": true,
-  "records_path": [],
-  "total_path": [],
-  "company": "Quadrant Technologies",
-  "fields": {
-   "id": "link",
-   "title": "title",
-   "url": "link",
-   "posted_at": "pubDate",
-   "description": "description"
-  }
- },
- "camelotintegratedsolutions": {
-  "url": "https://camelotis.com/feed/?post_type=jobs",
-  "method": "GET",
-  "rss": true,
-  "records_path": [],
-  "total_path": [],
-  "company": "Camelot Integrated Solutions",
-  "fields": {
-   "id": "link",
-   "title": "title",
-   "url": "link",
-   "description": "description",
-   "posted_at": "pubDate"
-  }
- },
- "eficenssystems": {
-  "url": "https://eficens.ai/careers",
-  "method": "GET",
-  "html_table": {
-   "row_css": "tr",
-   "skip_rows": 1
-  },
-  "columns": {
-   "id": {
-    "col": 0
-   },
-   "title": {
-    "col": 1
-   },
-   "location": {
-    "col": 2
-   },
-   "employment_type": {
-    "col": 3
-   }
-  },
-  "records_path": [],
-  "total_path": [],
-  "company": "Eficens Systems",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "employment_type": "employment_type"
-  }
- },
- "ancile": {
-  "url": "https://ancile.com/wp-json/wp/v2/job-listings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "ANCILE Solutions",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "bnpparibassecurities": {
-  "url": "https://usa.bnpparibas/wp-json/wp/v2/jobs?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "BNP Paribas USA",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "dvgtechsolutions": {
-  "url": "https://dvgts.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "page_param": "page",
-  "page_start": 1,
-  "records_path": [],
-  "total_path": [],
-  "company": "DVG Tech Solutions",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link",
-   "description": "content.rendered"
-  }
- },
- "decisionsix": {
-  "url": "https://decisionsix.com/wp-json/wp/v2/awsm_job_openings?per_page=100",
-  "method": "GET",
-  "records_path": [],
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "company": "Decision Six",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link"
-  }
- },
- "gspanntechnologies": {
-  "url": "https://careers.gspann.com/page-data/jobs/find-a-position/page-data.json",
-  "method": "GET",
-  "records_path": [
-   "result",
-   "data",
-   "allPrismicJobDescriptionPage",
-   "edges"
-  ],
-  "record_unwrap": [
-   "node"
-  ],
-  "company": "GSPANN Technologies",
-  "fields": {
-   "id": "uid",
-   "title": "data.page_display_name.text"
-  }
- },
- "kirklandandellis": {
-  "url": "https://staffjobsus.kirkland.com/search/jobs.json",
-  "method": "GET",
-  "records_path": [
-   "entries"
-  ],
-  "total_path": [
-   "total_entries"
-  ],
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "company": "Kirkland & Ellis",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location.locality"
-  },
-  "tls_impersonate": true
- },
- "fuyaoglassamerica": {
-  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=25319558-d6a9-48ab-93d2-99e4878a8ffc&timeZoneId=America/New_York",
-  "method": "GET",
-  "records_path": [
-   "jobRequisitions"
-  ],
-  "total_path": [
-   "meta",
-   "totalNumber"
-  ],
-  "page_param": "$skip",
-  "page_start": 0,
-  "page_step": 20,
-  "company": "Fuyao Glass America",
-  "fields": {
-   "id": "itemID",
-   "title": "requisitionTitle",
-   "location": "requisitionLocations.0.address.cityName"
-  }
- },
- "hlmandoamerica": {
-  "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=3a3b6287-34e0-4496-a0d1-5645f474744b&timeZoneId=America/New_York",
-  "method": "GET",
-  "records_path": [
-   "jobRequisitions"
-  ],
-  "total_path": [
-   "meta",
-   "totalNumber"
-  ],
-  "page_param": "$skip",
-  "page_start": 0,
-  "page_step": 20,
-  "company": "HL Mando America",
-  "fields": {
-   "id": "itemID",
-   "title": "requisitionTitle",
-   "location": "requisitionLocations.0.address.cityName"
-  }
- },
- "sdhsystems": {
-  "url": "https://sdhsystems.com/wp-json/wp/v2/jobpost?per_page=100",
-  "method": "GET",
-  "json_text_recover": true,
-  "records_path": [],
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "company": "SDH Systems",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "url": "link"
-  }
- },
- "tatacs": {
-  "url": "https://ibegin.tcsapps.com/candidate/api/v1/jobs/searchJ",
-  "method": "POST",
-  "body": {
-   "jobTitle": null,
-   "jobCity": null,
-   "jobFunction": null,
-   "jobExperience": null,
-   "jobSkill": null,
-   "pageNumber": 1,
-   "userText": "",
-   "jobTitleOrder": null,
-   "jobCityOrder": null,
-   "jobFunctionOrder": null,
-   "jobExperienceOrder": null,
-   "applyByOrder": null,
-   "regular": true,
-   "walkin": false
-  },
-  "page_path": [
-   "pageNumber"
-  ],
-  "page_start": 1,
-  "page_step": 1,
-  "records_path": [
-   "data",
-   "jobs"
-  ],
-  "total_path": [
-   "data",
-   "totalJobs"
-  ],
-  "company": "tata consultancy services",
-  "fields": {
-   "id": "id",
-   "title": "jobTitle",
-   "location": "location",
-   "department": "functionName",
-   "experience": "experience"
-  },
-  "tls_impersonate": true
- },
- "tekninjas": {
-  "url": "https://tekninjasjobs.kinsta.cloud/wp-json/wp/v2/matador-job-listings?per_page=100",
-  "method": "GET",
-  "records_path": [],
-  "total_path": [],
-  "page_param": "page",
-  "page_start": 1,
-  "company": "Tek Ninjas",
-  "fields": {
-   "id": "id",
-   "title": "title.rendered",
-   "location": "",
-   "department": "",
-   "url": "link",
-   "description": "content.rendered",
-   "posted_at": "date"
-  }
- },
- "federalsoftsystems": {
-  "url": "https://api.federalsoftsystems.com/career/getJobs?country=USA",
-  "method": "GET",
-  "records_path": [
-   "data"
-  ],
-  "total_path": [],
-  "company": "Federal Soft Systems",
-  "fields": {
-   "id": "_id",
-   "title": "job_title",
-   "location": "job_location",
-   "department": "",
-   "employment_type": "job_mode",
-   "url": "",
-   "description": ""
-  }
- },
- "dataedgeusa": {
-  "url": "https://www.dataedgeusa.com/?feed=job_feed",
-  "method": "GET",
-  "rss": true,
-  "records_path": [],
-  "total_path": [],
-  "company": "DataEdge USA",
-  "fields": {
-   "id": "link",
-   "title": "title",
-   "url": "link",
-   "posted_at": "pubDate",
-   "description": "description"
-  }
- },
- "balyasny": {
-  "url": "https://bambusdev.my.site.com/s/sfsites/aura?r=2&aura.ApexAction.execute=1",
-  "method": "POST",
-  "form_encoded": true,
-  "tls_impersonate": true,
-  "aura_refresh": "https://bambusdev.my.site.com/s/",
-  "headers": {
-   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-  },
-  "body": {
-   "message": "{\"actions\": [{\"id\": \"124;a\", \"descriptor\": \"aura://ApexActionController/ACTION$execute\", \"callingDescriptor\": \"UNKNOWN\", \"params\": {\"namespace\": \"\", \"classname\": \"BamJobRequisitionInfoDataService\", \"method\": \"searchJobRequisitions\", \"params\": {\"isVendorPortal\": false, \"site\": \"BAM Website\", \"searchKey\": \"\", \"locationFilters\": [], \"departmentFilter\": [], \"availableLocations\": [], \"experienceLevelFilter\": []}, \"cacheable\": true, \"isContinuation\": false}}]}",
-   "aura.context": "{\"mode\": \"PROD\", \"fwuid\": \"PLACEHOLDER\", \"app\": \"siteforce:communityApp\", \"loaded\": {\"APPLICATION@markup://siteforce:communityApp\": \"PLACEHOLDER\"}, \"dn\": [], \"globals\": {}, \"uad\": true}",
-   "aura.pageURI": "/s/",
-   "aura.token": "null"
-  },
-  "records_path": [
-   "actions",
-   0,
-   "returnValue",
-   "returnValue"
-  ],
-  "company": "Balyasny Asset Management",
-  "fields": {
-   "id": "Id",
-   "title": "Publish_Title__c",
-   "department": "Department__c",
-   "location": "Job_Requisition_Positions__r.0.Location__r.External_Name__c"
-  }
- },
- "microsoft": {
-  "url": "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&query=&location=&start=0&",
-  "method": "GET",
-  "tls_impersonate": true,
-  "headers": {
-   "accept": "application/json",
-   "Referer": "https://apply.careers.microsoft.com/careers"
-  },
   "page_param": "start",
   "page_start": 0,
-  "page_step": 10,
   "records_path": [
    "data",
    "positions"
@@ -1387,283 +1434,237 @@
    "data",
    "count"
   ],
-  "company": "Microsoft",
-  "fields": {
-   "id": "id",
-   "title": "name",
-   "location": "locations",
-   "department": "department",
-   "url": "positionUrl",
-   "posted_at": "postedTs"
-  }
+  "url": "https://jobs.trinet.com/api/pcsx/search?domain=trinet.com&query=&location=&start=0&"
  },
- "bostonuniversity": {
-  "url": "https://jobs.silkroad.com/BU/External",
-  "method": "GET",
-  "html_table": {
-   "row_css": "a.sr-panel",
-   "skip_rows": 0
-  },
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "company": "Boston University",
-  "columns": {
-   "id": {
-    "re": "/External/jobs/(\\d+)"
-   },
-   "title": {
-    "re": "sr-panel__title[^>]*>([\\s\\S]*?)</div>"
-   },
-   "location": {
-    "re": "sr-panel__meta[^>]*>([\\s\\S]*?)</span>"
+ "uber": {
+  "body": {
+   "limit": 100,
+   "page": 0,
+   "params": {
+    "location": []
    }
   },
+  "company": "Uber",
   "fields": {
+   "department": "department",
+   "description": "description",
+   "employment_type": "timeType",
    "id": "id",
-   "title": "title",
-   "location": "location"
-  }
- },
- "mckinsey": {
-  "url": "https://gateway.mckinsey.com/apigw-x0cceuow60/v1/api/jobs/search?pageSize=20&start=0&lang=en",
-  "method": "GET",
-  "tls_impersonate": true,
+   "location": "location",
+   "posted_at": "creationDate",
+   "title": "title"
+  },
   "headers": {
    "accept": "application/json",
-   "Referer": "https://www.mckinsey.com/careers/search-jobs"
+   "content-type": "application/json",
+   "x-csrf-token": "x"
   },
-  "page_param": "start",
+  "method": "POST",
+  "page_path": [
+   "page"
+  ],
   "page_start": 0,
-  "page_step": 20,
+  "page_step": 1,
   "records_path": [
-   "docs"
+   "data",
+   "results"
+  ],
+  "size": 100,
+  "size_path": [
+   "limit"
+  ],
+  "tls_impersonate": true,
+  "url": "https://www.uber.com/api/loadSearchJobsResults?localeCode=en"
+ },
+ "universityofpittsburghphysicians": {
+  "company": "UPMC",
+  "fields": {
+   "department": "department",
+   "description": "description",
+   "id": "id",
+   "location": "primary_city",
+   "posted_at": "open_date",
+   "title": "title",
+   "url": "url"
+  },
+  "method": "GET",
+  "page_param": "offset",
+  "page_start": 0,
+  "page_step": 100,
+  "record_unwrap": [
+   "job"
+  ],
+  "records_path": [
+   "searchResults"
   ],
   "total_path": [
-   "numFound"
+   "totalHits"
   ],
-  "company": "McKinsey & Company",
+  "url": "https://jobsapi-google.m-cloud.io/api/job/search?pageSize=100&companyName=companies/4c0b87d3-a9b3-4243-b9c7-2ad12c533ab3&orderBy=posting_publish_time desc"
+ },
+ "universityofvirginia": {
+  "body": {
+   "country": "us",
+   "ddoKey": "leastAppliedJobs",
+   "deviceType": "desktop",
+   "isEagerLoad": true,
+   "lang": "en_us",
+   "pageId": "page10-ds",
+   "pageName": "home",
+   "pageStateData": {},
+   "refNum": "UOVUOVUS",
+   "siteType": "external"
+  },
+  "company": "university of virginia",
   "fields": {
-   "id": "jobID",
-   "title": "title",
-   "location": "cities",
-   "department": "interest",
-   "url": "jobApplyURL",
-   "description": "whatYouWillDo"
-  }
+   "department": "category",
+   "id": "jobId",
+   "location": "location",
+   "title": "title"
+  },
+  "method": "POST",
+  "records_path": [
+   "leastAppliedJobs",
+   "jobs"
+  ],
+  "total_path": [],
+  "url": "https://jobs.virginia.edu/widgets"
+ },
+ "upstartnetwork": {
+  "body": {
+   "board": {
+    "id": "upstart",
+    "isParent": false
+   },
+   "meta": {
+    "size": 15
+   },
+   "parentSlug": "gaingels",
+   "query": {
+    "promoteFeatured": true
+   }
+  },
+  "company": "upstart network",
+  "fields": {
+   "department": "",
+   "id": "jobId",
+   "location": "locations",
+   "title": "title"
+  },
+  "method": "POST",
+  "records_path": [
+   "jobs"
+  ],
+  "total_path": [
+   "total"
+  ],
+  "url": "https://jobs.gaingels.com/api-boards/search-jobs"
+ },
+ "valuemomentum": {
+  "body": {
+   "location": "",
+   "title": ""
+  },
+  "company": "valuemomentum",
+  "fields": {
+   "department": "aavm_departmentname",
+   "id": "dcrs_jobid",
+   "location": "dcrs_location",
+   "title": "dcrs_jobtitle"
+  },
+  "method": "POST",
+  "records_path": [],
+  "total_path": [],
+  "url": "https://www.valuemomentum.com/wp-json/jobs/list"
+ },
+ "ventois": {
+  "body": {
+   "query": "{jobListings(first:200,where:{isActive:true}){id jobTitle slug projectLocations description{html} createdAt}}"
+  },
+  "company": "ventois",
+  "fields": {
+   "description": "description.html",
+   "id": "id",
+   "location": "projectLocations",
+   "posted_at": "createdAt",
+   "title": "jobTitle",
+   "url": ""
+  },
+  "method": "POST",
+  "records_path": [
+   "data",
+   "jobListings"
+  ],
+  "total_path": [],
+  "url": "https://api-us-west-2.hygraph.com/v2/cld0a097x09rl01tg3sjk91o0/master"
+ },
+ "vertonsolutions": {
+  "company": "Verton Solutions",
+  "fields": {
+   "id": "id",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://vertonsolutions.com/wp-json/wp/v2/job?per_page=100"
+ },
+ "vistaltech": {
+  "company": "VistalTech",
+  "fields": {
+   "department": "",
+   "description": "content.rendered",
+   "id": "id",
+   "location": "",
+   "title": "title.rendered",
+   "url": "link"
+  },
+  "method": "GET",
+  "page_param": "page",
+  "page_start": 1,
+  "records_path": [],
+  "total_path": [],
+  "url": "https://www.vistaltech.com/wp-json/wp/v2/awsm_job_openings?per_page=100"
  },
  "wipro": {
-  "url": "https://careers.wipro.com/services/recruiting/v1/jobs",
-  "method": "POST",
-  "tls_impersonate": true,
   "body": {
-   "locale": "en_US",
    "limit": 50,
+   "locale": "en_US",
    "offset": 0
   },
+  "company": "Wipro",
+  "fields": {
+   "id": "id",
+   "location": "jobLocationShort",
+   "title": "unifiedStandardTitle",
+   "url": "urlTitle"
+  },
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "method": "POST",
   "page_path": [
    "offset"
   ],
   "page_start": 0,
   "page_step": 50,
-  "size": 50,
-  "size_path": [
-   "limit"
+  "record_unwrap": [
+   "response"
   ],
   "records_path": [
    "jobSearchResult"
   ],
+  "size": 50,
+  "size_path": [
+   "limit"
+  ],
+  "tls_impersonate": true,
   "total_path": [
    "totalJobs"
   ],
-  "record_unwrap": [
-   "response"
-  ],
-  "company": "Wipro",
-  "headers": {
-   "Content-Type": "application/json"
-  },
-  "fields": {
-   "id": "id",
-   "title": "unifiedStandardTitle",
-   "location": "jobLocationShort",
-   "url": "urlTitle"
-  }
- },
- "progressive": {
-  "url": "https://careers.progressive.com/search/jobs.json?per_page=100",
-  "method": "GET",
-  "tls_impersonate": true,
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "records_path": [
-   "entries"
-  ],
-  "total_path": [
-   "total_entries"
-  ],
-  "company": "Progressive",
-  "headers": {
-   "Accept": "application/json",
-   "X-Requested-With": "XMLHttpRequest",
-   "Referer": "https://careers.progressive.com/search/jobs/"
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "url": "permalink"
-  }
- },
- "parkerhannifin": {
-  "url": "https://parkercareers.ttcportals.com/jobs/search.json",
-  "method": "GET",
-  "tls_impersonate": true,
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "records_path": [
-   "entries"
-  ],
-  "total_path": [
-   "total_entries"
-  ],
-  "company": "Parker Hannifin",
-  "headers": {
-   "Accept": "application/json",
-   "Referer": "https://parkercareers.ttcportals.com/jobs/search"
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location.name",
-   "url": "permalink"
-  }
- },
- "saic": {
-  "url": "https://jobs.saic.com/jobs/search.json",
-  "method": "GET",
-  "tls_impersonate": true,
-  "page_param": "page",
-  "page_start": 1,
-  "page_step": 1,
-  "records_path": [
-   "entries"
-  ],
-  "total_path": [
-   "total_entries"
-  ],
-  "company": "SAIC",
-  "headers": {
-   "Accept": "application/json",
-   "Referer": "https://jobs.saic.com/jobs/search"
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location.name",
-   "url": "permalink"
-  }
- },
- "baincompany": {
-  "url": "https://careers.bain.com/jobs/SearchJobs/",
-  "method": "GET",
-  "tls_impersonate": true,
-  "html_table": {
-   "row_css": "article.article--result",
-   "skip_rows": 0
-  },
-  "page_param": "folderOffset",
-  "page_start": 0,
-  "page_step": 10,
-  "records_path": [],
-  "total_path": [],
-  "company": "Bain & Company",
-  "columns": {
-   "id": {
-    "re": "FolderDetail/[^\"]+/(\\d+)"
-   },
-   "title": {
-    "re": "FolderDetail/[^\"]+\">\\s*([\\s\\S]*?)\\s*</a>"
-   },
-   "location": {
-    "re": "subtitle\">\\s*<span>\\s*([\\s\\S]*?)\\s*</span>"
-   },
-   "url": {
-    "re": "href=\"(https://careers\\.bain\\.com/jobs/FolderDetail/[^\"]+)\""
-   }
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "url": "url"
-  }
- },
- "lululemon": {
-  "url": "https://careers.lululemon.com/careers/SearchJobs/",
-  "method": "GET",
-  "tls_impersonate": true,
-  "html_table": {
-   "row_css": "article.article--result",
-   "skip_rows": 0
-  },
-  "page_param": "jobOffset",
-  "page_start": 0,
-  "page_step": 10,
-  "records_path": [],
-  "total_path": [],
-  "company": "lululemon",
-  "columns": {
-   "id": {
-    "re": "JobDetail/[^\"]+/(\\d+)"
-   },
-   "title": {
-    "re": "JobDetail/[^\"]+\">\\s*([\\s\\S]*?)\\s*</a>"
-   },
-   "location": {
-    "re": "subtitle\">\\s*<span>\\s*([\\s\\S]*?)\\s*</span>"
-   },
-   "url": {
-    "re": "href=\"(https://careers\\.lululemon\\.com/[^\"]*JobDetail/[^\"]+)\""
-   }
-  },
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "url": "url"
-  }
- },
- "eogresources": {
-  "url": "https://careers.eogresources.com/",
-  "method": "GET",
-  "tls_impersonate": true,
-  "html_table": {
-   "row_css": "div.list-group-item",
-   "skip_rows": 0
-  },
-  "columns": {
-   "id": {
-    "re": "jo_num=(\\d+)"
-   },
-   "title": {
-    "re": "coloredlink bold\"[^>]*>([\\s\\S]*?)</a>"
-   },
-   "location": {
-    "re": "thinrow\\s*\"?>\\s*([^<]*?,\\s*[A-Z]{2})\\s*<"
-   },
-   "url": {
-    "re": "(jobdetails\\.asp\\?jo_num=\\d+)"
-   }
-  },
-  "company": "EOG Resources",
-  "fields": {
-   "id": "id",
-   "title": "title",
-   "location": "location",
-   "url": "url"
-  }
+  "url": "https://careers.wipro.com/services/recruiting/v1/jobs"
  }
 }

@@ -409,7 +409,7 @@ class ApiCaptureProvider(BaseProvider):
                             source_job_id=jid,
                             company=company,
                             token=token,
-                            url=self._field(rec, spec, "url"),
+                            url=self._job_url(rec, spec),
                             payload={**rec, "_spec": spec["fields"]},
                         )
                     )
@@ -455,6 +455,23 @@ class ApiCaptureProvider(BaseProvider):
             return None
         val = rec.get(key)
         return val if isinstance(val, str) and val.strip() else None
+
+    @classmethod
+    def _job_url(cls, rec: dict[str, Any], spec: dict[str, Any]) -> str | None:
+        """Per-job apply URL. A spec may give a direct ``url`` field OR a ``url_template`` with
+        ``{name}`` placeholders resolved against the ``fields`` map (e.g. Meta has no per-job url
+        field, but its job id -> ``metacareers.com/jobs/{id}/``). Unresolved placeholder -> None."""
+        tmpl = spec.get("url_template")
+        if isinstance(tmpl, str) and tmpl:
+            out = tmpl
+            for ph in re.findall(r"\{([^}]+)\}", tmpl):
+                key = spec["fields"].get(ph, ph)
+                val = rec.get(key)
+                if not (isinstance(val, (str, int)) and str(val).strip()):
+                    return None
+                out = out.replace("{" + ph + "}", str(val))
+            return out
+        return cls._field(rec, spec, "url")
 
     @staticmethod
     def _fget(p: dict[str, Any], key: str) -> Any:
