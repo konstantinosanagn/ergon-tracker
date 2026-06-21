@@ -7360,5 +7360,399 @@
   "last": "2026-06-21",
   "status": "covered",
   "url": "https://careers.edgewell.com/"
+ },
+ "EDUCATIONAL DEVELOPMENT CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "EDC (NASDAQ: EDUC), the Tulsa, OK book publisher/distributor (Usborne/Kane Mille",
+  "status": "no-board"
+ },
+ "EESTech, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "EESTech, Inc. (OTC: EESH) is a very small mining/process-waste-management shell ",
+  "status": "no-board"
+ },
+ "EGAIN Corp": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "eGain (NASDAQ: EGAN), Sunnyvale CA. Verified its careers page at egain.com/compa",
+  "status": "no-board"
+ },
+ "EIDP, Inc.": {
+  "attempts": 1,
+  "host": "dupont.wd5.myworkdayjobs.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://dupont.wd5.myworkdayjobs.com/Jobs"
+ },
+ "ELECTRO SENSORS INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Electro-Sensors, Inc. (NASDAQ: ELSE), Minnetonka MN, ~32 employees. Verified its",
+  "status": "no-board"
+ },
+ "ELUTIA INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Elutia Inc. (NASDAQ: ELUT, formerly Aziyo Biologics), Gaithersburg MD. Verified ",
+  "status": "no-board"
+ },
+ "EMERA INC": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://careers-emera.icims.com/jobs/search"
+ },
+ "EMERGENT METALS CORP.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Emergent Metals Corp. (formerly Emgold Mining), a ~3-employee junior gold/base-m",
+  "status": "no-board"
+ },
+ "EMERGING HOLDINGS INC": {
+  "ats": "oracle",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://ejko.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/requisitions"
+ },
+ "EMERSON RADIO CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Emerson Radio Corp. (NYSE American: MSN), Parsippany NJ, ~11-50 employees, consu",
+  "status": "no-board"
+ },
+ "EMPIRE PETROLEUM CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official site empirepetroleumcorp.com directs career inquiries to a careers@empi",
+  "status": "no-board"
+ },
+ "ENANTA PHARMACEUTICALS INC": {
+  "attempts": 1,
+  "host": "theapplicantmanager.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://theapplicantmanager.com/careers?co=et"
+ },
+ "ENB Financial Corp": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=7a215ac2-c2a6-495d-bc9a-2879d5a427de&ccId=19000101_000001&type=JS&lang=en_US"
+ },
+ "ENCORE CAPITAL GROUP INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://encore.wd1.myworkdayjobs.com/externalnew"
+ },
+ "ENDEAVOUR SILVER CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers page (edrsilver.com/careers) returned no embedded ATS; applicat",
+  "status": "no-board"
+ },
+ "ENDI Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ENDI Corp (endicorp.com) is a small OTC holding company; openings appear only vi",
+  "status": "no-board"
+ },
+ "ENDONOVO THERAPEUTICS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Endonovo Therapeutics (endonovo.com, OTCQB:ENDV) is a ~5-employee micro-cap with",
+  "status": "no-board"
+ },
+ "ENDRA Life Sciences Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "ENDRA's careers page (endrainc.com/about/careers) links only to its LinkedIn job",
+  "status": "no-board"
+ },
+ "ENERGIZER HOLDINGS, INC.": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://hourlycareers-energizerholdings.icims.com/jobs"
+ },
+ "ENERGY CO OF MINAS GERAIS": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "This is CEMIG (Companhia Energ\u00e9tica de Minas Gerais), a Brazilian utility. Its '",
+  "status": "no-board"
+ },
+ "ENERGY CO OF PARANA": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "This is Copel (Companhia Paranaense de Energia), a Brazilian state utility. Its ",
+  "status": "no-board"
+ },
+ "ENERGY FOCUS, INC/DE": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small-cap LED lighting company (energyfocus.com, Solon OH). No careers/jobs page",
+  "status": "no-board"
+ },
+ "ENERGY FUELS INC": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e715f1d4-503d-480f-8910-9c8d566a74ed&ccId=19000101_000001&lang=en_US"
+ },
+ "ENERPAC TOOL GROUP CORP": {
+  "ats": "icims",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "icims found, failed verify",
+  "status": "no-board",
+  "url": "https://careers-enerpac.icims.com/jobs/search"
+ },
+ "ENI SPA": {
+  "attempts": 1,
+  "host": "jobs.eni.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.eni.com/en/sites/CX_1004/jobs"
+ },
+ "ENNIS, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Ennis (ennis.com/employment) uses an internal questionnaire/contact form for app",
+  "status": "no-board"
+ },
+ "ENSIGN GROUP, INC": {
+  "attempts": 1,
+  "host": "recruitingbypaycor.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883d080d90be90180dd1b6d6300d7"
+ },
+ "ENTERGY ARKANSAS, LLC": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.entergy.com/"
+ },
+ "ENTERGY LOUISIANA, LLC": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.entergy.com/"
+ },
+ "ENTERGY MISSISSIPPI, LLC": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.entergy.com/"
+ },
+ "ENTERGY NEW ORLEANS, LLC": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.entergy.com/"
+ },
+ "ENTERGY TEXAS, INC.": {
+  "ats": "successfactors",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://jobs.entergy.com/"
+ },
+ "ENTERPRISE FINANCIAL SERVICES CORP": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "workday found, failed verify",
+  "status": "no-board",
+  "url": "https://osv-enterprise.wd1.myworkdayjobs.com/EnterpriseBankTrust_Jobs"
+ },
+ "ENTERPRISE PRODUCTS PARTNERS L.P.": {
+  "ats": "taleo",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "taleo found, failed verify",
+  "status": "no-board",
+  "url": "https://epco.taleo.net/careersection/"
+ },
+ "ENTREPRENEUR UNIVERSE BRIGHT GROUP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "EUBG is a very small Xi'an, China-based digital marketing/consulting shell compa",
+  "status": "no-board"
+ },
+ "ENvue Medical, Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "~14-person medical device startup. Official careers page envuemed.com/find-a-car",
+  "status": "no-board"
+ },
+ "EPR PROPERTIES": {
+  "ats": "bamboohr",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://eprproperties.bamboohr.com/jobs/"
+ },
+ "EQUATOR Beverage Co": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small NJ-based SEC-registered beverage maker (ticker MOJO). Its site equatorbeve",
+  "status": "no-board"
+ },
+ "EQUINOR ASA": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://equinor.wd3.myworkdayjobs.com/EQNR"
+ },
+ "EQUITY LIFESTYLE PROPERTIES INC": {
+  "ats": "workday",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://equitylifestyleproperties.wd5.myworkdayjobs.com/ELS"
+ },
+ "EQUUS TOTAL RETURN, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny ~30-employee closed-end BDC fund (NYSE: EQS, equuscap.com); no ATS job boar",
+  "status": "no-board"
+ },
+ "ERICSSON LM TELEPHONE CO": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Official careers board is jobs.ericsson.com/careers, but it is powered by Eightf",
+  "status": "no-board"
+ },
+ "ERock, Inc.": {
+  "ats": "paylocity",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "paylocity found, failed verify",
+  "status": "no-board",
+  "url": "https://recruiting.paylocity.com/recruiting/jobs/All/375dd214-5f6e-4329-8f4f-024a022eaf32/Enchanted-Rock-Management-LL"
+ },
+ "ESCALADE INC": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "escaladeinc.com/careers uses Newton Software / Paycor Recruiting ATS (noreply@ec",
+  "status": "no-board"
+ },
+ "ESCALON MEDICAL CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "escalonmedical.com/careers states 'There are no open positions at this time' and",
+  "status": "no-board"
+ },
+ "ESCO TECHNOLOGIES INC": {
+  "ats": "ukg",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://escotech.rec.pro.ukg.net/ESC1001ESTI/JobBoard/0fdd089c-a32e-4918-89d9-76285f90e22e/"
+ },
+ "ESG Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Name is ambiguous (multiple ESG-named firms: ESG Operations Inc at esginc.net, E",
+  "status": "no-board"
+ },
+ "ESGold Corp.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Canadian junior miner (CSE: ESAU). Job posts live on its own WordPress site (esg",
+  "status": "no-board"
+ },
+ "ESPEY MFG & ELECTRONICS CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "espey.com/careers directs applicants to its Indeed company page rather than host",
+  "status": "no-board"
+ },
+ "ESPORTS ENTERTAINMENT GROUP, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "esportsentertainmentgroup.com/careers routes applications via email (careers@esp",
+  "status": "no-board"
+ },
+ "ESS Tech, Inc.": {
+  "ats": "adp",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "adp found, failed verify",
+  "status": "no-board",
+  "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=ca44b751-a5b8-4956-b756-4564a6eec5ff&ccId=19000101_000001&lang=en_US"
+ },
+ "ESTABLISHMENT LABS HOLDINGS INC.": {
+  "ats": "bamboohr",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://establishmentlabs.bamboohr.com/jobs/"
+ },
+ "EShallGo Inc.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Shanghai, China-based office-equipment microcap (NASDAQ: EHGO). No findable stan",
+  "status": "no-board"
+ },
+ "ETHAN ALLEN INTERIORS INC": {
+  "ats": "dayforce",
+  "attempts": 1,
+  "last": "2026-06-21",
+  "status": "covered",
+  "url": "https://us231.dayforcehcm.com/CandidatePortal/en-US/eth"
+ },
+ "EUPRAXIA PHARMACEUTICALS INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Clinical-stage biotech (eupraxiapharma.com). Careers page is a custom IR-vendor ",
+  "status": "no-board"
+ },
+ "EVENTIKO INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Tiny OTC-traded shell (EVTK), no real operating careers presence. No findable AT",
+  "status": "no-board"
+ },
+ "EVERSPIN TECHNOLOGIES INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers hosted on everspin.com/career-opportunities; the underlying ATS could no",
+  "status": "no-board"
+ },
+ "EVERTEC, Inc.": {
+  "attempts": 1,
+  "host": "jobs.evertecinc.com",
+  "last": "2026-06-21",
+  "status": "found-no-provider",
+  "url": "https://jobs.evertecinc.com/"
+ },
+ "EVI INDUSTRIES, INC.": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Careers at evi-ind.com/careers list jobs on the company's own site with an embed",
+  "status": "no-board"
+ },
+ "EVOLUTION PETROLEUM CORP": {
+  "attempts": 1,
+  "last": "2026-06-21",
+  "reason": "Small Houston oil & gas company (~20 employees, NYSE American: EPM). No careers/",
+  "status": "no-board"
  }
 }
