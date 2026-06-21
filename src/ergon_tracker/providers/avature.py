@@ -65,7 +65,9 @@ _DEFAULT_PAGE = "SearchJobs"
 _DEFAULT_PORTALS = ("careers", "main")
 # Stable Avature job link: .../JobDetail/{slug}/{numericId} (slug may be absent on some
 # themes, hence the non-greedy middle). The trailing numeric id is the decisive signal.
-_JOB_RE = re.compile(r"/JobDetail\w*/.*?/(\d+)")  # JobDetail / JobDetailRetail / JobDetailCorporate…
+_JOB_RE = re.compile(
+    r"/JobDetail\w*/.*?/(\d+)"
+)  # JobDetail / JobDetailRetail / JobDetailCorporate…
 # The page names that pin the portalPath in a URL path (segment immediately before them).
 _PAGES = ("SearchJobs", "JobDetail")
 
@@ -102,18 +104,81 @@ class AvatureProvider(BaseProvider):
         host, portal, page_name = self._split(token)
         if portal:
             raws = await self._fetch_portal(host, portal, page_name, query, fetcher)
-            # JS-widget themes (e.g. Slalom) render no JobDetail anchors in static HTML, so the
-            # HTML parse yields 0; the 20-item RSS feed is then the only reachable source.
-            return raws or await self._fetch_rss(host, portal, query.limit, fetcher, page_name)
+            if raws:
+                return raws
+            # JS-widget themes render no JobDetail anchors in static HTML. The `{page}Data/` JSON
+            # endpoint carries the FULL board (location-grouped); the 20-item RSS is the last resort.
+            data = await self._fetch_data(host, portal, page_name, query.limit, fetcher)
+            return data or await self._fetch_rss(host, portal, query.limit, fetcher, page_name)
         # Bare host: try the default portalPaths and use the first that yields jobs.
         for cand in _DEFAULT_PORTALS:
             raws = await self._fetch_portal(host, cand, page_name, query, fetcher)
             if raws:
                 return raws
+            data = await self._fetch_data(host, cand, page_name, query.limit, fetcher)
+            if data:
+                return data
             rss = await self._fetch_rss(host, cand, query.limit, fetcher, page_name)
             if rss:
                 return rss
         return []
+
+    async def _fetch_data(
+        self, host: str, portal: str, page: str, limit: int | None, fetcher: AsyncFetcher
+    ) -> list[RawJob]:
+        """Full-board source for SPA themes: the Avature ``/{portal}/{page}Data/`` JSON endpoint.
+
+        Returns ``{"locations": {<geoId>: {"title": <locName>, "jobs": [{"id","title","url"}, …]}}}``.
+        Flatten all location groups (deduped by job id) — the complete board, not the RSS-capped 20."""
+        import json as _json
+
+        url = f"https://{host}/{portal}/{page}Data/"
+        try:
+            text = await fetcher.get_text(url, headers={"X-Requested-With": "XMLHttpRequest"})
+            data = _json.loads(text)
+        except Exception:
+            return []
+        locs = data.get("locations") if isinstance(data, dict) else None
+        if not isinstance(locs, dict):
+            return []
+        out: list[RawJob] = []
+        seen: set[str] = set()
+        company = self._rss_company(host)
+        for lobj in locs.values():
+            if not isinstance(lobj, dict):
+                continue
+            loc_name = str(lobj.get("title") or "").strip()
+            for job in lobj.get("jobs") or []:
+                if not isinstance(job, dict):
+                    continue
+                jid = str(job.get("id") or "")
+                if not jid or jid in seen:
+                    continue
+                seen.add(jid)
+                href = str(job.get("url") or "")
+                full = (
+                    href
+                    if href.startswith("http")
+                    else f"https://{host}/{portal}/{href.lstrip('/')}"
+                )
+                out.append(
+                    RawJob(
+                        source=self.name,
+                        source_job_id=jid,
+                        company=company,
+                        token=f"{host}|{portal}",
+                        url=full,
+                        payload={
+                            "title": job.get("title") or "",
+                            "location": loc_name,
+                            "url": full,
+                            "id": jid,
+                        },
+                    )
+                )
+                if limit is not None and len(out) >= limit:
+                    return out
+        return out
 
     @staticmethod
     def _rss_company(host: str) -> str:
