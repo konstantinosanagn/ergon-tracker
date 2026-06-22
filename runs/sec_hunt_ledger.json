@@ -12121,361 +12121,377 @@
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "jjill"
  },
  "JACK IN THE BOX INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JAKKS PACIFIC INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JANEL CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JBG SMITH Properties": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "jbgsmithproperties"
  },
  "JBT MAREL Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "jbtmarel"
  },
  "JELD-WEN Holding, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JETBLUE AIRWAYS CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JFB Construction Holdings": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JOCOM HOLDINGS CORP.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JOHN WILEY & SONS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "johnwileyandsons"
  },
  "JOHNSON OUTDOORS INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JOINT Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JONES LANG LASALLE INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "joneslanglasalle"
  },
  "JONES SODA CO.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JOSS Realty REIT, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JOYY Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JRSIS HEALTH CARE Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JUNIATA VALLEY FINANCIAL CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "JUPITER NEUROSCIENCES, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "JX Luxventure Group Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jackpot Digital Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jaguar Health, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jaguar Uranium Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "James River Group Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Janus International Group, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "janusinternationalgroup"
  },
  "Janus Living, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Japan Gold Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jasper Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "jaspertherapeutics"
  },
  "Jefferson Capital, Inc. / DE": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Jerash Holdings (US), Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jet.AI Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jianpu Technology Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jingbo Technology, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jinxin Technology Holding Co": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Jiuzi Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Joby Aviation, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "jobyaviation"
  },
  "Joint Stock Co Kaspi.kz": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Journey Medical Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "K2 Gold Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KAANAPALI LAND LLC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KADANT INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KAISER ALUMINUM CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kaiseraluminum"
  },
  "KALA BIO, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KALTURA INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kaltura"
  },
  "KB Financial Group Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KB HOME": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kbhome"
  },
  "KDDI CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KE Holdings Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KELLY SERVICES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KELSO TECHNOLOGIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KEMPER Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kemper"
  },
  "KENADYR METALS CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KENNAMETAL INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kennametal"
  },
  "KEWAUNEE SCIENTIFIC CORP /DE/": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kewauneescientificde"
  },
  "KEY TRONIC CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "keytronic"
  },
  "KEYCORP /NEW/": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "keycorpnew"
  },
  "KFORCE INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KIDOZ INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KIDZ AI Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KILROY REALTY CORP": {
   "attempts": 1,
