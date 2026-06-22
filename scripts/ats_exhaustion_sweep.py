@@ -222,6 +222,17 @@ async def exhaust_one(
     # Rungs 3 & 6 are not autonomously scriptable — flag for an agent/manual pass before browser.
     log.append({"rung": "3", "method": "websearch-apply-url", "result": "deferred: needs agent/manual"})
     log.append({"rung": "6", "method": "apicapture-bespoke", "result": "deferred: needs agent/manual"})
+
+    # RIGOR GATE: a company is "exhausted" ONLY if the strongest ATS rung — rung 1, careers-page
+    # tenant discovery — actually INSPECTED a careers page. If we couldn't even fetch one ("no domain"
+    # or "no careers page resolved"), we have NOT proven the ATS path is dead (the real board could be
+    # on any host). Such a company is INCOMPLETE — it needs a real careers URL (rung 3 / agent), and
+    # must NOT reach the browser queue. This is the anti-"assume-it-needs-a-browser" guard.
+    rung1 = next((r["result"] for r in log if r["rung"] == "1"), "")
+    rung1_inspected = not ("no domain" in rung1 or "no careers page resolved" in rung1)
+    if not rung1_inspected:
+        record.update(status="incomplete-needs-careers-url", ats_exhausted=False)
+        return record
     record.update(status="ats-exhausted", ats_exhausted=True,
                   browser_tier_hint=None)  # tier hint set by the agent/manual pass
     return record
@@ -274,13 +285,28 @@ async def run_sweep(companies: list[tuple[str, str | None]], concurrency: int) -
     }
 
 
+# Curated domains for known S&P-500 gaps so rung 1 (careers-page tenant discovery) actually runs.
+# Without a domain the strongest ATS rung is skipped and the company is logged incomplete, not exhausted.
+_GAP_DOMAINS = {
+    "Darden Restaurants": "darden.com", "Fastenal": "fastenal.com", "Linde plc": "linde.com",
+    "Roper Technologies": "ropertech.com", "TransDigm Group": "transdigm.com", "Sempra": "sempra.com",
+    "Vici Properties": "viciproperties.com", "Texas Pacific Land Corporation": "texaspacificland.com",
+    "Ralph Lauren Corporation": "ralphlauren.com", "Targa Resources": "targaresources.com",
+}
+
+
 def _load_gap_companies() -> list[tuple[str, str | None]]:
-    """The current S&P 500 gaps (from the crosswalk) — a ready-made target set for --gaps."""
+    """The current S&P 500 gaps (from the crosswalk) — a ready-made target set for --gaps.
+
+    Attaches a curated domain per gap so rung 1/7 (domain-dependent) genuinely run; unmapped gaps get
+    ``None`` and will be logged ``incomplete-needs-domain`` (NOT browser-eligible) by design.
+    """
     import subprocess
 
     out = subprocess.check_output([sys.executable, str(ROOT / "scripts" / "sp500_crosswalk.py")]).decode()
-    return [(line.split("] ", 1)[1].strip(), None)
-            for line in out.splitlines() if re.match(r"\s*\[", line) and "] " in line]
+    names = [line.split("] ", 1)[1].strip()
+             for line in out.splitlines() if re.match(r"\s*\[", line) and "] " in line]
+    return [(nm, _GAP_DOMAINS.get(nm)) for nm in names]
 
 
 def main() -> None:
