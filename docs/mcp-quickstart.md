@@ -14,6 +14,19 @@ resolve a company's ATS, and list sources — as native tools.
 
 ## Install
 
+### Option A — from PyPI (one line, recommended)
+
+Once published (see [Publishing](#publishing-maintainers)), no clone or venv is needed:
+
+```bash
+uv tool install ergon-tracker          # or: pipx install ergon-tracker
+# adds `ergon-tracker` + `ergon-tracker-mcp` to your PATH; the registry (57k+ boards) is bundled
+```
+
+Or run the MCP server with **zero install** via `uvx` (auto-fetches + runs) — see the config below.
+
+### Option B — from source (today / contributors)
+
 ```bash
 git clone https://github.com/konstantinosanagn/ergon-tracker
 cd ergon-tracker
@@ -177,3 +190,35 @@ APIs — so you can't accidentally trigger the slow ~42k-company ATS crawl.
    server guards against it by default, but explicitly demanding it is still a long crawl.
 4. **Widen strict filters when needed** — add "include roles that don't list a level/salary" so
    level/sector filters narrow instead of hard-dropping unlabeled postings.
+
+## Zero-install (uvx) — recommended once published
+
+No clone, no venv, no PATH juggling — `uvx` fetches and runs the published package on demand:
+
+```json
+{
+  "mcpServers": {
+    "ergon-tracker": {
+      "command": "uvx",
+      "args": ["--from", "ergon-tracker[mcp]", "ergon-tracker-mcp"]
+    }
+  }
+}
+```
+
+Add `"env": {"ADZUNA_APP_ID": "...", ...}` exactly as in the sections above to enable keyed sources.
+
+## Publishing (maintainers)
+
+The package is PyPI-ready (`pyproject.toml` carries full metadata; the registry + `schema.sql` ship
+inside the wheel). Build and publish with:
+
+```bash
+uv pip install --python .venv/bin/python build twine
+.venv/bin/python -m build --no-isolation        # -> dist/*.whl + *.tar.gz
+.venv/bin/twine check dist/*                     # validates PyPI metadata (must PASS)
+.venv/bin/twine upload dist/*                    # needs a PyPI token; tag the release first
+```
+
+Verified: clean-venv `pip install ergon-tracker[mcp]` imports, registers all providers, and loads the
+bundled `seed.json` (57k+ boards); both `ergon-tracker` and `ergon-tracker-mcp` console scripts work.
