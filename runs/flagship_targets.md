@@ -237,3 +237,20 @@ BLOCKER: without myjobstoken -> 400 "Missing orgoid"; with orgoid but no token -
 session bootstrap (akamai pixel + firebase + SiteMinder login redirects). Legacy srccar (recruiting.adp.com/srccar)
 301s into the same myjobs token flow. NEXT: find the no-auth endpoint that mints myjobstoken (dayforce-style curl_cffi
 CSRF flow may work), then it's a clean apicapture GET-json. Until then: browser-backed wall.
+
+## 2026-06-21 user-found URLs — 3 captured, Fastenal=Akamai-wall:
+- Targa Resources: DONE — Taleo targaresources.taleo.net|ex|101430233 (114 jobs; user's apply URL gave the portal). commit 9853ddb.
+- Ralph Lauren: DONE — avature careers.ralphlauren.com|CareersCorporate|SearchJobsCorporate. FULL 160 jobs via the new
+  avature {page}Data/ endpoint (was 20 via RSS). LEVER: Avature SPA full board = GET /{portal}/{page}Data/ -> location-grouped JSON.
+- Fastenal: WALL (confirmed) — load-jobs POST (DataTables, 596 jobs) is Akamai bot-managed; curl_cffi gets 403/timeout
+  while my IP got flagged. Browser passes (JS sensor cookie). Not replayable no-browser. Same as Darden recruiting.com.
+- Roper: user's haier.wd3 URL = GE Appliances (Roper CORPORATION namesake), NOT Roper Technologies. Rejected. Decentralized.
+
+## ⚠️ PAYLOCITY PROVIDER IS NON-FUNCTIONAL vs live boards (2026-06-21 finding):
+The public feed GET /recruiting/v2/api/feed/jobs/{guid} returns jobs=0 with displayName=<raw-guid>
+(never the company name) for EVERY board tested (b181f77f, f40d1a02, c09eff2a, 1c38e30f, ff517f63,
+5cc86a46, + TPL 8cb850d5). The careers pages also server-render 0 job-detail links — jobs load via a
+JWT-gated SPA API (browser-backed). The documented public feed is effectively deprecated/opt-in-off.
+=> The paylocity provider (built against the documented feed + synthetic tests) captures NOTHING live.
+Treat Paylocity as a browser-backed WALL. Texas Pacific Land (its only S&P target) is therefore a WALL,
+not capturable via this provider. Do NOT add paylocity seed entries expecting jobs.

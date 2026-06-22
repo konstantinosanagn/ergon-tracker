@@ -5,34 +5,38 @@
 
 Darden Restaurants
     note: recruiting.com board — WAF 403s curl_cffi (board unreachable no-browser). URL may confirm platform.
-    -> 
+    -> https://darden.paradox.ai/co/DardenRestaurantSupportCenter/Job?job_id=PDX_DRSC_2F3D855D-9386-4521-946E-EFFE2726B8F5_88118 (19 corporate jobs)
+    -> https://darden.paradox.ai/co/CheddarsScratchKitchen1/Job?job_id=PDX_CSK_4E843BE5-BB51-4A52-928D-349B8D435F6A_86329&posting_type=1 (381 management jobs)
 Ralph Lauren Corporation
     note: Avature JS-only SPA. URL may help if a non-SPA apply board exists.
-    -> 
+    -> https://careers.ralphlauren.com/en_US/CareersCorporate/SearchJobsCorporate (160 corporate jobs)
+    -> https://careers.ralphlauren.com/en_US/CareersCorporate/SearchJobsRetail (887 retail jobs)
+    -> https://careers.ralphlauren.com/en_US/CareersCorporate/SearchJobsNorthCarolinaCampus (5 NC campus jobs)
+
 Targa Resources
     note: SelectMinds SPA (targaresources.referrals.selectminds.com) — data XHR not replayable no-browser.
-    -> 
+    -> https://targaresources.taleo.net/careersection/ex/jobapply.ftl?evtr=1741963&isSocialSrc=true&csarray=101430233&lang=en&job=260019&tzname=America%2FNew_York (114 jobs)
 Texas Pacific Land Corporation
     note: Paylocity board with public feed DISABLED (browser-backed). URL may reveal an alt board.
-    -> 
+    -> check paylocity provider please, i think we can reach them from there
 Fastenal
     note: in-house 'FCA' WordPress CMS, no job API/sitemap. URL may reveal an apply ATS.
-    -> 
+    -> https://jobs.fastenal.com/jobs (596 jobs)
 TransDigm Group
     note: decentralized (per-operating-unit boards) — no central board. URL of any central board helps.
-    -> 
+    -> couldnt find much on this
 Roper Technologies
     note: decentralized (Deltek/Vertafore/Aderant…) — no central board. URL helps.
-    -> 
+    -> https://haier.wd3.myworkdayjobs.com/en-US/GE_Appliances/job/USA-LaFayette-GA/XMLNAME-3rd-Shift-Manufacturing-Assembly-Operator-Lafayette--GA_REQ-25133-1?q=25133
 Linde plc
     note: custom Sitecore (lindecareers.com) — no job XHR/sitemap. URL may reveal underlying ATS.
-    -> 
+    -> this has many boards for different categories of roles
 Vici Properties
     note: tiny REIT (~40 staff), no discoverable public board (lever 'vicicollection' = clothing namesake).
-    -> 
+    -> coulnd't find postings
 Sempra
     note: ADP Recruiting-Management (myjobs.adp.com/sempra) — API cracked but gated by AWS-encrypted browser token.
-    -> 
+    -> https://myjobs.adp.com/sempra/cx/job-listing (5 jobs)
 
 ===============================================================================================
 ### ✅ VERIFIED via your URL (55) — no action needed ###

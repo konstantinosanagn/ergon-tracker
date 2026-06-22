@@ -1,9 +1,0 @@
-[     687ms] [WARNING] jQuery.Deferred exception: tabsc is not defined ReferenceError: tabsc is not defined
-    at HTMLDocument.<anonymous> (https://careers.zoom.us/themes/f20a52e002b43be046c2dfe3b058ad93/javascript/javascript-1764068534.js:46:5)
-    at e (https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js:2:30005)
-    at t (https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js:2:30307) undefined @ https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js:1
-[     693ms] Uncaught ReferenceError: tabsc is not defined
-    at <anonymous> (https://careers.zoom.us/themes/f20a52e002b43be046c2dfe3b058ad93/javascript/javascript-1764068534.js:45:4)
-    at e (https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js:1:30004)
-    at t (https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js:1:30306)
-[   76272ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://careers.zoom.us/themes/f20a52e002b43be046c2dfe3b058ad93/images/common/icon-down-arrow.svg:0

@@ -11745,362 +11745,377 @@
  "ImageneBio, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Immix Biopharma, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Immuneering Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "immuneering"
  },
  "Immunovant, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "immunovant"
  },
  "Imperial Petroleum Inc./Marshall Islands": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Imunon, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "InMed Pharmaceuticals Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "InPoint Commercial Real Estate Income, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Incannex Healthcare Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Indaptus Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Independence Gold Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Independence Power Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Indivior Pharmaceuticals, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "indiviorpharmaceuticals"
  },
  "Indofood Sukses Makmur, Tbk": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Information Services Group Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "InfuSystem Holdings, Inc": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "infusystem"
  },
  "Ingevity Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "ingevity"
  },
  "Ingram Micro Holding Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "ingrammicroholding"
  },
  "Inhibikase Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Inhibitor Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Inhibrx Biosciences, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Inmune Bio, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "InnovAge Holding Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "innovageholding"
  },
  "Innovative Eyewear Inc": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Innovative Payment Solutions, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Innovex International, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Innoviva, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Inogen Inc": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "inogen"
  },
  "Insight Molecular Diagnostics Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "insightmoleculardiagnostics"
  },
  "InspireMD, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent lane session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Inspired Entertainment, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Installed Building Products, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "installedbuildingproducts"
  },
  "Instil Bio, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intapp, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "intapp"
  },
  "Intelithrive, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intellia Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "intelliatherapeutics"
  },
  "Intellicheck, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intelligent Living Application Group Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intellistake Technologies Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Interactive Strength, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intercorp Financial Services Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "International Land Alliance Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "International Money Express, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "internationalmoneyexpress"
  },
  "International Seaways, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Interra Copper Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intrepid Metals Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intrepid Potash, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "intrepidpotash"
  },
  "IntriEnergy, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Intuitive Machines, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Inuvo, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Invech Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "InvenTrust Properties Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Invesco Mortgage Capital Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Investar Holding Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "investarholding"
  },
  "Investcorp Credit Management BDC, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Investview, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Irving Resources Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Ispire Technology Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Ivanhoe Electric Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Iveda Solutions, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "J.Jill, Inc.": {
   "attempts": 1,
