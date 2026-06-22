@@ -1,0 +1,18 @@
+{
+  "_README": "Tier-2 mint targets: token_ref -> {url, extract, ttl_seconds, refresh_on, [wait_xhr], [settle_ms]}. This file holds only HOW to mint (urls + extract rules) — token VALUES are secrets kept in runs/tier2_tokens.json (gitignored). Copy to tier2_mint.json and VALIDATE each extract rule live before relying on it. Only add companies the exhaustion ladder proved exhausted.",
+  "fastenal": {
+    "url": "https://jobs.fastenal.com/jobs",
+    "extract": {"cookie": "_abck"},
+    "ttl_seconds": 1800,
+    "refresh_on": [403],
+    "wait_xhr": "load-jobs",
+    "_note": "Akamai sensor cookie. VALIDATE: confirm the cookie name AND that the load-jobs POST accepts the replayed cookie (pair with an apicapture spec: token_ref=fastenal, token_inject={cookie:_abck})."
+  },
+  "sempra_adp": {
+    "url": "https://REPLACE-with-the-real-adp-rm-careers-url",
+    "extract": {"local_storage": "myjobstoken"},
+    "ttl_seconds": 900,
+    "refresh_on": [401, 403],
+    "_note": "ADP-RM myjobstoken. VALIDATE: the token may live in sessionStorage or only appear as an XHR header (use {xhr_header:{url_contains, header}} instead)."
+  }
+}

@@ -111,9 +111,17 @@ mutating the stored spec). If a `token_ref` replay dies on page 0 (token expired
 token so the **next offline cron re-mints**; the current call falls back (live-fetch → index). The
 browser is never on the request path.
 
-**What remains:** the offline mint shell (`mint_fn` per Tier-2 site — Playwright mints the Akamai
-sensor cookie / ADP-RM token / JWT, calls `store.set`), wired on the index-build cron; and live
-validation against a real Tier-2 target (Fastenal/Sempra) once that mint is built.
+**Offline mint shell** (`scripts/token_mint.py`, built 2026-06-22): the browser half. `capture_state(url)`
+(headless Playwright, `[browser]` extra, offline-only) loads the page, lets its JS mint the token, and
+reads cookies/storage/XHR headers; the pure `extract_token(state, cfg)` pulls the value per
+`{cookie|local_storage|session_storage|xhr_header}`; `mint(token_ref, store)` writes it with the
+target's TTL/refresh policy. Targets in `scripts/tier2_mint.json` (see `.example.json`). Token values are
+never logged (secrets-safe `summarize`). Driver validated live (cookie/storage/XHR capture → extract →
+store); pure logic unit-tested. `--state cap.json` also mints from a Playwright-MCP-captured fixture.
+
+**What remains:** per-site `tier2_mint.json` extract rules **validated live** against the real
+proven-exhausted targets (Fastenal Akamai `_abck`, Sempra ADP-RM `myjobstoken`) + their paired
+apicapture `token_ref`/`token_inject` specs; and wiring `mint` onto the index-build cron (TTL-driven).
 
 ## References
 - Predecessor gate: [`2026-06-21-ats-exhaustion-ladder.md`](../plans/2026-06-21-ats-exhaustion-ladder.md)

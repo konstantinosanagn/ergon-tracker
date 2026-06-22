@@ -35,6 +35,8 @@ pandas = ["pandas>=2.2"]
 polars = ["polars>=0.20"]
 mcp = ["mcp>=1.12"]
 semantic = ["fastembed>=0.3"]
+# Offline-only: the Tier-2 token-mint shell (scripts/token_mint.py). Never on the runtime/request path.
+browser = ["playwright>=1.40"]
 dev = [
   "pytest>=8",
   "pytest-asyncio>=0.23",
