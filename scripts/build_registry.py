@@ -24,6 +24,7 @@ their future postings. Off by default (strict >=1-job gate).
 
 from __future__ import annotations
 
+import datetime as dt
 import fcntl
 import json
 import sys
@@ -115,6 +116,31 @@ ATS_PRIORITY = {
 }
 
 
+def validate_candidate(entry: object) -> str | None:
+    """Return an error reason if ``entry`` can't become a seed entry, else ``None``.
+
+    The verify gate ingests large, machine-generated candidate batches from many feeders
+    (Common Crawl, GitHub, jobhive, the ladder, ...). A single malformed row must NEVER crash
+    the batch — historically a Workday candidate missing ``tenant`` raised ``KeyError`` out of
+    the task group and aborted the whole run. This is the boundary check that makes feeding the
+    gate at scale safe.
+    """
+    if not isinstance(entry, dict):
+        return "not a dict"
+    ats = entry.get("ats")
+    if not ats:
+        return "missing ats"
+    if not entry.get("company"):
+        return "missing company"
+    if ats == "workday":
+        for k in ("tenant", "wd", "site"):
+            if not entry.get(k):
+                return f"workday missing {k}"
+    elif not entry.get("token"):
+        return "missing token"
+    return None
+
+
 def token_for(entry: dict) -> str:
     if entry["ats"] == "workday":
         return f"{entry['tenant']}|{entry['wd']}|{entry['site']}"
@@ -140,6 +166,13 @@ def purge_demo_boards(companies: dict) -> int:
 async def verify_one(
     entry: dict, fetcher: AsyncFetcher, query: SearchQuery
 ) -> tuple[dict, int, str, str | None]:
+    # Defensive: a malformed candidate becomes a dead row, never an uncaught exception that
+    # tears down the surrounding task group. (main() also pre-filters, but verify_one is the
+    # last line of defense and is called directly in tests.)
+    bad = validate_candidate(entry)
+    if bad is not None:
+        tok = entry.get("token") if isinstance(entry, dict) else None
+        return entry, 0, str(tok or ""), f"invalid-candidate: {bad}"
     provider = get_provider(entry["ats"])
     token = token_for(entry)
     if provider is None:
@@ -256,6 +289,43 @@ def dedupe_best(
     return best
 
 
+def merge_candidates(companies: dict, best: dict[str, tuple[dict, int, str]]) -> dict[str, int]:
+    """Add-only merge of verified candidates into ``companies`` (mutated in place).
+
+    Skips three ways, each counted: a company slug already present (``dup_slug``); the same
+    physical board ``(ats, token)`` already present under ANY slug (``dup_board`` — stops the
+    same board being re-added under a different name the feeders slugified differently); and
+    demo boards (``demo``). Returns counts including ``added``/``added_empty``.
+    """
+    existing_boards = {(e.get("ats"), e.get("token")) for e in companies.values()}
+    stats = {"added": 0, "added_empty": 0, "dup_slug": 0, "dup_board": 0, "demo": 0}
+    for key, (entry, count, token) in sorted(best.items()):
+        if is_demo_board(entry["ats"], token):
+            stats["demo"] += 1
+            continue
+        lk = key.lower()
+        if lk in companies:
+            stats["dup_slug"] += 1
+            continue
+        board = (entry["ats"], token)
+        if board in existing_boards:
+            stats["dup_board"] += 1
+            continue
+        companies[lk] = {"ats": entry["ats"], "token": token, "domain": entry.get("domain")}
+        existing_boards.add(board)
+        stats["added"] += 1
+        if count == 0:
+            stats["added_empty"] += 1
+    return stats
+
+
+def bump_meta(meta: dict) -> dict:
+    """Stamp the registry provenance: schema version + today's build date."""
+    meta["version"] = 2
+    meta["updated"] = dt.date.today().isoformat()
+    return meta
+
+
 async def verify_all(
     candidates: list[dict],
     *,
@@ -364,7 +434,12 @@ async def main() -> None:
         paths.append(tok)
     cand_path = Path(paths[0]) if paths else CANDIDATES
     load_builtins()
-    candidates: list[dict] = json.loads(cand_path.read_text())
+    raw_candidates: list[dict] = json.loads(cand_path.read_text())
+    # Drop malformed rows at the boundary so one bad candidate can't crash a large batch.
+    candidates = [c for c in raw_candidates if validate_candidate(c) is None]
+    skipped_malformed = len(raw_candidates) - len(candidates)
+    if skipped_malformed:
+        print(f"skipped {skipped_malformed} malformed candidates (missing ats/company/token)")
     # Verification only needs to confirm a board returns >=1 job — fetching every page (up to a
     # provider's MAX_PAGES) just to gate-check is pure waste and lets one huge board stall the
     # whole sweep. Cap to the first page; the dedup tiebreaker only needs a live signal, not an
@@ -420,26 +495,14 @@ async def main() -> None:
     with seed_lock():
         seed = json.loads(SEED.read_text())
         companies: dict[str, dict] = seed["companies"]
-        added = 0
-        added_empty = 0
         purged = purge_demo_boards(companies)  # self-heal: drop any demo board already present
-        for key, (entry, count, token) in sorted(best.items()):
-            # Registry keys are always lowercase; the token keeps its case (some ATSes, e.g.
-            # SmartRecruiters, are case-sensitive on the token but not the company key).
-            lk = key.lower()
-            if lk in companies or is_demo_board(entry["ats"], token):
-                continue
-            companies[lk] = {
-                "ats": entry["ats"],
-                "token": token,
-                "domain": entry.get("domain"),
-            }
-            added += 1
-            if count == 0:
-                added_empty += 1
+        # Registry keys are always lowercase; the token keeps its case (some ATSes, e.g.
+        # SmartRecruiters, are case-sensitive on the token but not the company key). Add-only,
+        # de-duped by slug AND by (ats, token) physical board.
+        merge = merge_candidates(companies, best)
+        added, added_empty = merge["added"], merge["added_empty"]
 
-        seed["_meta"]["version"] = 2
-        seed["_meta"]["updated"] = "2026-06-16"
+        bump_meta(seed["_meta"])
 
         print(
             f"\ncandidates={len(candidates)}  verified={len(verified)} "
@@ -451,6 +514,7 @@ async def main() -> None:
         print(f"unique verified by ats: {by_ats}")
         print(
             f"added={added} (of which empty-onboarded={added_empty})  "
+            f"dup_slug={merge['dup_slug']} dup_board={merge['dup_board']}  "
             f"purged_demo={purged}  registry_total={len(companies)}"
         )
         if dead:

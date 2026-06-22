@@ -119,3 +119,104 @@ def test_partition_splits_live_from_dead_carrying_err():
         "b": "ReadTimeout: timed out",
         "c": None,
     }
+
+
+# --- candidate validation: a malformed row must never crash the batch -------------------------
+@pytest.mark.parametrize(
+    "entry",
+    [
+        {"company": "acme", "ats": "greenhouse", "token": "acme"},
+        {"company": "acme", "ats": "workday", "tenant": "acme", "wd": "wd1", "site": "Careers"},
+        {"company": "acme", "ats": "greenhouse", "token": "acme", "domain": "acme.com"},
+    ],
+)
+def test_validate_candidate_accepts_well_formed(entry):
+    assert br.validate_candidate(entry) is None
+
+
+@pytest.mark.parametrize(
+    "entry",
+    [
+        {"company": "acme", "token": "acme"},  # missing ats
+        {"company": "acme", "ats": "", "token": "acme"},  # blank ats
+        {"ats": "greenhouse", "token": "acme"},  # missing company
+        {"company": "acme", "ats": "greenhouse"},  # non-workday missing token
+        {"company": "acme", "ats": "greenhouse", "token": ""},  # blank token
+        {"company": "acme", "ats": "workday", "wd": "wd1", "site": "Careers"},  # wd missing tenant
+        {"company": "acme", "ats": "workday", "tenant": "acme", "site": "Careers"},  # missing wd
+        {"company": "acme", "ats": "workday", "tenant": "acme", "wd": "wd1"},  # missing site
+        "not-a-dict",
+    ],
+)
+def test_validate_candidate_rejects_malformed(entry):
+    assert br.validate_candidate(entry) is not None
+
+
+def test_verify_one_returns_dead_not_raises_on_malformed(anyio_backend="asyncio"):
+    # The critical regression: token_for used to be called outside the try/except, so a Workday
+    # row missing `tenant` raised KeyError straight out of the task group, aborting the whole run.
+    import anyio as _anyio
+
+    bad = {"company": "acme", "ats": "workday", "wd": "wd1", "site": "Careers"}  # no tenant
+
+    async def _run():
+        # fetcher is never reached for an invalid candidate, so None is safe here.
+        return await br.verify_one(bad, None, br.SearchQuery(limit=1))
+
+    entry, count, token, err = _anyio.run(_run)
+    assert count == 0
+    assert err and "invalid-candidate" in err
+
+
+# --- merge: add-only, dedup by slug AND by (ats, token) physical board ------------------------
+def test_merge_candidates_adds_new_board():
+    companies: dict = {}
+    best = {"acme": ({"company": "acme", "ats": "greenhouse", "domain": "acme.com"}, 5, "acme")}
+    stats = br.merge_candidates(companies, best)
+    assert companies["acme"] == {"ats": "greenhouse", "token": "acme", "domain": "acme.com"}
+    assert stats["added"] == 1
+
+
+def test_merge_candidates_skips_existing_slug():
+    companies = {"acme": {"ats": "lever", "token": "acme-old", "domain": None}}
+    best = {"acme": ({"company": "acme", "ats": "greenhouse"}, 5, "acme")}
+    stats = br.merge_candidates(companies, best)
+    assert companies["acme"]["ats"] == "lever"  # unchanged (add-only)
+    assert stats["added"] == 0 and stats["dup_slug"] == 1
+
+
+def test_merge_candidates_skips_same_physical_board_under_different_slug():
+    # The (ats, token) dedup: same greenhouse board already present as 'acme-inc' must not be
+    # re-added under a different name slug 'acme-incorporated'.
+    companies = {"acme-inc": {"ats": "greenhouse", "token": "acme", "domain": None}}
+    best = {"acme-incorporated": ({"company": "acme-incorporated", "ats": "greenhouse"}, 5, "acme")}
+    stats = br.merge_candidates(companies, best)
+    assert "acme-incorporated" not in companies
+    assert stats["added"] == 0 and stats["dup_board"] == 1
+
+
+def test_merge_candidates_dedups_same_board_within_batch():
+    companies = {}
+    best = {
+        "acme-inc": ({"company": "acme-inc", "ats": "greenhouse"}, 5, "acme"),
+        "acme-corp": ({"company": "acme-corp", "ats": "greenhouse"}, 5, "acme"),
+    }
+    stats = br.merge_candidates(companies, best)
+    assert stats["added"] == 1 and stats["dup_board"] == 1
+    assert len(companies) == 1
+
+
+def test_merge_candidates_rejects_demo_board():
+    companies = {}
+    best = {"demo": ({"company": "demo", "ats": "lever"}, 3, "leverdemo")}
+    stats = br.merge_candidates(companies, best)
+    assert companies == {} and stats["demo"] == 1
+
+
+def test_bump_meta_sets_version_and_today():
+    import datetime as _dt
+
+    meta = {"version": 1, "updated": "2020-01-01"}
+    br.bump_meta(meta)
+    assert meta["version"] == 2
+    assert meta["updated"] == _dt.date.today().isoformat()
