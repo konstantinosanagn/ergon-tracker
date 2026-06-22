@@ -12877,362 +12877,382 @@
  "KonaTel, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kontoor Brands, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kontoorbrands"
  },
  "Koppers Holdings Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "koppers"
  },
  "Kraig Biocraft Laboratories, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Krispy Kreme, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Kuber Resources Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kutcho Copper Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KwikClick, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LA-Z-BOY INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lazboy"
  },
  "LAMAR ADVERTISING CO/NEW": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lamaradvertisingnew"
  },
  "LANDS' END, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "landsend"
  },
  "LANDSTAR SYSTEM INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "landstarsystem"
  },
  "LANTRONIX INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lantronix"
  },
  "LATTICE SEMICONDUCTOR CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "latticesemiconductor"
  },
  "LAUREATE EDUCATION, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LB PHARMACEUTICALS INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LCI INDUSTRIES": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LCNB CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lcnb"
  },
  "LEE ENTERPRISES, Inc": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "leeenterprises"
  },
  "LEGALZOOM.COM, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "legalzoomcom"
  },
  "LEGEND POWER SYSTEMS INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LEGGETT & PLATT INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LELANTOS HOLDINGS INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LEMAITRE VASCULAR INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lemaitrevascular"
  },
  "LENNAR CORP /NEW/": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lennarnew"
  },
  "LENSAR, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LENZ Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LESAKA TECHNOLOGIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LEXICON PHARMACEUTICALS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LFTD PARTNERS INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIBERTY STAR URANIUM & METALS CORP.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIFECORE BIOMEDICAL, INC. \\DE\\": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lifecorebiomedicalde"
  },
  "LIFETIME BRANDS, INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lifetimebrands"
  },
  "LIGHTBRIDGE Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIGHTPATH TECHNOLOGIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LINCOLN EDUCATIONAL SERVICES CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LINCOLN ELECTRIC HOLDINGS INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LINCOLN NATIONAL CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LINDSAY CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LINGERIE FIGHTING CHAMPIONSHIPS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LION COPPER & GOLD CORP.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIPELLA PHARMACEUTICALS INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIQTECH INTERNATIONAL INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LIQUIDITY SERVICES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LIQUIDMETAL TECHNOLOGIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LISATA THERAPEUTICS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LITHIA MOTORS INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lithiamotors"
  },
  "LITHIUM AMERICAS CORP.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lithiumamericas"
  },
  "LITTELFUSE INC /DE": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "littelfusede"
  },
  "LIVE VENTURES Inc": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LIXTE BIOTECHNOLOGY HOLDINGS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LKQ CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lkq"
  },
  "LOGPROSTYLE INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LOUISIANA-PACIFIC CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "LOWES COMPANIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "lowescompanies"
  },
  "LQR House Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LSEB Creative Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LTC PROPERTIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LUDWIG ENTERPRISES, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "La Rosa Holdings Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "LaFleur Minerals Inc..": {
   "attempts": 1,
