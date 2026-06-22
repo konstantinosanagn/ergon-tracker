@@ -69,3 +69,7 @@ scripts/gov_names.txt
 
 # Playwright MCP throwaway session logs
 .playwright-mcp/
+
+# Tier-2 session-token store (SECRETS — never commit)
+runs/tier2_tokens.json
+*tier2_tokens.json

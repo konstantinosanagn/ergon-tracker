@@ -19,6 +19,7 @@ import json
 import re
 from datetime import datetime
 from importlib.resources import files
+from pathlib import Path
 from typing import TYPE_CHECKING, Any
 from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
@@ -177,6 +178,44 @@ def _set_query(url: str, param: str, value: int) -> str:
     return urlunsplit(parts._replace(query=urlencode(qs, doseq=True)))
 
 
+def apply_token_to_spec(spec: dict[str, Any], value: str) -> dict[str, Any]:
+    """Inject a cached Tier-2 session token into a COPY of ``spec`` per ``spec['token_inject']``.
+
+    Config is any of: ``{"header": name}`` (request header), ``{"body_path": [..]}`` (POST body field),
+    ``{"query": param}`` (URL query), ``{"cookie": name}`` (Cookie header). The original spec is never
+    mutated, so a stale token can never leak across calls. See :mod:`ergon_tracker.token_store`."""
+    cfg = spec.get("token_inject") or {}
+    s = copy.deepcopy(spec)
+    if "header" in cfg:
+        s.setdefault("headers", {})[cfg["header"]] = value
+    if "body_path" in cfg:
+        if not isinstance(s.get("body"), dict):
+            s["body"] = {}
+        _set(s["body"], cfg["body_path"], value)
+    if "query" in cfg:
+        s["url"] = _set_query(s["url"], cfg["query"], value)
+    if "cookie" in cfg:
+        hdrs = s.setdefault("headers", {})
+        hdrs["Cookie"] = f"{hdrs.get('Cookie', '')}; {cfg['cookie']}={value}".lstrip("; ")
+    return s
+
+
+_TOKEN_STORE: Any = None
+
+
+def _token_store() -> Any:
+    """Lazily construct the Tier-2 TokenStore ($ERGON_TOKEN_STORE or runs/tier2_tokens.json)."""
+    global _TOKEN_STORE
+    if _TOKEN_STORE is None:
+        import os
+
+        from ..token_store import TokenStore
+
+        default = Path(__file__).resolve().parents[3] / "runs" / "tier2_tokens.json"
+        _TOKEN_STORE = TokenStore(os.environ.get("ERGON_TOKEN_STORE") or str(default))
+    return _TOKEN_STORE
+
+
 _BROWSER_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -312,6 +351,16 @@ class ApiCaptureProvider(BaseProvider):
         spec = _load_specs().get(token)
         if not spec:
             return []
+        # Tier-2: inject a cached, offline-minted session token (Akamai cookie / ADP-RM token / JWT)
+        # before reading the request. No valid token -> replay proceeds tokenless and likely 401/403s,
+        # which marks the token stale so the offline cron re-mints it (live-fetch then falls back to
+        # the index). The browser is never on this path. See ergon_tracker.token_store.
+        token_ref = spec.get("token_ref")
+        store = _token_store() if token_ref else None
+        if store is not None:
+            cached = store.get(token_ref)
+            if cached is not None:
+                spec = apply_token_to_spec(spec, cached)
         url, method = spec["url"], spec.get("method", "POST").upper()
         page_path = spec.get("page_path") or []
         page_param = spec.get("page_param")  # GET: pagination via this query param
@@ -340,6 +389,7 @@ class ApiCaptureProvider(BaseProvider):
         raws: list[RawJob] = []
         seen: set[str] = set()
         total: int | None = None
+        stale_token = False  # set if a token_ref replay fails on page 0 (token likely expired)
         await client.open()
         try:
             # Salesforce Experience-Cloud guest Aura: the fwuid + loaded app-version in aura.context
@@ -386,6 +436,10 @@ class ApiCaptureProvider(BaseProvider):
                             data = await client.get_json(get_url, headers)
                         records = _dig(data, rec_path)
                 except Exception:
+                    # A token_ref replay that dies on the first page almost always means the cached
+                    # session token expired — flag it for re-mint (handled after the loop).
+                    if page == 0 and token_ref:
+                        stale_token = True
                     break
                 if total is None and not (spec.get("html_table") or spec.get("rss")):
                     t = _dig(data, tot_path)
@@ -419,6 +473,8 @@ class ApiCaptureProvider(BaseProvider):
                     break
         finally:
             await client.close()
+        if stale_token and store is not None:
+            store.mark_stale(token_ref)  # next offline cron mint re-mints; this call falls back
         return raws
 
     @staticmethod

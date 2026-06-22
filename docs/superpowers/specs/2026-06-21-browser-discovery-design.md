@@ -87,6 +87,34 @@ Reuses the existing **propose → live-verify → merge** seam (`candidates.json
 4. **Phase 4 — distribute** (PyPI + one-line MCP) once Tier-1/2 are production-solid.
 5. **Phase 5 — JobSpy board-scraping** (LinkedIn/Indeed/Glassdoor), isolated/opt-in/off-by-default.
 
+## Tier-2 implementation (built 2026-06-22)
+
+The token subsystem is live as `ergon_tracker.token_store.TokenStore` + an apicapture injection hook.
+The browser stays an offline shell; the store + replay are the pure, tested core.
+
+**`TokenStore`** (file-backed, secrets-grade `0600`, gitignored, never logged):
+- `get(key)` → valid cached token or `None` (TTL-aware + `mark_stale`).
+- `set(key, value, ttl_seconds, refresh_on)` — written by the **offline mint** only.
+- `get_or_mint(key, mint_fn, ttl_seconds)` — **single-flight** (concurrent callers await ONE mint; no
+  browser stampede); `mint_fn` is the swappable browser shell (interactive Playwright), injected, never here.
+- `mark_stale(key)` / `should_refresh_on(key, status)` — refresh policy (default 401/403).
+
+**apicapture spec extension** (opt-in; specs without it are byte-for-byte unaffected):
+```jsonc
+{
+  "token_ref": "fastenal",                 // TokenStore key
+  "token_inject": { "header": "x-myjobstoken" }  // | {"body_path":[..]} | {"cookie":"_abck"} | {"query":"t"}
+}
+```
+At replay, `apicapture.fetch` reads the cached token and injects it via `apply_token_to_spec` (never
+mutating the stored spec). If a `token_ref` replay dies on page 0 (token expired), it `mark_stale`s the
+token so the **next offline cron re-mints**; the current call falls back (live-fetch → index). The
+browser is never on the request path.
+
+**What remains:** the offline mint shell (`mint_fn` per Tier-2 site — Playwright mints the Akamai
+sensor cookie / ADP-RM token / JWT, calls `store.set`), wired on the index-build cron; and live
+validation against a real Tier-2 target (Fastenal/Sempra) once that mint is built.
+
 ## References
 - Predecessor gate: [`2026-06-21-ats-exhaustion-ladder.md`](../plans/2026-06-21-ats-exhaustion-ladder.md)
 - Landscape: [`docs/landscape-job-fetching-tools.md`](../../landscape-job-fetching-tools.md)
