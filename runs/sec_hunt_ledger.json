@@ -12496,200 +12496,206 @@
  "KILROY REALTY CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KINGSTONE COMPANIES, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kingstonecompanies"
  },
  "KINGSWAY Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KINROSS GOLD CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KIORA PHARMACEUTICALS INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KIRBY CORP": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kirby"
  },
  "KLONDIKE GOLD CORP /FI": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KLONDIKE SILVER CORP.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KLX Energy Services Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KNOT Offshore Partners LP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KO Gold Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KOPIN CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KORE Group Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "koregroup"
  },
  "KOREA ELECTRIC POWER CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KORN FERRY": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KORU Medical Systems, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KORYX COPPER INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KOSS CORP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KRATOS DEFENSE & SECURITY SOLUTIONS, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KRONOS ADVANCED TECHNOLOGIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KRONOS WORLDWIDE INC": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KRTL Holding Group Inc": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KULICKE & SOFFA INDUSTRIES INC": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kulickeandsoffaindustries"
  },
  "KULR Technology Group, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KURA SUSHI USA, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "KUSTOM ENTERTAINMENT, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KVH INDUSTRIES INC \\DE\\": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kvhindustriesde"
  },
  "KYNTRA BIO, INC.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Kailera Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kaileratherapeutics"
  },
  "Kaival Brands Innovations Group, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kaixin Holdings": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kalaris Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kalo Gold Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KalturaInc": {
   "ats": "smartrecruiters",
@@ -12700,164 +12706,173 @@
  "Kandi Technologies Group, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Karat Packaging Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Karbon-X Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Karman Holdings Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kartoon Studios, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Karyopharm Therapeutics Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "karyopharmtherapeutics"
  },
  "Kearny Financial Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kearnyfinancial"
  },
  "Kelyniam Global, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kennedy-Wilson Holdings, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kennedywilson"
  },
  "Kering": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Keros Therapeutics, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kerostherapeutics"
  },
  "Kimbell Royalty Partners, LP": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kindcard, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KinderCare Learning Companies, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "King Copper Discovery Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "King Resources, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kingfisher Metals Corp.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kinsale Capital Group, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kinsalecapitalgroup"
  },
  "Kisses From Italy Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Knife River Corp": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kniferiver"
  },
  "Knight-Swift Transportation Holdings Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "knightswifttransportation"
  },
  "Knowles Corp": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Kodiak AI, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kodiakai"
  },
  "Kodiak Gas Services, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
   "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "status": "covered",
+  "slug": "kodiakgasservices"
  },
  "Kodiak Sciences Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "board found, verified empty/unparsed",
+  "status": "found-no-provider"
  },
  "Koil Energy Solutions, Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "Kolibri Global Energy Inc.": {
   "attempts": 1,
   "last": "2026-06-21",
-  "reason": "agent session-limited; re-hunt after reset",
-  "status": "tavily-miss"
+  "reason": "agent re-hunt: no ATS board",
+  "status": "no-board"
  },
  "KonaTel, Inc.": {
   "attempts": 1,
