@@ -220,3 +220,65 @@ def test_bump_meta_sets_version_and_today():
     br.bump_meta(meta)
     assert meta["version"] == 2
     assert meta["updated"] == _dt.date.today().isoformat()
+
+
+# --- resumable verify: checkpoint keys + settled/transient load filtering ---------------------
+def test_candidate_key_stable_per_board():
+    assert br._candidate_key({"ats": "greenhouse", "token": "acme"}) == "greenhouse|acme"
+    # workday key uses the composite tenant|wd|site (matches token_for)
+    assert (
+        br._candidate_key({"ats": "workday", "tenant": "acme", "wd": "wd5", "site": "Careers"})
+        == "workday|acme|wd5|Careers"
+    )
+    # malformed candidate must not raise (returns a sentinel-ish key, never crashes)
+    assert isinstance(br._candidate_key({"ats": "greenhouse"}), str)
+
+
+def test_load_checkpoint_keeps_settled_drops_transient(tmp_path):
+    import json as _json
+
+    ck = tmp_path / "c.ckpt"
+    rows = [
+        {"key": "greenhouse|live", "count": 3, "token": "live", "err": None},  # live -> keep
+        {
+            "key": "greenhouse|empty",
+            "count": 0,
+            "token": "empty",
+            "err": None,
+        },  # final empty -> keep
+        {
+            "key": "greenhouse|gone",
+            "count": 0,
+            "token": "gone",
+            "err": "HTTPStatusError: 404",
+        },  # keep
+        {"key": "greenhouse|thr", "count": 0, "token": "thr", "err": "RateLimitError: 429"},  # drop
+        {
+            "key": "greenhouse|to",
+            "count": 0,
+            "token": "to",
+            "err": "ReadTimeout: timed out",
+        },  # drop
+    ]
+    ck.write_text("\n".join(_json.dumps(r) for r in rows) + "\n")
+    cache = br.load_checkpoint(ck)
+    assert set(cache) == {"greenhouse|live", "greenhouse|empty", "greenhouse|gone"}
+    assert cache["greenhouse|live"] == (3, "live", None)
+
+
+def test_load_checkpoint_last_wins_per_key(tmp_path):
+    import json as _json
+
+    ck = tmp_path / "c.ckpt"
+    # a key first seen transient (dropped) then later live (kept) -> the live result wins
+    rows = [
+        {"key": "lever|x", "count": 0, "token": "x", "err": "ReadTimeout"},
+        {"key": "lever|x", "count": 7, "token": "x", "err": None},
+    ]
+    ck.write_text("\n".join(_json.dumps(r) for r in rows) + "\n")
+    cache = br.load_checkpoint(ck)
+    assert cache["lever|x"] == (7, "x", None)
+
+
+def test_load_checkpoint_missing_file_is_empty(tmp_path):
+    assert br.load_checkpoint(tmp_path / "nope.ckpt") == {}

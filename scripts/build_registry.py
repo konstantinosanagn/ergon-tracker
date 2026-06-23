@@ -326,6 +326,40 @@ def bump_meta(meta: dict) -> dict:
     return meta
 
 
+# --- resumable verify: checkpoint so a killed big run resumes instead of re-fetching ----------
+def _candidate_key(entry: dict) -> str:
+    """Stable per-board key for the verify checkpoint: ``"{ats}|{token}"`` (never raises)."""
+    ats = entry.get("ats") if isinstance(entry, dict) else None
+    try:
+        token = token_for(entry)
+    except Exception:  # noqa: BLE001 - malformed candidate: key it by repr, it'll just re-verify
+        token = repr(entry)[:80]
+    return f"{ats}|{token}"
+
+
+def load_checkpoint(path: Path) -> dict[str, tuple[int, str, str | None]]:
+    """Load a verify checkpoint into ``{key: (count, token, err)}``, keeping only SETTLED results.
+
+    A killed run leaves a JSONL of per-candidate verify outcomes. On resume we reuse the network
+    result for any board that was *definitively* settled — live (count>0) or final-dead
+    (empty/gone/walled) — and DROP transient failures (429/timeout/...) so they get a fresh look.
+    Last line wins per key (a board re-verified live in phase 2 supersedes its phase-1 transient).
+    """
+    if not path.exists():
+        return {}
+    cache: dict[str, tuple[int, str, str | None]] = {}
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            rec = json.loads(line)
+        except ValueError:
+            continue
+        cache[rec["key"]] = (rec["count"], rec["token"], rec.get("err"))
+    return {k: v for k, v in cache.items() if v[0] > 0 or not is_transient(v[2])}
+
+
 async def verify_all(
     candidates: list[dict],
     *,
@@ -335,11 +369,27 @@ async def verify_all(
     retries: int,
     query: SearchQuery,
     label: str = "verifying",
+    ckpt_path: Path | None = None,
+    cached: dict[str, tuple[int, str, str | None]] | None = None,
 ) -> dict[int, tuple[dict, int, str, str | None]]:
-    """Verify every candidate concurrently under the given fetcher pacing. Streams progress."""
+    """Verify every candidate concurrently under the given fetcher pacing. Streams progress.
+
+    When ``ckpt_path`` is set, each settled result is appended (JSONL) so a killed run resumes;
+    candidates whose key is in ``cached`` (settled in a prior run) skip the network entirely.
+    """
     results: dict[int, tuple[dict, int, str, str | None]] = {}
+    cached = cached or {}
     total = len(candidates)
-    prog = {"done": 0, "live": 0}
+    prog = {"done": 0, "live": 0, "skipped": 0}
+    ckpt_lock = anyio.Lock()
+
+    async def _checkpoint(key: str, count: int, token: str, err: str | None) -> None:
+        if ckpt_path is None:
+            return
+        line = json.dumps({"key": key, "count": count, "token": token, "err": err})
+        async with ckpt_lock:
+            with open(ckpt_path, "a") as f:
+                f.write(line + "\n")
 
     def tick(is_live: bool) -> None:
         prog["done"] += 1
@@ -353,8 +403,9 @@ async def verify_all(
                 flush=True,
             )
 
+    resume_note = f" (resuming: {len(cached)} cached)" if cached else ""
     print(
-        f"{label}: {total} candidates "
+        f"{label}: {total} candidates{resume_note} "
         f"(conc={concurrency} rate={per_host_rate}/s timeout={timeout}s retries={retries})",
         flush=True,
     )
@@ -368,13 +419,23 @@ async def verify_all(
         anyio.create_task_group() as tg,
     ):
         for i, entry in enumerate(candidates):
+            key = _candidate_key(entry)
+            hit = cached.get(key)
+            if hit is not None:  # settled in a prior run -> reuse, skip the network
+                results[i] = (entry, hit[0], hit[1], hit[2])
+                prog["skipped"] += 1
+                tick(hit[0] > 0)
+                continue
 
-            async def run(i: int = i, entry: dict = entry) -> None:
+            async def run(i: int = i, entry: dict = entry, key: str = key) -> None:
                 res = await verify_one(entry, fetcher, query)
                 results[i] = res
+                await _checkpoint(key, res[1], res[2], res[3])
                 tick(res[1] > 0)
 
             tg.start_soon(run)
+    if cached:
+        print(f"  {label}: reused {prog['skipped']} checkpointed results", flush=True)
     return results
 
 
@@ -446,6 +507,12 @@ async def main() -> None:
     # exact count.
     query = SearchQuery(limit=5)
 
+    # --resume: checkpoint each settled verify to a sidecar so a killed big run resumes instead of
+    # re-fetching thousands of boards. The checkpoint lives next to the candidates file.
+    resume = "--resume" in sys.argv
+    ckpt_path = cand_path.with_suffix(cand_path.suffix + ".ckpt") if resume else None
+    cached = load_checkpoint(ckpt_path) if ckpt_path else {}
+
     # Phase 1: main verification pass.
     results = await verify_all(
         candidates,
@@ -455,6 +522,8 @@ async def main() -> None:
         retries=retries,
         query=query,
         label="verifying",
+        ckpt_path=ckpt_path,
+        cached=cached,
     )
     verified, dead = partition(results)
 
@@ -467,7 +536,9 @@ async def main() -> None:
         transient = [{**entry} for entry, _token, err in dead if is_transient(err)]
         if transient:
             print(f"\nretrying {len(transient)} transient (likely-throttled) candidates gently ...")
-            r2 = await verify_all(transient, query=query, label="retry-transient", **_PHASE2)
+            r2 = await verify_all(
+                transient, query=query, label="retry-transient", ckpt_path=ckpt_path, **_PHASE2
+            )
             v2, d2 = partition(r2)
             recovered = len(v2)
             verified += v2
@@ -529,6 +600,10 @@ async def main() -> None:
         # indent); writing indent=2 here would re-indent all ~49k lines on every merge.
         SEED.write_text(json.dumps(seed, indent=1, ensure_ascii=False) + "\n")
         print(f"\nwrote {SEED.relative_to(ROOT)}")
+        # The run finished and merged — the checkpoint has served its purpose; clear it so a later
+        # re-run of the same file re-verifies fresh rather than reusing now-stale results.
+        if ckpt_path is not None and ckpt_path.exists():
+            ckpt_path.unlink()
 
 
 if __name__ == "__main__":
