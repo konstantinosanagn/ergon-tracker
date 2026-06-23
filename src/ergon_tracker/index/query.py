@@ -110,6 +110,20 @@ def _where(q: SearchQuery) -> tuple[list[str], list[Any]]:
         # (unknown date). posted_at is stored as an ISO-8601 string, which sorts chronologically.
         cl.append("(j.posted_at IS NULL OR j.posted_at >= ?)")
         p.append(q.posted_after.isoformat())
+    if q.max_age_days is not None:
+        # Freshness floor: keep postings whose most-recent activity (max of posted_at/updated_at,
+        # ISO strings that sort chronologically) is within max_age_days. NULL dates -> '' (sorts
+        # oldest), so undated rows are dropped unless include_undated. This hides the filled-but-
+        # never-closed stale tail (a posting's presence on a board is not proof it's active).
+        from datetime import date, timedelta
+
+        cutoff = (date.today() - timedelta(days=q.max_age_days)).isoformat()
+        fresh = "MAX(COALESCE(j.posted_at, ''), COALESCE(j.updated_at, ''))"
+        if q.include_undated:
+            cl.append(f"({fresh} >= ? OR {fresh} = '')")
+        else:
+            cl.append(f"{fresh} >= ?")
+        p.append(cutoff)
     return cl, p
 
 

@@ -108,6 +108,8 @@ async def search_jobs(
     include_unknown_years: bool = True,
     employment_type: str | None = None,
     posted_within_days: int | None = None,
+    max_age_days: int | None = 365,
+    include_undated: bool = False,
     visa_sponsor: bool = False,
     sponsorship_offered: bool | None = None,
     infer_level_from_experience: bool = False,
@@ -150,6 +152,10 @@ async def search_jobs(
         employment_type: full_time / part_time / contract / internship / temporary / other.
             Postings that don't state a type are kept.
         posted_within_days: only postings published within the last N days (recency filter).
+        max_age_days: freshness floor (default 365). ATS boards often leave FILLED reqs open for
+            years, so a posting's presence isn't proof it's active — this hides postings whose most
+            recent activity (posted/updated) is older than N days. Pass null to include stale ones.
+        include_undated: keep postings with no date at all (default false; they correlate with stale).
         visa_sponsor: if true, keep only employers known to have sponsored H-1B visas (from US
             DoL LCA certified-filing data). Each job also reports a `visa_sponsor` flag.
         sponsorship_offered: filter on what the POSTING says about visa sponsorship. true =
@@ -201,6 +207,8 @@ async def search_jobs(
         include_unknown_years=include_unknown_years,
         employment_type=EmploymentType(employment_type) if employment_type else None,
         posted_after=_days_ago(posted_within_days),
+        max_age_days=max_age_days,
+        include_undated=include_undated,
         visa_sponsor=True if visa_sponsor else None,
         sponsorship_offered=sponsorship_offered,
         infer_level_from_experience=infer_level_from_experience,
@@ -379,6 +387,7 @@ def match_resume(
         employment_type=EmploymentType(employment_type) if employment_type else None,
         visa_sponsor=True if visa_sponsor else None,
         sponsorship_offered=sponsorship_offered,
+        max_age_days=365,  # don't match a résumé against years-stale postings
         limit=limit,
     )
     from .index.router import try_index
@@ -547,6 +556,7 @@ def h1b_jobs(
         employment_type=EmploymentType(employment_type) if employment_type else None,
         visa_sponsor=True,
         sponsorship_offered=sponsorship_offered,
+        max_age_days=365,  # H-1B seekers need *current* openings, not filled-but-open reqs
         limit=limit,
     )
     from .index.router import try_index

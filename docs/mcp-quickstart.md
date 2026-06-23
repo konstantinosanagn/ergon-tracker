@@ -194,6 +194,9 @@ APIs — so you can't accidentally trigger the slow ~42k-company ATS crawl.
    server guards against it by default, but explicitly demanding it is still a long crawl.
 4. **Widen strict filters when needed** — add "include roles that don't list a level/salary" so
    level/sector filters narrow instead of hard-dropping unlabeled postings.
+5. **Results are fresh by default** — postings whose most recent activity is older than a year are
+   hidden (ATS boards leave filled reqs open for years, so presence ≠ active). To deliberately include
+   the stale tail, ask for it (`max_age_days=null`, or a larger value like `730`).
 
 ## Zero-install (uvx) — recommended once published
 

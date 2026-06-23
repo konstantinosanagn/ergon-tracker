@@ -254,6 +254,14 @@ class SearchQuery(BaseModel):
     remote: bool | None = None
     employment_type: EmploymentType | None = None
     posted_after: datetime | None = None
+    # Freshness filter: drop postings whose most-recent activity (max of posted_at/updated_at) is
+    # older than this many days. ATS boards often leave filled reqs open for years, so a posting's
+    # presence is NOT proof it's active; this hides the stale tail. None = no freshness filter (the
+    # model default, so existing callers are unchanged); the production surface (MCP) defaults to 365.
+    max_age_days: int | None = None
+    # Whether to keep postings with no date at all (default: drop them — undated correlates with stale
+    # legacy reqs). Mirrors include_unknown_level; only consulted when max_age_days is set.
+    include_undated: bool = False
     limit: int | None = None
     companies: list[str] | None = None
     sources: list[str] | None = None
@@ -417,6 +425,20 @@ class SearchQuery(BaseModel):
 
         if not self._years_ok(job):
             return False
+
+        if self.max_age_days is not None:
+            # Freshness floor on the most-recent activity (max of posted_at/updated_at); undated
+            # postings are dropped unless include_undated. Mirrors the index _where freshness clause.
+            from datetime import datetime, timedelta, timezone
+
+            cutoff = datetime.now(timezone.utc) - timedelta(days=self.max_age_days)
+            dates = [d for d in (job.posted_at, job.updated_at) if d is not None]
+            fresh = max(dates) if dates else None
+            if fresh is None:
+                if not self.include_undated:
+                    return False
+            elif fresh < cutoff:
+                return False
 
         return not (
             self.posted_after is not None
