@@ -1,0 +1,3055 @@
+[
+ {
+  "company": "aircastle-ltd",
+  "name": "Aircastle LTD",
+  "domain": "aircastle.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.aircastle.com/careers"
+ },
+ {
+  "company": "argo-blockchain-plc",
+  "name": "Argo Blockchain Plc",
+  "domain": "argoblockchain.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.argoblockchain.com/careers"
+ },
+ {
+  "company": "bgm-group-ltd",
+  "name": "BGM Group Ltd.",
+  "domain": "bgm.com",
+  "verdict": "off-domain",
+  "careers_url": "https://telepathy.com/"
+ },
+ {
+  "company": "canalaska-uranium-ltd",
+  "name": "CANALASKA URANIUM LTD",
+  "domain": "canalaskauranium.com",
+  "verdict": "off-domain",
+  "careers_url": "https://canalaska.com/"
+ },
+ {
+  "company": "cathay-general-bancorp",
+  "name": "CATHAY GENERAL BANCORP",
+  "domain": "cathaygeneralbancorp.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.cathaygeneralbancorp.com/about-us/careers"
+ },
+ {
+  "company": "cbl-international-ltd",
+  "name": "CBL International Ltd",
+  "domain": "cbl.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.cbl.com/err404.php"
+ },
+ {
+  "company": "fastenal",
+  "name": "Fastenal",
+  "domain": "fastenal.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.fastenal.com/"
+ },
+ {
+  "company": "ferrari-n-v",
+  "name": "Ferrari N.V.",
+  "domain": "ferrarinv.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.ferrari.com/en-US"
+ },
+ {
+  "company": "ispecimen-inc",
+  "name": "iSpecimen Inc.",
+  "domain": "ispecimen.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.ispecimen.com/careers/"
+ },
+ {
+  "company": "jbs-n-v",
+  "name": "JBS N.V.",
+  "domain": "jbsnv.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.jbsnv.com/careers"
+ },
+ {
+  "company": "magic-software-enterprises-ltd",
+  "name": "MAGIC SOFTWARE ENTERPRISES LTD",
+  "domain": "magicsoftware.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.magicsoftware.com/"
+ },
+ {
+  "company": "magnitude-international-ltd",
+  "name": "Magnitude International Ltd",
+  "domain": "magnitude.com",
+  "verdict": "off-domain",
+  "careers_url": "https://insightsoftware.com/magnitude/"
+ },
+ {
+  "company": "marten-transport-ltd",
+  "name": "MARTEN TRANSPORT LTD",
+  "domain": "martentransport.com",
+  "verdict": "off-domain",
+  "careers_url": "https://cloneurls.online/?utm_source=rollerads&utm_medium=cpc&utm_campaign=1323221&utm_content=2176221&utm_term=311&country=US&device=desktop&os=macos&click_id=GLcCON2UB2jV4VBw_On9AegB3emEAYACzI6Aj9TghNID"
+ },
+ {
+  "company": "martin-marietta-materials-inc",
+  "name": "MARTIN MARIETTA MATERIALS INC",
+  "domain": "martinmariettamaterials.com",
+  "verdict": "off-domain",
+  "careers_url": "https://jobs.jobvite.com/martinmarietta"
+ },
+ {
+  "company": "masonglory-ltd",
+  "name": "Masonglory Ltd",
+  "domain": "masonglory.com",
+  "verdict": "static-html",
+  "careers_url": "https://masonglory.com/careers"
+ },
+ {
+  "company": "mediwound-ltd",
+  "name": "MediWound Ltd.",
+  "domain": "mediwound.com",
+  "verdict": "static-html",
+  "careers_url": "https://mediwound.com/careers/"
+ },
+ {
+  "company": "megan-holdings-ltd",
+  "name": "Megan Holdings Ltd.",
+  "domain": "megan.com",
+  "verdict": "static-html",
+  "careers_url": "https://megan.com/careers"
+ },
+ {
+  "company": "metaoptics-ltd",
+  "name": "MetaOptics Ltd",
+  "domain": "metaoptics.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=metaoptics.com"
+ },
+ {
+  "company": "mind-cti-ltd",
+  "name": "MIND CTI LTD",
+  "domain": "mindcti.com",
+  "verdict": "api-spa",
+  "careers_url": "https://mindcti.com/company/careers/"
+ },
+ {
+  "company": "mindmaze-therapeutics-holding-sa",
+  "name": "MindMaze Therapeutics Holding SA",
+  "domain": "mindmazetherapeutics.com",
+  "verdict": "static-html",
+  "careers_url": "https://mindmazetherapeutics.com/about/careers/"
+ },
+ {
+  "company": "mobilicom-ltd",
+  "name": "Mobilicom Ltd",
+  "domain": "mobilicom.com",
+  "verdict": "api-spa",
+  "careers_url": "https://mobilicom.com/careers/"
+ },
+ {
+  "company": "nabors-industries-ltd",
+  "name": "NABORS INDUSTRIES LTD",
+  "domain": "nabors.com",
+  "verdict": "ats-iframe",
+  "ats": "taleo.net",
+  "careers_url": "https://www.nabors.com/careers/overview/"
+ },
+ {
+  "company": "namib-minerals",
+  "name": "Namib Minerals",
+  "domain": "namibminerals.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.namibminerals.com/careers"
+ },
+ {
+  "company": "nano-nuclear-energy-inc",
+  "name": "Nano Nuclear Energy Inc.",
+  "domain": "nanonuclearenergy.com",
+  "verdict": "ats-iframe",
+  "ats": "phenom",
+  "careers_url": "https://nanonuclearenergy.com/careers/"
+ },
+ {
+  "company": "natics-corp",
+  "name": "Natics Corp.",
+  "domain": "natics.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=natics.com"
+ },
+ {
+  "company": "national-grid-plc",
+  "name": "NATIONAL GRID PLC",
+  "domain": "nationalgrid.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://www.nationalgrid.com/careers"
+ },
+ {
+  "company": "nayax-ltd",
+  "name": "Nayax Ltd.",
+  "domain": "nayax.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.nayax.com/careers/"
+ },
+ {
+  "company": "neovolta-inc",
+  "name": "NeoVolta Inc.",
+  "domain": "neovolta.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "net-lease-office-properties",
+  "name": "Net Lease Office Properties",
+  "domain": "netleaseofficeproperties.com",
+  "verdict": "off-domain",
+  "careers_url": "https://nloproperties.com/overview/default.aspx"
+ },
+ {
+  "company": "netcapital-inc",
+  "name": "Netcapital Inc.",
+  "domain": "netcapitalinc.com",
+  "verdict": "static-html",
+  "careers_url": "https://careers.netcapitalinc.com/"
+ },
+ {
+  "company": "netclass-technology-inc",
+  "name": "NetClass Technology Inc",
+  "domain": "netclass.com",
+  "verdict": "off-domain",
+  "careers_url": "https://venture.com/domains/netclass.com"
+ },
+ {
+  "company": "neurogene-inc",
+  "name": "Neurogene Inc.",
+  "domain": "neurogene.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.neurogene.com/careers/"
+ },
+ {
+  "company": "neutrans-inc",
+  "name": "Neutrans Inc.",
+  "domain": "neutrans.com",
+  "verdict": "off-domain",
+  "careers_url": "https://myneutrans.com/"
+ },
+ {
+  "company": "new-fortress-energy-inc",
+  "name": "New Fortress Energy Inc.",
+  "domain": "newfortressenergy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.newfortressenergy.com/careers"
+ },
+ {
+  "company": "new-momentum-corp",
+  "name": "New Momentum Corp.",
+  "domain": "newmomentum.com",
+  "verdict": "static-html",
+  "careers_url": "https://newmomentum.com/careers"
+ },
+ {
+  "company": "newmarket-corp",
+  "name": "NEWMARKET CORP",
+  "domain": "newmarket.com",
+  "verdict": "ats-iframe",
+  "ats": "icims.com",
+  "careers_url": "https://www.newmarket.com/careers/"
+ },
+ {
+  "company": "nexa-resources-s-a",
+  "name": "Nexa Resources S.A.",
+  "domain": "nexasa.com",
+  "verdict": "off-domain",
+  "careers_url": "https://forsale.dynadot.com/nexasa.com?drefid=2071"
+ },
+ {
+  "company": "nexentis-technologies-inc",
+  "name": "Nexentis Technologies Inc.",
+  "domain": "nexentis.com",
+  "verdict": "static-html",
+  "careers_url": "https://nexentis.com/careers"
+ },
+ {
+  "company": "next-technology-holding-inc",
+  "name": "Next Technology Holding Inc.",
+  "domain": "next.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.apple.com/?cid=oas-us-domains-next.com"
+ },
+ {
+  "company": "nextnav-inc",
+  "name": "NEXTNAV INC.",
+  "domain": "nextnav.com",
+  "verdict": "static-html",
+  "careers_url": "https://nextnav.com/careers/"
+ },
+ {
+  "company": "nextpower-inc",
+  "name": "Nextpower Inc.",
+  "domain": "nextpower.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://nextpower.com/careers"
+ },
+ {
+  "company": "nft-ltd",
+  "name": "NFT Ltd",
+  "domain": "nft.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nft.com/careers"
+ },
+ {
+  "company": "nicola-mining-inc",
+  "name": "NICOLA MINING INC.",
+  "domain": "nicolamining.com",
+  "verdict": "static-html",
+  "careers_url": "https://nicolamining.com/news/careers"
+ },
+ {
+  "company": "nightingale-health-plc",
+  "name": "Nightingale Health Plc",
+  "domain": "nightingalehealth.com",
+  "verdict": "ats-iframe",
+  "ats": "teamtailor",
+  "careers_url": "https://nightingalehealth.com/careers"
+ },
+ {
+  "company": "nio-inc",
+  "name": "NIO Inc.",
+  "domain": "nio.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nio.com/careers"
+ },
+ {
+  "company": "niu-technologies",
+  "name": "Niu Technologies",
+  "domain": "niu.com",
+  "verdict": "api-spa",
+  "careers_url": "https://global.niu.com/en-us"
+ },
+ {
+  "company": "nn-inc",
+  "name": "NN INC",
+  "domain": "nninc.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nninc.com/about/careers/"
+ },
+ {
+  "company": "nomad-foods-ltd",
+  "name": "Nomad Foods Ltd",
+  "domain": "nomadfoods.com",
+  "verdict": "ats-iframe",
+  "ats": "icims.com",
+  "careers_url": "https://www.nomadfoods.com/careers/"
+ },
+ {
+  "company": "noodles-co",
+  "name": "NOODLES & Co",
+  "domain": "noodles.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.noodles.com:443/careers"
+ },
+ {
+  "company": "northann-corp",
+  "name": "Northann Corp.",
+  "domain": "northann.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.northann.com/jobs"
+ },
+ {
+  "company": "northwest-biotherapeutics-inc",
+  "name": "NORTHWEST BIOTHERAPEUTICS INC",
+  "domain": "northwestbiotherapeutics.com",
+  "verdict": "static-html",
+  "careers_url": "http://northwestbiotherapeutics.com/careers"
+ },
+ {
+  "company": "northwest-natural-holding-co",
+  "name": "Northwest Natural Holding Co",
+  "domain": "northwestnatural.com",
+  "verdict": "static-html",
+  "careers_url": "https://northwestnatural.com/careers"
+ },
+ {
+  "company": "norwood-financial-corp",
+  "name": "NORWOOD FINANCIAL CORP",
+  "domain": "norwood.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.norwood.com/"
+ },
+ {
+  "company": "nov-inc",
+  "name": "NOV Inc.",
+  "domain": "novin.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.novin.com/jobs/"
+ },
+ {
+  "company": "novocure-ltd",
+  "name": "NovoCure Ltd",
+  "domain": "novocure.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.novocure.com/careers/careers"
+ },
+ {
+  "company": "nstar-electric-co",
+  "name": "NSTAR ELECTRIC CO",
+  "domain": "nstarelectric.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=nstarelectric.com"
+ },
+ {
+  "company": "nucana-plc",
+  "name": "NuCana plc",
+  "domain": "nucana.com",
+  "verdict": "off-domain",
+  "careers_url": "https://westcoastselect.ca/"
+ },
+ {
+  "company": "nusatrip-inc",
+  "name": "NUSATRIP Inc",
+  "domain": "nusatrip.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.nusatrip.com/en"
+ },
+ {
+  "company": "nuscale-power-corp",
+  "name": "NUSCALE POWER Corp",
+  "domain": "nuscalepower.com",
+  "verdict": "off-domain",
+  "careers_url": "https://jobs.jobvite.com/nuscale-power"
+ },
+ {
+  "company": "nutex-health-inc",
+  "name": "Nutex Health Inc.",
+  "domain": "nutexhealth.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nutexhealth.com/careers/"
+ },
+ {
+  "company": "nutriband-inc",
+  "name": "NutriBand Inc.",
+  "domain": "nutriband.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nutriband.com/careers"
+ },
+ {
+  "company": "nutrien-ltd",
+  "name": "Nutrien Ltd.",
+  "domain": "nutrien.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.nutrien.com/careers"
+ },
+ {
+  "company": "nuvation-bio-inc",
+  "name": "Nuvation Bio Inc.",
+  "domain": "nuvationbio.com",
+  "verdict": "api-spa",
+  "careers_url": "https://nuvationbio.com/careers/"
+ },
+ {
+  "company": "nuvve-holding-corp",
+  "name": "Nuvve Holding Corp.",
+  "domain": "nuvve.com",
+  "verdict": "api-spa",
+  "careers_url": "https://nuvve.com/careers/"
+ },
+ {
+  "company": "nxt-energy-solutions-inc",
+  "name": "NXT Energy Solutions Inc.",
+  "domain": "nxtenergy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nxtenergy.com/careers/"
+ },
+ {
+  "company": "nyb-holdings-ltd",
+  "name": "NYB Holdings Ltd",
+  "domain": "nyb.com",
+  "verdict": "ats-iframe",
+  "ats": "paylocity",
+  "careers_url": "https://www.nyb.com/group-companies/new-york-blower/careers/"
+ },
+ {
+  "company": "nyxoah-sa",
+  "name": "Nyxoah SA",
+  "domain": "nyxoah.com",
+  "verdict": "api-spa",
+  "careers_url": "https://nyxoah.com/careers"
+ },
+ {
+  "company": "oatly-group-ab",
+  "name": "Oatly Group AB",
+  "domain": "oatly.com",
+  "verdict": "ats-iframe",
+  "ats": "teamtailor",
+  "careers_url": "https://careers.oatly.com/"
+ },
+ {
+  "company": "obsidian-energy-ltd",
+  "name": "OBSIDIAN ENERGY LTD.",
+  "domain": "obsidianenergy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://obsidianenergy.com/careers/"
+ },
+ {
+  "company": "oceaneering-international-inc",
+  "name": "OCEANEERING INTERNATIONAL INC",
+  "domain": "oceaneering.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.oceaneering.com/careers/"
+ },
+ {
+  "company": "oculis-holding-ag",
+  "name": "Oculis Holding AG",
+  "domain": "oculis.com",
+  "verdict": "api-spa",
+  "careers_url": "https://oculis.com/our-company/our-culture/#join-us"
+ },
+ {
+  "company": "offerpad-solutions-inc",
+  "name": "Offerpad Solutions Inc.",
+  "domain": "offerpad.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.offerpad.com/careers/"
+ },
+ {
+  "company": "ofs-capital-corp",
+  "name": "OFS Capital Corp",
+  "domain": "ofscapital.com",
+  "verdict": "api-spa",
+  "careers_url": "https://ofscapital.com/our-team/jobson-healthcare-information-llc/"
+ },
+ {
+  "company": "ohmyhome-ltd",
+  "name": "Ohmyhome Ltd",
+  "domain": "ohmyhome.com",
+  "verdict": "api-spa",
+  "careers_url": "https://ohmyhome.com/careers/"
+ },
+ {
+  "company": "okeanis-eco-tankers-corp",
+  "name": "Okeanis Eco Tankers Corp.",
+  "domain": "okeanisecotankers.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.okeanisecotankers.com/careers/"
+ },
+ {
+  "company": "omeros-corp",
+  "name": "OMEROS CORP",
+  "domain": "omeros.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.omeros.com/careers/"
+ },
+ {
+  "company": "omniq-corp",
+  "name": "OMNIQ Corp.",
+  "domain": "omniq.com",
+  "verdict": "api-spa",
+  "careers_url": "https://omniq.com/careers/"
+ },
+ {
+  "company": "onar-holding-corp",
+  "name": "Onar Holding Corp",
+  "domain": "onar.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.onar.com/careers"
+ },
+ {
+  "company": "oncolytics-biotech-inc",
+  "name": "ONCOLYTICS BIOTECH INC",
+  "domain": "oncolyticsbiotech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://oncolyticsbiotech.com/careers/"
+ },
+ {
+  "company": "onemednet-corp",
+  "name": "OneMedNet Corp",
+  "domain": "onemednet.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.onemednet.com/careers/"
+ },
+ {
+  "company": "onto-innovation-inc",
+  "name": "ONTO INNOVATION INC.",
+  "domain": "ontoinnovation.com",
+  "verdict": "api-spa",
+  "careers_url": "https://ontoinnovation.com/careers/"
+ },
+ {
+  "company": "opal-fuels-inc",
+  "name": "OPAL Fuels Inc.",
+  "domain": "opalfuels.com",
+  "verdict": "api-spa",
+  "careers_url": "https://opalfuels.com/careers/"
+ },
+ {
+  "company": "open-lending-corp",
+  "name": "Open Lending Corp",
+  "domain": "openlending.com",
+  "verdict": "ats-iframe",
+  "ats": "workable.com",
+  "careers_url": "https://www.openlending.com/careers/"
+ },
+ {
+  "company": "openpayd-global-holdings-ltd",
+  "name": "OpenPayd Global Holdings Ltd",
+  "domain": "openpayd.com",
+  "verdict": "ats-iframe",
+  "ats": "lever.co",
+  "careers_url": "https://www.openpayd.com/careers/"
+ },
+ {
+  "company": "oppenheimer-holdings-inc",
+  "name": "OPPENHEIMER HOLDINGS INC",
+  "domain": "oppenheimer.com",
+  "verdict": "static-html",
+  "careers_url": "https://oppenheimer.com/careers"
+ },
+ {
+  "company": "optimi-health-corp",
+  "name": "Optimi Health Corp.",
+  "domain": "optimihealth.com",
+  "verdict": "static-html",
+  "careers_url": "https://optimihealth.com/careers"
+ },
+ {
+  "company": "optimizerx-corp",
+  "name": "OptimizeRx Corp",
+  "domain": "optimizerx.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.optimizerx.com/careers"
+ },
+ {
+  "company": "or-royalties-inc",
+  "name": "OR Royalties Inc.",
+  "domain": "orroyalties.com",
+  "verdict": "api-spa",
+  "careers_url": "https://orroyalties.com/careers/"
+ },
+ {
+  "company": "orangekloud-technology-inc",
+  "name": "ORANGEKLOUD TECHNOLOGY INC.",
+  "domain": "orangekloud.com",
+  "verdict": "api-spa",
+  "careers_url": "https://orangekloud.com/careers/"
+ },
+ {
+  "company": "orasure-technologies-inc",
+  "name": "ORASURE TECHNOLOGIES INC",
+  "domain": "orasure.com",
+  "verdict": "ats-iframe",
+  "ats": "lever.co",
+  "careers_url": "https://orasure.com/careers.html"
+ },
+ {
+  "company": "origin-agritech-ltd",
+  "name": "Origin Agritech LTD",
+  "domain": "originagritech.com",
+  "verdict": "static-html",
+  "careers_url": "https://originagritech.com/careers"
+ },
+ {
+  "company": "orion-s-a",
+  "name": "Orion S.A.",
+  "domain": "orionsarm.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "orrstown-financial-services-inc",
+  "name": "ORRSTOWN FINANCIAL SERVICES INC",
+  "domain": "orrstown.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.orrstown.com/careers"
+ },
+ {
+  "company": "oxley-bridge-acquisition-ltd",
+  "name": "Oxley Bridge Acquisition Ltd",
+  "domain": "oxleybridgeacquisition.com",
+  "verdict": "static-html",
+  "careers_url": "https://oxleybridgeacquisition.com/careers"
+ },
+ {
+  "company": "oyocar-group-inc",
+  "name": "Oyocar Group Inc.",
+  "domain": "oyocar.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=oyocar.com"
+ },
+ {
+  "company": "pacific-airport-group",
+  "name": "Pacific Airport Group",
+  "domain": "pacificairport.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=pacificairport.com"
+ },
+ {
+  "company": "palladyne-ai-corp",
+  "name": "Palladyne AI Corp.",
+  "domain": "palladyneai.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.palladyneai.com/careers/"
+ },
+ {
+  "company": "par-technology-corp",
+  "name": "PAR TECHNOLOGY CORP",
+  "domain": "par.com",
+  "verdict": "ats-iframe",
+  "ats": "dayforce",
+  "careers_url": "https://www.par.com/careers/"
+ },
+ {
+  "company": "parazero-technologies-ltd",
+  "name": "ParaZero Technologies Ltd.",
+  "domain": "parazero.com",
+  "verdict": "api-spa",
+  "careers_url": "https://parazero.com/careers/"
+ },
+ {
+  "company": "park-aerospace-corp",
+  "name": "PARK AEROSPACE CORP",
+  "domain": "parkaerospace.com",
+  "verdict": "api-spa",
+  "careers_url": "https://parkaerospace.com/careers/"
+ },
+ {
+  "company": "park-national-corp-oh",
+  "name": "PARK NATIONAL CORP /OH/",
+  "domain": "parknational.com",
+  "verdict": "off-domain",
+  "careers_url": "https://cloneurls.online/?utm_source=rollerads&utm_medium=cpc&utm_campaign=1323221&utm_content=2581475&utm_term=313&country=US&device=desktop&os=macos&click_id=GLkCON2UB2jV4VBw_On9AegB48edAYAC-Mfg0-vghNID"
+ },
+ {
+  "company": "partnerre-ltd",
+  "name": "PARTNERRE LTD",
+  "domain": "partnerre.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.partnerre.com/"
+ },
+ {
+  "company": "paylocity-holding-corp",
+  "name": "Paylocity Holding Corp",
+  "domain": "paylocity.com",
+  "verdict": "ats-iframe",
+  "ats": "paylocity",
+  "careers_url": "https://www.paylocity.com/company/careers/"
+ },
+ {
+  "company": "pc-connection-inc",
+  "name": "PC CONNECTION INC",
+  "domain": "pcconnection.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.connection.com/"
+ },
+ {
+  "company": "peabody-energy-corp",
+  "name": "PEABODY ENERGY CORP",
+  "domain": "peabodyenergy.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "pearson-plc",
+  "name": "PEARSON PLC",
+  "domain": "pearson.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "pegasystems-inc",
+  "name": "PEGASYSTEMS INC",
+  "domain": "pegasystems.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.pega.com/about/careers"
+ },
+ {
+  "company": "pelthos-therapeutics-inc",
+  "name": "Pelthos Therapeutics Inc.",
+  "domain": "pelthostherapeutics.com",
+  "verdict": "off-domain",
+  "careers_url": "https://pelthos.com/careers/"
+ },
+ {
+  "company": "peoples-bancorp-inc",
+  "name": "PEOPLES BANCORP INC",
+  "domain": "peoplesbancorp.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.peoplesbancorp.com/about-us/careers/"
+ },
+ {
+  "company": "peoples-financial-corp-ms",
+  "name": "PEOPLES FINANCIAL CORP /MS/",
+  "domain": "peoples.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.mtb.com/homepage/careers"
+ },
+ {
+  "company": "peoples-financial-services-corp",
+  "name": "PEOPLES FINANCIAL SERVICES CORP.",
+  "domain": "peoples.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.mtb.com/homepage/careers"
+ },
+ {
+  "company": "pepgen-inc",
+  "name": "PepGen Inc.",
+  "domain": "pepgen.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.pepgen.com/careers/"
+ },
+ {
+  "company": "peraso-inc",
+  "name": "Peraso Inc.",
+  "domain": "perasoinc.com",
+  "verdict": "api-spa",
+  "careers_url": "https://perasoinc.com/careers/"
+ },
+ {
+  "company": "perella-weinberg-partners",
+  "name": "Perella Weinberg Partners",
+  "domain": "pwpartners.com",
+  "verdict": "api-spa",
+  "careers_url": "https://pwpartners.com/careers/"
+ },
+ {
+  "company": "perfect-corp",
+  "name": "Perfect Corp.",
+  "domain": "perfectcorp.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.perfectcorp.com/careers"
+ },
+ {
+  "company": "perrigo-co-plc",
+  "name": "PERRIGO Co plc",
+  "domain": "perrigo.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.perrigo.com/"
+ },
+ {
+  "company": "pharming-group-n-v",
+  "name": "Pharming Group N.V.",
+  "domain": "pharming.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.pharming.com/careers"
+ },
+ {
+  "company": "phenixfin-corp",
+  "name": "PhenixFIN Corp",
+  "domain": "phenixfin.com",
+  "verdict": "static-html",
+  "careers_url": "https://accounts.phenixfin.com/accounts/page/login?app_id=2&no_trap=1&query_scope=all&redirect_uri=https%3A%2F%2Fcareers.phenixfin.com%2Fdrive%2Fhome%2F%3Flogin_redirect_times%3D1"
+ },
+ {
+  "company": "phenom-resources-corp",
+  "name": "Phenom Resources Corp.",
+  "domain": "phenom.com",
+  "verdict": "ats-iframe",
+  "ats": "phenom",
+  "careers_url": "https://careers.phenom.com/us/en"
+ },
+ {
+  "company": "phoenix-new-media-ltd",
+  "name": "Phoenix New Media Ltd",
+  "domain": "phoenixnewmedia.com",
+  "verdict": "api-spa",
+  "careers_url": "https://phoenixnewmedia.com/careers"
+ },
+ {
+  "company": "pinewood-technologies-group-plc",
+  "name": "Pinewood Technologies Group plc",
+  "domain": "pinewood.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "pitanium-ltd",
+  "name": "Pitanium Ltd",
+  "domain": "pitanium.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.pitanium.com:443/404/?message=No+available+product+options"
+ },
+ {
+  "company": "platinum-group-metals-ltd",
+  "name": "PLATINUM GROUP METALS LTD",
+  "domain": "platinummetals.com",
+  "verdict": "static-html",
+  "careers_url": "https://platinummetals.com/careers"
+ },
+ {
+  "company": "poet-technologies-inc",
+  "name": "POET TECHNOLOGIES INC.",
+  "domain": "poet.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://poet.com/careers"
+ },
+ {
+  "company": "portillo-s-inc",
+  "name": "Portillo's Inc.",
+  "domain": "portillos.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.portillos.com/"
+ },
+ {
+  "company": "posco-holdings-inc",
+  "name": "POSCO HOLDINGS INC.",
+  "domain": "posco.com",
+  "verdict": "off-domain",
+  "careers_url": "http://www.posco.co.kr/infomsg/error.html"
+ },
+ {
+  "company": "power-metal-resources-plc",
+  "name": "Power Metal Resources PLC",
+  "domain": "powermetalresources.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.powermetalresources.com/"
+ },
+ {
+  "company": "powerbank-corp",
+  "name": "POWERBANK Corp",
+  "domain": "powerbank.com",
+  "verdict": "off-domain",
+  "careers_url": "https://immanitys.com/r/a4_ow77SiMLiCUbf2qrY_yrU_XFjTiE6CdJuAJIasBtoY6zGum5aPKCLrr8DycgFYRH1SYDuM_JNue9DRliZGkWSasSrjwk5skmmTiRM8MjjuO1HHTK4B5EPkIQ_CDk-qO2ahkjLEdxgzOMsRplxabyVx73hhuIXPj9tkoWAukKahFnwvT3afZnCArQP29IdSeBU0iRbLg2u1q7eEQOBv2x5y2t7jAWrBwn5w9QKymt-MI25XVArCFXxR_ITAvhLJUf7ORfgDvBMe24FsevcSLDuPCrTah7N5dWvFrs_JnAsyoLNkKnHYHGgPopBj8GC1cTGblbb3F9CQDZLb7J_79wfGGtgfczPfdDdL0gsXQN3sWwtQZpT_3E-IsYZv2hJdpnicrCAhAB-h8EH-gQqvL3ZWVilcl6E82q1BM7caHjqnZchiTC0m3wrrY3wDZNf6lx0r9BJfrr6xIOFAty6jq-9Xx954sGsdAHB4OPu-h7_Zrh300Pan9Ws-k3zIklLgsmsp2ZlkGAaqS6ENsZrPSjE1vP5szNp7ybkwlcTmXqUTsC1yuebTQsL7Cx0Xk8W98iqUItii-QtI9S9aYb99zy_M0h3C0XHqMGk3ZUy6bxHREzS7ME0WpMKrFyWBp5o5DzUVBJdK2nQfrN5LLfnMZtYzwEN3FhdwitVDfgfqGNtf7eSJWye0ZNsM54srEfBjChuc-ZysPgcNYlHLAIiTJ456npirlwRJNFhjy0fPcDZqI26FHAppwJOfaU5mnc7hu9e3Z_Ia5_yulGpDAHxaA"
+ },
+ {
+  "company": "powerlaw-corp",
+  "name": "Powerlaw Corp.",
+  "domain": "powerlaw.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "prairie-operating-co",
+  "name": "Prairie Operating Co.",
+  "domain": "prairieopco.com",
+  "verdict": "api-spa",
+  "careers_url": "https://prairieopco.com/careers"
+ },
+ {
+  "company": "precision-biosciences-inc",
+  "name": "PRECISION BIOSCIENCES INC",
+  "domain": "precisionbiosciences.com",
+  "verdict": "api-spa",
+  "careers_url": "https://precisionbiosciences.com/who-we-are/careers/"
+ },
+ {
+  "company": "precision-drilling-corp",
+  "name": "PRECISION DRILLING Corp",
+  "domain": "precisiondrilling.com",
+  "verdict": "ats-iframe",
+  "ats": "breezy.hr",
+  "careers_url": "https://www.precisiondrilling.com/careers/"
+ },
+ {
+  "company": "premier-air-charter-holdings-inc",
+  "name": "Premier Air Charter Holdings Inc.",
+  "domain": "premieraircharter.com",
+  "verdict": "static-html",
+  "careers_url": "https://premieraircharter.com/careers/"
+ },
+ {
+  "company": "prenetics-global-ltd",
+  "name": "Prenetics Global Ltd",
+  "domain": "prenetics.com",
+  "verdict": "ats-iframe",
+  "ats": "teamtailor",
+  "careers_url": "https://careers.prenetics.com/"
+ },
+ {
+  "company": "prestige-consumer-healthcare-inc",
+  "name": "Prestige Consumer Healthcare Inc.",
+  "domain": "prestigeconsumerhealthcare.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.prestigebrands.com/"
+ },
+ {
+  "company": "primeenergy-resources-corp",
+  "name": "PRIMEENERGY RESOURCES CORP",
+  "domain": "primeenergy.com",
+  "verdict": "off-domain",
+  "careers_url": "https://primeenergy-resources-corporation.ir.rdgfilings.com/"
+ },
+ {
+  "company": "primis-financial-corp",
+  "name": "Primis Financial Corp.",
+  "domain": "primis.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "profrac-holding-corp",
+  "name": "ProFrac Holding Corp.",
+  "domain": "profrac.com",
+  "verdict": "ats-iframe",
+  "ats": "dayforce",
+  "careers_url": "https://profrac.com/"
+ },
+ {
+  "company": "propetro-holding-corp",
+  "name": "ProPetro Holding Corp.",
+  "domain": "propetro.com",
+  "verdict": "api-spa",
+  "careers_url": "https://propetro.com/careers/"
+ },
+ {
+  "company": "pulmonx-corp",
+  "name": "Pulmonx Corp",
+  "domain": "pulmonx.com",
+  "verdict": "api-spa",
+  "careers_url": "https://pulmonx.com/careers/"
+ },
+ {
+  "company": "pulsar-helium-inc",
+  "name": "Pulsar Helium Inc.",
+  "domain": "pulsarhelium.com",
+  "verdict": "api-spa",
+  "careers_url": "https://pulsarhelium.com/careers/opportunities/default.aspx"
+ },
+ {
+  "company": "pulsenmore-ltd",
+  "name": "Pulsenmore Ltd.",
+  "domain": "pulsenmore.com",
+  "verdict": "api-spa",
+  "careers_url": "https://pulsenmore.com/careers/"
+ },
+ {
+  "company": "pure-cycle-corp",
+  "name": "PURE CYCLE CORP",
+  "domain": "purecycle.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://www.purecycle.com/careers"
+ },
+ {
+  "company": "purebase-corp",
+  "name": "Purebase Corp",
+  "domain": "purebase.com",
+  "verdict": "static-html",
+  "careers_url": "https://careers.purebase.com/"
+ },
+ {
+  "company": "puretech-health-plc",
+  "name": "PureTech Health plc",
+  "domain": "puretechhealth.com",
+  "verdict": "ats-iframe",
+  "ats": "greenhouse.io",
+  "careers_url": "https://www.puretechhealth.com/careers/"
+ },
+ {
+  "company": "purple-biotech-ltd",
+  "name": "PURPLE BIOTECH LTD.",
+  "domain": "purplebiotech.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=purplebiotech.com"
+ },
+ {
+  "company": "q32-bio-inc",
+  "name": "Q32 Bio Inc.",
+  "domain": "q32bio.com",
+  "verdict": "ats-iframe",
+  "ats": "greenhouse.io",
+  "careers_url": "https://www.q32bio.com/careers/"
+ },
+ {
+  "company": "qmmm-holdings-ltd",
+  "name": "QMMM Holdings Ltd",
+  "domain": "qmmm.com",
+  "verdict": "static-html",
+  "careers_url": "https://qmmm.com/careers"
+ },
+ {
+  "company": "qnb-corp",
+  "name": "QNB CORP.",
+  "domain": "qnb.com",
+  "verdict": "off-domain",
+  "careers_url": "https://qnb.sniperhire.net/"
+ },
+ {
+  "company": "quanterix-corp",
+  "name": "Quanterix Corp",
+  "domain": "quanterix.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.quanterix.com/careers/"
+ },
+ {
+  "company": "quantinuum-inc",
+  "name": "Quantinuum Inc.",
+  "domain": "quantinuum.com",
+  "verdict": "ats-iframe",
+  "ats": "lever.co",
+  "careers_url": "https://www.quantinuum.com/company/careers"
+ },
+ {
+  "company": "quantum-computing-inc",
+  "name": "Quantum Computing Inc.",
+  "domain": "quantumcomputinginc.com",
+  "verdict": "static-html",
+  "careers_url": "https://quantumcomputinginc.com/company/careers"
+ },
+ {
+  "company": "quantum-emotion-corp",
+  "name": "Quantum eMotion Corp",
+  "domain": "quantumemotion.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.quantumemotion.com/careers"
+ },
+ {
+  "company": "quantum-x-labs-inc",
+  "name": "QUANTUM X LABS INC.",
+  "domain": "quantumx.com",
+  "verdict": "off-domain",
+  "careers_url": "http://add-force.com/home/"
+ },
+ {
+  "company": "quest-resource-holding-corp",
+  "name": "Quest Resource Holding Corp",
+  "domain": "questresource.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=questresource.com"
+ },
+ {
+  "company": "quicklogic-corp",
+  "name": "QUICKLOGIC Corp",
+  "domain": "quicklogic.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.quicklogic.com/careers/"
+ },
+ {
+  "company": "quidelortho-corp",
+  "name": "QuidelOrtho Corp",
+  "domain": "quidelortho.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://www.quidelortho.com/careers"
+ },
+ {
+  "company": "qwest-corp",
+  "name": "QWEST CORP",
+  "domain": "qwest.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.centurylink.com/home.html"
+ },
+ {
+  "company": "radware-ltd",
+  "name": "RADWARE LTD",
+  "domain": "radware.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.radware.com/careers/"
+ },
+ {
+  "company": "ralliant-corp",
+  "name": "Ralliant Corp",
+  "domain": "ralliant.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.ralliant.com/"
+ },
+ {
+  "company": "rallybio-corp",
+  "name": "Rallybio Corp",
+  "domain": "rallybio.com",
+  "verdict": "ats-iframe",
+  "ats": "bamboohr",
+  "careers_url": "https://rallybio.com/careers/"
+ },
+ {
+  "company": "ranger-gold-corp",
+  "name": "Ranger Gold Corp.",
+  "domain": "rangergold.com",
+  "verdict": "api-spa",
+  "careers_url": "https://rangergold.com/careers"
+ },
+ {
+  "company": "ranpak-holdings-corp",
+  "name": "Ranpak Holdings Corp.",
+  "domain": "ranpak.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://www.ranpak.com/careers/"
+ },
+ {
+  "company": "raytech-holding-ltd",
+  "name": "Raytech Holding Ltd",
+  "domain": "raytech.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://raytech.com/careers"
+ },
+ {
+  "company": "rbc-bearings-inc",
+  "name": "RBC Bearings INC",
+  "domain": "rbcbearings.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.rbcbearings.com:443/404"
+ },
+ {
+  "company": "reading-international-inc",
+  "name": "READING INTERNATIONAL INC",
+  "domain": "reading.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.reading.com/careers"
+ },
+ {
+  "company": "red-light-holland-corp",
+  "name": "Red Light Holland Corp.",
+  "domain": "redlightholland.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.redlightholland.nl/careers"
+ },
+ {
+  "company": "regen-biopharma-inc",
+  "name": "Regen BioPharma Inc",
+  "domain": "regenbiopharmainc.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.regenbiopharmainc.com/careers/"
+ },
+ {
+  "company": "regional-management-corp",
+  "name": "Regional Management Corp.",
+  "domain": "regionalmanagement.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.regionalmanagement.com/overview/default.aspx"
+ },
+ {
+  "company": "regis-corp",
+  "name": "REGIS CORP",
+  "domain": "regiscorp.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.regiscorp.com/"
+ },
+ {
+  "company": "reinsurance-group-of-america-inc",
+  "name": "REINSURANCE GROUP OF AMERICA INC",
+  "domain": "rgare.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.rgarecareers.com/us/en"
+ },
+ {
+  "company": "renx-enterprises-corp",
+  "name": "RenX Enterprises Corp.",
+  "domain": "renx.com",
+  "verdict": "static-html",
+  "careers_url": "https://renx.com/careers"
+ },
+ {
+  "company": "reostar-energy-corp",
+  "name": "ReoStar Energy CORP",
+  "domain": "reostarenergy.com",
+  "verdict": "static-html",
+  "careers_url": "https://reostarenergy.com/"
+ },
+ {
+  "company": "retractable-technologies-inc",
+  "name": "RETRACTABLE TECHNOLOGIES INC",
+  "domain": "retractable.com",
+  "verdict": "api-spa",
+  "careers_url": "https://retractable.com/careers/"
+ },
+ {
+  "company": "revival-gold-inc",
+  "name": "Revival Gold Inc.",
+  "domain": "revivalgold.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=revivalgold.com"
+ },
+ {
+  "company": "richtech-robotics-inc",
+  "name": "RICHTECH ROBOTICS INC.",
+  "domain": "richtechrobotics.com",
+  "verdict": "static-html",
+  "careers_url": "https://richtechrobotics.com/careers"
+ },
+ {
+  "company": "ridgetech-inc",
+  "name": "Ridgetech Inc.",
+  "domain": "ridgetech.com",
+  "verdict": "ats-iframe",
+  "ats": "bamboohr",
+  "careers_url": "https://ridgetech.com/careers/"
+ },
+ {
+  "company": "rio-tinto-plc",
+  "name": "RIO TINTO PLC",
+  "domain": "riotinto.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.riotinto.com/careers"
+ },
+ {
+  "company": "rli-corp",
+  "name": "RLI CORP",
+  "domain": "rlicorp.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.rlicorp.com/"
+ },
+ {
+  "company": "robo-ai-inc",
+  "name": "ROBO.AI INC.",
+  "domain": "roboai.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "rogers-communications-inc",
+  "name": "ROGERS COMMUNICATIONS INC",
+  "domain": "rogers.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://jobs.rogers.com/?utm_source=Rogerscorporate&utm_campaign=corpfooter"
+ },
+ {
+  "company": "rogers-corp",
+  "name": "ROGERS CORP",
+  "domain": "rogerscorp.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.rogerscorp.com/careers"
+ },
+ {
+  "company": "roxmore-resources-inc",
+  "name": "Roxmore Resources Inc.",
+  "domain": "roxmore.com",
+  "verdict": "off-domain",
+  "careers_url": "https://adscheaper.com/careers"
+ },
+ {
+  "company": "royal-bank-of-canada",
+  "name": "ROYAL BANK OF CANADA",
+  "domain": "rbc.com",
+  "verdict": "ats-iframe",
+  "ats": "phenom",
+  "careers_url": "https://jobs.rbc.com/ca/en/"
+ },
+ {
+  "company": "royalty-pharma-plc",
+  "name": "Royalty Pharma plc",
+  "domain": "royalty.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://royalty.com/careers/jobs"
+ },
+ {
+  "company": "rpx-gold-inc",
+  "name": "RPX Gold Inc.",
+  "domain": "rpxgold.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.rpxgold.com/careers/"
+ },
+ {
+  "company": "rubber-leaf-inc",
+  "name": "Rubber Leaf Inc",
+  "domain": "rubberleaf.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://rubberleaf.com/careers"
+ },
+ {
+  "company": "rubicon-organics-inc",
+  "name": "Rubicon Organics Inc.",
+  "domain": "rubiconorganics.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.rubiconorganics.com/careers/"
+ },
+ {
+  "company": "rush-enterprises-inc-tx",
+  "name": "RUSH ENTERPRISES INC \\TX\\",
+  "domain": "rushtx.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=rushtx.com"
+ },
+ {
+  "company": "ryerson-holding-corp",
+  "name": "Ryerson Holding Corp",
+  "domain": "ryerson.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.ryerson.com/about-us/careers"
+ },
+ {
+  "company": "sable-offshore-corp",
+  "name": "Sable Offshore Corp.",
+  "domain": "sableoffshore.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sableoffshore.com/careers/opportunities/default.aspx"
+ },
+ {
+  "company": "sachem-capital-corp",
+  "name": "Sachem Capital Corp.",
+  "domain": "sachemcapitalcorp.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sachemcapitalcorp.com/careers/opportunities/default.aspx"
+ },
+ {
+  "company": "sadot-group-inc",
+  "name": "Sadot Group Inc.",
+  "domain": "sadot.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "safehold-inc",
+  "name": "Safehold Inc.",
+  "domain": "safeholdinc.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.safeholdinc.com/careers/"
+ },
+ {
+  "company": "sanmina-corp",
+  "name": "SANMINA CORP",
+  "domain": "sanmina.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.sanmina.com/careers/"
+ },
+ {
+  "company": "sap-se",
+  "name": "SAP SE",
+  "domain": "lmteq.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.lmteq.com/careers/"
+ },
+ {
+  "company": "sasol-ltd",
+  "name": "SASOL LTD",
+  "domain": "sasol.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sasol.com/careers"
+ },
+ {
+  "company": "saxon-capital-group-inc",
+  "name": "SAXON CAPITAL GROUP INC",
+  "domain": "saxoncapital.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=saxoncapital.com"
+ },
+ {
+  "company": "scynexis-inc",
+  "name": "SCYNEXIS INC",
+  "domain": "scynexis.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.scynexis.com/about/careers/"
+ },
+ {
+  "company": "seacor-marine-holdings-inc",
+  "name": "SEACOR Marine Holdings Inc.",
+  "domain": "seacormarine.com",
+  "verdict": "api-spa",
+  "careers_url": "https://seacormarine.com/careers/"
+ },
+ {
+  "company": "seadrill-ltd",
+  "name": "SEADRILL Ltd",
+  "domain": "seadrill.com",
+  "verdict": "api-spa",
+  "careers_url": "http://www.seadrill.com/careers/"
+ },
+ {
+  "company": "seapeak-llc",
+  "name": "Seapeak LLC",
+  "domain": "seapeak.com",
+  "verdict": "static-html",
+  "careers_url": "https://seapeak.com/careers"
+ },
+ {
+  "company": "seaport-entertainment-group-inc",
+  "name": "Seaport Entertainment Group Inc.",
+  "domain": "seaportentertainment.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://www.seaportentertainment.com/careers/"
+ },
+ {
+  "company": "security-federal-corp",
+  "name": "SECURITY FEDERAL CORP",
+  "domain": "securityfederal.com",
+  "verdict": "static-html",
+  "careers_url": "https://securityfederal.com/careers"
+ },
+ {
+  "company": "selective-insurance-group-inc",
+  "name": "SELECTIVE INSURANCE GROUP INC",
+  "domain": "selectiveinsurance.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.selective.com/careers"
+ },
+ {
+  "company": "sempra",
+  "name": "Sempra",
+  "domain": "sempra.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.sempra.com/careers"
+ },
+ {
+  "company": "seneca-foods-corp",
+  "name": "Seneca Foods Corp",
+  "domain": "senecafoods.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.senecafoods.com/"
+ },
+ {
+  "company": "sensient-technologies-corp",
+  "name": "SENSIENT TECHNOLOGIES CORP",
+  "domain": "sensient.com",
+  "verdict": "static-html",
+  "careers_url": "https://careers.sensient.com/en"
+ },
+ {
+  "company": "sequans-communications",
+  "name": "SEQUANS COMMUNICATIONS",
+  "domain": "sequans.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sequans.com/careers/"
+ },
+ {
+  "company": "sernova-corp",
+  "name": "SERNOVA CORP.",
+  "domain": "sernova.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sernova.com/careers/"
+ },
+ {
+  "company": "seto-holdings-inc",
+  "name": "SETO HOLDINGS INC",
+  "domain": "seto.com",
+  "verdict": "off-domain",
+  "careers_url": "https://venture.com/domains/seto.com"
+ },
+ {
+  "company": "sharonai-holdings-inc",
+  "name": "SharonAI Holdings Inc.",
+  "domain": "sharonai.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sharonai.com/"
+ },
+ {
+  "company": "shell-plc",
+  "name": "Shell plc",
+  "domain": "shell.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.shell.com/careers"
+ },
+ {
+  "company": "shenandoah-telecommunications-co-va",
+  "name": "SHENANDOAH TELECOMMUNICATIONS CO/VA/",
+  "domain": "shenandoahtelecommunications.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "shinhan-financial-group-co-ltd",
+  "name": "SHINHAN FINANCIAL GROUP CO LTD",
+  "domain": "shinhan.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.shinhan.com/careers"
+ },
+ {
+  "company": "shoe-carnival-inc",
+  "name": "SHOE CARNIVAL INC",
+  "domain": "shoecarnival.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.shoecarnival.com/en-US"
+ },
+ {
+  "company": "shopify-inc",
+  "name": "SHOPIFY INC.",
+  "domain": "shopify.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.shopify.com/careers"
+ },
+ {
+  "company": "shore-bancshares-inc",
+  "name": "SHORE BANCSHARES INC",
+  "domain": "shorebancshares.com",
+  "verdict": "off-domain",
+  "careers_url": "https://shorebancshares.q4ir.com:443/overview/default.aspx"
+ },
+ {
+  "company": "sibanye-stillwater-ltd",
+  "name": "Sibanye Stillwater Ltd",
+  "domain": "sibanyestillwater.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.sibanyestillwater.com/careers/"
+ },
+ {
+  "company": "sierra-madre-gold-silver-ltd",
+  "name": "SIERRA MADRE GOLD & SILVER LTD.",
+  "domain": "sierramadregoldandsilver.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sierramadregoldandsilver.com/careers"
+ },
+ {
+  "company": "sifco-industries-inc",
+  "name": "SIFCO INDUSTRIES INC",
+  "domain": "sifco.com",
+  "verdict": "api-spa",
+  "careers_url": "https://sifco.com/careers/"
+ },
+ {
+  "company": "siga-technologies-inc",
+  "name": "SIGA TECHNOLOGIES INC",
+  "domain": "siga.com",
+  "verdict": "ats-iframe",
+  "ats": "breezy.hr",
+  "careers_url": "https://www.siga.com/careers"
+ },
+ {
+  "company": "silentium-ltd",
+  "name": "Silentium Ltd.",
+  "domain": "silentium.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.silentium.com/careers/"
+ },
+ {
+  "company": "silicon-motion-technology-corp",
+  "name": "Silicon Motion Technology CORP",
+  "domain": "siliconmotion.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.siliconmotion.com/careers"
+ },
+ {
+  "company": "silver-bow-mining-corp",
+  "name": "SILVER BOW MINING CORP.",
+  "domain": "silverbowmining.com",
+  "verdict": "static-html",
+  "careers_url": "https://silverbowmining.com/careers"
+ },
+ {
+  "company": "silvercorp-metals-inc",
+  "name": "SILVERCORP METALS INC",
+  "domain": "silvercorpmetals.com",
+  "verdict": "static-html",
+  "careers_url": "https://silvercorpmetals.com/careers/"
+ },
+ {
+  "company": "silvercrest-asset-management-group-inc",
+  "name": "Silvercrest Asset Management Group Inc.",
+  "domain": "silvercrestassetmanagement.com",
+  "verdict": "static-html",
+  "careers_url": "https://silvercrestassetmanagement.com/careers"
+ },
+ {
+  "company": "sinda-ltd",
+  "name": "Sinda Ltd.",
+  "domain": "sinda.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "singularity-future-technology-ltd",
+  "name": "Singularity Future Technology Ltd.",
+  "domain": "singularityfuture.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=singularityfuture.com"
+ },
+ {
+  "company": "sirios-resources-inc",
+  "name": "Sirios Resources Inc.",
+  "domain": "sirios.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.sirios.com/en/"
+ },
+ {
+  "company": "site-centers-corp",
+  "name": "SITE Centers Corp.",
+  "domain": "sitecenters.com",
+  "verdict": "ats-iframe",
+  "ats": "paylocity",
+  "careers_url": "https://www.sitecenters.com/careers"
+ },
+ {
+  "company": "sitka-gold-corp",
+  "name": "Sitka Gold Corp.",
+  "domain": "sitkagoldcorp.com",
+  "verdict": "static-html",
+  "careers_url": "https://sitkagoldcorp.com/careers/"
+ },
+ {
+  "company": "sk-telecom-co-ltd",
+  "name": "SK TELECOM CO LTD",
+  "domain": "sktelecom.com",
+  "verdict": "ats-iframe",
+  "ats": "taleo.net",
+  "careers_url": "https://careers.sktelecom.com/"
+ },
+ {
+  "company": "sky-gold-corp",
+  "name": "SKY GOLD CORP.",
+  "domain": "skygoldcorp.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.skygoldcorp.com/careers"
+ },
+ {
+  "company": "sky-quarry-inc",
+  "name": "Sky Quarry Inc.",
+  "domain": "skyquarry.com",
+  "verdict": "api-spa",
+  "careers_url": "https://skyquarry.com/careers/"
+ },
+ {
+  "company": "skyline-builders-group-holding-ltd",
+  "name": "Skyline Builders Group Holding Ltd",
+  "domain": "skylinebuilders.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.skylinebuilders.com/careers"
+ },
+ {
+  "company": "skywest-inc",
+  "name": "SKYWEST INC",
+  "domain": "skywest.com",
+  "verdict": "ats-iframe",
+  "ats": "icims.com",
+  "careers_url": "https://www.skywest.com/skywest-airline-jobs/"
+ },
+ {
+  "company": "sl-green-realty-corp",
+  "name": "SL GREEN REALTY CORP",
+  "domain": "slgreenrealty.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "sm-energy-co",
+  "name": "SM Energy Co",
+  "domain": "sm-energy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.sm-energy.com/careers"
+ },
+ {
+  "company": "smart-digital-group-ltd",
+  "name": "Smart Digital Group Ltd",
+  "domain": "smartdigital.com",
+  "verdict": "api-spa",
+  "careers_url": "https://smartdigital.com/"
+ },
+ {
+  "company": "smith-midland-corp",
+  "name": "SMITH MIDLAND CORP",
+  "domain": "smithmidland.com",
+  "verdict": "api-spa",
+  "careers_url": "https://smithmidland.com/"
+ },
+ {
+  "company": "so-young-international-inc",
+  "name": "So-Young International Inc.",
+  "domain": "soyoung.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.soyoung.com/"
+ },
+ {
+  "company": "soitec-sa",
+  "name": "Soitec SA",
+  "domain": "soitec.com",
+  "verdict": "ats-iframe",
+  "ats": "icims.com",
+  "careers_url": "https://www.soitec.com/home/people"
+ },
+ {
+  "company": "solana-co",
+  "name": "Solana Co",
+  "domain": "solana.com",
+  "verdict": "ats-iframe",
+  "ats": "greenhouse.io",
+  "careers_url": "https://jobs.solana.com/jobs"
+ },
+ {
+  "company": "solid-biosciences-inc",
+  "name": "Solid Biosciences Inc.",
+  "domain": "solidbiosciences.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=solidbiosciences.com"
+ },
+ {
+  "company": "solitario-resources-corp",
+  "name": "SOLITARIO RESOURCES CORP.",
+  "domain": "solitario.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.cardgame.com/"
+ },
+ {
+  "company": "somnigroup-international-inc",
+  "name": "SOMNIGROUP INTERNATIONAL INC.",
+  "domain": "somnigroup.com",
+  "verdict": "api-spa",
+  "careers_url": "https://somnigroup.com/careers/"
+ },
+ {
+  "company": "sono-tek-corp",
+  "name": "SONO TEK CORP",
+  "domain": "sonotek.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.sono-tek.com/about-us/careers/"
+ },
+ {
+  "company": "sonoco-products-co",
+  "name": "SONOCO PRODUCTS CO",
+  "domain": "sonocoproducts.com",
+  "verdict": "static-html",
+  "careers_url": "https://sonocoproducts.com/careers"
+ },
+ {
+  "company": "sonoro-gold-corp",
+  "name": "Sonoro Gold Corp.",
+  "domain": "sonorogold.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "sos-ltd",
+  "name": "SOS Ltd",
+  "domain": "sosltda.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "southern-copper-corp",
+  "name": "SOUTHERN COPPER CORP/",
+  "domain": "southerncopper.com",
+  "verdict": "api-spa",
+  "careers_url": "https://southerncopper.com/careers"
+ },
+ {
+  "company": "spanish-mountain-gold-ltd",
+  "name": "SPANISH MOUNTAIN GOLD LTD.",
+  "domain": "spanishmountaingold.com",
+  "verdict": "static-html",
+  "careers_url": "https://spanishmountaingold.com/careers/"
+ },
+ {
+  "company": "ss-c-technologies-holdings-inc",
+  "name": "SS&C Technologies Holdings Inc",
+  "domain": "ssandc.com",
+  "verdict": "static-html",
+  "careers_url": "https://ssandc.com/careers"
+ },
+ {
+  "company": "standex-international-corp-de",
+  "name": "STANDEX INTERNATIONAL CORP/DE/",
+  "domain": "standex.com",
+  "verdict": "ats-iframe",
+  "ats": "dayforce",
+  "careers_url": "https://standex.com/careers/"
+ },
+ {
+  "company": "steakholder-foods-ltd",
+  "name": "Steakholder Foods Ltd.",
+  "domain": "steakholderfoods.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.steakholderfoods.com/careers"
+ },
+ {
+  "company": "stellantis-n-v",
+  "name": "Stellantis N.V.",
+  "domain": "stellantisnv.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://sedo.com/search/details/?domain=stellantisnv.com"
+ },
+ {
+  "company": "stemtech-corp",
+  "name": "Stemtech Corp",
+  "domain": "stemtech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://stemtech.com/"
+ },
+ {
+  "company": "stepan-co",
+  "name": "STEPAN CO",
+  "domain": "stepan.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "sterling-metals-corp",
+  "name": "Sterling Metals Corp.",
+  "domain": "sterlingmetals.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "stllr-gold-inc",
+  "name": "STLLR Gold Inc.",
+  "domain": "stllrgold.com",
+  "verdict": "static-html",
+  "careers_url": "https://stllrgold.com/careers"
+ },
+ {
+  "company": "stratasys-ltd",
+  "name": "STRATASYS LTD.",
+  "domain": "stratasys.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.stratasys.com/"
+ },
+ {
+  "company": "summit-midstream-corp",
+  "name": "Summit Midstream Corp",
+  "domain": "summitmidstream.com",
+  "verdict": "api-spa",
+  "careers_url": "https://summitmidstream.com/careers"
+ },
+ {
+  "company": "sun-communities-inc",
+  "name": "SUN COMMUNITIES INC",
+  "domain": "suncommunities.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.suncommunities.com/"
+ },
+ {
+  "company": "sunlands-technology-group",
+  "name": "Sunlands Technology Group",
+  "domain": "sunlands.com",
+  "verdict": "api-spa",
+  "careers_url": "http://www.sunlands.com/"
+ },
+ {
+  "company": "sunoco-lp",
+  "name": "Sunoco LP",
+  "domain": "sunocolp.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.sunocolp.com:443/about-us/careers"
+ },
+ {
+  "company": "supa-consolidated-inc",
+  "name": "SUPA Consolidated Inc.",
+  "domain": "supaconsolidated.com",
+  "verdict": "api-spa",
+  "careers_url": "https://supaconsolidated.com/careers/"
+ },
+ {
+  "company": "super-hi-international-holding-ltd",
+  "name": "SUPER HI INTERNATIONAL HOLDING LTD.",
+  "domain": "superhi.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.superhi.com/careers"
+ },
+ {
+  "company": "surf-air-mobility-inc",
+  "name": "SURF AIR MOBILITY INC.",
+  "domain": "surfairmobility.com",
+  "verdict": "off-domain",
+  "careers_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=fbb94cb3-cbb5-4d4b-8225-770829b92d51&ccId=19000101_000001&lang=en_US"
+ },
+ {
+  "company": "surge-components-inc",
+  "name": "SURGE COMPONENTS INC",
+  "domain": "surgecomponents.com",
+  "verdict": "api-spa",
+  "careers_url": "https://surgecomponents.com/"
+ },
+ {
+  "company": "synaptics-inc",
+  "name": "SYNAPTICS Inc",
+  "domain": "synaptics.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.synaptics.com/careers"
+ },
+ {
+  "company": "sypris-solutions-inc",
+  "name": "SYPRIS SOLUTIONS INC",
+  "domain": "sypris.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.sypris.com/careers/"
+ },
+ {
+  "company": "syra-health-corp",
+  "name": "Syra Health Corp",
+  "domain": "syrahealth.com",
+  "verdict": "static-html",
+  "careers_url": "https://syrahealth.com/careers"
+ },
+ {
+  "company": "t-stamp-inc",
+  "name": "T Stamp Inc",
+  "domain": "tstamp.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=tstamp.com"
+ },
+ {
+  "company": "talen-energy-corp",
+  "name": "Talen Energy Corp",
+  "domain": "talenenergy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.talenenergy.com/"
+ },
+ {
+  "company": "talos-energy-inc",
+  "name": "TALOS ENERGY INC.",
+  "domain": "talosenergy.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://www.talosenergy.com/careers/overview/default.aspx"
+ },
+ {
+  "company": "tamboran-resources-corp",
+  "name": "Tamboran Resources Corp",
+  "domain": "tamboran.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.tamboran.com/"
+ },
+ {
+  "company": "tantalus-systems-holding-inc",
+  "name": "Tantalus Systems Holding Inc.",
+  "domain": "tantalus.com",
+  "verdict": "ats-iframe",
+  "ats": "bamboohr",
+  "careers_url": "https://tantalus.com/careers/"
+ },
+ {
+  "company": "target-hospitality-corp",
+  "name": "Target Hospitality Corp.",
+  "domain": "targethospitality.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://www.targethospitality.com/about-us/careers/"
+ },
+ {
+  "company": "taseko-mines-ltd",
+  "name": "TASEKO MINES LTD",
+  "domain": "tasekomines.com",
+  "verdict": "ats-iframe",
+  "ats": "jobvite",
+  "careers_url": "https://tasekomines.com/careers/"
+ },
+ {
+  "company": "td-synnex-corp",
+  "name": "TD SYNNEX CORP",
+  "domain": "tdsynnex.com",
+  "verdict": "ats-iframe",
+  "ats": "phenom",
+  "careers_url": "https://careers.tdsynnex.com/us/en"
+ },
+ {
+  "company": "team-inc",
+  "name": "TEAM INC",
+  "domain": "teaminc.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.teaminc.com/careers/"
+ },
+ {
+  "company": "technipfmc-plc",
+  "name": "TechnipFMC plc",
+  "domain": "technipfmc.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.technipfmc.com/"
+ },
+ {
+  "company": "teck-resources-ltd",
+  "name": "TECK RESOURCES LTD",
+  "domain": "teck.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://www.teck.com/careers/"
+ },
+ {
+  "company": "tecnoglass-inc",
+  "name": "Tecnoglass Inc.",
+  "domain": "tecnoglass.com",
+  "verdict": "off-domain",
+  "careers_url": "https://arizona.eswindows.com/"
+ },
+ {
+  "company": "teleflex-inc",
+  "name": "TELEFLEX INC",
+  "domain": "teleflex.com",
+  "verdict": "static-html",
+  "careers_url": "https://teleflex.com/usa/en/careers/"
+ },
+ {
+  "company": "telenor-asa",
+  "name": "TELENOR ASA",
+  "domain": "telenorasa.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "telix-pharmaceuticals-ltd",
+  "name": "Telix Pharmaceuticals Ltd",
+  "domain": "telix.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.dialupchronicles.net/win98stuff.php"
+ },
+ {
+  "company": "telus-corp",
+  "name": "TELUS CORP",
+  "domain": "telus.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.telus.com/"
+ },
+ {
+  "company": "telyrx-holdings-inc",
+  "name": "TELYRX HOLDINGS INC.",
+  "domain": "telyrx.com",
+  "verdict": "ats-iframe",
+  "ats": "paylocity",
+  "careers_url": "https://telyrx.com/about-us/careers"
+ },
+ {
+  "company": "tenaris-sa",
+  "name": "TENARIS SA",
+  "domain": "tenaris.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.tenaris.com/en/careers/"
+ },
+ {
+  "company": "tennant-co",
+  "name": "TENNANT CO",
+  "domain": "tennantco.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "tennessee-valley-authority",
+  "name": "Tennessee Valley Authority",
+  "domain": "tva.gov",
+  "verdict": "off-domain",
+  "careers_url": "https://www.tva.com/careers"
+ },
+ {
+  "company": "teradata-corp-de",
+  "name": "TERADATA CORP /DE/",
+  "domain": "teradata.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.teradata.com/jobs"
+ },
+ {
+  "company": "tete-technologies-inc",
+  "name": "TETE Technologies Inc",
+  "domain": "tete.com",
+  "verdict": "api-spa",
+  "careers_url": "https://tete.com/careers"
+ },
+ {
+  "company": "tetra-tech-inc",
+  "name": "TETRA TECH INC",
+  "domain": "tetratech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.tetratech.com/careers/"
+ },
+ {
+  "company": "tharisa-plc",
+  "name": "Tharisa plc",
+  "domain": "tharisaplc.co.uk",
+  "verdict": "static-html",
+  "careers_url": "https://tharisaplc.co.uk/careers"
+ },
+ {
+  "company": "theglobe-com-inc",
+  "name": "THEGLOBE COM INC",
+  "domain": "theglobe.com",
+  "verdict": "static-html",
+  "careers_url": "https://theglobe.com/careers"
+ },
+ {
+  "company": "thredup-inc",
+  "name": "ThredUp Inc.",
+  "domain": "thredup.com",
+  "verdict": "ats-iframe",
+  "ats": "phenom",
+  "careers_url": "https://careers.thredup.com/us/en"
+ },
+ {
+  "company": "thunder-mountain-gold-inc",
+  "name": "THUNDER MOUNTAIN GOLD INC",
+  "domain": "thundermountaingold.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.thundermountaingold.com/careers"
+ },
+ {
+  "company": "tidewater-inc",
+  "name": "TIDEWATER INC",
+  "domain": "tidewater.com",
+  "verdict": "ats-iframe",
+  "ats": "taleo.net",
+  "careers_url": "https://www.tidewater.com/careers"
+ },
+ {
+  "company": "timken-co",
+  "name": "TIMKEN CO",
+  "domain": "timken.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.timken.com/careers/"
+ },
+ {
+  "company": "tiziana-life-sciences-ltd",
+  "name": "Tiziana Life Sciences Ltd",
+  "domain": "tizianalifesciences.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.tizianalifesciences.com/careers/"
+ },
+ {
+  "company": "tjx-companies-inc-de",
+  "name": "TJX COMPANIES INC /DE/",
+  "domain": "tjxcompanies.com",
+  "verdict": "off-domain",
+  "careers_url": "https://cloneurls.online/?utm_source=rollerads&utm_medium=cpc&utm_campaign=1323221&utm_content=2278498&utm_term=311&country=US&device=desktop&os=macos&click_id=GLcCON2UB2jV4VBw_On9AegB4oiLAYACk7_g09vhhNID"
+ },
+ {
+  "company": "token-cat-ltd",
+  "name": "Token Cat Ltd",
+  "domain": "tokencat.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "tombill-mines-ltd",
+  "name": "Tombill Mines Ltd",
+  "domain": "tombillmines.com",
+  "verdict": "api-spa",
+  "careers_url": "https://tombillmines.com/"
+ },
+ {
+  "company": "toppoint-holdings-inc",
+  "name": "Toppoint Holdings Inc.",
+  "domain": "toppoint.com",
+  "verdict": "static-html",
+  "careers_url": "https://new.toppoint.com/en"
+ },
+ {
+  "company": "torm-plc",
+  "name": "TORM plc",
+  "domain": "torm.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.torm.com/careers/working-at-torm/default.aspx"
+ },
+ {
+  "company": "torrid-holdings-inc",
+  "name": "Torrid Holdings Inc.",
+  "domain": "torrid.com",
+  "verdict": "off-domain",
+  "careers_url": "https://torridcareers.ttcportals.com/"
+ },
+ {
+  "company": "toyota-motor-corp",
+  "name": "TOYOTA MOTOR CORP/",
+  "domain": "toyotamotor.com",
+  "verdict": "off-domain",
+  "careers_url": "https://immanitys.com/r/MPI5yYlrv4qATjAlNNlNpBgDMkUz4_SxtPi79I2vQ53Mr5hJUHhLmxCAg-QoBV1f31YyOvs4QKrQCI23HkcbDcvhcP7NLlpJBKeuev0-1RrbCr0lF3spZiYWjWJZ1oMdEGj2qFmFwDz7CMvU2t4XE4BLA12C4lptawQ5iEogqUnSpdiuanMp-dBHiiV2LvgnZu27iMBtIN-wgSXA1AfIUZqmKBWfykV0RLJX3FSgHav9ZQt-zweKAqy6FuUGXkxx7HStptyfyYy0XVECW5PDdoISrAtbzdmLurCcuP_pv_T0smhumwnCkVIzXTtWAnGT4Hod_K-AojKTN9tFnJVYk4CPK132VQdyp3diTw_yN7D225tt4byhGZ9Ugh0NEDWY-0tO-hOtbjzD8LfgS9c_98YWDle6h8i1Jr5SEw2KNDOFLAuWK1QxAjc1enrdPsX5CPukyZe1inCHD28AclXUPnupH9Jr5YhScf4qRRGMJ7I6gp4z2JExKKClcmjq7vgvqfg4oi9y5kidRS62XPfH6AFmjjUz8Zri4UpezJNC0n26EA0LD18lvUZQayTXB_7sgJiOrHk74IUZE6xBmH4MhD-pjHYjjl0_RzxuEhd9ICKLnSJwb3ubvr-S4SDEPZLYiPdwqbJQvwsfxfLOdUcraANu5cbuvrgkYbp44zUhBIwlR9j5rLjHzQ-fhq1iP56PEHmmyw"
+ },
+ {
+  "company": "transact-technologies-inc",
+  "name": "TRANSACT TECHNOLOGIES INC",
+  "domain": "transact.com",
+  "verdict": "api-spa",
+  "careers_url": "https://transact.com/careers/"
+ },
+ {
+  "company": "transalta-corp",
+  "name": "TRANSALTA CORP",
+  "domain": "transalta.com",
+  "verdict": "static-html",
+  "careers_url": "https://transalta.com/careers"
+ },
+ {
+  "company": "transcanada-pipelines-ltd",
+  "name": "TRANSCANADA PIPELINES LTD",
+  "domain": "transcanadapipelines.com",
+  "verdict": "static-html",
+  "careers_url": "https://transcanadapipelines.com/careers"
+ },
+ {
+  "company": "transocean-ltd",
+  "name": "Transocean Ltd.",
+  "domain": "transocean.com",
+  "verdict": "static-html",
+  "careers_url": "https://transocean.com/careers"
+ },
+ {
+  "company": "treasure-global-inc",
+  "name": "TREASURE GLOBAL INC",
+  "domain": "treasure.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.domaineasy.com/buy-domain/treasure.com"
+ },
+ {
+  "company": "tredegar-corp",
+  "name": "TREDEGAR CORP",
+  "domain": "tredegar.com",
+  "verdict": "api-spa",
+  "careers_url": "https://tredegar.com/careers/"
+ },
+ {
+  "company": "trex-co-inc",
+  "name": "TREX CO INC",
+  "domain": "trex.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://careers.trex.com/"
+ },
+ {
+  "company": "triller-group-inc",
+  "name": "Triller Group Inc.",
+  "domain": "triller.com",
+  "verdict": "off-domain",
+  "careers_url": "https://trillercommunication.com/pressearbeit-kommunikation-kanzleien"
+ },
+ {
+  "company": "trillion-energy-international-inc",
+  "name": "Trillion Energy International Inc.",
+  "domain": "trillionenergy.com",
+  "verdict": "api-spa",
+  "careers_url": "https://trillionenergy.com/careers"
+ },
+ {
+  "company": "trilogy-metals-inc",
+  "name": "Trilogy Metals Inc.",
+  "domain": "trilogymetals.com",
+  "verdict": "static-html",
+  "careers_url": "https://trilogymetals.com/careers/"
+ },
+ {
+  "company": "trinity-biotech-plc",
+  "name": "TRINITY BIOTECH PLC",
+  "domain": "trinitybiotech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://trinitybiotech.com/our-company/"
+ },
+ {
+  "company": "trinity-capital-inc",
+  "name": "Trinity Capital Inc.",
+  "domain": "trinitycapital.com",
+  "verdict": "api-spa",
+  "careers_url": "https://trinitycapital.com/careers/"
+ },
+ {
+  "company": "trinseo-plc",
+  "name": "Trinseo PLC",
+  "domain": "trinseo.com",
+  "verdict": "ats-iframe",
+  "ats": "icims.com",
+  "careers_url": "https://www.trinseo.com/careers"
+ },
+ {
+  "company": "trio-tech-international",
+  "name": "TRIO-TECH INTERNATIONAL",
+  "domain": "triotech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.triotech.com/careers/"
+ },
+ {
+  "company": "trip-com-group-ltd",
+  "name": "Trip.com Group Ltd",
+  "domain": "trip.com",
+  "verdict": "static-html",
+  "careers_url": "https://careers.trip.com/"
+ },
+ {
+  "company": "tronox-holdings-plc",
+  "name": "Tronox Holdings plc",
+  "domain": "tronox.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.tronox.com/careers/"
+ },
+ {
+  "company": "ttm-technologies-inc",
+  "name": "TTM TECHNOLOGIES INC",
+  "domain": "ttm.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://www.ttm.com/"
+ },
+ {
+  "company": "tuya-inc",
+  "name": "Tuya Inc.",
+  "domain": "tuya.com",
+  "verdict": "api-spa",
+  "careers_url": "https://tuya.com/careers"
+ },
+ {
+  "company": "two-hands-corp",
+  "name": "Two Hands Corp",
+  "domain": "twohands.com",
+  "verdict": "off-domain",
+  "careers_url": "https://venture.com/domains/twohands.com"
+ },
+ {
+  "company": "txnm-energy-inc",
+  "name": "TXNM ENERGY INC",
+  "domain": "txnmenergy.com",
+  "verdict": "ats-iframe",
+  "ats": "jobvite",
+  "careers_url": "https://careers.txnmenergy.com/"
+ },
+ {
+  "company": "u-bx-technology-ltd",
+  "name": "U-BX Technology Ltd.",
+  "domain": "ubx.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.ubx.com/"
+ },
+ {
+  "company": "ubs-group-ag",
+  "name": "UBS Group AG",
+  "domain": "ubs.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.ubs.com/global/en/careers.html"
+ },
+ {
+  "company": "ucloudlink-group-inc",
+  "name": "uCloudlink Group Inc.",
+  "domain": "ucloudlink.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "ugi-corp-pa",
+  "name": "UGI CORP /PA/",
+  "domain": "ugi.com",
+  "verdict": "off-domain",
+  "careers_url": "https://careers.ugicorp.com/UGIUtilities/"
+ },
+ {
+  "company": "umeworld-inc",
+  "name": "UMeWorld Inc.",
+  "domain": "umeworld.com",
+  "verdict": "static-html",
+  "careers_url": "https://umeworld.com/careers.html"
+ },
+ {
+  "company": "unifi-inc",
+  "name": "UNIFI INC",
+  "domain": "unifi.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://unifi.com/careers"
+ },
+ {
+  "company": "unifirst-corp",
+  "name": "UNIFIRST CORP",
+  "domain": "unifirst.com",
+  "verdict": "ats-iframe",
+  "ats": "taleo.net",
+  "careers_url": "https://jobs.unifirst.com/"
+ },
+ {
+  "company": "union-electric-co",
+  "name": "UNION ELECTRIC CO",
+  "domain": "unionelectric.com.au",
+  "verdict": "api-spa",
+  "careers_url": "https://unionelectric.com.au/careers/"
+ },
+ {
+  "company": "united-bancorp-inc-oh",
+  "name": "UNITED BANCORP INC /OH/",
+  "domain": "unitedbancorp.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.unitedbancorp.com/corporate-information/corporate-profile/default.aspx"
+ },
+ {
+  "company": "united-breweries-co-inc",
+  "name": "UNITED BREWERIES CO INC",
+  "domain": "unitedbreweries.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.unitedbreweries.com/age-gate/17109"
+ },
+ {
+  "company": "united-therapeutics-corp",
+  "name": "UNITED THERAPEUTICS Corp",
+  "domain": "unitedtherapeutics.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://unitedtherapeutics.com/careers/to-be-a-unitherian"
+ },
+ {
+  "company": "unitil-corp",
+  "name": "UNITIL CORP",
+  "domain": "unitil.com",
+  "verdict": "api-spa",
+  "careers_url": "https://unitil.com/our-company/careers"
+ },
+ {
+  "company": "unity-software-inc",
+  "name": "Unity Software Inc.",
+  "domain": "unitysoftware.com",
+  "verdict": "off-domain",
+  "careers_url": "https://unity.com/"
+ },
+ {
+  "company": "universal-technical-institute-inc",
+  "name": "UNIVERSAL TECHNICAL INSTITUTE INC",
+  "domain": "universaltechnicalinstitute.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=universaltechnicalinstitute.com"
+ },
+ {
+  "company": "universal-token",
+  "name": "Universal Token",
+  "domain": "universaltoken.com",
+  "verdict": "api-spa",
+  "careers_url": "https://universaltoken.com/careers"
+ },
+ {
+  "company": "upay",
+  "name": "UPAY",
+  "domain": "upayments.com",
+  "verdict": "static-html",
+  "careers_url": "https://upayments.com/careers"
+ },
+ {
+  "company": "uranium-energy-corp",
+  "name": "URANIUM ENERGY CORP",
+  "domain": "uraniumenergy.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.uraniumenergy.com/careers/"
+ },
+ {
+  "company": "urban-edge-properties",
+  "name": "Urban Edge Properties",
+  "domain": "uedge.com",
+  "verdict": "api-spa",
+  "careers_url": "https://uedge.com/careers"
+ },
+ {
+  "company": "urogen-pharma-ltd",
+  "name": "UroGen Pharma Ltd.",
+  "domain": "urogen.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.urogen.com/who-we-are/work-with-us"
+ },
+ {
+  "company": "utah-medical-products-inc",
+  "name": "UTAH MEDICAL PRODUCTS INC",
+  "domain": "utahmedicalproducts.com",
+  "verdict": "static-html",
+  "careers_url": "https://careers.utahmedicalproducts.com/"
+ },
+ {
+  "company": "utstarcom-holdings-corp",
+  "name": "UTSTARCOM HOLDINGS CORP.",
+  "domain": "utstarcom.com",
+  "verdict": "api-spa",
+  "careers_url": "https://utstarcom.com/en/careers"
+ },
+ {
+  "company": "v-f-corp",
+  "name": "V F CORP",
+  "domain": "vfcorp.net",
+  "verdict": "static-html",
+  "careers_url": "https://vfcorp.net/careers"
+ },
+ {
+  "company": "vail-resorts-inc",
+  "name": "VAIL RESORTS INC",
+  "domain": "vailresorts.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "valaris-ltd",
+  "name": "Valaris Ltd",
+  "domain": "valaris.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.valaris.com/careers/"
+ },
+ {
+  "company": "valhalla-metals-inc",
+  "name": "VALHALLA METALS INC.",
+  "domain": "valhallametals.com",
+  "verdict": "api-spa",
+  "careers_url": "https://valhallametals.com/"
+ },
+ {
+  "company": "valvoline-inc",
+  "name": "VALVOLINE INC",
+  "domain": "valvoline.com",
+  "verdict": "off-domain",
+  "careers_url": "https://jobs.vioc.com:443/"
+ },
+ {
+  "company": "varonis-systems-inc",
+  "name": "VARONIS SYSTEMS INC",
+  "domain": "varonis.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.varonis.com/careers"
+ },
+ {
+  "company": "verano-holdings-corp",
+  "name": "Verano Holdings Corp.",
+  "domain": "verano.com",
+  "verdict": "ats-iframe",
+  "ats": "successfactors",
+  "careers_url": "https://careers.verano.com/"
+ },
+ {
+  "company": "verrica-pharmaceuticals-inc",
+  "name": "Verrica Pharmaceuticals Inc.",
+  "domain": "verrica.com",
+  "verdict": "api-spa",
+  "careers_url": "https://verrica.com/careers/"
+ },
+ {
+  "company": "versigent-plc",
+  "name": "Versigent PLC",
+  "domain": "versigent.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.versigent.com/careers"
+ },
+ {
+  "company": "vestis-corp",
+  "name": "Vestis Corp",
+  "domain": "vestis.com",
+  "verdict": "ats-iframe",
+  "ats": "dayforce",
+  "careers_url": "https://www.vestis.com/careers"
+ },
+ {
+  "company": "vicarious-surgical-inc",
+  "name": "Vicarious Surgical Inc.",
+  "domain": "vicarioussurgical.com",
+  "verdict": "ats-iframe",
+  "ats": "greenhouse.io",
+  "careers_url": "https://www.vicarioussurgical.com/careers"
+ },
+ {
+  "company": "vici-properties-inc",
+  "name": "VICI PROPERTIES INC.",
+  "domain": "viciproperties.com",
+  "verdict": "api-spa",
+  "careers_url": "https://viciproperties.com/careers/"
+ },
+ {
+  "company": "vici-properties",
+  "name": "Vici Properties",
+  "domain": "viciproperties.com",
+  "verdict": "api-spa",
+  "careers_url": "https://viciproperties.com/careers/"
+ },
+ {
+  "company": "victoria-s-secret-co",
+  "name": "Victoria's Secret & Co.",
+  "domain": "victoriassecret.com",
+  "verdict": "ats-iframe",
+  "ats": "taleo.net",
+  "careers_url": "https://careers.victoriassecret.com/en/"
+ },
+ {
+  "company": "village-super-market-inc",
+  "name": "VILLAGE SUPER MARKET INC",
+  "domain": "villagesupermarket.com",
+  "verdict": "static-html",
+  "careers_url": "https://villagesupermarket.com/careers"
+ },
+ {
+  "company": "vince-holding-corp",
+  "name": "VINCE HOLDING CORP.",
+  "domain": "vince.com",
+  "verdict": "off-domain",
+  "careers_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/intermediateRedirect.html?cid=1c20055c-01a7-49a4-b14d-00f51614e021&ccId=19000101_000001&type=MP&lang=en_US"
+ },
+ {
+  "company": "vipshop-holdings-ltd",
+  "name": "Vipshop Holdings Ltd",
+  "domain": "vipshop.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.vip.com/"
+ },
+ {
+  "company": "virtuix-holdings-inc",
+  "name": "Virtuix Holdings Inc.",
+  "domain": "virtuix.com",
+  "verdict": "api-spa",
+  "careers_url": "https://virtuix.com/careers"
+ },
+ {
+  "company": "visitiq-corp",
+  "name": "VisitIQ Corp.",
+  "domain": "visitiq.com",
+  "verdict": "static-html",
+  "careers_url": "https://visitiq.com/careers"
+ },
+ {
+  "company": "visteon-corp",
+  "name": "VISTEON CORP",
+  "domain": "visteon.com",
+  "verdict": "ats-iframe",
+  "ats": "ultipro",
+  "careers_url": "https://www.visteon.com:443/careers/join-us/default.aspx"
+ },
+ {
+  "company": "vivid-seats-inc",
+  "name": "Vivid Seats Inc.",
+  "domain": "vividseats.com",
+  "verdict": "ats-iframe",
+  "ats": "greenhouse.io",
+  "careers_url": "https://corporate.vividseats.com/careers/"
+ },
+ {
+  "company": "volatus-aerospace-inc",
+  "name": "Volatus Aerospace Inc.",
+  "domain": "volatusaerospace.com",
+  "verdict": "ats-iframe",
+  "ats": "bamboohr",
+  "careers_url": "https://volatusaerospace.com/careers/"
+ },
+ {
+  "company": "volitionrx-ltd",
+  "name": "VOLITIONRX LTD",
+  "domain": "volitionrx.com",
+  "verdict": "off-domain",
+  "careers_url": "https://volition.com/careers-at-volition/"
+ },
+ {
+  "company": "vor-biopharma-inc",
+  "name": "Vor Biopharma Inc.",
+  "domain": "vorbiopharma.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.vorbio.com/careers/"
+ },
+ {
+  "company": "vr-resources-ltd",
+  "name": "VR Resources Ltd.",
+  "domain": "vr.com",
+  "verdict": "off-domain",
+  "careers_url": "https://venture.com/domains/vr.com"
+ },
+ {
+  "company": "vtv-therapeutics-inc",
+  "name": "vTv Therapeutics Inc.",
+  "domain": "vtvtherapeutics.com",
+  "verdict": "api-spa",
+  "careers_url": "https://vtvtherapeutics.com/careers/"
+ },
+ {
+  "company": "vuzix-corp",
+  "name": "Vuzix Corp",
+  "domain": "vuzix.com",
+  "verdict": "ats-iframe",
+  "ats": "paylocity",
+  "careers_url": "https://www.vuzix.com/pages/careers#gbaid664374"
+ },
+ {
+  "company": "vyne-therapeutics-inc",
+  "name": "VYNE Therapeutics Inc.",
+  "domain": "vynetherapeutics.com",
+  "verdict": "api-spa",
+  "careers_url": "https://vynetherapeutics.com/careers/"
+ },
+ {
+  "company": "wafd-inc",
+  "name": "WAFD INC",
+  "domain": "wafd.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.wafdbank.com/about-us/banking-careers"
+ },
+ {
+  "company": "walt-disney-co",
+  "name": "Walt Disney Co",
+  "domain": "waltdisney.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.disney.com/"
+ },
+ {
+  "company": "warby-parker-inc",
+  "name": "Warby Parker Inc.",
+  "domain": "warbyparker.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.warbyparker.com/careers"
+ },
+ {
+  "company": "watsco-inc",
+  "name": "WATSCO INC",
+  "domain": "watsco.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.watsco.com/careers/"
+ },
+ {
+  "company": "wave-life-sciences-ltd",
+  "name": "Wave Life Sciences Ltd.",
+  "domain": "wavelifesciences.com",
+  "verdict": "api-spa",
+  "careers_url": "https://wavelifesciences.com/careers/"
+ },
+ {
+  "company": "waystar-holding-corp",
+  "name": "Waystar Holding Corp.",
+  "domain": "waystar.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.waystar.com/?vs=4980&utm_source=waystar.com-DE&utm_medium=Other&utm_campaign=waystar.com"
+ },
+ {
+  "company": "wealth-management-system-inc",
+  "name": "Wealth Management System Inc.",
+  "domain": "wealthmanagementsystem.com",
+  "verdict": "off-domain",
+  "careers_url": "https://immanitys.com/r/RTbSHHjeZHxTxIgZhL1URjfOg2BR9P2d1qSK6sdqJvbH2djDVyOgSOQqzwWp7J-cSOldm92x3GWCnSPFbErJi5KKCSfVVdvNAcElF-aE8ONbr0yDxywaAhAla_9EWEOrqK7d8ZcakJlEzjQqAN1tUfyuXEDuzPlYJdhBt4RBZeUAlTNxbeuGWLgFg2s2ZvjB6LTlaqhNr1Tps9B3RwFcFeHjCMSqeLbaa_HOVdv2Wzieirm1AcpdZzXi67u_UFimTAzuL0rmSezkvLNDURl2U3V6Ki3CPWWLM6LLxFsPmErSueu8Sd7A_iRfAsQaT1uhbBA4V3AFrUHrGJC_mMd3FmZ3dEK_V69GkuocI9-bfhg0f2AMDGciDnepV4W3TACvxXAqlHFvEt0OQMrVdmqTYjKyLOZWnPvRegPAIZeezpD_1OhWajbK1cspB_jXrdkHOuwy8mRTcHMRdmHQDtGuKNAXZgVq-ce3rRvFspjW0zc9IRyxtE4hTjj3DHhS9ti1uF5gcP8To6QVE1GqRD1ZMpB_bhWKkfMyXywq3xEFKjxubETOS-k1lgNPvx_OBBgYgBw4txRCnUdSPTsWpS5mZGg18cTMOIbgD8SD6KHHueA0DtVasGwD1r-NzgKAvbW-Tj6b8vYmGS0lVt1-FIfG33PTpOVa-QX4gEPRQP5josN_0O0-yw_MyResViOPaA2N8SuSPB1O8LpsrZle0DJ2UrPkDyxcwYaER7y2MdnCB0Z8bRh4pNwhB6cZZyClG_cSLGyYyBSSWvORmbpHNZUMPyEAGLybNAXs_ahnzA"
+ },
+ {
+  "company": "weatherford-international-plc",
+  "name": "Weatherford International plc",
+  "domain": "weatherford.com",
+  "verdict": "ats-iframe",
+  "ats": "smartrecruiters",
+  "careers_url": "https://www.weatherford.com/careers/"
+ },
+ {
+  "company": "webster-financial-corp",
+  "name": "WEBSTER FINANCIAL CORP",
+  "domain": "webster.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.merriam-webster.com:443/careers"
+ },
+ {
+  "company": "weibo-corp",
+  "name": "WEIBO Corp",
+  "domain": "weibo.com",
+  "verdict": "static-html",
+  "careers_url": "https://passport.weibo.com/visitor/visitor?entry=miniblog&a=enter&url=https%3A%2F%2Fweibo.com%2Fcareers&domain=weibo.com&ua=Mozilla%2F5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Safari%2F537.36&_rand=1782253532561&sudaref="
+ },
+ {
+  "company": "wellchange-holdings-co-ltd",
+  "name": "Wellchange Holdings Co Ltd",
+  "domain": "wellchange.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=wellchange.com"
+ },
+ {
+  "company": "wesbanco-inc",
+  "name": "WESBANCO INC",
+  "domain": "wesbanco.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.wesbanco.com/careers/"
+ },
+ {
+  "company": "weshop-holdings-ltd",
+  "name": "WeShop Holdings Ltd",
+  "domain": "weshop.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.weshop.com/jobs"
+ },
+ {
+  "company": "western-alliance-bancorporation",
+  "name": "WESTERN ALLIANCE BANCORPORATION",
+  "domain": "westernalliancebancorporation.com",
+  "verdict": "ats-iframe",
+  "ats": "myworkdayjobs",
+  "careers_url": "https://www.westernalliancebancorporation.com/about-us/careers"
+ },
+ {
+  "company": "wetouch-technology-inc",
+  "name": "Wetouch Technology Inc.",
+  "domain": "wetouch.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://perfectdomain.com/domain/wetouch.com"
+ },
+ {
+  "company": "wetour-robotics-ltd",
+  "name": "Wetour Robotics Ltd",
+  "domain": "wetourrobotics.com",
+  "verdict": "static-html",
+  "careers_url": "https://wetourrobotics.com/careers"
+ },
+ {
+  "company": "whitestone-reit",
+  "name": "Whitestone REIT",
+  "domain": "whitestonereit.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.whitestonereit.com/company/"
+ },
+ {
+  "company": "widepoint-corp",
+  "name": "WIDEPOINT CORP",
+  "domain": "widepoint.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.widepoint.com/about/careers/"
+ },
+ {
+  "company": "willscot-holdings-corp",
+  "name": "WillScot Holdings Corp",
+  "domain": "willscot.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.willscot.com/"
+ },
+ {
+  "company": "wilson-bank-holding-co",
+  "name": "WILSON BANK HOLDING CO",
+  "domain": "wilsonbank.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.wilsonbank.com/about-us/a-career-at-wbt"
+ },
+ {
+  "company": "wingstop-inc",
+  "name": "Wingstop Inc.",
+  "domain": "wingstop.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.wingstop.com:443/careers"
+ },
+ {
+  "company": "winmark-corp",
+  "name": "WINMARK CORP",
+  "domain": "winmarkcorporation.com",
+  "verdict": "api-spa",
+  "careers_url": "https://winmarkcorporation.com/careers/"
+ },
+ {
+  "company": "winnebago-industries-inc",
+  "name": "WINNEBAGO INDUSTRIES INC",
+  "domain": "winnebago.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.winnebago.com/careers"
+ },
+ {
+  "company": "wix-com-ltd",
+  "name": "Wix.com Ltd.",
+  "domain": "wix.com",
+  "verdict": "api-spa",
+  "careers_url": "https://careers.wix.com/"
+ },
+ {
+  "company": "wolverine-world-wide-inc-de",
+  "name": "WOLVERINE WORLD WIDE INC /DE/",
+  "domain": "wolverineworldwide.com",
+  "verdict": "api-spa",
+  "careers_url": "https://wolverineworldwide.com/careers"
+ },
+ {
+  "company": "woodside-energy-group-ltd",
+  "name": "WOODSIDE ENERGY GROUP LTD",
+  "domain": "woodsideenergy.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.woodside.com/careers"
+ },
+ {
+  "company": "work-medical-technology-group-ltd",
+  "name": "WORK Medical Technology Group LTD",
+  "domain": "workmedical.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=workmedical.com"
+ },
+ {
+  "company": "workhorse-group-inc",
+  "name": "Workhorse Group Inc.",
+  "domain": "workhorse.com",
+  "verdict": "api-spa",
+  "careers_url": "https://workhorse.com/careers/"
+ },
+ {
+  "company": "world-kinect-corp",
+  "name": "WORLD KINECT CORP",
+  "domain": "worldkinect.com",
+  "verdict": "off-domain",
+  "careers_url": "https://www.world-kinect.com/careers"
+ },
+ {
+  "company": "worldwide-nft-inc",
+  "name": "Worldwide NFT Inc.",
+  "domain": "nft.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.nft.com/careers"
+ },
+ {
+  "company": "xbiotech-inc",
+  "name": "XBiotech Inc.",
+  "domain": "xbiotech.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.xbiotech.com/careers"
+ },
+ {
+  "company": "xchg-ltd",
+  "name": "XCHG Ltd",
+  "domain": "xchg.com",
+  "verdict": "static-html",
+  "careers_url": "https://xchg.com/careers"
+ },
+ {
+  "company": "xencor-inc",
+  "name": "Xencor Inc",
+  "domain": "xencor.com",
+  "verdict": "ats-iframe",
+  "ats": "dayforce",
+  "careers_url": "https://xencor.com/careers/"
+ },
+ {
+  "company": "xiao-i-corp",
+  "name": "Xiao-I Corp",
+  "domain": "xiaoi.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.xiaoi.com/404"
+ },
+ {
+  "company": "xperi-inc",
+  "name": "Xperi Inc.",
+  "domain": "xperi.com",
+  "verdict": "api-spa",
+  "careers_url": "https://xperi.com/careers/"
+ },
+ {
+  "company": "xunlei-ltd",
+  "name": "Xunlei Ltd",
+  "domain": "xunlei.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.xunlei.com/careers"
+ },
+ {
+  "company": "yalla-group-ltd",
+  "name": "Yalla Group Ltd",
+  "domain": "yalla.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.yalla.com/careers"
+ },
+ {
+  "company": "yi-po-international-holdings-ltd",
+  "name": "Yi Po International Holdings Ltd",
+  "domain": "yipo.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "york-water-co",
+  "name": "YORK WATER CO",
+  "domain": "yorkwater.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.yorkwater.com/contact-us/careers/"
+ },
+ {
+  "company": "zeo-energy-corp",
+  "name": "Zeo Energy Corp.",
+  "domain": "zeoenergy.com",
+  "verdict": "static-html",
+  "careers_url": "https://zeoenergy.com/careers"
+ },
+ {
+  "company": "zeta-network-group",
+  "name": "Zeta Network Group",
+  "domain": "zetanetwork.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://www.hugedomains.com/domain_profile.cfm?d=zetanetwork.com"
+ },
+ {
+  "company": "zhihu-inc",
+  "name": "Zhihu Inc.",
+  "domain": "zhihu.com",
+  "verdict": "static-html",
+  "careers_url": "https://www.zhihu.com/signin?next=%2F"
+ },
+ {
+  "company": "zim-integrated-shipping-services-ltd",
+  "name": "ZIM Integrated Shipping Services Ltd.",
+  "domain": "zimintegratedshipping.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "zincore-metals-inc",
+  "name": "ZINCORE METALS INC",
+  "domain": "zincoremetals.com",
+  "verdict": "dead-parked",
+  "careers_url": "https://zincoremetals.com/careers"
+ },
+ {
+  "company": "zkh-group-ltd",
+  "name": "ZKH Group Ltd",
+  "domain": "zkh.com",
+  "verdict": "no-careers",
+  "careers_url": ""
+ },
+ {
+  "company": "zumiez-inc",
+  "name": "Zumiez Inc",
+  "domain": "zumiez.com",
+  "verdict": "api-spa",
+  "careers_url": "https://www.zumiez.com/jobs"
+ },
+ {
+  "company": "zura-bio-ltd",
+  "name": "Zura Bio Ltd",
+  "domain": "zurabio.com",
+  "verdict": "api-spa",
+  "careers_url": "https://zurabio.com/careers/"
+ }
+]

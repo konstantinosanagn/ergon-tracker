@@ -1,0 +1,404 @@
+[
+ {
+  "name": "NABORS INDUSTRIES LTD",
+  "domain": "nabors.com",
+  "detected_ats": "taleo.net",
+  "careers_url": "https://www.nabors.com/careers/overview/"
+ },
+ {
+  "name": "Nano Nuclear Energy Inc.",
+  "domain": "nanonuclearenergy.com",
+  "detected_ats": "phenom",
+  "careers_url": "https://nanonuclearenergy.com/careers/"
+ },
+ {
+  "name": "NATIONAL GRID PLC",
+  "domain": "nationalgrid.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://www.nationalgrid.com/careers"
+ },
+ {
+  "name": "NEWMARKET CORP",
+  "domain": "newmarket.com",
+  "detected_ats": "icims.com",
+  "careers_url": "https://www.newmarket.com/careers/"
+ },
+ {
+  "name": "Nextpower Inc.",
+  "domain": "nextpower.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://nextpower.com/careers"
+ },
+ {
+  "name": "Nightingale Health Plc",
+  "domain": "nightingalehealth.com",
+  "detected_ats": "teamtailor",
+  "careers_url": "https://nightingalehealth.com/careers"
+ },
+ {
+  "name": "Nomad Foods Ltd",
+  "domain": "nomadfoods.com",
+  "detected_ats": "icims.com",
+  "careers_url": "https://www.nomadfoods.com/careers/"
+ },
+ {
+  "name": "NYB Holdings Ltd",
+  "domain": "nyb.com",
+  "detected_ats": "paylocity",
+  "careers_url": "https://www.nyb.com/group-companies/new-york-blower/careers/"
+ },
+ {
+  "name": "Oatly Group AB",
+  "domain": "oatly.com",
+  "detected_ats": "teamtailor",
+  "careers_url": "https://careers.oatly.com/"
+ },
+ {
+  "name": "Open Lending Corp",
+  "domain": "openlending.com",
+  "detected_ats": "workable.com",
+  "careers_url": "https://www.openlending.com/careers/"
+ },
+ {
+  "name": "OpenPayd Global Holdings Ltd",
+  "domain": "openpayd.com",
+  "detected_ats": "lever.co",
+  "careers_url": "https://www.openpayd.com/careers/"
+ },
+ {
+  "name": "ORASURE TECHNOLOGIES INC",
+  "domain": "orasure.com",
+  "detected_ats": "lever.co",
+  "careers_url": "https://orasure.com/careers.html"
+ },
+ {
+  "name": "PAR TECHNOLOGY CORP",
+  "domain": "par.com",
+  "detected_ats": "dayforce",
+  "careers_url": "https://www.par.com/careers/"
+ },
+ {
+  "name": "PARTNERRE LTD",
+  "domain": "partnerre.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.partnerre.com/"
+ },
+ {
+  "name": "Paylocity Holding Corp",
+  "domain": "paylocity.com",
+  "detected_ats": "paylocity",
+  "careers_url": "https://www.paylocity.com/company/careers/"
+ },
+ {
+  "name": "PERRIGO Co plc",
+  "domain": "perrigo.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.perrigo.com/"
+ },
+ {
+  "name": "Phenom Resources Corp.",
+  "domain": "phenom.com",
+  "detected_ats": "phenom",
+  "careers_url": "https://careers.phenom.com/us/en"
+ },
+ {
+  "name": "POET TECHNOLOGIES INC.",
+  "domain": "poet.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://poet.com/careers"
+ },
+ {
+  "name": "PRECISION DRILLING Corp",
+  "domain": "precisiondrilling.com",
+  "detected_ats": "breezy.hr",
+  "careers_url": "https://www.precisiondrilling.com/careers/"
+ },
+ {
+  "name": "Prenetics Global Ltd",
+  "domain": "prenetics.com",
+  "detected_ats": "teamtailor",
+  "careers_url": "https://careers.prenetics.com/"
+ },
+ {
+  "name": "ProFrac Holding Corp.",
+  "domain": "profrac.com",
+  "detected_ats": "dayforce",
+  "careers_url": "https://profrac.com/"
+ },
+ {
+  "name": "PURE CYCLE CORP",
+  "domain": "purecycle.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://www.purecycle.com/careers"
+ },
+ {
+  "name": "PureTech Health plc",
+  "domain": "puretechhealth.com",
+  "detected_ats": "greenhouse.io",
+  "careers_url": "https://www.puretechhealth.com/careers/"
+ },
+ {
+  "name": "Q32 Bio Inc.",
+  "domain": "q32bio.com",
+  "detected_ats": "greenhouse.io",
+  "careers_url": "https://www.q32bio.com/careers/"
+ },
+ {
+  "name": "Quantinuum Inc.",
+  "domain": "quantinuum.com",
+  "detected_ats": "lever.co",
+  "careers_url": "https://www.quantinuum.com/company/careers"
+ },
+ {
+  "name": "QuidelOrtho Corp",
+  "domain": "quidelortho.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://www.quidelortho.com/careers"
+ },
+ {
+  "name": "Rallybio Corp",
+  "domain": "rallybio.com",
+  "detected_ats": "bamboohr",
+  "careers_url": "https://rallybio.com/careers/"
+ },
+ {
+  "name": "Ranpak Holdings Corp.",
+  "domain": "ranpak.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://www.ranpak.com/careers/"
+ },
+ {
+  "name": "ROGERS COMMUNICATIONS INC",
+  "domain": "rogers.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://jobs.rogers.com/?utm_source=Rogerscorporate&utm_campaign=corpfooter"
+ },
+ {
+  "name": "ROYAL BANK OF CANADA",
+  "domain": "rbc.com",
+  "detected_ats": "phenom",
+  "careers_url": "https://jobs.rbc.com/ca/en/"
+ },
+ {
+  "name": "Seaport Entertainment Group Inc.",
+  "domain": "seaportentertainment.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://www.seaportentertainment.com/careers/"
+ },
+ {
+  "name": "Seneca Foods Corp",
+  "domain": "senecafoods.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.senecafoods.com/"
+ },
+ {
+  "name": "SITE Centers Corp.",
+  "domain": "sitecenters.com",
+  "detected_ats": "paylocity",
+  "careers_url": "https://www.sitecenters.com/careers"
+ },
+ {
+  "name": "SK TELECOM CO LTD",
+  "domain": "sktelecom.com",
+  "detected_ats": "taleo.net",
+  "careers_url": "https://careers.sktelecom.com/"
+ },
+ {
+  "name": "SKYWEST INC",
+  "domain": "skywest.com",
+  "detected_ats": "icims.com",
+  "careers_url": "https://www.skywest.com/skywest-airline-jobs/"
+ },
+ {
+  "name": "Soitec SA",
+  "domain": "soitec.com",
+  "detected_ats": "icims.com",
+  "careers_url": "https://www.soitec.com/home/people"
+ },
+ {
+  "name": "Solana Co",
+  "domain": "solana.com",
+  "detected_ats": "greenhouse.io",
+  "careers_url": "https://jobs.solana.com/jobs"
+ },
+ {
+  "name": "STANDEX INTERNATIONAL CORP/DE/",
+  "domain": "standex.com",
+  "detected_ats": "dayforce",
+  "careers_url": "https://standex.com/careers/"
+ },
+ {
+  "name": "STRATASYS LTD.",
+  "domain": "stratasys.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.stratasys.com/"
+ },
+ {
+  "name": "SUN COMMUNITIES INC",
+  "domain": "suncommunities.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.suncommunities.com/"
+ },
+ {
+  "name": "TALOS ENERGY INC.",
+  "domain": "talosenergy.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://www.talosenergy.com/careers/overview/default.aspx"
+ },
+ {
+  "name": "Target Hospitality Corp.",
+  "domain": "targethospitality.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://www.targethospitality.com/about-us/careers/"
+ },
+ {
+  "name": "TASEKO MINES LTD",
+  "domain": "tasekomines.com",
+  "detected_ats": "jobvite",
+  "careers_url": "https://tasekomines.com/careers/"
+ },
+ {
+  "name": "TD SYNNEX CORP",
+  "domain": "tdsynnex.com",
+  "detected_ats": "phenom",
+  "careers_url": "https://careers.tdsynnex.com/us/en"
+ },
+ {
+  "name": "TechnipFMC plc",
+  "domain": "technipfmc.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.technipfmc.com/"
+ },
+ {
+  "name": "TECK RESOURCES LTD",
+  "domain": "teck.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://www.teck.com/careers/"
+ },
+ {
+  "name": "TELUS CORP",
+  "domain": "telus.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.telus.com/"
+ },
+ {
+  "name": "TELYRX HOLDINGS INC.",
+  "domain": "telyrx.com",
+  "detected_ats": "paylocity",
+  "careers_url": "https://telyrx.com/about-us/careers"
+ },
+ {
+  "name": "ThredUp Inc.",
+  "domain": "thredup.com",
+  "detected_ats": "phenom",
+  "careers_url": "https://careers.thredup.com/us/en"
+ },
+ {
+  "name": "TIDEWATER INC",
+  "domain": "tidewater.com",
+  "detected_ats": "taleo.net",
+  "careers_url": "https://www.tidewater.com/careers"
+ },
+ {
+  "name": "TREX CO INC",
+  "domain": "trex.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://careers.trex.com/"
+ },
+ {
+  "name": "Trinseo PLC",
+  "domain": "trinseo.com",
+  "detected_ats": "icims.com",
+  "careers_url": "https://www.trinseo.com/careers"
+ },
+ {
+  "name": "TTM TECHNOLOGIES INC",
+  "domain": "ttm.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://www.ttm.com/"
+ },
+ {
+  "name": "TXNM ENERGY INC",
+  "domain": "txnmenergy.com",
+  "detected_ats": "jobvite",
+  "careers_url": "https://careers.txnmenergy.com/"
+ },
+ {
+  "name": "UNIFI INC",
+  "domain": "unifi.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://unifi.com/careers"
+ },
+ {
+  "name": "UNIFIRST CORP",
+  "domain": "unifirst.com",
+  "detected_ats": "taleo.net",
+  "careers_url": "https://jobs.unifirst.com/"
+ },
+ {
+  "name": "UNITED THERAPEUTICS Corp",
+  "domain": "unitedtherapeutics.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://unitedtherapeutics.com/careers/to-be-a-unitherian"
+ },
+ {
+  "name": "Verano Holdings Corp.",
+  "domain": "verano.com",
+  "detected_ats": "successfactors",
+  "careers_url": "https://careers.verano.com/"
+ },
+ {
+  "name": "Vicarious Surgical Inc.",
+  "domain": "vicarioussurgical.com",
+  "detected_ats": "greenhouse.io",
+  "careers_url": "https://www.vicarioussurgical.com/careers"
+ },
+ {
+  "name": "Victoria's Secret & Co.",
+  "domain": "victoriassecret.com",
+  "detected_ats": "taleo.net",
+  "careers_url": "https://careers.victoriassecret.com/en/"
+ },
+ {
+  "name": "VISTEON CORP",
+  "domain": "visteon.com",
+  "detected_ats": "ultipro",
+  "careers_url": "https://www.visteon.com:443/careers/join-us/default.aspx"
+ },
+ {
+  "name": "Vivid Seats Inc.",
+  "domain": "vividseats.com",
+  "detected_ats": "greenhouse.io",
+  "careers_url": "https://corporate.vividseats.com/careers/"
+ },
+ {
+  "name": "Volatus Aerospace Inc.",
+  "domain": "volatusaerospace.com",
+  "detected_ats": "bamboohr",
+  "careers_url": "https://volatusaerospace.com/careers/"
+ },
+ {
+  "name": "Vuzix Corp",
+  "domain": "vuzix.com",
+  "detected_ats": "paylocity",
+  "careers_url": "https://www.vuzix.com/pages/careers#gbaid664374"
+ },
+ {
+  "name": "Weatherford International plc",
+  "domain": "weatherford.com",
+  "detected_ats": "smartrecruiters",
+  "careers_url": "https://www.weatherford.com/careers/"
+ },
+ {
+  "name": "WESTERN ALLIANCE BANCORPORATION",
+  "domain": "westernalliancebancorporation.com",
+  "detected_ats": "myworkdayjobs",
+  "careers_url": "https://www.westernalliancebancorporation.com/about-us/careers"
+ },
+ {
+  "name": "Xencor Inc",
+  "domain": "xencor.com",
+  "detected_ats": "dayforce",
+  "careers_url": "https://xencor.com/careers/"
+ }
+]

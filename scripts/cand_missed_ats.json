@@ -14,5 +14,21 @@
   "domain": "siga.com",
   "careers_url": "https://www.siga.com/careers",
   "via": "missed-ats-handoff"
+ },
+ {
+  "company": "tantalus-systems-holding-inc",
+  "ats": "bamboohr",
+  "token": "tantalussystems",
+  "domain": "tantalus.com",
+  "careers_url": "https://tantalus.com/careers/",
+  "via": "missed-ats-handoff"
+ },
+ {
+  "company": "vestis-corp",
+  "ats": "dayforce",
+  "token": "vestis",
+  "domain": "vestis.com",
+  "careers_url": "https://www.vestis.com/careers",
+  "via": "missed-ats-handoff"
  }
 ]
