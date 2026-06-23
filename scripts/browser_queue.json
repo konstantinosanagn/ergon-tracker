@@ -37,6 +37,2707 @@
   ]
  },
  {
+  "company": "magic-software-enterprises-ltd",
+  "name": "MAGIC SOFTWARE ENTERPRISES LTD",
+  "domain": "magicsoftware.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "magnitude-international-ltd",
+  "name": "Magnitude International Ltd",
+  "domain": "magnitude.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "marten-transport-ltd",
+  "name": "MARTEN TRANSPORT LTD",
+  "domain": "martentransport.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "martin-marietta-materials-inc",
+  "name": "MARTIN MARIETTA MATERIALS INC",
+  "domain": "martinmariettamaterials.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "masonglory-ltd",
+  "name": "Masonglory Ltd",
+  "domain": "masonglory.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "mediwound-ltd",
+  "name": "MediWound Ltd.",
+  "domain": "mediwound.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "megan-holdings-ltd",
+  "name": "Megan Holdings Ltd.",
+  "domain": "megan.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "metaoptics-ltd",
+  "name": "MetaOptics Ltd",
+  "domain": "metaoptics.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "mind-cti-ltd",
+  "name": "MIND CTI LTD",
+  "domain": "mindcti.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "mindmaze-therapeutics-holding-sa",
+  "name": "MindMaze Therapeutics Holding SA",
+  "domain": "mindmazetherapeutics.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "mobilicom-ltd",
+  "name": "Mobilicom Ltd",
+  "domain": "mobilicom.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nabors-industries-ltd",
+  "name": "NABORS INDUSTRIES LTD",
+  "domain": "nabors.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "namib-minerals",
+  "name": "Namib Minerals",
+  "domain": "namibminerals.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nano-nuclear-energy-inc",
+  "name": "Nano Nuclear Energy Inc.",
+  "domain": "nanonuclearenergy.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "natics-corp",
+  "name": "Natics Corp.",
+  "domain": "natics.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "national-grid-plc",
+  "name": "NATIONAL GRID PLC",
+  "domain": "nationalgrid.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "0 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nayax-ltd",
+  "name": "Nayax Ltd.",
+  "domain": "nayax.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "neovolta-inc",
+  "name": "NeoVolta Inc.",
+  "domain": "neovolta.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "net-lease-office-properties",
+  "name": "Net Lease Office Properties",
+  "domain": "netleaseofficeproperties.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "netcapital-inc",
+  "name": "Netcapital Inc.",
+  "domain": "netcapitalinc.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "netclass-technology-inc",
+  "name": "NetClass Technology Inc",
+  "domain": "netclass.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "neurogene-inc",
+  "name": "Neurogene Inc.",
+  "domain": "neurogene.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "neutrans-inc",
+  "name": "Neutrans Inc.",
+  "domain": "neutrans.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "new-fortress-energy-inc",
+  "name": "New Fortress Energy Inc.",
+  "domain": "newfortressenergy.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "new-momentum-corp",
+  "name": "New Momentum Corp.",
+  "domain": "newmomentum.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "newmarket-corp",
+  "name": "NEWMARKET CORP",
+  "domain": "newmarket.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nexa-resources-s-a",
+  "name": "Nexa Resources S.A.",
+  "domain": "nexasa.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nexentis-technologies-inc",
+  "name": "Nexentis Technologies Inc.",
+  "domain": "nexentis.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "next-technology-holding-inc",
+  "name": "Next Technology Holding Inc.",
+  "domain": "next.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nextnav-inc",
+  "name": "NEXTNAV INC.",
+  "domain": "nextnav.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nextpower-inc",
+  "name": "Nextpower Inc.",
+  "domain": "nextpower.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nft-ltd",
+  "name": "NFT Ltd",
+  "domain": "nft.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nicola-mining-inc",
+  "name": "NICOLA MINING INC.",
+  "domain": "nicolamining.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nightingale-health-plc",
+  "name": "Nightingale Health Plc",
+  "domain": "nightingalehealth.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nio-inc",
+  "name": "NIO Inc.",
+  "domain": "nio.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "niu-technologies",
+  "name": "Niu Technologies",
+  "domain": "niu.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nn-inc",
+  "name": "NN INC",
+  "domain": "nninc.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nomad-foods-ltd",
+  "name": "Nomad Foods Ltd",
+  "domain": "nomadfoods.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "noodles-co",
+  "name": "NOODLES & Co",
+  "domain": "noodles.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "northann-corp",
+  "name": "Northann Corp.",
+  "domain": "northann.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "northwest-biotherapeutics-inc",
+  "name": "NORTHWEST BIOTHERAPEUTICS INC",
+  "domain": "northwestbiotherapeutics.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "northwest-natural-holding-co",
+  "name": "Northwest Natural Holding Co",
+  "domain": "northwestnatural.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "norwood-financial-corp",
+  "name": "NORWOOD FINANCIAL CORP",
+  "domain": "norwood.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nov-inc",
+  "name": "NOV Inc.",
+  "domain": "novin.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "novocure-ltd",
+  "name": "NovoCure Ltd",
+  "domain": "novocure.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nstar-electric-co",
+  "name": "NSTAR ELECTRIC CO",
+  "domain": "nstarelectric.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nucana-plc",
+  "name": "NuCana plc",
+  "domain": "nucana.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nusatrip-inc",
+  "name": "NUSATRIP Inc",
+  "domain": "nusatrip.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nuscale-power-corp",
+  "name": "NUSCALE POWER Corp",
+  "domain": "nuscalepower.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "0 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nutex-health-inc",
+  "name": "Nutex Health Inc.",
+  "domain": "nutexhealth.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nutriband-inc",
+  "name": "NutriBand Inc.",
+  "domain": "nutriband.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nutrien-ltd",
+  "name": "Nutrien Ltd.",
+  "domain": "nutrien.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nuvation-bio-inc",
+  "name": "Nuvation Bio Inc.",
+  "domain": "nuvationbio.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nuvve-holding-corp",
+  "name": "Nuvve Holding Corp.",
+  "domain": "nuvve.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nxt-energy-solutions-inc",
+  "name": "NXT Energy Solutions Inc.",
+  "domain": "nxtenergy.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nyb-holdings-ltd",
+  "name": "NYB Holdings Ltd",
+  "domain": "nyb.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "nyxoah-sa",
+  "name": "Nyxoah SA",
+  "domain": "nyxoah.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "oatly-group-ab",
+  "name": "Oatly Group AB",
+  "domain": "oatly.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "obsidian-energy-ltd",
+  "name": "OBSIDIAN ENERGY LTD.",
+  "domain": "obsidianenergy.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "oceaneering-international-inc",
+  "name": "OCEANEERING INTERNATIONAL INC",
+  "domain": "oceaneering.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "oculis-holding-ag",
+  "name": "Oculis Holding AG",
+  "domain": "oculis.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "offerpad-solutions-inc",
+  "name": "Offerpad Solutions Inc.",
+  "domain": "offerpad.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "ofs-capital-corp",
+  "name": "OFS Capital Corp",
+  "domain": "ofscapital.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "omeros-corp",
+  "name": "OMEROS CORP",
+  "domain": "omeros.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "omniq-corp",
+  "name": "OMNIQ Corp.",
+  "domain": "omniq.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "oncolytics-biotech-inc",
+  "name": "ONCOLYTICS BIOTECH INC",
+  "domain": "oncolyticsbiotech.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "onto-innovation-inc",
+  "name": "ONTO INNOVATION INC.",
+  "domain": "ontoinnovation.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "opal-fuels-inc",
+  "name": "OPAL Fuels Inc.",
+  "domain": "opalfuels.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "oppenheimer-holdings-inc",
+  "name": "OPPENHEIMER HOLDINGS INC",
+  "domain": "oppenheimer.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "or-royalties-inc",
+  "name": "OR Royalties Inc.",
+  "domain": "orroyalties.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "orangekloud-technology-inc",
+  "name": "ORANGEKLOUD TECHNOLOGY INC.",
+  "domain": "orangekloud.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "orasure-technologies-inc",
+  "name": "ORASURE TECHNOLOGIES INC",
+  "domain": "orasure.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "orrstown-financial-services-inc",
+  "name": "ORRSTOWN FINANCIAL SERVICES INC",
+  "domain": "orrstown.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "1 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
   "company": "sempra",
   "name": "Sempra",
   "domain": "sempra.com",
