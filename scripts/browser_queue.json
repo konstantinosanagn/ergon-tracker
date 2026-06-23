@@ -1,0 +1,113 @@
+[
+ {
+  "company": "fastenal",
+  "name": "Fastenal",
+  "domain": "fastenal.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "sempra",
+  "name": "Sempra",
+  "domain": "sempra.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "0 (provider,token) candidates from careers page, none entity-correct"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ },
+ {
+  "company": "vici-properties",
+  "name": "Vici Properties",
+  "domain": "viciproperties.com",
+  "exhaustion_log": [
+   {
+    "rung": "1",
+    "method": "correct-tenant-discovery",
+    "result": "careers page has no recognizable ATS host"
+   },
+   {
+    "rung": "2",
+    "method": "harvest_tokens",
+    "result": "no path-based/icims/taleo token matched"
+   },
+   {
+    "rung": "5",
+    "method": "dejobs/themuse",
+    "result": "not in dejobs/themuse federation"
+   },
+   {
+    "rung": "7",
+    "method": "schemaorg",
+    "result": "no JSON-LD/sitemap jobs"
+   },
+   {
+    "rung": "3",
+    "method": "websearch-apply-url",
+    "result": "deferred: needs agent/manual"
+   },
+   {
+    "rung": "6",
+    "method": "apicapture-bespoke",
+    "result": "deferred: needs agent/manual"
+   }
+  ]
+ }
+]
