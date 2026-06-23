@@ -410,6 +410,84 @@ def list_h1b_sponsors(query: str | None = None, limit: int = 25) -> dict[str, An
 
 
 @mcp.tool()
+def h1b_jobs(
+    keywords: str | None = None,
+    location: str | None = None,
+    remote: bool | None = None,
+    level: str | None = None,
+    include_unknown_level: bool = True,
+    sector: str | None = None,
+    country: str | None = None,
+    city: str | None = None,
+    salary_min: float | None = None,
+    employment_type: str | None = None,
+    min_filings: int = 0,
+    active_within_years: int | None = None,
+    sponsorship_offered: bool | None = None,
+    limit: int = 20,
+) -> dict[str, Any]:
+    """H-1B-first job search: open roles at sponsor employers, each annotated with the employer's LCA
+    filing VOLUME + most-recent filing, ranked by sponsor strength.
+
+    The DoL-data-joined-to-live-jobs view a visa-dependent applicant actually needs — a strict superset
+    of `search_jobs(visa_sponsor=True)`: it doesn't just filter to sponsors, it tells you HOW MUCH each
+    employer sponsors (`h1b_filings`) and how RECENTLY (`h1b_last_filed` / `h1b_active`), and surfaces
+    the strongest, most-active sponsors first. Served from the index → zero ATS calls.
+
+    Args:
+        min_filings: keep only employers with ≥ this many certified LCA filings (drop one-off / token
+            sponsors). Default 0 (all sponsors).
+        active_within_years: keep only employers that filed within the last N years (drop sponsors that
+            have gone quiet). Default None (any).
+        sponsorship_offered: if True, also require the POSTING itself to state sponsorship.
+        (other args mirror `search_jobs`.) Each job carries `h1b_filings`, `h1b_last_filed`, `h1b_active`.
+    """
+    from datetime import date, timedelta
+
+    query = SearchQuery(
+        keywords=keywords, location=location, remote=remote,
+        level=JobLevel(level) if level else None, include_unknown_level=include_unknown_level,
+        sector=sector, country=country, city=city, salary_min=salary_min,
+        employment_type=EmploymentType(employment_type) if employment_type else None,
+        visa_sponsor=True, sponsorship_offered=sponsorship_offered, limit=limit,
+    )
+    from .index.router import try_index
+
+    pool = try_index(query.model_copy(update={"limit": max(limit * 6, 100)}))
+    if pool is None:
+        return {"count": 0, "jobs": [],
+                "note": "prebuilt index unavailable — H-1B job match is served from the daily index"}
+
+    from .extract.visa import load_sponsor_index
+
+    idx = load_sponsor_index()
+    today = date.today()
+    active_cut = (today - timedelta(days=730)).isoformat()  # "active" = filed within ~2 years
+    user_cut = (today - timedelta(days=365 * active_within_years)).isoformat() if active_within_years else None
+
+    rows: list[tuple[int, float, dict[str, Any]]] = []
+    for j in pool:
+        prof = idx.profile(j.company)
+        filings = int(prof["filings"]) if prof else 0  # type: ignore[arg-type]
+        last = (str(prof["last_filed"]) if prof and prof["last_filed"] else None) or j.visa_last_filed
+        if filings == 0 and not j.visa_sponsor:  # defensive: only sponsor employers
+            continue
+        if filings < min_filings:
+            continue
+        if user_cut and (not last or last < user_cut):
+            continue
+        d = _job_to_dict(j)
+        d["h1b_filings"] = filings
+        d["h1b_last_filed"] = last
+        d["h1b_active"] = bool(last and last >= active_cut)
+        rows.append((filings, j.score or 0.0, d))
+
+    rows.sort(key=lambda r: (r[0], r[1]), reverse=True)  # strongest sponsor, then relevance
+    return {"count": len(rows[:limit]), "ranked_by": "h1b_sponsor_strength",
+            "jobs": [d for _, _, d in rows[:limit]]}
+
+
+@mcp.tool()
 def resolve_company(target: str) -> dict[str, Any]:
     """Detect which ATS a company uses and its board token, from a domain or careers URL.
 

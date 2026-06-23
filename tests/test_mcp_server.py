@@ -16,6 +16,7 @@ pytestmark = pytest.mark.anyio
 async def test_tools_registered() -> None:
     tools = await srv.mcp.list_tools()
     assert sorted(t.name for t in tools) == [
+        "h1b_jobs",
         "list_companies",
         "list_h1b_sponsors",
         "list_sources",

@@ -28,6 +28,7 @@ __all__ = [
     "load_sponsor_index",
     "is_h1b_sponsor",
     "h1b_last_filed",
+    "h1b_profile",
     "search_sponsors",
 ]
 
@@ -181,6 +182,18 @@ class SponsorIndex:
         last = (self._records.get(key) or {}).get("last")
         return str(last) if last else None
 
+    def profile(self, company: str | None) -> dict[str, object] | None:
+        """Full LCA sponsor record for ``company`` — ``{name, filings, last_filed}`` — or None.
+
+        The join key between a live posting's employer and the DoL sponsor directory: lets a job be
+        annotated with the employer's filing VOLUME + recency (not just a sponsor yes/no)."""
+        key = self._match_key(company)
+        if key is None:
+            return None
+        rec = self._records.get(key) or {}
+        last = rec.get("last")
+        return {"name": key, "filings": _to_int(rec.get("n")), "last_filed": str(last) if last else None}
+
     def search(self, query: str | None, limit: int = 20) -> list[dict[str, object]]:
         """Browse the sponsor directory: name-substring match, ranked by filing volume.
 
@@ -234,6 +247,11 @@ def is_h1b_sponsor(company: str | None) -> bool:
 def h1b_last_filed(company: str | None) -> str | None:
     """Most-recent certified H-1B filing date (ISO) for ``company``, else None."""
     return load_sponsor_index().last_filed(company)
+
+
+def h1b_profile(company: str | None) -> dict[str, object] | None:
+    """Full LCA sponsor record for ``company`` — ``{name, filings, last_filed}`` — or None."""
+    return load_sponsor_index().profile(company)
 
 
 def search_sponsors(query: str | None = None, limit: int = 20) -> list[dict[str, object]]:
