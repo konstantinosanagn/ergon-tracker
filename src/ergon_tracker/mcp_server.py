@@ -390,6 +390,58 @@ def match_resume(
 
 
 @mcp.tool()
+def assess_fit(resume: str, job_description: str, job_title: str | None = None) -> dict[str, Any]:
+    """Apply-assist: a deterministic résumé↔JD gap analysis to tailor an application.
+
+    Paste your résumé and a target posting's description; get a structured breakdown — which listed
+    skills your résumé already covers, which it's MISSING (the gaps to address), required vs your years
+    of experience, and ready-to-use talking points. No LLM or API key needed (a curated skill gazetteer
+    + rules); the calling agent uses this structure to draft a tailored cover letter / application
+    answers grounded in the actual overlap, not guesses.
+
+    Args:
+        resume: your résumé / profile text.
+        job_description: the target posting's description (ideally including requirements).
+        job_title: optional posting title (sharpens the skill signal).
+    """
+    if not (resume or "").strip() or not (job_description or "").strip():
+        return {"note": "provide both `resume` and `job_description` text"}
+
+    from .extract.base import ExtractInput
+    from .extract.skills import extract_skills
+    from .extract.yoe import YoeExtractor
+
+    jd_skills = extract_skills(f"{job_title or ''} {job_description}")
+    cv_skills = extract_skills(resume)
+    matched, missing = sorted(jd_skills & cv_skills), sorted(jd_skills - cv_skills)
+    extra = sorted(cv_skills - jd_skills)
+    coverage = round(len(matched) / len(jd_skills), 2) if jd_skills else None
+
+    yoe = YoeExtractor()
+    req_years = yoe.extract(ExtractInput(title=job_title or "", description_text=job_description))[0]
+    cv_min, cv_max = yoe.extract(ExtractInput(title="", description_text=resume))
+    your_years = cv_max or cv_min
+    meets_years = your_years is not None and req_years is not None and your_years >= req_years
+
+    talking_points = [f"Lead with your {s} experience — it's a stated requirement." for s in matched[:6]]
+    gaps = [f"Address '{s}': not evident in your résumé — cite transferable work or willingness to ramp."
+            for s in missing[:6]]
+    if req_years and (your_years is None or your_years < req_years):
+        gaps.append(f"Role asks for ~{req_years}+ years; frame your experience to close that gap.")
+
+    summary = (f"You match {len(matched)} of {len(jd_skills)} listed skills"
+               + (f" ({int(coverage * 100)}%)" if coverage is not None else "")
+               + (f"; gaps: {', '.join(missing[:5])}." if missing else " — strong coverage."))
+    return {
+        "summary": summary,
+        "matched_skills": matched, "missing_skills": missing, "extra_strengths": extra[:10],
+        "skill_coverage": coverage,
+        "required_years": req_years, "your_years": your_years, "meets_years": meets_years,
+        "talking_points": talking_points, "gaps_to_address": gaps,
+    }
+
+
+@mcp.tool()
 def list_h1b_sponsors(query: str | None = None, limit: int = 25) -> dict[str, Any]:
     """Browse employers known to sponsor H-1B visas (US DoL LCA certified filings).
 
