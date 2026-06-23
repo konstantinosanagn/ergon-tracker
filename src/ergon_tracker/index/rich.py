@@ -29,6 +29,8 @@ __all__ = [
     "RICH_SCHEMA",
     "build_rich_tier",
     "reconcile_rich_tier",
+    "reconcile_rich_tier_from_fresh",
+    "write_fresh_rich",
     "fulltext_search",
     "vector_search",
     "VectorIndex",
@@ -225,6 +227,133 @@ def _embed_into(
     if buf:
         con.executemany("INSERT OR REPLACE INTO job_vectors(id, scale, vec) VALUES(?, ?, ?)", buf)
     return dim, getattr(reranker, "model_name", "?")
+
+
+# --- incremental (streaming cron) path: capture fresh text on disk, reconcile from it -------------
+FRESH_RICH_SCHEMA = (
+    "CREATE TABLE IF NOT EXISTS fresh_rich "
+    "(id TEXT PRIMARY KEY, sig TEXT, description TEXT, embed_text TEXT)"
+)
+
+
+def write_fresh_rich(con: sqlite3.Connection, jobs: list[JobPosting]) -> None:
+    """Capture ``(id, sig, description, embed_text)`` for freshly-crawled jobs into the streaming fresh
+    DB. The main index truncates to a 300-char snippet, so this is how the incremental rich reconcile
+    gets FULL descriptions — on disk, bounded to the crawl window, never holding jobs in memory.
+    ``embed_text`` is the exact representation :func:`semantic._job_text` embeds, so a stored vector
+    matches a query-time rerank."""
+    from ..semantic import _job_text
+
+    con.execute(FRESH_RICH_SCHEMA)
+    con.executemany(
+        "INSERT OR REPLACE INTO fresh_rich(id, sig, description, embed_text) VALUES(?, ?, ?, ?)",
+        [(j.id, _sig(j), j.description_text or "", _job_text(j)) for j in jobs],
+    )
+
+
+def _embed_rows_into(
+    con: sqlite3.Connection,
+    rows: list[tuple[str, str]],
+    *,
+    reranker: SemanticReranker | None,
+    batch: int,
+) -> tuple[int, str]:
+    """Embed ``(id, embed_text)`` rows (streamed + data-parallel) → upsert int8 vectors. Returns (dim, model)."""
+    if not rows:
+        return 0, getattr(reranker, "model_name", "?")
+    if reranker is None:
+        from ..semantic import get_semantic_reranker
+
+        reranker = get_semantic_reranker()
+    par = 0 if len(rows) >= _PARALLEL_MIN else None
+    ids = [r[0] for r in rows]
+    texts = [r[1] for r in rows]
+    dim = 0
+    buf: list[tuple[str, float, bytes]] = []
+    for jid, vec in zip(
+        ids, reranker.embed_texts_iter(texts, batch_size=batch, parallel=par), strict=True
+    ):
+        scale, blob = quantize_int8(vec)
+        dim = dim or len(vec)
+        buf.append((jid, scale, blob))
+        if len(buf) >= 1000:
+            con.executemany(
+                "INSERT OR REPLACE INTO job_vectors(id, scale, vec) VALUES(?, ?, ?)", buf
+            )
+            buf = []
+    if buf:
+        con.executemany("INSERT OR REPLACE INTO job_vectors(id, scale, vec) VALUES(?, ?, ?)", buf)
+    return dim, getattr(reranker, "model_name", "?")
+
+
+def reconcile_rich_tier_from_fresh(
+    rich_path: Path | str,
+    main_index_path: Path | str,
+    fresh_db_path: Path | str,
+    *,
+    build_id: str,
+    reranker: SemanticReranker | None = None,
+    batch: int = 256,
+) -> dict[str, int]:
+    """Incremental (cron) cascade — same contract as :func:`reconcile_rich_tier` but reads the freshly-
+    crawled ``(id, sig, description, embed_text)`` from the streaming fresh DB (disk, memory-safe via
+    :func:`write_fresh_rich`) instead of an in-memory job list. The main index is the source of truth
+    for live ids; orphans are pruned; only new/changed fresh rows (``sig`` differs) re-embed; every
+    carried-forward id keeps the text+vector already in the persisted sidecar. Returns
+    ``{pruned, embedded, missing}`` (``missing`` = live ids not yet represented — they fill in as the
+    rotating crawl window reaches them)."""
+    main = sqlite3.connect(f"file:{main_index_path}?mode=ro", uri=True)
+    try:
+        live_ids = {r[0] for r in main.execute("SELECT id FROM jobs")}
+    finally:
+        main.close()
+    fresh = sqlite3.connect(f"file:{fresh_db_path}?mode=ro", uri=True)
+    try:
+        fresh_rows = fresh.execute(
+            "SELECT id, sig, description, embed_text FROM fresh_rich"
+        ).fetchall()
+    except sqlite3.OperationalError:
+        fresh_rows = []  # capture was off this run → prune-only reconcile
+    finally:
+        fresh.close()
+
+    con = sqlite3.connect(str(rich_path))
+    try:
+        if not Path(rich_path).exists() or not _has_schema(con):
+            con.executescript(RICH_SCHEMA)
+        have = dict(con.execute("SELECT id, sig FROM job_text"))
+        orphans = [i for i in have if i not in live_ids]
+        _delete_ids(con, orphans)
+
+        rebuild = [r for r in fresh_rows if r[0] in live_ids and have.get(r[0]) != r[1]]
+        _delete_ids(con, [r[0] for r in rebuild])
+        con.executemany(
+            "INSERT OR REPLACE INTO job_text(id, sig, description) VALUES(?, ?, ?)",
+            [(r[0], r[1], r[2]) for r in rebuild],
+        )
+        dim, model = _embed_rows_into(
+            con, [(r[0], r[3]) for r in rebuild], reranker=reranker, batch=batch
+        )
+        con.execute("INSERT INTO job_text_fts(job_text_fts) VALUES('rebuild')")
+        meta = [("build_id", build_id), ("quant", "int8")]
+        if dim:
+            meta += [("dim", str(dim)), ("model", model)]
+        con.executemany("INSERT OR REPLACE INTO meta(key, value) VALUES(?, ?)", meta)
+        con.commit()
+        final_ids = (set(have) - set(orphans)) | {r[0] for r in rebuild}
+        return {
+            "pruned": len(orphans),
+            "embedded": len(rebuild),
+            "missing": len(live_ids - final_ids),
+        }
+    finally:
+        con.close()
+
+
+def _has_schema(con: sqlite3.Connection) -> bool:
+    return bool(
+        con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='job_text'").fetchone()
+    )
 
 
 class VectorIndex:

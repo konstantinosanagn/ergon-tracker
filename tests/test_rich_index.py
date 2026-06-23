@@ -51,6 +51,10 @@ class FakeReranker:
     def embed_jobs(self, jobs, *, batch_size=256, parallel=None):
         return [self._vec(self._text(j)) for j in jobs]
 
+    def embed_texts_iter(self, texts, *, batch_size=256, parallel=None):
+        for t in texts:
+            yield self._vec(t)
+
     def embed_query(self, q: str) -> list[float]:
         return self._vec(q)
 
@@ -187,10 +191,18 @@ def test_real_embedding_end_to_end(tmp_path):
     from ergon_tracker.semantic import _cosine, get_semantic_reranker
 
     jobs = [
-        _job("ml", "Machine Learning Engineer", "design and train deep learning models, pytorch, GPUs"),
+        _job(
+            "ml",
+            "Machine Learning Engineer",
+            "design and train deep learning models, pytorch, GPUs",
+        ),
         _job("ar", "AI Researcher", "publish research on large language models and transformers"),
         _job("ac", "Staff Accountant", "reconcile ledgers, prepare tax filings, audit invoices"),
-        _job("nu", "Registered Nurse", "patient care, clinical assessments, medication administration"),
+        _job(
+            "nu",
+            "Registered Nurse",
+            "patient care, clinical assessments, medication administration",
+        ),
     ]
     r = get_semantic_reranker()  # real ONNX model
     build_rich_tier(jobs, tmp_path / "real.sqlite", build_id="r", reranker=r)
@@ -200,9 +212,86 @@ def test_real_embedding_end_to_end(tmp_path):
     top = vector_search(con, r.embed_query("deep learning / neural network engineer"), limit=4)
     by_id = {j.id: j for j in jobs}
     assert by_id[top[0][0]].title in {"Machine Learning Engineer", "AI Researcher"}  # ML/AI on top
-    assert by_id[top[-1][0]].title in {"Staff Accountant", "Registered Nurse"}  # unrelated at bottom
+    assert by_id[top[-1][0]].title in {
+        "Staff Accountant",
+        "Registered Nurse",
+    }  # unrelated at bottom
 
     real_vec = r.embed_jobs(jobs[:1])[0]
     scale, blob = quantize_int8(real_vec)
     assert len(blob) == 384  # int8 → 1 byte/dim
-    assert _cosine(real_vec, dequantize_int8(scale, blob)) > 0.999  # quant fidelity on a REAL embedding
+    assert (
+        _cosine(real_vec, dequantize_int8(scale, blob)) > 0.999
+    )  # quant fidelity on a REAL embedding
+
+
+# --- incremental cron path: capture fresh full-text on disk, reconcile from it (carry-forward) -----
+def test_reconcile_from_fresh_cold_then_carryforward(tmp_path):
+    import sqlite3
+
+    from ergon_tracker.index.rich import (
+        reconcile_rich_tier_from_fresh,
+        vector_search,
+        write_fresh_rich,
+    )
+
+    a = _job("a", "Python Engineer", "python kubernetes")
+    b = _job("b", "Sales Rep", "sales quota")
+    c0 = _job("c", "Nurse", "nurse clinical")
+
+    # round 1 (cold start): the crawl window had A,B,C -> fresh_rich; main index also A,B,C
+    fresh1 = tmp_path / "fresh1.sqlite"
+    con = sqlite3.connect(fresh1)
+    write_fresh_rich(con, [a, b, c0])
+    con.commit()
+    con.close()
+    main1 = tmp_path / "main1.sqlite"
+    build_index([a, b, c0], main1, build_id="b1")
+    rich = tmp_path / "rich.sqlite"
+    s1 = reconcile_rich_tier_from_fresh(rich, main1, fresh1, build_id="b1", reranker=FAKE)
+    assert s1 == {"pruned": 0, "embedded": 3, "missing": 0}
+    con = open_rich(rich)
+    assert {r[0] for r in con.execute("SELECT id FROM job_text")} == {a.id, b.id, c0.id}
+
+    # round 2: B dropped from main, C's description changed, D added. The crawl window this run only
+    # touched C and D (A and B were NOT re-crawled) -> fresh_rich has ONLY C',D.
+    c1 = _job("c", "Nurse", "nurse clinical REWRITTEN")
+    d = _job("d", "Data Engineer", "python spark")
+    fresh2 = tmp_path / "fresh2.sqlite"
+    con = sqlite3.connect(fresh2)
+    write_fresh_rich(con, [c1, d])
+    con.commit()
+    con.close()
+    main2 = tmp_path / "main2.sqlite"
+    build_index([a, c1, d], main2, build_id="b2")  # A carried forward, B gone
+    s2 = reconcile_rich_tier_from_fresh(rich, main2, fresh2, build_id="b2", reranker=FAKE)
+    assert s2 == {"pruned": 1, "embedded": 2, "missing": 0}  # B pruned; C'+D embedded
+
+    con = open_rich(rich)
+    ids = {r[0] for r in con.execute("SELECT id FROM job_text")}
+    assert ids == {a.id, c1.id, d.id}  # B pruned, D added, A CARRIED FORWARD (not re-crawled)
+    assert con.execute("SELECT count(*) FROM job_vectors").fetchone()[0] == 3
+    desc = con.execute("SELECT description FROM job_text WHERE id=?", (c0.id,)).fetchone()[0]
+    assert "REWRITTEN" in desc  # C re-embedded with the new description
+    # A's vector survived the carry-forward (never re-embedded) — still searchable
+    top = vector_search(con, FAKE.embed_query("python kubernetes"), limit=3)
+    assert a.id in {i for i, _ in top}
+
+
+def test_reconcile_from_fresh_handles_missing_capture(tmp_path):
+    # fresh DB without a fresh_rich table (capture was off) -> prune-only, no crash
+    import sqlite3
+
+    from ergon_tracker.index.rich import reconcile_rich_tier_from_fresh
+
+    a = _job("a", "Eng", "x")
+    fresh = tmp_path / "fresh.sqlite"
+    sqlite3.connect(fresh).close()  # empty: no fresh_rich
+    main = tmp_path / "main.sqlite"
+    build_index([a], main, build_id="b1")
+    stats = reconcile_rich_tier_from_fresh(
+        tmp_path / "rich.sqlite", main, fresh, build_id="b1", reranker=FAKE
+    )
+    assert (
+        stats["embedded"] == 0 and stats["missing"] == 1
+    )  # a is live but uncaptured -> ramps in later

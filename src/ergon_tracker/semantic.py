@@ -140,6 +140,18 @@ class SemanticReranker:
         for job, vec in zip(jobs, stream, strict=True):
             yield job, vec.tolist()
 
+    def embed_texts_iter(
+        self, texts: list[str], *, batch_size: int = 256, parallel: int | None = None
+    ) -> Iterator[list[float]]:
+        """Stream embeddings for raw texts (memory-bounded + data-parallel) — the incremental rich
+        reconcile consumes this to quantize+store the crawled window without holding all vectors."""
+        if not texts:
+            return
+        self._ensure_model()
+        assert self._model is not None
+        for vec in self._model.embed(texts, batch_size=batch_size, parallel=parallel):
+            yield vec.tolist()
+
     def embed_query(self, query: str) -> list[float]:
         """Embed a single query string (for searching against pre-stored job vectors)."""
         self._ensure_model()

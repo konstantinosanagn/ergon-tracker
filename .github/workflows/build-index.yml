@@ -44,7 +44,8 @@ jobs:
         uses: astral-sh/setup-uv@v5
 
       - name: Install package
-        run: uv venv && uv pip install -e .
+        # [semantic] pulls fastembed for the rich tier's pre-stored embeddings (--rich, below).
+        run: uv venv && uv pip install -e ".[semantic]"
 
       - name: Download previous snapshot (best-effort; first run has none)
         env:
@@ -57,7 +58,11 @@ jobs:
           gh release download index-latest --dir dist --pattern 'crawl_cursor.json' || echo "no cursor"
           gh release download index-latest --dir dist --pattern 'deltas.json' || echo "no deltas window"
           gh release download index-latest --dir dist --pattern 'spec_health.json' || echo "no spec health"
+          gh release download index-latest --dir dist --pattern 'index-rich.sqlite.gz' || echo "no prev rich tier"
           [ -f dist/index.sqlite.gz ] && gunzip -kf dist/index.sqlite.gz || true
+          # decompress the persisted rich sidecar so the incremental reconcile carries forward its
+          # text+vectors (only new/changed postings re-embed); absent on first run -> built cold.
+          [ -f dist/index-rich.sqlite.gz ] && gunzip -kf dist/index-rich.sqlite.gz || true
 
       # Stream B Tier-2: re-mint expired/near-expiry session tokens BEFORE the crawl, so token_ref
       # apicapture specs replay with a fresh token. Opt-in (only when a validated tier2_mint.json
@@ -77,7 +82,7 @@ jobs:
           TMPDIR: /mnt
           ERGON_TOKEN_STORE: dist/tier2_tokens.json  # token_ref specs read the freshly-minted tokens
         run: |
-          uv run python scripts/build_index.py --incremental \
+          uv run python scripts/build_index.py --incremental --rich \
             --limit-companies "${{ github.event.inputs.limit_companies || '12000' }}" --sharded --out dist
 
       # Stream B self-healing: replay every apicapture spec, record health (streak persisted across
@@ -96,6 +101,7 @@ jobs:
           # some), so one missing file never fails the whole publish.
           ASSETS=""
           for f in index.sqlite.gz manifest.json index-slim.sqlite.gz manifest-slim.json \
+                   index-rich.sqlite.gz \
                    index-delta.sqlite.gz manifest-delta.json deltas.json \
                    gates.json board_state.json history.jsonl spec_health.json rediscover_queue.json \
                    shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do

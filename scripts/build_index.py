@@ -296,6 +296,21 @@ def build_and_publish_rich(
     return stats, nbytes
 
 
+def build_and_publish_rich_incremental(
+    db_path: Path, fresh_db_path: Path, out: Path, *, build_id: str
+) -> tuple[dict, int]:
+    """Incremental (cron) rich publish: reconcile the persisted sidecar against the freshly-built main
+    index using the crawl window's ``fresh_rich`` rows (full descriptions captured on disk), then gzip-
+    publish ``index-rich.sqlite.gz``. Carried-forward ids keep the text+vectors already in the sidecar,
+    so only new/changed postings re-embed. Needs the ``semantic`` extra."""
+    from ergon_tracker.index.rich import reconcile_rich_tier_from_fresh
+
+    rich_db = out / "index-rich.sqlite"
+    stats = reconcile_rich_tier_from_fresh(rich_db, db_path, fresh_db_path, build_id=build_id)
+    _, nbytes = _gzip_file(rich_db, out / "index-rich.sqlite.gz")
+    return stats, nbytes
+
+
 def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
     """Build the slim broad-query tier (no snippet, FTS over title+company) and gzip it.
 
@@ -454,13 +469,20 @@ def _registry_window(cursor: int, limit: int) -> tuple[list, int]:
 
 
 async def _crawl_due(
-    limit_companies: int, states: dict, fresh_db_path, build_id: str, cursor: int = 0
+    limit_companies: int,
+    states: dict,
+    fresh_db_path,
+    build_id: str,
+    cursor: int = 0,
+    capture_rich: bool = False,
 ) -> tuple[dict, int]:
     """Crawl the due boards in this run's rotating window, streaming jobs into ``fresh_db_path``.
 
     Returns (per-board outcome, next_cursor). Jobs are written to the fresh DB as boards complete
     (memory O(in-flight boards), not O(all jobs)). The window bounds each run so it finishes within
-    the CI timeout and durably seeds board_state; crash-isolated per board.
+    the CI timeout and durably seeds board_state; crash-isolated per board. When ``capture_rich`` is
+    set, each board's FULL descriptions are also captured to the fresh DB's ``fresh_rich`` table (the
+    index only keeps a snippet) so the incremental rich reconcile can index them — still O(window) on disk.
     """
     import anyio
 
@@ -560,6 +582,12 @@ async def _crawl_due(
                 # crash/timeout doesn't roll back the entire crawl.
                 async with write_lock:
                     append_jobs(con, board_jobs, build_id=build_id)
+                    if (
+                        capture_rich
+                    ):  # full descriptions for the rich tier (index keeps only a snippet)
+                        from ergon_tracker.index.rich import write_fresh_rich
+
+                        write_fresh_rich(con, board_jobs)
                     pending["rows"] += len(board_jobs)
                     if pending["rows"] >= 20000:
                         con.commit()
@@ -650,7 +678,9 @@ def main(argv: list[str]) -> None:
         prev_row_count = _count_jobs(db) if prev_db else None
         # Streaming crawl over a rotating window: jobs stream to fresh.sqlite as boards complete.
         fresh_path = out / "fresh.sqlite"
-        outcome, next_cursor = anyio.run(_crawl_due, limit, states, fresh_path, build_id, cursor)
+        outcome, next_cursor = anyio.run(
+            _crawl_due, limit, states, fresh_path, build_id, cursor, rich
+        )
         # Fold the first-party Workable network feed into the same fresh.sqlite (its rows flow into
         # the index alongside the crawled boards). Done before changed_companies_sql so new network
         # companies register as changed.
@@ -708,6 +738,14 @@ def main(argv: list[str]) -> None:
                 "published": ok,
             },
         )
+        if ok and rich:  # reconcile the rich sidecar from fresh_rich BEFORE fresh.sqlite is deleted
+            rstats, rbytes = build_and_publish_rich_incremental(
+                db, fresh_path, out, build_id=build_id
+            )
+            print(
+                f"  + rich tier (pruned={rstats['pruned']} embedded={rstats['embedded']} "
+                f"missing={rstats['missing']}) -> index-rich.sqlite.gz ({rbytes // 1024} KB)"
+            )
         fresh_path.unlink(missing_ok=True)  # free disk before the shard VACUUMs
         if ok and sharded:
             ns = build_and_publish_shards_from_db(db, out, build_id=build_id)
