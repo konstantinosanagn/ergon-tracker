@@ -9,6 +9,8 @@ from __future__ import annotations
 import hashlib
 import time
 
+import pytest
+
 from ergon_tracker.index.build import build_index
 from ergon_tracker.index.rich import (
     VectorIndex,
@@ -168,3 +170,39 @@ def test_stress_build_and_search(tmp_path):
         f"\n[stress] build {n}: {build_s:.2f}s | preloaded vector search: {search_s * 1000:.1f}ms"
     )
     assert build_s < 30 and search_s < 1.0
+
+
+# --- real-model path (gated on the `semantic` extra, like test_semantic; skips without it) ---------
+try:
+    import fastembed  # noqa: F401
+
+    _HAS_FASTEMBED = True
+except ImportError:
+    _HAS_FASTEMBED = False
+
+
+@pytest.mark.skipif(not _HAS_FASTEMBED, reason="real-model path needs the `semantic` extra")
+def test_real_embedding_end_to_end(tmp_path):
+    """The REAL bge-small model: build + vector-rank + quantize fidelity on real text (no fake)."""
+    from ergon_tracker.semantic import _cosine, get_semantic_reranker
+
+    jobs = [
+        _job("ml", "Machine Learning Engineer", "design and train deep learning models, pytorch, GPUs"),
+        _job("ar", "AI Researcher", "publish research on large language models and transformers"),
+        _job("ac", "Staff Accountant", "reconcile ledgers, prepare tax filings, audit invoices"),
+        _job("nu", "Registered Nurse", "patient care, clinical assessments, medication administration"),
+    ]
+    r = get_semantic_reranker()  # real ONNX model
+    build_rich_tier(jobs, tmp_path / "real.sqlite", build_id="r", reranker=r)
+    con = open_rich(tmp_path / "real.sqlite")
+    assert rich_meta(con)["dim"] == "384"  # real model dimensionality
+
+    top = vector_search(con, r.embed_query("deep learning / neural network engineer"), limit=4)
+    by_id = {j.id: j for j in jobs}
+    assert by_id[top[0][0]].title in {"Machine Learning Engineer", "AI Researcher"}  # ML/AI on top
+    assert by_id[top[-1][0]].title in {"Staff Accountant", "Registered Nurse"}  # unrelated at bottom
+
+    real_vec = r.embed_jobs(jobs[:1])[0]
+    scale, blob = quantize_int8(real_vec)
+    assert len(blob) == 384  # int8 → 1 byte/dim
+    assert _cosine(real_vec, dequantize_int8(scale, blob)) > 0.999  # quant fidelity on a REAL embedding
