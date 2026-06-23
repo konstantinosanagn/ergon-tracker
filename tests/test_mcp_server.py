@@ -19,6 +19,7 @@ async def test_tools_registered() -> None:
         "list_companies",
         "list_h1b_sponsors",
         "list_sources",
+        "match_resume",
         "resolve_company",
         "search_jobs",
         "whats_new",

@@ -319,6 +319,77 @@ def whats_new(
 
 
 @mcp.tool()
+def match_resume(
+    resume: str,
+    keywords: str | None = None,
+    location: str | None = None,
+    remote: bool | None = None,
+    level: str | None = None,
+    include_unknown_level: bool = True,
+    sector: str | None = None,
+    country: str | None = None,
+    city: str | None = None,
+    salary_min: float | None = None,
+    visa_sponsor: bool = False,
+    sponsorship_offered: bool | None = None,
+    employment_type: str | None = None,
+    limit: int = 20,
+) -> dict[str, Any]:
+    """Rank jobs by SEMANTIC FIT to a résumé (or a target job description).
+
+    Paste résumé text (or a JD, to find similar roles); the server embeds it and ranks postings by
+    cosine similarity — matching on meaning, not shared keywords (so "built ML pipelines in PyTorch"
+    surfaces "Machine Learning Engineer"). Two-stage: the index retrieves a filtered candidate pool,
+    then embeddings rerank it by the full résumé. Served from the index → zero ATS calls.
+
+    Needs the server's `semantic` extra; without it, degrades to lexical ranking (and says so).
+
+    Args:
+        resume: the résumé / profile / JD text to match against (required).
+        keywords: optional top skills to focus retrieval (e.g. "python, kubernetes, fintech"); the
+            résumé still drives the final fit ranking. All other args mirror `search_jobs` filters.
+            Each returned job carries a `fit_score` (cosine similarity, ~0–1).
+    """
+    if not resume or not resume.strip():
+        return {"count": 0, "jobs": [], "note": "provide résumé or JD text in `resume`"}
+
+    query = SearchQuery(
+        keywords=keywords, location=location, remote=remote,
+        level=JobLevel(level) if level else None, include_unknown_level=include_unknown_level,
+        sector=sector, country=country, city=city, salary_min=salary_min,
+        employment_type=EmploymentType(employment_type) if employment_type else None,
+        visa_sponsor=True if visa_sponsor else None, sponsorship_offered=sponsorship_offered,
+        limit=limit,
+    )
+    from .index.router import try_index
+
+    # Wide, filtered candidate pool from the index; then rerank the WHOLE pool by the full résumé.
+    pool = try_index(query.model_copy(update={"limit": max(limit * 8, 120)}))
+    if pool is None:
+        return {"count": 0, "jobs": [],
+                "note": "prebuilt index unavailable — résumé match is served from the daily index"}
+    if not pool:
+        return {"count": 0, "jobs": [], "note": "no candidates matched the filters; loosen them"}
+
+    ranked_by = "semantic_fit"
+    try:
+        from .semantic import get_semantic_reranker
+
+        scores = get_semantic_reranker().rerank(resume, pool)
+        for j, s in zip(pool, scores, strict=True):
+            j.score = round(float(s), 4)
+    except Exception:  # noqa: BLE001 - semantic extra absent / model error -> lexical fallback
+        from .ranking import rank
+
+        rank(pool, keywords or resume, reranker=None)  # sets lexical job.score in place
+        ranked_by = "lexical (install the server's `semantic` extra for embedding fit)"
+
+    ranked = sorted(pool, key=lambda j: j.score if j.score is not None else 0.0, reverse=True)[:limit]
+    jobs = [{**_job_to_dict(j), "fit_score": j.score} for j in ranked]
+    return {"count": len(jobs), "ranked_by": ranked_by, "jobs": jobs}
+
+
+@mcp.tool()
 def list_h1b_sponsors(query: str | None = None, limit: int = 25) -> dict[str, Any]:
     """Browse employers known to sponsor H-1B visas (US DoL LCA certified filings).
 
