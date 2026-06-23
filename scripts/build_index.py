@@ -279,6 +279,23 @@ def _update_deltas_window(out: Path, entry: dict) -> list[str]:
     return pruned
 
 
+def build_and_publish_rich(
+    db_path: Path, jobs: list, out: Path, *, build_id: str
+) -> tuple[dict, int]:
+    """Reconcile the rich sidecar (full-JD FTS + pre-stored int8 embeddings) to the freshly-built main
+    index, then gzip-publish it as ``index-rich.sqlite.gz``.
+
+    Uses the in-memory ``jobs`` (which still carry FULL descriptions — the main index truncates to a
+    snippet) and the main index's live ids, so the cascade prunes anything the build dropped and
+    re-embeds only new/changed postings. Needs the ``semantic`` extra (the embedding model)."""
+    from ergon_tracker.index.rich import reconcile_rich_tier
+
+    rich_db = out / "index-rich.sqlite"
+    stats = reconcile_rich_tier(rich_db, db_path, jobs, build_id=build_id)
+    _, nbytes = _gzip_file(rich_db, out / "index-rich.sqlite.gz")
+    return stats, nbytes
+
+
 def build_and_publish_slim(db_path: Path, out: Path, *, build_id: str) -> int:
     """Build the slim broad-query tier (no snippet, FTS over title+company) and gzip it.
 
@@ -587,6 +604,9 @@ def main(argv: list[str]) -> None:
     out = ROOT / "dist"
     incremental = False
     sharded = False
+    rich = (
+        False  # opt-in: also build/reconcile the rich sidecar (full-JD FTS + pre-stored embeddings)
+    )
     network_pages = 0  # 0 disables the workable_network bulk feed; >0 = pages to pull
     i = 0
     while i < len(argv):
@@ -604,6 +624,9 @@ def main(argv: list[str]) -> None:
             i += 1
         elif argv[i] == "--sharded":
             sharded = True
+            i += 1
+        elif argv[i] == "--rich":
+            rich = True
             i += 1
         else:
             print(f"unknown flag: {argv[i]}")
@@ -720,6 +743,12 @@ def main(argv: list[str]) -> None:
         print(f"  + published {ns} sector shards")
         nslim = build_and_publish_slim(db, out, build_id=build_id)
         print(f"  + published slim tier ({nslim} rows) -> index-slim.sqlite.gz")
+    if rich:
+        stats, nbytes = build_and_publish_rich(db, jobs, out, build_id=build_id)
+        print(
+            f"  + published rich tier (pruned={stats['pruned']} embedded={stats['embedded']} "
+            f"missing={stats['missing']}) -> index-rich.sqlite.gz ({nbytes // 1024} KB)"
+        )
     print(f"built index: {n} jobs -> {out}/index.sqlite.gz (+manifest.json)")
 
 
