@@ -179,24 +179,48 @@ def _adjudicate(company: str, raws: list, provider, trust: bool = False) -> bool
     return any(name_match(company, b) for b in boards if b)
 
 
+def _first_ok(results: dict[int, str], n: int) -> str:
+    """Return the earliest-preferred careers HTML among concurrent probe results.
+
+    ``_CAREERS_PATHS`` is ordered most-canonical-first ({d}/careers, careers.{d}, ...), so when
+    several candidates 200 we keep the earliest index — preserving that preference even though the
+    fetches raced concurrently."""
+    for i in range(n):
+        if results.get(i):
+            return results[i]
+    return ""
+
+
 async def _careers_html(domain: str | None, fetcher: AsyncFetcher) -> str:
-    """Fetch the company's careers page (curl_cffi TLS — careers pages are often WAF'd)."""
+    """Fetch the company's careers page (curl_cffi TLS — careers pages are often WAF'd).
+
+    Probes all ``_CAREERS_PATHS`` candidates CONCURRENTLY (first-preferred success wins). Most
+    companies here have a guessed/wrong domain where every candidate misses, so probing serially
+    (5 × 8s timeout = up to 40s/company) was the ladder's dominant cost; racing them collapses that
+    to a single ~8s window — a ~5x cut on the common slow path."""
     if not domain:
         return ""
     from curl_cffi.requests import AsyncSession
 
-    # Tight per-URL timeout: some careers hosts (Akamai/WAF) tarpit non-browser clients, so a long
-    # timeout × several URL candidates can hang a worker. Fail fast and let later rungs/queue handle it.
+    urls = [tmpl.format(d=domain) for tmpl in _CAREERS_PATHS]
+    results: dict[int, str] = {}
+
+    # Tight per-URL timeout: some careers hosts (Akamai/WAF) tarpit non-browser clients. One async
+    # session multiplexes the concurrent gets; a failure/non-200 just leaves that index unset.
     async with AsyncSession(impersonate="chrome124", verify=False, timeout=8) as s:
-        for tmpl in _CAREERS_PATHS:
-            url = tmpl.format(d=domain)
+
+        async def probe(i: int, url: str) -> None:
             try:
                 r = await s.get(url, allow_redirects=True)
             except Exception:
-                continue
+                return
             if r.status_code == 200 and len(r.text) > 1500:
-                return r.text
-    return ""
+                results[i] = r.text
+
+        async with anyio.create_task_group() as tg:
+            for i, url in enumerate(urls):
+                tg.start_soon(probe, i, url)
+    return _first_ok(results, len(urls))
 
 
 async def _rung1_tenant_discovery(

@@ -12,10 +12,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from ats_exhaustion_sweep import (  # noqa: E402
     _adjudicate,
     _aggregate_from_logs,
+    _first_ok,
     _is_done,
     _make_candidate,
     classify_exhaustion,
 )
+
+
+def test_first_ok_prefers_earliest_template() -> None:
+    # concurrent probes returned 200 for templates 2 and 4 -> keep the earlier (more canonical)
+    assert _first_ok({2: "<careers-sub>", 4: "<jobs-sub>"}, 5) == "<careers-sub>"
+    # only a late template hit
+    assert _first_ok({3: "<html>"}, 5) == "<html>"
+    # nothing hit
+    assert _first_ok({}, 5) == ""
+    # index 0 (most canonical) always wins when present
+    assert _first_ok({0: "<a>", 1: "<b>"}, 5) == "<a>"
 
 
 def _raw(company: str):
