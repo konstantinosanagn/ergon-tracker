@@ -362,6 +362,38 @@ def _relevel_from_years(con: object) -> int:
     return len(updates)
 
 
+PURGE_YEARS = (
+    5  # postings older than this (by most-recent activity) are unambiguously dead -> dropped
+)
+
+
+def _purge_ancient(con: object, *, max_years: int = PURGE_YEARS) -> int:
+    """Physically drop postings whose most-recent activity (max of posted_at/updated_at) is older than
+    ``max_years`` — the unambiguous-dead tail. ATS boards leave filled reqs open for years; a 5+ year-
+    old posting is never live, so we DELETE it (shrinks the published index, and it stays gone even
+    when a query opts into stale results) rather than merely hide it via the query-time filter.
+
+    DATED rows only: undated rows are left alone (their age is unknown, so they stay recoverable and
+    are handled by the query freshness filter). Run BEFORE finalize_index, which rebuilds FTS +
+    companies + integrity-checks from the survivors. Returns the number of postings dropped.
+    """
+    import sqlite3
+    from datetime import date, timedelta
+
+    assert isinstance(con, sqlite3.Connection)
+    cutoff = (date.today() - timedelta(days=365 * max_years)).isoformat()
+    fresh = "MAX(COALESCE(posted_at, ''), COALESCE(updated_at, ''))"
+    where = f"{fresh} != '' AND {fresh} < ?"
+    ids = f"SELECT id FROM jobs WHERE {where}"  # noqa: S608 - fresh/where are constants, cutoff is bound
+    # FK is OFF during build so ON DELETE CASCADE won't fire; clean child tables explicitly (mirrors
+    # the delta-delete path). job_events/job_tags may be empty — the deletes are then no-ops.
+    for child in ("job_sources", "job_events", "job_tags"):
+        con.execute(f"DELETE FROM {child} WHERE job_id IN ({ids})", (cutoff,))  # noqa: S608
+    cur = con.execute(f"DELETE FROM jobs WHERE {where}", (cutoff,))  # noqa: S608
+    con.commit()
+    return cur.rowcount
+
+
 def build_index_streaming(
     job_batches: Iterable[Iterable[JobPosting]],
     path: Path | str,
@@ -387,6 +419,7 @@ def build_index_streaming(
         if prev_db is not None and crawled_keys is not None and Path(prev_db).exists():
             carry_forward(con, prev_db, crawled_keys)
         _relevel_from_years(con)  # re-level carried-forward backlog from stored years (no re-crawl)
+        _purge_ancient(con)  # drop the unambiguous-dead >5yr tail before finalize
         return finalize_index(con, build_id=build_id)
     finally:
         con.close()
@@ -419,6 +452,7 @@ def build_index_from_fresh_db(
         if prev_db is not None and crawled_keys is not None and Path(prev_db).exists():
             carry_forward(con, prev_db, crawled_keys)
         _relevel_from_years(con)  # re-level carried-forward backlog from stored years (no re-crawl)
+        _purge_ancient(con)  # drop the unambiguous-dead >5yr tail before finalize
         return finalize_index(con, build_id=build_id)
     finally:
         con.close()
