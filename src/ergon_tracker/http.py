@@ -63,7 +63,7 @@ _PER_TENANT_HOSTS = ("myworkdayjobs.com",)
 _DOMAIN_RATE_OVERRIDES: dict[str, tuple[float, float]] = {
     "recruitee.com": (2.0, 1.0),
     "personio.de": (3.0, 1.0),
-    "workable.com": (3.0, 1.0),
+    "workable.com": (3.0, 1.0),  # empirically throttle-bound: 429-storms at the 5/s default
     "bamboohr.com": (3.0, 1.0),
     "smartrecruiters.com": (3.0, 1.0),
     "adp.com": (1.0, 6.0),  # ADP WFN soft-blocks (404/503) on bursts; ~1 req/6s is the safe rate
