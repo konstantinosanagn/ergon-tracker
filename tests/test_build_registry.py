@@ -282,3 +282,33 @@ def test_load_checkpoint_last_wins_per_key(tmp_path):
 
 def test_load_checkpoint_missing_file_is_empty(tmp_path):
     assert br.load_checkpoint(tmp_path / "nope.ckpt") == {}
+
+
+def test_verify_all_bounds_a_hung_candidate(monkeypatch):
+    # The 100-min hang regression: one candidate whose fetch never returns must not stall the whole
+    # task group. move_on_after(CANDIDATE_DEADLINE_S) caps it -> transient "timeout" result.
+    import anyio as _anyio
+
+    monkeypatch.setattr(br, "CANDIDATE_DEADLINE_S", 0.2)
+
+    async def _hang(entry, fetcher, query):
+        await _anyio.sleep(60)  # never returns within the deadline
+        return entry, 1, "x", None
+
+    monkeypatch.setattr(br, "verify_one", _hang)
+    cands = [{"company": "x", "ats": "greenhouse", "token": "x"}]
+
+    async def _run():
+        return await br.verify_all(
+            cands,
+            concurrency=1,
+            per_host_rate=1,
+            timeout=5,
+            retries=1,
+            query=br.SearchQuery(limit=1),
+        )
+
+    results = _anyio.run(_run)
+    _entry, count, _token, err = results[0]
+    assert count == 0 and err and "timeout" in err
+    assert br.is_transient(err)  # so it gets re-verified, never silently dropped

@@ -45,6 +45,11 @@ SEED = ROOT / "src" / "ergon_tracker" / "registry" / "data" / "seed.json"
 CANDIDATES = ROOT / "scripts" / "candidates.json"
 _SEED_LOCK = SEED.with_name(SEED.name + ".lock")
 
+# Hard wall-clock cap per candidate verify. A board's liveness check is one (paginated) fetch; a
+# legit slow board resolves well within this. Anything longer is a tarpit/dead host whose socket
+# the request timeout failed to cut — we bound it here so one stuck candidate can't hang the batch.
+CANDIDATE_DEADLINE_S = 60.0
+
 
 @contextmanager
 def seed_lock():
@@ -428,7 +433,19 @@ async def verify_all(
                 continue
 
             async def run(i: int = i, entry: dict = entry, key: str = key) -> None:
-                res = await verify_one(entry, fetcher, query)
+                # Hard per-candidate deadline: one tarpitting host (a slow-trickle socket the
+                # fetcher's own request timeout doesn't catch) must NEVER hang the whole task group.
+                # Without this, a single stuck board stalled a 3,511-candidate verify for 100 min at
+                # 0% CPU. On deadline we record a transient "timeout" so it's re-tried (phase 2 /
+                # --resume), never silently dropped — but the batch always makes progress.
+                res: tuple[dict, int, str, str | None] = (
+                    entry,
+                    0,
+                    str(entry.get("token") or "") if isinstance(entry, dict) else "",
+                    "timeout: candidate deadline exceeded",
+                )
+                with anyio.move_on_after(CANDIDATE_DEADLINE_S):
+                    res = await verify_one(entry, fetcher, query)
                 results[i] = res
                 await _checkpoint(key, res[1], res[2], res[3])
                 tick(res[1] > 0)
