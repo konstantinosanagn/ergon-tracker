@@ -70,6 +70,18 @@ class TokenStore:
             return bool(rec.get("stale"))
         return bool(rec.get("stale")) or self._clock() >= float(rec["minted_at"]) + float(ttl)
 
+    def ttl_remaining(self, key: str) -> float | None:
+        """Seconds until ``key`` expires (negative if already past); ``None`` if absent, stale, or no TTL.
+
+        The Tier-2 refresh cron uses this to re-mint *before* a token expires mid-crawl (margin)."""
+        rec = self._mem.get(key)
+        if rec is None or rec.get("stale"):
+            return None
+        ttl = rec.get("ttl_seconds")
+        if ttl is None:
+            return None
+        return float(rec["minted_at"]) + float(ttl) - self._clock()
+
     def get(self, key: str) -> str | None:
         """The cached token value if present and still valid, else ``None`` (caller should mint)."""
         rec = self._mem.get(key)

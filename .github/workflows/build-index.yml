@@ -56,15 +56,37 @@ jobs:
           gh release download index-latest --dir dist --pattern 'history.jsonl' || echo "no history"
           gh release download index-latest --dir dist --pattern 'crawl_cursor.json' || echo "no cursor"
           gh release download index-latest --dir dist --pattern 'deltas.json' || echo "no deltas window"
+          gh release download index-latest --dir dist --pattern 'spec_health.json' || echo "no spec health"
           [ -f dist/index.sqlite.gz ] && gunzip -kf dist/index.sqlite.gz || true
+
+      # Stream B Tier-2: re-mint expired/near-expiry session tokens BEFORE the crawl, so token_ref
+      # apicapture specs replay with a fresh token. Opt-in (only when a validated tier2_mint.json
+      # exists) and best-effort — a browser-mint flake must never break the index build.
+      - name: Tier-2 token refresh (opt-in; offline browser mint)
+        if: hashFiles('scripts/tier2_mint.json') != ''
+        continue-on-error: true
+        env:
+          ERGON_TOKEN_STORE: dist/tier2_tokens.json
+        run: |
+          uv pip install -e ".[browser]" && uv run playwright install --with-deps chromium
+          uv run python scripts/tier2_refresh.py --store dist/tier2_tokens.json
 
       - name: Build incremental index (exits non-zero if data-quality gates fail)
         env:
           SQLITE_TMPDIR: /mnt        # large temp disk for FTS/sort spills (/ has only ~14GB)
           TMPDIR: /mnt
+          ERGON_TOKEN_STORE: dist/tier2_tokens.json  # token_ref specs read the freshly-minted tokens
         run: |
           uv run python scripts/build_index.py --incremental \
             --limit-companies "${{ github.event.inputs.limit_companies || '12000' }}" --sharded --out dist
+
+      # Stream B self-healing: replay every apicapture spec, record health (streak persisted across
+      # builds via dist/spec_health.json), and emit rediscover_queue.json for specs that rotted.
+      - name: Spec health-check (self-healing re-discover queue)
+        continue-on-error: true
+        env:
+          ERGON_SPEC_HEALTH: dist/spec_health.json
+        run: uv run python scripts/spec_health_cron.py
 
       - name: Publish snapshot to the stable index-latest release
         env:
@@ -75,7 +97,7 @@ jobs:
           ASSETS=""
           for f in index.sqlite.gz manifest.json index-slim.sqlite.gz manifest-slim.json \
                    index-delta.sqlite.gz manifest-delta.json deltas.json \
-                   gates.json board_state.json history.jsonl \
+                   gates.json board_state.json history.jsonl spec_health.json rediscover_queue.json \
                    shards.json coverage.json INDEX_STATUS.md crawl_cursor.json; do
             [ -f "dist/$f" ] && ASSETS="$ASSETS dist/$f"
           done

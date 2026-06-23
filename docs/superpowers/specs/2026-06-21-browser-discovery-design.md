@@ -119,9 +119,19 @@ target's TTL/refresh policy. Targets in `scripts/tier2_mint.json` (see `.example
 never logged (secrets-safe `summarize`). Driver validated live (cookie/storage/XHR capture → extract →
 store); pure logic unit-tested. `--state cap.json` also mints from a Playwright-MCP-captured fixture.
 
+**Cron wiring** (built 2026-06-22) — both offline runners hang on the daily index-build workflow:
+- `scripts/tier2_refresh.py` — TTL-driven re-mint (`needs_refresh`: missing/expired or within a 20%
+  margin of expiry → re-mint). Runs **before** the crawl (opt-in: only when `scripts/tier2_mint.json`
+  exists; `continue-on-error` so a browser flake never breaks the build). Tokens land in
+  `dist/tier2_tokens.json`, which the build reads via `$ERGON_TOKEN_STORE`.
+- `scripts/spec_health_cron.py` + `ergon_tracker.spec_health.SpecHealth` — replays every apicapture
+  spec **after** the build, records ok/fail, and emits `rediscover_queue.json` for specs that failed
+  `threshold` (default 3) times in a row. The streak persists across builds (`spec_health.json` is
+  downloaded + re-published on the `index-latest` release, like `board_state.json`).
+
 **What remains:** per-site `tier2_mint.json` extract rules **validated live** against the real
 proven-exhausted targets (Fastenal Akamai `_abck`, Sempra ADP-RM `myjobstoken`) + their paired
-apicapture `token_ref`/`token_inject` specs; and wiring `mint` onto the index-build cron (TTL-driven).
+apicapture `token_ref`/`token_inject` specs. (Supervised — those sites tarpit; not blind.)
 
 ## References
 - Predecessor gate: [`2026-06-21-ats-exhaustion-ladder.md`](../plans/2026-06-21-ats-exhaustion-ladder.md)
