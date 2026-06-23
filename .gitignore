@@ -73,6 +73,7 @@ scripts/gov_names.txt
 # committed A->B contract that the Stream-B browser-discovery subsystem consumes.
 runs/exhaustion/
 scripts/cand_exhaustion.json
+scripts/ladder_input.txt
 
 # Playwright MCP throwaway session logs
 .playwright-mcp/
