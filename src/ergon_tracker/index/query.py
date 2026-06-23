@@ -133,3 +133,33 @@ def search_rows(con: sqlite3.Connection, q: SearchQuery) -> list[sqlite3.Row]:
         "SELECT j.* FROM jobs j WHERE " + " AND ".join(where) + " ORDER BY j.posted_at DESC LIMIT ?"
     )
     return con.execute(sql, [*params, limit]).fetchall()
+
+
+def whats_new_rows(
+    con: sqlite3.Connection, q: SearchQuery, since_iso: str, *, include_changed: bool = False
+) -> list[sqlite3.Row]:
+    """The 'what's new' feed: index rows first seen (or, with ``include_changed``, first-seen-or-updated)
+    on/after ``since_iso``, newest first.
+
+    The prebuilt index stamps ``first_seen``/``updated_at`` per job, so it answers "what appeared since
+    X" with **zero ATS calls**. Reuses the standard filter set (``_where`` already constrains
+    ``status='active'``), so every search filter (keywords, location, level, sector, salary, visa, …)
+    composes with the recency cutoff. No competitor MCP exposes a real diff feed; this is ours."""
+    where, params = _where(q)
+    if include_changed:
+        where = [*where, "(j.first_seen >= ? OR j.updated_at >= ?)"]
+        params = [*params, since_iso, since_iso]
+    else:
+        where = [*where, "j.first_seen >= ?"]
+        params = [*params, since_iso]
+    limit = q.limit or 100
+    order = "ORDER BY j.first_seen DESC, j.posted_at DESC"
+    match = _match_expr(q.keywords) if q.keywords else ""
+    if match:
+        sql = (
+            "SELECT j.* FROM jobs j JOIN jobs_fts f ON j.rowid = f.rowid "
+            "WHERE jobs_fts MATCH ? AND " + " AND ".join(where) + f" {order} LIMIT ?"
+        )
+        return con.execute(sql, [match, *params, limit]).fetchall()
+    sql = "SELECT j.* FROM jobs j WHERE " + " AND ".join(where) + f" {order} LIMIT ?"
+    return con.execute(sql, [*params, limit]).fetchall()

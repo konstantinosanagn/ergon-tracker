@@ -243,6 +243,82 @@ async def search_jobs(
 
 
 @mcp.tool()
+def whats_new(
+    since_days: int = 7,
+    keywords: str | None = None,
+    location: str | None = None,
+    remote: bool | None = None,
+    level: str | None = None,
+    include_unknown_level: bool = False,
+    sector: str | None = None,
+    include_unknown_sector: bool = False,
+    country: str | None = None,
+    city: str | None = None,
+    salary_min: float | None = None,
+    salary_max: float | None = None,
+    visa_sponsor: bool = False,
+    sponsorship_offered: bool | None = None,
+    employment_type: str | None = None,
+    include_changed: bool = False,
+    limit: int = 25,
+) -> dict[str, Any]:
+    """What's NEW: jobs that first appeared in the daily index within the last `since_days`, newest first.
+
+    A real change feed — the prebuilt index stamps `first_seen`/`updated_at` per job, so this answers
+    "what showed up since I last looked" with ZERO ATS calls (throttle-proof, served locally). Every
+    `search_jobs` filter composes with the recency cutoff, so you can ask e.g. "new senior fintech roles
+    that sponsor H-1B this week." Index-only (live fetch has no first-seen history).
+
+    Args:
+        since_days: look back this many days by `first_seen` (default 7).
+        include_changed: also include jobs whose details were UPDATED in the window (not just new ones).
+        (all other args mirror `search_jobs`.) Each job carries `first_seen` and `is_new`.
+    """
+    from datetime import date, timedelta
+
+    since_iso = (date.today() - timedelta(days=max(1, since_days))).isoformat()
+    query = SearchQuery(
+        keywords=keywords, location=location, remote=remote,
+        level=JobLevel(level) if level else None, include_unknown_level=include_unknown_level,
+        sector=sector, include_unknown_sector=include_unknown_sector, country=country, city=city,
+        salary_min=salary_min, salary_max=salary_max,
+        employment_type=EmploymentType(employment_type) if employment_type else None,
+        visa_sponsor=True if visa_sponsor else None, sponsorship_offered=sponsorship_offered,
+        limit=limit,
+    )
+
+    from .index.backend import SqliteIndexBackend
+    from .index.cache import IndexCache, cached_index_build_id
+    from .index.db import connect
+    from .index.mapping import from_row
+    from .index.query import whats_new_rows
+
+    try:
+        path = IndexCache().ensure_fresh()
+    except Exception:  # noqa: BLE001 - index unavailable (offline / not yet built)
+        path = None
+    backend = SqliteIndexBackend(path) if path else None
+    if backend is None or not backend.available():
+        return {"count": 0, "since": since_iso, "jobs": [],
+                "note": "prebuilt index unavailable — 'what's new' is served from the daily index"}
+
+    con = connect(path, read_only=True)
+    try:
+        rows = whats_new_rows(con, query, since_iso, include_changed=include_changed)
+    finally:
+        con.close()
+    jobs: list[dict[str, Any]] = []
+    for row in rows:
+        d = _job_to_dict(from_row(row))
+        d["first_seen"] = row["first_seen"]
+        d["is_new"] = bool(row["first_seen"] and row["first_seen"] >= since_iso)
+        if include_changed:
+            d["updated_at"] = row["updated_at"]
+        jobs.append(d)
+    return {"count": len(jobs), "since": since_iso, "as_of": cached_index_build_id(), "jobs": jobs}
+
+
+@mcp.tool()
 def list_h1b_sponsors(query: str | None = None, limit: int = 25) -> dict[str, Any]:
     """Browse employers known to sponsor H-1B visas (US DoL LCA certified filings).
 
