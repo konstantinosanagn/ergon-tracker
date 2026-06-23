@@ -1,0 +1,18 @@
+[
+ {
+  "company": "ridgetech-inc",
+  "ats": "bamboohr",
+  "token": "ridgetech",
+  "domain": "ridgetech.com",
+  "careers_url": "https://ridgetech.com/careers/",
+  "via": "missed-ats-handoff"
+ },
+ {
+  "company": "siga-technologies-inc",
+  "ats": "breezy",
+  "token": "siga-technologies-inc",
+  "domain": "siga.com",
+  "careers_url": "https://www.siga.com/careers",
+  "via": "missed-ats-handoff"
+ }
+]
