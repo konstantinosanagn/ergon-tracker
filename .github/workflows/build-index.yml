@@ -43,6 +43,9 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
 
+      - name: Ensure pigz (parallel gzip for the publish phase; Python gzip is the fallback)
+        run: command -v pigz || sudo apt-get update && sudo apt-get install -y pigz
+
       - name: Install package
         # [semantic] pulls fastembed for the rich tier's pre-stored embeddings (--rich, below).
         run: uv venv && uv pip install -e ".[semantic]"

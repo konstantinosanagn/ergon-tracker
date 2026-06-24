@@ -11,6 +11,9 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import os
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -19,24 +22,43 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from ergon_tracker.index.build import build_index  # noqa: E402
 
+# Compression level 6 (not gzip's default 9): ~2x faster for ~5% larger output — the right trade for a
+# ~1GB artifact rebuilt daily. Output stays standard gzip (.gz), so the SDK's gunzip is unchanged.
+_GZIP_LEVEL = int(os.environ.get("ERGON_GZIP_LEVEL", "6"))
+
 
 def _gzip_file(src: Path, dst: Path) -> tuple[str, int]:
-    """Stream-gzip ``src`` to ``dst`` in chunks; return (sha256 of RAW bytes, raw byte count).
+    """Compress ``src`` -> ``dst`` (gzip format); return (sha256 of RAW bytes, raw byte count).
 
-    Avoids loading the whole (~1GB) file into memory — gzip.compress(read_bytes()) would spike
-    ~2GB RAM at publish time. mtime=0 keeps the gz byte-stable for unchanged input.
+    Uses ``pigz`` (parallel gzip — saturates all cores, identical .gz format) when available, else
+    streams through Python's single-threaded gzip. Either way we stream src in 1MB chunks (no ~1GB RAM
+    spike) and hash the RAW bytes. ``pigz -n`` / ``mtime=0`` keep the .gz byte-stable for unchanged input.
     """
+    pigz = shutil.which("pigz")
     h = hashlib.sha256()
     total = 0
+    if pigz:
+        # Stream src through pigz's stdin while hashing raw bytes; pigz fans compression across cores.
+        with open(dst, "wb") as raw_out:
+            proc = subprocess.Popen(
+                [pigz, "-n", f"-{_GZIP_LEVEL}"], stdin=subprocess.PIPE, stdout=raw_out
+            )
+            assert proc.stdin is not None
+            with open(src, "rb") as f_in:
+                while chunk := f_in.read(1 << 20):
+                    h.update(chunk)
+                    total += len(chunk)
+                    proc.stdin.write(chunk)
+            proc.stdin.close()
+            if proc.wait() != 0:
+                raise RuntimeError(f"pigz failed compressing {src} (exit {proc.returncode})")
+        return h.hexdigest(), total
     with (
         open(src, "rb") as f_in,
         open(dst, "wb") as raw_out,
-        gzip.GzipFile(fileobj=raw_out, mode="wb", mtime=0) as f_out,
+        gzip.GzipFile(fileobj=raw_out, mode="wb", mtime=0, compresslevel=_GZIP_LEVEL) as f_out,
     ):
-        while True:
-            chunk = f_in.read(1 << 20)
-            if not chunk:
-                break
+        while chunk := f_in.read(1 << 20):
             h.update(chunk)
             total += len(chunk)
             f_out.write(chunk)
