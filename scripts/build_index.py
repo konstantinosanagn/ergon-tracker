@@ -596,13 +596,20 @@ async def _crawl_due(
             outcome[bkey]["error"] = True
             outcome[bkey]["companies"].clear()  # not "crawled" -> prev jobs carry forward
 
+    import os
+
+    # Crawl-tuned fetcher: fail fast on dead/slow boards (a big fraction of a 46k-board cold
+    # crawl). Defaults (25s timeout, 3 retries + backoff) can burn ~88s per dead board; 12s +
+    # 1 retry caps that at ~24s. Per-host rate limiting + circuit breaker still apply, and
+    # transiently-missed boards stay 'hot' and are retried next build (tiering).
+    # Concurrency 64 (was 16): the build crawls thousands of boards, and the global limiter — not the
+    # network — was the cap. Per-host AsyncLimiters + the circuit breaker remain the safety valve, so
+    # no single ATS is hit faster. Env-tunable for CI/runner sizing. (The SDK live-fetch path keeps the
+    # polite default of 16 — this higher concurrency is scoped to the bulk build only.)
+    crawl_concurrency = int(os.environ.get("ERGON_CRAWL_CONCURRENCY", "64"))
     try:
-        # Crawl-tuned fetcher: fail fast on dead/slow boards (a big fraction of a 46k-board cold
-        # crawl). Defaults (25s timeout, 3 retries + backoff) can burn ~88s per dead board; 12s +
-        # 1 retry caps that at ~24s. Per-host rate limiting + circuit breaker still apply, and
-        # transiently-missed boards stay 'hot' and are retried next build (tiering).
         async with (
-            AsyncFetcher(timeout=12.0, retries=2) as fetcher,
+            AsyncFetcher(timeout=12.0, retries=2, concurrency=crawl_concurrency) as fetcher,
             anyio.create_task_group() as tg,
         ):
             for bkey in due:

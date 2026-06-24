@@ -173,15 +173,24 @@ class AsyncFetcher:
         self._retries = retries
         self._breakers: dict[str, _CircuitBreaker] = defaultdict(_CircuitBreaker)
         self._owns_client = client is None
-        self._client = client or self._build_client(timeout=timeout, cache=cache)
+        self._client = client or self._build_client(
+            timeout=timeout, cache=cache, concurrency=concurrency
+        )
 
     @staticmethod
-    def _build_client(*, timeout: float, cache: bool) -> httpx.AsyncClient:
+    def _build_client(*, timeout: float, cache: bool, concurrency: int = 16) -> httpx.AsyncClient:
         kwargs: dict[str, Any] = {
             "timeout": timeout,
             "headers": DEFAULT_HEADERS,
             "follow_redirects": True,
             "http2": True,
+            # The connection pool must never starve the global concurrency limiter: keep at least
+            # `concurrency` live connections available (httpx defaults to 100, which silently caps a
+            # higher crawl concurrency). HTTP/2 multiplexing means this rarely opens that many sockets.
+            "limits": httpx.Limits(
+                max_connections=concurrency + 32,
+                max_keepalive_connections=concurrency,
+            ),
         }
         if cache:
             try:
