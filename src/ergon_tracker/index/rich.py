@@ -193,6 +193,17 @@ def _upsert_text(con: sqlite3.Connection, jobs: list[JobPosting]) -> None:
 _PARALLEL_MIN = 2000  # below this, multiprocessing spawn overhead outweighs the parallelism
 
 
+def _auto_parallel(n: int) -> int | None:
+    """fastembed ``parallel`` for a batch of ``n``: all-cores (0) only on a dedicated runner (CI=true,
+    set by GitHub Actions) for a sizable batch; single-process (None) locally so a laptop build doesn't
+    saturate every core. ONNX intra-op threads still apply either way."""
+    import os
+
+    if n < _PARALLEL_MIN:
+        return None
+    return 0 if os.environ.get("CI") else None
+
+
 def _embed_into(
     con: sqlite3.Connection,
     jobs: list[JobPosting],
@@ -212,7 +223,7 @@ def _embed_into(
         from ..semantic import get_semantic_reranker
 
         reranker = get_semantic_reranker()
-    par = parallel if parallel is not None else (0 if len(jobs) >= _PARALLEL_MIN else None)
+    par = parallel if parallel is not None else _auto_parallel(len(jobs))
     dim = 0
     buf: list[tuple[str, float, bytes]] = []
     for job, vec in reranker.embed_jobs_iter(jobs, batch_size=batch, parallel=par):
@@ -265,7 +276,7 @@ def _embed_rows_into(
         from ..semantic import get_semantic_reranker
 
         reranker = get_semantic_reranker()
-    par = 0 if len(rows) >= _PARALLEL_MIN else None
+    par = _auto_parallel(len(rows))
     ids = [r[0] for r in rows]
     texts = [r[1] for r in rows]
     dim = 0

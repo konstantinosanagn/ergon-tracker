@@ -628,7 +628,9 @@ async def _crawl_due(
     # network — was the cap. Per-host AsyncLimiters + the circuit breaker remain the safety valve, so
     # no single ATS is hit faster. Env-tunable for CI/runner sizing. (The SDK live-fetch path keeps the
     # polite default of 16 — this higher concurrency is scoped to the bulk build only.)
-    crawl_concurrency = int(os.environ.get("ERGON_CRAWL_CONCURRENCY", "64"))
+    crawl_concurrency = int(
+        os.environ.get("ERGON_CRAWL_CONCURRENCY") or ("64" if os.environ.get("CI") else "12")
+    )
     try:
         async with (
             AsyncFetcher(timeout=12.0, retries=2, concurrency=crawl_concurrency) as fetcher,

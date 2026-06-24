@@ -746,8 +746,16 @@ def build_sharded_index_from_db(
         slug_to_sectors.setdefault(sector_slug(s), []).append(s)
     items = sorted(slug_to_sectors.items())
 
+    # Laptop-safe by default: parallel shard processes only on a dedicated runner (CI=true, set by
+    # GitHub Actions). Locally a build runs shards sequentially so it never oversubscribes a laptop —
+    # ERGON_SHARD_WORKERS overrides either way.
     env_workers = os.environ.get("ERGON_SHARD_WORKERS")
-    workers = int(env_workers) if env_workers else max(2, (os.cpu_count() or 4) - 2)
+    if env_workers:
+        workers = int(env_workers)
+    elif os.environ.get("CI"):
+        workers = max(2, (os.cpu_count() or 4) - 2)
+    else:
+        workers = 1  # local: sequential, no worker processes
     workers = min(workers, len(items)) if items else 1
 
     shards: dict[str, dict[str, Any]] = {}
